@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Thomas Deseur — Explorer les nouvelles références</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#10101b;color:#f8f5f2;--gold:#ffce86;--muted:#beb6c9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 5%,#53337155,transparent 45%),#10101b}a{color:var(--gold)}
+header,main,footer{max-width:1420px;margin:auto;padding:20px 5%}header{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid #ffffff1d}
+header a{text-decoration:none;font-weight:750}.brand{color:#ffce86;margin-right:auto}
+h1{font-size:clamp(2.4rem,5vw,5rem);letter-spacing:-.06em;line-height:1.05;margin:40px 0 20px}
+h2{font-size:clamp(1.6rem,3vw,2.8rem);letter-spacing:-.035em;margin:40px 0 12px}
+.intro{max-width:920px;color:var(--muted);line-height:1.7}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}
+.stat{padding:16px 21px;border:1px solid #ffffff25;border-radius:12px;background:#ffffff08}
+.stat b{display:block;color:var(--gold);font-size:1.8rem}.stat span{font-size:.77rem;color:var(--muted)}
+.notice{padding:16px 20px;border:1px solid #ffce8650;background:#ffce860d;border-radius:12px;color:#fce8ca;font-size:.82rem;line-height:1.6;margin:20px 0}
+.filter{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0 24px}
+.filter label{color:var(--muted);font-size:.8rem}
+.filter select,.filter input{border:1px solid #ffffff2f;background:#222237;color:white;padding:12px;border-radius:9px;font:inherit;min-height:43px}
+.filter input{min-width:230px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(198px,1fr));gap:17px}
+.card{background:#1c1c2d;border:1px solid #ffffff21;border-radius:13px;padding:10px;min-width:0;display:flex;flex-direction:column;gap:9px}
+.card figure{margin:0;aspect-ratio:4/3;display:grid;place-items:center;background:#2c2941;border-radius:9px;overflow:hidden}
+.card img{height:100%;width:100%;object-fit:contain;display:block}.card b{font-size:.86rem;line-height:1.4}
+.card small{font-size:.7rem;color:var(--muted);line-height:1.4}
+.card a{font-size:.76rem;margin-top:auto;word-break:break-word}
+.chip{display:inline-block;align-self:start;border:1px solid #d3b67744;color:#f5d9a5;padding:4px 7px;border-radius:5px;font-size:.64rem;font-weight:800}
+.note{font-size:.78rem;color:var(--muted);margin:10px 0 24px;line-height:1.6}
+button.load{display:block;margin:30px auto 50px;cursor:pointer;padding:12px 26px;background:var(--gold);border:0;border-radius:9px;font-weight:850}
+footer{border-top:1px solid #ffffff21;color:var(--muted);font-size:.75rem}
+@media(max-width:530px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:7px}.filter input{width:100%;min-width:0}.filter label{width:100%}}
+</style></head>
+<body><header><a href="../index.html" class="brand">BUDGET ILLIMITÉ</a><a href="./">← 176 captures costumes</a><a href="../index.html">Jeu TCG</a></header>
+<main><h1>Thomas, dans tous ses univers.</h1>
+<p class="intro">Recherche étendue au-delà des « 100 couches » : photographies de spectacles, LEGO, constructions, objets, TikTok/Instagram, scènes, streams et collaborations. Chaque aperçu renvoie à sa source. Une vignette vidéo n'est <strong>pas</strong> une preuve de déguisement.</p>
+<div class="stats"><div class="stat"><b id="photos">—</b><span>Photographies de scène</span></div><div class="stat"><b id="thumbnails">—</b><span>Miniatures YouTube</span></div><div class="stat"><b id="documents">—</b><span>Autres pistes documentaires</span></div></div>
+<p class="notice">Les 26 photographies proviennent de Wikimedia Commons. Crédit photographique à vérifier individuellement, notamment Mickaël Schauli / Le Commissaire, et conditions CC BY-SA. Pour les vidéos, les visuels ne sont que des miniatures hébergées par les plateformes : elles peuvent montrer une autre personne que Thomas. Aucune photo n'est considérée comme une illustration de carte finale sans validation.</p>
+<div class="filter"><label for="category">Catégorie</label><select id="category"><option value="all">Toutes les catégories</option><option value="scene">Scène et spectacle</option><option value="lego">LEGO</option><option value="construction">Constructions</option><option value="objets-pubs">Objets et pubs</option><option value="personnages">Personnages / cosplay</option><option value="cache-cache">Cache-cache</option><option value="sosies">Sosies</option><option value="collaborations">Autres créateurs</option><option value="streams">Streams</option><option value="tiktok-insta">TikTok / Instagram</option></select><label for="query">Recherche</label><input id="query" type="search" placeholder="Personnage, plateforme, titre…"><small id="count" aria-live="polite"></small></div>
+<div id="grid" class="cards"></div><button class="load" id="more" hidden>Afficher d'autres références</button>
+<p class="note">Pour les déguisements les plus nombreux, la <a href="./">galerie d'archives « 100 couches »</a> regroupe déjà 176 autres captures. Les deux bibliothèques sont complémentaires.</p>
+</main><footer>Projet de recherche fan-made, non officiel. Sources tierces et licences à respecter. Aucune appropriation des images originales.</footer>
+<script>
+const el=id=>document.getElementById(id);
+let entries=[],visible=[],shown=0;
+const mk=(tag,cls,value)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(value!==undefined)x.textContent=value;return x};
+function displayCard(v){
+ const a=mk("article","card");
+ const fig=mk("figure");
+ if(v.previewUrl){
+   const img=mk("img");img.src=v.previewUrl;img.loading="lazy";img.decoding="async";img.alt="Aperçu externe : "+v.title;
+   img.onerror=()=>{img.remove();fig.append(mk("small","","Prévisualisation indisponible ; voir le fichier source"))};
+   fig.append(img);
+ }else fig.append(mk("small","","Ouvrir la source pour voir la vidéo ou les images"));
+ a.append(fig,mk("span","chip",v.kind==="photo"?"Photographie" : v.category.replaceAll("-"," ")),mk("b","",v.title));
+ a.append(mk("small","",v.why||"Document à examiner : costume non vérifié"));
+ const link=mk("a","","Voir la source originale ↗");link.href=v.sourceUrl;link.target="_blank";link.rel="noopener noreferrer";
+ a.append(link);return a;
+}
+function addMore(){
+ const fragment=document.createDocumentFragment();
+ for(const v of visible.slice(shown,shown+24))fragment.append(displayCard(v));
+ shown=Math.min(shown+24,visible.length);el("grid").append(fragment);
+ el("more").hidden=shown>=visible.length;
+}
+function filter(){
+ const cat=el("category").value,query=el("query").value.trim().toLocaleLowerCase("fr");
+ visible=entries.filter(v=>(cat==="all"||v.category===cat) &&
+ (!query||(v.title+" "+v.why+" "+v.category).toLocaleLowerCase("fr").includes(query)));
+ shown=0;el("grid").replaceChildren();el("count").textContent=visible.length+" références";addMore();
+}
+async function load(){
+ try{
+ const [a,b]=await Promise.all([fetch("./stage-photos.json"),fetch("./extended-media.json")]);
+ if(!a.ok||!b.ok)throw new Error("Les données ne sont pas disponibles.");
+ const photos=(await a.json()).photos,media=(await b.json()).items;
+ el("photos").textContent=String(photos.length);
+ el("thumbnails").textContent=String(media.filter(v=>v.previewUrl).length);
+ el("documents").textContent=String(media.filter(v=>!v.previewUrl).length);
+ entries=[...photos.map(v=>({id:v.id,kind:"photo",category:"scene",title:v.filename,why:"Thomas en spectacle à Strasbourg, photographie CC BY-SA 4.0 (voir les crédits sur Commons).",previewUrl:v.previewUrl,sourceUrl:v.sourcePage})),...media.map(v=>({...v,kind:"video",title:v.title,why:v.why,sourceUrl:v.sourceUrl}))];
+ filter();
+ }catch(e){el("grid").append(mk("p","",String(e.message)))}
+}
+el("category").addEventListener("change",filter);el("query").addEventListener("input",filter);el("more").addEventListener("click",addMore);
+load();
+</script></body></html>
