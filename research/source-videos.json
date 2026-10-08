@@ -17,7 +17,7 @@
       "id": "VIDEO-100GLACE",
       "type": "playd-youtube",
       "title": "100 COUCHES DE GLACE CHALLENGE",
-      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/1",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/2",
       "date": "2022-03-13",
       "cardCandidate": null,
       "evidence": "Épisode de la série; costumes à examiner",
@@ -220,6 +220,28 @@
       "cardCandidate": null,
       "evidence": "Compilation amateur",
       "status": "reference-communautaire",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-100CARTON",
+      "type": "playd-youtube",
+      "title": "100 COUCHES DE CARTON CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/1",
+      "date": "2021-12-12",
+      "cardCandidate": null,
+      "evidence": "Premier épisode du cycle 100 couches, série identifiée",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-FONTAINE",
+      "type": "youtube",
+      "title": "CACHE CACHE EXTRÊME #3 — Thomas est une fontaine",
+      "url": "https://www.youtube.com/watch?v=X1MSeqV4ZUw",
+      "date": "2023-03-26",
+      "cardCandidate": "fontaine",
+      "evidence": "Titre officiel de la vidéo mentionne explicitement que Thomas se déguise en fontaine",
+      "status": "apparition-contextuelle-confirmee",
       "timecode": null
     }
   ]
