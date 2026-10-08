@@ -598,6 +598,54 @@
       "status": "piste-de-recherche-a-verifier",
       "timecode": null,
       "previewUrl": null
+    },
+    {
+      "id": "BOULANGER-NOEL-PAQUES-2024",
+      "type": "tiktok-insta",
+      "title": "Thomas joue Noël, Pâques, Halloween et Saint-Valentin pour Boulanger",
+      "url": "https://www.instagram.com/reel/DCrtIKWIpbB/",
+      "date": "2024-11",
+      "cardCandidate": null,
+      "evidence": "Reel intégré dans un article de presse sur le Black Friday 2024; quatre personnages incarnés par Thomas. Photos à extraire avec autorisation.",
+      "status": "apparition-documentée-image-non-licenciée",
+      "timecode": null,
+      "previewUrl": null
+    },
+    {
+      "id": "AMIXEM-METEO-PERSONNAGE-2022",
+      "type": "personnages",
+      "title": "Personnage barbu en robe blanche — vidéo Amixem météo supprimée",
+      "url": "https://intrld.com/amixem-supprime-sa-derniere-video-jugee-blasphematoire-par-les-internautes/",
+      "date": "2022-10",
+      "cardCandidate": null,
+      "evidence": "Article daté qui documente un costume de Thomas dans une vidéo retirée; captures médias de tiers non autorisées.",
+      "status": "apparition-documentée-image-non-licenciée",
+      "timecode": null,
+      "previewUrl": null
+    },
+    {
+      "id": "ZENITH-THOMAS-ROI-2025",
+      "type": "scene",
+      "title": "Thomas déguisé en roi sur son trône — Zénith de Lille",
+      "url": "https://www.peperenews.fr/bien-thomas-deseur-zenith-de-lille/",
+      "date": "2025-02-05",
+      "cardCandidate": null,
+      "evidence": "Reportage de spectacle et photographie de l'événement; droits photo à clarifier.",
+      "status": "apparition-documentée-image-non-licenciée",
+      "timecode": null,
+      "previewUrl": null
+    },
+    {
+      "id": "LILLE-BRADERIE-2026",
+      "type": "scene",
+      "title": "Affiche Braderie de Lille 2026 : Thomas dans les moules",
+      "url": "https://www.lille.fr/Braderie-de-Lille/Actualites/Braderie-achetez-l-affiche-officielle",
+      "date": "2026-07",
+      "cardCandidate": null,
+      "evidence": "Affiche officielle Ville de Lille / photo Agence Créative BANANA, droits non transférés au jeu.",
+      "status": "apparition-documentée-image-non-licenciée",
+      "timecode": null,
+      "previewUrl": "https://woody.cloudly.space/app/uploads/lille-attractivite/2026/07/thumbs/26881/ratio_free_medium/affiche-braderie-de-lille-2026-640x413.webp"
     }
   ]
 }
