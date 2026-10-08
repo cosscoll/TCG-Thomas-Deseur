@@ -1,4 +1,11 @@
-# Recherche iconographique — Thomas Deseur
+# Sélection ciblée — costumes, transformations et situations spéciales uniquement
+
+Les premières recherches avaient dérivé vers un inventaire général de toutes les photos de Thomas. **Cette orientation est abandonnée.** Une apparition n'entre dans le TCG que si son look constitue l'intérêt central : déguisement, personnage, transformation, camouflage ou mise en scène visuelle particulièrement distinctive.
+
+**Voir la sélection à respecter :** [costume-only.json](costume-only.json) et [galerie filtrée](https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html).
+
+Les fichiers `stage-photos.json`, `direct-image-references.json` et une grande partie de `extended-media.json` sont désormais explicitement marqués **hors cible**. Les 176 captures TierMaker demeurent des **candidates** : même si elles semblent montrer des déguisements, il faut identifier Thomas, la tenue, l'épisode, le timecode, les doublons et les droits avant de les compter comme cartes.
+
 
 Date de constitution : 8 octobre 2026.
 
