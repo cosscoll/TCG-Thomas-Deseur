@@ -53,3 +53,7 @@ Les recherches d'octobre 2026 ont permis d'identifier plusieurs noms de cartes l
 ## Découvertes complémentaires hors 100 couches
 
 Sept apparitions ou rôles documentés : quatre personnages dans un Reel Boulanger (2024), sketch météo Amixem (2022, vidéo retirée), roi au Zénith de Lille (2025), affiche de la Braderie de Lille (2026). Origines dans `discovered-looks.json`. 26 photos Commons, 11 miniatures YouTube, 1 visuel de campagne et 21 pistes sans aperçu, soit 56 sources externes uniques dans le registre. Les costumes, timecodes et droits restent à confirmer.
+
+## Aperçus d'images de presse supplémentaires
+
+Cinq liens d'images réelles ou affiches supplémentaires sont catalogués dans `direct-image-references.json`, avec la source d'origine et un drapeau indiquant l'absence de licence de jeu. La recherche rassemble désormais **219 URLs distinctes d'images/miniatures** : 176 captures de costumes de fans, 26 photographies de scène Commons, 11 miniatures YouTube, 1 affiche Braderie de Lille, 5 images de presse/spectacle. Ces 219 références ne représentent PAS 219 costumes distincts ou 219 visuels autorisés à utiliser comme cartes.
