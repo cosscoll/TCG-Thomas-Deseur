@@ -49,3 +49,7 @@ Les recherches d'octobre 2026 ont permis d'identifier plusieurs noms de cartes l
 ## Exploration complémentaire (LEGO / objets / streams / scène)
 
 [Galerie des nouvelles références](https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html) : 26 photos de scène Commons, 11 miniatures YouTube et 18 autres pistes documentaires. Le registre contient à présent 52 sources distinctes ; 18 des 49 cartes ont au moins une piste. Données : `stage-photos.json`, `extended-media.json`, `card-mapping-status.json`. Attention : les miniatures et les apparitions ne sont pas toutes des déguisements.
+
+## Découvertes complémentaires hors 100 couches
+
+Sept apparitions ou rôles documentés : quatre personnages dans un Reel Boulanger (2024), sketch météo Amixem (2022, vidéo retirée), roi au Zénith de Lille (2025), affiche de la Braderie de Lille (2026). Origines dans `discovered-looks.json`. 26 photos Commons, 11 miniatures YouTube, 1 visuel de campagne et 21 pistes sans aperçu, soit 56 sources externes uniques dans le registre. Les costumes, timecodes et droits restent à confirmer.
