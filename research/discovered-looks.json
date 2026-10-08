@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-08",
+  "notice": "7 rôles/apparitions documentés dans quatre œuvres distinctes ; non intégrés dans les cartes sans images et droits validés.",
+  "looks": [
+    {
+      "id": "LOOK-1",
+      "name": "Noël",
+      "url": "https://www.instagram.com/reel/DCrtIKWIpbB/",
+      "description": "campagne Boulanger 2024 : rôle de Noël",
+      "category": "publicité",
+      "rights": "à vérifier",
+      "sourceOfReport": "https://gensdinternet.fr/2024/11/28/black-friday-2024-5-campagnes-avec-des-nfluenceurs-a-ne-pas-louper/",
+      "verifiedImage": null
+    },
+    {
+      "id": "LOOK-2",
+      "name": "Pâques",
+      "url": "https://www.instagram.com/reel/DCrtIKWIpbB/",
+      "description": "campagne Boulanger 2024 : rôle de Pâques",
+      "category": "publicité",
+      "rights": "à vérifier",
+      "sourceOfReport": "https://gensdinternet.fr/2024/11/28/black-friday-2024-5-campagnes-avec-des-nfluenceurs-a-ne-pas-louper/",
+      "verifiedImage": null
+    },
+    {
+      "id": "LOOK-3",
+      "name": "Halloween",
+      "url": "https://www.instagram.com/reel/DCrtIKWIpbB/",
+      "description": "campagne Boulanger 2024 : rôle de Halloween",
+      "category": "publicité",
+      "rights": "à vérifier",
+      "sourceOfReport": "https://gensdinternet.fr/2024/11/28/black-friday-2024-5-campagnes-avec-des-nfluenceurs-a-ne-pas-louper/",
+      "verifiedImage": null
+    },
+    {
+      "id": "LOOK-4",
+      "name": "Saint-Valentin",
+      "url": "https://www.instagram.com/reel/DCrtIKWIpbB/",
+      "description": "campagne Boulanger 2024 : rôle de Saint-Valentin",
+      "category": "publicité",
+      "rights": "à vérifier",
+      "sourceOfReport": "https://gensdinternet.fr/2024/11/28/black-friday-2024-5-campagnes-avec-des-nfluenceurs-a-ne-pas-louper/",
+      "verifiedImage": null
+    },
+    {
+      "id": "LOOK-5",
+      "name": "Personnage céleste",
+      "url": "https://intrld.com/amixem-supprime-sa-derniere-video-jugee-blasphematoire-par-les-internautes/",
+      "description": "vidéo météo Amixem 2022 ; perruque, barbe factice et robe blanche",
+      "category": "vidéo retirée",
+      "rights": "à vérifier",
+      "sourceOfReport": null,
+      "verifiedImage": null
+    },
+    {
+      "id": "LOOK-6",
+      "name": "Roi sur son trône",
+      "url": "https://www.peperenews.fr/bien-thomas-deseur-zenith-de-lille/",
+      "description": "spectacle Lille du 5 février 2025",
+      "category": "scène",
+      "rights": "à vérifier",
+      "sourceOfReport": null,
+      "verifiedImage": null
+    },
+    {
+      "id": "LOOK-7",
+      "name": "Affiche dans les moules",
+      "url": "https://www.lille.fr/Braderie-de-Lille/Actualites/Braderie-achetez-l-affiche-officielle",
+      "description": "affiche officielle de Lille 2026",
+      "category": "affiche",
+      "rights": "à vérifier",
+      "sourceOfReport": null,
+      "verifiedImage": null
+    }
+  ]
+}
