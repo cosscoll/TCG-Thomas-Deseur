@@ -5,7 +5,7 @@ Date de constitution : 8 octobre 2026.
 ## Résultats actuels
 
 - **176 URLs** de captures de costumes trouvées sur **trois galeries publiques communautaires** TierMaker.
-- **22 sources complémentaires** (épisodes YouTube, archives d'épisodes, TikTok, article de presse, publication Instagram).
+- **27 sources complémentaires** (épisodes YouTube, archives d'épisodes, TikTok, article de presse, publication Instagram).
 - Deux apparitions directement identifiées dans des **titres officiels de vidéos Amixem** :
   - **Matelas** — 24 juillet 2022 — https://www.youtube.com/watch?v=qfL_GCXtYCU
   - **Fontaine** — 26 mars 2023 — https://www.youtube.com/watch?v=X1MSeqV4ZUw
@@ -41,3 +41,7 @@ Sources principales :
 Les images originales proviennent de vidéos réalisées par des tiers et de captures de contributeurs TierMaker. Nous **ne les avons pas copiées dans le dépôt** et aucun droit de réutilisation n'est présumé. La galerie affiche des liens directs distants uniquement à des fins de référence : le site source peut bloquer les prévisualisations ou supprimer les fichiers.
 
 Cette recherche ne constitue **pas** une validation d'usage public ou commercial de l'image de Thomas Deseur, ni des droits d'auteur sur les vidéos et photographies. Les quatre portraits fictifs précédemment générés ne sont pas retenus comme images de carte.
+
+## Vérification ZEVENT 2026
+
+Les recherches d'octobre 2026 ont permis d'identifier plusieurs noms de cartes liés au ZEVENT 2026 : `loft_rejoint`, `loft_quitte`, `sacrifice_capillaire`, `sosies`, `chiffon` et `crossover_mcfly`. Deux concepts — `chemise` et `display_jdg` — ne disposent pas d'une réalisation confirmée. La source des objectifs annoncés n'est pas une preuve de visuel ; la progression et les clips sont renseignés dans `source-videos.json` et `card-mapping-status.json`.
