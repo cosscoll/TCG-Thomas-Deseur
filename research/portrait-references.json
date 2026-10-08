@@ -1,0 +1,27 @@
+{
+  "compiledAt": "2026-10-08",
+  "usage": "Références d'identité faciale réelles pour éviter les portraits fictifs, PAS des costumes ou cartes vérifiés.",
+  "caution": "Les photos sous CC BY-SA 4.0 requièrent crédit auteur, lien licence, modifications indiquées, partage sous conditions compatibles; les droits à l'image et autres obligations restent à considérer.",
+  "images": [
+    {
+      "id": "PORTRAIT-06",
+      "originalPage": "https://commons.wikimedia.org/wiki/File:Thomas_Deseur_en_spectacle_%C3%A0_Strasbourg_2024_-_06.jpg",
+      "subject": "Thomas Deseur en spectacle à Strasbourg en 2024",
+      "photographer": "Mickaël Schauli (Le Commissaire)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "costumeReference": false,
+      "provenanceVerified": true
+    },
+    {
+      "id": "PORTRAIT-17",
+      "originalPage": "https://commons.wikimedia.org/wiki/File:Thomas_Deseur_en_spectacle_%C3%A0_Strasbourg_2024_-_17.jpg",
+      "subject": "Thomas Deseur en spectacle à Strasbourg en 2024",
+      "photographer": "Mickaël Schauli (Le Commissaire)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "costumeReference": false,
+      "provenanceVerified": true
+    }
+  ]
+}
