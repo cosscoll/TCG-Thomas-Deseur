@@ -39,7 +39,12 @@ function openDetails(card) {
   byId("detailId").textContent = "ID technique : " + card.id;
   const demo = cardStats(card.id);
   byId("detailCombat").textContent = demo.role + " · " + demo.maxHp + " PV · " + demo.quick + " frappe · " + demo.burst + " capacité. " + demo.description + " Valeurs provisoires.";
-  byId("detailRarity").textContent = rarityLabels[card.rarity] + " · non vérifiée";
+  byId("detailRarity").textContent = rarityLabels[card.rarity] +
+    (card.sourceUrl ? " · vidéo originale identifiée (image non validée)" : " · source à vérifier");
+  const sourceLink = byId("detailSourceLink");
+  sourceLink.hidden = !card.sourceUrl;
+  sourceLink.href = card.sourceUrl || "./research/";
+  sourceLink.textContent = card.sourceUrl ? "Vidéo source : " + card.sourceLabel + " ↗" : "";
   byId("detailArt").style.borderColor = RARITIES.find(r => r.id === card.rarity).color;
   markButton.textContent = marked.has(card.id) ? "Retirer le repère" : "Marquer comme repérée";
   refreshDeckDetailButton();
@@ -80,7 +85,7 @@ function render() {
   grid.replaceChildren(fragment);
 
   byId("totalCards").textContent = String(CARDS.length);
-  byId("verifiedCards").textContent = String(CARDS.filter(card => card.verification === "verifie").length);
+  byId("verifiedCards").textContent = String(CARDS.filter(card => Boolean(card.sourceUrl)).length);
   byId("markedCards").textContent = String(marked.size);
   byId("resultsCount").textContent = results.length + (results.length > 1 ? " cartes affichées" : " carte affichée");
   byId("emptyResults").classList.toggle("hidden", results.length !== 0);
