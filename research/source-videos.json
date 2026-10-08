@@ -1,0 +1,226 @@
+{
+  "compiledAt": "2026-10-08",
+  "notice": "Liste de sources et de pistes. Ne prouve pas que chaque costume se trouve sur la miniature ou qu'une image a des droits de réutilisation.",
+  "sources": [
+    {
+      "id": "VIDEO-MATELAS",
+      "type": "youtube",
+      "title": "CACHE CACHE EXTRÊME #2 — Thomas est dans un matelas",
+      "url": "https://www.youtube.com/watch?v=qfL_GCXtYCU",
+      "date": "2022-07-24",
+      "cardCandidate": "matelas",
+      "evidence": "Titre de la vidéo mentionne explicitement Thomas dans un matelas",
+      "status": "apparition-contextuelle-confirmee",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-100GLACE",
+      "type": "playd-youtube",
+      "title": "100 COUCHES DE GLACE CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/1",
+      "date": "2022-03-13",
+      "cardCandidate": null,
+      "evidence": "Épisode de la série; costumes à examiner",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-100BOIS",
+      "type": "playd-youtube",
+      "title": "100 COUCHES DE BOIS CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/3",
+      "date": "2022-05-08",
+      "cardCandidate": null,
+      "evidence": "Épisode série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-100POLY",
+      "type": "playd-youtube",
+      "title": "100 COUCHES POLYSTYRÈNE CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/4",
+      "date": "2022-08-21",
+      "cardCandidate": "polystyrene",
+      "evidence": "Correspondance contextuelle au thème, costume non identifié",
+      "status": "piste-a-verifier",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-100BETON",
+      "type": "playd-youtube",
+      "title": "100 COUCHES DE BÉTON CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/5",
+      "date": "2022-11-06",
+      "cardCandidate": null,
+      "evidence": "Épisode de la série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-100METAL",
+      "type": "youtube",
+      "title": "100 COUCHES DE MÉTAL CHALLENGE",
+      "url": "https://www.youtube.com/watch?v=xJsLRuOaF2s",
+      "date": "2023-03-12",
+      "cardCandidate": null,
+      "evidence": "Description source évoque les propositions de déguisements pour Thomas",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-1000CARTON",
+      "type": "playd-youtube",
+      "title": "1000 COUCHES DE CARTON CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/7",
+      "date": "2023-08-13",
+      "cardCandidate": null,
+      "evidence": "Épisode série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-1000POLY",
+      "type": "playd-youtube",
+      "title": "1000 COUCHES DE POLYSTYRÈNE CHALLENGE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/8",
+      "date": "2023-11-19",
+      "cardCandidate": "polystyrene",
+      "evidence": "Thème correspondant, costume non attribué",
+      "status": "piste-a-verifier",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-1000GLACE",
+      "type": "playd-youtube",
+      "title": "1000 COUCHES DE GLACE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/9",
+      "date": "2024-02-04",
+      "cardCandidate": null,
+      "evidence": "Épisode série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-1000TERRE",
+      "type": "playd-youtube",
+      "title": "1000 COUCHES DE TERRE",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/10",
+      "date": "2024-11-17",
+      "cardCandidate": null,
+      "evidence": "Épisode série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-1000PAPIER",
+      "type": "playd-youtube",
+      "title": "1000 COUCHES DE PAPIER",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/11",
+      "date": "2025-08-24",
+      "cardCandidate": null,
+      "evidence": "Épisode série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-1000ROCHES",
+      "type": "playd-youtube",
+      "title": "1000 COUCHES DE ROCHES",
+      "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/12",
+      "date": "2026-08-16",
+      "cardCandidate": null,
+      "evidence": "Épisode série",
+      "status": "episode-confirme-cosplay-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-DIEU",
+      "type": "article",
+      "title": "Thomas grimé en Dieu — simulateur météo extrême (vidéo supprimée)",
+      "url": "https://www.letribunaldunet.fr/reseaux-sociaux/youtubeur-francais-tres-connu-poste-video-jugee-blasphematoire-supprimee-rapidement.html",
+      "date": "2022-10-24",
+      "cardCandidate": null,
+      "evidence": "Article décrivant le déguisement porté par Thomas et retrait de vidéo",
+      "status": "apparition-documentee-par-la-presse",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-RADAR",
+      "type": "tiktok",
+      "title": "Thomas et son costume de radar",
+      "url": "https://www.tiktok.com/@amixemrb/video/7332125194217147680",
+      "date": null,
+      "cardCandidate": null,
+      "evidence": "Titre du clip et description mentionnant Thomas et le radar",
+      "status": "costume-mentionne-clip-a-verifier",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-POUDLARD",
+      "type": "tiktok",
+      "title": "Le cosplay de Thomas — Harry Potter / Poudlard",
+      "url": "https://www.tiktok.com/@clips_y0utube_twitch/video/7203767312141389062",
+      "date": null,
+      "cardCandidate": "poudlard_titan",
+      "evidence": "Clip identifié avec tags Thomas Deseur et Poudlard, attribution à la carte à confirmer",
+      "status": "piste-a-verifier",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-VILEBREQUIN",
+      "type": "youtube",
+      "title": "Parodie Vilebrequin — Thomas Deseur et Amixem",
+      "url": "https://www.youtube.com/watch?v=GPqVmJmn6MM",
+      "date": null,
+      "cardCandidate": "vilebrequin",
+      "evidence": "Vidéo de la parodie rapportée; Thomas imite Pierre Chabrier",
+      "status": "parodie-documentee",
+      "timecode": null
+    },
+    {
+      "id": "VIDEO-BGSI",
+      "type": "youtube",
+      "title": "On infiltre une fête sans se faire virer — Maghla, Amixem, Natoo, Thomas",
+      "url": "https://www.youtube.com/watch?v=h7TRQw4dRno",
+      "date": "2025-12-13",
+      "cardCandidate": "bgsi",
+      "evidence": "Thomas nommé parmi les participants; costume précis non vérifié",
+      "status": "participation-confirmee-costume-non-attribue",
+      "timecode": null
+    },
+    {
+      "id": "POST-74PERSONNAGES",
+      "type": "instagram",
+      "title": "Thomas Deseur indique avoir incarné 75 personnages distincts (en 2022)",
+      "url": "https://www.instagram.com/p/Cdyd29krdnO/",
+      "date": null,
+      "cardCandidate": null,
+      "evidence": "Publication attribuée à Thomas évoquant 120 vidéos et 75 personnages",
+      "status": "declaration-publique-indexee",
+      "timecode": null
+    },
+    {
+      "id": "COMPIL-TIKTOK1",
+      "type": "tiktok",
+      "title": "Thomas et ses déguisements — compilation",
+      "url": "https://www.tiktok.com/@thomas_099_/video/7231976952712662299",
+      "date": null,
+      "cardCandidate": null,
+      "evidence": "Compilation amateur",
+      "status": "reference-communautaire",
+      "timecode": null
+    },
+    {
+      "id": "COMPIL-TIKTOK2",
+      "type": "tiktok",
+      "title": "Les costumes de Thomas — partie 2",
+      "url": "https://www.tiktok.com/@thomas_099_/video/7346530120720502048",
+      "date": null,
+      "cardCandidate": null,
+      "evidence": "Compilation amateur",
+      "status": "reference-communautaire",
+      "timecode": null
+    }
+  ]
+}
