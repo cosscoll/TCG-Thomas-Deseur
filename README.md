@@ -1,0 +1,80 @@
+# Budget Illimité — TCG Thomas Deseur
+
+**Prototype non officiel et expérimental** d'un jeu de cartes à collectionner inspiré d'apparitions, costumes et déguisements de Thomas Deseur. Ce projet n'est affilié à aucun créateur cité.
+
+## Ce qui fonctionne actuellement
+
+- Catalogue interactif des **49 identifiants de cartes** extraits du code de booster remis (17 communes, 15 rares, 10 épiques, 4 légendaires, 3 secrètes).
+- Filtres, recherche, fiches de cartes et suivi de documentation sauvegardé localement.
+- Atelier de deck : sélection de **8 cartes distinctes**, recommandation automatique de deux cartes par archétype, récapitulatif des rôles, deck de départ, suppression et sauvegarde locale.
+- **Mode solo jouable contre Billy** : 3 KO pour gagner, énergie, PV, capacités spéciales, protection, remplacement après KO et changements de cartes en réserve.
+- **Billy en trois difficultés** : Découverte, Normal et Expert (ce dernier évalue les actions légales). Niveau verrouillé pendant une partie.
+- **Palmarès local** : parties jouées, victoires, défaites, meilleure série et 6 défis symboliques ; aucune récompense monétaire ni objet virtuel à valeur.
+- Quatre archétypes de combat aux statistiques **provisoires** et équilibrées indépendamment de la rareté.
+- Simulateur de booster **sans gain réel**, 5 cartes dont la dernière est au minimum rare.
+- Tests catalogue / boosters / moteur + CI GitHub Actions dans `.github/workflows/budget-illimite-tcg-tests.yml`.
+
+### Exécuter sur son ordinateur
+
+Depuis `` :
+
+```bash
+python3 -m http.server 8000
+# sous Windows : py -m http.server 8000
+# ou un autre serveur statique HTTP
+```
+
+Ouvrir ensuite `http://localhost:8000`. Il n'y a pas d'installation JS requise pour visualiser le jeu.
+
+### Vérifier le moteur
+
+```bash
+npm test
+npm run balance             # 200 graines par combinaison (9 combinaisons)
+npm run balance:extended    # 1 000 graines par combinaison
+```
+
+Les simulations de balance comparent des stratégies artificielles ; elles ne représentent pas des taux de victoire réels entre humains. Node.js 22 recommandé. `npm test` utilise `node --test` ; aucun paquet NPM n'est requis.
+
+## Structure
+
+```text
+index.html                       Interface de collection, deck, arène, boosters
+styles.css                       Identité visuelle responsive
+app.js                           Logique d'interface / mode solo
+data/cards.js                    49 identifiants et raretés, sources à vérifier
+game/engine.js                   Moteur solo déterministe + 3 IA et deck conseillé
+game/progress.js                 Palmarès local et jalons symboliques
+game/booster.js                  Simulation de tirage, sans économie réelle
+tests/*.test.mjs                 Tests moteur, booster, données, progression et UI simulée
+scripts/balance-report.mjs       Simulateur d'équilibrage reproductible
+security/restrict_booster_rpc.sql Proposition de durcissement, NON APPLIQUÉE
+docs/AUDIT_ET_FEUILLE_DE_ROUTE.md Audit de sécurité et plan de travail
+docs/REGLES_DU_PROTOTYPE.md      Règles du mode solo
+```
+
+## Attention : deux moteurs différents
+
+Le moteur solo `game/engine.js` est un **nouveau prototype indépendant**. L'archive d'origine mentionnait `engine.js` mais ne le contenait pas, pas plus que le site d'origine ou les migrations initiales. **Ce nouveau moteur ne doit pas être importé tel quel dans les anciennes Edge Functions PvP** : les signatures et règles doivent d'abord être réconciliées.
+
+Les noms du catalogue sont des libellés provisoires dérivés des IDs. Aucune référence vidéo ni photographie n'a été inventée ou validée. Les statistiques de combat affichées sont temporaires et ne reflètent pas une recherche sur Thomas Deseur.
+
+### Ce qui n'est PAS prêt
+
+- Pas de connexion à Supabase (aucun projet lié accessible lors du contrôle).
+- Pas de vrais comptes, PvP, ELO, économie en ligne, propriété des cartes ni échanges.
+- Pas de contenu média final autorisé ou vérifié.
+- Pas de déploiement public ; le site est conservé dans le dépôt dédié `cosscoll/TCG-Thomas-Deseur`.
+
+Ne jamais committer de `service_role`, mot de passe ou secrets dans GitHub. Ne pas déployer `security/restrict_booster_rpc.sql` sans vérifier les signatures et les politiques réelles de la base cible.
+
+## Roadmap
+
+1. Valider le solo sur navigateur desktop et mobile et organiser des tests avec de vrais joueurs. Le moteur est testé automatiquement, mais l'interface n'a pas encore été validée en navigateur graphique.
+2. Retrouver les sources du projet initial et identifier précisément les mécaniques d'origine.
+3. Documenter les 49 apparitions et leurs médias avec liens, dates et statut de droits.
+4. Créer un dépôt autonome et un environnement Supabase de développement si les accès l'autorisent.
+5. Construire le backend PvP/économie par transactions atomiques, RLS et tests de concurrence.
+6. Ajouter onboarding, progression, classements, échanges, puis publier après validation.
+
+Voir le document des règles et l'audit détaillé dans `docs/`.
