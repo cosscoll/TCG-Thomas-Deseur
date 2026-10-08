@@ -40,13 +40,13 @@ footer{font-size:.78rem;color:var(--muted);border-top:1px solid #ffffff1f}
 <section class="hero">
 <p class="eyebrow">Recherche de sources · 8 octobre 2026</p>
 <h1>Les vraies apparitions.<br>Pas des portraits inventés.</h1>
-<p>Cette bibliothèque regroupe des captures de costumes et des liens vers des vidéos dans lesquelles apparaît Thomas Deseur. Les captures proviennent de deux collections communautaires TierMaker. Elles constituent des <strong>références de recherche</strong>, pas encore des illustrations prêtes à être publiées sur les cartes.</p>
-<div class="stats"><div class="stat"><strong id="totalImages">—</strong><span>Fichiers visuels référencés</span></div><div class="stat"><strong>2</strong><span>Collections TierMaker</span></div><div class="stat"><strong id="sourceCount">—</strong><span>Sources vidéo et sociales</span></div><div class="stat"><strong id="mappedCount">0</strong><span>Associations locales provisoires</span></div></div>
+<p>Cette bibliothèque regroupe des captures de costumes et des liens vers des vidéos dans lesquelles apparaît Thomas Deseur. Les captures proviennent de trois collections communautaires TierMaker. Elles constituent des <strong>références de recherche</strong>, pas encore des illustrations prêtes à être publiées sur les cartes.</p>
+<div class="stats"><div class="stat"><strong id="totalImages">—</strong><span>Fichiers visuels référencés</span></div><div class="stat"><strong>3</strong><span>Collections TierMaker</span></div><div class="stat"><strong id="sourceCount">—</strong><span>Sources vidéo et sociales</span></div><div class="stat"><strong id="mappedCount">0</strong><span>Associations locales provisoires</span></div></div>
 </section>
 <p class="notice"><strong>Important :</strong> plusieurs images peuvent représenter le même personnage ; les costumes, timestamps et droits ne sont pas encore validés. Les images sont chargées depuis leur site d'origine, sans copie dans le dépôt. Une image non chargée reste accessible par son lien source. Toute association faite ci-dessous est <strong>personnelle et provisoire</strong>.</p>
 <section id="archives" aria-labelledby="archivesHeading">
 <h2 id="archivesHeading">Galerie de références</h2>
-<div class="controls"><label>Collection<select id="collectionFilter"><option value="all">Toutes les collections</option><option value="100-1000-couches">100 et 1000 couches (2023)</option><option value="serie-100-couches">Série 100 couches (2024)</option></select></label><label>Identifiant ou carte<input id="searchInput" type="search" placeholder="REF-1-001, matelas..."></label><button type="button" id="exportMap">Exporter les associations</button><span class="count" id="filteredCount" aria-live="polite"></span></div>
+<div class="controls"><label>Collection<select id="collectionFilter"><option value="all">Toutes les collections</option><option value="100-1000-couches">100 et 1000 couches (2023)</option><option value="serie-100-couches">Série 100 couches (2024)</option><option value="personnages-thomas">Personnages Thomas (2024)</option></select></label><label>Identifiant ou carte<input id="searchInput" type="search" placeholder="REF-1-001, matelas..."></label><button type="button" id="exportMap">Exporter les associations</button><span class="count" id="filteredCount" aria-live="polite"></span></div>
 <div id="galleryGrid" class="grid"></div>
 <p id="none" hidden>Aucun résultat.</p><button type="button" class="load" id="loadMore" hidden>Afficher d'autres captures</button>
 </section>
@@ -74,7 +74,7 @@ function tile(reference){
  const image=elem("img");image.src=reference.imageUrl;image.loading="lazy";image.decoding="async";image.alt="Capture communautaire "+reference.id+" (personnage à identifier)";
  image.addEventListener("error",()=>{image.remove();thumb.append(elem("small","","Image indisponible : ouvrir la source"))});
  thumb.append(image);article.append(thumb,elem("strong","",reference.id));
- article.append(elem("small","",reference.collection==="100-1000-couches"?"Collection costumes 2023":"Collection costumes 2024"));
+ article.append(elem("small","",reference.collection==="100-1000-couches"?"Costumes 2023":reference.collection==="serie-100-couches"?"Costumes 2024":"Personnages 2024"));
  const imgLink=elem("a","","Ouvrir l'image originale ↗");imgLink.href=reference.imageUrl;imgLink.target="_blank";imgLink.rel="noopener noreferrer";
  const srcLink=elem("a","","Voir la collection d'origine ↗");srcLink.href=reference.sourcePage;srcLink.target="_blank";srcLink.rel="noopener noreferrer";
  article.append(imgLink,srcLink);
