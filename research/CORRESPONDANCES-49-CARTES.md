@@ -4,7 +4,7 @@ Mise à jour : 8 octobre 2026.
 
 **18/49 cartes** possèdent au moins une piste de contenu. Parmi elles : **2 vidéos de déguisement/camouflage attestées par leur titre** (`matelas`, `fontaine`), **2 rôles audiovisuels documentés** (`psy`, `moderateur`), **1 apparence sur scène documentée** (`standupper`), d'autres scènes ou projets à confirmer. **0 illustration de carte définitive validée**.
 
-Collection brute distincte du catalogue des cartes : **176 captures communautaires**, **26 photos de scène réelles**, **11 miniatures YouTube**, **18 pistes supplémentaires sans aperçu direct**, **52 liens sources uniques**. Les nombres représentent des URL de références et peuvent concerner les mêmes apparitions ou les mêmes vidéos.
+Collection brute distincte du catalogue des cartes : **176 captures communautaires**, **26 photos de scène réelles**, **11 miniatures YouTube**, **18 pistes supplémentaires sans aperçu direct**, **56 liens sources uniques**. Les nombres représentent des URL de références et peuvent concerner les mêmes apparitions ou les mêmes vidéos.
 
 | Carte | Rareté | Statut | Pistes |
 |---|---|---|---|
@@ -63,3 +63,7 @@ Collection brute distincte du catalogue des cartes : **176 captures communautair
 Les liens de vignettes YouTube ne garantissent pas qu'on voie Thomas à l'image. Les 26 photos Commons représentent principalement un même spectacle, pas 26 nouveaux costumes. La plupart des 176 images TierMaker attendent une vérification individuelle et le repérage du timecode original. Deux concepts ZEVENT (`chemise`, `display_jdg`) ne doivent pas être interprétés comme des costumes effectivement portés sans preuve.
 
 Nouveaux liens : [exploration de scène, LEGO, objets, TikTok, streams et collaborations](https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html) · [176 captures de costumes](https://cosscoll.github.io/TCG-Thomas-Deseur/research/).
+
+## Sept apparitions complémentaires
+
+Reel Boulanger de novembre 2024 (Noël, Pâques, Halloween, Saint-Valentin), sketch météo Amixem de 2022, entrée en roi au Zénith de Lille en 2025, affiche Braderie de Lille 2026. Voir [discovered-looks.json](discovered-looks.json). Aucune attribution automatique aux 49 anciennes cartes n'est effectuée.
