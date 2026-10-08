@@ -22,7 +22,7 @@ La branche `dev/thomas-deseur-tcg` de `cosscoll/Cosme-Collomb` est une **ancienn
 
 ## Recherche visuelle Thomas Deseur
 
-Le TCG s'appuie maintenant sur une **bibliothèque de 176 références visuelles authentiques** recensées dans trois galeries communautaires TierMaker ; elles ne sont pas toutes distinctes et leurs auteurs/droits restent à vérifier. Un index complémentaire contient **52 sources vidéo, épisodes, archives ou publications** utilisables pour retrouver les apparitions originales.
+Le TCG s'appuie maintenant sur une **bibliothèque de 176 références visuelles authentiques** recensées dans trois galeries communautaires TierMaker ; elles ne sont pas toutes distinctes et leurs auteurs/droits restent à vérifier. Un index complémentaire contient **56 sources vidéo, épisodes, archives ou publications** utilisables pour retrouver les apparitions originales.
 
 - **Galerie consultable en ligne :** https://cosscoll.github.io/TCG-Thomas-Deseur/research/
 - **Données et provenance :** [research/visual-references.json](research/visual-references.json)
@@ -36,14 +36,16 @@ Deux cartes possèdent un lien de vidéo source confirmé par son titre (`matela
 La recherche de costumes comprend désormais :
 - **176 références de captures de costumes** tirées de 3 collections TierMaker (vérification individuelle encore nécessaire).
 - **26 photographies originales de Thomas Deseur sur scène** sur Wikimedia Commons, crédit et licence à respecter.
-- **11 vignettes de vidéos YouTube** (elles ne représentent pas forcément Thomas).
-- **18 autres contenus à examiner** : TikTok/Instagram, Twitch, scènes, LEGO, vidéos d'objets et collaborations.
-- **52 sources vidéo / réseaux distinctes** dans `research/source-videos.json`.
+- **11 vignettes de vidéos YouTube** et **1 affiche promotionnelle de la ville de Lille** (elles ne représentent pas forcément Thomas).
+- **21 autres contenus à examiner** : TikTok/Instagram, Twitch, scènes, LEGO, vidéos d'objets et collaborations.
+- **56 sources vidéo / réseaux distinctes** dans `research/source-videos.json`.
 - **18 des 49 cartes** ont au moins une piste documentaire, 2 vidéos de transformations clairement identifiées, mais **aucune illustration de carte finalisée**.
 
 **<https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html>** — nouveaux visuels de spectacle, LEGO et vidéos.
 
 **<https://cosscoll.github.io/TCG-Thomas-Deseur/research/>** — galerie des 176 captures communautaires.
+
+Sept apparitions **hors 100 couches** sont recensées dans `research/discovered-looks.json` : Noël, Pâques, Halloween, Saint-Valentin (campagne Boulanger), personnage céleste de l'ancien sketch météo, roi au Zénith, et campagne de la Braderie de Lille dans les moules. Ces personnages / apparitions concernent quatre œuvres originales, pas encore sept cartes illustrées.
 
 Les données supplémentaires sont dans `research/stage-photos.json` et `research/extended-media.json`. Ces fichiers référencent les sources, ils ne revendiquent pas les droits sur les médias.
 
