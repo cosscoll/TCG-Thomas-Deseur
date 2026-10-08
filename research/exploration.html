@@ -32,7 +32,7 @@ footer{border-top:1px solid #ffffff21;color:var(--muted);font-size:.75rem}
 <body><header><a href="../index.html" class="brand">BUDGET ILLIMITÉ</a><a href="./">← 176 captures costumes</a><a href="../index.html">Jeu TCG</a></header>
 <main><h1>Thomas, dans tous ses univers.</h1>
 <p class="intro">Recherche étendue au-delà des « 100 couches » : photographies de spectacles, LEGO, constructions, objets, TikTok/Instagram, scènes, streams et collaborations. Chaque aperçu renvoie à sa source. Une vignette vidéo n'est <strong>pas</strong> une preuve de déguisement.</p>
-<div class="stats"><div class="stat"><b id="photos">—</b><span>Photos de scène</span></div><div class="stat"><b id="thumbnails">—</b><span>Aperçus vidéo / affiche</span></div><div class="stat"><b id="documents">—</b><span>Liens sans aperçu</span></div><div class="stat"><b id="lookCount">—</b><span>Apparitions décrites</span></div></div>
+<div class="stats"><div class="stat"><b id="photos">—</b><span>Photos de scène</span></div><div class="stat"><b id="thumbnails">—</b><span>Miniatures / autres aperçus</span></div><div class="stat"><b id="documents">—</b><span>Liens sans aperçu</span></div><div class="stat"><b id="lookCount">—</b><span>Apparitions décrites</span></div></div>
 <p class="notice">Les 26 photographies proviennent de Wikimedia Commons. Crédit photographique à vérifier individuellement, notamment Mickaël Schauli / Le Commissaire, et conditions CC BY-SA. Pour les vidéos, les visuels ne sont que des miniatures hébergées par les plateformes : elles peuvent montrer une autre personne que Thomas. Aucune photo n'est considérée comme une illustration de carte finale sans validation.</p>
 <section aria-labelledby="looksTitle"><h2 id="looksTitle">Sept apparitions documentées hors « 100 couches »</h2><p class="note">Quatre personnages proviennent du même Reel Boulanger ; les trois autres de vidéos, d’un spectacle et d’une affiche officielle. Les droits et visuels exacts restent à obtenir.</p><div id="looksGrid" class="cards"></div></section><h2>Photographies et autres références</h2><div class="filter"><label for="category">Catégorie</label><select id="category"><option value="all">Toutes les catégories</option><option value="scene">Scène et spectacle</option><option value="lego">LEGO</option><option value="construction">Constructions</option><option value="objets-pubs">Objets et pubs</option><option value="personnages">Personnages / cosplay</option><option value="cache-cache">Cache-cache</option><option value="sosies">Sosies</option><option value="collaborations">Autres créateurs</option><option value="streams">Streams</option><option value="tiktok-insta">TikTok / Instagram</option></select><label for="query">Recherche</label><input id="query" type="search" placeholder="Personnage, plateforme, titre…"><small id="count" aria-live="polite"></small></div>
 <div id="grid" class="cards"></div><button class="load" id="more" hidden>Afficher d'autres références</button>
@@ -69,17 +69,17 @@ function filter(){
 }
 async function load(){
  try{
- const [a,b,c]=await Promise.all([fetch("./stage-photos.json"),fetch("./extended-media.json"),fetch("./discovered-looks.json")]);
- if(!a.ok||!b.ok||!c.ok)throw new Error("Les données ne sont pas disponibles.");
- const photos=(await a.json()).photos,media=(await b.json()).items,looks=(await c.json()).looks;
+ const [a,b,c,d]=await Promise.all([fetch("./stage-photos.json"),fetch("./extended-media.json"),fetch("./discovered-looks.json"),fetch("./direct-image-references.json")]);
+ if(!a.ok||!b.ok||!c.ok||!d.ok)throw new Error("Les données ne sont pas disponibles.");
+ const photos=(await a.json()).photos,media=(await b.json()).items,looks=(await c.json()).looks,press=(await d.json()).items;
  el("lookCount").textContent=String(looks.length);
  const lookFrag=document.createDocumentFragment();
  for(const item of looks)lookFrag.append(displayCard({kind:"look",category:item.category,title:item.name,why:item.description,sourceUrl:item.url,previewUrl:null}));
  el("looksGrid").append(lookFrag);
  el("photos").textContent=String(photos.length);
- el("thumbnails").textContent=String(media.filter(v=>v.previewUrl).length);
+ el("thumbnails").textContent=String(media.filter(v=>v.previewUrl).length+press.length);
  el("documents").textContent=String(media.filter(v=>!v.previewUrl).length);
- entries=[...photos.map(v=>({id:v.id,kind:"photo",category:"scene",title:v.filename,why:"Thomas en spectacle à Strasbourg, photographie CC BY-SA 4.0 (voir les crédits sur Commons).",previewUrl:v.previewUrl,sourceUrl:v.sourcePage})),...media.map(v=>({...v,kind:"video",title:v.title,why:v.why,sourceUrl:v.sourceUrl}))];
+ entries=[...photos.map(v=>({id:v.id,kind:"photo",category:"scene",title:v.filename,why:"Thomas en spectacle à Strasbourg, photographie CC BY-SA 4.0 (voir les crédits sur Commons).",previewUrl:v.previewUrl,sourceUrl:v.sourcePage})),...press.map(v=>({...v,kind:"photo",category:v.category})),...media.map(v=>({...v,kind:"video",title:v.title,why:v.why,sourceUrl:v.sourceUrl}))];
  filter();
  }catch(e){el("grid").append(mk("p","",String(e.message)))}
 }
