@@ -36,7 +36,7 @@ Deux cartes possèdent un lien de vidéo source confirmé par son titre (`matela
 La recherche de costumes comprend désormais :
 - **176 références de captures de costumes** tirées de 3 collections TierMaker (vérification individuelle encore nécessaire).
 - **26 photographies originales de Thomas Deseur sur scène** sur Wikimedia Commons, crédit et licence à respecter.
-- **11 vignettes de vidéos YouTube** et **1 affiche promotionnelle de la ville de Lille** (elles ne représentent pas forcément Thomas).
+- **11 vignettes de vidéos YouTube**, **1 affiche promotionnelle de la ville de Lille**, et **5 images de presse / scène** (elles ne représentent pas forcément Thomas).
 - **21 autres contenus à examiner** : TikTok/Instagram, Twitch, scènes, LEGO, vidéos d'objets et collaborations.
 - **56 sources vidéo / réseaux distinctes** dans `research/source-videos.json`.
 - **18 des 49 cartes** ont au moins une piste documentaire, 2 vidéos de transformations clairement identifiées, mais **aucune illustration de carte finalisée**.
