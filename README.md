@@ -22,14 +22,14 @@ La branche `dev/thomas-deseur-tcg` de `cosscoll/Cosme-Collomb` est une **ancienn
 
 ## Recherche visuelle Thomas Deseur
 
-Le TCG s'appuie maintenant sur une **bibliothèque de 176 références visuelles authentiques** recensées dans trois galeries communautaires TierMaker ; elles ne sont pas toutes distinctes et leurs auteurs/droits restent à vérifier. Un index complémentaire contient **22 vidéos, épisodes ou publications** utilisables pour retrouver les apparitions originales.
+Le TCG s'appuie maintenant sur une **bibliothèque de 176 références visuelles authentiques** recensées dans trois galeries communautaires TierMaker ; elles ne sont pas toutes distinctes et leurs auteurs/droits restent à vérifier. Un index complémentaire contient **27 vidéos, épisodes, archives ou publications** utilisables pour retrouver les apparitions originales.
 
 - **Galerie consultable en ligne :** https://cosscoll.github.io/TCG-Thomas-Deseur/research/
 - **Données et provenance :** [research/visual-references.json](research/visual-references.json)
 - **Sources vidéo et sociales :** [research/source-videos.json](research/source-videos.json)
 - **État des 49 cartes :** [research/CORRESPONDANCES-49-CARTES.md](research/CORRESPONDANCES-49-CARTES.md)
 
-Deux cartes possèdent un lien officiel de vidéo source confirmé par son titre (`matelas` et `fontaine`). Les 176 captures ne sont **pas encore attribuées avec certitude aux 49 cartes**, et aucun visuel réel n'a été présenté à tort comme illustration finalisée. Les images distantes servent uniquement à la vérification des costumes, pas à une diffusion sous licence supposée.
+Deux cartes possèdent un lien de vidéo source confirmé par son titre (`matelas` et `fontaine`). Les 176 captures ne sont **pas encore attribuées avec certitude aux 49 cartes**, et aucun visuel réel n'a été présenté à tort comme illustration finalisée. Les images distantes servent uniquement à la vérification des costumes, pas à une diffusion sous licence supposée.
 
 ## Ce qui fonctionne actuellement
 
