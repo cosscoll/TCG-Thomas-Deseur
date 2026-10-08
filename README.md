@@ -2,6 +2,24 @@
 
 **Prototype non officiel et expérimental** d'un jeu de cartes à collectionner inspiré d'apparitions, costumes et déguisements de Thomas Deseur. Ce projet n'est affilié à aucun créateur cité.
 
+## Où se trouve le site ?
+
+**Dépôt officiel de travail :** https://github.com/cosscoll/TCG-Thomas-Deseur
+
+Le fichier `index.html` est **à la racine** du dépôt (branche `main`), avec `app.js`, `styles.css`, `data/` et `game/`. Il s'agit du prototype jouable **en solo**, pas encore d'un produit final.
+
+**Publication web :** une action GitHub Pages se trouve dans `.github/workflows/deploy.yml`. La compilation et les 21 tests Node du premier lancement ont réussi. La dernière étape de publication est bloquée tant que **GitHub Pages n'est pas activé** dans les paramètres du dépôt. L'application GitHub utilisée par l'assistant n'a pas les droits nécessaires pour l'activer via API.
+
+Pour activer la prévisualisation, depuis le dépôt GitHub :
+
+1. Ouvrir **Settings → Pages**.
+2. Dans **Build and deployment**, choisir **Source : GitHub Actions** (activer Pages si demandé).
+3. Ouvrir **Actions → Test and publish TCG preview → Run workflow**, choisir `main`, puis lancer le workflow.
+
+Après un déploiement réussi, l'adresse prévue est `https://cosscoll.github.io/TCG-Thomas-Deseur/`. **Ne pas considérer cette adresse comme active avant que GitHub indique une publication réussie.**
+
+La branche `dev/thomas-deseur-tcg` de `cosscoll/Cosme-Collomb` est une **ancienne copie de sauvegarde**, et non l'emplacement où poursuivre le développement.
+
 ## Ce qui fonctionne actuellement
 
 - Catalogue interactif des **49 identifiants de cartes** extraits du code de booster remis (17 communes, 15 rares, 10 épiques, 4 légendaires, 3 secrètes).
@@ -73,7 +91,7 @@ Ne jamais committer de `service_role`, mot de passe ou secrets dans GitHub. Ne p
 1. Valider le solo sur navigateur desktop et mobile et organiser des tests avec de vrais joueurs. Le moteur est testé automatiquement, mais l'interface n'a pas encore été validée en navigateur graphique.
 2. Retrouver les sources du projet initial et identifier précisément les mécaniques d'origine.
 3. Documenter les 49 apparitions et leurs médias avec liens, dates et statut de droits.
-4. Créer un dépôt autonome et un environnement Supabase de développement si les accès l'autorisent.
+4. Rattacher un environnement Supabase de développement une fois les accès disponibles. Le dépôt GitHub autonome existe déjà.
 5. Construire le backend PvP/économie par transactions atomiques, RLS et tests de concurrence.
 6. Ajouter onboarding, progression, classements, échanges, puis publier après validation.
 
