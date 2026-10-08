@@ -3,9 +3,11 @@
   "totalCards": 49,
   "counts": {
     "videoVerified": 2,
-    "sourceCandidates": 15,
+    "sourceCandidates": 18,
     "validatedArtwork": 0,
-    "unrealizedOrUnconfirmedConcepts": 2
+    "unrealizedOrUnconfirmedConcepts": 2,
+    "roleDocumented": 2,
+    "stageDocumented": 1
   },
   "note": "Correspondances entre identifiants de cartes et sources ; aucune des 176 captures communautaires n'a encore été attribuée de manière sûre à un ID de carte.",
   "cards": [
@@ -13,10 +15,30 @@
       "id": "standupper",
       "rarity": "commune",
       "name": "Standupper",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "scene-photographies-sources-disponibles",
+      "sources": [
+        {
+          "sourceId": "YOUTUBE-THOMAS-SCENE-2024",
+          "title": "Thomas Deseur à L'humour à la plage — scène",
+          "url": "https://www.youtube.com/watch?v=xNv9aitVeaM",
+          "confidence": "presence-de-thomas-attestee-image-a-revoir"
+        },
+        {
+          "sourceId": "THOMAS-SITE-PERSO",
+          "title": "Site officiel de Thomas Deseur — Bien / vidéos",
+          "url": "https://thomasdeseur.chezsurmesures.com/",
+          "confidence": "presence-de-thomas-attestee-image-a-revoir"
+        },
+        {
+          "sourceId": "THOMAS-SPECTACLE-MELON",
+          "title": "Melon — spectacle de Thomas Deseur",
+          "url": "https://theatre-sebastopol.fr/spectacle/thomas-deseur/",
+          "confidence": "presence-de-thomas-attestee-image-a-revoir"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "26 photographies authentiques sur scène à Strasbourg sur Wikimedia Commons, mais aucune n'est encore attribuée comme illustration définitive."
     },
     {
       "id": "matelas",
@@ -163,10 +185,18 @@
       "id": "moderateur",
       "rarity": "commune",
       "name": "Moderateur",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "role-documente-visuel-a-extraire",
+      "sources": [
+        {
+          "sourceId": "PRIME-LE-MODERATEUR-2022",
+          "title": "Le Modérateur — Prime Video France",
+          "url": "https://thetvdb.com/lists/15928",
+          "confidence": "role-ou-costume-contextuellement-documente"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Thomas tient bien ce rôle dans la série Prime Video. Il faut confirmer la séquence, le costume exact et les droits avant intégration."
     },
     {
       "id": "chiffon",
@@ -384,10 +414,18 @@
       "id": "psy",
       "rarity": "rare",
       "name": "Psy",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "role-documente-visuel-a-extraire",
+      "sources": [
+        {
+          "sourceId": "PRIME-LE-PSY-2023",
+          "title": "Le Psy des personnages — Prime Video France",
+          "url": "https://www.thetvdb.com/series/le-psy-des-personnages/episodes/10173360",
+          "confidence": "role-ou-costume-contextuellement-documente"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Thomas tient bien ce rôle dans la série Prime Video. Il faut confirmer la séquence, le costume exact et les droits avant intégration."
     },
     {
       "id": "popcorn",
@@ -650,6 +688,14 @@
   ],
   "notes": [
     "Attention: parmi les 49 identifiants, les deux cas 'chemise' et 'display_jdg' proviennent d'objectifs ZEVENT non confirmés comme réalisés.",
-    "Ne pas assimiler objectif atteint, vidéo existante et costume sous forme d'image réutilisable."
-  ]
+    "Ne pas assimiler objectif atteint, vidéo existante et costume sous forme d'image réutilisable.",
+    "Depuis cette session: 26 photos de scène Commons, vidéos LEGO, objets, collaborations, personnage Psy/Modérateur. Les miniatures ne sont pas des costumes vérifiés."
+  ],
+  "additionalReferenceSources": {
+    "communityCostumeCaptureLinks": 176,
+    "stagePhotoLinks": 26,
+    "youtubeThumbnailLinks": 11,
+    "otherInvestigativeLinks": 18,
+    "masterSourceLinks": 52
+  }
 }
