@@ -16,12 +16,31 @@ const sourceIds = {
   secrete: ["chemise","entite","display_jdg"],
 };
 
+// Vidéos vérifiées par leur titre officiel ; les captures exactes et droits restent à vérifier.
+const confirmedSourceVideos = Object.freeze({
+  matelas: {
+    url: "https://www.youtube.com/watch?v=qfL_GCXtYCU",
+    title: "CACHE CACHE EXTRÊME #2 — Thomas est dans un matelas",
+    type: "titre-video-source",
+    date: "2022-07-24",
+  },
+  fontaine: {
+    url: "https://www.youtube.com/watch?v=X1MSeqV4ZUw",
+    title: "CACHE CACHE EXTRÊME #3 — Thomas est une fontaine",
+    type: "titre-video-source",
+    date: "2023-03-26",
+  },
+});
+
 const labelFromId = id => id.replaceAll("_", " ").replace(/^\w/, c => c.toUpperCase());
 export const CARDS = Object.freeze(
   RARITIES.flatMap(({ id: rarity }) => sourceIds[rarity].map((id, n) => ({
     id, rarity, name: labelFromId(id), collectionNumber: n + 1,
-    verification: "a-verifier", sourceUrl: null, sourceTime: null,
-    imageUrl: null, description: null, powers: null
+    verification: confirmedSourceVideos[id] ? "source-video-confirmee" : "a-verifier",
+    sourceUrl: confirmedSourceVideos[id]?.url ?? null,
+    sourceLabel: confirmedSourceVideos[id]?.title ?? null,
+    sourceDate: confirmedSourceVideos[id]?.date ?? null,
+    sourceTime: null, imageUrl: null, description: null, powers: null
   })))
 );
 if (CARDS.length !== 49 || new Set(CARDS.map(c => c.id)).size !== 49) {
