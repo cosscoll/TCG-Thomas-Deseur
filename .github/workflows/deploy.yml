@@ -1,43 +1,41 @@
-name: Test and publish TCG preview
+name: Verify Budget Illimite TCG
+
 on:
   push:
     branches: [main]
+    paths:
+      - "index.html"
+      - "app.js"
+      - "styles.css"
+      - "data/**"
+      - "game/**"
+      - "research/**"
+      - "tests/**"
+      - "package.json"
+      - ".github/workflows/deploy.yml"
+  pull_request:
+    paths:
+      - "index.html"
+      - "app.js"
+      - "styles.css"
+      - "data/**"
+      - "game/**"
+      - "research/**"
+      - "tests/**"
+      - "package.json"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
+
 permissions:
   contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: "tcg-pages"
-  cancel-in-progress: true
+
 jobs:
-  build:
+  tests:
+    name: Run Node.js tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Run local game and UI tests
-        run: npm test
-      - name: Assemble public site
-        run: |
-          mkdir -p public
-          cp index.html app.js styles.css public/
-          cp -R data game research public/
-          touch public/.nojekyll
-      - uses: actions/configure-pages@v4
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - run: npm test
