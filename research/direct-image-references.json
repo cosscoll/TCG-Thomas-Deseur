@@ -10,7 +10,9 @@
       "previewUrl": "https://media.marianne.net/assets/askQD5Fs6dbwJ0vMl.jpg?h=924&r=fill&w=1540",
       "sourceUrl": "https://www.marianne.net/societe/medias/bienvenue-au-13eme-siecle-une-video-du-youtubeur-star-amixem-retiree-pour-blaspheme",
       "why": "Article de presse sur le sketch météo ; aperçu de reportage, personnage costumé à identifier dans la photo complète. Droits presse non libres.",
-      "reusableInGame": false
+      "reusableInGame": false,
+      "tcgCostumeEligible": false,
+      "exclusionReason": "Portrait, interview, photo de scène ordinaire ou affiche générique, sans costume spécial identifié"
     },
     {
       "id": "IMAGE-KONBINI-RITUEL",
@@ -19,7 +21,9 @@
       "previewUrl": "https://cdn-www.konbini.com/files/2024/06/Feat169-84.png",
       "sourceUrl": "https://www.konbini.com/videos/thomas-deseur-nous-confie-son-rituel-avant-de-monter-sur-scene-et-cest-original/",
       "why": "Photographie promotionnelle authentique de Thomas lors de l'interview, tenue de ville. Ne prouve pas un déguisement.",
-      "reusableInGame": false
+      "reusableInGame": false,
+      "tcgCostumeEligible": false,
+      "exclusionReason": "Portrait, interview, photo de scène ordinaire ou affiche générique, sans costume spécial identifié"
     },
     {
       "id": "IMAGE-SPECTACLE-POSTER-2025",
@@ -28,7 +32,9 @@
       "previewUrl": "https://img.mapado.net/2024/7/2/668420f8d5b64-715ba28b-f455-4943-a44b-f2db847caecb.jpeg_thumbs/500-500.jpeg",
       "sourceUrl": "https://billetterie-surmesuresproductions.mapado.com/event/398850-thomas-deseur-dans-bien-la-derniere",
       "why": "Affiche promotionnelle créée par un tiers ; illustration de Thomas, pas une capture réelle de déguisement.",
-      "reusableInGame": false
+      "reusableInGame": false,
+      "tcgCostumeEligible": false,
+      "exclusionReason": "Portrait, interview, photo de scène ordinaire ou affiche générique, sans costume spécial identifié"
     },
     {
       "id": "IMAGE-THOMAS-PACE",
@@ -37,7 +43,9 @@
       "previewUrl": "https://www.ville-pace.bzh/wp-content/uploads/2023/05/deseur.jpg",
       "sourceUrl": "https://www.ville-pace.bzh/evenement/thomas-deseur/",
       "why": "Portrait promotionnel du véritable Thomas, utile pour reconnaître son visage. Droits non vérifiés.",
-      "reusableInGame": false
+      "reusableInGame": false,
+      "tcgCostumeEligible": false,
+      "exclusionReason": "Portrait, interview, photo de scène ordinaire ou affiche générique, sans costume spécial identifié"
     },
     {
       "id": "IMAGE-THOMAS-SCENE-BILLETTERIE",
@@ -46,7 +54,10 @@
       "previewUrl": "https://s1.ticketm.net/dam/a/b1d/199e896e-59ff-43eb-9b65-07ec1e404b1d_RETINA_PORTRAIT_3_2.jpg",
       "sourceUrl": "https://billetterie.arena-tour.fr/artistes/billets-thomas-deseur-74091",
       "why": "Photographie de scène, tenue de ville, pas un déguisement précis.",
-      "reusableInGame": false
+      "reusableInGame": false,
+      "tcgCostumeEligible": false,
+      "exclusionReason": "Portrait, interview, photo de scène ordinaire ou affiche générique, sans costume spécial identifié"
     }
-  ]
+  ],
+  "scopeStatus": "EXCLU du corpus TCG ciblé : portraits et affiches sans modification physique particulière vérifiée."
 }
