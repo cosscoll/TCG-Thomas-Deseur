@@ -11,13 +11,19 @@ test("répartition conforme à l'archive source", () => {
     [id, CARDS.filter(card => card.rarity === id).length])),
     { commune: 17, rare: 15, epique: 10, legendaire: 4, secrete: 3 });
 });
-test("aucun média ou source vidéo inventé", () => {
+test("seules Matelas et Fontaine possèdent une source vidéo confirmée", () => {
+  const verified = CARDS.filter(card => card.verification === "source-video-confirmee");
+  assert.deepEqual(verified.map(card => card.id).sort(), ["fontaine","matelas"]);
+  assert.deepEqual(verified.map(card => card.sourceUrl).sort(), [
+    "https://www.youtube.com/watch?v=X1MSeqV4ZUw",
+    "https://www.youtube.com/watch?v=qfL_GCXtYCU"
+  ].sort());
   for (const card of CARDS) {
-    assert.equal(card.verification, "a-verifier");
-    assert.equal(card.sourceUrl, null);
-    assert.equal(card.imageUrl, null);
+    assert.equal(card.imageUrl, null, "aucune photo de carte publiée sans vérification");
+    if (!verified.includes(card)) assert.equal(card.sourceUrl, null);
   }
 });
+
 test("identifiants valides et noms non vides", () => {
   for (const card of CARDS) {
     assert.match(card.id, /^[a-z0-9_]+$/);
