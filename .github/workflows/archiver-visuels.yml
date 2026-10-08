@@ -1,0 +1,38 @@
+name: Archives originales des 177 visuels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/telecharger-visuels-originaux.py"
+      - "research/visual-references.json"
+      - ".github/workflows/archiver-visuels.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  creer-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Charger les sources officielles du dépôt
+        uses: actions/checkout@v4
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Télécharger les 177 images originales, sans IA
+        run: python scripts/telecharger-visuels-originaux.py
+      - name: Fournir une archive ZIP téléchargeable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 177-visuels-originaux
+          path: |
+            dist/177-visuels-originaux-thomas-deseur.zip
+            dist/resultat-telechargement.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 30
