@@ -24,7 +24,7 @@ jobs:
         run: |
           mkdir -p public
           cp index.html app.js styles.css public/
-          cp -R data game public/
+          cp -R data game research public/
           touch public/.nojekyll
       - uses: actions/configure-pages@v4
         with:
