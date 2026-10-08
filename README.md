@@ -2,6 +2,19 @@
 
 **Prototype non officiel et expérimental** d'un jeu de cartes à collectionner inspiré d'apparitions, costumes et déguisements de Thomas Deseur. Ce projet n'est affilié à aucun créateur cité.
 
+## Périmètre définitif des visuels : costumes et apparitions marquantes
+
+**On recherche seulement Thomas Deseur dans un costume, un déguisement, un rôle visuellement identifiable, un camouflage, une transformation (maquillage/coiffure) ou une situation visuelle vraiment exceptionnelle.**
+
+**Sont exclus du catalogue de cartes :** portraits ordinaires, photographies de scène où il porte des vêtements habituels, simples interviews, vidéos LEGO/objets/streams où aucun look particulier n'est attesté, miniatures qui montrent une autre personne, et toute image dont l'identité est incertaine.
+
+- [Apparitions correspondant au vrai critère du TCG](https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html) : 9 situations documentées (2 camouflages Amixem, 4 rôles dans un même Reel Boulanger, 1 personnage de vidéo météo, 1 roi en spectacle, 1 mise en scène dans les moules). Ce ne sont **pas 9 illustrations déjà extraites**.
+- [176 captures candidates à identifier dans les vidéos 100 couches](https://cosscoll.github.io/TCG-Thomas-Deseur/research/) : elles ne sont pas validées individuellement.
+- [Table de sélection stricte au format JSON](research/costume-only.json) : seul ce fichier fait foi pour le périmètre ciblé.
+- Les autres photographies et liens recherchés auparavant sont conservés comme **archives hors cible**, pour ne pas perdre les recherches, mais ils ne comptent pas comme visuels du TCG.
+
+**0 image de carte définitivement validée et autorisée à ce stade.** Ne pas confondre vidéos dont l'apparition est documentée et captures réellement identifiées/licenciées.
+
 ## Où se trouve le site ?
 
 **Dépôt officiel de travail :** https://github.com/cosscoll/TCG-Thomas-Deseur
