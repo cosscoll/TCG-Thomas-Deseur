@@ -45,3 +45,7 @@ Cette recherche ne constitue **pas** une validation d'usage public ou commercial
 ## Vérification ZEVENT 2026
 
 Les recherches d'octobre 2026 ont permis d'identifier plusieurs noms de cartes liés au ZEVENT 2026 : `loft_rejoint`, `loft_quitte`, `sacrifice_capillaire`, `sosies`, `chiffon` et `crossover_mcfly`. Deux concepts — `chemise` et `display_jdg` — ne disposent pas d'une réalisation confirmée. La source des objectifs annoncés n'est pas une preuve de visuel ; la progression et les clips sont renseignés dans `source-videos.json` et `card-mapping-status.json`.
+
+## Exploration complémentaire (LEGO / objets / streams / scène)
+
+[Galerie des nouvelles références](https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html) : 26 photos de scène Commons, 11 miniatures YouTube et 18 autres pistes documentaires. Le registre contient à présent 52 sources distinctes ; 18 des 49 cartes ont au moins une piste. Données : `stage-photos.json`, `extended-media.json`, `card-mapping-status.json`. Attention : les miniatures et les apparitions ne sont pas toutes des déguisements.
