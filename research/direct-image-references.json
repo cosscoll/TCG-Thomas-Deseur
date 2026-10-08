@@ -1,0 +1,52 @@
+{
+  "compiledAt": "2026-10-08",
+  "count": 5,
+  "notice": "Cinq URLs d'aperçus photographiques ou affiches de tiers, authentiquement associées à Thomas Deseur mais sans licence pour les cartes; exclure toute confusion avec costumes non vérifiés.",
+  "items": [
+    {
+      "id": "IMAGE-MARIANNE-METEO",
+      "category": "personnages",
+      "title": "Captures du personnage de la vidéo météo — article Marianne",
+      "previewUrl": "https://media.marianne.net/assets/askQD5Fs6dbwJ0vMl.jpg?h=924&r=fill&w=1540",
+      "sourceUrl": "https://www.marianne.net/societe/medias/bienvenue-au-13eme-siecle-une-video-du-youtubeur-star-amixem-retiree-pour-blaspheme",
+      "why": "Article de presse sur le sketch météo ; aperçu de reportage, personnage costumé à identifier dans la photo complète. Droits presse non libres.",
+      "reusableInGame": false
+    },
+    {
+      "id": "IMAGE-KONBINI-RITUEL",
+      "category": "scene",
+      "title": "Thomas avant scène — portrait de l'interview Konbini",
+      "previewUrl": "https://cdn-www.konbini.com/files/2024/06/Feat169-84.png",
+      "sourceUrl": "https://www.konbini.com/videos/thomas-deseur-nous-confie-son-rituel-avant-de-monter-sur-scene-et-cest-original/",
+      "why": "Photographie promotionnelle authentique de Thomas lors de l'interview, tenue de ville. Ne prouve pas un déguisement.",
+      "reusableInGame": false
+    },
+    {
+      "id": "IMAGE-SPECTACLE-POSTER-2025",
+      "category": "scene",
+      "title": "Affiche du spectacle Bien — plusieurs représentations stylisées de Thomas",
+      "previewUrl": "https://img.mapado.net/2024/7/2/668420f8d5b64-715ba28b-f455-4943-a44b-f2db847caecb.jpeg_thumbs/500-500.jpeg",
+      "sourceUrl": "https://billetterie-surmesuresproductions.mapado.com/event/398850-thomas-deseur-dans-bien-la-derniere",
+      "why": "Affiche promotionnelle créée par un tiers ; illustration de Thomas, pas une capture réelle de déguisement.",
+      "reusableInGame": false
+    },
+    {
+      "id": "IMAGE-THOMAS-PACE",
+      "category": "scene",
+      "title": "Thomas en photo officielle de programmation — ville de Pacé",
+      "previewUrl": "https://www.ville-pace.bzh/wp-content/uploads/2023/05/deseur.jpg",
+      "sourceUrl": "https://www.ville-pace.bzh/evenement/thomas-deseur/",
+      "why": "Portrait promotionnel du véritable Thomas, utile pour reconnaître son visage. Droits non vérifiés.",
+      "reusableInGame": false
+    },
+    {
+      "id": "IMAGE-THOMAS-SCENE-BILLETTERIE",
+      "category": "scene",
+      "title": "Thomas avec micro sur scène — billetterie",
+      "previewUrl": "https://s1.ticketm.net/dam/a/b1d/199e896e-59ff-43eb-9b65-07ec1e404b1d_RETINA_PORTRAIT_3_2.jpg",
+      "sourceUrl": "https://billetterie.arena-tour.fr/artistes/billets-thomas-deseur-74091",
+      "why": "Photographie de scène, tenue de ville, pas un déguisement précis.",
+      "reusableInGame": false
+    }
+  ]
+}
