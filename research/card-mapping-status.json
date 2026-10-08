@@ -3,8 +3,9 @@
   "totalCards": 49,
   "counts": {
     "videoVerified": 2,
-    "sourceCandidates": 6,
-    "validatedArtwork": 0
+    "sourceCandidates": 15,
+    "validatedArtwork": 0,
+    "unrealizedOrUnconfirmedConcepts": 2
   },
   "note": "Correspondances entre identifiants de cartes et sources ; aucune des 176 captures communautaires n'a encore été attribuée de manière sûre à un ID de carte.",
   "cards": [
@@ -104,19 +105,59 @@
       "id": "sacrifice_capillaire",
       "rarity": "commune",
       "name": "Sacrifice capillaire",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "evenement-documente-image-a-verifier",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-CLIPS",
+          "title": "ZEVENT 2026 — clips Amixem (coupure de cheveux, loft, sosies)",
+          "url": "https://zevent.fr/stream/amixem",
+          "confidence": "clips-indexes"
+        },
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Les objectifs ZEVENT et/ou extraits confirment un contexte mais pas une image réutilisable de Thomas sous le costume correspondant."
     },
     {
       "id": "loft_quitte",
       "rarity": "commune",
       "name": "Loft quitte",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "evenement-documente-image-a-verifier",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-CLIPS",
+          "title": "ZEVENT 2026 — clips Amixem (coupure de cheveux, loft, sosies)",
+          "url": "https://zevent.fr/stream/amixem",
+          "confidence": "clips-indexes"
+        },
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Les objectifs ZEVENT et/ou extraits confirment un contexte mais pas une image réutilisable de Thomas sous le costume correspondant."
     },
     {
       "id": "moderateur",
@@ -131,10 +172,24 @@
       "id": "chiffon",
       "rarity": "commune",
       "name": "Chiffon",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "evenement-documente-image-a-verifier",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Les objectifs ZEVENT et/ou extraits confirment un contexte mais pas une image réutilisable de Thomas sous le costume correspondant."
     },
     {
       "id": "301vues",
@@ -246,10 +301,30 @@
       "id": "loft_rejoint",
       "rarity": "rare",
       "name": "Loft rejoint",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "evenement-documente-image-a-verifier",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-CLIPS",
+          "title": "ZEVENT 2026 — clips Amixem (coupure de cheveux, loft, sosies)",
+          "url": "https://zevent.fr/stream/amixem",
+          "confidence": "clips-indexes"
+        },
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Les objectifs ZEVENT et/ou extraits confirment un contexte mais pas une image réutilisable de Thomas sous le costume correspondant."
     },
     {
       "id": "planque",
@@ -264,17 +339,44 @@
       "id": "sosies",
       "rarity": "rare",
       "name": "Sosies",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "evenement-documente-image-a-verifier",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-CLIPS",
+          "title": "ZEVENT 2026 — clips Amixem (coupure de cheveux, loft, sosies)",
+          "url": "https://zevent.fr/stream/amixem",
+          "confidence": "clips-indexes"
+        },
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Les objectifs ZEVENT et/ou extraits confirment un contexte mais pas une image réutilisable de Thomas sous le costume correspondant."
     },
     {
       "id": "goudurix",
       "rarity": "rare",
       "name": "Goudurix",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "piste-documentee",
+      "sources": [
+        {
+          "sourceId": "GOUDURIX-2021",
+          "title": "Mcfly & Carlito — Qui tiendra le plus de tours dans Goudurix ?",
+          "url": "https://thetvdb.com/series/338282-show/episodes/8189287",
+          "confidence": "participation-documentee"
+        }
+      ],
       "validatedImages": [],
       "verifiedTimecode": null
     },
@@ -449,10 +551,30 @@
       "id": "crossover_mcfly",
       "rarity": "legendaire",
       "name": "Crossover mcfly",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "evenement-documente-image-a-verifier",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-CROSSOVER",
+          "title": "Mcfly et Carlito — ZEvent 2026, échange de chauves avec Amixem",
+          "url": "https://www.hypetubes.com/video/cmu2za8pn0cygziqqragucfhu",
+          "confidence": "sequence-chapitree"
+        },
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Les objectifs ZEVENT et/ou extraits confirment un contexte mais pas une image réutilisable de Thomas sous le costume correspondant."
     },
     {
       "id": "poudlard_titan",
@@ -474,10 +596,24 @@
       "id": "chemise",
       "rarity": "secrete",
       "name": "Chemise",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "annonce-non-confirmee-ne-pas-illustrer",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Seuil annoncé de 750000 € non atteint dans l'édition (610408 € collectés selon récapitulatif) ; aucune apparition liée à la chemise vérifiée."
     },
     {
       "id": "entite",
@@ -492,10 +628,28 @@
       "id": "display_jdg",
       "rarity": "secrete",
       "name": "Display jdg",
-      "status": "source-non-identifiee",
-      "sources": [],
+      "status": "annonce-non-confirmee-ne-pas-illustrer",
+      "sources": [
+        {
+          "sourceId": "ZEVENT2026-GOALS",
+          "title": "Amixem — liste des donation goals ZEVENT 2026",
+          "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+          "confidence": "programme-annonce"
+        },
+        {
+          "sourceId": "ZEVENT2026-TRACKING",
+          "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+          "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+          "confidence": "suivi-communautaire-partiel"
+        }
+      ],
       "validatedImages": [],
-      "verifiedTimecode": null
+      "verifiedTimecode": null,
+      "warning": "Le défi annoncé a été remplacé dans le suivi ZEVENT 2026 ; pas de réalisation de la display constatée."
     }
+  ],
+  "notes": [
+    "Attention: parmi les 49 identifiants, les deux cas 'chemise' et 'display_jdg' proviennent d'objectifs ZEVENT non confirmés comme réalisés.",
+    "Ne pas assimiler objectif atteint, vidéo existante et costume sous forme d'image réutilisable."
   ]
 }
