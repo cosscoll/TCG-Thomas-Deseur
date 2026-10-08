@@ -2,7 +2,7 @@
   "compiledAt": "2026-10-08",
   "notice": "Visuels de recherche : miniatures vidéos officielles lorsque l'ID est connu, sinon liens vers les publications. La présence de Thomas sur une miniature n'est pas garantie. Pas de copie sous licence supposée.",
   "youtubeThumbnailCount": 11,
-  "otherSourceCount": 18,
+  "otherSourceCount": 21,
   "items": [
     {
       "id": "YOUTUBE-LEGO-STARWARS-2021",
@@ -330,6 +330,47 @@
       "confirmedPresence": false,
       "costumeConfirmed": false,
       "why": "Création fan LEGO à l'effigie de Thomas; ne constitue PAS une apparition de Thomas en costume."
+    },
+    {
+      "id": "BOULANGER-NOEL-PAQUES-2024",
+      "category": "tiktok-insta",
+      "title": "Thomas joue Noël, Pâques, Halloween et Saint-Valentin pour Boulanger",
+      "sourceUrl": "https://www.instagram.com/reel/DCrtIKWIpbB/",
+      "date": "2024-11",
+      "confirmedPresence": true,
+      "costumeConfirmed": true,
+      "why": "Reel intégré dans un article de presse sur le Black Friday 2024; quatre personnages incarnés par Thomas. Photos à extraire avec autorisation."
+    },
+    {
+      "id": "AMIXEM-METEO-PERSONNAGE-2022",
+      "category": "personnages",
+      "title": "Personnage barbu en robe blanche — vidéo Amixem météo supprimée",
+      "sourceUrl": "https://intrld.com/amixem-supprime-sa-derniere-video-jugee-blasphematoire-par-les-internautes/",
+      "date": "2022-10",
+      "confirmedPresence": true,
+      "costumeConfirmed": true,
+      "why": "Article daté qui documente un costume de Thomas dans une vidéo retirée; captures médias de tiers non autorisées."
+    },
+    {
+      "id": "ZENITH-THOMAS-ROI-2025",
+      "category": "scene",
+      "title": "Thomas déguisé en roi sur son trône — Zénith de Lille",
+      "sourceUrl": "https://www.peperenews.fr/bien-thomas-deseur-zenith-de-lille/",
+      "date": "2025-02-05",
+      "confirmedPresence": true,
+      "costumeConfirmed": true,
+      "why": "Reportage de spectacle et photographie de l'événement; droits photo à clarifier."
+    },
+    {
+      "id": "LILLE-BRADERIE-2026",
+      "category": "scene",
+      "title": "Affiche Braderie de Lille 2026 : Thomas dans les moules",
+      "sourceUrl": "https://www.lille.fr/Braderie-de-Lille/Actualites/Braderie-achetez-l-affiche-officielle",
+      "previewUrl": "https://woody.cloudly.space/app/uploads/lille-attractivite/2026/07/thumbs/26881/ratio_free_medium/affiche-braderie-de-lille-2026-640x413.webp",
+      "date": "2026-07",
+      "confirmedPresence": true,
+      "costumeConfirmed": true,
+      "why": "Affiche officielle Ville de Lille / photo Agence Créative BANANA, droits non transférés au jeu."
     }
   ]
 }
