@@ -1,0 +1,501 @@
+{
+  "date": "2026-10-08",
+  "totalCards": 49,
+  "counts": {
+    "videoVerified": 2,
+    "sourceCandidates": 6,
+    "validatedArtwork": 0
+  },
+  "note": "Correspondances entre identifiants de cartes et sources ; aucune des 176 captures communautaires n'a encore été attribuée de manière sûre à un ID de carte.",
+  "cards": [
+    {
+      "id": "standupper",
+      "rarity": "commune",
+      "name": "Standupper",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "matelas",
+      "rarity": "commune",
+      "name": "Matelas",
+      "status": "video-originale-confirmee",
+      "sources": [
+        {
+          "sourceId": "VIDEO-MATELAS",
+          "title": "CACHE CACHE EXTRÊME #2 — Thomas est dans un matelas",
+          "url": "https://www.youtube.com/watch?v=qfL_GCXtYCU",
+          "confidence": "apparition-contextuelle-confirmee"
+        }
+      ],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "rituels",
+      "rarity": "commune",
+      "name": "Rituels",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "filtre",
+      "rarity": "commune",
+      "name": "Filtre",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "costume",
+      "rarity": "commune",
+      "name": "Costume",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "touriste",
+      "rarity": "commune",
+      "name": "Touriste",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "polystyrene",
+      "rarity": "commune",
+      "name": "Polystyrene",
+      "status": "piste-documentee",
+      "sources": [
+        {
+          "sourceId": "VIDEO-100POLY",
+          "title": "100 COUCHES POLYSTYRÈNE CHALLENGE",
+          "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/4",
+          "confidence": "piste-a-verifier"
+        },
+        {
+          "sourceId": "VIDEO-1000POLY",
+          "title": "1000 COUCHES DE POLYSTYRÈNE CHALLENGE",
+          "url": "https://www.playd.tv/series/amixem/100-couches-challenge/episode/8",
+          "confidence": "piste-a-verifier"
+        }
+      ],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "amixem",
+      "rarity": "commune",
+      "name": "Amixem",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "sacrifice_capillaire",
+      "rarity": "commune",
+      "name": "Sacrifice capillaire",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "loft_quitte",
+      "rarity": "commune",
+      "name": "Loft quitte",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "moderateur",
+      "rarity": "commune",
+      "name": "Moderateur",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "chiffon",
+      "rarity": "commune",
+      "name": "Chiffon",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "301vues",
+      "rarity": "commune",
+      "name": "301vues",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "oeufpoule",
+      "rarity": "commune",
+      "name": "Oeufpoule",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "choipeau",
+      "rarity": "commune",
+      "name": "Choipeau",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "tuktuk",
+      "rarity": "commune",
+      "name": "Tuktuk",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "soeur_amixem",
+      "rarity": "commune",
+      "name": "Soeur amixem",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "fontaine",
+      "rarity": "rare",
+      "name": "Fontaine",
+      "status": "video-originale-confirmee",
+      "sources": [
+        {
+          "sourceId": "VIDEO-FONTAINE",
+          "title": "CACHE CACHE EXTRÊME #3 — Thomas est une fontaine",
+          "url": "https://www.youtube.com/watch?v=X1MSeqV4ZUw",
+          "confidence": "apparition-contextuelle-confirmee"
+        }
+      ],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "fauxbras",
+      "rarity": "rare",
+      "name": "Fauxbras",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "infiltre",
+      "rarity": "rare",
+      "name": "Infiltre",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "arnaque",
+      "rarity": "rare",
+      "name": "Arnaque",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "regent",
+      "rarity": "rare",
+      "name": "Regent",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "noble",
+      "rarity": "rare",
+      "name": "Noble",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "loft_rejoint",
+      "rarity": "rare",
+      "name": "Loft rejoint",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "planque",
+      "rarity": "rare",
+      "name": "Planque",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "sosies",
+      "rarity": "rare",
+      "name": "Sosies",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "goudurix",
+      "rarity": "rare",
+      "name": "Goudurix",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "psy",
+      "rarity": "rare",
+      "name": "Psy",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "popcorn",
+      "rarity": "rare",
+      "name": "Popcorn",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "cape_invisibilite",
+      "rarity": "rare",
+      "name": "Cape invisibilite",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "judo",
+      "rarity": "rare",
+      "name": "Judo",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "secret_youtube",
+      "rarity": "rare",
+      "name": "Secret youtube",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "etalon",
+      "rarity": "epique",
+      "name": "Etalon",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "igne",
+      "rarity": "epique",
+      "name": "Igne",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "vilebrequin",
+      "rarity": "epique",
+      "name": "Vilebrequin",
+      "status": "piste-documentee",
+      "sources": [
+        {
+          "sourceId": "VIDEO-VILEBREQUIN",
+          "title": "Parodie Vilebrequin — Thomas Deseur et Amixem",
+          "url": "https://www.youtube.com/watch?v=GPqVmJmn6MM",
+          "confidence": "parodie-documentee"
+        }
+      ],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "otage",
+      "rarity": "epique",
+      "name": "Otage",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "bgsi",
+      "rarity": "epique",
+      "name": "Bgsi",
+      "status": "piste-documentee",
+      "sources": [
+        {
+          "sourceId": "VIDEO-BGSI",
+          "title": "On infiltre une fête sans se faire virer — Maghla, Amixem, Natoo, Thomas",
+          "url": "https://www.youtube.com/watch?v=h7TRQw4dRno",
+          "confidence": "participation-confirmee-costume-non-attribue"
+        }
+      ],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "jones",
+      "rarity": "epique",
+      "name": "Jones",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "dictateur",
+      "rarity": "epique",
+      "name": "Dictateur",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "vieux_contentieux",
+      "rarity": "epique",
+      "name": "Vieux contentieux",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "boycott",
+      "rarity": "epique",
+      "name": "Boycott",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "horcruxe",
+      "rarity": "epique",
+      "name": "Horcruxe",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "mouette",
+      "rarity": "legendaire",
+      "name": "Mouette",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "moules",
+      "rarity": "legendaire",
+      "name": "Moules",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "crossover_mcfly",
+      "rarity": "legendaire",
+      "name": "Crossover mcfly",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "poudlard_titan",
+      "rarity": "legendaire",
+      "name": "Poudlard titan",
+      "status": "piste-documentee",
+      "sources": [
+        {
+          "sourceId": "VIDEO-POUDLARD",
+          "title": "Le cosplay de Thomas — Harry Potter / Poudlard",
+          "url": "https://www.tiktok.com/@clips_y0utube_twitch/video/7203767312141389062",
+          "confidence": "piste-a-verifier"
+        }
+      ],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "chemise",
+      "rarity": "secrete",
+      "name": "Chemise",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "entite",
+      "rarity": "secrete",
+      "name": "Entite",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    },
+    {
+      "id": "display_jdg",
+      "rarity": "secrete",
+      "name": "Display jdg",
+      "status": "source-non-identifiee",
+      "sources": [],
+      "validatedImages": [],
+      "verifiedTimecode": null
+    }
+  ]
+}
