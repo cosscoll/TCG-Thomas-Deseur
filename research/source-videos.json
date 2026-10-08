@@ -243,6 +243,61 @@
       "evidence": "Titre officiel de la vidéo mentionne explicitement que Thomas se déguise en fontaine",
       "status": "apparition-contextuelle-confirmee",
       "timecode": null
+    },
+    {
+      "id": "ZEVENT2026-GOALS",
+      "type": "article",
+      "title": "Amixem — liste des donation goals ZEVENT 2026",
+      "url": "https://rotek.fr/donation-goals-amixem-zevent-2026/",
+      "date": "2026-09-03",
+      "cardCandidate": null,
+      "evidence": "Objectifs annoncés, ne prouve pas leur réalisation. Pertinent pour loft_quitte, loft_rejoint, sacrifice_capillaire, sosies, chiffon, crossover_mcfly, chemise, display_jdg.",
+      "status": "programme-annonce",
+      "timecode": null
+    },
+    {
+      "id": "ZEVENT2026-TRACKING",
+      "type": "event-status",
+      "title": "Suivi des objectifs atteints au ZEVENT 2026 — Amixem",
+      "url": "https://zevent-stats.louis-julien.dev/streamer/amixem?r=6h",
+      "date": "2026-09-06",
+      "cardCandidate": null,
+      "evidence": "Snapshot d'objectifs atteints à date, à recouper avec vidéos. Le défi display JDG a été remplacé par une autre action, et le seuil 750k chemise est non atteint dans cette capture.",
+      "status": "suivi-communautaire-partiel",
+      "timecode": null
+    },
+    {
+      "id": "ZEVENT2026-CLIPS",
+      "type": "official-event",
+      "title": "ZEVENT 2026 — clips Amixem (coupure de cheveux, loft, sosies)",
+      "url": "https://zevent.fr/stream/amixem",
+      "date": "2026-09-04",
+      "cardCandidate": "sacrifice_capillaire",
+      "evidence": "Index officiel de clips du stream incluant Thomas se fait couper les cheveux, Thomas rejoint le loft et sosies; clip exact à identifier.",
+      "status": "clips-indexes",
+      "timecode": null
+    },
+    {
+      "id": "ZEVENT2026-CROSSOVER",
+      "type": "youtube-index",
+      "title": "Mcfly et Carlito — ZEvent 2026, échange de chauves avec Amixem",
+      "url": "https://www.hypetubes.com/video/cmu2za8pn0cygziqqragucfhu",
+      "date": "2026-09-06",
+      "cardCandidate": "crossover_mcfly",
+      "evidence": "Récap vidéo chapitré : 1:19:56 on échange nos chauves avec Amixem; séquence exacte à vérifier.",
+      "status": "sequence-chapitree",
+      "timecode": "01:19:56"
+    },
+    {
+      "id": "GOUDURIX-2021",
+      "type": "video-index",
+      "title": "Mcfly & Carlito — Qui tiendra le plus de tours dans Goudurix ?",
+      "url": "https://thetvdb.com/series/338282-show/episodes/8189287",
+      "date": "2021-12-19",
+      "cardCandidate": "goudurix",
+      "evidence": "Fiche épisode nommant Thomas Deseur parmi les invités, sans preuve de déguisement spécifique.",
+      "status": "participation-documentee",
+      "timecode": null
     }
   ]
 }
