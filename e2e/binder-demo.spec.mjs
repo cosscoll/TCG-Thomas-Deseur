@@ -178,3 +178,37 @@ test('le raccourci doublons affiche le véritable onglet des doublons', async ({
   await expect(page.locator('#view-duplicates')).toBeVisible();
   await expect(page.locator('#duplicate-list .insight-card')).toHaveCount(2);
 });
+
+test('les cinq vues restent utilisables sur 320, 360, 393, 412 et 820 px', async ({page}) => {
+  const sections=[
+    ['Mes doublons', 'duplicates'],
+    ['Progression', 'goals'],
+    ['Historique', 'history'],
+    ['Bilan booster', 'recap'],
+    ['Collection', 'collection'],
+  ];
+  for(const width of [320,360,393,412,820]) {
+    await page.setViewportSize({width,height:780});
+    for(const [name,id] of sections) {
+      await page.getByRole('button',{name,exact:true}).click();
+      await expect(page.locator('#view-'+id)).toBeVisible();
+      const overflow=await page.evaluate(() => Math.max(
+        document.documentElement.scrollWidth-document.documentElement.clientWidth,
+        document.body.scrollWidth-document.body.clientWidth,
+      ));
+      expect(overflow, `Débordement horizontal en ${width}px sur ${name}`).toBeLessThanOrEqual(2);
+    }
+  }
+});
+
+test('les onglets indiquent le panneau actif et restent contrôlables au clavier', async ({page}) => {
+  const nav=page.getByRole('navigation',{name:'Sections du classeur'});
+  await expect(nav.getByRole('button',{pressed:true})).toHaveCount(1);
+  await nav.getByRole('button',{name:'Mes doublons'}).focus();
+  await page.keyboard.press('Enter');
+  await expect(nav.getByRole('button',{pressed:true})).toHaveText('Mes doublons');
+  await expect(page.locator('#view-duplicates')).toBeVisible();
+  await nav.getByRole('button',{name:'Collection',exact:true}).focus();
+  await page.keyboard.press('Space');
+  await expect(nav.getByRole('button',{pressed:true})).toHaveText('Collection');
+});
