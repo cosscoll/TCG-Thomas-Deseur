@@ -15,7 +15,7 @@ Les illustrations sont encore en création. Ce chantier traite les **données et
 - **Cartes manquantes** : identifiants du catalogue dont la quantité est zéro.
 - **Complétion** : `cartes uniques possédées / 49 × 100`, arrondie pour l'affichage. Les exemplaires supplémentaires ne peuvent pas faire monter cette jauge.
 - Les mêmes calculs existent **indépendamment pour chaque rareté**, avec les bons dénominateurs (17/15/10/4/3).
-- Le joueur ne peut pas créer ni modifier ses quantités depuis le navigateur : toutes les possessions proviennent du serveur authentifié et sont attribuées exclusivement par le serveur.
+- Un catalogue tronqué (48 cartes) ou de mauvaise répartition de raretés est rejeté pour éviter une fausse complétion à 100 %.\n- Le joueur ne peut pas créer ni modifier ses quantités depuis le navigateur : toutes les possessions proviennent du serveur authentifié et sont attribuées exclusivement par le serveur.
 
 ## 2. Exemple numérique contrôlable
 
@@ -135,8 +135,8 @@ Il s'agit d'un **contrat d'adaptation de l'interface**, non de l'affirmation que
 ## 6. Composants déjà implémentés et vérifiés
 
 - [Modèle de collection pur](../floot-collection/collection-model.mjs) : progression, cinq raretés, carte possédée/manquante, exemplaires supplémentaires, filtres combinables, recherche, tri, badges de révélation, taux de rareté affichés. Ne dépend pas de React, images, cookies, authentification ni serveur.
-- [28 tests fonctionnels du modèle](../tests/floot-collection-model.test.mjs) : collections vides/complètes, un exemplaire ou plusieurs, progression par rareté, recherche avec accents, tris, cumul des doublons dans une même ouverture, cas invalides et contraintes de lot de cinq.
-- [CI GitHub Actions](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945135269) : **71 tests Node réussis sur 71, aucun échec**, le 9 octobre 2026. Cela **ne constitue pas** un test d'intégration à Floot ni à sa base.
+- [30 tests fonctionnels du modèle](../tests/floot-collection-model.test.mjs) : collections vides/complètes, un exemplaire ou plusieurs, progression par rareté, recherche avec accents, tris, cumul des doublons dans une même ouverture, cas invalides et contraintes de lot de cinq.
+- [CI GitHub Actions](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773) : **73 tests Node réussis sur 73, aucun échec**, le 9 octobre 2026. Cela **ne constitue pas** un test d'intégration à Floot ni à sa base.
 
 ## 7. Travail restant pour considérer le classeur Floot terminé
 
