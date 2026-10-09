@@ -4,7 +4,7 @@
 
 **Consigne la plus récente :** les illustrations des cartes ne sont pas terminées. Ne pas travailler sur de nouveaux visuels ni attendre les illustrations pour avancer. Concentrer les prochains travaux dans Floot **sur le classeur, les raretés, les cartes manquantes, la progression et la comptabilisation des doublons**. L'intégrité des comptes reste une contrainte de sécurité, mais ne doit plus absorber les développements de produit hors problème bloquant.
 
-**Livrable GitHub dans la session :** `floot-collection/collection-model.mjs`, avec les fonctions de comptage des cartes uniques/exemplaires/doublons, progression par rareté, filtres, recherche, tri, badges de révélation et chances de rareté à afficher. **28 tests fonctionnels** validés dans GitHub Actions ; **71 tests Node réussis, 0 échec** : https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945135269. Règles détaillées dans `docs/CONCEPTION_COLLECTION_FLOOT.md`.
+**Livrable GitHub dans la session :** `floot-collection/collection-model.mjs`, avec les fonctions de comptage des cartes uniques/exemplaires/doublons, progression par rareté, filtres, recherche, tri, badges de révélation et chances de rareté à afficher. **30 tests fonctionnels** validés dans GitHub Actions ; **73 tests Node réussis, 0 échec** : https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773. Règles détaillées dans `docs/CONCEPTION_COLLECTION_FLOOT.md`.
 
 **État Floot à 14:30 UTC :** application publique existante confirmée ; Floot refuse toujours les actions de développement (100/100) jusqu'à la réinitialisation annoncée le 10 octobre à 09:00 UTC. **Aucun changement de l'application active ni des possessions réelles**. Ne pas annoncer le module GitHub comme intégré ou publié dans Floot.
 
