@@ -100,12 +100,35 @@ function renderDuplicateDetails(model) {
     );
     return article;
   }));
+  const byRarity = byId('duplicate-rarity-summary');
+  byRarity.replaceChildren(...summary.byRarity.map(group => {
+    const tile = element('div', 'mini-stat');
+    tile.dataset.rarity = group.id;
+    tile.append(
+      element('strong', '', group.label),
+      element('span', '', `${group.types} type${group.types > 1 ? 's' : ''} · +${group.extraCopies} copie${group.extraCopies > 1 ? 's' : ''}`),
+    );
+    return tile;
+  }));
   byId('duplicate-empty').hidden = summary.types !== 0;
 }
 
 function renderGoals(model) {
   const summary = getCollectionGoals(model);
   byId('goals-summary').textContent = `${summary.achieved} / ${summary.total} atteints`;
+  const next = byId('next-goals');
+  next.replaceChildren(...(summary.next.length ? summary.next : [{
+    id:'all-complete', label:'Tous les jalons de collection sont atteints', remaining:0,
+  }]).map(goal => {
+    const tile = element('div', 'next-goal');
+    tile.append(
+      element('strong', '', goal.label),
+      element('span', '', goal.remaining
+        ? `Encore ${goal.remaining} carte${goal.remaining > 1 ? 's' : ''}`
+        : 'Collection complétée'),
+    );
+    return tile;
+  }));
   const mount = byId('goals-list');
   mount.replaceChildren(...summary.goals.map(goal => {
     const row = element('article', `goal-card${goal.achieved ? ' goal-achieved' : ''}`);
