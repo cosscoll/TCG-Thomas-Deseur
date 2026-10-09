@@ -100,3 +100,13 @@ test('new collection sections have responsive CSS and keyboard focus treatment',
   assert.match(css,/max-width: 650px/);
   assert.match(css,/focus-visible/);
 });
+
+
+test('duplicate rarity breakdown and next collector goals are wired up',()=>{
+  for(const id of ['duplicate-rarity-summary','next-goals']) {
+    assert.match(html,new RegExp(`id="${id}"`));
+    assert.match(js,new RegExp(`byId\\('${id}'\\)`));
+  }
+  assert.match(css,/\.mini-stat-grid/);
+  assert.match(css,/\.next-goals/);
+});
