@@ -28,6 +28,8 @@ La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-De
 
 **Livraison élargie du 9 octobre :** [six volets fonctionnels préparés](docs/COLLECTION_LIVRAISON_2026-10-09.md) — doubles avancés, 15 objectifs de collection sans récompense, bilan d'un booster confirmé, historique de tirages, cinq vues dans la démo et diagnostic d'inventaire. [120 tests Node réussis sur 120](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37948492892). **Les neuf parcours Playwright sont écrits mais non exécutés ; l'application Floot n'est pas encore modifiée.**
 
+**Validation de la collection (9 octobre, soirée) :** [48 parcours Chromium ordinateur/mobile et 142 tests Node réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37978835656). La démo comporte maintenant une fiche de carte navigable au clavier, des raccourcis par rareté et de possession, un export CSV sécurisé (données **fictives uniquement**), ainsi qu'un contrôle Axe WCAG 2.0/2.1 A/AA sur les vues testées. Voir le [journal de livraison](docs/COLLECTION_LIVRAISON_2026-10-09.md). **Ce n'est pas une publication des nouveaux modules dans Floot.**
+
 ## Priorité actuelle : la collection, sans les illustrations
 
 Les visuels des cartes sont toujours en préparation. Le travail de développement est recentré sur **les raretés, les quantités possédées, les doublons, les cartes manquantes, les statistiques de complétion, la recherche et les filtres du classeur**.
