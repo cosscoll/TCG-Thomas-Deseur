@@ -142,3 +142,20 @@ test('la fiche se met à jour après changement de scénario sans conserver une 
   await expect(page.locator('#detail-status')).toHaveText('Manquante');
   await expect(page.locator('#detail-quantity')).toHaveText('0');
 });
+
+
+test('la progression par rareté donne directement accès aux cartes correspondantes', async ({page}) => {
+  await page.locator('.rarity-row[data-rarity="secrete"] .rarity-open').click();
+  await expect(page.locator('#view-collection')).toBeVisible();
+  await expect(page.locator('#rarity')).toHaveValue('secrete');
+  await expect(page.locator('#cards .collection-card')).toHaveCount(3);
+  await expect(page.locator('#cards .collection-card').first()).toHaveAttribute('data-rarity', 'secrete');
+});
+
+test('le détail d’une carte manquante annonce zéro exemplaire et pas de faux visuel', async ({page}) => {
+  await page.getByRole('button',{name:'Collection vide'}).click();
+  await page.getByRole('button',{name:'Voir la fiche de Matelas'}).click();
+  await expect(page.locator('#detail-status')).toHaveText('Manquante');
+  await expect(page.locator('#detail-extras')).toHaveText('0');
+  await expect(page.locator('#card-detail')).toContainText('Illustration en préparation');
+});
