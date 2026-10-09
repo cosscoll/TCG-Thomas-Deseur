@@ -4,7 +4,7 @@
  * The caller MUST use the currently authenticated server response.
  */
 import {
-  RARITY_ORDER, RARITY_LABELS, describeCommittedBooster,
+  RARITY_ORDER, RARITY_LABELS, describeCommittedBooster, buildCollectionModel,
 } from './collection-model.mjs';
 
 function assertModel(model) {
@@ -109,7 +109,7 @@ export function normalizeAcquisitionHistory(catalogue, entries, { limit = 20 } =
   }
   if (!Number.isSafeInteger(limit) || limit < 1 || limit > 100) throw new Error('Limite invalide.');
   const byId = new Map(catalogue.map(card => [card.id, card]));
-  if (byId.size !== 49) throw new Error('Catalogue incomplet.');
+  // Verify completeness AND exact rarity distribution before presenting history.\n  buildCollectionModel(catalogue, []);
   const seen = new Set();
   const parsed = entries.map((entry, index) => {
     if (!entry || typeof entry !== 'object' ||
