@@ -49,3 +49,32 @@ jobs:
         with:
           node-version: "22"
       - run: npm test
+
+  binder-browser:
+    name: Classeur fictif — Chromium ordinateur et mobile
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer le moteur de tests navigateur
+        run: npm install --no-save @playwright/test@1.56.1
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Vérifier le classeur fictif sur ordinateur et mobile
+        run: npx playwright test --config=floot-collection/playwright.config.mjs
+      - name: Conserver captures et traces en cas d'échec
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: binder-demo-browser-failures
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: ignore
+          retention-days: 7
