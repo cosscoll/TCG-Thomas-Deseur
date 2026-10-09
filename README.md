@@ -39,7 +39,7 @@ Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot 
 
 **Plan d'intervention prêt pour le 10 octobre 2026 :** [consulter les corrections, scénarios de tests et critères de publication](docs/PLAN_REPRISE_2026-10-10.md).
 
-**Recette détaillée Floot :** [matrice des 36 scénarios comptes, boosters, classeur et publication](docs/MATRICE_RECETTE_FLOOT.md). Le workflow [Floot — contrôle public](.github/workflows/floot-public-smoke.yml) utilise les tests séparés dans [`floot-e2e/`](floot-e2e/), sans accès aux comptes réels et sans exécution récurrente automatique. Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation quotidienne « Développement TCG Deseur » a été activée le 9 octobre 2026, après désactivation avec accord de l'ancien « Brief du matin » redondant. Première occurrence prévue le 10 octobre vers midi (Europe/Paris) ; son exécution pratique et l'accès aux outils Floot restent à confirmer.
+**Recette détaillée Floot :** [matrice des 36 scénarios comptes, boosters, classeur et publication](docs/MATRICE_RECETTE_FLOOT.md). Le workflow [Floot — contrôle public](.github/workflows/floot-public-smoke.yml) utilise les tests séparés dans [`floot-e2e/`](floot-e2e/), sans accès aux comptes réels et sans exécution récurrente automatique. Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation quotidienne « Développement TCG Deseur » a été **désactivée** le 9 octobre 2026 à la demande de l'utilisateur ; « Brief du matin » a été réactivé. Le développement reprend uniquement lors d'une session demandée explicitement, sans tâche récurrente.
 
 ## Vérifier la version publique
 
