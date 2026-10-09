@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>TCG Deseur — Démonstration du classeur</title>
+  <link rel="stylesheet" href="./demo.css">
+  <script type="module" src="./demo.mjs"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <div>
+        <p class="eyebrow">TCG DESEUR · ATELIER COLLECTION</p>
+        <h1>Le classeur</h1>
+        <p class="subtitle">Une même carte peut être obtenue plusieurs fois, sans augmenter artificiellement la progression.</p>
+      </div>
+      <a class="external" href="https://budget-illimite-tcg.floot.app/" rel="noopener noreferrer">
+        Voir le jeu Floot actuel
+      </a>
+    </header>
+
+    <section class="notice" aria-label="Statut de cette démonstration">
+      <strong>Aperçu non connecté</strong>
+      <p>Les cartes et leurs raretés proviennent du catalogue historique. Les quantités ci-dessous sont fictives. Aucune carte n'est donnée ou enregistrée, et aucun compte joueur n'est utilisé. Les illustrations finales seront ajoutées plus tard.</p>
+    </section>
+
+    <section class="sample" aria-labelledby="scenario-title">
+      <h2 id="scenario-title">Scénario de démonstration</h2>
+      <div class="segmented" role="group" aria-label="Exemples d'inventaire">
+        <button type="button" data-scenario="sample" aria-pressed="true">Exemple : cinq cartes</button>
+        <button type="button" data-scenario="empty" aria-pressed="false">Collection vide</button>
+        <button type="button" data-scenario="complete" aria-pressed="false">49 cartes obtenues</button>
+      </div>
+    </section>
+
+    <section class="summary" aria-label="Statistiques de collection">
+      <div class="metric"><span>Cartes uniques</span><strong id="unique">—</strong><small>sur 49</small></div>
+      <div class="metric"><span>Exemplaires possédés</span><strong id="copies">—</strong><small>Copies totales</small></div>
+      <div class="metric"><span>Exemplaires en double</span><strong id="extras">—</strong><small>Au-delà du premier</small></div>
+      <div class="metric"><span>Cartes manquantes</span><strong id="missing">—</strong><small>À découvrir</small></div>
+    </section>
+
+    <section class="progress-block" aria-labelledby="progress-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">COMPLÉTION</p><h2 id="progress-title">Progression générale</h2></div>
+        <strong id="completion">—</strong>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div id="rarity-progress" class="rarity-progress" aria-label="Progression par rareté"></div>
+    </section>
+
+    <section class="binder" aria-labelledby="binder-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">49 CARTES</p><h2 id="binder-title">Explorer les cartes</h2></div>
+        <strong class="shown" id="shown">—</strong>
+      </div>
+      <div class="controls">
+        <label>Rechercher
+          <input id="search" type="search" placeholder="Nom ou identifiant…" autocomplete="off">
+        </label>
+        <label>Possession
+          <select id="ownership">
+            <option value="all">Toutes</option>
+            <option value="owned">Possédées</option>
+            <option value="missing">Manquantes</option>
+            <option value="duplicates">Doublons</option>
+          </select>
+        </label>
+        <label>Rareté
+          <select id="rarity">
+            <option value="all">Toutes</option>
+            <option value="commune">Commune</option>
+            <option value="rare">Rare</option>
+            <option value="epique">Épique</option>
+            <option value="legendaire">Légendaire</option>
+            <option value="secrete">Secrète</option>
+          </select>
+        </label>
+        <label>Trier par
+          <select id="sort">
+            <option value="catalogue">Ordre du catalogue</option>
+            <option value="rarity">Rareté décroissante</option>
+            <option value="name">Nom</option>
+            <option value="copies-desc">Nombre d'exemplaires</option>
+          </select>
+        </label>
+      </div>
+      <div id="cards" class="card-grid" aria-live="polite"></div>
+      <div id="no-results" class="empty-state" hidden>
+        <p>Aucune carte ne correspond à ces filtres.</p>
+        <button type="button" id="clear-filters">Effacer les filtres</button>
+      </div>
+    </section>
+
+    <footer>
+      <span>Démonstration technique de l'interface · Aucune ouverture de booster ni récompense.</span>
+      <span>Raretés et identifiants conservés · Visuels en préparation.</span>
+    </footer>
+  </div>
+</body>
+</html>
