@@ -159,3 +159,22 @@ test('le détail d’une carte manquante annonce zéro exemplaire et pas de faux
   await expect(page.locator('#detail-extras')).toHaveText('0');
   await expect(page.locator('#card-detail')).toContainText('Illustration en préparation');
 });
+
+
+test('les statistiques ouvrent directement les possédées', async ({page}) => {
+  await page.getByRole('button',{name:'Voir mes cartes'}).click();
+  await expect(page.locator('#ownership')).toHaveValue('owned');
+  await expect(page.locator('#cards .collection-card')).toHaveCount(5);
+});
+
+test('les statistiques ouvrent directement les manquantes', async ({page}) => {
+  await page.getByRole('button',{name:'Voir les manquantes'}).click();
+  await expect(page.locator('#ownership')).toHaveValue('missing');
+  await expect(page.locator('#cards .collection-card')).toHaveCount(44);
+});
+
+test('le raccourci doublons affiche le véritable onglet des doublons', async ({page}) => {
+  await page.getByRole('button',{name:'Voir les doublons'}).click();
+  await expect(page.locator('#view-duplicates')).toBeVisible();
+  await expect(page.locator('#duplicate-list .insight-card')).toHaveCount(2);
+});
