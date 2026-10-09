@@ -11,6 +11,22 @@
 - **Aucune attribution, création de compte, achat, génération d'image ou modification Floot.** Le quota Floot bloquait toujours les actions au dernier contrôle. La démo GitHub est une préparation, non le jeu en production.
 - Synthèse intégrale : [COLLECTION_LIVRAISON_2026-10-09.md](COLLECTION_LIVRAISON_2026-10-09.md). La priorité suivante est l'intégration au classeur React/Kysely **existant** lorsque les sources Floot seront accessibles, puis typecheck, tests fonctionnels, publication et visibilité en ligne vérifiées.
 
+## Journal de reprise de collection — suite de session du 9 octobre 2026
+
+**Objectif du lot :** poursuivre l'expérience de collection sans demander de nouvelles décisions à l'utilisateur, sans créer de visuels et sans toucher aux possessions des joueurs.
+
+**Livré dans le dépôt GitHub :**
+- **Fiche de carte accessible** dans `floot-collection/demo.html` / `demo.mjs` / `demo.css` : modal native, nom/numéro/rareté, possession, quantité, doubles, navigation des fiches filtrées au clavier et fermeture Échap.
+- **Navigation rapide** depuis chaque jauge de rareté vers les cartes correspondantes et depuis les chiffres de collection vers les Possédées, Manquantes et Doublons.
+- **Accessibilité** : progression globale et progression des cinq raretés exposées comme barres de progression avec valeur courante.
+- **Tests navigateur préparés** dans `e2e/binder-demo.spec.mjs` : fiches, clavier, changement de scénario, raccourcis par rareté et statistiques. Toujours **non exécutés en navigateur**.
+- **Validation logicielle** : cinq tests de syntaxe ES modules ajoutés ; trois tests de conservation de la collection, dont **500 inventaires fictifs déterministes**, pour contrôler les égalités entre uniques, manquantes, exemplaires et doublons.
+- **CI GitHub Actions `37950512726` : 130 tests Node réussis, zéro échec** le 9 octobre 2026. [Résultat](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37950512726).
+
+**Production Floot :** aucun code de la collection publié dans Floot. Le quota gratuit 100/100 était toujours atteint au dernier contrôle, avec réinitialisation annoncée le **10 octobre à 09:00 UTC**. La démonstration GitHub Pages ne remplace pas le jeu et ne contient aucune donnée personnelle.
+
+**Prochain vrai travail non réalisable avant accès Floot :** adapter les modules de collection déjà testés aux schémas actuels de `endpoints/collection_GET.ts`, `pages/_index.tsx`, `helpers/schema.tsx`, puis vérifier les deux comptes, la persistance et la liaison serveur. Contrôler types et tests avant checkpoint/publication. Aucune automatisation quotidienne TCG n'est active.
+
 ## Priorité utilisateur actualisée — 9 octobre 2026, 14:30 UTC
 
 **Consigne la plus récente :** les illustrations des cartes ne sont pas terminées. Ne pas travailler sur de nouveaux visuels ni attendre les illustrations pour avancer. Concentrer les prochains travaux dans Floot **sur le classeur, les raretés, les cartes manquantes, la progression et la comptabilisation des doublons**. L'intégrité des comptes reste une contrainte de sécurité, mais ne doit plus absorber les développements de produit hors problème bloquant.
