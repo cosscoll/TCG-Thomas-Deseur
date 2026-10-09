@@ -1,5 +1,16 @@
 # Suivi autonome — TCG Deseur
 
+## Journal — avancement multi-lots du 9 octobre 2026, ~15:00 UTC
+
+**Consigne :** ne pas s'arrêter après les doublons, avancer au maximum sur la collection, la progression, les boosters et l'historique, sans toucher aux illustrations.
+
+- Nouveaux utilitaires : `collection-insights.mjs` (doublons par rareté, 15 jalons sans récompenses, historique daté fiable, bilan d'ouverture déjà confirmée, indicateur d'attente non autoritatif) et `collection-reconciliation.mjs` (diagnostic lecture seule entre tirage serveur et inventaire relu).
+- La démonstration `floot-collection/demo.html` comporte maintenant **cinq espaces navigables** (collection, mes doublons, progression, historique, bilan booster) avec recherche, tris, compteurs, placeholders neutres, affichage mobile et données fictives indépendantes.
+- Neuf tests Playwright spécifiques ont été écrits sous `e2e/binder-demo.spec.mjs`, **sans exécution réelle pour le moment**.
+- **GitHub Actions confirmée :** [120 tests Node réussis, zéro échec](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37948492892). Le premier passage avait détecté une attente erronée « 6 objectifs atteints » au lieu des 7 réels ; elle a été corrigée.
+- **Aucune attribution, création de compte, achat, génération d'image ou modification Floot.** Le quota Floot bloquait toujours les actions au dernier contrôle. La démo GitHub est une préparation, non le jeu en production.
+- Synthèse intégrale : [COLLECTION_LIVRAISON_2026-10-09.md](COLLECTION_LIVRAISON_2026-10-09.md). La priorité suivante est l'intégration au classeur React/Kysely **existant** lorsque les sources Floot seront accessibles, puis typecheck, tests fonctionnels, publication et visibilité en ligne vérifiées.
+
 ## Priorité utilisateur actualisée — 9 octobre 2026, 14:30 UTC
 
 **Consigne la plus récente :** les illustrations des cartes ne sont pas terminées. Ne pas travailler sur de nouveaux visuels ni attendre les illustrations pour avancer. Concentrer les prochains travaux dans Floot **sur le classeur, les raretés, les cartes manquantes, la progression et la comptabilisation des doublons**. L'intégrité des comptes reste une contrainte de sécurité, mais ne doit plus absorber les développements de produit hors problème bloquant.
