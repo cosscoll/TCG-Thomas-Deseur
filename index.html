@@ -3,159 +3,93 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10101b">
+  <meta name="theme-color" content="#11101b">
   <meta name="robots" content="noindex,nofollow">
-  <title>Budget Illimité | Inventaire du TCG — Prototype</title>
-  <meta name="description" content="Prototype non officiel de l'inventaire des cartes TCG inspirées des apparitions de Thomas Deseur.">
+  <title>Budget Illimité — Boosters, cartes et collection</title>
+  <meta name="description" content="Prototype de jeu de collection : ouvre des boosters, trouve les cartes rares et complète ton classeur de 49 cartes.">
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
-  <a class="skip" href="#catalogue">Aller au catalogue</a>
+  <a class="skip" href="#ouvrir">Aller aux boosters</a>
   <header class="topbar">
-    <div class="brand"><span class="brand-icon" aria-hidden="true">BI</span><span>Budget <strong>Illimité</strong></span></div>
-    <nav aria-label="Navigation principale"><a href="#booster">Ouvrir des boosters</a><a href="#collection">Mon classeur</a><a href="#compte">Mon compte</a><a href="#arena">Combat test</a></nav>
-    <span class="version">Prototype de développement</span>
+    <a class="brand" href="#accueil" aria-label="Budget Illimité — accueil"><span class="brand-mark">BI</span><span>BUDGET <b>ILLIMITÉ</b><small>Le jeu de collection</small></span></a>
+    <nav aria-label="Navigation principale"><a href="#ouvrir">Boosters</a><a href="#classeur">Mon classeur</a><a href="#compte">Mon compte</a></nav>
+    <span class="dev-label">Version de développement</span>
   </header>
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section id="accueil" class="hero" aria-labelledby="heroTitle">
       <div class="hero-copy">
-        <p class="eyebrow">Collection non officielle · Thomas Deseur</p>
-        <h1 id="hero-title">49 cartes.<br><em>Une collection.</em><br>À compléter.</h1>
-        <p>Ouvre tes boosters, découvre des cartes de différentes raretés et remplis ton classeur. Les ouvertures actuelles sont une démonstration locale ; les comptes et les collections sauvegardées seront activés après sécurisation du serveur.</p>
-        <a class="main-cta" href="#booster">Ouvrir mon premier booster <span aria-hidden="true">↗</span></a> <a class="secondary-cta hero-catalogue" href="#collection">Voir mon classeur</a>
+        <p class="eyebrow">49 cartes • 5 raretés • Une collection</p>
+        <h1 id="heroTitle">La chasse aux cartes <em>commence ici.</em></h1>
+        <p>Ouvre des boosters, trouve les cartes les plus rares et complète ton classeur. Ton prochain tirage pourrait révéler une carte secrète.</p>
+        <div class="hero-actions"><a href="#ouvrir" class="primary-link">Ouvrir un booster <span aria-hidden="true">↗</span></a><a href="#classeur" class="secondary-link">Explorer la collection</a></div>
+        <p class="hero-disclaimer">Prototype non officiel. Les cartes de démonstration restent locales jusqu'à l'activation des comptes.</p>
       </div>
-      <div class="hero-stage" aria-hidden="true">
-        <div class="showcase-card showcase-back"></div>
-        <div class="showcase-card showcase-front"><span class="showcase-id">BUDGET ILLIMITÉ / 001</span><div class="showcase-center">?</div><span class="showcase-caption">L'apparition mystère</span><span class="showcase-foot">CARTE EN COURS DE DOCUMENTATION</span></div>
-      </div>
+      <div class="hero-graphic" aria-hidden="true"><div class="hero-glow"></div><div class="feature-card feature-back"><span>BI</span><strong>?</strong><small>COLLECTION</small></div><div class="feature-card feature-front"><span>CARTE MYSTÈRE</span><strong>?</strong><small>ÉDITION ORIGINE</small></div></div>
     </section>
-    <section class="stats" aria-label="Indicateurs du catalogue">
-      <div><strong id="totalCards">49</strong><span>Identifiants de cartes</span></div>
-      <div><strong id="verifiedCards">0</strong><span>Vidéos sources retrouvées</span></div>
-      <div><strong id="markedCards">0</strong><span>Cartes repérées localement</span></div>
+    <section class="summary" aria-label="Ma progression">
+      <div><small>Cartes découvertes</small><strong id="summaryUnique">0 <span>/ 49</span></strong></div>
+      <div><small>Boosters ouverts</small><strong id="summaryOpened">0</strong></div>
+      <div><small>Collection complétée</small><strong id="summaryCompletion">0 %</strong></div>
+      <div><small>Mes doublons</small><strong id="summaryDuplicates">0</strong></div>
     </section>
-    <section id="catalogue" class="catalogue">
-      <div class="section-top"><div><p class="eyebrow">L'inventaire</p><h2>Les 49 apparitions</h2><p>Les noms ci-dessous proviennent d'identifiants provisoires. Les photographies et vidéos d'origine ne sont pas encore intégrées.</p></div><div id="resultsCount" class="result-count" aria-live="polite"></div></div>
-      <div class="filters">
-        <label for="search">Rechercher une carte<input id="search" type="search" placeholder="Nom ou identifiant..." autocomplete="off"></label>
-        <label for="rarity">Rareté<select id="rarity"><option value="all">Toutes les raretés</option><option value="commune">Commune</option><option value="rare">Rare</option><option value="epique">Épique</option><option value="legendaire">Légendaire</option><option value="secrete">Secrète</option></select></label>
-        <label class="marked-filter"><input id="onlyMarked" type="checkbox"> Cartes repérées</label>
-      </div>
-      <div id="cardGrid" class="card-grid"></div>
-      <p id="emptyResults" class="empty hidden">Aucune carte ne correspond à ces filtres.</p>
-    </section>
-    <section id="deckbuilder" class="deck-section" aria-labelledby="deckTitle">
-      <div class="section-top"><div><p class="eyebrow">Atelier du joueur</p><h2 id="deckTitle">Compose ton deck</h2><p>Choisis exactement 8 apparitions parmi les 49 identifiants. Pour l'instant, toutes les cartes sont accessibles dans ce mode d'essai, sans tenir compte d'un inventaire possédé.</p></div>
-      <div class="deck-counter"><strong id="deckCount">8 / 8</strong><span>Cartes choisies</span></div></div>
-      <div class="deck-panel"><p id="deckComposition" class="deck-composition" aria-live="polite">Profil de ton équipe</p><div id="deckList" class="deck-list"></div>
-        <div class="deck-actions"><p id="deckHint" aria-live="polite">Sélectionne une carte dans le catalogue pour la remplacer.</p>
-          <div class="deck-buttons"><button type="button" id="balancedDeck" class="secondary-cta">Proposer un deck équilibré</button><button type="button" id="resetDeck" class="secondary-cta">Deck de départ</button><a class="main-cta" href="#arena">Aller au combat <span aria-hidden="true">↗</span></a></div>
-        </div>
+    <section id="ouvrir" class="pack-section section-wrap" aria-labelledby="boosterTitle">
+      <div class="section-heading"><div><p class="eyebrow">01 / La découverte</p><h2 id="boosterTitle">Ouvre ton booster</h2><p>Chaque booster révèle cinq cartes. La cinquième est garantie <strong>Rare ou supérieure</strong>.</p></div><a href="#classeur" class="quiet-link">Consulter mon classeur <span aria-hidden="true">→</span></a></div>
+      <div class="pack-layout">
+        <div class="pack-presentation"><div class="pack-graphic" aria-hidden="true"><span>ÉDITION ORIGINE</span><strong>BUDGET<br>ILLIMITÉ</strong><div class="pack-question">?</div><small>5 CARTES À DÉCOUVRIR</small></div></div>
+        <div class="pack-panel"><span class="panel-kicker">BOOSTER ORIGINE</span><h3>5 cartes.<br>Un peu de suspense.</h3><p>Communes, Rares, Épiques, Légendaires ou Secrètes : chaque ouverture te rapproche des 49 cartes.</p><div class="rarity-chips" aria-label="Les cinq raretés"><span>Commune</span><span>Rare</span><span>Épique</span><span>Légendaire</span><span>Secrète</span></div><p id="boosterAvailability" class="availability" role="status" aria-live="polite">Démonstration : boosters gratuits et illimités sur cet appareil.</p><button id="openBooster" class="primary-button" type="button">Ouvrir mon booster <span aria-hidden="true">↗</span></button><p class="fine-print">Les taux sont provisoires. Aucune monnaie réelle ni achat.</p></div>
       </div>
     </section>
-    <section id="arena" class="arena-section" aria-labelledby="arenaTitle">
-      <div class="section-top"><div><p class="eyebrow">Mode solo · Billy l'ordinateur</p><h2 id="arenaTitle">L'arène</h2><p>Chaque tour, choisis une seule action. La première équipe à mettre KO 3 cartes remporte la partie. C'est un prototype de règles, indépendant du PvP existant.</p></div>
-      <div class="arena-start"><label for="aiDifficulty">Niveau de Billy<select id="aiDifficulty">
-        <option value="decouverte">Découverte — facile</option>
-        <option value="normal" selected>Normal — équilibré</option>
-        <option value="expert">Expert — tactique</option>
-      </select></label><button type="button" id="startMatch" class="main-cta">Lancer une partie <span aria-hidden="true">↗</span></button></div></div>
-      <details class="rules-help"><summary>Comment jouer ? <span aria-hidden="true">＋</span></summary>
-        <div class="rules-help-grid">
-          <p><strong>1. Prépare ton équipe.</strong> Choisis huit cartes différentes dans le catalogue. Une carte démarre active, deux attendent en réserve.</p>
-          <p><strong>2. Gère tes tours.</strong> Frappe rapide gratuitement, attaque spéciale pour deux énergies, concentration pour te protéger, ou échange avec une carte de réserve.</p>
-          <p><strong>3. Vise trois KO.</strong> La protection encaisse les dégâts avant les points de vie. Après un KO, une carte de réserve prend le relais.</p>
-          <p><strong>4. Exploite les rôles.</strong> Assaut frappe fort, Rempart encaisse, Tacticien récupère de l'énergie et Chaos se renforce à faible santé.</p>
-        </div>
-      </details>
-      <p id="battleResultNotice" class="battle-result hidden" role="status" aria-live="polite"></p>
-      <div class="arena-shell">
-        <div class="arena-board">
-          <div class="combatant" id="aiPanel" aria-label="Adversaire Billy"><div class="combatant-top"><div><small>ADVERSAIRE</small><h3>Billy</h3></div><strong id="aiScore">0 / 3 KO</strong></div><div id="aiActive" class="arena-active-placeholder">L'adversaire arrive...</div><div class="health-row"><div id="aiHpText">— PV</div><div id="aiEnergy">— énergie</div></div><div class="hp-track"><div id="aiHpBar" class="hp-fill" style="width:0%" role="progressbar" aria-label="Points de vie de Billy" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100"></div></div><p id="aiGuard" class="guard-text">Aucune protection</p><div id="aiBench" class="bench-row"></div></div>
-          <div class="arena-center"><span id="turnInfo" aria-live="polite">Prêt pour le duel ?</span><span class="vs">VS</span><span id="roundInfo">3 KO pour gagner</span></div>
-          <div class="combatant player-panel" id="playerPanel" aria-label="Ton équipe"><div class="combatant-top"><div><small>TON ÉQUIPE</small><h3>Toi</h3></div><strong id="playerScore">0 / 3 KO</strong></div><div id="playerActive" class="arena-active-placeholder">Prépare ton deck pour jouer.</div><div class="health-row"><div id="playerHpText">— PV</div><div id="playerEnergy">— énergie</div></div><div class="hp-track"><div id="playerHpBar" class="hp-fill" style="width:0%" role="progressbar" aria-label="Tes points de vie" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100"></div></div><p id="playerGuard" class="guard-text">Aucune protection</p><div id="playerBench" class="bench-row"></div></div>
-        </div>
-        <aside class="arena-sidebar" aria-label="Commandes du combat">
-          <div class="action-header"><p class="eyebrow">Ton tour</p><h3>Choisis une action</h3><p id="actionHint">Lance une partie pour activer les actions.</p></div>
-          <div class="arena-actions"><button type="button" id="quickAction" disabled><strong>Frappe rapide</strong><span id="quickDamage">Attaque gratuite</span></button><button type="button" id="burstAction" disabled><strong>Capacité spéciale</strong><span id="burstDamage">2 énergies</span></button><button type="button" id="focusAction" disabled><strong>Concentration</strong><span id="focusValue">+2 énergie, +protection</span></button></div>
-          <div class="battle-log"><h4>Historique du combat</h4><ol id="battleLog" aria-live="polite"></ol></div>
-          <p class="prototype-caveat">Règles et statistiques de démonstration. Aucune récompense réelle n'est distribuée.</p>
-        </aside>
+    <section id="classeur" class="binder-section section-wrap" aria-labelledby="collectionTitle">
+      <div class="section-heading"><div><p class="eyebrow">02 / Ta collection</p><h2 id="collectionTitle">Mon classeur</h2><p>Découvre les cartes, surveille tes doublons et retrouve tes dernières ouvertures.</p></div></div>
+      <p id="collectionMode" class="collection-mode" role="status" aria-live="polite">Classeur de démonstration sur cet appareil.</p>
+      <div class="binder-overview">
+        <div class="overview-count"><strong id="collectionUnique">0 / 49</strong><span>Cartes différentes</span></div>
+        <div class="overview-count"><strong id="collectionTotal">0</strong><span>Cartes obtenues</span></div>
+        <div class="overview-count"><strong id="collectionDuplicates">0</strong><span>Doublons</span></div>
+        <div class="overview-count"><strong id="collectionOpened">0</strong><span>Boosters ouverts</span></div>
       </div>
-    </section>
-    <section id="soloProgress" class="solo-progress-section" aria-labelledby="soloProgressTitle">
-      <div><p class="eyebrow">Dans ton navigateur uniquement</p><h2 id="soloProgressTitle">Ton palmarès solo</h2><p>Ces statistiques et récompenses symboliques sont enregistrées localement. Elles ne donnent ni Budget ni cartes, et ne sont pas liées à un compte en ligne.</p></div>
-      <div class="solo-progress-panel">
-        <div class="solo-progress-counters" aria-label="Statistiques personnelles">
-          <div><strong id="matchesPlayed">0</strong><span>Parties jouées</span></div>
-          <div><strong id="matchesWon">0</strong><span>Victoires</span></div>
-          <div><strong id="matchesLost">0</strong><span>Défaites</span></div>
-          <div><strong id="bestStreak">0</strong><span>Meilleure série</span></div>
-        </div>
-        <h3>Défis de collectionneur</h3>
-        <div id="soloBadgeList" class="badge-list" aria-live="polite"></div>
-      </div>
-    </section>
-    <section id="booster" class="booster-section">
-      <div><p class="eyebrow">La chasse aux 49 cartes</p><h2>Ouvre un booster</h2><p>Chaque booster contient cinq cartes, avec au moins une Rare ou mieux. Tes découvertes, doublons et progrès sont conservés dans ton classeur de démonstration local. Les récompenses officielles nécessiteront un compte et un serveur sécurisé.</p><p id="boosterAvailability" class="booster-availability" role="status" aria-live="polite">Mode démonstration : ouvertures gratuites et illimitées sur cet appareil.</p><button id="simulateBooster" type="button" class="main-cta">Ouvrir un booster <span aria-hidden="true">↗</span></button></div>
-      <div class="booster-pack" aria-hidden="true"><span>BUDGET<br>ILLIMITÉ</span><strong>5 CARTES</strong><small>APERÇU NON OFFICIEL</small></div>
-    </section>
-    <section id="collection" class="collection-section" aria-labelledby="collectionTitle">
-      <div class="section-top"><div><p class="eyebrow">Collection</p><h2 id="collectionTitle">Mon classeur</h2><p>Découvre les 49 cartes et garde une trace de tes exemplaires. Cette collection reste locale tant qu'aucun compte n'est connecté.</p></div></div>
-      <p id="collectionMode" class="collection-mode" role="status">Collection de démonstration conservée sur cet appareil.</p>
-      <div class="collection-stat-grid" aria-label="Avancement de la collection">
-        <div><strong id="collectionUnique">0 / 49</strong><span>Cartes différentes</span></div>
-        <div><strong id="collectionTotal">0</strong><span>Cartes obtenues</span></div>
-        <div><strong id="collectionDuplicates">0</strong><span>Exemplaires en double</span></div>
-        <div><strong id="collectionOpened">0</strong><span>Boosters ouverts</span></div>
-      </div>
-      <label class="collection-progress-label" for="collectionProgress">Complétion du classeur : <span id="collectionPercent">0 %</span></label>
-      <progress id="collectionProgress" max="49" value="0">0 sur 49</progress>
+      <div class="progress-group"><label for="collectionProgress">Progression du classeur <strong id="collectionPercent">0 %</strong></label><progress id="collectionProgress" max="49" value="0">0 sur 49</progress></div>
       <div id="rarityCompletion" class="rarity-breakdown" aria-label="Progression par rareté"></div>
-      <div class="collection-filters">
-        <label>Affichage <select id="collectionOwnedFilter"><option value="all">Toutes les cartes</option><option value="owned">Possédées</option><option value="missing">À découvrir</option><option value="duplicates">Doublons</option></select></label>
-        <label>Rareté <select id="collectionRarity"><option value="all">Toutes les raretés</option><option value="commune">Commune</option><option value="rare">Rare</option><option value="epique">Épique</option><option value="legendaire">Légendaire</option><option value="secrete">Secrète</option></select></label>
+      <div class="binder-tools">
+        <label>Afficher<select id="collectionOwnedFilter"><option value="all">Toutes les cartes</option><option value="owned">Cartes obtenues</option><option value="missing">Cartes manquantes</option><option value="duplicates">Mes doublons</option></select></label>
+        <label>Rareté<select id="collectionRarity"><option value="all">Toutes les raretés</option><option value="commune">Communes</option><option value="rare">Rares</option><option value="epique">Épiques</option><option value="legendaire">Légendaires</option><option value="secrete">Secrètes</option></select></label>
+        <label>Rechercher<input id="collectionSearch" type="search" placeholder="Nom de carte..." autocomplete="off"></label>
+        <p id="filterCount" class="filter-count" role="status"></p>
       </div>
-      <div id="collectionGrid" class="collection-grid" aria-label="Cartes à collectionner"></div>
-      <p id="collectionEmpty" class="empty hidden">Aucune carte ne correspond à ce filtre.</p>
-      <div class="recent-openings"><h3>Dernières ouvertures</h3><div id="recentOpenings"><p>Aucun booster ouvert pour le moment.</p></div></div>
+      <div id="collectionGrid" class="collection-grid" aria-label="Les 49 cartes de la collection"></div>
+      <p id="collectionEmpty" class="empty" hidden>Aucune carte ne correspond à ces filtres.</p>
+      <div class="history"><h3>Dernières ouvertures</h3><div id="recentOpenings"><p>Ton premier booster t'attend.</p></div></div>
     </section>
-    <section id="compte" class="account-section" aria-labelledby="accountTitle">
-      <div class="section-top"><div><p class="eyebrow">Espace joueur</p><h2 id="accountTitle">Créer un compte joueur</h2><p>Un compte te permettra de retrouver ta collection sur plusieurs appareils. Les cartes de démonstration ne deviennent pas automatiquement des cartes officielles.</p></div></div>
-      <p id="accountMessage" class="account-feedback" role="status" aria-live="polite"></p>
-      <div id="accountSetup" class="account-setup"><strong>Comptes en préparation</strong><p>Le service sécurisé Supabase n'est pas encore raccordé. Tu peux continuer à ouvrir des boosters de démonstration et compléter le classeur local sans inscription.</p></div>
-      <div id="accountAnonymous" hidden>
-        <form id="accountForm" class="account-form">
-          <label>Action<select id="accountMode"><option value="signup">Créer un compte</option><option value="signin">Se connecter</option></select></label>
-          <label id="accountNameLabel">Pseudonyme <input id="accountName" type="text" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Ton pseudonyme"></label>
-          <label>Adresse e-mail <input id="accountEmail" type="email" autocomplete="email" inputmode="email" required placeholder="ton@email.fr"></label>
-          <label>Mot de passe <input id="accountPassword" type="password" minlength="8" autocomplete="new-password" required></label>
-          <div class="account-actions"><button id="accountSubmit" class="main-cta" type="submit">Créer mon compte</button><button id="accountForgot" class="secondary-cta" type="button">Mot de passe oublié ?</button></div>
-        </form>
-      </div>
-      <div id="accountPasswordRecovery" hidden class="account-form"><label>Nouveau mot de passe <input id="accountNewPassword" type="password" minlength="8" autocomplete="new-password"></label><button id="accountChangePassword" type="button" class="main-cta">Mettre à jour</button></div>
-      <div id="accountMember" hidden>
-        <strong id="accountUserEmail"></strong>
-        <p>Tes cartes proviennent de ton compte sécurisé. Les boosters sont attribués par le serveur.</p>
-        <div class="account-profile-edit">
-          <label>Pseudonyme <input id="accountProfileName" type="text" minlength="3" maxlength="30" autocomplete="nickname"></label>
-          <button id="accountSaveProfile" class="secondary-cta" type="button">Enregistrer mon pseudo</button>
+    <section id="compte" class="account-section section-wrap" aria-labelledby="accountTitle">
+      <div class="section-heading"><div><p class="eyebrow">03 / Espace joueur</p><h2 id="accountTitle">Ton compte</h2><p>Prépare ton profil pour retrouver une collection officielle sur tous tes appareils lorsque le service sécurisé sera ouvert.</p></div></div>
+      <div class="account-shell">
+        <div><h3>Ta collection, au même endroit.</h3><p>Un compte te permettra de conserver tes cartes en ligne. Les cartes obtenues dans le mode démonstration ne donnent aucun avantage officiel et ne sont pas transférées automatiquement.</p></div>
+        <div class="account-card">
+          <p id="accountMessage" class="account-feedback" role="status" aria-live="polite"></p>
+          <div id="accountSetup"><strong>Inscriptions bientôt disponibles</strong><p>Le service Supabase n'est pas encore relié. Tu peux découvrir le jeu sans créer de compte.</p></div>
+          <div id="accountAnonymous" hidden>
+            <form id="accountForm" class="account-form">
+              <label>Je souhaite<select id="accountMode"><option value="signup">Créer mon compte</option><option value="signin">Me connecter</option></select></label>
+              <label id="accountNameLabel">Pseudonyme<input id="accountName" type="text" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Ton pseudo"></label>
+              <label>E-mail<input id="accountEmail" type="email" autocomplete="email" required placeholder="adresse@exemple.fr"></label>
+              <label>Mot de passe<input id="accountPassword" type="password" minlength="8" autocomplete="new-password" required></label>
+              <button id="accountSubmit" class="primary-button" type="submit">Créer mon compte</button>
+              <button id="accountForgot" class="text-button" type="button">Mot de passe oublié ?</button>
+            </form>
+          </div>
+          <div id="accountPasswordRecovery" hidden class="account-form"><label>Nouveau mot de passe<input id="accountNewPassword" type="password" minlength="8" autocomplete="new-password"></label><button id="accountChangePassword" class="primary-button" type="button">Enregistrer</button></div>
+          <div id="accountMember" hidden><p>Connecté en tant que <strong id="accountUserEmail"></strong></p><div class="account-profile-edit"><label>Ton pseudonyme<input id="accountProfileName" type="text" minlength="3" maxlength="30" autocomplete="nickname"></label><button id="accountSaveProfile" class="secondary-button" type="button">Modifier mon pseudo</button></div><button id="accountSignOut" class="secondary-button" type="button">Me déconnecter</button></div>
         </div>
-        <button id="accountSignOut" class="secondary-cta" type="button">Me déconnecter</button>
       </div>
     </section>
-    <section id="avancement" class="progress-section"><div><p class="eyebrow">Phase de construction</p><h2>Le mode solo est jouable, le multijoueur reste à construire.</h2></div><p>Le moteur de combat d'origine était absent de l'archive. Nous avons construit un nouveau mode solo expérimental, avec statistiques provisoires et adversaire automatique. Les cartes, sources vidéo et parties multijoueurs restent à finaliser.</p></section>
   </main>
-  <footer>Budget Illimité — Prototype fan-made, non affilié à Thomas Deseur. Aucun usage officiel des images, noms ou marques revendiqué.</footer>
-  <dialog id="cardDialog" aria-labelledby="detailTitle">
-    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Fermer">×</button></form>
-    <div id="detailArt" class="detail-art"><span>?</span></div>
-    <div class="detail-body"><p id="detailRarity" class="eyebrow"></p><h2 id="detailTitle"></h2><p id="detailId" class="detail-id"></p><dl><dt>Apparition</dt><dd>À vérifier à partir des vidéos originales</dd><dt>Photographie</dt><dd>Non fournie</dd><dt>Statistiques de démonstration</dt><dd id="detailCombat">Profil en cours de chargement</dd></dl><p><a id="detailSourceLink" href="./research/" target="_blank" rel="noopener noreferrer" hidden>Voir la vidéo source</a></p><p><a href="./research/" target="_blank" rel="noopener noreferrer">Explorer les 176 références de costumes ↗</a></p><button id="markCard" class="main-cta" type="button">Marquer comme repérée</button><button id="toggleDeckCard" class="secondary-cta" type="button">Ajouter au deck</button><p class="local-note">Ce marqueur est enregistré uniquement dans ton navigateur. Ce n'est pas une carte possédée en jeu.</p></div>
-  </dialog>
-  <dialog id="boosterDialog" class="booster-dialog" aria-labelledby="boosterTitle">
-    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Fermer">×</button></form>
-    <div class="booster-dialog-inner"><p class="eyebrow">Ton nouveau booster</p><h2 id="boosterTitle">Cinq cartes découvertes</h2><p id="boosterModeNote">Ces cartes sont ajoutées à ton classeur de démonstration local.</p><div id="boosterResults" class="booster-results"></div><button id="rerollBooster" type="button" class="main-cta">Ouvrir un autre booster</button></div>
+  <footer><span>BUDGET ILLIMITÉ — Prototype indépendant et non officiel.</span><span><a href="./solo/">Ancien prototype de combat</a> · <a href="https://github.com/cosscoll/TCG-Thomas-Deseur">Code sur GitHub</a></span></footer>
+  <dialog id="boosterDialog" aria-labelledby="resultTitle">
+    <div class="dialog-top"><div><p class="eyebrow">Ton booster est ouvert</p><h2 id="resultTitle">Les cartes découvertes</h2><p id="boosterModeNote">Les cartes ont été ajoutées au classeur de démonstration.</p></div><form method="dialog"><button type="submit" class="close-dialog" aria-label="Fermer le résultat">×</button></form></div>
+    <div id="boosterResults" class="booster-results"></div>
+    <div class="dialog-actions"><button id="openAgain" class="primary-button" type="button">Ouvrir un autre booster</button><form method="dialog"><button type="submit" class="secondary-button">Voir mon classeur</button></form></div>
   </dialog>
 </body>
 </html>
