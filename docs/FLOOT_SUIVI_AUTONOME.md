@@ -10,6 +10,14 @@
 
 **Première étape lors de la prochaine session Floot :** lire `endpoints/collection_GET.ts`, `pages/_index.tsx`, `helpers/schema.tsx` ; vérifier la forme des données, puis intégrer les calculs et les filtres depuis le modèle testé **dans le classeur existant** (sans réinventer les visuels). Tester avec des données isolées, puis checkpoint et publication seulement après validation. Aucune automatisation récurrente n'est activée.
 
+## Journal — aperçu de la collection, même session du 9 octobre 2026
+
+- **Livrable supplémentaire :** une interface statique de démonstration créée dans `floot-collection/demo.html`, `demo.mjs` et `demo.css` : statistiques, jauges par rareté, filtres et tris, badges de doublons, placeholders neutres pour les visuels encore en fabrication. Elle utilise des **données de démonstration uniquement** et ne change aucun inventaire réel.
+- **Tests :** sept tests statiques ajoutés sous `tests/floot-binder-demo.test.mjs`. Une première exécution a échoué sur un faux positif concernant un commentaire du fichier JS, puis le problème a été corrigé. La [dernière CI GitHub réussie](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) donne **80 tests réussis, 0 échec**.
+- **Déploiement :** GitHub Pages a confirmé `completed/success` pour [ce workflow](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946337589). **La requête HTTP directe vers l'URL Pages a échoué depuis les outils disponibles** (résolution DNS/accès interdit). Il est interdit d'affirmer que l'URL est vérifiée accessible et visible ; il faudra ouvrir la page dans un vrai navigateur pour lever cette incertitude.
+- **Floot actif :** aucun changement. L'application `https://budget-illimite-tcg.floot.app` reste publiée, mais ne contient pas encore ce nouveau module.
+- **Prochaine action :** tester l'aperçu en navigateur puis, lorsque Floot sera disponible, lire les composants du classeur courant et y intégrer les données/statistiques sans reconstruire toute l'interface.
+
 ## État au 9 octobre 2026
 
 **Décision utilisateur la plus récente (13:42 UTC) : une seule session de travail à la fois, sans automatisation récurrente.** La tâche « Développement TCG Deseur » a été désactivée et « Brief du matin » réactivé le 9 octobre 2026. Les deux changements ont été confirmés. **Ne pas créer ni réactiver d'automatisation TCG sans nouvelle instruction explicite.**
