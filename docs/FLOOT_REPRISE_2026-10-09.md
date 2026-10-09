@@ -121,6 +121,6 @@ Les checkpoints transmis sont :
 
 Cosme a demandé le 9 octobre de poursuivre en autonomie après l'audit. Une consigne durable et un rythme quotidien après la réinitialisation du quota ont été préparés.
 
-**La création de la tâche a échoué** : l'offre actuelle autorise cinq tâches planifiées actives et les cinq créneaux étaient occupés. Aucune tâche de développement n'est donc activée. Aucun autre automatisme n'a été modifié ou désactivé.
+**Mise à jour du 9 octobre à 13:38 UTC :** la création de la tâche avait d'abord échoué car les cinq créneaux étaient occupés. Avec l'accord explicite de l'utilisateur, « Brief du matin » a été désactivé (le « Point du matin » principal reste actif) et « Développement TCG Deseur » a été créé et activé. Première exécution prévue le 10 octobre vers 12 h heure Europe/Paris. Aucune exécution de cette nouvelle tâche n'a encore été observée.
 
 La proposition et l'état de reprise sont consignés dans [le suivi autonome](FLOOT_SUIVI_AUTONOME.md). L'audit complet du code et de PostgreSQL devra être terminé avant d'enchaîner sur ses corrections.
