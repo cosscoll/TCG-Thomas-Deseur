@@ -1,5 +1,15 @@
 # Suivi autonome — TCG Deseur
 
+## Priorité utilisateur actualisée — 9 octobre 2026, 14:30 UTC
+
+**Consigne la plus récente :** les illustrations des cartes ne sont pas terminées. Ne pas travailler sur de nouveaux visuels ni attendre les illustrations pour avancer. Concentrer les prochains travaux dans Floot **sur le classeur, les raretés, les cartes manquantes, la progression et la comptabilisation des doublons**. L'intégrité des comptes reste une contrainte de sécurité, mais ne doit plus absorber les développements de produit hors problème bloquant.
+
+**Livrable GitHub dans la session :** `floot-collection/collection-model.mjs`, avec les fonctions de comptage des cartes uniques/exemplaires/doublons, progression par rareté, filtres, recherche, tri, badges de révélation et chances de rareté à afficher. **28 tests fonctionnels** validés dans GitHub Actions ; **71 tests Node réussis, 0 échec** : https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945135269. Règles détaillées dans `docs/CONCEPTION_COLLECTION_FLOOT.md`.
+
+**État Floot à 14:30 UTC :** application publique existante confirmée ; Floot refuse toujours les actions de développement (100/100) jusqu'à la réinitialisation annoncée le 10 octobre à 09:00 UTC. **Aucun changement de l'application active ni des possessions réelles**. Ne pas annoncer le module GitHub comme intégré ou publié dans Floot.
+
+**Première étape lors de la prochaine session Floot :** lire `endpoints/collection_GET.ts`, `pages/_index.tsx`, `helpers/schema.tsx` ; vérifier la forme des données, puis intégrer les calculs et les filtres depuis le modèle testé **dans le classeur existant** (sans réinventer les visuels). Tester avec des données isolées, puis checkpoint et publication seulement après validation. Aucune automatisation récurrente n'est activée.
+
 ## État au 9 octobre 2026
 
 **Décision utilisateur la plus récente (13:42 UTC) : une seule session de travail à la fois, sans automatisation récurrente.** La tâche « Développement TCG Deseur » a été désactivée et « Brief du matin » réactivé le 9 octobre 2026. Les deux changements ont été confirmés. **Ne pas créer ni réactiver d'automatisation TCG sans nouvelle instruction explicite.**
