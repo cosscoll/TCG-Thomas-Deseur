@@ -59,7 +59,12 @@ export async function initAccountPanel(onSessionChange) {
     // outage and must never prevent signup/signin handlers from registering.
     const { data: sessionData, error: sessionError } = await client.auth.getSession();
     if (sessionError) throw sessionError;
-    user = sessionData?.session?.user ?? null;
+    // Validate a cached identity with Auth only when a session actually
+    // exists. RLS remains the authority for profile and inventory reads.
+    if (sessionData?.session) {
+      const { data: authenticated, error: identityError } = await client.auth.getUser();
+      user = identityError ? null : (authenticated?.user ?? null);
+    } else user = null;
     render();
     notifyParent();
     client.auth.onAuthStateChange((event, session) => {
@@ -83,7 +88,13 @@ export async function initAccountPanel(onSessionChange) {
     submit.disabled=true;
     try {
       const { data,error }=signup
-        ? await client.auth.signUp({email,password,options:{data:{display_name:name}}})
+        ? await client.auth.signUp({
+            email, password,
+            options: {
+              data: {display_name:name},
+              emailRedirectTo: window.location.origin + window.location.pathname,
+            },
+          })
         : await client.auth.signInWithPassword({email,password});
       if(error)throw error;
       $("accountPassword").value="";
