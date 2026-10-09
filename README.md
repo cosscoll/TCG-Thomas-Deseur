@@ -41,6 +41,18 @@ Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot 
 
 **Recette détaillée Floot :** [matrice des 36 scénarios comptes, boosters, classeur et publication](docs/MATRICE_RECETTE_FLOOT.md). Le workflow [Floot — contrôle public](.github/workflows/floot-public-smoke.yml) utilise les tests séparés dans [`floot-e2e/`](floot-e2e/), sans accès aux comptes réels et sans exécution récurrente automatique. Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation quotidienne « Développement TCG Deseur » a été **désactivée** le 9 octobre 2026 à la demande de l'utilisateur ; « Brief du matin » a été réactivé. Le développement reprend uniquement lors d'une session demandée explicitement, sans tâche récurrente.
 
+## Vérifier la compatibilité des 49 cartes
+
+Le catalogue historique est dans `data/cards.js`. Un comparateur en **lecture seule** permet de vérifier qu'un export non personnel du catalogue Floot contient exactement les **mêmes 49 identifiants et raretés**, sans cartes nouvelles, manquantes ou dupliquées.
+
+```bash
+node scripts/compare_floot_catalogue.mjs chemin/vers/cartes-floot-anonymisees.json
+```
+
+Le fichier JSON attendu est un tableau de lignes `{"id":"matelas","rarity":"commune"}` et doit contenir **uniquement** ces deux champs. Vérifier les noms de colonnes et les valeurs réelles dans Floot avant de produire le fichier ; ne jamais exporter un inventaire ni des informations joueurs.
+
+Le script dispose de **12 tests unitaires**, intégrés à `npm test`. Le workflow [GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37943567646) a terminé avec **43 tests réussis et zéro échec**. Le vrai catalogue PostgreSQL n'a pas encore été comparé.
+
 ## Vérifier la version publique
 
 Le contrôle ci-dessous utilise uniquement la bibliothèque standard Python. Il teste deux pages et quatre refus d'accès anonymes ; il ne crée pas de compte, n'utilise aucune session et ne demande aucune récupération de mot de passe.
