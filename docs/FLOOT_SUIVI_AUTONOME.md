@@ -86,6 +86,18 @@ L'objectif est de **faire avancer l'application, pas d'accumuler de la documenta
 
 **Limites / prochaine action :** à la reprise des actions Floot, relire les helpers d'authentification et l'endpoint de déconnexion, reproduire les cas A04–A08 puis corriger les défauts démontrés. Ensuite exécuter `typecheck`, tests unitaires Floot et contrôles navigateur autorisés. Ne pas confondre les nouveaux contrôles anonymes avec un test des transactions, des comptes ou de PostgreSQL. Ne pas réactiver d'automatisation.
 
+## Journal complémentaire — même session du 9 octobre 2026
+
+**Chantier réalisé sans accès aux sources Floot :** nouveaux tests publics d'accessibilité et contrôles pour l'intégrité d'un futur export de code.
+
+- Test Playwright `floot-e2e/accessibility.spec.mjs` créé : `html lang=fr` sur accueil/connexion, nom accessible des champs de connexion, navigation clavier. **Non exécuté contre Floot**, donc pas de validation UX revendiquée ; le constat antérieur sur `lang` reste à reproduire.
+- Vérificateur `scripts/verify_floot_export.py` et 13 tests `floot-e2e/test_export_integrity.py` créés. **13 tests unitaires exécutés et réussis localement, zéro échec.** Ils couvrent empreintes, version, fichiers manquants, chemins traversants, liens symboliques, fichiers inattendus et manifeste invalide.
+- Workflow manuel `.github/workflows/floot-public-smoke.yml` mis à jour pour inclure les tests hors réseau `test_*.py`. **Non déclenché** à ce stade.
+- Guide `docs/SAUVEGARDE_CODE_FLOOT.md` rédigé ; **aucune sauvegarde effective du code Floot ou de PostgreSQL réalisée**.
+- La publication Floot reste inchangée. La tâche TCG récurrente reste désactivée ; le projet ne doit être traité que lors d'une session expressément demandée.
+
+**Prochaine intervention directe sur le jeu :** dès que le quota Floot autorise la lecture des sources, corriger seulement les défauts réellement reproduits sur la déconnexion / isolation / session, avec tests et publication conditionnés à un résultat valide.
+
 ## Dernier travail livré
 
 Documentation de reprise et contrôle public sauvegardés dans le commit `ac74b09de944142cc42c7c0fe8b0f2da7a960ee5` de `cosscoll/TCG-Thomas-Deseur`.
