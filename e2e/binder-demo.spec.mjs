@@ -95,3 +95,50 @@ test('navigation sans erreur JavaScript et sans débordement sur écran étroit'
   }
   expect(errors).toEqual([]);
 });
+
+
+test('la fiche Matelas indique les 4 exemplaires et 3 copies en double', async ({page}) => {
+  await page.getByRole('button',{name:'Voir la fiche de Matelas'}).click();
+  const modal=page.locator('#card-detail');
+  await expect(modal).toBeVisible();
+  await expect(modal.locator('#detail-title')).toHaveText('Matelas');
+  await expect(modal.locator('#detail-status')).toHaveText('Possédée');
+  await expect(modal.locator('#detail-quantity')).toHaveText('4');
+  await expect(modal.locator('#detail-extras')).toHaveText('3');
+  await page.keyboard.press('Escape');
+  await expect(modal).not.toBeVisible();
+});
+
+test('la navigation de la fiche respecte les cartes filtrées', async ({page}) => {
+  await page.locator('#ownership').selectOption('duplicates');
+  await expect(page.locator('#cards .collection-card')).toHaveCount(2);
+  await page.getByRole('button',{name:'Voir la fiche de Matelas'}).click();
+  const modal=page.locator('#card-detail');
+  await expect(modal.locator('#detail-position')).toHaveText('1 / 2');
+  await modal.locator('#detail-next').click();
+  await expect(modal.locator('#detail-title')).toHaveText('Fontaine');
+  await expect(modal.locator('#detail-quantity')).toHaveText('2');
+  await expect(modal.locator('#detail-next')).toBeDisabled();
+  await page.keyboard.press('ArrowLeft');
+  await expect(modal.locator('#detail-title')).toHaveText('Matelas');
+});
+
+test('la fiche des doublons est accessible depuis la vue Mes doublons', async ({page}) => {
+  await page.getByRole('button',{name:'Mes doublons'}).click();
+  await page.locator('#duplicate-list .card-open').first().click();
+  const modal=page.locator('#card-detail');
+  await expect(modal.locator('#detail-status')).toHaveText('Possédée');
+  await expect(modal.locator('#detail-extras')).toHaveText('3');
+  await modal.locator('#detail-close').click();
+  await expect(modal).not.toBeVisible();
+});
+
+test('la fiche se met à jour après changement de scénario sans conserver une ancienne quantité', async ({page}) => {
+  await page.getByRole('button',{name:'Voir la fiche de Matelas'}).click();
+  await expect(page.locator('#detail-quantity')).toHaveText('4');
+  await page.keyboard.press('Escape');
+  await page.getByRole('button',{name:'Collection vide'}).click();
+  await page.getByRole('button',{name:'Voir la fiche de Matelas'}).click();
+  await expect(page.locator('#detail-status')).toHaveText('Manquante');
+  await expect(page.locator('#detail-quantity')).toHaveText('0');
+});
