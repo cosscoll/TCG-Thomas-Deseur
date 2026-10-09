@@ -230,3 +230,37 @@ footer { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-b
   .recap-card > span:last-child { margin-left: auto; }
   .odds-table th, .odds-table td { padding: 10px 5px; font-size: .78rem; }
 }
+
+
+/* At-a-glance duplicate rarity breakdown and next meaningful collection milestones. */
+.mini-stat-grid {
+  display: grid; grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 10px; margin: 0 0 22px;
+}
+.mini-stat {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: #182439; padding: 13px;
+  display: flex; flex-direction: column; gap: 7px; min-width: 0;
+}
+.mini-stat strong { color: var(--muted); }
+.mini-stat span { font-size: .82rem; line-height: 1.45; color: var(--primary); }
+.mini-stat[data-rarity="rare"] strong { color: var(--rare); }
+.mini-stat[data-rarity="epique"] strong { color: var(--epique); }
+.mini-stat[data-rarity="legendaire"] strong { color: var(--legendaire); }
+.mini-stat[data-rarity="secrete"] strong { color: var(--secrete); }
+.subheading { margin: 0 0 12px; font-size: 1rem; }
+.next-goals { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-bottom: 25px; }
+.next-goal {
+  background: #142c2a; border: 1px solid #497e72;
+  border-radius: 11px; padding: 14px; display: flex; flex-direction: column; gap: 9px; min-width: 0;
+}
+.next-goal strong { font-size: .9rem; line-height: 1.4; }
+.next-goal span { color: var(--accent); font-size: .85rem; }
+@media (max-width: 880px) {
+  .mini-stat-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .next-goals { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 650px) {
+  .mini-stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .next-goals { grid-template-columns: minmax(0,1fr); }
+}
