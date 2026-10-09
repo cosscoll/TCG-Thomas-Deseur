@@ -169,7 +169,7 @@ export function getBoosterAvailabilityHint(nextAvailableAt, now = Date.now()) {
   if (nextAvailableAt == null) return { known: false, remainingMs: null, elapsed: null };
   // Avoid interpreting a timezone-less timestamp differently across devices.
   if (typeof nextAvailableAt !== 'string' ||
-      !/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?(?:Z|[+-]\\d\\d:\\d\\d)$/.test(nextAvailableAt)) {
+      !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(nextAvailableAt)) {
     throw new Error('Échéance booster invalide.');
   }
   const deadline = Date.parse(nextAvailableAt);
