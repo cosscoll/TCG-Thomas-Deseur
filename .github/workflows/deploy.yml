@@ -15,6 +15,7 @@ on:
       - "e2e/**"
       - "research/**"
       - "tests/**"
+      - "floot-collection/**"
       - "package.json"
       - ".github/workflows/deploy.yml"
   pull_request:
@@ -30,6 +31,7 @@ on:
       - "e2e/**"
       - "research/**"
       - "tests/**"
+      - "floot-collection/**"
       - "package.json"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
