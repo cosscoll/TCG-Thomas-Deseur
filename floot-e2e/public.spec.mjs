@@ -26,16 +26,31 @@ test("la connexion dispose de champs e-mail et mot de passe sans soumettre de do
   await expect(password).toHaveValue("");
 });
 
-test("les pages publiques ne débordent pas horizontalement sur mobile", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "mobile-chromium", "Vérification réservée à l'écran mobile");
-  for (const path of ["/", "/login"]) {
-    await page.goto(path, { waitUntil: "domcontentloaded" });
-    await expect(page).toHaveTitle(/TCG Deseur/i);
-    // React renders asynchronously. Wait for initial paint, without relying on historical prototype selectors.
-    await page.locator("body").waitFor({ state: "visible" });
-    await page.waitForTimeout(500);
-    const overflow = await page.evaluate(() =>
-      document.documentElement.scrollWidth - document.documentElement.clientWidth);
-    expect(overflow, `Débordement horizontal sur ${path}`).toBeLessThanOrEqual(2);
+test("les pages publiques restent lisibles aux différentes largeurs", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile-chromium", "Vérification mobile et tablette");
+  const viewports = [
+    { width: 320, height: 750 },
+    { width: 393, height: 852 },
+    { width: 412, height: 915 },
+    { width: 820, height: 1180 },
+  ];
+  for (const viewport of viewports) {
+    await page.setViewportSize(viewport);
+    for (const path of ["/", "/login"]) {
+      const response = await page.goto(path, { waitUntil: "load" });
+      expect(response?.status()).toBe(200);
+      await expect(page).toHaveTitle(/TCG Deseur/i);
+      // Floot may hydrate after the initial HTML has loaded.
+      await expect(page.locator("#root")).not.toBeEmpty();
+      await page.evaluate(async () => { await document.fonts.ready; });
+      const layout = await page.evaluate(() => ({
+        document: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        body: document.body.scrollWidth - document.body.clientWidth,
+      }));
+      expect(layout.document, `Débordement document à ${viewport.width}px sur ${path}`).toBeLessThanOrEqual(2);
+      expect(layout.body, `Débordement body à ${viewport.width}px sur ${path}`).toBeLessThanOrEqual(2);
+    }
   }
 });
+
+// This file deliberately does not exercise boosters or forms requiring accounts.
