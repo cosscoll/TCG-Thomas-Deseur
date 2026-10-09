@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 
 // Local static DEMONSTRATION — not the authenticated game on Floot.
 // Existing Playwright config launches a local server from the GitHub archive.
@@ -211,4 +212,27 @@ test('les onglets indiquent le panneau actif et restent contrôlables au clavier
   await nav.getByRole('button',{name:'Collection',exact:true}).focus();
   await page.keyboard.press('Space');
   await expect(nav.getByRole('button',{pressed:true})).toHaveText('Collection');
+});
+
+test('l’export CSV contient 49 cartes et les vrais compteurs de l’exemple fictif',async ({page})=>{
+  const pending=page.waitForEvent('download');
+  await page.getByRole('button',{name:'Exporter cet exemple CSV'}).click();
+  const download=await pending;
+  expect(download.suggestedFilename()).toBe('tcg-deseur-collection-exemple.csv');
+  const file=await download.path();
+  const csv=readFileSync(file,'utf8');
+  expect(csv.startsWith('\ufeff')).toBe(true);
+  expect(csv.trim().split('\r\n')).toHaveLength(50);
+  expect(csv).toContain('"matelas";"Matelas";"commune";"Oui";"4";"3"');
+  expect(csv).toContain('"fontaine";"Fontaine";"rare";"Oui";"2";"1"');
+});
+
+test('l’export du scénario vide ne conserve pas les anciennes possessions fictives',async ({page})=>{
+  await page.getByRole('button',{name:'Collection vide'}).click();
+  const pending=page.waitForEvent('download');
+  await page.getByRole('button',{name:'Exporter cet exemple CSV'}).click();
+  const download=await pending;
+  const csv=readFileSync(await download.path(),'utf8');
+  expect(csv).toContain('"matelas";"Matelas";"commune";"Non";"0";"0"');
+  expect(csv).not.toContain('"matelas";"Matelas";"commune";"Oui";"4";"3"');
 });
