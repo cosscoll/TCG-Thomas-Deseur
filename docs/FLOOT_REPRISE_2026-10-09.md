@@ -117,4 +117,10 @@ Les checkpoints transmis sont :
 6. Créer un checkpoint cohérent, publier seulement une version suffisamment vérifiée, puis vérifier la fin du déploiement.
 7. Exporter séparément le code Floot vers GitHub sans écraser les prototypes historiques ; documenter la version et les limites de sauvegarde.
 
-Ne pas promettre une reprise en arrière-plan : aucune automation de développement n'a été configurée par cette session.
+## Organisation autonome demandée après l'audit
+
+Cosme a demandé le 9 octobre de poursuivre en autonomie après l'audit. Une consigne durable et un rythme quotidien après la réinitialisation du quota ont été préparés.
+
+**La création de la tâche a échoué** : l'offre actuelle autorise cinq tâches planifiées actives et les cinq créneaux étaient occupés. Aucune tâche de développement n'est donc activée. Aucun autre automatisme n'a été modifié ou désactivé.
+
+La proposition et l'état de reprise sont consignés dans [le suivi autonome](FLOOT_SUIVI_AUTONOME.md). L'audit complet du code et de PostgreSQL devra être terminé avant d'enchaîner sur ses corrections.
