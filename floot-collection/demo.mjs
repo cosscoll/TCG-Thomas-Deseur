@@ -48,7 +48,18 @@ function renderRarityStats(model) {
     const fill = element('div', 'rarity-fill');
     fill.style.width = `${group.completionPercent}%`;
     track.append(fill);
-    tile.append(top, track);
+    const jump = element('button', 'rarity-open', 'Voir les cartes');
+    jump.type = 'button';
+    jump.setAttribute('aria-label', `Voir les cartes de rareté ${group.label}`);
+    jump.addEventListener('click', () => {
+      byId('rarity').value = group.id;
+      byId('ownership').value = 'all';
+      byId('search').value = '';
+      activateView('collection');
+      render();
+      byId('binder-title').scrollIntoView({ block: 'start' });
+    });
+    tile.append(top, track, jump);
     mount.append(tile);
   }
 }
@@ -306,15 +317,17 @@ for (const id of ['duplicate-rarity', 'duplicate-sort']) {
   byId(id).addEventListener('change', render);
 }
 
+function activateView(view) {
+  for (const control of document.querySelectorAll('[data-view]')) {
+    control.setAttribute('aria-pressed', String(control.dataset.view === view));
+  }
+  for (const panel of document.querySelectorAll('[data-view-panel]')) {
+    panel.hidden = panel.dataset.viewPanel !== view;
+  }
+}
+
 for (const button of document.querySelectorAll('[data-view]')) {
-  button.addEventListener('click', () => {
-    for (const control of document.querySelectorAll('[data-view]')) {
-      control.setAttribute('aria-pressed', String(control === button));
-    }
-    for (const panel of document.querySelectorAll('[data-view-panel]')) {
-      panel.hidden = panel.dataset.viewPanel !== button.dataset.view;
-    }
-  });
+  button.addEventListener('click', () => activateView(button.dataset.view));
 }
 
 byId('detail-close').addEventListener('click', () => byId('card-detail').close());
