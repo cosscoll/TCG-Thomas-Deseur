@@ -138,3 +138,20 @@
 .booster-dialog .booster-result{opacity:0;animation:booster-card-reveal .38s cubic-bezier(.2,.8,.28,1) forwards}
 @keyframes booster-card-reveal{0%{opacity:0;transform:translateY(22px) rotateY(20deg) scale(.92)}100%{opacity:1;transform:translateY(0) rotateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.booster-dialog .booster-result{opacity:1;animation:none!important}}
+
+/* Compte joueur V0.2 : jamais de faux formulaire actif sans backend. */
+.account-section{max-width:1290px;margin:0 auto 80px;padding:34px 38px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(120deg,#222036,#171727)}
+.account-section .section-top{margin-bottom:16px}
+.account-section .section-top p:not(.eyebrow){max-width:740px}
+.account-section [hidden]{display:none!important}
+.account-feedback{font-size:.87rem;color:var(--gold);min-height:1.5em}
+.account-setup{border:1px solid #ffc45f70;border-radius:14px;background:#ffc45f0b;padding:19px}
+.account-setup p,.account-section #accountMember p{color:var(--muted);font-size:.86rem;line-height:1.65}
+.account-form{display:flex;flex-wrap:wrap;align-items:end;gap:15px;max-width:850px}
+.account-form label{display:flex;flex-direction:column;gap:7px;min-width:min(100%,250px);flex:1;font-size:.82rem;font-weight:650}
+.account-form input,.account-form select{background:var(--panel);color:var(--text);border:1px solid #ffffff40;border-radius:9px;padding:12px;font:inherit;min-height:45px}
+.account-form input:focus-visible,.account-form select:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.account-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;width:100%}
+.account-actions button{margin-top:0}
+@media(max-width:850px){.account-section{margin:0 5% 60px;padding:26px 20px}}
+@media(max-width:550px){.account-form{display:block}.account-form label{margin-bottom:15px}.account-actions{flex-direction:column;align-items:stretch}.account-actions button{width:100%;justify-content:center}}
