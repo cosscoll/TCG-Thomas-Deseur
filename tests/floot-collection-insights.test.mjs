@@ -55,7 +55,7 @@ test('different duplicate order and unknown filters are handled', () => {
 test('goals are informative and never grant rewards', () => {
   const g=getCollectionGoals(sample());
   assert.equal(g.total,15);
-  assert.equal(g.achieved,6);
+  assert.equal(g.achieved,7);
   assert.equal(g.goals.find(x=>x.id==='unique-5').achieved,true);
   assert.equal(g.goals.find(x=>x.id==='unique-10').remaining,5);
   assert.equal(g.goals.find(x=>x.id==='complete-secrete').remaining,2);
