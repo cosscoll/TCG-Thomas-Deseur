@@ -4,6 +4,20 @@
 
 **Périmètre :** pas de nouveaux visuels, pas de combats, pas d'échanges, pas de boutique, pas de création ou modification de comptes joueurs. Les 49 identifiants historiques et les probabilités de booster restent inchangés.
 
+## Complément de session — fiches et navigation des cartes (15:06–15:15 UTC)
+
+**Fonctions ajoutées après les six premiers lots :**
+- **Fiche individuelle** depuis le classeur ou l'espace Doublons : rareté, numéro de catalogue, statut Possédée/Manquante, quantité et exemplaires supplémentaires. Les illustrations restent explicitement en préparation.
+- **Navigation entre les fiches** avec boutons précédent/suivant et flèches clavier ; fermeture avec Échap (élément natif `<dialog>`), sans modification des quantités.
+- **Raccourcis directs par rareté** depuis les barres de progression vers les cartes correspondantes du classeur.
+- **Raccourcis depuis les statistiques** : Possédées, Manquantes et Doublons, avec filtres cohérents.
+- **Accessibilité des barres de progression** : valeurs accessibles pour la progression totale et les cinq raretés.
+- **Contrôles supplémentaires** : tests statiques du câblage UI, tests Node de syntaxe des modules et des scénarios Playwright, nouveaux scénarios de navigation clavier et du détail des cartes.
+
+**Vérification actuelle :** [GitHub Actions `37950227745`](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37950227745), **127 tests Node réussis sur 127, zéro échec**, commit `d7a46bb2e14c22a7c7fb632a85b9eb9271acf0ec`.
+
+**Réserve de validation :** les tests Playwright de parcours réels existent dans `e2e/binder-demo.spec.mjs`, mais **n'ont pas été exécutés**. Les tests Node valident la logique, la présence de contrôles et la syntaxe, pas le comportement réel de l'interface dans Chromium. L'application Floot reste inchangée.
+
 ## État réel au terme du développement GitHub
 
 ### Développé et testé dans les modules indépendants
