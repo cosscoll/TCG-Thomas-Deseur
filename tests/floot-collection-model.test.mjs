@@ -227,3 +227,51 @@ test('an incorrect rarity distribution rejects the catalogue before progress is 
   const broken=CARDS.map((c,index)=>index===0?{...c,rarity:'rare'}:c);
   assert.throws(()=>buildCollectionModel(broken,[]),/49 cartes/);
 });
+
+
+test('500 inventaires déterministes préservent toutes les équations de collection', () => {
+  let seed = 0x345ab21;
+  const randint = max => {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed % max;
+  };
+  for (let trial = 0; trial < 500; trial++) {
+    const inventory = CARDS.flatMap(c => {
+      const n = randint(8);
+      return n ? [{cardId:c.id,quantity:n}] : [];
+    });
+    const model = buildCollectionModel(CARDS,inventory);
+    assert.equal(model.total,49);
+    assert.equal(model.unique + model.missing,49);
+    assert.equal(model.copies,model.unique + model.extraCopies);
+    assert.ok(model.completionPercent >= 0 && model.completionPercent <= 100);
+    assert.equal(model.unique,model.byRarity.reduce((a,b)=>a+b.unique,0));
+    assert.equal(model.missing,model.byRarity.reduce((a,b)=>a+b.missing,0));
+    assert.equal(model.copies,model.byRarity.reduce((a,b)=>a+b.copies,0));
+    assert.equal(model.extraCopies,model.byRarity.reduce((a,b)=>a+b.extraCopies,0));
+    assert.equal(model.duplicateTypes,model.byRarity.reduce((a,b)=>a+b.duplicateTypes,0));
+    assert.equal(filterCollectionCards(model,{ownership:'owned'}).length,model.unique);
+    assert.equal(filterCollectionCards(model,{ownership:'missing'}).length,model.missing);
+    assert.equal(filterCollectionCards(model,{ownership:'duplicates'}).length,model.duplicateTypes);
+  }
+});
+
+test('ajouter un doublon augmente les exemplaires, pas les cartes uniques', () => {
+  const before=buildCollectionModel(CARDS,[{cardId:'matelas',quantity:1}]);
+  const after=buildCollectionModel(CARDS,[{cardId:'matelas',quantity:2}]);
+  assert.equal(after.copies,before.copies+1);
+  assert.equal(after.extraCopies,before.extraCopies+1);
+  assert.equal(after.unique,before.unique);
+  assert.equal(after.completionPercent,before.completionPercent);
+});
+
+test('obtenir une carte manquante augmente les découvertes uniques exactement de un', () => {
+  const before=buildCollectionModel(CARDS,[{cardId:'matelas',quantity:4}]);
+  const after=buildCollectionModel(CARDS,[
+    {cardId:'matelas',quantity:4},
+    {cardId:'fontaine',quantity:1},
+  ]);
+  assert.equal(after.unique,before.unique+1);
+  assert.equal(after.missing,before.missing-1);
+  assert.equal(after.extraCopies,before.extraCopies);
+});
