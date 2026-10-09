@@ -176,6 +176,32 @@
       <p class="subnote">Une estimation d'attente côté interface ne remplace jamais la confirmation du serveur. La règle provisoire reste un booster gratuit toutes les 24 heures.</p>
     </section>
 
+    <dialog id="card-detail" class="card-dialog" aria-labelledby="detail-title" aria-describedby="detail-hint">
+      <div class="dialog-header">
+        <p class="eyebrow">FICHE DE COLLECTION</p>
+        <button type="button" id="detail-close" aria-label="Fermer la fiche">Fermer ×</button>
+      </div>
+      <div class="dialog-art" role="img" aria-label="Emplacement d'illustration en préparation">
+        <span id="detail-number">#—</span>
+        <span>Illustration en préparation</span>
+      </div>
+      <div class="dialog-content">
+        <p id="detail-rarity" class="rarity-name">—</p>
+        <h2 id="detail-title">Carte</h2>
+        <p id="detail-hint" class="subnote">Quantités fictives dans cette démonstration.</p>
+        <div class="detail-stats">
+          <div><small>Statut</small><strong id="detail-status">—</strong></div>
+          <div><small>Exemplaires</small><strong id="detail-quantity">—</strong></div>
+          <div><small>Copies en double</small><strong id="detail-extras">—</strong></div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" id="detail-previous">← Carte précédente</button>
+        <span id="detail-position" aria-live="polite">—</span>
+        <button type="button" id="detail-next">Carte suivante →</button>
+      </div>
+    </dialog>
+
     <footer>
       <span>Démonstration technique de l'interface · Aucune ouverture de booster ni récompense.</span>
       <span>Raretés et identifiants conservés · Visuels en préparation.</span>
