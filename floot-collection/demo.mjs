@@ -1,7 +1,7 @@
 import { CARDS } from '../data/cards.js';
 import { buildCollectionModel, filterCollectionCards, RARITY_LABELS } from './collection-model.mjs';
 
-// Local, non-persistent EXAMPLE holdings only. No account, API, localStorage or booster.
+// Fictional non-persistent holdings only; no account, API access or booster.
 const samples = Object.freeze({
   sample: [
     { cardId: 'matelas', quantity: 4 },
