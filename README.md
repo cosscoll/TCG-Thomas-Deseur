@@ -86,6 +86,9 @@ Ouvrir http://localhost:8000/. Ces commandes concernent le code historique de ce
 
 ## Sauvegarde du code Floot à préparer
 
+Un [vérificateur d'intégrité en lecture seule](scripts/verify_floot_export.py) et sa [procédure détaillée](docs/SAUVEGARDE_CODE_FLOOT.md) sont maintenant disponibles. Ils ont été testés sur des exports fictifs, **pas encore sur les sources Floot réelles**. Les tests d'accessibilité supplémentaires sont dans [`floot-e2e/accessibility.spec.mjs`](floot-e2e/accessibility.spec.mjs).
+
+
 Après récupération de l'accès, exporter les sources réellement présentes dans Floot, avec leurs dépendances et la version du projet. Les conserver dans un emplacement distinct et clairement documenté, sans écraser le catalogue, les prototypes ou l'historique Git.
 
 Vérifier ensuite les sources exportées et leur correspondance au déploiement. Une sauvegarde du code ne remplace pas une sauvegarde PostgreSQL. Ne pas annoncer une synchronisation effectuée tant que l'export et sa vérification n'ont pas eu lieu.
