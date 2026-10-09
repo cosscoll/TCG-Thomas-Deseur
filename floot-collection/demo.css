@@ -89,7 +89,13 @@ h2 { font-size: clamp(1.25rem, 2.5vw, 1.65rem); margin: 0; letter-spacing: -.025
 .collection-card[data-rarity="epique"] { --rarity: var(--epique); }
 .collection-card[data-rarity="legendaire"] { --rarity: var(--legendaire); }
 .collection-card[data-rarity="secrete"] { --rarity: var(--secrete); }
-.collection-card.not-owned { opacity: .72; }
+/* Do not dim the entire card: opacity reduces text contrast below WCAG AA. */
+.collection-card.not-owned {
+  opacity: 1;
+  background: #142137;
+  border-style: dashed;
+}
+.collection-card.not-owned .art-placeholder { background: #152238; }
 .art-placeholder {
   background: radial-gradient(circle at 50% 30%, #2c3c54 0, #182539 70%);
   aspect-ratio: 5 / 3.3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
