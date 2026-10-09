@@ -1,4 +1,5 @@
 import { accountsConfigured, getAccountClient } from "./client.js";
+import { resolveInitialUser } from "./session.js";
 
 export async function initAccountPanel(onSessionChange) {
   const $ = id => document.getElementById(id);
@@ -54,15 +55,16 @@ export async function initAccountPanel(onSessionChange) {
   }
   try {
     client = await getAccountClient();
-    const { data, error } = await client.auth.getUser();
-    if (error) throw error;
-    user = data?.user ?? null;
+    // A first-time visitor does not have a session. getUser() returns
+    // AuthSessionMissingError in that legitimate state; this is NOT a service
+    // outage and must never prevent signup/signin handlers from registering.
+    user = await resolveInitialUser(client.auth);
     render();
     notifyParent();
     client.auth.onAuthStateChange((event, session) => {
       user = session?.user ?? null;
       if (event === "PASSWORD_RECOVERY") recovery = true;
-      if (event === "SIGNED_OUT") recovery = false;
+      if (event === "SIGNED_OUT" || event === "SIGNED_IN") recovery = false;
       render();
       notifyParent();
     });
@@ -80,7 +82,13 @@ export async function initAccountPanel(onSessionChange) {
     submit.disabled=true;
     try {
       const { data,error }=signup
-        ? await client.auth.signUp({email,password,options:{data:{display_name:name}}})
+        ? await client.auth.signUp({
+            email, password,
+            options: {
+              data: {display_name:name},
+              emailRedirectTo: window.location.origin + window.location.pathname,
+            },
+          })
         : await client.auth.signInWithPassword({email,password});
       if(error)throw error;
       $("accountPassword").value="";
