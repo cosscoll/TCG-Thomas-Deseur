@@ -110,3 +110,28 @@ test('duplicate rarity breakdown and next collector goals are wired up',()=>{
   assert.match(css,/\.mini-stat-grid/);
   assert.match(css,/\.next-goals/);
 });
+
+
+test('card detail is modal, keyboard navigable and uses the existing quantities', () => {
+  for (const id of ['card-detail','detail-title','detail-rarity','detail-quantity','detail-extras',
+    'detail-status','detail-previous','detail-next','detail-close','detail-position']) {
+    assert.match(html,new RegExp(`id="${id}"`));
+  }
+  assert.match(html,/<dialog id="card-detail"/);
+  assert.match(js,/function openCardDetail\(/);
+  assert.match(js,/function moveCardDetail\(/);
+  assert.match(js,/showModal\(\)/);
+  assert.match(js,/event\.key === 'ArrowLeft'/);
+  assert.match(js,/event\.key === 'ArrowRight'/);
+  assert.match(js,/card\.quantity > 0 \? 'Possédée'/);
+  assert.match(js,/card\.extraCopies/);
+});
+
+test('rarity progress exposes accessible progress values and direct filtered navigation', () => {
+  assert.match(html,/id="overall-progress" role="progressbar"/);
+  assert.match(js,/track\.setAttribute\('role', 'progressbar'\)/);
+  assert.match(js,/aria-valuenow/);
+  assert.match(js,/function activateView\(view\)/);
+  assert.match(js,/Voir les cartes de rareté/);
+  assert.match(css,/\.rarity-open/);
+});
