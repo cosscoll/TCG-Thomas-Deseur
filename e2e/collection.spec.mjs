@@ -27,6 +27,7 @@ test("parcours complet : boosters, classeur, historique, actualisation et filtre
   await expect(page.locator("#collectionGrid .binder-card.owned").first()).toBeVisible();
   await page.locator("#collectionOwnedFilter").selectOption("missing");
   await expect(page.locator("#collectionGrid .binder-card.missing").first()).toBeVisible();
+  await page.locator("#collectionOwnedFilter").selectOption("all");
   await page.locator("#collectionSearch").fill("matelas");
   await expect(page.locator("#collectionGrid .binder-card")).toHaveCount(1);
   await page.locator("#collectionSearch").fill("");
