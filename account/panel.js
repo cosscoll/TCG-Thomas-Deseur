@@ -54,15 +54,18 @@ export async function initAccountPanel(onSessionChange) {
   }
   try {
     client = await getAccountClient();
-    const { data, error } = await client.auth.getUser();
-    if (error) throw error;
-    user = data?.user ?? null;
+    // A first-time visitor does not have a session. getUser() returns
+    // AuthSessionMissingError in that legitimate state; this is NOT a service
+    // outage and must never prevent signup/signin handlers from registering.
+    const { data: sessionData, error: sessionError } = await client.auth.getSession();
+    if (sessionError) throw sessionError;
+    user = sessionData?.session?.user ?? null;
     render();
     notifyParent();
     client.auth.onAuthStateChange((event, session) => {
       user = session?.user ?? null;
       if (event === "PASSWORD_RECOVERY") recovery = true;
-      if (event === "SIGNED_OUT") recovery = false;
+      if (event === "SIGNED_OUT" || event === "SIGNED_IN") recovery = false;
       render();
       notifyParent();
     });
