@@ -35,7 +35,16 @@
       </div>
     </section>
 
-    <section class="summary" aria-label="Statistiques de collection">
+    <nav class="view-navigation" aria-label="Sections du classeur">
+      <button type="button" data-view="collection" aria-pressed="true" aria-controls="view-collection">Collection</button>
+      <button type="button" data-view="duplicates" aria-pressed="false" aria-controls="view-duplicates">Mes doublons</button>
+      <button type="button" data-view="goals" aria-pressed="false" aria-controls="view-goals">Progression</button>
+      <button type="button" data-view="history" aria-pressed="false" aria-controls="view-history">Historique</button>
+      <button type="button" data-view="recap" aria-pressed="false" aria-controls="view-recap">Bilan booster</button>
+    </nav>
+
+    <div id="view-collection" data-view-panel="collection">
+      <section class="summary" aria-label="Statistiques de collection">
       <div class="metric"><span>Cartes uniques</span><strong id="unique">—</strong><small>sur 49</small></div>
       <div class="metric"><span>Exemplaires possédés</span><strong id="copies">—</strong><small>Copies totales</small></div>
       <div class="metric"><span>Exemplaires en double</span><strong id="extras">—</strong><small>Au-delà du premier</small></div>
@@ -92,6 +101,76 @@
         <p>Aucune carte ne correspond à ces filtres.</p>
         <button type="button" id="clear-filters">Effacer les filtres</button>
       </div>
+    </section>
+
+    </div>
+
+    <section id="view-duplicates" class="panel-extra" data-view-panel="duplicates" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">GESTION DES EXEMPLAIRES</p><h2>Mes doublons</h2></div>
+        <strong id="duplicates-summary">—</strong>
+      </div>
+      <p class="subtitle">Le premier exemplaire appartient à la collection. Les autres sont des copies supplémentaires ; aucune transaction ni échange n'est réalisé ici.</p>
+      <div class="insight-controls">
+        <label>Rareté
+          <select id="duplicate-rarity">
+            <option value="all">Toutes</option>
+            <option value="commune">Commune</option>
+            <option value="rare">Rare</option>
+            <option value="epique">Épique</option>
+            <option value="legendaire">Légendaire</option>
+            <option value="secrete">Secrète</option>
+          </select>
+        </label>
+        <label>Classement
+          <select id="duplicate-sort">
+            <option value="extra-desc">Copies en double, décroissant</option>
+            <option value="rarity">Rareté</option>
+            <option value="name">Nom</option>
+            <option value="catalogue">Ordre du catalogue</option>
+          </select>
+        </label>
+      </div>
+      <div id="duplicate-list" class="insight-grid" aria-live="polite"></div>
+      <p id="duplicate-empty" class="empty-state" hidden>Aucun doublon pour ces critères.</p>
+    </section>
+
+    <section id="view-goals" class="panel-extra" data-view-panel="goals" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">DÉCOUVERTES</p><h2>Objectifs de collection</h2></div>
+        <strong id="goals-summary">—</strong>
+      </div>
+      <p class="subtitle">Jalons de progression informatifs, sans pièces, bonus ni récompenses attribués.</p>
+      <div id="goals-list" class="goals-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="view-history" class="panel-extra" data-view-panel="history" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">OUVERTURES ENREGISTRÉES</p><h2>Historique des acquisitions</h2></div>
+        <strong id="history-summary">—</strong>
+      </div>
+      <p class="subtitle">Les ouvertures affichées ici sont des exemples indépendants de l'inventaire fictif sélectionné. Dans le jeu, seul l'historique confirmé par le serveur sera affiché.</p>
+      <div id="history-list" class="history-list" aria-live="polite"></div>
+    </section>
+
+    <section id="view-recap" class="panel-extra" data-view-panel="recap" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">OUVERTURE FICTIVE VALIDÉE</p><h2>Bilan d'un booster</h2></div>
+        <strong>5 cartes</strong>
+      </div>
+      <p class="subtitle">Exemple de récapitulatif après attribution serveur. Cette démonstration n'ouvre aucun booster et ne modifie aucune collection.</p>
+      <div class="recap-summary">
+        <div><small>Nouvelles découvertes</small><strong id="recap-new">—</strong></div>
+        <div><small>Copies supplémentaires</small><strong id="recap-extra">—</strong></div>
+        <div><small>Plus haute rareté</small><strong id="recap-best">—</strong></div>
+      </div>
+      <ol id="recap-list" class="recap-list"></ol>
+      <h3>Probabilités par emplacement</h3>
+      <table class="odds-table" aria-label="Chances de rareté par emplacement">
+        <thead><tr><th scope="col">Rareté</th><th scope="col">Emplacements 1 à 4</th><th scope="col">5e emplacement garanti</th></tr></thead>
+        <tbody id="odds-body"></tbody>
+      </table>
+      <p class="subnote">Une estimation d'attente côté interface ne remplace jamais la confirmation du serveur. La règle provisoire reste un booster gratuit toutes les 24 heures.</p>
     </section>
 
     <footer>
