@@ -57,7 +57,7 @@ test("unshielded bonus, pierce and guard break change actual damage",()=>{
   assert.equal(foeStats.maxHp-plain.sides.ai.active.hp,51);
   assert.equal(foeStats.maxHp-defended.sides.ai.active.hp,21);
   const pierce=applyAction(scenario("mouette",{enemyGuard:35}),"player",{type:"burst"});
-  assert.equal(cardStats(pierce.sides.ai.active.id).maxHp-pierce.sides.ai.active.hp,20);
+  assert.equal(cardStats(pierce.sides.ai.active.id).maxHp-pierce.sides.ai.active.hp,12);
   const breakGuard=applyAction(scenario("chemise",{enemyGuard:35}),"player",{type:"burst"});
   assert.equal(cardStats(breakGuard.sides.ai.active.id).maxHp-breakGuard.sides.ai.active.hp,15);
 });
