@@ -326,3 +326,11 @@ footer { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-b
   font-size: .8rem; font-weight: 700; padding: 7px 9px;
 }
 .rarity-open:hover { background: #2c4262; border-color: var(--rarity); }
+
+.metric [data-shortcut] {
+  margin-top: auto; align-self: flex-start;
+  border: 1px solid #5b7b90; background: transparent;
+  border-radius: 7px; padding: 8px 11px; min-height: 38px;
+  color: var(--accent); font-size: .82rem; font-weight: 700;
+}
+.metric [data-shortcut]:hover { background: var(--raised); }
