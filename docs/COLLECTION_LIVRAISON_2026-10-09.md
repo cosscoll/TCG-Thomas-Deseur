@@ -18,6 +18,17 @@
 
 **Réserve de validation :** les tests Playwright de parcours réels existent dans `e2e/binder-demo.spec.mjs`, mais **n'ont pas été exécutés**. Les tests Node valident la logique, la présence de contrôles et la syntaxe, pas le comportement réel de l'interface dans Chromium. L'application Floot reste inchangée.
 
+## Validation navigateur et export (suite du 9 octobre 2026, 19:00–19:16 UTC)
+
+- L'exécution réelle du navigateur Chromium est désormais **active sur chaque modification du code de la collection**, sur ordinateur et mobile. Contrairement aux premiers tests statiques, elle charge la vraie démonstration et clique les contrôles.
+- **Bug découvert puis corrigé** : un bouton « Carte suivante » désactivé au bout des fiches faisait perdre le focus clavier ; le retour avec la flèche gauche échouait sur desktop et mobile. Le focus est maintenant transféré vers le bouton encore actif.
+- **Export CSV en lecture seule** : `floot-collection/collection-export.mjs` produit un tableau UTF‑8 avec séparateur point-virgule et BOM, contenant 49 identifiants, noms, raretés, possession, copies et doublons ; noms dangereux neutralisés pour prévenir l'exécution de formules dans les tableurs. Un bouton de la **démo fictive** permet de télécharger ce fichier localement, sans API, sans compte ni mutation serveur.
+- **Audit d'accessibilité Axe** : les cinq vues et la fiche modale sont inspectées suivant les règles WCAG 2.0/2.1 A et AA. Le premier audit a révélé une faiblesse de contraste causée par l'opacité appliquée aux cartes manquantes ; l'effet a été remplacé par un traitement graphique qui ne réduit plus la lisibilité des textes. Le second audit **ne remonte aucune violation des règles contrôlées** dans les scénarios testés.
+- **Dernière validation avant optimisation CI** : [GitHub Actions 37978835656](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37978835656) — **48 tests navigateur Chromium réussis**, **142 tests Node réussis**, **zéro échec**. Ces contrôles concernent la **démonstration statique fictive**, pas le site Floot connecté.
+- **Efficacité de la CI** : activation du `cancel-in-progress` sur la même branche pour éviter que des versions déjà périmées continuent à exécuter Chromium lors de plusieurs commits rapprochés.
+
+**Vérifications restant nécessaires :** intégration dans les composants React/TypeScript de Floot, validation avec de vraies réponses serveur **mais sans altérer de comptes joueurs**, contrôle multi-comptes et persistance après booster, publication et confirmation de l'affichage sur le domaine public de Floot. L'URL GitHub Pages de la démonstration n'a toujours pas été vérifiée par accès HTTP externe indépendant depuis les outils disponibles.
+
 ## État réel au terme du développement GitHub
 
 ### Développé et testé dans les modules indépendants
