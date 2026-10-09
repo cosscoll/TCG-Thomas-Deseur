@@ -138,6 +138,14 @@ Il s'agit d'un **contrat d'adaptation de l'interface**, non de l'affirmation que
 - [30 tests fonctionnels du modèle](../tests/floot-collection-model.test.mjs) : collections vides/complètes, un exemplaire ou plusieurs, progression par rareté, recherche avec accents, tris, cumul des doublons dans une même ouverture, cas invalides et contraintes de lot de cinq.
 - [CI GitHub Actions](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773) : **73 tests Node réussis sur 73, aucun échec**, le 9 octobre 2026. Cela **ne constitue pas** un test d'intégration à Floot ni à sa base.
 
+## Extension fonctionnelle du 9 octobre 2026
+
+Le [bilan de livraison](COLLECTION_LIVRAISON_2026-10-09.md) décrit les six volets réellement codés : espace doublons enrichi, 15 jalons informatifs, historique trié sans déduire la nouveauté d'anciennes cartes, bilan des cinq cartes d'un booster déjà confirmé, diagnostic lecture seule avant/après attribution, et démonstration à **cinq sections**.
+
+Sources complémentaires : `floot-collection/collection-insights.mjs`, `floot-collection/collection-reconciliation.mjs`, `tests/floot-collection-insights.test.mjs`, `tests/floot-collection-reconciliation.test.mjs` et `e2e/binder-demo.spec.mjs`.
+
+**Résultat CI actuel :** 120 tests Node réussis sur 120. Les tests navigateur Playwright ne sont pas encore exécutés, et le code de jeu Floot n'a pas été modifié. Les visuels restent volontairement absents.
+
 ## 7. Démonstration visuelle non connectée
 
 Une interface indépendante a été préparée dans `floot-collection/demo.html`, `demo.mjs` et `demo.css`. Elle utilise **le modèle métier réel de cette préparation**, mais uniquement avec **trois inventaires fictifs**. Elle n'utilise pas d'image, de compte utilisateur, d'API privée ni de stockage persistant. Les filtres et compteurs fonctionnent sur ces exemples sans attribuer de carte.
