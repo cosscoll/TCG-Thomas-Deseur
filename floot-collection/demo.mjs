@@ -27,7 +27,7 @@ const sampleHistory = [
 ];
 
 const byId = id => document.getElementById(id);
-const state = { scenario: 'sample' };
+const state = { scenario: 'sample', detailCards: [], detailIndex: 0 };
 
 function element(tag, className, content) {
   const node = document.createElement(tag);
@@ -76,7 +76,11 @@ function createCard(card) {
     meta.append(element('span', 'extra-status',
       `+${card.extraCopies} exemplaire${card.extraCopies > 1 ? 's' : ''} en double`));
   }
-  body.append(rarity, title, meta);
+  const showDetails = element('button', 'card-open', 'Voir la fiche');
+  showDetails.type = 'button';
+  showDetails.setAttribute('aria-label', `Voir la fiche de ${card.name}`);
+  showDetails.addEventListener('click', () => openCardDetail(card.id, 'collection'));
+  body.append(rarity, title, meta, showDetails);
   article.append(art, body);
   return article;
 }
@@ -98,6 +102,10 @@ function renderDuplicateDetails(model) {
       element('strong', 'number-emphasis', `×${card.quantity}`),
       element('p', 'subnote', `1 carte de collection + ${card.extraCopies} copie${card.extraCopies > 1 ? 's' : ''} supplémentaire${card.extraCopies > 1 ? 's' : ''}`),
     );
+    const details = element('button', 'card-open', 'Voir la fiche');
+    details.type = 'button';
+    details.addEventListener('click', () => openCardDetail(card.id, 'duplicates'));
+    article.append(details);
     return article;
   }));
   const byRarity = byId('duplicate-rarity-summary');
@@ -207,7 +215,54 @@ function renderBoosterRecap() {
   }));
 }
 
+function getVisibleDetailCards(source) {
+  const model = buildCollectionModel(CARDS, samples[state.scenario]);
+  if (source === 'duplicates') return getDuplicateSummary(model, {
+    rarity: byId('duplicate-rarity').value,
+    sort: byId('duplicate-sort').value,
+  }).cards;
+  return filterCollectionCards(model, {
+    ownership: byId('ownership').value,
+    rarity: byId('rarity').value,
+    search: byId('search').value,
+    sort: byId('sort').value,
+  });
+}
+
+function paintCardDetail() {
+  const card = state.detailCards[state.detailIndex];
+  if (!card) return;
+  const rarityName = RARITY_LABELS[card.rarity];
+  byId('card-detail').dataset.rarity = card.rarity;
+  byId('detail-rarity').textContent = rarityName;
+  byId('detail-title').textContent = card.name;
+  byId('detail-number').textContent = `#${String(card.index + 1).padStart(2, '0')}`;
+  byId('detail-status').textContent = card.owned ? 'Possédée' : 'Manquante';
+  byId('detail-quantity').textContent = String(card.quantity);
+  byId('detail-extras').textContent = String(card.extraCopies);
+  byId('detail-position').textContent = `${state.detailIndex + 1} / ${state.detailCards.length}`;
+  byId('detail-previous').disabled = state.detailIndex === 0;
+  byId('detail-next').disabled = state.detailIndex === state.detailCards.length - 1;
+}
+
+function openCardDetail(cardId, source = 'collection') {
+  state.detailCards = getVisibleDetailCards(source);
+  state.detailIndex = state.detailCards.findIndex(card => card.id === cardId);
+  if (state.detailIndex < 0) return;
+  paintCardDetail();
+  byId('card-detail').showModal();
+}
+
+function moveCardDetail(offset) {
+  const next = state.detailIndex + offset;
+  if (next < 0 || next >= state.detailCards.length) return;
+  state.detailIndex = next;
+  paintCardDetail();
+}
+
 function render() {
+  // An outdated view is never shown after the demonstration inventory changes.
+  if (byId('card-detail').open) byId('card-detail').close();
   const model = buildCollectionModel(CARDS, samples[state.scenario]);
   byId('unique').textContent = `${model.unique} / ${model.total}`;
   byId('copies').textContent = String(model.copies);
@@ -261,6 +316,17 @@ for (const button of document.querySelectorAll('[data-view]')) {
     }
   });
 }
+
+byId('detail-close').addEventListener('click', () => byId('card-detail').close());
+byId('detail-previous').addEventListener('click', () => moveCardDetail(-1));
+byId('detail-next').addEventListener('click', () => moveCardDetail(1));
+byId('card-detail').addEventListener('click', event => {
+  if (event.target === byId('card-detail')) byId('card-detail').close();
+});
+byId('card-detail').addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft') { event.preventDefault(); moveCardDetail(-1); }
+  if (event.key === 'ArrowRight') { event.preventDefault(); moveCardDetail(1); }
+});
 
 byId('clear-filters').addEventListener('click', () => {
   byId('search').value = '';
