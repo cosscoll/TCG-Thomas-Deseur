@@ -14,16 +14,16 @@
   <a class="skip" href="#catalogue">Aller au catalogue</a>
   <header class="topbar">
     <div class="brand"><span class="brand-icon" aria-hidden="true">BI</span><span>Budget <strong>Illimité</strong></span></div>
-    <nav aria-label="Navigation principale"><a href="#catalogue">Les cartes</a><a href="#deckbuilder">Mon deck</a><a href="#arena">Combat solo</a><a href="#booster">Boosters</a><a href="./research/">Archives visuelles</a><a href="./research/exploration.html">Costumes et apparitions</a></nav>
+    <nav aria-label="Navigation principale"><a href="#booster">Ouvrir des boosters</a><a href="#collection">Mon classeur</a><a href="#compte">Mon compte</a><a href="#arena">Combat test</a></nav>
     <span class="version">Prototype de développement</span>
   </header>
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">Collection non officielle · Thomas Deseur</p>
-        <h1 id="hero-title">Un univers.<br><em>49 apparitions.</em><br>Un premier duel.</h1>
-        <p>Chaque apparition mérite sa carte. Compose ton équipe de huit cartes et affronte Billy dans ce premier mode solo. Les visuels et origines restent à vérifier avant publication.</p>
-        <a class="main-cta" href="#arena">Jouer contre Billy <span aria-hidden="true">↗</span></a> <a class="secondary-cta hero-catalogue" href="#catalogue">Voir les cartes</a> <a class="secondary-cta hero-catalogue" href="./research/">176 captures à identifier ↗</a>
+        <h1 id="hero-title">49 cartes.<br><em>Une collection.</em><br>À compléter.</h1>
+        <p>Ouvre tes boosters, découvre des cartes de différentes raretés et remplis ton classeur. Les ouvertures actuelles sont une démonstration locale ; les comptes et les collections sauvegardées seront activés après sécurisation du serveur.</p>
+        <a class="main-cta" href="#booster">Ouvrir mon premier booster <span aria-hidden="true">↗</span></a> <a class="secondary-cta hero-catalogue" href="#collection">Voir mon classeur</a>
       </div>
       <div class="hero-stage" aria-hidden="true">
         <div class="showcase-card showcase-back"></div>
@@ -98,8 +98,43 @@
       </div>
     </section>
     <section id="booster" class="booster-section">
-      <div><p class="eyebrow">Découvrir les raretés</p><h2>Et si tu ouvrais un booster ?</h2><p>Cinq cartes aléatoires, dont une au moins rare sur le dernier emplacement. Il s'agit d'une <strong>simulation</strong> : aucun Budget dépensé, aucune carte obtenue.</p><button id="simulateBooster" type="button" class="main-cta">Simuler une ouverture <span aria-hidden="true">↗</span></button></div>
+      <div><p class="eyebrow">La chasse aux 49 cartes</p><h2>Ouvre un booster</h2><p>Chaque booster contient cinq cartes, avec au moins une Rare ou mieux. Tes découvertes, doublons et progrès sont conservés dans ton classeur de démonstration local. Les récompenses officielles nécessiteront un compte et un serveur sécurisé.</p><p id="boosterAvailability" class="booster-availability" role="status" aria-live="polite">Mode démonstration : ouvertures gratuites et illimitées sur cet appareil.</p><button id="simulateBooster" type="button" class="main-cta">Ouvrir un booster <span aria-hidden="true">↗</span></button></div>
       <div class="booster-pack" aria-hidden="true"><span>BUDGET<br>ILLIMITÉ</span><strong>5 CARTES</strong><small>APERÇU NON OFFICIEL</small></div>
+    </section>
+    <section id="collection" class="collection-section" aria-labelledby="collectionTitle">
+      <div class="section-top"><div><p class="eyebrow">Collection</p><h2 id="collectionTitle">Mon classeur</h2><p>Découvre les 49 cartes et garde une trace de tes exemplaires. Cette collection reste locale tant qu'aucun compte n'est connecté.</p></div></div>
+      <p id="collectionMode" class="collection-mode" role="status">Collection de démonstration conservée sur cet appareil.</p>
+      <div class="collection-stat-grid" aria-label="Avancement de la collection">
+        <div><strong id="collectionUnique">0 / 49</strong><span>Cartes différentes</span></div>
+        <div><strong id="collectionTotal">0</strong><span>Cartes obtenues</span></div>
+        <div><strong id="collectionDuplicates">0</strong><span>Exemplaires en double</span></div>
+        <div><strong id="collectionOpened">0</strong><span>Boosters ouverts</span></div>
+      </div>
+      <label class="collection-progress-label" for="collectionProgress">Complétion du classeur : <span id="collectionPercent">0 %</span></label>
+      <progress id="collectionProgress" max="49" value="0">0 sur 49</progress>
+      <div class="collection-filters">
+        <label>Affichage <select id="collectionOwnedFilter"><option value="all">Toutes les cartes</option><option value="owned">Possédées</option><option value="missing">À découvrir</option><option value="duplicates">Doublons</option></select></label>
+        <label>Rareté <select id="collectionRarity"><option value="all">Toutes les raretés</option><option value="commune">Commune</option><option value="rare">Rare</option><option value="epique">Épique</option><option value="legendaire">Légendaire</option><option value="secrete">Secrète</option></select></label>
+      </div>
+      <div id="collectionGrid" class="collection-grid" aria-label="Cartes à collectionner"></div>
+      <p id="collectionEmpty" class="empty hidden">Aucune carte ne correspond à ce filtre.</p>
+      <div class="recent-openings"><h3>Dernières ouvertures</h3><div id="recentOpenings"><p>Aucun booster ouvert pour le moment.</p></div></div>
+    </section>
+    <section id="compte" class="account-section" aria-labelledby="accountTitle">
+      <div class="section-top"><div><p class="eyebrow">Espace joueur</p><h2 id="accountTitle">Créer un compte joueur</h2><p>Un compte te permettra de retrouver ta collection sur plusieurs appareils. Les cartes de démonstration ne deviennent pas automatiquement des cartes officielles.</p></div></div>
+      <p id="accountMessage" class="account-feedback" role="status" aria-live="polite"></p>
+      <div id="accountSetup" class="account-setup"><strong>Comptes en préparation</strong><p>Le service sécurisé Supabase n'est pas encore raccordé. Tu peux continuer à ouvrir des boosters de démonstration et compléter le classeur local sans inscription.</p></div>
+      <div id="accountAnonymous" hidden>
+        <form id="accountForm" class="account-form">
+          <label>Action<select id="accountMode"><option value="signup">Créer un compte</option><option value="signin">Se connecter</option></select></label>
+          <label id="accountNameLabel">Pseudonyme <input id="accountName" type="text" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Ton pseudonyme"></label>
+          <label>Adresse e-mail <input id="accountEmail" type="email" autocomplete="email" inputmode="email" required placeholder="ton@email.fr"></label>
+          <label>Mot de passe <input id="accountPassword" type="password" minlength="8" autocomplete="new-password" required></label>
+          <div class="account-actions"><button id="accountSubmit" class="main-cta" type="submit">Créer mon compte</button><button id="accountForgot" class="secondary-cta" type="button">Mot de passe oublié ?</button></div>
+        </form>
+      </div>
+      <div id="accountPasswordRecovery" hidden class="account-form"><label>Nouveau mot de passe <input id="accountNewPassword" type="password" minlength="8" autocomplete="new-password"></label><button id="accountChangePassword" type="button" class="main-cta">Mettre à jour</button></div>
+      <div id="accountMember" hidden><strong id="accountUserEmail"></strong><p>Tes cartes proviennent de ton compte sécurisé. Les boosters sont attribués par le serveur.</p><button id="accountSignOut" class="secondary-cta" type="button">Me déconnecter</button></div>
     </section>
     <section id="avancement" class="progress-section"><div><p class="eyebrow">Phase de construction</p><h2>Le mode solo est jouable, le multijoueur reste à construire.</h2></div><p>Le moteur de combat d'origine était absent de l'archive. Nous avons construit un nouveau mode solo expérimental, avec statistiques provisoires et adversaire automatique. Les cartes, sources vidéo et parties multijoueurs restent à finaliser.</p></section>
   </main>
@@ -111,7 +146,7 @@
   </dialog>
   <dialog id="boosterDialog" class="booster-dialog" aria-labelledby="boosterTitle">
     <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Fermer">×</button></form>
-    <div class="booster-dialog-inner"><p class="eyebrow">Tirage de démonstration</p><h2 id="boosterTitle">Ton booster</h2><p>Aucune récompense n'est ajoutée au compte ou au classeur.</p><div id="boosterResults" class="booster-results"></div><button id="rerollBooster" type="button" class="main-cta">Simuler à nouveau</button></div>
+    <div class="booster-dialog-inner"><p class="eyebrow">Ton nouveau booster</p><h2 id="boosterTitle">Cinq cartes découvertes</h2><p id="boosterModeNote">Ces cartes sont ajoutées à ton classeur de démonstration local.</p><div id="boosterResults" class="booster-results"></div><button id="rerollBooster" type="button" class="main-cta">Ouvrir un autre booster</button></div>
   </dialog>
 </body>
 </html>
