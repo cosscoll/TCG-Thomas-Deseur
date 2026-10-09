@@ -35,7 +35,9 @@ Floot confirme que l'application est publiée. Les pages d'accueil et de connexi
 
 **Ces contrôles ne valident pas un parcours joueur connecté**, la séparation de deux comptes, la concurrence des boosters, la délivrabilité des e-mails ou l'ergonomie mobile. La base et le code serveur n'ont pas pu être relus pendant cette reprise : le quota quotidien Floot était épuisé.
 
-Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot du 9 octobre](docs/FLOOT_REPRISE_2026-10-09.md). Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation est préparée, mais son activation est bloquée par la limite de tâches actives.
+Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot du 9 octobre](docs/FLOOT_REPRISE_2026-10-09.md).
+
+**Plan d'intervention prêt pour le 10 octobre 2026 :** [consulter les corrections, scénarios de tests et critères de publication](docs/PLAN_REPRISE_2026-10-10.md). Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation est préparée, mais son activation est bloquée par la limite de tâches actives.
 
 ## Vérifier la version publique
 
