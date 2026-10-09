@@ -214,3 +214,16 @@ test('model calculations cannot invent cards from a user supplied inventory',()=
   assert.equal(m.unique,0);
   assert.throws(()=>buildCollectionModel(CARDS,[{cardId:'secret_fake',quantity:999}]),/invalide/);
 });
+
+test('an incomplete 48-card server catalogue never claims full collection', () => {
+  const partial=CARDS.slice(0,48);
+  assert.throws(
+    ()=>buildCollectionModel(partial,partial.map(c=>({cardId:c.id,quantity:1}))),
+    /49 cartes/,
+  );
+});
+
+test('an incorrect rarity distribution rejects the catalogue before progress is calculated',()=>{
+  const broken=CARDS.map((c,index)=>index===0?{...c,rarity:'rare'}:c);
+  assert.throws(()=>buildCollectionModel(broken,[]),/49 cartes/);
+});
