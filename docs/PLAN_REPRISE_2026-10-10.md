@@ -1,5 +1,8 @@
 # TCG Deseur — Plan d'intervention du 10 octobre 2026
 
+> **Modification de priorité du 9 octobre à 14:30 UTC :** la consigne la plus récente est de concentrer les développements sur **collection, rareté, doublons, progression et classeur**, pendant que les visuels sont encore en cours de création. La section « comptes » demeure un critère de sécurité mais **le premier lot produit à intégrer devient le modèle de collection**, dont les 28 tests ont déjà réussi sur GitHub : [modèle](../floot-collection/collection-model.mjs), [conception](CONCEPTION_COLLECTION_FLOOT.md). Ne pas remplacer les cartes ni leurs identifiants. Le calendrier ci-dessous reste un inventaire des risques techniques et doit être réordonné suivant cette priorité.
+
+
 **Préparé le :** 9 octobre 2026 — aucun changement applicatif Floot effectué dans ce document.  
 **Application active :** https://budget-illimite-tcg.floot.app  
 **Projet Floot existant :** `1d1c3807-73a6-49c5-a59e-ec097d8caddf`  
