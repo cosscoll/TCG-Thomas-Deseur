@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 // It never authenticates to Floot, consumes a booster or writes an inventory.
 export default defineConfig({
   testDir: fileURLToPath(new URL('../e2e/', import.meta.url)),
-  testMatch: 'binder-demo.spec.mjs',
+  testMatch: ['binder-demo.spec.mjs', 'binder-accessibility.spec.mjs'],
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
