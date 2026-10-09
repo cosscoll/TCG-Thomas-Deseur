@@ -21,6 +21,14 @@ Ce dépôt conserve le catalogue historique, les prototypes, leurs tests et la d
 
 Le prototype statique reste accessible à https://cosscoll.github.io/TCG-Thomas-Deseur/. Sa collection locale ne doit jamais être importée comme inventaire officiel.
 
+## Priorité actuelle : la collection, sans les illustrations
+
+Les visuels des cartes sont toujours en préparation. Le travail de développement est recentré sur **les raretés, les quantités possédées, les doublons, les cartes manquantes, les statistiques de complétion, la recherche et les filtres du classeur**.
+
+Le [modèle de collection indépendant des images](floot-collection/collection-model.mjs) et sa [conception fonctionnelle détaillée](docs/CONCEPTION_COLLECTION_FLOOT.md) sont enregistrés sur GitHub. Les [28 tests du modèle](tests/floot-collection-model.test.mjs) ont été validés dans la [CI GitHub (71/71)](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945135269). **Ces fichiers ne sont pas encore intégrés à l'application Floot** : le quota de développement est temporairement épuisé.
+
+Les questions de combat, de PvP, de boutique, d'échange ou de génération de visuels restent hors périmètre ; les règles de tirage existantes restent inchangées.
+
 ## Périmètre actuel
 
 Le chantier concerne uniquement les comptes joueurs, l'ouverture de boosters et le classeur.
