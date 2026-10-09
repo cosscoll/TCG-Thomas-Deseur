@@ -138,7 +138,16 @@ Il s'agit d'un **contrat d'adaptation de l'interface**, non de l'affirmation que
 - [30 tests fonctionnels du modèle](../tests/floot-collection-model.test.mjs) : collections vides/complètes, un exemplaire ou plusieurs, progression par rareté, recherche avec accents, tris, cumul des doublons dans une même ouverture, cas invalides et contraintes de lot de cinq.
 - [CI GitHub Actions](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773) : **73 tests Node réussis sur 73, aucun échec**, le 9 octobre 2026. Cela **ne constitue pas** un test d'intégration à Floot ni à sa base.
 
-## 7. Travail restant pour considérer le classeur Floot terminé
+## 7. Démonstration visuelle non connectée
+
+Une interface indépendante a été préparée dans `floot-collection/demo.html`, `demo.mjs` et `demo.css`. Elle utilise **le modèle métier réel de cette préparation**, mais uniquement avec **trois inventaires fictifs**. Elle n'utilise pas d'image, de compte utilisateur, d'API privée ni de stockage persistant. Les filtres et compteurs fonctionnent sur ces exemples sans attribuer de carte.
+
+**Publication :** le workflow GitHub Pages de la version `9bff5a24df2eb8664ab991f454727f4535801091` s'est terminé en succès ; l'URL publique ne peut pas être vérifiée par requête HTTP indépendante depuis l'environnement actuel. Elle est donc donnée sans garantie de consultation externe : https://cosscoll.github.io/TCG-Thomas-Deseur/floot-collection/demo.html
+
+**Tests :** la [CI GitHub](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) a passé **80 tests Node sur 80**, dont sept tests statiques de la démo, **pas** un test Chromium. Un test Playwright réel devra encore vérifier l'exécution JavaScript, les filtrages et les débordements mobiles.
+
+## 8. Travail restant pour considérer le classeur Floot terminé
+
 
 - [ ] Confirmer l'accès au code Floot et la structure des réponses réelles.
 - [ ] Adapter le modèle aux vrais objets du serveur et l'intégrer sans régression graphique.
