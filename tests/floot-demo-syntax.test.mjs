@@ -8,7 +8,9 @@ const names = [
   '../floot-collection/collection-model.mjs',
   '../floot-collection/collection-insights.mjs',
   '../floot-collection/collection-reconciliation.mjs',
+  '../floot-collection/collection-export.mjs',
   '../e2e/binder-demo.spec.mjs',
+  '../e2e/binder-accessibility.spec.mjs',
 ];
 
 for (const relative of names) {
