@@ -4,15 +4,15 @@
 
 **Demande :** compléter l'audit, puis développer le projet en autonomie sans attendre des demandes « continue ».
 
-**Programmation : préparée, non activée.** La tentative de création a renvoyé `too_many_active_automations` : cinq tâches actives pour une limite de cinq. Aucun automatisme existant n'a été changé. Aucun achat ni changement d'abonnement n'a été réalisé.
+**Programmation : ACTIVÉE le 9 octobre 2026 à 13:38 UTC.** La tentative initiale avait échoué avec `too_many_active_automations`. Après accord explicite de l'utilisateur, seule l'automatisation redondante « Brief du matin » a été désactivée ; « Point du matin » est resté actif. La tâche quotidienne « Développement TCG Deseur » a ensuite été créée et confirmée active. Aucun achat ni changement d'abonnement n'a été réalisé.
 
 **Rythme proposé :** une session quotidienne vers midi, fuseau Europe/Paris, à partir du 10 octobre 2026. Ce créneau se situe après la réinitialisation Floot annoncée à 09:00 UTC. La planification serait flexible ; l'heure exacte d'exécution ne serait pas garantie.
 
-**Action nécessaire pour l'activation :** libérer un créneau avec l'accord de Cosme, puis créer la tâche « Développement TCG Deseur ». Ne pas annoncer qu'elle fonctionne tant que la création n'est pas confirmée et qu'une exécution n'a pas été observée.
+**État d'exécution :** création et activation de « Développement TCG Deseur » confirmées par l'outil des tâches. **Aucune exécution de cette nouvelle tâche n'a encore été observée** ; ne pas annoncer que les développements quotidiens sont déjà réalisés. Première occurrence programmée samedi 10 octobre 2026 vers 12 h, heure Europe/Paris.
 
 ## Organisation opérationnelle — 9 octobre 2026
 
-**État : plan de travail enregistré, exécution récurrente non activée.** Une nouvelle vérification des tâches le 9 octobre constate cinq automatisations actives sur cinq, notamment deux briefs matinaux proches. Ne désactiver ni modifier aucune automatisation existante sans accord explicite. L'utilisateur a demandé un fonctionnement autonome ; la seule exécution de ce plan à une date future nécessitera un créneau de tâche et une création confirmée. Une tâche ChatGPT n'offre pas à elle seule une session Floot garantie : à chaque occurrence, vérifier les outils réellement disponibles.
+**État actualisé à 13:38 UTC : exécution récurrente ACTIVÉE.** Avec accord explicite de l'utilisateur, l'ancien « Brief du matin » a été désactivé et remplacé par la tâche « Développement TCG Deseur ». « Point du matin » et les autres tâches restent inchangés. Première occurrence le 10 octobre 2026 vers midi (Europe/Paris), sous réserve de la disponibilité des outils lors de l'exécution. Le fonctionnement complet de la tâche n'est pas encore observé.
 
 **Créneau envisagé :** chaque jour vers **12 h, heure Europe/Paris**, en mode flexible, première date possible 10 octobre après la réinitialisation Floot annoncée à 09:00 UTC. Ne pas promettre une exécution à minute fixe.
 
