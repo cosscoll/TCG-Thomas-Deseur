@@ -98,6 +98,23 @@ L'objectif est de **faire avancer l'application, pas d'accumuler de la documenta
 
 **Prochaine intervention directe sur le jeu :** dès que le quota Floot autorise la lecture des sources, corriger seulement les défauts réellement reproduits sur la déconnexion / isolation / session, avec tests et publication conditionnés à un résultat valide.
 
+## Journal complémentaire — vérification du catalogue historique (9 octobre 2026)
+
+**Contexte :** la lecture/modification du code Floot est limitée par le quota ; aucune donnée de compte, aucune ouverture de booster et aucun changement applicatif n'ont eu lieu pendant ces travaux.
+
+**Code et vérifications réalisés :**
+
+- Comparateur en lecture seule `scripts/compare_floot_catalogue.mjs` : prend une liste publique/anonymisée `[{id,rarity}]` et compare chaque identifiant et rareté aux **49 cartes** définies dans `data/cards.js`. Détecte doublons, éléments manquants/inattendus et changements de rareté.
+- Validation renforcée : noms de cartes au format slug strict et raretés canoniques seulement ; refus de champs additionnels afin de limiter le risque d'introduire des données personnelles dans les rapports de vérification.
+- Tests `tests/floot-catalogue.test.mjs` : **12 scénarios passés localement**, comprenant également les identifiants ressemblant à des e-mails et les raretés non canoniques.
+- **GitHub Actions : exécution 37943567646 réussie, 43 tests Node au total, 0 échec**, le 9 octobre 2026 à 14:21 UTC. Les nouveaux tests de comparaison sont intégrés à `npm test`.
+- Tests du vérificateur de sauvegarde préparés précédemment : 13 scénarios réussis localement, non exécutés par le workflow GitHub CI du prototype.
+- Tentative de lancement automatique supplémentaire des tests navigateur publics depuis GitHub : **refusée par les contrôles de sécurité de l'outil** ; aucun changement de déclencheur n'a été appliqué. Ne pas insister ou contourner ce refus.
+
+**Floot publié :** inchangé à https://budget-illimite-tcg.floot.app. **Important :** le succès GitHub valide les tests du catalogue historique et des scripts, **pas** la concordance des 49 lignes réellement stockées dans PostgreSQL Floot, ni la connexion joueur, les boosters ou l'UX mobile.
+
+**Prochaine action concrète en session, quand Floot redevient accessible :** lire la structure réelle de `tcg_cards` et exporter uniquement les slugs/raretés (aucune donnée personnelle), comparer avec `scripts/compare_floot_catalogue.mjs`, puis traiter l'authentification et la séparation des comptes selon [la matrice de recette](MATRICE_RECETTE_FLOOT.md). Valider, créer un checkpoint et publier uniquement après vérifications.
+
 ## Dernier travail livré
 
 Documentation de reprise et contrôle public sauvegardés dans le commit `ac74b09de944142cc42c7c0fe8b0f2da7a960ee5` de `cosscoll/TCG-Thomas-Deseur`.
