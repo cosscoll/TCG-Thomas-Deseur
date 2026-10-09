@@ -1,97 +1,87 @@
 # TCG Deseur — Le jeu de collection
 
-**Jeu de collection indépendant et non officiel** inspiré des apparitions et personnages de Thomas Deseur. Ce dépôt est la **source de référence** du site et de l'application.
+Jeu de collection indépendant et non officiel inspiré des apparitions et personnages de Thomas Deseur.
 
-**Jeu avec comptes et collection serveur :** https://budget-illimite-tcg.floot.app/ (hébergé sur Floot, désormais présenté sous le nom TCG Deseur).
+**Application active :** https://budget-illimite-tcg.floot.app  
+**Connexion :** https://budget-illimite-tcg.floot.app/login
 
-**Prototype statique sur GitHub Pages :** https://cosscoll.github.io/TCG-Thomas-Deseur/ — ses boosters restent des démonstrations locales, indépendantes des comptes Floot.
+## Plateforme de référence
 
-## Le jeu aujourd'hui
+**Le développement actif, les comptes et la collection serveur sont sur Floot.** Le projet à reprendre est `1d1c3807-73a6-49c5-a59e-ec097d8caddf`.
 
-Le parcours principal est volontairement centré sur **ouvrir des boosters → découvrir des cartes → compléter le classeur**. Les combats ont été placés de côté.
+Ce dépôt conserve le catalogue historique, les prototypes, leurs tests et la documentation. **Il ne contient pas encore une sauvegarde du code actuel de Floot.** Aucun export ni mécanisme de synchronisation automatique n'est configuré ici.
 
-### Ce qui fonctionne sans créer de compte
+| Emplacement | Usage |
+| --- | --- |
+| Application Floot | Jeu actif avec comptes, boosters et collection serveur |
+| Ce dépôt GitHub | Catalogue historique, prototypes et documentation de reprise |
+| GitHub Pages | Démonstration locale historique, indépendante des comptes Floot |
+| `solo/` | Ancien prototype de combat, conservé en archive |
+| `account/` et `supabase/` | Ancienne préparation Supabase, abandonnée ; ne pas l'activer |
 
-- Catalogue de **49 cartes**, réparties en **cinq raretés**.
-- Ouverture d'un booster de **5 cartes**, avec dernier emplacement Rare ou mieux.
-- Ajout automatique au **classeur de démonstration**, persistant dans ce navigateur.
-- Suivi du nombre de cartes différentes, du nombre d'exemplaires, des doublons et du pourcentage de collection.
-- Progression par rareté, filtres et recherche.
-- Historique des dernières ouvertures.
-- Interface adaptée au mobile, utilisation clavier et tests navigateur.
+Le prototype statique reste accessible à https://cosscoll.github.io/TCG-Thomas-Deseur/. Sa collection locale ne doit jamais être importée comme inventaire officiel.
 
-**Attention :** la collection sans compte est une **démonstration locale**. Elle peut être modifiée ou effacée par l'utilisateur et ne devient jamais une collection officielle. Aucune transaction et aucun achat réel.
+## Périmètre actuel
 
-### Comptes joueurs, collection officielle
+Le chantier concerne uniquement les comptes joueurs, l'ouverture de boosters et le classeur.
 
-Le code prépare une connexion via **Supabase Auth**, des profils à pseudonyme, un inventaire propre à chaque joueur, la récupération des mots de passe et l'attribution des cartes **par le serveur**. Les migrations SQL se trouvent dans `supabase/migrations/`.
+L'application propose des boosters de cinq cartes, cinq raretés, une révélation progressive, un classeur avec filtres et recherche, un historique, la modification du pseudonyme et un export JSON. Le catalogue historique comporte 49 cartes.
 
-Les comptes **ne sont pas encore activés** : aucun projet Supabase n'est connecté à cette application. Il faut d'abord sélectionner un projet de développement, déployer et auditer la migration, puis tester la connexion, le cloisonnement des inventaires et la résistance aux ouvertures simultanées.
+La règle affichée est provisoire : **un booster gratuit par compte toutes les 24 heures**, avec une cinquième carte Rare ou supérieure. Le tirage et l'attribution doivent rester côté serveur. Aucun achat, aucune monnaie, aucun combat/PvP et aucune nouvelle illustration ne font partie du chantier actuel.
 
-Les boosters officiels sont prévus avec une règle **provisoire** d'un booster gratuit par 24 h, à confirmer avant activation. Aucun taux ni quota n'est présenté comme définitif.
+## État vérifié le 9 octobre 2026
 
-## Organisation du dépôt
+Floot confirme que l'application est publiée. Les pages d'accueil et de connexion répondent HTTP 200. Les API de session, collection, booster et profil rejettent les appels anonymes avec HTTP 401.
+
+**Ces contrôles ne valident pas un parcours joueur connecté**, la séparation de deux comptes, la concurrence des boosters, la délivrabilité des e-mails ou l'ergonomie mobile. La base et le code serveur n'ont pas pu être relus pendant cette reprise : le quota quotidien Floot était épuisé.
+
+Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot du 9 octobre](docs/FLOOT_REPRISE_2026-10-09.md).
+
+## Vérifier la version publique
+
+Le contrôle ci-dessous utilise uniquement la bibliothèque standard Python. Il teste deux pages et quatre refus d'accès anonymes ; il ne crée pas de compte, n'utilise aucune session et ne demande aucune récupération de mot de passe.
+
+```bash
+python3 scripts/check_floot_public.py
+# Windows : py scripts/check_floot_public.py
+```
+
+Il affiche un résultat JSON et retourne un code non nul si un contrôle échoue. Il n'est pas encore intégré à un workflow planifié.
+
+## Organisation historique du dépôt
 
 ```text
 .
-├── index.html                   Site de collection principal
-├── styles.css                   Interface et responsive
-├── app.js                       Contrôleur de boosters/classeur/comptes
-├── data/
-│   └── cards.js                Catalogue des 49 identifiants et raretés
-├── game/
-│   ├── booster.js              Mécanique de tirage local (démo)
-│   ├── collection.js           Inventaire local, doublons et progression
-│   ├── engine.js               Ancien moteur de combat (en réserve)
-│   └── progress.js             Anciennes statistiques solo
-├── account/
-│   ├── config.js               URL et clé publique Supabase (non renseignées)
-│   ├── client.js               Authentification via Supabase
-│   ├── panel.js                Interface de création/connexion de compte
-│   └── cloud-collection.js     Inventaire distant et booster serveur
-├── supabase/
-│   └── migrations/             Schéma SQL non encore appliqué
-├── solo/                       Prototype de combat précédent, isolé
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
-├── tests/                      Tests unitaires Node, moteur et collection
-├── e2e/                        Tests réels Chromium sur ordinateur et mobile
-├── .github/workflows/          Validation automatique GitHub Actions
-├── docs/                       Règles, audit et feuille de route
-└── research/                   Archives de recherche, distinctes du jeu
+├── index.html                   Prototype statique de collection
+├── styles.css                   Interface du prototype
+├── app.js                       Contrôleur du prototype
+├── data/cards.js                Catalogue historique des 49 cartes
+├── game/                        Moteurs locaux et anciens modules
+├── account/                     Ancienne intégration Supabase, inactive
+├── supabase/                    Migrations historiques, ne pas appliquer
+├── solo/                        Ancien prototype de combat
+├── tests/                       Tests du prototype historique
+├── e2e/                         Tests navigateur du prototype
+├── scripts/check_floot_public.py Contrôle HTTP de l'application Floot
+├── .github/workflows/           Workflows du prototype
+├── docs/                        Documentation et archives
+└── research/                    Recherches et références
 ```
 
-La partie jeu ne dépend pas des archives visuelles de `research/`. Aucune illustration générée n'est requise pour jouer au prototype.
+Les documents marqués **Archive** décrivent d'anciennes étapes. Leurs instructions Supabase et leurs objectifs de combat ne sont plus le plan de développement.
 
-## Tester localement
-
-Le site est statique et fonctionne avec un simple serveur HTTP.
+## Tester le prototype historique
 
 ```bash
 python3 -m http.server 8000
-# ou sous Windows : py -m http.server 8000
-```
-
-Ouvrir http://localhost:8000/. Pour consulter le prototype solo d'origine : http://localhost:8000/solo/.
-
-```bash
 npm test
-# tests navigateur dans la CI GitHub Actions
 npm run balance
 ```
 
-Les tests complets en navigateur sont exécutés sur les PR par le workflow `E2E Collection TCG Deseur`.
+Ouvrir http://localhost:8000/. Ces commandes concernent le code historique de ce dépôt, **pas** l'application Floot ni sa base.
 
-## Avant un lancement public officiel
+## Sauvegarde du code Floot à préparer
 
-1. Valider les règles de distribution (fréquence des boosters, probabilités, doublons, limite de cartes).
-2. Relier un projet Supabase de **développement** puis tester les comptes et droits RLS avec **deux joueurs différents**.
-3. Vérifier l'attribution transactionnelle des cinq cartes et le quota serveur avec des requêtes simultanées.
-4. Ajouter gestion de compte (suppression/export), protection anti-abus, RGPD, suivi des erreurs et assistance.
-5. Vérifier les droits nécessaires avant toute exploitation officielle d'un nom, personnage ou média.
-6. Retirer `noindex` seulement une fois le lancement et les droits validés.
+Après récupération de l'accès, exporter les sources réellement présentes dans Floot, avec leurs dépendances et la version du projet. Les conserver dans un emplacement distinct et clairement documenté, sans écraser le catalogue, les prototypes ou l'historique Git.
 
-Le PvP, les combats, les classements et les échanges ne font **pas** partie du chantier actuel.
-
-Documentation technique et état précis : [Collection et comptes](docs/COLLECTION_ET_COMPTES.md).
+Vérifier ensuite les sources exportées et leur correspondance au déploiement. Une sauvegarde du code ne remplace pas une sauvegarde PostgreSQL. Ne pas annoncer une synchronisation effectuée tant que l'export et sa vérification n'ont pas eu lieu.

@@ -1,4 +1,7 @@
-# Collection, boosters et comptes — branche dédiée
+# Archive — collection et comptes du prototype statique
+
+> **Archive historique.** Ce document concerne une ancienne version et ne décrit pas l'application active. Le développement de TCG Deseur et les comptes serveur sont maintenant sur Floot. Ne pas appliquer les instructions Supabase ni reprendre les objectifs de combat de cette archive. Consulter [la reprise Floot](FLOOT_REPRISE_2026-10-09.md) et le [README](../README.md).
+
 
 **Objectif produit prioritaire :** la chasse aux cartes, le classeur et les comptes. Le moteur de combat n'est pas modifié par ce chantier.
 
@@ -68,3 +71,4 @@ Le connecteur Supabase ne retourne aucun projet à ce stade. Il faut :
 3. Verrouiller et éprouver les RPC d'attribution, quotas et RLS.
 4. Préparer une bêta de collection ouverte à un petit groupe, puis seulement une mise en production.
 5. **Combat/PvP reporté** explicitement.
+

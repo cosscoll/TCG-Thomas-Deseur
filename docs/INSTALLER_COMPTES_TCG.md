@@ -1,4 +1,7 @@
-# Installation réelle des comptes joueurs — TCG Deseur
+# Archive — installation Supabase abandonnée
+
+> **Archive historique.** Ce document concerne une ancienne version et ne décrit pas l'application active. Le développement de TCG Deseur et les comptes serveur sont maintenant sur Floot. Ne pas appliquer les instructions Supabase ni reprendre les objectifs de combat de cette archive. Consulter [la reprise Floot](FLOOT_REPRISE_2026-10-09.md) et le [README](../README.md).
+
 
 **Projet Supabase déjà créé :** `kanzeqhvwwesddrxcrmx`  
 **Organisation :** TCG thomas deseur  
@@ -46,3 +49,4 @@ Le SQL prépare également une **règle provisoire** de booster gratuit toutes l
 - Les tables joueurs sont protégées par RLS.
 - La fonction `tcg_claim_daily_booster()` opère côté serveur et tient un verrou sur la disponibilité du booster.
 - Toute mise en production requiert un audit des politiques RLS et un test de concurrence sur le tirage.
+

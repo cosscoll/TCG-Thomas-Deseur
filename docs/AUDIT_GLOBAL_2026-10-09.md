@@ -1,4 +1,7 @@
-# Audit global — Budget Illimité TCG
+# Archive — audit du prototype de combat du 9 octobre 2026
+
+> **Archive historique.** Ce document concerne une ancienne version et ne décrit pas l'application active. Le développement de TCG Deseur et les comptes serveur sont maintenant sur Floot. Ne pas appliquer les instructions Supabase ni reprendre les objectifs de combat de cette archive. Consulter [la reprise Floot](FLOOT_REPRISE_2026-10-09.md) et le [README](../README.md).
+
 **Date : 9 octobre 2026**  
 **Référence :** `cosscoll/TCG-Thomas-Deseur`, branche `main`  
 **Périmètre :** gameplay, catalogue, UX/UI, accessibilité, mobile, technique, sécurité, performance, référencement, progression, PvP, déploiement et qualité.
@@ -124,3 +127,4 @@ Simulation de **200 matchs par case** contre des decks tournants. Nombre de vict
 
 ## Décision proposée
 **Le bon prochain chantier n'est pas le PvP ni les médias. C'est une V0.2 centrée sur gameplay, vraie variété des cartes, équilibrage, onboarding, UX combat, responsive et tests navigateur.** C'est le socle à stabiliser avant d'investir dans l'économie et la compétition.
+
