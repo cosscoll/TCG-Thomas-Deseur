@@ -334,3 +334,14 @@ footer { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-b
   color: var(--accent); font-size: .82rem; font-weight: 700;
 }
 .metric [data-shortcut]:hover { background: var(--raised); }
+
+.binder-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 12px; }
+#export-demo-csv {
+  background: transparent; border: 1px solid #4d988b; border-radius: 9px;
+  color: var(--accent); min-height: 42px; padding: 9px 13px;
+  font-weight: 750;
+}
+#export-demo-csv:hover { background: #1e3d38; }
+@media (max-width:650px) {
+  .binder-actions { width: 100%; justify-content: flex-start; }
+}
