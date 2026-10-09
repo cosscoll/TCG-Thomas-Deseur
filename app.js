@@ -2,6 +2,7 @@ import { CARDS, RARITIES } from "./data/cards.js";
 import { simulateBooster } from "./game/booster.js";
 import { createMatch, applyAction, legalActions, chooseAiAction, validateDeck, cardStats, DECK_SIZE, WIN_KOS, AI_DIFFICULTIES, suggestBalancedDeck } from "./game/engine.js";
 import { emptySoloProgress, normalizeSoloProgress, SOLO_BADGES, earnedSoloBadges, recordSoloResult } from "./game/progress.js";
+import { initAccountPanel } from "./account/panel.js";
 
 const byId = id => document.getElementById(id);
 const search = byId("search");
@@ -132,9 +133,11 @@ byId("rerollBooster").addEventListener("click", previewBooster);
 const DEFAULT_PLAYER_DECK = Object.freeze([
   "standupper", "matelas", "rituels", "fontaine", "etalon", "mouette", "chemise", "fauxbras"
 ]);
-const DEFAULT_AI_DECK = Object.freeze([
-  "costume", "touriste", "arnaque", "regent", "igne", "otage", "moules", "entite"
-]);
+const AI_DECK_POOL = Object.freeze([
+  ["costume", "touriste", "arnaque", "regent", "igne", "otage", "moules", "entite"],
+  ["sosies", "infiltre", "planque", "secret_youtube", "horcruxe", "bgsi", "chemise", "etalon"],
+  ["matelas", "fontaine", "popcorn", "rituels", "vieux_contentieux", "poudlard_titan", "crossover_mcfly", "noble"],
+].map(deck => Object.freeze(deck)));
 const DECK_STORAGE_KEY = "budget-illimite:solo-deck:v1";
 const cardById = new Map(CARDS.map(card => [card.id, card]));
 let currentDeck = [...DEFAULT_PLAYER_DECK];
@@ -342,7 +345,7 @@ function renderArena() {
   if (match?.sides.player.active) {
     const stats = cardStats(match.sides.player.active.id);
     byId("quickDamage").textContent = stats.quick + " dégâts · gratuit";
-    byId("burstDamage").textContent = stats.burst + (stats.role === "Chaos" && match.sides.player.active.hp * 2 <= stats.maxHp ? 10 : 0) + " dégâts · 2 énergies";
+    byId("burstDamage").textContent = (stats.ability ? stats.ability.name + " · " : "") + stats.burst + (stats.role === "Chaos" && match.sides.player.active.hp * 2 <= stats.maxHp ? 10 : 0) + " dégâts de base · 2 énergies";
     byId("focusValue").textContent = "+2 énergie · +" + stats.focusGuard + " protection";
   } else {
     byId("quickDamage").textContent = "Attaque gratuite";
@@ -370,7 +373,8 @@ function startSoloMatch() {
   const requested = byId("aiDifficulty").value;
   activeDifficulty = AI_DIFFICULTIES.includes(requested) ? requested : "normal";
   try { localStorage.setItem(DIFFICULTY_STORAGE_KEY, activeDifficulty); } catch {}
-  match = createMatch({ playerDeck: currentDeck, aiDeck: DEFAULT_AI_DECK, seed: Date.now() + matchEpoch });
+  const aiDeck = AI_DECK_POOL[(matchEpoch - 1) % AI_DECK_POOL.length];
+  match = createMatch({ playerDeck: currentDeck, aiDeck, seed: Date.now() + matchEpoch });
   renderArena();
 }
 function playerAction(action) {
@@ -404,3 +408,17 @@ byId("focusAction").addEventListener("click", () => playerAction({ type: "focus"
 renderDeck();
 renderSoloProgress();
 renderArena();
+
+/* Optional player accounts: do not affect free offline-like solo play. */
+initAccountPanel({
+  readDeck: () => [...currentDeck],
+  applyDeck: ids => {
+    if (!validateDeck(ids).valid) return;
+    currentDeck = [...ids];
+    saveDeck();
+    renderDeck();
+  },
+}).catch(() => {
+  const status = byId("accountFeedback");
+  if (status) status.textContent = "Service de compte momentanément indisponible. Tu peux continuer à jouer en solo localement.";
+});
