@@ -45,6 +45,11 @@ function renderRarityStats(model) {
     const top = element('div', 'rarity-top');
     top.append(element('strong', '', group.label), element('span', '', `${group.unique} / ${group.total}`));
     const track = element('div', 'rarity-track');
+    track.setAttribute('role', 'progressbar');
+    track.setAttribute('aria-label', `Progression de rareté ${group.label}`);
+    track.setAttribute('aria-valuemin', '0');
+    track.setAttribute('aria-valuemax', '100');
+    track.setAttribute('aria-valuenow', String(group.completionPercent));
     const fill = element('div', 'rarity-fill');
     fill.style.width = `${group.completionPercent}%`;
     track.append(fill);
@@ -281,6 +286,7 @@ function render() {
   byId('missing').textContent = String(model.missing);
   byId('completion').textContent = `${model.completionPercent} %`;
   byId('progress-fill').style.width = `${model.completionPercent}%`;
+  byId('overall-progress').setAttribute('aria-valuenow', String(model.completionPercent));
   renderRarityStats(model);
   renderDuplicateDetails(model);
   renderGoals(model);
