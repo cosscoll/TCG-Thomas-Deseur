@@ -1,4 +1,5 @@
 import { accountsConfigured, getAccountClient } from "./client.js";
+import { resolveInitialUser } from "./session.js";
 
 export async function initAccountPanel(onSessionChange) {
   const $ = id => document.getElementById(id);
@@ -57,14 +58,7 @@ export async function initAccountPanel(onSessionChange) {
     // A first-time visitor does not have a session. getUser() returns
     // AuthSessionMissingError in that legitimate state; this is NOT a service
     // outage and must never prevent signup/signin handlers from registering.
-    const { data: sessionData, error: sessionError } = await client.auth.getSession();
-    if (sessionError) throw sessionError;
-    // Validate a cached identity with Auth only when a session actually
-    // exists. RLS remains the authority for profile and inventory reads.
-    if (sessionData?.session) {
-      const { data: authenticated, error: identityError } = await client.auth.getUser();
-      user = identityError ? null : (authenticated?.user ?? null);
-    } else user = null;
+    user = await resolveInitialUser(client.auth);
     render();
     notifyParent();
     client.auth.onAuthStateChange((event, session) => {
