@@ -318,3 +318,11 @@ footer { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-b
   .dialog-actions { flex-wrap: wrap; }
   .dialog-actions button { flex: 1; font-size: .82rem; }
 }
+
+.rarity-open {
+  margin-top: 10px; width: 100%; min-height: 38px;
+  border: 1px solid #546983; border-radius: 8px;
+  background: #17243c; color: var(--primary);
+  font-size: .8rem; font-weight: 700; padding: 7px 9px;
+}
+.rarity-open:hover { background: #2c4262; border-color: var(--rarity); }
