@@ -11,6 +11,22 @@
 - **Aucune attribution, création de compte, achat, génération d'image ou modification Floot.** Le quota Floot bloquait toujours les actions au dernier contrôle. La démo GitHub est une préparation, non le jeu en production.
 - Synthèse intégrale : [COLLECTION_LIVRAISON_2026-10-09.md](COLLECTION_LIVRAISON_2026-10-09.md). La priorité suivante est l'intégration au classeur React/Kysely **existant** lorsque les sources Floot seront accessibles, puis typecheck, tests fonctionnels, publication et visibilité en ligne vérifiées.
 
+## Journal — validation Chromium, export et accessibilité (9 octobre 2026, soir)
+
+**Travail concret effectué sur GitHub :** suite de tests navigateur Chromium avec versions ordinateur et mobile dans `.github/workflows/deploy.yml`, configuration `floot-collection/playwright.config.mjs`, tests de la démo et audit Axe `e2e/binder-accessibility.spec.mjs`.
+
+**Défauts et améliorations :**
+- Navigation clavier dans le détail des cartes : correction de la perte de focus lorsque le bouton suivant devient désactivé.
+- Contraste WCAG : suppression de la transparence des cartes non possédées, conservation d'une distinction visuelle par fond et bordure.
+- Export CSV sécurisé des 49 cartes et des quantités, avec bouton sur la démo non connectée et tests de téléchargement.
+- Les scénarios navigateur vérifient les cinq vues, de nombreuses largeurs mobiles et tablette, le téléchargement, la navigation et les critères d'accessibilité sélectionnés.
+
+**Preuves :** [48 tests Chromium réussis et 142 tests Node réussis, aucun échec](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37978835656). Un audit Axe sans violation relevée **n'est pas une certification WCAG globale** ; il couvre seulement les règles et les situations examinées.
+
+**Gestion CI :** un seul run pertinent par branche, grâce à `cancel-in-progress` (les runs plus anciens peuvent apparaître « cancelled », sans signaler un bug).
+
+**Limite inchangée :** ces fichiers sont dans GitHub ; **l'application Floot en production n'a pas été modifiée**, son quota de développement empêchant encore l'accès aux sources ce 9 octobre. La démo et ses données fictives ne doivent jamais remplacer les possessions du serveur.
+
 ## Journal de reprise de collection — suite de session du 9 octobre 2026
 
 **Objectif du lot :** poursuivre l'expérience de collection sans demander de nouvelles décisions à l'utilisateur, sans créer de visuels et sans toucher aux possessions des joueurs.
