@@ -309,6 +309,25 @@ for (const id of ['search','ownership','rarity','sort']) {
   byId(id).addEventListener(id === 'search' ? 'input' : 'change', render);
 }
 
+for (const button of document.querySelectorAll('[data-shortcut]')) {
+  button.addEventListener('click', () => {
+    const kind = button.dataset.shortcut;
+    if (kind === 'duplicates') {
+      activateView('duplicates');
+      byId('duplicate-rarity').value = 'all';
+      render();
+      byId('view-duplicates').scrollIntoView({ block: 'start' });
+      return;
+    }
+    byId('ownership').value = kind;
+    byId('rarity').value = 'all';
+    byId('search').value = '';
+    activateView('collection');
+    render();
+    byId('binder-title').scrollIntoView({ block: 'start' });
+  });
+}
+
 for (const button of document.querySelectorAll('[data-scenario]')) {
   button.addEventListener('click', () => {
     state.scenario = button.dataset.scenario;
