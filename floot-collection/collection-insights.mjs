@@ -167,7 +167,12 @@ export function getCommittedBoosterRecap(catalogue, beforeInventory, committedDr
 export function getBoosterAvailabilityHint(nextAvailableAt, now = Date.now()) {
   if (!Number.isFinite(now)) throw new Error('Heure courante invalide.');
   if (nextAvailableAt == null) return { known: false, remainingMs: null, elapsed: null };
-  const deadline = typeof nextAvailableAt === 'string' ? Date.parse(nextAvailableAt) : NaN;
+  // Avoid interpreting a timezone-less timestamp differently across devices.
+  if (typeof nextAvailableAt !== 'string' ||
+      !/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?(?:Z|[+-]\\d\\d:\\d\\d)$/.test(nextAvailableAt)) {
+    throw new Error('Échéance booster invalide.');
+  }
+  const deadline = Date.parse(nextAvailableAt);
   if (!Number.isFinite(deadline)) throw new Error('Échéance booster invalide.');
   const remainingMs = Math.max(0, deadline - now);
   return { known: true, remainingMs, elapsed: remainingMs === 0 };
