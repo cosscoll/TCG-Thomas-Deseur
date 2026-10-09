@@ -42,7 +42,7 @@ function ensureCatalogue(catalogue) {
     throw new Error('Le catalogue est indisponible.');
   }
   const ids = new Set();
-  return catalogue.map((card, index) => {
+  const parsed = catalogue.map((card, index) => {
     if (!card || typeof card !== 'object' ||
         typeof card.id !== 'string' || !/^[a-z0-9_]+$/.test(card.id) ||
         !RARITY_ORDER.includes(card.rarity)) {
@@ -62,6 +62,14 @@ function ensureCatalogue(catalogue) {
         ? card.imageUrl.trim() : null,
     };
   });
+  // Never present an incomplete or misclassified catalogue as 100% collected.
+  // Changing the 49-card set requires a deliberate catalogue version update.
+  const required = { commune: 17, rare: 15, epique: 10, legendaire: 4, secrete: 3 };
+  if (parsed.length !== 49 || RARITY_ORDER.some(rarity =>
+      parsed.filter(card => card.rarity === rarity).length !== required[rarity])) {
+    throw new Error('Le catalogue doit contenir les 49 cartes et raretés attendues.');
+  }
+  return parsed;
 }
 
 function readQuantities(inventory, catalogueById) {
