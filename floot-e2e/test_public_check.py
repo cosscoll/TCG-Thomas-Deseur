@@ -76,6 +76,31 @@ class PublicSmokeTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertIn("Player data", result["error"])
 
+    def test_nested_player_email_is_detected(self):
+        response = FakeResponse(body=json.dumps({
+            "json": {"error": "Connexion requise", "details": {"meta": {"EMAIL": "hidden@example.invalid"}}}
+        }))
+        result, _ = self.call(response)
+        self.assertFalse(result["passed"])
+        self.assertIn("Player data", result["error"])
+        self.assertNotIn("hidden@example.invalid", result["error"])
+
+    def test_array_of_private_records_is_detected(self):
+        response = FakeResponse(body=json.dumps({
+            "json": {"error": "Connexion requise", "details": [{"count": 2}, {"access_token": "secret"}]}
+        }))
+        result, _ = self.call(response)
+        self.assertFalse(result["passed"])
+        self.assertIn("access_token", result["error"])
+        self.assertNotIn("secret", result["error"])
+
+    def test_generic_safe_error_metadata_is_accepted(self):
+        response = FakeResponse(body=json.dumps({
+            "json": {"error": "Connexion requise", "details": {"code": "AUTH_REQUIRED", "retry": False}}
+        }))
+        result, _ = self.call(response)
+        self.assertTrue(result["passed"])
+
     def test_missing_error_message_fails(self):
         result, _ = self.call(FakeResponse(body='{}'))
         self.assertFalse(result["passed"])
