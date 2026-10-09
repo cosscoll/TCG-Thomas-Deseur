@@ -274,6 +274,14 @@ function moveCardDetail(offset) {
   if (next < 0 || next >= state.detailCards.length) return;
   state.detailIndex = next;
   paintCardDetail();
+  // A disabled button loses focus in Chromium. When reaching either end,
+  // transfer focus to the still-usable navigation button, so arrow keys
+  // continue to bubble to the dialog on desktop and mobile keyboards.
+  if (offset > 0 && byId('detail-next').disabled) {
+    byId('detail-previous').focus();
+  } else if (offset < 0 && byId('detail-previous').disabled) {
+    byId('detail-next').focus();
+  }
 }
 
 function render() {
