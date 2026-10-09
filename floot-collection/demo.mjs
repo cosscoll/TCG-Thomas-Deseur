@@ -237,7 +237,7 @@ function paintCardDetail() {
   byId('detail-rarity').textContent = rarityName;
   byId('detail-title').textContent = card.name;
   byId('detail-number').textContent = `#${String(card.index + 1).padStart(2, '0')}`;
-  byId('detail-status').textContent = card.owned ? 'Possédée' : 'Manquante';
+  byId('detail-status').textContent = card.quantity > 0 ? 'Possédée' : 'Manquante';
   byId('detail-quantity').textContent = String(card.quantity);
   byId('detail-extras').textContent = String(card.extraCopies);
   byId('detail-position').textContent = `${state.detailIndex + 1} / ${state.detailCards.length}`;
