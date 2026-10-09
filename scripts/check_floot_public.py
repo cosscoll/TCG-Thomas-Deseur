@@ -25,6 +25,36 @@ CHECKS = (
 )
 
 
+# An anonymous 401 must not contain player-specific information, even inside
+# error metadata or arrays. Keep this independent of the server's JSON envelope.
+PRIVATE_RESPONSE_KEYS = {
+    "user", "users", "userid", "email", "displayname", "password",
+    "passwordhash", "token", "accesstoken", "refreshtoken", "jwt",
+    "cookie", "cookies", "cards", "owned", "drawn", "inventory",
+    "collection", "sessionid", "authsession", "profile",
+}
+
+
+def find_private_field(value, prefix=""):
+    """Return the first sensitive JSON field path, or None if none exists."""
+    if isinstance(value, dict):
+        for raw_key, child in value.items():
+            key = str(raw_key)
+            field = f"{prefix}.{key}" if prefix else key
+            normalized = re.sub(r"[^a-z0-9]", "", key.lower())
+            if normalized in PRIVATE_RESPONSE_KEYS:
+                return field
+            nested = find_private_field(child, field)
+            if nested:
+                return nested
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            nested = find_private_field(child, f"{prefix}[{index}]")
+            if nested:
+                return nested
+    return None
+
+
 def check(case):
     method, path, payload, expected = case
     result = {"method": method, "path": path, "expectedStatus": expected}
@@ -62,9 +92,10 @@ def check(case):
                 raise ValueError("Unexpected API response envelope")
             if not isinstance(denial.get("error"), str) or not denial["error"]:
                 raise ValueError("Missing access denial message")
-            forbidden = {"user", "cards", "owned", "drawn", "email", "displayName"}
-            if forbidden.intersection(denial) or forbidden.intersection(payload):
-                raise ValueError("Player data included in an anonymous denial")
+            private_field = find_private_field(payload)
+            if private_field:
+                # The field path is sufficient to debug without logging its value.
+                raise ValueError(f"Player data included in an anonymous denial: {private_field}")
         else:
             if "text/html" not in content_type:
                 raise ValueError("Page is not HTML")
