@@ -174,6 +174,16 @@ function renderCollection() {
       : cloudCollection
         ? "Classeur sécurisé, associé à ton compte joueur."
         : "Chargement de ton classeur sécurisé…";
+  const rarityRows = document.createDocumentFragment();
+  for (const rarity of RARITIES) {
+    const all = CARDS.filter(card => card.rarity === rarity.id);
+    const owned = all.filter(card => (copies[card.id] || 0) > 0).length;
+    const row = el("div", "rarity-breakdown-item rarity-" + rarity.id);
+    row.append(el("span", "", rarity.label));
+    row.append(el("strong", "", owned + " / " + all.length));
+    rarityRows.append(row);
+  }
+  byId("rarityCompletion").replaceChildren(rarityRows);
   const filter = ownedFilter.value || "all";
   const kind = collectionRarity.value || "all";
   const matches = CARDS.filter(card => {

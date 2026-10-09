@@ -186,3 +186,10 @@
 @media(max-width:850px){.collection-section,.account-section{margin:0 5% 65px;padding:26px 20px}.collection-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.collection-stat-grid strong{font-size:1.55rem}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.binder-card{min-height:170px;padding:12px 10px}.binder-card-name{font-size:.88rem}.collection-history-row{grid-template-columns:1fr;gap:5px}.account-actions{flex-direction:column;align-items:stretch}.account-actions button{width:100%;justify-content:center}}
 @media(max-width:375px){.collection-grid{grid-template-columns:1fr 1fr}.binder-card{padding:9px;min-height:165px}.binder-card-rarity,.binder-card-id{font-size:.64rem}}
+
+.rarity-breakdown{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:0 0 25px}
+.rarity-breakdown-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px;border:1px solid var(--accent);background:var(--panel);border-radius:9px;font-size:.73rem}
+.rarity-breakdown-item span{color:var(--accent);font-weight:800}
+.rarity-breakdown-item strong{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:850px){.rarity-breakdown{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:550px){.rarity-breakdown{grid-template-columns:repeat(2,minmax(0,1fr))}}
