@@ -70,6 +70,22 @@ Prochaine action précise :
 
 L'objectif est de **faire avancer l'application, pas d'accumuler de la documentation**. Si le code devient accessible et qu'un problème reproductible est identifié, travailler directement sur sa correction.
 
+## Journal — session du 9 octobre 2026 (à partir de 13:50 UTC)
+
+**Périmètre de cette session :** préparation et correction des outils de contrôle publics, sans développement Floot direct (quota de 100 actions toujours connu comme atteint), sans création de comptes de test ni modification des inventaires réels.
+
+**Résultats enregistrés dans GitHub :**
+- `scripts/check_floot_public.py` : détection récursive des champs privés dans des réponses anonymes, y compris dans les objets imbriqués et les tableaux ; messages de diagnostic sans valeur privée.
+- `floot-e2e/test_public_check.py` : trois tests supplémentaires (courriel imbriqué, jeton dans un tableau, métadonnée sans données personnelles), en plus des onze scénarios déjà présents.
+- `floot-e2e/public.spec.mjs` : contrôle responsive préparé à **320, 393, 412 et 820 px** sur les pages `/` et `/login`, sans ouverture de booster ni utilisation de compte.
+- Correction des références obsolètes à l'automatisation : **aucune tâche quotidienne TCG active**. « Brief du matin » a été réactivé conformément à la décision utilisateur.
+
+**Vérifications observées :** 14 tests unitaires Python exécutés localement, **14 réussis, zéro échec** ; vérification de syntaxe JavaScript du test Playwright avec `node --check`, sans erreur. Les nouveaux tests Playwright **n'ont pas été exécutés contre le site Floot** : le réseau du conteneur ne permet pas d'atteindre l'hôte. Il n'est pas possible d'en déduire le comportement responsive réel.
+
+**Publication active :** vérification `get_publish_status` : `published=true`, domaine `https://budget-illimite-tcg.floot.app`, visibilité publique, forfait Floot gratuit. Aucune publication ni modification applicative Floot dans cette session.
+
+**Limites / prochaine action :** à la reprise des actions Floot, relire les helpers d'authentification et l'endpoint de déconnexion, reproduire les cas A04–A08 puis corriger les défauts démontrés. Ensuite exécuter `typecheck`, tests unitaires Floot et contrôles navigateur autorisés. Ne pas confondre les nouveaux contrôles anonymes avec un test des transactions, des comptes ou de PostgreSQL. Ne pas réactiver d'automatisation.
+
 ## Dernier travail livré
 
 Documentation de reprise et contrôle public sauvegardés dans le commit `ac74b09de944142cc42c7c0fe8b0f2da7a960ee5` de `cosscoll/TCG-Thomas-Deseur`.
