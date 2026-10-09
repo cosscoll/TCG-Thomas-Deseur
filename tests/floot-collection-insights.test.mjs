@@ -142,5 +142,6 @@ test('booster countdown is strictly informative',()=>{
 });
 test('invalid countdown values are rejected',()=>{
   assert.throws(()=>getBoosterAvailabilityHint('yesterday',0),/Échéance/);
+  assert.throws(()=>getBoosterAvailabilityHint('2026-10-10T09:00:00',0),/Échéance/);
   assert.throws(()=>getBoosterAvailabilityHint('2026-10-10T09:00:00Z',NaN),/Heure/);
 });
