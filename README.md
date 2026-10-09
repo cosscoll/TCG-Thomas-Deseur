@@ -1,140 +1,95 @@
-# Budget Illimité — TCG Thomas Deseur
+# Budget Illimité — Le jeu de collection
 
-**Prototype non officiel et expérimental** d'un jeu de cartes à collectionner inspiré d'apparitions, costumes et déguisements de Thomas Deseur. Ce projet n'est affilié à aucun créateur cité.
+**Jeu de collection indépendant et non officiel** inspiré des apparitions et personnages de Thomas Deseur. Ce dépôt est la **source de référence** du site et de l'application.
 
-## Périmètre définitif des visuels : costumes et apparitions marquantes
+**Site :** https://cosscoll.github.io/TCG-Thomas-Deseur/
 
-**On recherche seulement Thomas Deseur dans un costume, un déguisement, un rôle visuellement identifiable, un camouflage, une transformation (maquillage/coiffure) ou une situation visuelle vraiment exceptionnelle.**
+## Le jeu aujourd'hui
 
-**Sont exclus du catalogue de cartes :** portraits ordinaires, photographies de scène où il porte des vêtements habituels, simples interviews, vidéos LEGO/objets/streams où aucun look particulier n'est attesté, miniatures qui montrent une autre personne, et toute image dont l'identité est incertaine.
+Le parcours principal est volontairement centré sur **ouvrir des boosters → découvrir des cartes → compléter le classeur**. Les combats ont été placés de côté.
 
-- [Apparitions correspondant au vrai critère du TCG](https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html) : 9 situations documentées (2 camouflages Amixem, 4 rôles dans un même Reel Boulanger, 1 personnage de vidéo météo, 1 roi en spectacle, 1 mise en scène dans les moules). Ce ne sont **pas 9 illustrations déjà extraites**.
-- [176 captures candidates à identifier dans les vidéos 100 couches](https://cosscoll.github.io/TCG-Thomas-Deseur/research/) : elles ne sont pas validées individuellement.
-- [Table de sélection stricte au format JSON](research/costume-only.json) : seul ce fichier fait foi pour le périmètre ciblé.
-- Les autres photographies et liens recherchés auparavant sont conservés comme **archives hors cible**, pour ne pas perdre les recherches, mais ils ne comptent pas comme visuels du TCG.
+### Ce qui fonctionne sans créer de compte
 
-**0 image de carte définitivement validée et autorisée à ce stade.** Ne pas confondre vidéos dont l'apparition est documentée et captures réellement identifiées/licenciées.
+- Catalogue de **49 cartes**, réparties en **cinq raretés**.
+- Ouverture d'un booster de **5 cartes**, avec dernier emplacement Rare ou mieux.
+- Ajout automatique au **classeur de démonstration**, persistant dans ce navigateur.
+- Suivi du nombre de cartes différentes, du nombre d'exemplaires, des doublons et du pourcentage de collection.
+- Progression par rareté, filtres et recherche.
+- Historique des dernières ouvertures.
+- Interface adaptée au mobile, utilisation clavier et tests navigateur.
 
-## Où se trouve le site ?
+**Attention :** la collection sans compte est une **démonstration locale**. Elle peut être modifiée ou effacée par l'utilisateur et ne devient jamais une collection officielle. Aucune transaction et aucun achat réel.
 
-**Dépôt officiel de travail :** https://github.com/cosscoll/TCG-Thomas-Deseur
+### Comptes joueurs, collection officielle
 
-Le fichier `index.html` est **à la racine** du dépôt (branche `main`), avec `app.js`, `styles.css`, `data/` et `game/`. Il s'agit du prototype jouable **en solo**, pas encore d'un produit final.
+Le code prépare une connexion via **Supabase Auth**, des profils à pseudonyme, un inventaire propre à chaque joueur, la récupération des mots de passe et l'attribution des cartes **par le serveur**. Les migrations SQL se trouvent dans `supabase/migrations/`.
 
-**Publication web :** une action GitHub Pages se trouve dans `.github/workflows/deploy.yml`. La compilation et les 21 tests Node du premier lancement ont réussi. La dernière étape de publication est bloquée tant que **GitHub Pages n'est pas activé** dans les paramètres du dépôt. L'application GitHub utilisée par l'assistant n'a pas les droits nécessaires pour l'activer via API.
+Les comptes **ne sont pas encore activés** : aucun projet Supabase n'est connecté à cette application. Il faut d'abord sélectionner un projet de développement, déployer et auditer la migration, puis tester la connexion, le cloisonnement des inventaires et la résistance aux ouvertures simultanées.
 
-Pour activer la prévisualisation, depuis le dépôt GitHub :
+Les boosters officiels sont prévus avec une règle **provisoire** d'un booster gratuit par 24 h, à confirmer avant activation. Aucun taux ni quota n'est présenté comme définitif.
 
-1. Ouvrir **Settings → Pages**.
-2. Dans **Build and deployment**, choisir **Source : GitHub Actions** (activer Pages si demandé).
-3. Ouvrir **Actions → Test and publish TCG preview → Run workflow**, choisir `main`, puis lancer le workflow.
+## Organisation du dépôt
 
-Après un déploiement réussi, l'adresse prévue est `https://cosscoll.github.io/TCG-Thomas-Deseur/`. **Ne pas considérer cette adresse comme active avant que GitHub indique une publication réussie.**
+```text
+.
+├── index.html                   Site de collection principal
+├── styles.css                   Interface et responsive
+├── app.js                       Contrôleur de boosters/classeur/comptes
+├── data/
+│   └── cards.js                Catalogue des 49 identifiants et raretés
+├── game/
+│   ├── booster.js              Mécanique de tirage local (démo)
+│   ├── collection.js           Inventaire local, doublons et progression
+│   ├── engine.js               Ancien moteur de combat (en réserve)
+│   └── progress.js             Anciennes statistiques solo
+├── account/
+│   ├── config.js               URL et clé publique Supabase (non renseignées)
+│   ├── client.js               Authentification via Supabase
+│   ├── panel.js                Interface de création/connexion de compte
+│   └── cloud-collection.js     Inventaire distant et booster serveur
+├── supabase/
+│   └── migrations/             Schéma SQL non encore appliqué
+├── solo/                       Prototype de combat précédent, isolé
+│   ├── index.html
+│   ├── app.js
+│   └── styles.css
+├── tests/                      Tests unitaires Node, moteur et collection
+├── e2e/                        Tests réels Chromium sur ordinateur et mobile
+├── .github/workflows/          Validation automatique GitHub Actions
+├── docs/                       Règles, audit et feuille de route
+└── research/                   Archives de recherche, distinctes du jeu
+```
 
-La branche `dev/thomas-deseur-tcg` de `cosscoll/Cosme-Collomb` est une **ancienne copie de sauvegarde**, et non l'emplacement où poursuivre le développement.
+La partie jeu ne dépend pas des archives visuelles de `research/`. Aucune illustration générée n'est requise pour jouer au prototype.
 
-## Recherche visuelle Thomas Deseur
+## Tester localement
 
-Le TCG s'appuie maintenant sur une **bibliothèque de 176 références visuelles authentiques** recensées dans trois galeries communautaires TierMaker ; elles ne sont pas toutes distinctes et leurs auteurs/droits restent à vérifier. Un index complémentaire contient **56 sources vidéo, épisodes, archives ou publications** utilisables pour retrouver les apparitions originales.
-
-- **Galerie consultable en ligne :** https://cosscoll.github.io/TCG-Thomas-Deseur/research/
-- **Données et provenance :** [research/visual-references.json](research/visual-references.json)
-- **Sources vidéo et sociales :** [research/source-videos.json](research/source-videos.json)
-- **État des 49 cartes :** [research/CORRESPONDANCES-49-CARTES.md](research/CORRESPONDANCES-49-CARTES.md)
-
-Deux cartes possèdent un lien de vidéo source confirmé par son titre (`matelas` et `fontaine`). Les 176 captures ne sont **pas encore attribuées avec certitude aux 49 cartes**, et aucun visuel réel n'a été présenté à tort comme illustration finalisée. Les images distantes servent uniquement à la vérification des costumes, pas à une diffusion sous licence supposée.
-
-### Extension de la recherche (8 octobre 2026)
-
-La recherche de costumes comprend désormais :
-- **176 références de captures de costumes** tirées de 3 collections TierMaker (vérification individuelle encore nécessaire).
-- **26 photographies originales de Thomas Deseur sur scène** sur Wikimedia Commons, crédit et licence à respecter.
-- **11 vignettes de vidéos YouTube**, **1 affiche promotionnelle de la ville de Lille**, et **5 images de presse / scène** (elles ne représentent pas forcément Thomas).
-- **21 autres contenus à examiner** : TikTok/Instagram, Twitch, scènes, LEGO, vidéos d'objets et collaborations.
-- **56 sources vidéo / réseaux distinctes** dans `research/source-videos.json`.
-- **18 des 49 cartes** ont au moins une piste documentaire, 2 vidéos de transformations clairement identifiées, mais **aucune illustration de carte finalisée**.
-
-**<https://cosscoll.github.io/TCG-Thomas-Deseur/research/exploration.html>** — nouveaux visuels de spectacle, LEGO et vidéos.
-
-**<https://cosscoll.github.io/TCG-Thomas-Deseur/research/>** — galerie des 176 captures communautaires.
-
-Sept apparitions **hors 100 couches** sont recensées dans `research/discovered-looks.json` : Noël, Pâques, Halloween, Saint-Valentin (campagne Boulanger), personnage céleste de l'ancien sketch météo, roi au Zénith, et campagne de la Braderie de Lille dans les moules. Ces personnages / apparitions concernent quatre œuvres originales, pas encore sept cartes illustrées.
-
-Les données supplémentaires sont dans `research/stage-photos.json` et `research/extended-media.json`. Ces fichiers référencent les sources, ils ne revendiquent pas les droits sur les médias.
-
-## Ce qui fonctionne actuellement
-
-- Catalogue interactif des **49 identifiants de cartes** extraits du code de booster remis (17 communes, 15 rares, 10 épiques, 4 légendaires, 3 secrètes).
-- Filtres, recherche, fiches de cartes et suivi de documentation sauvegardé localement.
-- Atelier de deck : sélection de **8 cartes distinctes**, recommandation automatique de deux cartes par archétype, récapitulatif des rôles, deck de départ, suppression et sauvegarde locale.
-- **Mode solo jouable contre Billy** : 3 KO pour gagner, énergie, PV, capacités spéciales, protection, remplacement après KO et changements de cartes en réserve.
-- **Billy en trois difficultés** : Découverte, Normal et Expert (ce dernier évalue les actions légales). Niveau verrouillé pendant une partie.
-- **Palmarès local** : parties jouées, victoires, défaites, meilleure série et 6 défis symboliques ; aucune récompense monétaire ni objet virtuel à valeur.
-- Quatre archétypes de combat aux statistiques **provisoires** et équilibrées indépendamment de la rareté.
-- Simulateur de booster **sans gain réel**, 5 cartes dont la dernière est au minimum rare.
-- Tests catalogue / boosters / moteur + CI GitHub Actions dans `.github/workflows/budget-illimite-tcg-tests.yml`.
-
-### Exécuter sur son ordinateur
-
-Depuis `` :
+Le site est statique et fonctionne avec un simple serveur HTTP.
 
 ```bash
 python3 -m http.server 8000
-# sous Windows : py -m http.server 8000
-# ou un autre serveur statique HTTP
+# ou sous Windows : py -m http.server 8000
 ```
 
-Ouvrir ensuite `http://localhost:8000`. Il n'y a pas d'installation JS requise pour visualiser le jeu.
-
-### Vérifier le moteur
+Ouvrir http://localhost:8000/. Pour consulter le prototype solo d'origine : http://localhost:8000/solo/.
 
 ```bash
 npm test
-npm run balance             # 200 graines par combinaison (9 combinaisons)
-npm run balance:extended    # 1 000 graines par combinaison
+# tests navigateur dans la CI GitHub Actions
+npm run balance
 ```
 
-Les simulations de balance comparent des stratégies artificielles ; elles ne représentent pas des taux de victoire réels entre humains. Node.js 22 recommandé. `npm test` utilise `node --test` ; aucun paquet NPM n'est requis.
+Les tests complets en navigateur sont exécutés sur les PR par le workflow `E2E Collection Budget Illimite`.
 
-## Structure
+## Avant un lancement public officiel
 
-```text
-index.html                       Interface de collection, deck, arène, boosters
-styles.css                       Identité visuelle responsive
-app.js                           Logique d'interface / mode solo
-data/cards.js                    49 identifiants et raretés, sources à vérifier
-game/engine.js                   Moteur solo déterministe + 3 IA et deck conseillé
-game/progress.js                 Palmarès local et jalons symboliques
-game/booster.js                  Simulation de tirage, sans économie réelle
-tests/*.test.mjs                 Tests moteur, booster, données, progression et UI simulée
-scripts/balance-report.mjs       Simulateur d'équilibrage reproductible
-security/restrict_booster_rpc.sql Proposition de durcissement, NON APPLIQUÉE
-docs/AUDIT_ET_FEUILLE_DE_ROUTE.md Audit de sécurité et plan de travail
-docs/REGLES_DU_PROTOTYPE.md      Règles du mode solo
-```
+1. Valider les règles de distribution (fréquence des boosters, probabilités, doublons, limite de cartes).
+2. Relier un projet Supabase de **développement** puis tester les comptes et droits RLS avec **deux joueurs différents**.
+3. Vérifier l'attribution transactionnelle des cinq cartes et le quota serveur avec des requêtes simultanées.
+4. Ajouter gestion de compte (suppression/export), protection anti-abus, RGPD, suivi des erreurs et assistance.
+5. Vérifier les droits nécessaires avant toute exploitation officielle d'un nom, personnage ou média.
+6. Retirer `noindex` seulement une fois le lancement et les droits validés.
 
-## Attention : deux moteurs différents
+Le PvP, les combats, les classements et les échanges ne font **pas** partie du chantier actuel.
 
-Le moteur solo `game/engine.js` est un **nouveau prototype indépendant**. L'archive d'origine mentionnait `engine.js` mais ne le contenait pas, pas plus que le site d'origine ou les migrations initiales. **Ce nouveau moteur ne doit pas être importé tel quel dans les anciennes Edge Functions PvP** : les signatures et règles doivent d'abord être réconciliées.
-
-Les noms du catalogue sont des libellés provisoires dérivés des IDs. Aucune référence vidéo ni photographie n'a été inventée ou validée. Les statistiques de combat affichées sont temporaires et ne reflètent pas une recherche sur Thomas Deseur.
-
-### Ce qui n'est PAS prêt
-
-- Pas de connexion à Supabase (aucun projet lié accessible lors du contrôle).
-- Pas de vrais comptes, PvP, ELO, économie en ligne, propriété des cartes ni échanges.
-- Pas de contenu média final autorisé ou vérifié.
-- Pas de déploiement public ; le site est conservé dans le dépôt dédié `cosscoll/TCG-Thomas-Deseur`.
-
-Ne jamais committer de `service_role`, mot de passe ou secrets dans GitHub. Ne pas déployer `security/restrict_booster_rpc.sql` sans vérifier les signatures et les politiques réelles de la base cible.
-
-## Roadmap
-
-1. Valider le solo sur navigateur desktop et mobile et organiser des tests avec de vrais joueurs. Le moteur est testé automatiquement, mais l'interface n'a pas encore été validée en navigateur graphique.
-2. Retrouver les sources du projet initial et identifier précisément les mécaniques d'origine.
-3. Documenter les 49 apparitions et leurs médias avec liens, dates et statut de droits.
-4. Rattacher un environnement Supabase de développement une fois les accès disponibles. Le dépôt GitHub autonome existe déjà.
-5. Construire le backend PvP/économie par transactions atomiques, RLS et tests de concurrence.
-6. Ajouter onboarding, progression, classements, échanges, puis publier après validation.
-
-Voir le document des règles et l'audit détaillé dans `docs/`.
+Documentation technique et état précis : [Collection et comptes](docs/COLLECTION_ET_COMPTES.md).
