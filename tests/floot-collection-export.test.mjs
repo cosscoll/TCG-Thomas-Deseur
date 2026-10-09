@@ -52,10 +52,8 @@ test('CSV sanitizes formula-like labels to prevent spreadsheet injection',()=>{
   for(const prefix of ['=','+','-','@','\t=','\n=']) {
     const catalog=CARDS.map(c=>c.id==='matelas'?{...c,name:prefix+'1+2'}:c);
     const csv=exportCollectionCsv(buildCollectionModel(catalog,[]),{bom:false});
-    assert.ok(csv.includes('"\'=1+2"') ||
-      csv.includes('"\'+'+prefix+'1+2"') ||
-      csv.includes('"\'-1+2"') ||
-      csv.includes('"\'@1+2"'));
+    const normalized=(prefix+'1+2').replace(/[\\r\\n\\t]+/g,' ').trim();
+    assert.ok(csv.includes('"' + "'" + normalized + '"'));
     assert.doesNotMatch(csv,/"[=+@-]1\+2"/);
   }
 });
