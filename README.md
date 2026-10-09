@@ -21,15 +21,13 @@
 
 Le fichier `index.html` est **à la racine** du dépôt (branche `main`), avec `app.js`, `styles.css`, `data/` et `game/`. Il s'agit du prototype jouable **en solo**, pas encore d'un produit final.
 
-**Publication web :** une action GitHub Pages se trouve dans `.github/workflows/deploy.yml`. La compilation et les 21 tests Node du premier lancement ont réussi. La dernière étape de publication est bloquée tant que **GitHub Pages n'est pas activé** dans les paramètres du dépôt. L'application GitHub utilisée par l'assistant n'a pas les droits nécessaires pour l'activer via API.
+**Site public actuel (V0.1) :** https://cosscoll.github.io/TCG-Thomas-Deseur/ — dernier déploiement de `main` confirmé par GitHub Pages. Ce site n'est pas la version V0.2.
 
-Pour activer la prévisualisation, depuis le dépôt GitHub :
+**Développement V0.2 :** [branche `dev/v0.2-gameplay-comptes`](https://github.com/cosscoll/TCG-Thomas-Deseur/tree/dev/v0.2-gameplay-comptes) — capacités de douze cartes pilotes, plusieurs decks de Billy, interface de comptes préparée et tests. La V0.2 n'est pas publiée sur GitHub Pages.
 
-1. Ouvrir **Settings → Pages**.
-2. Dans **Build and deployment**, choisir **Source : GitHub Actions** (activer Pages si demandé).
-3. Ouvrir **Actions → Test and publish TCG preview → Run workflow**, choisir `main`, puis lancer le workflow.
+**Création de comptes :** prévue avec Supabase Auth, migrations RLS pour sauvegarder un deck. Aucun projet Supabase n'est actuellement connecté, donc l'inscription reste désactivée. Voir [documentation des comptes](docs/COMPTES_JOUEURS_V02.md).
 
-Après un déploiement réussi, l'adresse prévue est `https://cosscoll.github.io/TCG-Thomas-Deseur/`. **Ne pas considérer cette adresse comme active avant que GitHub indique une publication réussie.**
+**Validation :** `npm test` (31 scénarios automatisés lors du premier contrôle V0.2) ; workflow Playwright en développement sur la branche V0.2 ; `npm run balance` pour les simulations.
 
 La branche `dev/thomas-deseur-tcg` de `cosscoll/Cosme-Collomb` est une **ancienne copie de sauvegarde**, et non l'emplacement où poursuivre le développement.
 

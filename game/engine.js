@@ -1,4 +1,5 @@
 import { CARDS } from "../data/cards.js";
+import { PILOT_PROFILES } from "./card-profiles.js";
 
 export const DECK_SIZE = 8;
 export const WIN_KOS = 3;
@@ -18,6 +19,10 @@ function hashId(id) {
 /** Combat stats are balanced PROTOTYPE values, not verified lore or source data. */
 export function cardStats(id) {
   if (!validIds.has(id)) throw new Error("Carte inconnue : " + id);
+  const manual = PILOT_PROFILES[id];
+  if (manual) return Object.freeze({
+    id, ...manual, description: manual.ability.name + " — " + manual.ability.description,
+  });
   const hash = hashId(id);
   const roleIndex = hash % ARCHETYPES.length;
   const role = ARCHETYPES[roleIndex];
@@ -30,6 +35,7 @@ export function cardStats(id) {
     quick: quickBases[roleIndex] + ((hash >>> 9) % 5),
     burst: burstBases[roleIndex] + ((hash >>> 15) % 7),
     focusGuard: role === "Rempart" ? 22 : 14,
+    ability: null,
     description: {
       Assaut: "Frappe rapide puissante.",
       Rempart: "Concentration qui protège davantage.",
@@ -118,24 +124,92 @@ function replenish(side) {
   if (!side.active && side.bench.length) side.active = side.bench.shift();
   while (side.bench.length < 2 && side.pile.length) side.bench.push(fighter(side.pile.shift()));
 }
+/** Resolve an authored card ability; the remaining cards keep V0.1 attacks. */
+function applyAbilityAfterHit(state, attacker, rival, ability) {
+  if (!ability) return;
+  const { effect, value } = ability;
+  let detail = "";
+  if (effect === "drain") {
+    const taken = Math.min(rival.energy, value);
+    rival.energy -= taken;
+    detail = "-" + taken + " énergie adverse";
+  } else if (effect === "fortify") {
+    const actual = Math.min(value, 35 - attacker.guard);
+    attacker.guard += actual;
+    detail = "+" + actual + " protection";
+  } else if (effect === "recharge") {
+    const actual = Math.min(value, MAX_ENERGY - attacker.energy);
+    attacker.energy += actual;
+    detail = "+" + actual + " énergie";
+  } else if (effect === "heal") {
+    const actual = Math.min(value, cardStats(attacker.active.id).maxHp - attacker.active.hp);
+    attacker.active.hp += actual;
+    detail = "+" + actual + " PV";
+  } else if (effect === "guard-energy") {
+    const actual = Math.min(value, 35 - attacker.guard);
+    attacker.guard += actual;
+    const energy = Math.min(1, MAX_ENERGY - attacker.energy);
+    attacker.energy += energy;
+    detail = "+" + actual + " protection, +" + energy + " énergie";
+  } else if (effect === "bench-heal") {
+    const injured = attacker.bench
+      .filter(card => card.hp < cardStats(card.id).maxHp)
+      .sort((a,b) => (cardStats(b.id).maxHp-b.hp)-(cardStats(a.id).maxHp-a.hp))[0];
+    if (injured) {
+      const actual = Math.min(value, cardStats(injured.id).maxHp - injured.hp);
+      injured.hp += actual;
+      detail = injured.id + " : +" + actual + " PV en réserve";
+    } else detail = "aucune carte de réserve blessée";
+  } else if (effect === "guard-low-hp") {
+    if (attacker.active.hp * 2 <= cardStats(attacker.active.id).maxHp) {
+      const actual = Math.min(value, 35 - attacker.guard);
+      attacker.guard += actual;
+      detail = "+" + actual + " protection";
+    } else detail = "condition de PV non remplie";
+  } else if (effect === "steal-energy") {
+    const actual = Math.min(value, rival.energy, MAX_ENERGY - attacker.energy);
+    rival.energy -= actual;
+    attacker.energy += actual;
+    detail = actual + " énergie détournée";
+  } else if (effect === "guard-heal") {
+    const actual = Math.min(value, 35 - attacker.guard);
+    attacker.guard += actual;
+    const hp = Math.min(6, cardStats(attacker.active.id).maxHp - attacker.active.hp);
+    attacker.active.hp += hp;
+    detail = "+" + actual + " protection, +" + hp + " PV";
+  }
+  if (detail) log(state, ability.name + " : " + detail + ".");
+}
 function attack(state, actor, type) {
   const attacker = state.sides[actor];
   const rivalKey = actor === "player" ? "ai" : "player";
   const rival = state.sides[rivalKey];
   const unit = cardStats(attacker.active.id);
   let damage = type === "burst" ? unit.burst : unit.quick;
+  const ability = type === "burst" ? unit.ability : null;
   if (type === "burst") {
     attacker.energy -= 2;
     if (unit.role === "Tacticien") attacker.energy = Math.min(MAX_ENERGY, attacker.energy + 1);
     if (unit.role === "Chaos" && attacker.active.hp * 2 <= unit.maxHp) damage += 10;
   }
-  const absorbed = Math.min(rival.guard, damage);
+  if (ability?.effect === "unshielded" && rival.guard === 0) {
+    damage += ability.value;
+    log(state, ability.name + " : +" + ability.value + " dégâts.");
+  }
+  if (ability?.effect === "break-guard") {
+    const broken = Math.min(ability.value, rival.guard);
+    rival.guard -= broken;
+    log(state, ability.name + " : " + broken + " protection détruite.");
+  }
+  const bypass = ability?.effect === "pierce" ? Math.min(ability.value, damage) : 0;
+  const absorbed = Math.min(rival.guard, damage - bypass);
   rival.guard -= absorbed;
   const applied = damage - absorbed;
   rival.active.hp = Math.max(0, rival.active.hp - applied);
   log(state, (actor === "player" ? "Toi" : "Billy") + " : " +
-    (type === "burst" ? "capacité" : "frappe rapide") + " avec " + attacker.active.id +
+    (type === "burst" ? (ability?.name || "capacité") : "frappe rapide") + " avec " + attacker.active.id +
     " (" + applied + " dégâts" + (absorbed ? ", " + absorbed + " bloqués" : "") + ").");
+  applyAbilityAfterHit(state, attacker, rival, ability);
   if (rival.active.hp === 0) {
     rival.discard.push(rival.active.id);
     rival.active = null;
