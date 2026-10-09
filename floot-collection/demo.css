@@ -135,3 +135,98 @@ footer { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-b
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+
+/* Phase 2: duplicate cabinet, collector goals, read-only history and recap. */
+.view-navigation {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 18px;
+  padding-bottom: 5px; border-bottom: 1px solid var(--border);
+}
+.view-navigation button {
+  border: 1px solid var(--border); background: var(--panel); color: var(--primary);
+  border-radius: 9px 9px 0 0; padding: 12px 16px; min-height: 44px; font-weight: 700;
+}
+.view-navigation button[aria-pressed="true"] {
+  background: var(--accent); border-color: var(--accent); color: #071914;
+}
+.view-navigation button:hover:not([aria-pressed="true"]) { background: var(--raised); }
+.panel-extra {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+  padding: 28px; min-width: 0; margin-top: 18px;
+}
+.panel-extra > .subtitle { margin-bottom: 24px; }
+.insight-controls {
+  display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px;
+}
+.insight-controls label {
+  display: flex; flex-direction: column; gap: 8px; min-width: min(100%, 215px);
+  color: var(--muted); font-size: .875rem; font-weight: 700;
+}
+.insight-controls select {
+  color: var(--primary); background: #10192b; border: 1px solid #59718f;
+  border-radius: 9px; min-height: 44px; padding: 10px 12px; max-width: 100%;
+}
+.insight-grid, .goals-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+.insight-card, .goal-card {
+  min-width: 0; padding: 20px; border: 1px solid var(--border);
+  border-radius: 13px; background: #182439;
+}
+.insight-card h3, .goal-card h3 { overflow-wrap: anywhere; margin: 10px 0; font-size: 1rem; }
+.number-emphasis { display: block; margin: 6px 0 12px; font-size: 1.9rem; font-variant-numeric: tabular-nums; }
+.goal-card { display: flex; flex-direction: column; gap: 10px; }
+.goal-card h3 { margin: 0; line-height: 1.4; }
+.goal-card .goal-count { color: var(--muted); font-size: .86rem; font-variant-numeric: tabular-nums; }
+.goal-card progress { width: 100%; accent-color: var(--accent); min-height: 12px; }
+.goal-achieved { border-color: #58a890; }
+.goal-achieved .subnote { color: var(--accent); }
+.subnote { color: var(--muted); line-height: 1.5; font-size: .84rem; margin: 8px 0 0; }
+.history-list { display: grid; gap: 16px; }
+.history-item {
+  padding: 20px; min-width: 0; border-radius: 13px; background: #182439; border: 1px solid var(--border);
+}
+.history-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.history-cards {
+  display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px;
+  list-style: none; padding: 0; margin: 16px 0;
+}
+.history-cards li {
+  display: flex; flex-direction: column; gap: 7px; min-width: 0; border-radius: 9px;
+  background: var(--raised); border: 1px solid var(--border); padding: 12px; overflow-wrap: anywhere;
+}
+.history-cards .rarity-name { font-size: .72rem; }
+.recap-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.recap-summary > div {
+  display: flex; flex-direction: column; gap: 8px; background: #182439;
+  border: 1px solid var(--border); border-radius: 10px; padding: 18px;
+}
+.recap-summary small { color: var(--muted); }
+.recap-summary strong { font-size: 1.65rem; }
+.recap-list { list-style: none; counter-reset: none; padding: 0; display: grid; gap: 10px; }
+.recap-card {
+  display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: center;
+  min-width: 0; background: #182439; border: 1px solid var(--border);
+  border-left: 4px solid var(--rare); border-radius: 10px; padding: 12px 15px;
+}
+.recap-card[data-rarity="commune"] { border-left-color: var(--commune); }
+.recap-card[data-rarity="epique"] { border-left-color: var(--epique); }
+.recap-card[data-rarity="legendaire"] { border-left-color: var(--legendaire); }
+.recap-card[data-rarity="secrete"] { border-left-color: var(--secrete); }
+.recap-card span { overflow-wrap: anywhere; }
+.odds-table { width: 100%; border-collapse: collapse; margin-top: 16px; text-align: left; }
+.odds-table th, .odds-table td { border-bottom: 1px solid var(--border); padding: 12px 10px; }
+.odds-table th { color: var(--muted); font-size: .85rem; }
+@media (max-width: 860px) {
+  .insight-grid, .goals-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .history-cards { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 650px) {
+  .panel-extra { padding: 20px 14px; }
+  .view-navigation { gap: 7px; }
+  .view-navigation button { flex: 1 1 42%; padding: 11px; }
+  .insight-grid, .goals-grid { grid-template-columns: minmax(0,1fr); }
+  .history-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .recap-summary { grid-template-columns: minmax(0,1fr); }
+  .recap-card { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .recap-card > span:last-child { margin-left: auto; }
+  .odds-table th, .odds-table td { padding: 10px 5px; font-size: .78rem; }
+}
