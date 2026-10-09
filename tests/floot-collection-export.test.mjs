@@ -68,7 +68,7 @@ test('CSV refuses truncated, altered or negative-quantity data',()=>{
   const model=sample();
   assert.throws(()=>exportCollectionCsv({...model,cards:model.cards.slice(1)}),/49 cartes/);
   assert.throws(()=>exportCollectionCsv({...model,cards:model.cards.map(c=>c.id==='matelas'?{...c,quantity:-1}:c)}),/invalide/);
-  assert.throws(()=>exportCollectionCsv({...model,cards:[...model.cards.slice(1),model.cards[0]]}),/invalide|49 cartes/);
+  assert.throws(()=>exportCollectionCsv({...model,cards:[...model.cards.slice(0,48),model.cards[0]]}),/invalide|49 cartes/);
 });
 test('invalid export options are rejected',()=>{
   assert.throws(()=>exportCollectionCsv(sample(),{includeMissing:'false'}),/Options/);
