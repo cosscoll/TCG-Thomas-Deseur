@@ -31,7 +31,7 @@ class FakeElement {
 }
 
 test("solo UI: from card catalog and deck editing through a finished match", async () => {
-  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const html = readFileSync(new URL("../solo/index.html", import.meta.url), "utf8");
   const ids = [...html.matchAll(/id="([^"]+)"/g)].map(match => match[1]);
   const elements = new Map(ids.map(id => [id, new FakeElement()]));
   elements.get("rarity").value = "all";
@@ -57,7 +57,7 @@ test("solo UI: from card catalog and deck editing through a finished match", asy
     }
   });
 
-  await import("../app.js");
+  await import("../solo/app.js");
 
   assert.equal(get("cardGrid").children.length, 49);
   assert.equal(get("deckCount").textContent, "8 / 8");
