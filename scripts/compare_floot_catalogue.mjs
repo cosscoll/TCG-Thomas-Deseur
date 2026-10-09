@@ -5,13 +5,15 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { CARDS } from '../data/cards.js';
+const EXPECTED_RARITIES = new Set(['commune', 'rare', 'epique', 'legendaire', 'secrete']);
 
 export function compareCatalogue(actual, expected = CARDS) {
   if (!Array.isArray(actual)) throw new Error('Expected a JSON array of {id,rarity}');
   if (actual.some(row => !row || typeof row !== 'object' || Array.isArray(row) ||
       Object.keys(row).some(key => !['id', 'rarity'].includes(key)) ||
-      typeof row.id !== 'string' || typeof row.rarity !== 'string')) {
-    throw new Error('The export must contain only id and rarity fields; no account or card-owner data');
+      typeof row.id !== 'string' || !/^[a-z0-9_]{1,64}$/.test(row.id) ||
+      typeof row.rarity !== 'string' || !EXPECTED_RARITIES.has(row.rarity))) {
+    throw new Error('The export must contain only valid public card IDs and canonical rarity slugs');
   }
   const counts = new Map();
   for (const row of actual) counts.set(row.id, (counts.get(row.id) || 0) + 1);
