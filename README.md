@@ -21,6 +21,11 @@ Ce dépôt conserve le catalogue historique, les prototypes, leurs tests et la d
 
 Le prototype statique reste accessible à https://cosscoll.github.io/TCG-Thomas-Deseur/. Sa collection locale ne doit jamais être importée comme inventaire officiel.
 
+
+Une [page de démonstration du classeur](floot-collection/demo.html) permet désormais de vérifier les compteurs, les catégories de rareté, les doublons et les filtres avec trois inventaires fictifs (vide, partiel, complet). Elle est **isolée du jeu Floot**, ne se connecte à aucun compte et n'attribue aucune carte. Le [déploiement GitHub Pages du prototype](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946337589) a réussi, mais **l'accès HTTP public de la page n'a pas pu être vérifié indépendamment depuis cet environnement**. URL proposée, non certifiée : https://cosscoll.github.io/TCG-Thomas-Deseur/floot-collection/demo.html
+
+La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) a validé **80 tests sur 80**, dont sept contrôles statiques destinés à maintenir cette démonstration non connectée. Les tests navigateur réels restent à faire.
+
 ## Priorité actuelle : la collection, sans les illustrations
 
 Les visuels des cartes sont toujours en préparation. Le travail de développement est recentré sur **les raretés, les quantités possédées, les doublons, les cartes manquantes, les statistiques de complétion, la recherche et les filtres du classeur**.
