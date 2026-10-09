@@ -63,7 +63,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Installer le moteur de tests navigateur
-        run: npm install --no-save @playwright/test@1.56.1
+        run: npm install --no-save @playwright/test@1.56.1 @axe-core/playwright@4.10.2
       - name: Installer Chromium
         run: npx playwright install --with-deps chromium
       - name: Vérifier le classeur fictif sur ordinateur et mobile
