@@ -1,4 +1,5 @@
 import { CARDS } from '../data/cards.js';
+import { exportCollectionCsv } from './collection-export.mjs';
 import { buildCollectionModel, filterCollectionCards, RARITY_LABELS, RARITY_ORDER, getDisplayedBoosterOdds } from './collection-model.mjs';
 import {
   getDuplicateSummary, getCollectionGoals, normalizeAcquisitionHistory,
@@ -362,6 +363,21 @@ function activateView(view) {
 for (const button of document.querySelectorAll('[data-view]')) {
   button.addEventListener('click', () => activateView(button.dataset.view));
 }
+
+byId('export-demo-csv').addEventListener('click', () => {
+  // Fictitious quantities only. No network request, real inventory, or mutation.
+  const model = buildCollectionModel(CARDS, samples[state.scenario]);
+  const csv = exportCollectionCsv(model);
+  const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'tcg-deseur-collection-exemple.csv';
+  link.hidden = true;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
 
 byId('detail-close').addEventListener('click', () => byId('card-detail').close());
 byId('detail-previous').addEventListener('click', () => moveCardDetail(-1));
