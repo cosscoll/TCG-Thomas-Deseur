@@ -2,6 +2,10 @@ import { CARDS, RARITIES } from "./data/cards.js";
 import { simulateBooster } from "./game/booster.js";
 import { createMatch, applyAction, legalActions, chooseAiAction, validateDeck, cardStats, DECK_SIZE, WIN_KOS, AI_DIFFICULTIES, suggestBalancedDeck } from "./game/engine.js";
 import { emptySoloProgress, normalizeSoloProgress, SOLO_BADGES, earnedSoloBadges, recordSoloResult } from "./game/progress.js";
+import { emptyCollection, normalizeCollection, openDemoPack, collectionStats, LOCAL_COLLECTION_KEY } from "./game/collection.js";
+import { accountsConfigured } from "./account/client.js";
+import { initAccountPanel } from "./account/panel.js";
+import { fetchCloudCollection, claimCloudBooster } from "./account/cloud-collection.js";
 
 const byId = id => document.getElementById(id);
 const search = byId("search");
@@ -105,28 +109,175 @@ rarity.addEventListener("change", render);
 onlyMarked.addEventListener("change", render);
 render();
 
+
+/* ---- Chasse aux cartes : DEMO LOCALE distincte de la collection authentifiée ---- */
 const boosterDialog = byId("boosterDialog");
-function previewBooster() {
-  const cards = simulateBooster(CARDS);
-  const result = byId("boosterResults");
-  const content = document.createDocumentFragment();
-  for (const [index, card] of cards.entries()) {
+const ownedFilter = byId("collectionOwnedFilter");
+const collectionRarity = byId("collectionRarity");
+let demoCollection = emptyCollection();
+let cloudCollection = null;
+let accountClient = null;
+let accountUser = null;
+let openingInProgress = false;
+try {
+  demoCollection = normalizeCollection(JSON.parse(localStorage.getItem(LOCAL_COLLECTION_KEY) || "null"), CARDS);
+} catch { demoCollection = emptyCollection(); }
+
+const cardLookup = new Map(CARDS.map(card => [card.id, card]));
+function collectionMode() {
+  if (!accountsConfigured()) return "demo";
+  return accountUser && accountClient ? "cloud" : "locked";
+}
+function activeCollection() {
+  return collectionMode() === "cloud" ? cloudCollection : demoCollection;
+}
+function saveDemoCollection() {
+  try { localStorage.setItem(LOCAL_COLLECTION_KEY, JSON.stringify(demoCollection)); }
+  catch { byId("collectionMode").textContent = "Stockage local indisponible : ta démo peut être perdue à la fermeture du navigateur."; }
+}
+function availableCloudPack() {
+  if (!cloudCollection) return false;
+  const date = cloudCollection.nextAvailableAt;
+  return !date || Number.isNaN(Date.parse(date)) || Date.parse(date) <= Date.now();
+}
+function renderPackAvailability() {
+  const mode = collectionMode();
+  const open = byId("simulateBooster");
+  const repeat = byId("rerollBooster");
+  const note = byId("boosterAvailability");
+  open.disabled = openingInProgress || mode === "locked" || (mode === "cloud" && !availableCloudPack());
+  repeat.disabled = open.disabled;
+  if (mode === "demo") note.textContent = "Démonstration gratuite : ouvertures illimitées, collection enregistrée uniquement sur cet appareil.";
+  else if (mode === "locked") note.textContent = "Connecte-toi à ton compte pour réclamer ton booster et sauvegarder tes cartes.";
+  else if (!cloudCollection) note.textContent = "Chargement de ta collection sécurisée…";
+  else if (!availableCloudPack()) {
+    const date = new Date(cloudCollection.nextAvailableAt);
+    note.textContent = "Prochain booster gratuit disponible le " +
+      new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", timeStyle: "short" }).format(date) + ".";
+  } else note.textContent = "Ton booster gratuit est prêt. Attribution des cartes directement par le serveur.";
+}
+function renderCollection() {
+  const mode = collectionMode();
+  const state = activeCollection();
+  const copies = state?.copies || {};
+  const stats = collectionStats(state || emptyCollection(), CARDS);
+  byId("collectionUnique").textContent = stats.unique + " / " + CARDS.length;
+  byId("collectionTotal").textContent = String(stats.total);
+  byId("collectionDuplicates").textContent = String(stats.duplicates);
+  byId("collectionOpened").textContent = String(stats.opened);
+  byId("collectionPercent").textContent = stats.completion + " %";
+  byId("collectionProgress").value = stats.unique;
+  byId("collectionMode").textContent = mode === "demo"
+    ? "Classeur de démonstration local. Rien n'est synchronisé ou acquis dans un compte officiel."
+    : mode === "locked"
+      ? "Connecte-toi pour afficher les cartes de ton compte sécurisé."
+      : cloudCollection
+        ? "Classeur sécurisé, associé à ton compte joueur."
+        : "Chargement de ton classeur sécurisé…";
+  const filter = ownedFilter.value || "all";
+  const kind = collectionRarity.value || "all";
+  const matches = CARDS.filter(card => {
+    const qty = copies[card.id] || 0;
+    return (kind === "all" || kind === card.rarity) &&
+      (filter === "all" || (filter === "owned" && qty > 0) ||
+       (filter === "missing" && qty === 0) || (filter === "duplicates" && qty > 1));
+  });
+  const fragment = document.createDocumentFragment();
+  for (const card of matches) {
+    const amount = copies[card.id] || 0;
+    const tile = el("article", "binder-card rarity-" + card.rarity + (amount ? " owned" : " missing"));
+    tile.append(el("span", "binder-card-rarity", rarityLabels[card.rarity]));
+    tile.append(el("strong", "binder-card-name", amount ? card.name : "Carte à découvrir"));
+    tile.append(el("small", "binder-card-id", "BI / " + card.id.toUpperCase()));
+    tile.append(el("span", "binder-card-count", amount ? "×" + amount + (amount > 1 ? " · Doublons" : " · Possédée") : "Non obtenue"));
+    fragment.append(tile);
+  }
+  byId("collectionGrid").replaceChildren(fragment);
+  byId("collectionEmpty").classList.toggle("hidden", matches.length > 0);
+  const recent = document.createDocumentFragment();
+  const history = Array.isArray(state?.history) ? state.history : [];
+  if (!history.length) recent.append(el("p", "collection-history-empty", "Aucun booster ouvert pour le moment."));
+  for (const [index, pack] of history.slice(0, 5).entries()) {
+    const row = el("div", "collection-history-row");
+    row.append(el("strong", "", "Booster " + (state.opened - index)));
+    row.append(el("span", "", pack.map(id => cardLookup.get(id)?.name || id).join(" · ")));
+    recent.append(row);
+  }
+  byId("recentOpenings").replaceChildren(recent);
+  renderPackAvailability();
+}
+function presentOpenedPack(results, mode) {
+  const holder = document.createDocumentFragment();
+  for (const [index, card] of results.entries()) {
     const item = el("article", "booster-result rarity-" + card.rarity);
     item.style.animationDelay = (index * 0.10) + "s";
-    const art = el("div", "booster-result-art", "?");
-    const kind = el("small", "", rarityLabels[card.rarity]);
-    const name = el("strong", "", card.name);
-    item.append(art, kind, name);
-    content.append(item);
+    item.append(el("div", "booster-result-art", "?"));
+    item.append(el("small", "", rarityLabels[card.rarity]));
+    item.append(el("strong", "", card.name));
+    item.append(el("small", "booster-discovery", card.newCard ? "Nouvelle découverte !" : "Doublon · ×" + card.copies));
+    holder.append(item);
   }
-  result.replaceChildren(content);
+  byId("boosterResults").replaceChildren(holder);
+  byId("boosterModeNote").textContent = mode === "cloud"
+    ? "Ces cinq cartes sont enregistrées sur ton compte."
+    : "Ces cinq cartes ont été ajoutées au classeur de démonstration local.";
+  renderCollection();
+  if (typeof boosterDialog.showModal === "function") {
+    if (!boosterDialog.open) boosterDialog.showModal();
+  } else boosterDialog.setAttribute("open", "");
 }
-byId("simulateBooster").addEventListener("click", () => {
-  previewBooster();
-  if (typeof boosterDialog.showModal === "function") boosterDialog.showModal();
-  else boosterDialog.setAttribute("open", "");
-});
-byId("rerollBooster").addEventListener("click", previewBooster);
+async function openPack() {
+  if (openingInProgress) return;
+  const mode = collectionMode();
+  if (mode === "locked" || (mode === "cloud" && !availableCloudPack())) {
+    renderPackAvailability();
+    return;
+  }
+  openingInProgress = true;
+  renderPackAvailability();
+  try {
+    if (mode === "demo") {
+      const opened = openDemoPack(demoCollection, CARDS);
+      demoCollection = opened.state;
+      saveDemoCollection();
+      presentOpenedPack(opened.results, mode);
+    } else {
+      const previous = { ...(cloudCollection?.copies || {}) };
+      const response = await claimCloudBooster(accountClient);
+      const incremental = { ...previous };
+      const results = response.cards.map(record => {
+        const card = cardLookup.get(record.id);
+        if (!card || card.rarity !== record.rarity) throw new Error("Carte serveur inconnue.");
+        const already = incremental[card.id] || 0;
+        incremental[card.id] = already + 1;
+        return { ...card, newCard: already === 0, copies: incremental[card.id] };
+      });
+      cloudCollection = await fetchCloudCollection(accountClient, accountUser);
+      presentOpenedPack(results, mode);
+    }
+  } catch (error) {
+    byId("boosterAvailability").textContent = error?.message || "Impossible d'ouvrir le booster.";
+  } finally {
+    openingInProgress = false;
+    renderPackAvailability();
+  }
+}
+byId("simulateBooster").addEventListener("click", openPack);
+byId("rerollBooster").addEventListener("click", openPack);
+ownedFilter.addEventListener("change", renderCollection);
+collectionRarity.addEventListener("change", renderCollection);
+renderCollection();
+initAccountPanel(async (client, user) => {
+  accountClient = client;
+  accountUser = user;
+  cloudCollection = null;
+  renderCollection();
+  if (client && user) {
+    try { cloudCollection = await fetchCloudCollection(client,user); }
+    catch { byId("accountMessage").textContent = "Collection sécurisée indisponible. Réessaie plus tard."; }
+    renderCollection();
+  }
+}).catch(() => { byId("accountMessage").textContent = "Service de comptes momentanément indisponible."; });
 
 /* ---- Prototype solo : atelier et affrontement local contre Billy ---- */
 const DEFAULT_PLAYER_DECK = Object.freeze([
