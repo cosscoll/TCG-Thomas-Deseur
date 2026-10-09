@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#11101b">
   <meta name="robots" content="noindex,nofollow">
-  <title>Budget Illimité — Boosters, cartes et collection</title>
+  <title>TCG Deseur — Boosters, cartes et collection</title>
   <meta name="description" content="Prototype de jeu de collection : ouvre des boosters, trouve les cartes rares et complète ton classeur de 49 cartes.">
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./app.js"></script>
@@ -13,7 +13,7 @@
 <body>
   <a class="skip" href="#ouvrir">Aller aux boosters</a>
   <header class="topbar">
-    <a class="brand" href="#accueil" aria-label="Budget Illimité — accueil"><span class="brand-mark">BI</span><span>BUDGET <b>ILLIMITÉ</b><small>Le jeu de collection</small></span></a>
+    <a class="brand" href="#accueil" aria-label="TCG Deseur — accueil"><span class="brand-mark">TCG</span><span>TCG <b>DESEUR</b><small>Le jeu de collection</small></span></a>
     <nav aria-label="Navigation principale"><a href="#ouvrir">Boosters</a><a href="#classeur">Mon classeur</a><a href="#compte">Mon compte</a></nav>
     <span class="dev-label">Version de développement</span>
   </header>
@@ -26,7 +26,7 @@
         <div class="hero-actions"><a href="#ouvrir" class="primary-link">Ouvrir un booster <span aria-hidden="true">↗</span></a><a href="#classeur" class="secondary-link">Explorer la collection</a></div>
         <p class="hero-disclaimer">Prototype non officiel. Les cartes de démonstration restent locales jusqu'à l'activation des comptes.</p>
       </div>
-      <div class="hero-graphic" aria-hidden="true"><div class="hero-glow"></div><div class="feature-card feature-back"><span>BI</span><strong>?</strong><small>COLLECTION</small></div><div class="feature-card feature-front"><span>CARTE MYSTÈRE</span><strong>?</strong><small>ÉDITION ORIGINE</small></div></div>
+      <div class="hero-graphic" aria-hidden="true"><div class="hero-glow"></div><div class="feature-card feature-back"><span>TCG</span><strong>?</strong><small>COLLECTION</small></div><div class="feature-card feature-front"><span>CARTE MYSTÈRE</span><strong>?</strong><small>ÉDITION ORIGINE</small></div></div>
     </section>
     <section class="summary" aria-label="Ma progression">
       <div><small>Cartes découvertes</small><strong id="summaryUnique">0 <span>/ 49</span></strong></div>
@@ -85,7 +85,7 @@
       </div>
     </section>
   </main>
-  <footer><span>BUDGET ILLIMITÉ — Prototype indépendant et non officiel.</span><span><a href="./solo/">Ancien prototype de combat</a> · <a href="https://github.com/cosscoll/TCG-Thomas-Deseur">Code sur GitHub</a></span></footer>
+  <footer><span>TCG Deseur — Prototype indépendant et non officiel.</span><span><a href="./solo/">Ancien prototype de combat</a> · <a href="https://github.com/cosscoll/TCG-Thomas-Deseur">Code sur GitHub</a></span></footer>
   <dialog id="boosterDialog" aria-labelledby="resultTitle">
     <div class="dialog-top"><div><p class="eyebrow">Ton booster est ouvert</p><h2 id="resultTitle">Les cartes découvertes</h2><p id="boosterModeNote">Les cartes ont été ajoutées au classeur de démonstration.</p></div><form method="dialog"><button type="submit" class="close-dialog" aria-label="Fermer le résultat">×</button></form></div>
     <div id="boosterResults" class="booster-results"></div>

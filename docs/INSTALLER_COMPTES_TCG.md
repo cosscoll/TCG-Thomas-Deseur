@@ -1,4 +1,4 @@
-# Installation réelle des comptes joueurs — Budget Illimité TCG
+# Installation réelle des comptes joueurs — TCG Deseur
 
 **Projet Supabase déjà créé :** `kanzeqhvwwesddrxcrmx`  
 **Organisation :** TCG thomas deseur  

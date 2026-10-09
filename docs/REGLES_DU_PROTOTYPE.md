@@ -1,4 +1,4 @@
-# Règles de Budget Illimité — prototype solo 0.1
+# Règles de TCG Deseur — ancien prototype solo 0.1
 
 > Ces règles sont **expérimentales**, et NON une restitution du moteur d'origine. Celui-ci était absent du ZIP fourni. Elles sont destinées à valider une expérience jouable.
 

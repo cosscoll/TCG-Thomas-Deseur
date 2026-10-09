@@ -59,7 +59,7 @@ Le connecteur Supabase ne retourne aucun projet à ce stade. Il faut :
 
 ## Tests
 - `npm test` couvre la collection, l'historique, les doublons, les cas malformés et les modules historiques.
-- Le workflow **E2E Collection Budget Illimite** vérifie les parcours desktop, téléphone 390 px, clavier, ouverture, filtre et persistance après actualisation.
+- Le workflow **E2E Collection TCG Deseur** vérifie les parcours desktop, téléphone 390 px, clavier, ouverture, filtre et persistance après actualisation.
 - Le frontend public `main` reste non modifié jusqu'à validation et fusion volontaire.
 
 ## Priorités suivantes

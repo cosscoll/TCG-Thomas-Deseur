@@ -1,8 +1,10 @@
-# Budget Illimité — Le jeu de collection
+# TCG Deseur — Le jeu de collection
 
 **Jeu de collection indépendant et non officiel** inspiré des apparitions et personnages de Thomas Deseur. Ce dépôt est la **source de référence** du site et de l'application.
 
-**Site :** https://cosscoll.github.io/TCG-Thomas-Deseur/
+**Jeu avec comptes et collection serveur :** https://budget-illimite-tcg.floot.app/ (hébergé sur Floot, désormais présenté sous le nom TCG Deseur).
+
+**Prototype statique sur GitHub Pages :** https://cosscoll.github.io/TCG-Thomas-Deseur/ — ses boosters restent des démonstrations locales, indépendantes des comptes Floot.
 
 ## Le jeu aujourd'hui
 
@@ -79,7 +81,7 @@ npm test
 npm run balance
 ```
 
-Les tests complets en navigateur sont exécutés sur les PR par le workflow `E2E Collection Budget Illimite`.
+Les tests complets en navigateur sont exécutés sur les PR par le workflow `E2E Collection TCG Deseur`.
 
 ## Avant un lancement public officiel
 

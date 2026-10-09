@@ -1,4 +1,4 @@
-name: E2E Collection Budget Illimite
+name: E2E Collection TCG Deseur
 
 on:
   pull_request:

@@ -1,4 +1,4 @@
-name: Verify Budget Illimite TCG
+name: Verify TCG Deseur
 
 on:
   push:
