@@ -21,7 +21,16 @@ export async function initAccountPanel(onSessionChange) {
     show(loggedOut, accountsConfigured() && !user && !recovery);
     show(loggedIn, accountsConfigured() && Boolean(user) && !recovery);
     show(passwordReset, accountsConfigured() && recovery);
-    if (user) $("accountUserEmail").textContent = user.email || "Compte connecté";
+    if (user) {
+      $("accountUserEmail").textContent = user.email || "Compte connecté";
+      queueMicrotask(() => refreshProfile().catch(() => {}));
+    }
+  }
+  async function refreshProfile() {
+    if (!client || !user) return;
+    const {data,error}=await client.from("tcg_player_profiles")
+      .select("display_name").eq("user_id",user.id).maybeSingle();
+    if(!error && data) $("accountProfileName").value=data.display_name;
   }
   function notifyParent() {
     // Supabase discourages awaiting other auth operations within its listener.
@@ -103,6 +112,17 @@ export async function initAccountPanel(onSessionChange) {
       render();
       notify("Ton mot de passe a été modifié.");
     }catch{notify("Modification impossible. Renvoie un lien de récupération.");}
+  });
+  $("accountSaveProfile").addEventListener("click",async()=>{
+    if (!user || !client) return;
+    const display_name=$("accountProfileName").value.trim();
+    if(display_name.length<3 || display_name.length>30){
+      notify("Le pseudo doit contenir 3 à 30 caractères.");
+      return;
+    }
+    const {error}=await client.from("tcg_player_profiles")
+      .update({display_name}).eq("user_id",user.id);
+    notify(error ? "Impossible d'enregistrer le pseudo actuellement." : "Ton pseudonyme a été enregistré.");
   });
   $("accountSignOut").addEventListener("click",async()=>{
     try{

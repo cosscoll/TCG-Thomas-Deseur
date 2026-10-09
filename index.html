@@ -135,7 +135,15 @@
         </form>
       </div>
       <div id="accountPasswordRecovery" hidden class="account-form"><label>Nouveau mot de passe <input id="accountNewPassword" type="password" minlength="8" autocomplete="new-password"></label><button id="accountChangePassword" type="button" class="main-cta">Mettre à jour</button></div>
-      <div id="accountMember" hidden><strong id="accountUserEmail"></strong><p>Tes cartes proviennent de ton compte sécurisé. Les boosters sont attribués par le serveur.</p><button id="accountSignOut" class="secondary-cta" type="button">Me déconnecter</button></div>
+      <div id="accountMember" hidden>
+        <strong id="accountUserEmail"></strong>
+        <p>Tes cartes proviennent de ton compte sécurisé. Les boosters sont attribués par le serveur.</p>
+        <div class="account-profile-edit">
+          <label>Pseudonyme <input id="accountProfileName" type="text" minlength="3" maxlength="30" autocomplete="nickname"></label>
+          <button id="accountSaveProfile" class="secondary-cta" type="button">Enregistrer mon pseudo</button>
+        </div>
+        <button id="accountSignOut" class="secondary-cta" type="button">Me déconnecter</button>
+      </div>
     </section>
     <section id="avancement" class="progress-section"><div><p class="eyebrow">Phase de construction</p><h2>Le mode solo est jouable, le multijoueur reste à construire.</h2></div><p>Le moteur de combat d'origine était absent de l'archive. Nous avons construit un nouveau mode solo expérimental, avec statistiques provisoires et adversaire automatique. Les cartes, sources vidéo et parties multijoueurs restent à finaliser.</p></section>
   </main>
