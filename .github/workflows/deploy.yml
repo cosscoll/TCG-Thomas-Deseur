@@ -39,6 +39,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: tcg-verify-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   tests:
     name: Run Node.js tests
