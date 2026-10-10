@@ -74,6 +74,12 @@ Un second lot a été **développé, testé et publié dans le même Floot** apr
 Limite : aucun booster réel n'a été consommé et la révélation n'a pas été testée dans un navigateur avec un compte joueur. Les tests portent sur le code/les données fictives et les assets publics réellement déployés.
 
 
+## Mise en garde — 10 octobre 2026 : modifications en attente de vérification
+
+**Ne pas publier la dernière session sans tests.** Les modifications de sécurité et de navigation de ce jour sont enregistrées dans Floot mais **non publiées** après atteinte du quota de 100 actions. Reprise détaillée, fichier par fichier, problèmes de test connus et état réel du déploiement : [FLOOT_SESSION_2026-10-10_FIN_DU_QUOTA.md](FLOOT_SESSION_2026-10-10_FIN_DU_QUOTA.md).
+
+La version publique continue à servir la dernière build validée avant cette session. Le quota Floot est annoncé rétabli le **11 octobre 2026 à 09:00 UTC**. La tâche TCG récurrente reste désactivée.
+
 ## État de production actualisé — 10 octobre 2026
 
 **Les fonctions de collection ont été intégrées directement au projet Floot existant et publiées.** Lire d'abord [FLOOT_INTEGRATION_2026-10-10.md](FLOOT_INTEGRATION_2026-10-10.md) avant toute reprise. Le quota était de nouveau disponible ; ne plus présenter le blocage du 9 octobre comme l'état actuel.
