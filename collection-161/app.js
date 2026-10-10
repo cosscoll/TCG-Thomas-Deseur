@@ -10,6 +10,7 @@ const scenarios=Object.freeze({
   complete:()=>Object.fromEntries([...REQUIRED_FOR_CHEVELU,SECRET_CARD_ID].map(id=>[id,1])),
 });
 let selected="empty";
+let artworkPublished=false;
 const button=(name,className,text)=>{
   const el=document.createElement(name);
   if(className)el.className=className;
@@ -64,7 +65,16 @@ function render(){
     const head=button("div","card-head");
     head.append(button("span","rarity-name",rarityNames[card.rarity]),
       button("span","card-number","#"+String(card.collectionNumber).padStart(3,"0")));
-    const art=button("div","art-frame",card.id===SECRET_CARD_ID&&!owned?"CARTE SECRÈTE":"Illustration PNG préparée");
+    const art=button("div","art-frame",card.id===SECRET_CARD_ID&&!owned?"CARTE SECRÈTE":"Illustration en attente de publication");
+    if(artworkPublished && !(card.id===SECRET_CARD_ID && !owned)){
+      const image=document.createElement("img");
+      image.src=card.artPath;
+      image.alt="Illustration de "+card.name;
+      image.loading="lazy";
+      image.decoding="async";
+      image.addEventListener("load",()=>{art.replaceChildren(image);art.classList.add("has-image")},{once:true});
+      image.addEventListener("error",()=>{image.remove()},{once:true});
+    }
     art.setAttribute("role","img");
     art.setAttribute("aria-label",card.id===SECRET_CARD_ID&&!owned?
       "Illustration secrète cachée":"Illustration du PDF en attente de publication sur GitHub");
@@ -89,3 +99,18 @@ $("preview-secret").addEventListener("click",()=>{
 for(const id of ["close-secret","finish-secret"])$(id).addEventListener("click",()=>$("secret-dialog").close());
 $("secret-dialog").addEventListener("click",e=>{if(e.target===$("secret-dialog"))e.target.close()});
 render();
+(async()=>{
+  // One manifest controls the switch: when the prepared assets package
+  // is uploaded intact, all 161 original artworks appear automatically.
+  // Without it the GitHub preview uses honest neutral placeholders.
+  try{
+    const response=await fetch("./assets/available.json",{cache:"no-store"});
+    if(!response.ok)return;
+    const manifest=await response.json();
+    if(manifest?.count===161 && Array.isArray(manifest.images) &&
+      new Set(manifest.images).size===161){
+      artworkPublished=true;
+      render();
+    }
+  }catch{ /* image package not hosted yet */ }
+})();
