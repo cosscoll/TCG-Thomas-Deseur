@@ -32,6 +32,8 @@ La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-De
 
 **Dernière version Floot :** le bilan de révélation des cinq cartes est également publié, avec **six suites de tests Floot réussies**. [Preuves et limites de validation](docs/FLOOT_INTEGRATION_2026-10-10.md).
 
+**Nouvelles préparations du 10 octobre (GitHub uniquement) :** [simulateur exact de découverte, rangs de collectionneur et révélation 3D](docs/EVOLUTION_COLLECTION_2026-10-10.md). Validation : [155 tests Node et 66 tests navigateur Chromium réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076323343). Ces travaux ne sont **pas** publiés dans le jeu Floot et ne modifient aucun compte ni inventaire. La réouverture du quota Floot est annoncée pour le 11 octobre à 09:00 UTC. Les correctifs Floot déjà en attente restent prioritaires.
+
 **Version active du 10 octobre :** les fonctions de classeur auparavant préparées sur GitHub sont désormais **intégrées et publiées directement dans Floot**. [Journal complet de publication et tests](docs/FLOOT_INTEGRATION_2026-10-10.md). Les 49 IDs/raretés historiques ont été comparés à PostgreSQL et concordent exactement. TypeScript propre, cinq suites Jasmine réussies, publication réussie et HTTP public vérifié ; **le parcours authentifié n'est pas encore testé en navigateur**.
 
 ## Priorité actuelle : la collection, sans les illustrations
