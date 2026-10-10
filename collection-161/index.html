@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#131020">
+  <title>Collection 161 cartes — TCG Deseur</title>
+  <meta name="description" content="Aperçu du nouveau catalogue TCG Deseur : 161 cartes, Lille hors-série et Chevelu débloqué uniquement après les 160 autres cartes.">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a href="#cards" class="skip">Aller aux cartes</a>
+  <header class="topbar">
+    <a class="brand" href="../"><span class="mark">TCG</span> <span>DESEUR <small>Collection Origine · 161</small></span></a>
+    <a href="../">Ancien aperçu GitHub</a>
+    <a href="https://budget-illimite-tcg.floot.app/" rel="noopener noreferrer">Jeu Floot en production ↗</a>
+  </header>
+  <main>
+    <section class="hero">
+      <div><span class="eyebrow">Catalogue illustré — édition 161</span><h1>160 cartes à trouver.<br><em>Une secrète à mériter.</em></h1>
+        <p>Chevelu ne tombe jamais dans un booster normal. Quand les 160 autres cartes, Lille comprise, sont dans ta collection, un booster spécial contenant Chevelu devient accessible <strong>une seule fois par compte</strong>.</p>
+        <p class="disclaimer">Aperçu technique GitHub : les collections ci-dessous sont fictives. La récompense officielle sera délivrée uniquement par le serveur Floot une fois l'intégration publiée.</p>
+      </div>
+      <div class="secret-hero" role="img" aria-label="Carte Chevelu secrète, non montrée avant déblocage"><span>CARTE SECRÈTE</span><b>?</b><strong>CHEVELU</strong><small>Booster final • 160 / 160 autres cartes requises</small></div>
+    </section>
+    <section class="overview" aria-label="Statistiques de l'aperçu">
+      <article><small>Catalogue officiel proposé</small><strong>161</strong><span>159 standards + Lille + Chevelu</span></article>
+      <article><small>Cartes à obtenir d'abord</small><strong id="progress-number">0 / 160</strong><span>Chevelu non comptée</span></article>
+      <article><small>État du booster secret</small><strong id="secret-status">Verrouillé</strong><span id="secret-detail">160 cartes encore à découvrir</span></article>
+    </section>
+    <section class="workshop">
+      <div><span class="eyebrow">Vérification des règles</span><h2>Tester les étapes de progression</h2>
+        <p>Ces boutons simulent des inventaires pour vérifier la règle des 160 cartes. Ils ne donnent aucune carte réelle.</p>
+      </div>
+      <div id="scenario-controls" class="scenario-controls" role="group" aria-label="Collections fictives">
+        <button type="button" data-scenario="empty" aria-pressed="true">0 / 160</button>
+        <button type="button" data-scenario="partial" aria-pressed="false">75 / 160</button>
+        <button type="button" data-scenario="without-lille" aria-pressed="false">159 / 160 (sans Lille)</button>
+        <button type="button" data-scenario="eligible" aria-pressed="false">160 / 160</button>
+        <button type="button" data-scenario="complete" aria-pressed="false">161 / 161</button>
+      </div>
+      <div class="unlock-panel">
+        <div class="unlock-text"><h3 id="unlock-heading">Booster secret verrouillé</h3>
+          <p id="unlock-explanation">Il te manque encore des cartes.</p>
+          <div class="track" role="progressbar" aria-label="Cartes nécessaires pour débloquer Chevelu" aria-valuemin="0" aria-valuemax="160" aria-valuenow="0" id="unlock-track"><span id="unlock-fill"></span></div>
+          <p id="unlock-numbers">0 / 160 prérequis réunis</p>
+        </div>
+        <button type="button" id="preview-secret" disabled>Voir la révélation de démonstration</button>
+      </div>
+      <p class="odds">Booster ordinaire : 5 cartes (55 % Commune, 27 % Rare, 12 % Épique, 4 % Légendaire, 2 % Hors-série). Cinquième carte : Rare ou mieux. <strong>Chevelu : probabilité 0 % dans un booster ordinaire.</strong> Lille est obtenable dans les boosters ordinaires pour éviter de bloquer la complétion.</p>
+    </section>
+    <section id="cards" class="gallery">
+      <div class="gallery-head"><div><span class="eyebrow">Collection Origine</span><h2>Les 161 cartes</h2><p>159 références des séries 1 à 3, la carte Lille et la secrète Chevelu. Les titres et raretés de chaque carte standard sont provisoires, sous réserve de validation éditoriale.</p></div><strong id="cards-shown">161 cartes affichées</strong></div>
+      <div class="filters">
+        <label>Rechercher<input id="search" type="search" placeholder="Référence, nom..." autocomplete="off"></label>
+        <label>Rareté<select id="rarity"><option value="all">Toutes les raretés</option><option value="commune">Commune</option><option value="rare">Rare</option><option value="epique">Épique</option><option value="legendaire">Légendaire</option><option value="hors_serie">Hors-série</option><option value="secrete">Secrète</option></select></label>
+        <label>Possession simulée<select id="ownership"><option value="all">Toutes les cartes</option><option value="owned">Possédées</option><option value="missing">Manquantes</option></select></label>
+      </div>
+      <div id="cards-grid" class="cards-grid" aria-live="polite"></div>
+      <p id="empty-results" hidden>Aucune carte ne correspond à cette recherche.</p>
+    </section>
+  </main>
+  <dialog id="secret-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><span>BOOSTER SPÉCIAL • DÉMONSTRATION</span><button type="button" id="close-secret" aria-label="Fermer">×</button></div>
+    <div class="secret-reveal"><span>ÉDITION ORIGINE</span><b>?</b><strong id="dialog-title">Chevelu</strong><p>Illustration spéciale en attente de transfert</p></div>
+    <p>Voici la récompense prévue après 160 cartes différentes. Cette animation n'attribue aucune carte : seul le serveur du jeu pourra confirmer et enregistrer l'ouverture unique.</p>
+    <button id="finish-secret" type="button">Fermer l'aperçu</button>
+  </dialog>
+  <footer>Aperçu GitHub indépendant • <a href="../">Retour au dépôt</a> • Aucun inventaire officiel modifié.</footer>
+</body>
+</html>
