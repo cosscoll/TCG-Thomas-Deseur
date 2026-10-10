@@ -236,3 +236,89 @@ test('l’export du scénario vide ne conserve pas les anciennes possessions fic
   expect(csv).toContain('"matelas";"Matelas";"commune";"Non";"0";"0"');
   expect(csv).not.toContain('"matelas";"Matelas";"commune";"Oui";"4";"3"');
 });
+
+
+test('les probabilités dépendent du scénario, sans tirer de cartes', async ({page}) => {
+  await page.getByRole('button',{name:'Probabilités',exact:true}).click();
+  await expect(page.locator('#view-forecast')).toBeVisible();
+  await expect(page.locator('#forecast-status')).toHaveText('44 / 49 manquantes');
+  await expect(page.locator('#forecast-rows .forecast-row')).toHaveCount(5);
+  await page.getByRole('button',{name:'Collection vide'}).click();
+  await expect(page.locator('#forecast-new')).toContainText('100');
+  await expect(page.locator('#forecast-unique')).not.toHaveText('0,00');
+  await page.getByRole('button',{name:'49 cartes obtenues'}).click();
+  await expect(page.locator('#forecast-status')).toHaveText('0 / 49 manquantes');
+  await expect(page.locator('#forecast-new')).toContainText('0');
+  await expect(page.locator('#forecast-unique')).toHaveText('0,00');
+});
+
+test('les rangs de collectionneur dépendent uniquement des cartes différentes', async ({page}) => {
+  await page.getByRole('button',{name:'Progression'}).click();
+  await expect(page.locator('#rank-title')).toHaveText('Explorateur');
+  await expect(page.locator('#rank-level')).toHaveText('3 / 8');
+  await expect(page.locator('#rank-remaining')).toContainText('Encore 5 cartes');
+  await page.getByRole('button',{name:'Collection vide'}).click();
+  await expect(page.locator('#rank-title')).toHaveText('Débutant');
+  await page.getByRole('button',{name:'49 cartes obtenues'}).click();
+  await expect(page.locator('#rank-title')).toHaveText('Collection complète');
+  await expect(page.locator('#rank-remaining')).toHaveText('Collection terminée');
+});
+
+test('l’animation révèle les 5 cartes fixées sans ouvrir de booster réel', async ({page}) => {
+  const unsafe=[];
+  page.on('request', request => {
+    if(request.method() !== 'GET' && request.method() !== 'HEAD') unsafe.push(request.url());
+  });
+  await page.getByRole('button',{name:'Bilan booster'}).click();
+  await expect(page.locator('#reveal-position')).toHaveText('0 / 5');
+  for(let i=1;i<=5;i++) {
+    await page.locator('#reveal-next').click();
+    await expect(page.locator('#reveal-position')).toHaveText(`${i} / 5`);
+    await expect(page.locator('#reveal-card')).toHaveAttribute('data-flipped','true');
+    await expect(page.locator('#reveal-history li')).toHaveCount(i);
+  }
+  await expect(page.locator('#reveal-name')).toHaveText('Fontaine');
+  await expect(page.locator('#reveal-status')).toHaveText('Nouvelle découverte');
+  await expect(page.locator('#reveal-next')).toBeDisabled();
+  await expect(page.locator('#reveal-finished')).toBeVisible();
+  expect(unsafe).toEqual([]);
+});
+
+test('l’animation se rejoue sans modifier le classeur fictif', async ({page}) => {
+  const initial=[await page.locator('#unique').textContent(),await page.locator('#extras').textContent()];
+  await page.getByRole('button',{name:'Bilan booster'}).click();
+  await page.locator('#reveal-next').click();
+  await expect(page.locator('#reveal-name')).toHaveText('Matelas');
+  await page.locator('#reveal-next').click();
+  await expect(page.locator('#reveal-status')).toContainText('Doublon');
+  await page.locator('#reveal-reset').click();
+  await expect(page.locator('#reveal-position')).toHaveText('0 / 5');
+  await expect(page.locator('#reveal-history li')).toHaveCount(0);
+  await expect(page.locator('#reveal-card')).toHaveAttribute('data-flipped','false');
+  expect([await page.locator('#unique').textContent(),await page.locator('#extras').textContent()])
+    .toEqual(initial);
+});
+
+test('toutes les vues, dont probabilités, tiennent dans les écrans de 320 et 393 px',async ({page})=>{
+  for(const width of [320,393]){
+    await page.setViewportSize({width,height:780});
+    for(const tab of ['Probabilités','Progression','Bilan booster']){
+      await page.getByRole('button',{name:tab,exact:true}).click();
+      const overflow=await page.evaluate(()=>Math.max(
+        document.documentElement.scrollWidth-document.documentElement.clientWidth,
+        document.body.scrollWidth-document.body.clientWidth,
+      ));
+      expect(overflow,`Débordement à ${width}px dans ${tab}`).toBeLessThanOrEqual(2);
+    }
+  }
+});
+
+test('animations réduites : la révélation reste complète sans mouvement imposé',async ({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.getByRole('button',{name:'Bilan booster'}).click();
+  await page.locator('#reveal-next').click();
+  await expect(page.locator('#reveal-card')).toHaveAttribute('data-flipped','true');
+  const transition=await page.locator('.reveal-inner').evaluate(node=>getComputedStyle(node).transitionDuration);
+  expect(transition).toMatch(/^0s/);
+  await expect(page.locator('#reveal-name')).toHaveText('Matelas');
+});
