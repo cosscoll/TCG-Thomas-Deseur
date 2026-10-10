@@ -1,3 +1,15 @@
+## Avancement autonome — 10 octobre 2026, après blocage du quota Floot
+
+**Travaux réalisés et validés dans le dépôt GitHub** : [prototype approfondi](EVOLUTION_COLLECTION_2026-10-10.md) avec rangs informatifs, prévision mathématique exacte des chances de nouvelle carte au prochain booster, simulateur à curseurs par rareté et révélation 3D des cinq cartes fictives avec mode mouvement réduit. **[155 tests Node et 66 tests Chromium réussis sur ordinateur/mobile](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076323343)**. Ces fonctions restent **hors production Floot** tant que le quota ne permet pas l'intégration et les vérifications.
+
+**Recette de l'application réellement publiée** : tests publics et anonymes Playwright activés automatiquement par `.github/workflows/floot-public-smoke.yml` lors des modifications des contrôles. [Premier run](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076417867) : **20 réussites, cinq échecs et un test exclu**, incluant deux défauts de production reproduits :
+- **Langue française absente du HTML global** sur accueil et connexion, desktop/mobile : [issue #6](https://github.com/cosscoll/TCG-Thomas-Deseur/issues/6).
+- **Débordement horizontal de 48 px à 820 px sur l'accueil** : [issue #7](https://github.com/cosscoll/TCG-Thomas-Deseur/issues/7). Un second job collecte les éléments DOM fautifs.
+
+Les routes privées sont refusées en anonyme avec HTTP 401 (classeur, booster, profil et session), et la navigation vers le classeur privé est cachée sans connexion. Ces résultats **ne remplacent pas une recette multi-comptes autorisés**.
+
+**Priorité à la reprise Floot** : d'abord résoudre le test modal jsdom/Radix non revérifié et publier les correctifs de session en attente, puis résoudre les deux bugs publics ci-dessus, enfin intégrer le simulateur/rang/animation sans toucher au tirage serveur. Ne jamais annoncer une version publiée sans déploiement réussi et vérification HTTP/ressources publiques.
+
 # Suivi autonome — TCG Deseur
 
 ## Journal — avancement multi-lots du 9 octobre 2026, ~15:00 UTC
