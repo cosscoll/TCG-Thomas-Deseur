@@ -27,6 +27,12 @@ Adapter les règles responsive du héros (`cardsHero`, `cardBack`) et le positio
 
 **Preuves publiques :** [première recette](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076417867) et [diagnostic des éléments débordants](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076585497). Les échecs sont réels et ne doivent pas être supprimés des tests. Le premier run avait 20 réussites, 5 échecs (4 lang + 1 débordement) et 1 exclus.
 
+## B bis. Vérification complémentaire du cache privé
+
+Le contrôle réseau anonyme du 10 octobre 2026 a relevé **HTTP 401 sans `Cache-Control` et sans `Vary`** pour `/_api/collection`, `/_api/auth/session`, `/_api/profile` et `/_api/booster` : [exécution GitHub Actions](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076774561). Aucun cookie n'est renvoyé lors du rejet anonyme. Ce seul constat **n'est pas la preuve d'une fuite ou d'un cache partagé**, mais les réponses **authentifiées** doivent être contrôlées avant de considérer la confidentialité du cache validée. Voir [issue #8](https://github.com/cosscoll/TCG-Thomas-Deseur/issues/8) pour le plan `Cache-Control: private, no-store`, tests et recette. Ne jamais se connecter avec de vrais comptes pour ces contrôles.
+
+**Amélioration autonome de la CI :** `.github/workflows/floot-public-smoke.yml` a deux jobs indépendants : `anonymous-security` (6 contrôles Node sans navigateur ni compte, `scripts/check_floot_guest_security.mjs`) et `smoke` (pages publiques Chromium + accessibilité + responsive). Un échec visuel n'annule plus les résultats de sécurité. Les anciennes observations de 5 échecs visuels restent **réelles** et leur test n'a pas été désactivé.
+
 ## C. Fonctionnalités prêtes sur GitHub, à adapter après fiabilisation
 
 **Preuve qualité :** [155 tests Node + 66 tests Chromium réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076323343). [Spécification](EVOLUTION_COLLECTION_2026-10-10.md).
@@ -43,6 +49,6 @@ Adapter les règles responsive du héros (`cardsHero`, `cardBack`) et le positio
 2. Créer un checkpoint Floot signifiant, puis **publier sur le domaine existant**, attendre `succeeded`.
 3. Vérifier HTTP public accueil/connexion, API privée en 401 sans cookies, assets JS contenant les nouveautés, et la recette Chromium live 320/393/412/820 desktop/mobile. La CI publique se déclenche sur changements dans `floot-e2e/**` ou `.github/workflows/floot-public-smoke.yml`, ou manuellement ; **un déploiement Floot ne déclenche pas automatiquement ces tests GitHub**.
 4. Ne déclarer que les contrôles effectivement exécutés comme réussis ; si les tests de comptes autorisés manquent, le dire explicitement.
-5. Mettre à jour le statut des issues #6/#7 et le compte-rendu après correction vérifiée.
+5. Mettre à jour le statut des issues #6/#7/#8 et le compte-rendu après correction vérifiée.
 
 **Pas de tâches récurrentes TCG sans instruction explicite du propriétaire.**
