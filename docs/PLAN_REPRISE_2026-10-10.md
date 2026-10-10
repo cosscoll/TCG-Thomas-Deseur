@@ -10,6 +10,8 @@
 
 **Plan actualisé après la session du 9 octobre :** [livrables de collection](COLLECTION_LIVRAISON_2026-10-09.md). L'espace doublons, la progression, le bilan d'ouverture, l'historique et le diagnostic des quantités sont déjà préparés et testés sur GitHub. **Ne pas recommencer ces modules de zéro.** Priorité suivante : adapter les fonctions à la réponse réelle de `collection_GET` et au classeur Floot, sans toucher aux illustrations. Les anciens risques de session restent des contrôles de sécurité obligatoires avant publication.
 
+> **Livraison réalisée le 10 octobre 2026 :** l'intégration du classeur au vrai Floot est effectuée et publiée. Source de vérité pour la suite : [compte rendu d'intégration](FLOOT_INTEGRATION_2026-10-10.md). Les étapes de ce plan décrivant l'intégration comme future sont désormais historiques ; la priorité suivante est une recette authentifiée isolée et des vérifications visuelles, et non de reconstruire les modules sur GitHub.
+
 ## But de la session
 
 Fiabiliser les **comptes**, l'**ouverture des boosters** et le **classeur** en s'appuyant sur le code Floot existant. Aucun combat, PvP, illustration, paiement, monnaie, changement de domaine, migration destructive ou création d'un autre projet.
