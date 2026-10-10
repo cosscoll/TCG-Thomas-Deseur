@@ -29,7 +29,7 @@ const sampleHistory = [
 ];
 
 const byId = id => document.getElementById(id);
-const state = { scenario: 'sample', detailCards: [], detailIndex: 0, revealCount: 0 }; 
+const state = { scenario: 'sample', detailCards: [], detailIndex: 0, revealCount: 0, forecastAssumptions: null }; 
 const revealDraw = getCommittedBoosterRecap(CARDS, [],
   ['matelas','matelas','matelas','matelas','fontaine']).cards;
 
@@ -248,7 +248,48 @@ function displayProbability(chance) {
 }
 
 function renderForecast() {
-  const forecast = getCollectionForecast(CARDS, samples[state.scenario]);
+  const baseModel = buildCollectionModel(CARDS, samples[state.scenario]);
+  const counts = state.forecastAssumptions ?? Object.fromEntries(
+    baseModel.byRarity.map(group => [group.id, group.unique]));
+  // A hypothetical inventory with ONE of the first N cards of each rarity.
+  // Card identities do not affect these rarity-uniform analytical probabilities.
+  const hypothetical = CARDS.filter(card => {
+    const rarityCards = CARDS.filter(item => item.rarity === card.rarity);
+    return rarityCards.findIndex(item => item.id === card.id) < counts[card.rarity];
+  }).map(card => ({cardId: card.id, quantity: 1}));
+  const forecast = getCollectionForecast(CARDS, hypothetical);
+  const sliders = byId('forecast-sliders');
+  if (sliders.children.length === 0) {
+    for (const group of baseModel.byRarity) {
+      const label = element('label', 'forecast-control');
+      label.dataset.rarity = group.id;
+      label.append(
+        element('strong', '', group.label),
+        element('span', 'forecast-control-count', ''),
+      );
+      const control = element('input', '');
+      control.type = 'range';
+      control.min = '0';
+      control.max = String(group.total);
+      control.step = '1';
+      control.dataset.rarity = group.id;
+      control.setAttribute('aria-label', 'Cartes possédées — ' + group.label);
+      control.addEventListener('input', () => {
+        const settings = Object.fromEntries(
+          [...sliders.querySelectorAll('input')].map(input =>
+            [input.dataset.rarity, Number(input.value)]));
+        state.forecastAssumptions = settings;
+        renderForecast();
+      });
+      label.append(control);
+      sliders.append(label);
+    }
+  }
+  for (const control of sliders.querySelectorAll('input')) {
+    control.value = String(counts[control.dataset.rarity]);
+    control.parentElement.querySelector('.forecast-control-count').textContent =
+      `${counts[control.dataset.rarity]} / ${control.max} cartes obtenues`;
+  }
   byId('forecast-new').textContent = displayProbability(forecast.chanceAtLeastOneNew);
   byId('forecast-unique').textContent = forecast.expectedNewUnique.toLocaleString('fr-FR', {
     maximumFractionDigits: 2, minimumFractionDigits: 2,
@@ -433,6 +474,7 @@ for (const button of document.querySelectorAll('[data-scenario]')) {
       other.setAttribute('aria-pressed', String(other === button));
     }
     state.revealCount = 0;
+    state.forecastAssumptions = null;
     renderRevealFrame();
     render();
   });
@@ -468,6 +510,11 @@ byId('export-demo-csv').addEventListener('click', () => {
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+byId('forecast-restore').addEventListener('click', () => {
+  state.forecastAssumptions = null;
+  renderForecast();
 });
 
 byId('reveal-next').addEventListener('click', () => {
