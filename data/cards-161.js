@@ -46,20 +46,20 @@ export const CARDS_161=Object.freeze([
     collectionNumber:index+1,
     cardType:"standard",
     obtainableInDailyBooster:true,
-    artPath:"../assets/cards/td-"+ref.series+"-"+String(ref.num).padStart(3,"0")+".webp",
+    artPath:"./assets/cards/td-"+ref.series+"-"+String(ref.num).padStart(3,"0")+".webp",
     artAvailable:false,
   })),
   Object.freeze({
     id:"td_lille",reference:"REF-177-LILLE",name:"Lille",rarity:"hors_serie",
     rarityStatus:"speciale",collectionNumber:160,cardType:"hors_serie",
     obtainableInDailyBooster:true,
-    artPath:"../assets/cards/td-lille.webp",artAvailable:false,
+    artPath:"./assets/cards/td-lille.webp",artAvailable:false,
   }),
   Object.freeze({
     id:SECRET_CARD_ID,reference:"CHEVELU-SECRETE",name:"Chevelu",rarity:"secrete",
     rarityStatus:"speciale",collectionNumber:161,cardType:"recompense_secrete",
     obtainableInDailyBooster:false,onlyFromSpecialBooster:true,
-    artPath:"../assets/cards/td-chevelu.webp",artAvailable:false,
+    artPath:"./assets/cards/td-chevelu.webp",artAvailable:false,
   }),
 ]);
 const ids = new Set(CARDS_161.map(c=>c.id));
