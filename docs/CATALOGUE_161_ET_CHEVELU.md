@@ -33,6 +33,12 @@ Le paquet `TCG_Deseur_161_Visuels_WEBP_GitHub.zip` a été construit dans cette 
 
 **Le transfert des fichiers image binaires vers le dépôt GitHub n'a pas abouti avec les actions GitHub disponibles** (les opérations de texte sont autorisées, mais les 161 images binaires du conteneur ne sont pas transférables en bloc par le connecteur actuel). Tant que ces fichiers ne sont pas publiés, le nouveau classeur affiche des emplacements neutres. Dès que l'archive WebP est déposée en conservant le chemin `collection-161/assets/cards/` et `collection-161/assets/available.json`, l'application chargera automatiquement les vraies illustrations ; la secrète n'apparaîtra qu'après 160/160 dans la simulation.
 
+### Import des 161 images en un seul fichier
+
+Le dépôt contient désormais [`.github/workflows/import-card-art.yml`](../.github/workflows/import-card-art.yml) et [`scripts/import-card-art.py`](../scripts/import-card-art.py). Ils rendent le transfert des **161 visuels WebP** réalisable par **un seul dépôt ZIP**, sans 161 manipulations individuelles. Déposer l'archive `TCG_Deseur_161_Visuels_WEBP_GitHub.zip` dans le dossier `uploads/` du dépôt, en conservant exactement ce nom. Le workflow vérifie le manifeste, les 161 noms uniques, la signature WebP et les CRC avant d'extraire et de publier `collection-161/assets/cards/*.webp` et `collection-161/assets/available.json`. Il supprime ensuite le ZIP du dépôt pour éviter de doubler l'espace de stockage.
+
+**Important :** cette automatisation est prête, mais **la pièce ZIP n'a pas encore pu être ajoutée au dépôt par les outils de la conversation**. Tant qu'elle n'a pas été déposée et que l'exécution du workflow n'est pas réussie, aucune illustration réelle ne doit être déclarée en ligne.
+
 ## Conservation des joueurs existants
 
 L'ancienne application Floot possède **49 cartes historiques** et des inventaires réels. **Ne jamais supprimer, renommer ou assimiler arbitrairement ces cartes aux nouvelles images.** La migration prévoit des tables de la collection 161 indépendantes ; l'ancien inventaire et le rythme de booster actuel restent présents. Il faudra décider comment les collections historiques sont présentées aux joueurs (éventuellement un onglet archives), sans leur retirer des exemplaires ni les compter fictivement comme des références qu'ils n'ont pas reçues.
