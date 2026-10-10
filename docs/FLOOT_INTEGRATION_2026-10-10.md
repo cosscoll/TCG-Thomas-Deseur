@@ -36,6 +36,18 @@ Le CSV produit uniquement les colonnes : ID, Carte, Rareté, Possédée, Exempla
 
 **Non vérifié :** parcours de connexion et collection avec un compte authentifié réel, persistance entre appareils, comportement visuel du classeur en production sur téléphone, concurrence réelle des boosters. Le preview Floot n'était pas ouvert dans un navigateur au moment de la tentative de capture ; la capture n'a pas été obtenue. Ne pas déduire un test end-to-end authentifié du succès des suites unitaires.
 
+## Mise à jour finale — récapitulatif de booster (10 octobre 2026)
+
+Un second lot a été **développé, testé et publié dans le même Floot** après l'intégration initiale :
+- `helpers/tcgBoosterRecap.tsx` et `helpers/tcgBoosterRecap.spec.tsx` : lecture des cinq cartes **déjà confirmées par le serveur**, calcul des premières découvertes, exemplaires supplémentaires et meilleure rareté ; refus des tirages mal formés et de toute carte Commune au cinquième emplacement. **Aucun second tirage ni crédit accordé par le navigateur.**
+- `pages/_index.tsx` et `pages/_index.module.css` : récapitulatif visible après révélation des cinq cartes dans la modale d'ouverture.
+- **Six suites Jasmine Floot réussies** ; typecheck propre.
+- **Checkpoint :** « Récapitulatif des cinq cartes après booster », `e440359a-a936-49f8-9fca-f515d02ff8d5`.
+- **Dernière publication Floot :** job `9b0cfe0f-9765-433c-8f76-c81f4aeab79b` terminé **succeeded** sur https://budget-illimite-tcg.floot.app.
+- **Vérification publique du bundle actuel :** accueil 200, entrypoint `/_assets/index-BBWDp-2s.js` ; le chunk `/_assets/_index-sSaNrDWr.js` répond 200 et contient « Bilan de ce booster », « Mes doublons » et le nom de l'export CSV ; `/_api/collection` sans session répond 401.
+
+Limite : aucun booster réel n'a été consommé et la révélation n'a pas été testée dans un navigateur avec un compte joueur. Les tests portent sur le code/les données fictives et les assets publics réellement déployés.
+
 ## Suite prioritaire (session future, pas tâche automatisée)
 
 1. Tester en navigateur le vrai classeur avec **des comptes de test autorisés**, jamais sur les comptes/inventaires de joueurs existants, quand une méthode légitime et non destructive est disponible.
