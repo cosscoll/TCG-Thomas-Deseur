@@ -1,4 +1,5 @@
 import { CARDS } from '../data/cards.js';
+import { getCollectionForecast } from './collection-forecast.mjs';
 import { exportCollectionCsv } from './collection-export.mjs';
 import { buildCollectionModel, filterCollectionCards, RARITY_LABELS, RARITY_ORDER, getDisplayedBoosterOdds } from './collection-model.mjs';
 import {
@@ -28,7 +29,9 @@ const sampleHistory = [
 ];
 
 const byId = id => document.getElementById(id);
-const state = { scenario: 'sample', detailCards: [], detailIndex: 0 };
+const state = { scenario: 'sample', detailCards: [], detailIndex: 0, revealCount: 0 }; 
+const revealDraw = getCommittedBoosterRecap(CARDS, [],
+  ['matelas','matelas','matelas','matelas','fontaine']).cards;
 
 function element(tag, className, content) {
   const node = document.createElement(tag);
@@ -141,6 +144,14 @@ function renderDuplicateDetails(model) {
 function renderGoals(model) {
   const summary = getCollectionGoals(model);
   byId('goals-summary').textContent = `${summary.achieved} / ${summary.total} atteints`;
+  const rank = getCollectionForecast(CARDS, samples[state.scenario]).rank;
+  byId('rank-level').textContent = `${rank.level} / ${rank.maxLevel}`;
+  byId('rank-title').textContent = rank.title;
+  byId('rank-remaining').textContent = rank.complete
+    ? 'Collection terminée'
+    : `Encore ${rank.remaining} carte${rank.remaining > 1 ? 's' : ''} pour ${rank.nextTitle}`;
+  byId('rank-fill').style.width = `${rank.progressPercent}%`;
+  byId('rank-track').setAttribute('aria-valuenow', String(rank.progressPercent));
   const next = byId('next-goals');
   next.replaceChildren(...(summary.next.length ? summary.next : [{
     id:'all-complete', label:'Tous les jalons de collection sont atteints', remaining:0,
@@ -232,6 +243,83 @@ function renderBoosterRecap() {
   }));
 }
 
+function displayProbability(chance) {
+  return new Intl.NumberFormat('fr-FR', { style: 'percent', maximumFractionDigits: 1 }).format(chance);
+}
+
+function renderForecast() {
+  const forecast = getCollectionForecast(CARDS, samples[state.scenario]);
+  byId('forecast-new').textContent = displayProbability(forecast.chanceAtLeastOneNew);
+  byId('forecast-unique').textContent = forecast.expectedNewUnique.toLocaleString('fr-FR', {
+    maximumFractionDigits: 2, minimumFractionDigits: 2,
+  });
+  byId('forecast-premium').textContent =
+    displayProbability(forecast.chanceAtLeastOneLegendaryOrSecret);
+  byId('forecast-normal').textContent = displayProbability(forecast.chanceNewPerRegularSlot);
+  byId('forecast-guaranteed').textContent = displayProbability(forecast.chanceNewFifthSlot);
+  byId('forecast-status').textContent = `${forecast.missing} / 49 manquantes`;
+  byId('forecast-rows').replaceChildren(...forecast.byRarity.map(group => {
+    const chance = 1 - (1 - group.chanceNewRegular) ** 4 * (1 - group.chanceNewGuaranteed);
+    const row = element('article', 'forecast-row');
+    row.dataset.rarity = group.id;
+    const head = element('div', 'forecast-row-heading');
+    head.append(
+      element('strong', '', group.label),
+      element('span', '', `${group.missing} / ${group.total} manquantes`),
+      element('strong', 'forecast-number', displayProbability(chance)),
+    );
+    const track = element('div', 'forecast-track');
+    track.setAttribute('role', 'progressbar');
+    track.setAttribute('aria-label', `Chance de découvrir une ${group.label.toLowerCase()}`);
+    track.setAttribute('aria-valuemin', '0');
+    track.setAttribute('aria-valuemax', '100');
+    track.setAttribute('aria-valuenow', String(Math.round(chance * 100)));
+    const fill = element('span', 'forecast-fill');
+    fill.style.width = `${chance * 100}%`;
+    track.append(fill);
+    row.append(head, track);
+    return row;
+  }));
+}
+
+function renderRevealFrame() {
+  const count = state.revealCount;
+  const cardEl = byId('reveal-card');
+  cardEl.dataset.flipped = 'false';
+  byId('reveal-position').textContent = `${count} / 5`;
+  byId('reveal-progress').setAttribute('aria-valuenow', String(count));
+  byId('reveal-progress-fill').style.width = `${count * 20}%`;
+  byId('reveal-next').disabled = count === revealDraw.length;
+  byId('reveal-next').textContent = count === revealDraw.length
+    ? 'Les cinq cartes sont révélées'
+    : count === 0 ? 'Révéler la première carte' : 'Révéler la carte suivante';
+  byId('reveal-finished').hidden = count !== revealDraw.length;
+  byId('reveal-history').replaceChildren(...revealDraw.slice(0, count).map(card => {
+    const item = element('li', '', `#${card.position} · ${RARITY_LABELS[card.rarity]} · ${CARDS.find(c => c.id === card.id)?.name ?? card.id}`);
+    item.dataset.rarity = card.rarity;
+    return item;
+  }));
+  const face = cardEl.querySelector('.reveal-front');
+  face.setAttribute('aria-hidden', String(count === 0));
+  if (count === 0) {
+    byId('reveal-rarity').textContent = '—';
+    byId('reveal-name').textContent = '—';
+    byId('reveal-status').textContent = '—';
+    return;
+  }
+  const card = revealDraw[count - 1];
+  cardEl.dataset.rarity = card.rarity;
+  byId('reveal-rarity').textContent = RARITY_LABELS[card.rarity];
+  byId('reveal-name').textContent = CARDS.find(c => c.id === card.id)?.name ?? card.id;
+  byId('reveal-status').textContent =
+    card.newUnique ? 'Nouvelle découverte' : `Doublon · ×${card.quantityAfter}`;
+  // Re-start the flip animation for each *already-committed* sample card.
+  // Reduced-motion CSS removes the transition for eligible users.
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    cardEl.dataset.flipped = 'true';
+  }));
+}
+
 function getVisibleDetailCards(source) {
   const model = buildCollectionModel(CARDS, samples[state.scenario]);
   if (source === 'duplicates') return getDuplicateSummary(model, {
@@ -301,6 +389,7 @@ function render() {
   renderGoals(model);
   renderHistory();
   renderBoosterRecap();
+  renderForecast();
 
   const shown = filterCollectionCards(model, {
     ownership: byId('ownership').value,
@@ -343,6 +432,8 @@ for (const button of document.querySelectorAll('[data-scenario]')) {
     for (const other of document.querySelectorAll('[data-scenario]')) {
       other.setAttribute('aria-pressed', String(other === button));
     }
+    state.revealCount = 0;
+    renderRevealFrame();
     render();
   });
 }
@@ -379,6 +470,16 @@ byId('export-demo-csv').addEventListener('click', () => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 
+byId('reveal-next').addEventListener('click', () => {
+  if (state.revealCount >= revealDraw.length) return;
+  state.revealCount++;
+  renderRevealFrame();
+});
+byId('reveal-reset').addEventListener('click', () => {
+  state.revealCount = 0;
+  renderRevealFrame();
+});
+
 byId('detail-close').addEventListener('click', () => byId('card-detail').close());
 byId('detail-previous').addEventListener('click', () => moveCardDetail(-1));
 byId('detail-next').addEventListener('click', () => moveCardDetail(1));
@@ -398,4 +499,5 @@ byId('clear-filters').addEventListener('click', () => {
   render();
   byId('search').focus();
 });
+renderRevealFrame();
 render();
