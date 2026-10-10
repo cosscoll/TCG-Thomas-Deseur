@@ -351,3 +351,79 @@ footer { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-b
 @media (max-width:650px) {
   .binder-actions { width: 100%; justify-content: flex-start; }
 }
+
+
+/* Design lab: informational collector ranks and precise next-pack forecasts */
+.rank-panel { margin: 4px 0 25px; padding: 21px; background: #172c2a; border: 1px solid #497d73; border-radius: 13px; }
+.rank-heading { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 13px; }
+.rank-heading h3 { margin: 5px 0; line-height: 1.35; font-size: 1.1rem; }
+.rank-heading > strong { color: var(--accent); align-self: center; font-size: .86rem; max-width: 260px; text-align: right; }
+.rank-track, .forecast-track { height: 10px; border-radius: 999px; background: #304459; overflow: hidden; }
+.rank-fill, .forecast-fill { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+.rank-panel .subnote { margin-top: 15px; }
+.forecast-highlights { margin: 22px 0 28px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.forecast-highlights article { min-width: 0; display: flex; flex-direction: column; gap: 12px; padding: 23px; border: 1px solid var(--border); border-radius: 13px; background: #182439; }
+.forecast-highlights small { color: var(--muted); font-weight: 700; line-height: 1.45; }
+.forecast-highlights strong { font-size: clamp(1.7rem,4vw,2.5rem); font-variant-numeric: tabular-nums; color: var(--accent); }
+.forecast-highlights span { color: var(--muted); font-size: .83rem; }
+.forecast-details h3 { font-size: 1.08rem; margin: 25px 0 12px; }
+.forecast-details > p { font-size: .93rem; color: var(--muted); line-height: 1.7; }
+.forecast-details > p strong { color: var(--primary); }
+.forecast-rows { display: grid; gap: 9px; }
+.forecast-row { padding: 15px; background: #182439; border-radius: 10px; border: 1px solid var(--border); }
+.forecast-row-heading { display: grid; grid-template-columns: minmax(120px,1fr) minmax(125px,1fr) auto; align-items: center; gap: 8px; margin-bottom: 12px; font-size: .87rem; }
+.forecast-row-heading span { color: var(--muted); }
+.forecast-number { font-variant-numeric: tabular-nums; color: var(--accent); }
+.forecast-track { height: 7px; }
+.forecast-row[data-rarity="rare"] .forecast-fill { background: var(--rare); }
+.forecast-row[data-rarity="epique"] .forecast-fill { background: var(--epique); }
+.forecast-row[data-rarity="legendaire"] .forecast-fill { background: var(--legendaire); }
+.forecast-row[data-rarity="secrete"] .forecast-fill { background: var(--secrete); }
+
+/* Non-interactive art is intentionally replaced by a neutral 3D card back. */
+.reveal-workshop { border: 1px solid var(--border); border-radius: 14px; padding: 24px; background: #101b2d; margin: 22px 0 28px; }
+.reveal-workshop .section-heading h3 { margin: 0; font-size: 1.15rem; }
+.reveal-workshop .subtitle { margin: 8px 0 20px; font-size: .86rem; }
+.reveal-scene { display: grid; place-items: center; perspective: 1300px; margin: 22px 0; min-height: 345px; }
+.reveal-card { position: relative; width: min(220px,100%); aspect-ratio: 0.72; color: var(--primary); }
+.reveal-inner { height: 100%; width: 100%; position: relative; transform-style: preserve-3d; transition: transform .75s cubic-bezier(.21,.68,.18,1); }
+.reveal-card[data-flipped="true"] .reveal-inner { transform: rotateY(180deg); }
+.reveal-side { position: absolute; inset: 0; border: 2px solid var(--border); border-radius: 13px; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 20px 17px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px; text-align: center; box-shadow: 0 16px 35px #0007; }
+.reveal-back { background: repeating-linear-gradient(40deg,#1c2942 0px,#1c2942 13px,#23334c 14px,#23334c 26px); border-color: #9ba9c4; }
+.reveal-back strong { font-size: 1.4rem; letter-spacing: .1em; color: var(--accent); }
+.reveal-back span { color: var(--muted); font-size: .72rem; letter-spacing: .2em; }
+.reveal-back b { font-size: 3.5rem; color: #e8f7ff; }
+.reveal-front { transform: rotateY(180deg); background: linear-gradient(145deg,#233855,#0b1627); border-color: var(--rare); justify-content: space-between; }
+.reveal-card[data-rarity="commune"] .reveal-front { border-color: var(--commune); }
+.reveal-card[data-rarity="epique"] .reveal-front { border-color: var(--epique); box-shadow: 0 13px 40px #a369ff31; }
+.reveal-card[data-rarity="legendaire"] .reveal-front { border-color: var(--legendaire); box-shadow: 0 13px 40px #ffd17835; }
+.reveal-card[data-rarity="secrete"] .reveal-front { border-color: var(--secrete); box-shadow: 0 13px 40px #ffa1d53a; }
+.reveal-front > strong { font-size: .77rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.reveal-art { flex: 1; display: grid; place-items: center; font-size: .78rem; color: var(--muted); border: 1px dashed #8296ae; border-radius: 8px; width: 100%; padding: 12px; }
+.reveal-front h4 { margin: 0; font-size: 1.15rem; overflow-wrap: anywhere; }
+.reveal-front > span { color: var(--accent); font-size: .8rem; font-weight: 750; }
+.reveal-controls { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.reveal-controls button { min-height: 44px; padding: 10px 17px; border-radius: 9px; color: var(--primary); border: 1px solid #508f85; background: #1b5148; font-weight: 750; }
+.reveal-controls button:last-child { background: transparent; border-color: var(--border); }
+.reveal-controls button:disabled { cursor: default; opacity: .55; }
+.reveal-progress { margin: 20px 0 15px; height: 9px; border-radius: 99px; background: #34445d; overflow: hidden; }
+.reveal-progress span { height: 100%; width: 0; background: var(--accent); display: block; border-radius: inherit; transition: width .25s ease; }
+.reveal-history { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
+.reveal-history li { font-size: .78rem; border: 1px solid var(--border); background: #1d2c41; padding: 9px 12px; border-radius: 7px; }
+.reveal-history li[data-rarity="rare"] { border-color: var(--rare); }
+.reveal-history li[data-rarity="epique"] { border-color: var(--epique); }
+.reveal-history li[data-rarity="legendaire"] { border-color: var(--legendaire); }
+.reveal-history li[data-rarity="secrete"] { border-color: var(--secrete); }
+#reveal-finished { margin-top: 17px; text-align: center; }
+@media(max-width:800px) { .forecast-highlights { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) {
+  .rank-heading > strong { text-align: left; }
+  .forecast-highlights { grid-template-columns: minmax(0,1fr); }
+  .reveal-workshop { padding: 18px 12px; }
+  .forecast-row-heading { grid-template-columns: minmax(0,1fr) auto; }
+  .forecast-row-heading span { grid-column: 1 / -1; grid-row: 2; }
+  .reveal-scene { min-height: 335px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .reveal-inner, .reveal-progress span { transition: none !important; }
+}
