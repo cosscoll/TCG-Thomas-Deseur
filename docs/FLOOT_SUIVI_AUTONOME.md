@@ -61,6 +61,19 @@
 - **Floot actif :** aucun changement. L'application `https://budget-illimite-tcg.floot.app` reste publiée, mais ne contient pas encore ce nouveau module.
 - **Prochaine action :** tester l'aperçu en navigateur puis, lorsque Floot sera disponible, lire les composants du classeur courant et y intégrer les données/statistiques sans reconstruire toute l'interface.
 
+## Mise à jour finale — récapitulatif de booster (10 octobre 2026)
+
+Un second lot a été **développé, testé et publié dans le même Floot** après l'intégration initiale :
+- `helpers/tcgBoosterRecap.tsx` et `helpers/tcgBoosterRecap.spec.tsx` : lecture des cinq cartes **déjà confirmées par le serveur**, calcul des premières découvertes, exemplaires supplémentaires et meilleure rareté ; refus des tirages mal formés et de toute carte Commune au cinquième emplacement. **Aucun second tirage ni crédit accordé par le navigateur.**
+- `pages/_index.tsx` et `pages/_index.module.css` : récapitulatif visible après révélation des cinq cartes dans la modale d'ouverture.
+- **Six suites Jasmine Floot réussies** ; typecheck propre.
+- **Checkpoint :** « Récapitulatif des cinq cartes après booster », `e440359a-a936-49f8-9fca-f515d02ff8d5`.
+- **Dernière publication Floot :** job `9b0cfe0f-9765-433c-8f76-c81f4aeab79b` terminé **succeeded** sur https://budget-illimite-tcg.floot.app.
+- **Vérification publique du bundle actuel :** accueil 200, entrypoint `/_assets/index-BBWDp-2s.js` ; le chunk `/_assets/_index-sSaNrDWr.js` répond 200 et contient « Bilan de ce booster », « Mes doublons » et le nom de l'export CSV ; `/_api/collection` sans session répond 401.
+
+Limite : aucun booster réel n'a été consommé et la révélation n'a pas été testée dans un navigateur avec un compte joueur. Les tests portent sur le code/les données fictives et les assets publics réellement déployés.
+
+
 ## État de production actualisé — 10 octobre 2026
 
 **Les fonctions de collection ont été intégrées directement au projet Floot existant et publiées.** Lire d'abord [FLOOT_INTEGRATION_2026-10-10.md](FLOOT_INTEGRATION_2026-10-10.md) avant toute reprise. Le quota était de nouveau disponible ; ne plus présenter le blocage du 9 octobre comme l'état actuel.
