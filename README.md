@@ -24,9 +24,9 @@ Le prototype statique reste accessible à https://cosscoll.github.io/TCG-Thomas-
 
 Une [page de démonstration du classeur](floot-collection/demo.html) permet désormais de vérifier les compteurs, les catégories de rareté, les doublons et les filtres avec trois inventaires fictifs (vide, partiel, complet). Elle est **isolée du jeu Floot**, ne se connecte à aucun compte et n'attribue aucune carte. Le [déploiement GitHub Pages du prototype](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946337589) a réussi, mais **l'accès HTTP public de la page n'a pas pu être vérifié indépendamment depuis cet environnement**. URL proposée, non certifiée : https://cosscoll.github.io/TCG-Thomas-Deseur/floot-collection/demo.html
 
-La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) a validé **80 tests sur 80**, dont sept contrôles statiques destinés à maintenir cette démonstration non connectée. Les tests navigateur réels restent à faire.
+La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) a validé **80 tests sur 80**, dont sept contrôles statiques destinés à maintenir cette démonstration non connectée. Cet état était historique : les tests Chromium ont ensuite été exécutés (66 parcours réussis le 10 octobre).
 
-**Livraison élargie du 9 octobre :** [six volets fonctionnels préparés](docs/COLLECTION_LIVRAISON_2026-10-09.md) — doubles avancés, 15 objectifs de collection sans récompense, bilan d'un booster confirmé, historique de tirages, cinq vues dans la démo et diagnostic d'inventaire. [120 tests Node réussis sur 120](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37948492892). **Les neuf parcours Playwright sont écrits mais non exécutés ; l'application Floot n'est pas encore modifiée.**
+**Livraison élargie du 9 octobre :** [six volets fonctionnels préparés](docs/COLLECTION_LIVRAISON_2026-10-09.md) — doubles avancés, 15 objectifs de collection sans récompense, bilan d'un booster confirmé, historique de tirages, cinq vues dans la démo et diagnostic d'inventaire. [120 tests Node réussis sur 120](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37948492892). **État historique du 9 octobre** : les tests ont depuis été exécutés et le classeur a été intégré dans Floot le 10 octobre.
 
 **Validation de la collection (9 octobre, soirée) :** [48 parcours Chromium ordinateur/mobile et 142 tests Node réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37978835656). La démo comporte maintenant une fiche de carte navigable au clavier, des raccourcis par rareté et de possession, un export CSV sécurisé (données **fictives uniquement**), ainsi qu'un contrôle Axe WCAG 2.0/2.1 A/AA sur les vues testées. Voir le [journal de livraison](docs/COLLECTION_LIVRAISON_2026-10-09.md). **Ce n'est pas une publication des nouveaux modules dans Floot.**
 
@@ -40,7 +40,7 @@ La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-De
 
 Les visuels des cartes sont toujours en préparation. Le travail de développement est recentré sur **les raretés, les quantités possédées, les doublons, les cartes manquantes, les statistiques de complétion, la recherche et les filtres du classeur**.
 
-Le [modèle de collection indépendant des images](floot-collection/collection-model.mjs) et sa [conception fonctionnelle détaillée](docs/CONCEPTION_COLLECTION_FLOOT.md) sont enregistrés sur GitHub. Les [30 tests du modèle](tests/floot-collection-model.test.mjs) ont été validés dans la [CI GitHub (71/71)](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773). **Ces fichiers ne sont pas encore intégrés à l'application Floot** : le quota de développement est temporairement épuisé.
+Le [modèle de collection indépendant des images](floot-collection/collection-model.mjs) et sa [conception fonctionnelle détaillée](docs/CONCEPTION_COLLECTION_FLOOT.md) sont enregistrés sur GitHub. Les [30 tests du modèle](tests/floot-collection-model.test.mjs) ont été validés dans la [CI GitHub (71/71)](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773). **État historique du 9 octobre** : le classeur a ensuite été intégré et publié dans Floot ; les nouveaux rangs, prévisions et l'animation 3D restent, eux, uniquement sur GitHub.
 
 Les questions de combat, de PvP, de boutique, d'échange ou de génération de visuels restent hors périmètre ; les règles de tirage existantes restent inchangées.
 
@@ -56,13 +56,13 @@ La règle affichée est provisoire : **un booster gratuit par compte toutes les 
 
 Floot confirme que l'application est publiée. Les pages d'accueil et de connexion répondent HTTP 200. Les API de session, collection, booster et profil rejettent les appels anonymes avec HTTP 401.
 
-**Ces contrôles ne valident pas un parcours joueur connecté**, la séparation de deux comptes, la concurrence des boosters, la délivrabilité des e-mails ou l'ergonomie mobile. La base et le code serveur n'ont pas pu être relus pendant cette reprise : le quota quotidien Floot était épuisé.
+**Ces contrôles ne valident pas un parcours joueur connecté**, la séparation de deux comptes, la concurrence des boosters, la délivrabilité des e-mails ou l'ergonomie mobile. Cette limite date de la reprise du 9 octobre : la base et le code serveur ont été relus et vérifiés le 10 octobre, sans accès à des comptes authentifiés de test.
 
 Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot du 9 octobre](docs/FLOOT_REPRISE_2026-10-09.md).
 
 **Plan d'intervention prêt pour le 10 octobre 2026 :** [consulter les corrections, scénarios de tests et critères de publication](docs/PLAN_REPRISE_2026-10-10.md).
 
-**Recette détaillée Floot :** [matrice des 36 scénarios comptes, boosters, classeur et publication](docs/MATRICE_RECETTE_FLOOT.md). Le workflow [Floot — contrôle public](.github/workflows/floot-public-smoke.yml) utilise les tests séparés dans [`floot-e2e/`](floot-e2e/), sans accès aux comptes réels et sans exécution récurrente automatique. Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation quotidienne « Développement TCG Deseur » a été **désactivée** le 9 octobre 2026 à la demande de l'utilisateur ; « Brief du matin » a été réactivé. Le développement reprend uniquement lors d'une session demandée explicitement, sans tâche récurrente.
+**Recette détaillée Floot :** [matrice des 36 scénarios comptes, boosters, classeur et publication](docs/MATRICE_RECETTE_FLOOT.md). Le workflow [Floot — contrôle public](.github/workflows/floot-public-smoke.yml) utilise les tests séparés dans [`floot-e2e/`](floot-e2e/), sans accès aux comptes réels et sans planification récurrente ; ses tests se déclenchent maintenant lors des modifications de la recette publique (ou manuellement). Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation quotidienne « Développement TCG Deseur » a été **désactivée** le 9 octobre 2026 à la demande de l'utilisateur ; « Brief du matin » a été réactivé. Le développement reprend uniquement lors d'une session demandée explicitement, sans tâche récurrente.
 
 ## Vérifier la compatibilité des 49 cartes
 
