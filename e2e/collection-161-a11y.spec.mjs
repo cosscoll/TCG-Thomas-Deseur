@@ -8,7 +8,7 @@ test('les 161 illustrations apparaissent automatiquement après publication du p
     status:200,contentType:'application/json',
     body:JSON.stringify({version:'161',count:161,images:files}),
   }));
-  const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwsB9WkV7wAAAABJRU5ErkJggg==','base64');
+  const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGPgEpEDAABoAD1UCKP3AAAAAElFTkSuQmCC','base64');
   await page.route('**/*.webp',route=>route.fulfill({
     status:200,contentType:'image/png',body:png,
   }));
