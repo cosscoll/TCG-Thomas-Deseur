@@ -12,7 +12,27 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: tcg-floot-public-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  anonymous-security:
+    name: Sécurité des API sans compte
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Installer Playwright
+        run: npm install --no-save @playwright/test@1.56.1
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Refus des accès privés sans cookie (aucune récompense)
+        run: npx playwright test --config=floot-e2e/playwright.config.mjs guest-security.spec.mjs --grep "accès anonyme rejeté"
+
   smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 15
