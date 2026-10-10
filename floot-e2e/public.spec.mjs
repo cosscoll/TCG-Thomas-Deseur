@@ -65,6 +65,15 @@ test("les pages publiques restent lisibles aux différentes largeurs", async ({ 
               right: Math.round(rect.right),
               width: Math.round(rect.width),
               overflowX: getComputedStyle(node).overflowX,
+              position: getComputedStyle(node).position,
+              transform: getComputedStyle(node).transform,
+              left: getComputedStyle(node).left,
+              rightCss: getComputedStyle(node).right,
+              maxWidth: getComputedStyle(node).maxWidth,
+              parent: node.parentElement?.tagName.toLowerCase() + '.' +
+                String(node.parentElement?.className || '').slice(0, 80),
+              parentOverflow: node.parentElement ?
+                getComputedStyle(node.parentElement).overflowX : null,
               text: (node.textContent || '').trim().slice(0, 50),
             }));
         });
