@@ -30,6 +30,8 @@ La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-De
 
 **Validation de la collection (9 octobre, soirée) :** [48 parcours Chromium ordinateur/mobile et 142 tests Node réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37978835656). La démo comporte maintenant une fiche de carte navigable au clavier, des raccourcis par rareté et de possession, un export CSV sécurisé (données **fictives uniquement**), ainsi qu'un contrôle Axe WCAG 2.0/2.1 A/AA sur les vues testées. Voir le [journal de livraison](docs/COLLECTION_LIVRAISON_2026-10-09.md). **Ce n'est pas une publication des nouveaux modules dans Floot.**
 
+**Version active du 10 octobre :** les fonctions de classeur auparavant préparées sur GitHub sont désormais **intégrées et publiées directement dans Floot**. [Journal complet de publication et tests](docs/FLOOT_INTEGRATION_2026-10-10.md). Les 49 IDs/raretés historiques ont été comparés à PostgreSQL et concordent exactement. TypeScript propre, cinq suites Jasmine réussies, publication réussie et HTTP public vérifié ; **le parcours authentifié n'est pas encore testé en navigateur**.
+
 ## Priorité actuelle : la collection, sans les illustrations
 
 Les visuels des cartes sont toujours en préparation. Le travail de développement est recentré sur **les raretés, les quantités possédées, les doublons, les cartes manquantes, les statistiques de complétion, la recherche et les filtres du classeur**.
