@@ -2,6 +2,12 @@ name: Floot — contrôle public (sans compte)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "floot-e2e/**"
+      - "scripts/check_floot_public.py"
+      - ".github/workflows/floot-public-smoke.yml"
 
 permissions:
   contents: read
