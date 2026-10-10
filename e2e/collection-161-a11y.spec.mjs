@@ -19,13 +19,19 @@ test('les 161 illustrations apparaissent automatiquement après publication du p
   await expect.poll(()=>page.locator('.art-frame.has-image').count(),{timeout:12000}).toBeGreaterThan(0);
   await expect(page.locator('.card[data-rarity="secrete"] img')).toHaveCount(0);
   await page.getByRole('button',{name:'160 / 160',exact:true}).click();
+  // 160 prerequisites unlock the special pack, but do NOT reveal the secret
+  // card inside the collection: its artwork appears in the special booster.
+  await expect(page.locator('.art-frame img')).toHaveCount(160);
+  await expect(page.locator('.card[data-rarity="secrete"] img')).toHaveCount(0);
+  await page.locator('#preview-secret').click();
+  await expect(page.locator('#secret-dialog')).toBeVisible();
+  await expect(page.locator('.secret-reveal-image')).toHaveAttribute('alt',/Chevelu/);
+  await page.locator('#close-secret').click();
+  await page.getByRole('button',{name:'161 / 161',exact:true}).click();
   await expect(page.locator('.art-frame img')).toHaveCount(161);
   const secret=page.locator('.card[data-rarity="secrete"] img');
   await secret.scrollIntoViewIfNeeded();
   await expect.poll(()=>secret.evaluate(image=>image.complete&&image.naturalWidth>0)).toBe(true);
-  await page.locator('#preview-secret').click();
-  await expect(page.locator('#secret-dialog')).toBeVisible();
-  await expect(page.locator('.secret-reveal-image')).toHaveAttribute('alt',/Chevelu/);
 });
 
 test('audit WCAG A/AA du classeur 161 et du booster Chevelu',async({page})=>{
