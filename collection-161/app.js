@@ -1,8 +1,10 @@
 import {CARDS_161,RARITIES_161,REQUIRED_FOR_CHEVELU,SECRET_CARD_ID} from "../data/cards-161.js";
-import {getProgress161} from "../game/collection-161.js";
+import {getProgress161,simulateNormalPack161} from "../game/collection-161.js";
 const $=id=>document.getElementById(id);
 const rarityNames=Object.fromEntries(RARITIES_161.map(r=>[r.id,r.label]));
+const demoOwned=Object.create(null);
 const scenarios=Object.freeze({
+  demo:()=>({...demoOwned}),
   empty:()=>({}),
   partial:()=>Object.fromEntries(REQUIRED_FOR_CHEVELU.slice(0,75).map(id=>[id,1])),
   "without-lille":()=>Object.fromEntries(REQUIRED_FOR_CHEVELU.filter(id=>id!=="td_lille").map(id=>[id,1])),
@@ -88,6 +90,25 @@ function render(){
   $("cards-grid").replaceChildren(fragment);
   $("empty-results").hidden=cards.length!==0;
 }
+$("draw-demo").addEventListener("click",()=>{
+  // Illustrative only. This random draw never invokes an endpoint and must
+  // not be interpreted as a server-authoritative reward.
+  const cards=simulateNormalPack161();
+  const result=$("demo-pack-results");
+  const fragment=document.createDocumentFragment();
+  for(const [index,card] of cards.entries()){
+    const before=demoOwned[card.id]??0;
+    demoOwned[card.id]=before+1;
+    const item=button("li","demo-pack-card",
+      "#"+(index+1)+" · "+card.name+" · "+rarityNames[card.rarity]+" · "+
+      (before===0?"Nouvelle carte (fictive)":"Doublon (fictif)"));
+    item.dataset.rarity=card.rarity;
+    fragment.append(item);
+  }
+  result.replaceChildren(fragment);
+  result.hidden=false;
+  setState("demo");
+});
 for(const btn of document.querySelectorAll("[data-scenario]"))btn.addEventListener("click",()=>setState(btn.dataset.scenario));
 for(const id of ["search","rarity","ownership"]){
   $(id).addEventListener(id==="search"?"input":"change",render);
