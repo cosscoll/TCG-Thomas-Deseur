@@ -50,7 +50,7 @@ La première occurrence est une découverte, les trois suivantes sont des double
 
 ## 4. Validation et publication
 
-Suites CI GitHub : `npm test` (logique), tests Playwright Chromium ordinateur/mobile pour les six vues, changements de scénarios, curseurs, révélation et vérification de l'absence de POST, audit Axe WCAG 2.0/2.1 A/AA. **Les résultats doivent être confirmés dans GitHub Actions après le dernier commit**, ne pas déduire leur réussite de leur simple création.
+**Validation exécutée et confirmée :** [GitHub Actions 38076323343](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076323343) : **155 tests Node réussis, 66 parcours Chromium réussis** sur ordinateur et mobile, zéro échec. Les parcours incluent les six vues, les cinq étapes de révélation, les curseurs par rareté, la remise à zéro, le mode mouvement réduit et les contrôles Axe WCAG 2.0/2.1 A/AA sur les scénarios examinés. Ce contrôle n'est pas une certification d'accessibilité générale.
 
 GitHub Pages reste une **prévisualisation statique** et ne constitue pas une publication du jeu Floot. Après le rétablissement du quota Floot, il faudra :
 
