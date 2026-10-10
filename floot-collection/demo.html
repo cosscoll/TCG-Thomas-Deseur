@@ -228,6 +228,16 @@
         <strong id="forecast-status">Calcul exact</strong>
       </div>
       <p class="subtitle">Probabilités du prochain booster de cinq cartes, en utilisant les règles de rareté actuelles et les cartes manquantes du scénario fictif sélectionné. Aucune ouverture n'est effectuée.</p>
+      <section class="forecast-simulator" aria-labelledby="forecast-simulator-title">
+        <div class="section-heading">
+          <div>
+            <h3 id="forecast-simulator-title">Simuler une collection</h3>
+            <p class="subnote">Fais varier le nombre de cartes différentes possédées dans chaque rareté. Ces réglages restent dans cet aperçu et n'agissent pas sur le classeur ni sur un compte réel.</p>
+          </div>
+          <button type="button" id="forecast-restore">Réinitialiser la simulation</button>
+        </div>
+        <div id="forecast-sliders" class="forecast-sliders" role="group" aria-label="Cartes différentes possédées par rareté"></div>
+      </section>
       <div class="forecast-highlights">
         <article><small>Au moins une carte manquante</small><strong id="forecast-new">—</strong><span>au prochain booster</span></article>
         <article><small>Découvertes différentes attendues</small><strong id="forecast-unique">—</strong><span>moyenne théorique par booster</span></article>
