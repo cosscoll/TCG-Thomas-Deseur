@@ -94,6 +94,17 @@ for(const id of ["search","rarity","ownership"]){
 }
 $("preview-secret").addEventListener("click",()=>{
   if(!state().secretPackEligible)return;
+  if(artworkPublished){
+    const display=$("secret-dialog").querySelector(".secret-reveal");
+    if(!display.querySelector("img")){
+      const image=document.createElement("img");
+      image.src="./assets/cards/td-chevelu.webp";
+      image.alt="Illustration spéciale de la carte secrète Chevelu";
+      image.className="secret-reveal-image";
+      image.addEventListener("error",()=>image.remove(),{once:true});
+      display.prepend(image);
+    }
+  }
   $("secret-dialog").showModal();
 });
 for(const id of ["close-secret","finish-secret"])$(id).addEventListener("click",()=>$("secret-dialog").close());
