@@ -22,3 +22,9 @@ footer{padding:35px 5%;border-top:1px solid var(--line);color:var(--muted);text-
 
 .art-frame.has-image{padding:0;overflow:hidden;border-style:solid;border-color:#9b82a9;background:#151323}
 .art-frame.has-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+
+.secret-reveal{position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 30px #ff88c34d,0 0 60px #ff88c32c}
+.secret-reveal-image{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;background:linear-gradient(130deg,#2b1a3c,#131020)}
+.secret-reveal-image~*{position:relative;z-index:2;text-shadow:0 1px 5px #09040f,0 1px 15px #09040f}
+@media(prefers-reduced-motion:no-preference){.secret-reveal{animation:secret-glow 2.8s ease-in-out infinite alternate}}
+@keyframes secret-glow{from{box-shadow:0 0 15px #ee6ba133,0 0 38px #9e549544}to{box-shadow:0 0 27px #f49bd4aa,0 0 65px #f49bd455}}
