@@ -322,3 +322,36 @@ test('animations réduites : la révélation reste complète sans mouvement impo
   expect(transition).toMatch(/^0s/);
   await expect(page.locator('#reveal-name')).toHaveText('Matelas');
 });
+
+
+test('la simulation par rareté recalcule les chances sans modifier les possessions du classeur',async ({page})=>{
+  await page.getByRole('button',{name:'Probabilités',exact:true}).click();
+  const original = await page.locator('#forecast-new').textContent();
+  const slider=page.locator('.forecast-control[data-rarity="commune"] input');
+  await slider.focus();
+  await page.keyboard.press('End');
+  await expect(page.locator('.forecast-control[data-rarity="commune"] .forecast-control-count'))
+    .toHaveText('17 / 17 cartes obtenues');
+  await expect(page.locator('#forecast-status')).toHaveText('28 / 49 manquantes');
+  await expect(page.locator('#forecast-new')).not.toHaveText(original);
+  await page.getByRole('button',{name:'Collection',exact:true}).click();
+  await expect(page.locator('#unique')).toHaveText('5 / 49');
+  await expect(page.locator('#copies')).toHaveText('9');
+  await page.getByRole('button',{name:'Probabilités',exact:true}).click();
+  await page.locator('#forecast-restore').click();
+  await expect(page.locator('#forecast-status')).toHaveText('44 / 49 manquantes');
+  await expect(page.locator('#forecast-new')).toHaveText(original);
+});
+
+test('modifier le scénario remet les curseurs hypothétiques à son inventaire de départ',async ({page})=>{
+  await page.getByRole('button',{name:'Probabilités',exact:true}).click();
+  const slider=page.locator('.forecast-control[data-rarity="secrete"] input');
+  await slider.focus();
+  await page.keyboard.press('End');
+  await expect(page.locator('.forecast-control[data-rarity="secrete"] .forecast-control-count'))
+    .toHaveText('3 / 3 cartes obtenues');
+  await page.getByRole('button',{name:'Collection vide'}).click();
+  await expect(page.locator('.forecast-control[data-rarity="secrete"] .forecast-control-count'))
+    .toHaveText('0 / 3 cartes obtenues');
+  await expect(page.locator('#forecast-new')).toContainText('100');
+});
