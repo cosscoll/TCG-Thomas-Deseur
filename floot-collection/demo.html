@@ -41,6 +41,7 @@
       <button type="button" data-view="goals" aria-pressed="false" aria-controls="view-goals">Progression</button>
       <button type="button" data-view="history" aria-pressed="false" aria-controls="view-history">Historique</button>
       <button type="button" data-view="recap" aria-pressed="false" aria-controls="view-recap">Bilan booster</button>
+      <button type="button" data-view="forecast" aria-pressed="false" aria-controls="view-forecast">Probabilités</button>
     </nav>
 
     <div id="view-collection" data-view-panel="collection">
@@ -145,6 +146,19 @@
         <strong id="goals-summary">—</strong>
       </div>
       <p class="subtitle">Jalons de progression informatifs, sans pièces, bonus ni récompenses attribués.</p>
+      <section class="rank-panel" aria-labelledby="collector-rank-heading">
+        <div class="rank-heading">
+          <div>
+            <p class="eyebrow">PROGRESSION DU COLLECTIONNEUR</p>
+            <h3 id="collector-rank-heading">Rang <span id="rank-level">—</span> · <span id="rank-title">—</span></h3>
+          </div>
+          <strong id="rank-remaining">—</strong>
+        </div>
+        <div class="rank-track" id="rank-track" role="progressbar" aria-label="Progression vers le prochain rang" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="rank-fill" class="rank-fill"></div>
+        </div>
+        <p class="subnote">Rangs informatifs calculés uniquement à partir des cartes différentes découvertes. Aucun booster, bonus ou avantage attribué.</p>
+      </section>
       <h3 class="subheading">Prochaines découvertes</h3>
       <div id="next-goals" class="next-goals" aria-live="polite"></div>
       <div id="goals-list" class="goals-grid" aria-live="polite"></div>
@@ -165,6 +179,35 @@
         <strong>5 cartes</strong>
       </div>
       <p class="subtitle">Exemple de récapitulatif après attribution serveur. Cette démonstration n'ouvre aucun booster et ne modifie aucune collection.</p>
+      <section class="reveal-workshop" aria-labelledby="reveal-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">ANIMATION 3D SANS ILLUSTRATIONS</p><h3 id="reveal-title">Révélation carte par carte</h3></div>
+          <strong id="reveal-position">0 / 5</strong>
+        </div>
+        <p class="subtitle">Séquence fixe de démonstration. Les cinq cartes sont déjà déterminées : aucun tirage, aucune récompense ni modification de collection.</p>
+        <div class="reveal-scene">
+          <div class="reveal-card" id="reveal-card" data-flipped="false" data-rarity="commune" aria-live="polite">
+            <div class="reveal-inner">
+              <div class="reveal-side reveal-back" aria-hidden="true">
+                <strong>TCG DESEUR</strong><span>ÉDITION ORIGINE</span><b>?</b>
+              </div>
+              <div class="reveal-side reveal-front">
+                <strong id="reveal-rarity">—</strong>
+                <div class="reveal-art">Illustration en préparation</div>
+                <h4 id="reveal-name">—</h4>
+                <span id="reveal-status">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-controls">
+          <button type="button" id="reveal-next">Révéler la première carte</button>
+          <button type="button" id="reveal-reset">Rejouer l'animation</button>
+        </div>
+        <div class="reveal-progress" role="progressbar" aria-label="Cartes révélées dans l'aperçu" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="reveal-progress"><span id="reveal-progress-fill"></span></div>
+        <ol id="reveal-history" class="reveal-history" aria-live="polite"></ol>
+        <p id="reveal-finished" class="subnote" hidden>Toutes les cartes fictives sont révélées. Le bilan de cet exemple est présenté ci-dessous.</p>
+      </section>
       <div class="recap-summary">
         <div><small>Nouvelles découvertes</small><strong id="recap-new">—</strong></div>
         <div><small>Copies supplémentaires</small><strong id="recap-extra">—</strong></div>
@@ -177,6 +220,26 @@
         <tbody id="odds-body"></tbody>
       </table>
       <p class="subnote">Une estimation d'attente côté interface ne remplace jamais la confirmation du serveur. La règle provisoire reste un booster gratuit toutes les 24 heures.</p>
+    </section>
+
+    <section id="view-forecast" class="panel-extra" data-view-panel="forecast" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">STATISTIQUES THÉORIQUES</p><h2>Chances de découverte</h2></div>
+        <strong id="forecast-status">Calcul exact</strong>
+      </div>
+      <p class="subtitle">Probabilités du prochain booster de cinq cartes, en utilisant les règles de rareté actuelles et les cartes manquantes du scénario fictif sélectionné. Aucune ouverture n'est effectuée.</p>
+      <div class="forecast-highlights">
+        <article><small>Au moins une carte manquante</small><strong id="forecast-new">—</strong><span>au prochain booster</span></article>
+        <article><small>Découvertes différentes attendues</small><strong id="forecast-unique">—</strong><span>moyenne théorique par booster</span></article>
+        <article><small>Au moins une Légendaire ou Secrète</small><strong id="forecast-premium">—</strong><span>même si elle est déjà possédée</span></article>
+      </div>
+      <div class="forecast-details">
+        <h3>Par emplacement</h3>
+        <p>Chance d'obtenir une carte encore manquante : <strong id="forecast-normal">—</strong> sur chacun des emplacements 1 à 4, puis <strong id="forecast-guaranteed">—</strong> sur l'emplacement 5 garanti Rare ou supérieur.</p>
+        <h3>Chances de découverte par rareté</h3>
+        <div id="forecast-rows" class="forecast-rows" aria-live="polite"></div>
+        <p class="subnote">Hypothèses : tirages indépendants avec remise ; chaque carte d'une rareté est équiprobable ; probabilités de rareté identiques à celles annoncées pour le jeu. Le calcul évite de compter plusieurs fois la même nouvelle carte dans le booster. Il ne prédit pas un résultat individuel et ne change pas les tirages du serveur.</p>
+      </div>
     </section>
 
     <dialog id="card-detail" class="card-dialog" aria-labelledby="detail-title" aria-describedby="detail-hint">
