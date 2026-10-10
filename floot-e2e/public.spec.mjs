@@ -47,6 +47,31 @@ test("les pages publiques restent lisibles aux différentes largeurs", async ({ 
         document: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         body: document.body.scrollWidth - document.body.clientWidth,
       }));
+      if (layout.document > 2 || layout.body > 2) {
+        const offenders = await page.evaluate(() => {
+          const width = document.documentElement.clientWidth;
+          return [...document.querySelectorAll('body *')]
+            .map(node => ({ node, rect: node.getBoundingClientRect() }))
+            .filter(({node,rect}) => {
+              const styles = window.getComputedStyle(node);
+              return styles.display !== 'none' && styles.visibility !== 'hidden' &&
+                rect.width > 0 && rect.right > width + 2;
+            })
+            .slice(0, 12)
+            .map(({node,rect}) => ({
+              tag: node.tagName.toLowerCase(),
+              id: node.id || null,
+              classes: String(node.className || '').slice(0, 140),
+              right: Math.round(rect.right),
+              width: Math.round(rect.width),
+              overflowX: getComputedStyle(node).overflowX,
+              text: (node.textContent || '').trim().slice(0, 50),
+            }));
+        });
+        console.log('TCG_FLOOT_HORIZONTAL_OVERFLOW',JSON.stringify({
+          path, viewport:viewport.width, document:layout.document, body:layout.body, offenders,
+        }));
+      }
       expect(layout.document, `Débordement document à ${viewport.width}px sur ${path}`).toBeLessThanOrEqual(2);
       expect(layout.body, `Débordement body à ${viewport.width}px sur ${path}`).toBeLessThanOrEqual(2);
     }
