@@ -17,12 +17,12 @@ test("migration SQL comprend 161 insertions du nouveau set, jamais les anciennes
 });
 test("l'image Chevelu est hors pool normal dans la génération SQL",()=>{
   const data=seed();
-  const match=data.match(/VALUES\('td_chevelu'.*?\);/s);
-  assert.ok(match);
-  assert.match(match[0],/FALSE/);
-  const lille=data.match(/VALUES\('td_lille'.*?\);/s);
+  const chevelu=data.split("\n").find(line=>line.startsWith("VALUES('td_chevelu',"));
+  assert.ok(chevelu);
+  assert.match(chevelu,/FALSE,161\)/);
+  const lille=data.split("\n").find(line=>line.startsWith("VALUES('td_lille',"));
   assert.ok(lille);
-  assert.match(lille[0],/TRUE/);
+  assert.match(lille,/TRUE,160\)/);
 });
 test("sortie seed SQL reproductible pour migration contrôlée",()=>{
   assert.equal(seed(),seed());
