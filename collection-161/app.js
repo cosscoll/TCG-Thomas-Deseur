@@ -76,6 +76,9 @@ function render(){
       image.decoding="async";
       image.addEventListener("load",()=>{art.replaceChildren(image);art.classList.add("has-image")},{once:true});
       image.addEventListener("error",()=>{image.remove()},{once:true});
+      // Lazy images must be connected to the document BEFORE they can load.
+      // Append first, then replace the placeholder only once loaded.
+      art.append(image);
     }
     art.setAttribute("role","img");
     art.setAttribute("aria-label",card.id===SECRET_CARD_ID&&!owned?
