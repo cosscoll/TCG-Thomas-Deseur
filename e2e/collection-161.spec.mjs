@@ -59,3 +59,16 @@ test('mobile: pas de débordement à 320, 393, 820 pixels',async({page})=>{
     expect(overflow,`horizontal overflow on ${width}px`).toBeLessThanOrEqual(2);
   }
 });
+
+test('booster ordinaire fictif donne cinq cartes sans secrète et une cinquième Rare+',async({page})=>{
+  const requests=[];
+  page.on('request',req=>{if(!['GET','HEAD'].includes(req.method()))requests.push(req.url())});
+  await page.locator('#draw-demo').click();
+  await expect(page.locator('#demo-pack-results li')).toHaveCount(5);
+  await expect(page.locator('#demo-pack-results')).not.toContainText('Chevelu');
+  const last=page.locator('#demo-pack-results li').last();
+  await expect(last).not.toHaveAttribute('data-rarity','commune');
+  const count=await page.locator('#progress-number').textContent();
+  expect(Number(count?.split('/')[0].trim())).toBeGreaterThan(0);
+  expect(requests).toEqual([]);
+});
