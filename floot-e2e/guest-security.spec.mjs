@@ -38,7 +38,15 @@ for (const api of cases) {
         headers: { "Content-Type": "application/json" },
       });
     expect(response.status(), `${api.route} doit être privé`).toBe(401);
-    const contentType = response.headers()["content-type"] ?? "";
+    const headers = response.headers();
+    console.log("TCG_GUEST_RESPONSE_HEADERS",JSON.stringify({
+      route: api.route,
+      status: response.status(),
+      cacheControl: headers["cache-control"] ?? "(absent)",
+      vary: headers["vary"] ?? "(absent)",
+      setCookie: Boolean(headers["set-cookie"]),
+    }));
+    const contentType = headers["content-type"] ?? "";
     expect(contentType).toContain("application/json");
     const body = await response.json();
     expect(privateFields(body)).toEqual([]);
