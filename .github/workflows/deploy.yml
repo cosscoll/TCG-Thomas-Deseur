@@ -16,6 +16,9 @@ on:
       - "research/**"
       - "tests/**"
       - "floot-collection/**"
+      - "collection-161/**"
+      - "server/**"
+      - "scripts/generate-seed-161.mjs"
       - "package.json"
       - ".github/workflows/deploy.yml"
   pull_request:
@@ -32,6 +35,9 @@ on:
       - "research/**"
       - "tests/**"
       - "floot-collection/**"
+      - "collection-161/**"
+      - "server/**"
+      - "scripts/generate-seed-161.mjs"
       - "package.json"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
