@@ -7,6 +7,7 @@ on:
     paths:
       - "floot-e2e/**"
       - "scripts/check_floot_public.py"
+      - "scripts/check_floot_guest_security.mjs"
       - ".github/workflows/floot-public-smoke.yml"
 
 permissions:
@@ -26,12 +27,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Installer Playwright
-        run: npm install --no-save @playwright/test@1.56.1
-      - name: Installer Chromium
-        run: npx playwright install --with-deps chromium
-      - name: Refus des accès privés sans cookie (aucune récompense)
-        run: npx playwright test --config=floot-e2e/playwright.config.mjs guest-security.spec.mjs --grep "accès anonyme rejeté"
+      - name: Vérifier les quatre API privées sans cookie (aucune récompense)
+        run: node --test scripts/check_floot_guest_security.mjs
 
   smoke:
     runs-on: ubuntu-latest
