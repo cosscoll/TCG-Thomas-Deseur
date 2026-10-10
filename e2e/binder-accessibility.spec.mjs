@@ -14,7 +14,7 @@ async function auditView(page, location) {
   }));
 }
 
-test('WCAG des cinq espaces de la collection fictive', async ({ page }) => {
+test('WCAG des six espaces de la collection fictive', async ({ page }) => {
   await page.goto('/floot-collection/demo.html');
   await expect(page.locator('#cards .collection-card')).toHaveCount(49);
   const findings = [...await auditView(page, 'classeur principal')];
@@ -23,6 +23,7 @@ test('WCAG des cinq espaces de la collection fictive', async ({ page }) => {
     ['Progression','objectifs'],
     ['Historique','historique'],
     ['Bilan booster','bilan booster'],
+    ['Probabilités','prévisions'],
   ]) {
     await page.getByRole('button', {name:button,exact:true}).click();
     findings.push(...await auditView(page, label));
@@ -40,4 +41,16 @@ test('WCAG de la fiche modale et d’une collection vide', async ({ page }) => {
   await expect(page.locator('#unique')).toHaveText('0 / 49');
   findings.push(...await auditView(page, 'classeur vide'));
   expect(findings, 'Audit de la fiche et du classeur vide').toEqual([]);
+});
+
+test('WCAG après révélation progressive et sans animation imposée',async ({page})=>{
+  await page.goto('/floot-collection/demo.html');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.getByRole('button',{name:'Bilan booster',exact:true}).click();
+  const findings=[];
+  for(let i=0;i<5;i++){
+    await page.locator('#reveal-next').click();
+    findings.push(...await auditView(page,`révélation ${i+1}/5`));
+  }
+  expect(findings).toEqual([]);
 });
