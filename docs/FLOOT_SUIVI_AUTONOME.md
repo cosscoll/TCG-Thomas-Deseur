@@ -61,6 +61,16 @@
 - **Floot actif :** aucun changement. L'application `https://budget-illimite-tcg.floot.app` reste publiée, mais ne contient pas encore ce nouveau module.
 - **Prochaine action :** tester l'aperçu en navigateur puis, lorsque Floot sera disponible, lire les composants du classeur courant et y intégrer les données/statistiques sans reconstruire toute l'interface.
 
+## État de production actualisé — 10 octobre 2026
+
+**Les fonctions de collection ont été intégrées directement au projet Floot existant et publiées.** Lire d'abord [FLOOT_INTEGRATION_2026-10-10.md](FLOOT_INTEGRATION_2026-10-10.md) avant toute reprise. Le quota était de nouveau disponible ; ne plus présenter le blocage du 9 octobre comme l'état actuel.
+
+**Livré :** classeur privé 49 cartes, raretés, doublons, uniques/manquantes, progression et 15 objectifs, filtres/recherche/tri, fiches, historique des dix derniers boosters et export CSV. Les modifications de sessions/logout ont été sécurisées. Le backend de tirage et les comptes réels n'ont pas été modifiés.
+
+**Contrôles réalisés :** 49 identifiants et raretés Floot concordants avec l'archive GitHub ; TypeScript sans erreur ; 5 suites Jasmine réussies ; checkpoint `da85422a-28b7-466e-8d17-a07f424b7da6` ; publication `79101791-9a0f-4da6-8a4d-a870a7e66639` réussie sur https://budget-illimite-tcg.floot.app ; GET accueil/connexion 200, collection anonyme 401, bundle frontend publié contenant les nouvelles fonctions.
+
+**Limites :** pas de parcours authentifié en navigateur ni de capture du preview Floot (fenêtre éditeur absente). Ne pas confondre vérification du bundle publié avec un test des interactions après connexion. L'intégration est publiée, mais la recette multi-comptes reste à compléter.
+
 ## État au 9 octobre 2026
 
 **Décision utilisateur la plus récente (13:42 UTC) : une seule session de travail à la fois, sans automatisation récurrente.** La tâche « Développement TCG Deseur » a été désactivée et « Brief du matin » réactivé le 9 octobre 2026. Les deux changements ont été confirmés. **Ne pas créer ni réactiver d'automatisation TCG sans nouvelle instruction explicite.**
