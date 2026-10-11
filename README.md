@@ -1,3 +1,30 @@
+# TCG Deseur — état courant (11 octobre 2026)
+
+**Catalogue créateur confirmé : 67 cartes distinctes et 38 illustrations alternatives, avec 3 groupes écartés.** Picasso Deseur est validé avec un rendu principal et deux alternatives.
+
+**Voir les fiches approuvées :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/  
+**Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
+**Consignes de développement et priorités :** [Feuille de route opérationnelle](docs/PLAN_AUTONOME_SUITE_2026-10-11.md)
+
+| Ressource | Utilité |
+| --- | --- |
+| [Choix approuvés](data/choix-cartes-2026-10-11.json) | Décisions exactes, noms, illustrations principales et alternatives |
+| [Manifeste des 67 cartes](data/catalogue-valide-67.json) | Export public strict, lisible par le futur jeu |
+| [Générateur](scripts/build-approved-catalogue.mjs) | Reconstruit le manifeste et vérifie les identifiants |
+| [Collection approuvée](collection-validee/) | Catalogue statique présenté sur GitHub Pages |
+| [Atelier](tri-177/) | Éditeur des choix des cartes |
+| [Ancienne démo à 160 illustrations](collection-161/) | Archive de démonstration, **pas** la nouvelle collection Floot |
+
+**Attention aux deux environnements :** la collection approuvée est intégrée dans GitHub, **pas encore dans le jeu Floot**. Les comptes, les quotas et les boosters du jeu réel restent pilotés par son serveur. La prochaine tâche urgente est de diagnostiquer et rétablir l'ouverture des boosters du créateur sur Floot, puis de synchroniser prudemment la collection sans altérer les possessions des joueurs.
+
+**État des vérifications :** tests d'intégrité et tests navigateur ajoutés au dépôt ; les résultats des exécutions GitHub Actions les plus récentes doivent être contrôlés. L'accès HTTP public indépendant à GitHub Pages n'a pas pu être vérifié depuis le présent environnement. Aucune attribution de booster au compte du créateur n'a été réalisée.
+
+---
+
+## Historique des éditions et des prototypes
+
+Les passages ci-dessous sont **historiques** et décrivent notamment les versions à 49/160 cartes, avant la validation des 67 personnages. Ils ne décrivent pas le contenu actuel approuvé.
+
 ## Collection Origine — édition actuelle
 
 **Jeu en ligne :** https://budget-illimite-tcg.floot.app  
