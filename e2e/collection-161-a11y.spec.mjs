@@ -27,7 +27,7 @@ test('les 160 illustrations visibles apparaissent automatiquement après publica
   await expect(page.locator('#secret-dialog')).toBeVisible();
   await expect(page.locator('#dialog-title')).toHaveText('Booster de collection');
   await page.locator('#close-secret').click();
-  await page.getByRole('button',{name:'161 / 161',exact:true}).click();
+  await page.getByRole('button',{name:'Booster déjà récupéré',exact:true}).click();
   await expect(page.locator('.art-frame img')).toHaveCount(160);
   await expect(page.locator('.card[data-rarity="secrete"]')).toHaveCount(0);
 });
