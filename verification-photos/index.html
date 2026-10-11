@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15151e">
+<meta name="description" content="Vérifier l'association entre chaque illustration TCG Deseur et sa photo originale : 69 principales proposées, 91 variantes séparées et 17 sources sans rendu.">
+<title>Vérification des photos et illustrations — TCG Deseur</title>
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<a href="#results" class="skip-link">Aller aux correspondances</a>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="../">TCG DESEUR</a>
+    <a href="../collection-161/">Ancien classeur à 160 cartes</a>
+    <a href="../tri-177/">177 photos originales</a>
+    <a href="https://budget-illimite-tcg.floot.app/" rel="noopener noreferrer">Jouer ↗</a>
+  </div>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <span class="eyebrow">Vérification des fichiers d'origine</span>
+    <h1>La bonne photo pour <em>chaque illustration.</em></h1>
+    <p>Les anciens noms de fichiers ont été mélangés lors de la création du catalogue. Ici, chaque illustration est comparée à sa photographie source réelle. Aucune appellation de personnage n'est attribuée à cette étape.</p>
+    <p class="notice">Les groupes de costumes et le choix des visuels principaux restent <strong>provisoires</strong>. Les variantes sont seulement mises de côté, pas supprimées. Les inventaires et les boosters des joueurs ne sont pas modifiés.</p>
+  </section>
+  <section class="metrics" aria-label="Bilan du rapprochement">
+    <article><strong>160</strong><span>illustrations avec photo retrouvée</span></article>
+    <article><strong>116</strong><span>anciennes références à corriger</span></article>
+    <article><strong>69</strong><span>illustrations principales proposées</span></article>
+    <article><strong>91</strong><span>variantes mises à part</span></article>
+    <article><strong>17</strong><span>photos sans illustration</span></article>
+  </section>
+  <section class="review" aria-labelledby="review-heading">
+    <h2 id="review-heading">Comparer et trier</h2>
+    <div class="tabs" role="group" aria-label="Type de cartes affichées">
+      <button type="button" data-mode="primary" aria-pressed="true">Principales proposées (69)</button>
+      <button type="button" data-mode="set_aside" aria-pressed="false">Variantes à part (91)</button>
+      <button type="button" data-mode="all" aria-pressed="false">Toutes les paires (160)</button>
+      <button type="button" data-mode="unused" aria-pressed="false">Photos sans rendu (17)</button>
+    </div>
+    <div class="filters">
+      <label>Rechercher par référence ou groupe
+        <input id="search" type="search" placeholder="REF-2-042, td_1_004, COST-005..." autocomplete="off">
+      </label>
+      <label>Série de la photo originale
+        <select id="series">
+          <option value="all">Toutes les séries</option>
+          <option value="1">Série 1</option>
+          <option value="2">Série 2</option>
+          <option value="3">Série 3</option>
+          <option value="177">Hors-série Lille</option>
+        </select>
+      </label>
+      <label>Groupe de costumes
+        <select id="group"><option value="all">Tous les groupes</option></select>
+      </label>
+      <button type="button" id="export">Exporter les associations en CSV</button>
+    </div>
+    <p id="status" role="status" aria-live="polite">Chargement des correspondances…</p>
+    <div id="results" class="results" aria-live="polite"></div>
+    <p id="empty" hidden>Aucun résultat dans ces filtres.</p>
+  </section>
+</main>
+<footer class="wrap">
+  <p>Correspondances établies par comparaison visuelle et vérifiées par échantillonnage. Aucune suppression et aucune modification du jeu connecté.</p>
+</footer>
+</body>
+</html>
