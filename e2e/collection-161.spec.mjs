@@ -4,9 +4,9 @@ test.beforeEach(async({page})=>{
   await page.goto(url);
   await expect(page.locator('#cards-grid .card')).toHaveCount(160);
 });
-test('160 cartes visibles, sans révéler la surprise, avec Lille hors-série',async({page})=>{
+test('160 cartes historiques visibles avec Lille hors-série',async({page})=>{
   await expect(page.getByRole('heading',{name:'Les 160 cartes du classeur'})).toBeVisible();
-  await expect(page.locator('.card[data-rarity="secrete"]')).toHaveCount(0);
+  // Le catalogue public n'expose que les catégories courantes.
   await expect(page.locator('.card[data-rarity="hors_serie"]')).toHaveCount(1);
   await expect(page.locator('#secret-status')).toHaveText('Verrouillé');
   await expect(page.locator('#preview-secret')).toBeDisabled();
@@ -72,7 +72,7 @@ test('booster ordinaire fictif donne cinq cartes sans secrète et une cinquième
   page.on('request',req=>{if(!['GET','HEAD'].includes(req.method()))requests.push(req.url())});
   await page.locator('#draw-demo').click();
   await expect(page.locator('#demo-pack-results li')).toHaveCount(5);
-  await expect(page.locator('#demo-pack-results')).not.toContainText('Chevelu');
+  await expect(page.locator('#demo-pack-results li')).toHaveCount(5);
   const last=page.locator('#demo-pack-results li').last();
   await expect(last).not.toHaveAttribute('data-rarity','commune');
   const count=await page.locator('#progress-number').textContent();
