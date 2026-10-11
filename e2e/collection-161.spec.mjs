@@ -2,34 +2,34 @@ import {test, expect} from '@playwright/test';
 const url='/collection-161/';
 test.beforeEach(async({page})=>{
   await page.goto(url);
-  await expect(page.locator('#cards-grid .card')).toHaveCount(161);
+  await expect(page.locator('#cards-grid .card')).toHaveCount(160);
 });
-test('161 cartes, Chevelu secrète et Lille hors-série présentes',async({page})=>{
-  await expect(page.getByRole('heading',{name:'Les 161 cartes'})).toBeVisible();
-  await expect(page.locator('.card[data-rarity="secrete"]')).toHaveCount(1);
+test('160 cartes visibles, sans révéler la surprise, avec Lille hors-série',async({page})=>{
+  await expect(page.getByRole('heading',{name:'Les 160 cartes du classeur'})).toBeVisible();
+  await expect(page.locator('.card[data-rarity="secrete"]')).toHaveCount(0);
   await expect(page.locator('.card[data-rarity="hors_serie"]')).toHaveCount(1);
   await expect(page.locator('#secret-status')).toHaveText('Verrouillé');
   await expect(page.locator('#preview-secret')).toBeDisabled();
 });
-test('159 cartes sans Lille ne débloquent pas Chevelu',async({page})=>{
+test('159 cartes sans Lille ne débloquent pas le booster de collection',async({page})=>{
   await page.getByRole('button',{name:'159 / 160 (sans Lille)'}).click();
   await expect(page.locator('#progress-number')).toHaveText('159 / 160');
   await expect(page.locator('#secret-status')).toHaveText('Verrouillé');
   await expect(page.locator('#preview-secret')).toBeDisabled();
 });
-test('160 autres cartes débloquent uniquement le booster secret de démonstration',async({page})=>{
+test('160 cartes débloquent uniquement la démonstration du booster de collection',async({page})=>{
   await page.getByRole('button',{name:'160 / 160',exact:true}).click();
-  await expect(page.locator('#secret-status')).toHaveText('Débloqué');
+  await expect(page.locator('#secret-status')).toHaveText('Disponible');
   await expect(page.locator('#preview-secret')).toBeEnabled();
   await page.locator('#preview-secret').click();
   await expect(page.locator('#secret-dialog')).toBeVisible();
-  await expect(page.locator('#dialog-title')).toHaveText('Chevelu');
+  await expect(page.locator('#dialog-title')).toHaveText('Booster de collection');
   await page.locator('#close-secret').click();
   await expect(page.locator('#secret-dialog')).not.toBeVisible();
 });
-test('une carte secrète déjà obtenue bloque un second booster',async({page})=>{
+test('une récompense déjà récupérée bloque un deuxième booster',async({page})=>{
   await page.getByRole('button',{name:'161 / 161'}).click();
-  await expect(page.locator('#secret-status')).toHaveText('Obtenue');
+  await expect(page.locator('#secret-status')).toHaveText('Récupéré');
   await expect(page.locator('#preview-secret')).toBeDisabled();
 });
 test('filtres de collection et raretés corrects',async({page})=>{
@@ -38,9 +38,6 @@ test('filtres de collection et raretés corrects',async({page})=>{
   await page.locator('#rarity').selectOption('hors_serie');
   await expect(page.locator('#cards-grid .card')).toHaveCount(1);
   await expect(page.locator('#cards-grid')).toContainText('Lille');
-  await page.locator('#rarity').selectOption('secrete');
-  await expect(page.locator('#cards-grid .card')).toHaveCount(1);
-  await expect(page.locator('#cards-grid')).toContainText('Carte secrète à débloquer');
   await page.locator('#rarity').selectOption('all');
   await page.locator('#search').fill('REF-3-043');
   await expect(page.locator('#cards-grid .card')).toHaveCount(1);
