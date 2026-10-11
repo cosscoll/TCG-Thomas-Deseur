@@ -45,19 +45,61 @@ test('the editor loads the stylized catalogue rather than selecting original pho
  assert.ok(css.includes('.originals-details'));
  assert.ok(css.includes('.artwork-photos'));
 });
-test('card editor validates names and stylized main/alternative choices with backup',()=>{
+test('editor validates names and one primary only; alternatives are optional and multi-select',()=>{
  assert.doesNotThrow(()=>new Function(editor));
- assert.ok(editor.includes('SHINY_FROM_MAIN'));
- assert.ok(editor.includes("s.status='Validée'"));
- assert.ok(editor.includes("s.status==='Écartée'"));
- assert.ok(editor.includes('id_illustration_principale'));
- assert.ok(editor.includes('id_illustration_alternative'));
- assert.ok(editor.includes('reference_photo_source_principale'));
- assert.ok(editor.includes('fichier_source_shiny_a_creer'));
- assert.ok(editor.includes('TCG_Deseur_cartes_noms_visuels.csv'));
- assert.ok(editor.includes('TCG_Deseur_sauvegarde_tri.json'));
- assert.ok(editor.includes('tcg_tri_card_v2_'));
- assert.ok(editor.includes("read('tcg_tri_photo_'"));
- assert.ok(editor.includes("read('tcg_tri_'"));
- assert.ok(editor.includes('window.confirm'));
+ assert.match(editor,/const candidates=Array\.isArray\(saved\.alternatives\)/);
+ assert.match(editor,/const alternatives=\[\]/);
+ assert.match(editor,/s\.alternatives\.includes\(art\.ref\)/);
+ assert.match(editor,/s\.alternatives=\[\.\.\.s\.alternatives,art\.ref\]/);
+ assert.match(editor,/s\.alternatives=\[\];s\.shiny=false/);
+ assert.match(editor,/Zéro variante est autorisé/);
+ assert.match(editor,/const shiny=Boolean\(primary&&/);
+ assert.match(editor,/s\.status='Validée'/);
+ assert.match(editor,/s\.status==='Écartée'/);
+ assert.match(editor,/ids_illustrations_alternatives/);
+ assert.match(editor,/nombre_total_variantes/);
+ assert.match(editor,/reference_photo_source_principale/);
+ assert.match(editor,/fichier_source_shiny_a_creer/);
+ assert.match(editor,/TCG_Deseur_cartes_noms_visuels\.csv/);
+ assert.match(editor,/TCG_Deseur_sauvegarde_tri\.json/);
+ assert.match(editor,/tcg-deseur-cards-v3/);
+ assert.match(editor,/tcg-deseur-cards-v2/);
+ assert.match(editor,/tcg_tri_card_v2_/);
+ assert.match(editor,/window\.confirm/);
+ assert.match(html,/zéro à plusieurs visuels alternatifs|aucune, une ou plusieurs illustrations alternatives/);
+ assert.ok(css.includes('.variants-previews'));
+});
+test('normalizing previous and new choices supports 0, 1, or many variants',()=>{
+ const start=editor.indexOf('function normalizeRef(');
+ const end=editor.indexOf('function loadState(');
+ assert.ok(start>=0&&end>start);
+ const normalize=new Function('SHINY','STATUSES',editor.slice(start,end)+'\nreturn normalizeState;')(
+  'SHINY_FROM_MAIN',['À examiner','Validée','Écartée']
+ );
+ const refs=[
+  {ref:'td_1_001',sourceRef:'REF-1-002'},
+  {ref:'td_1_002',sourceRef:'REF-1-003'},
+  {ref:'td_1_003',sourceRef:'REF-1-004'},
+  {ref:'td_1_004',sourceRef:'REF-1-005'}
+ ];
+ const single=normalize({name:'Une carte',primary:'td_1_001',alternatives:[],shiny:false,status:'Validée'},refs);
+ assert.equal(single.status,'Validée');
+ assert.deepEqual(single.alternatives,[]);
+ assert.equal(single.shiny,false);
+ const multiple=normalize({name:'Triple',primary:'td_1_001',alternatives:['td_1_002','td_1_003','td_1_002','td_1_001','inconnu'],shiny:true,status:'Validée'},refs);
+ assert.equal(multiple.status,'Validée');
+ assert.deepEqual(multiple.alternatives,['td_1_002','td_1_003']);
+ assert.equal(multiple.shiny,true);
+ const oldSingle=normalize({name:'Ancienne',primary:'td_1_001',alternative:'td_1_002',status:'Validée'},refs);
+ assert.deepEqual(oldSingle.alternatives,['td_1_002']);
+ assert.equal(oldSingle.shiny,false);
+ const oldShiny=normalize({name:'Ancienne Shiny',primary:'td_1_001',alternative:'SHINY_FROM_MAIN',status:'Validée'},refs);
+ assert.deepEqual(oldShiny.alternatives,[]);
+ assert.equal(oldShiny.shiny,true);
+ const photoMigration=normalize({name:'Photo corrigée',primary:'REF-1-002',alternative:'REF-1-003',status:'Validée'},refs);
+ assert.equal(photoMigration.primary,'td_1_001');
+ assert.deepEqual(photoMigration.alternatives,['td_1_002']);
+ assert.equal(photoMigration.status,'À examiner');
+ const zero=normalize({name:'Sans visuel',primary:'',alternatives:[],status:'Validée'},[]);
+ assert.equal(zero.status,'À examiner');
 });
