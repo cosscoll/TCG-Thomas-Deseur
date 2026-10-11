@@ -61,7 +61,7 @@ def publish(payload):
         if len(images)!=EXPECTED_IMAGE_COUNT:
             raise RuntimeError(f"177 images attendues, obtenu {len(images)}")
         index=z.read("tri-177/index.html").decode("utf-8")
-        ids=set(re.findall(r'<section class="group" id="(COST-\\d{3})"',index))
+        ids=set(re.findall(r'<section class="group" id="(COST-\d{3})"',index))
         if len(ids)!=EXPECTED_GROUP_COUNT:
             raise RuntimeError(f"70 groupes attendus : {len(ids)}")
         if len(re.findall(r'<div class="photo"',index))!=177:
