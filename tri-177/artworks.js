@@ -64,4 +64,15 @@ for(const group of document.querySelectorAll('.group')){
  group.dataset.artworkCount=String(pairs.length);
  group.dataset.search+=' '+pairs.map(p=>p.id+' '+p.illustration+' '+p.sourceReference).join(' ').toLocaleLowerCase('fr');
 }
+// Précharge la sélection approuvée sur GitHub pour que le tri soit cohérent
+// sur les autres navigateurs ; les changements locaux plus récents restent prioritaires.
+try{
+ const response=await fetch('../data/choix-cartes-2026-10-11.json',{cache:'no-store'});
+ if(response.ok){
+  const selection=await response.json();
+  if(selection.schema==='tcg-deseur-cards-v3'&&selection.cards){
+   window.__TCG_APPROVED_CARDS__=selection.cards;
+  }
+ }
+}catch{ /* conserve le tri local si la synchronisation est indisponible */ }
 await import('./editor.js');
