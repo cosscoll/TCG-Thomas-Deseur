@@ -1,0 +1,47 @@
+
+/* Edition cartes 177 — affichage et selection lisibles sur mobile */
+.group .review{display:none}
+.card-editor{margin-top:20px;padding:17px;border:1px solid #55708b;border-radius:13px;background:linear-gradient(145deg,#202f46,#161e2b)}
+.editor-top,.pick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}
+.editor-top{grid-template-columns:minmax(0,1fr) auto;align-items:center}
+.editor-label{display:flex;flex-direction:column;gap:7px;min-width:0;font-size:.9rem;color:#f2e8d1}
+.field-title{font-weight:800;font-size:.9rem}
+.editor-label input,.editor-label select{width:100%;max-width:100%;background:#101c2c;border-color:#8296ad;color:#fff}
+.editor-label input::placeholder{color:#bac4d1}
+.pick-grid{margin-top:16px}
+.card-status{display:inline-block;padding:9px 12px;border:1px solid #8193a8;background:#2d3747;border-radius:99px;color:#f3e9d9;font-size:.79rem;font-weight:850;white-space:nowrap}
+.group[data-card-status='Validée']{border-color:#7dcbb2}
+.group[data-card-status='Validée'] .card-status{border-color:#65ae91;background:#20483d;color:#d5fff1}
+.group[data-card-status='Écartée']{opacity:.79}
+.group[data-card-status='Écartée'] .card-status{border-color:#c18b84;background:#492b34;color:#ffe4e0}
+.card-previews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:17px}
+.preview-panel{min-width:0;border:1px solid #4c6781;border-radius:10px;background:#101925;padding:11px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.preview-panel>strong{font-size:.73rem;letter-spacing:.08em;color:#f3d39f}
+.preview-panel>small{font-size:.77rem;color:#c2d8ec;overflow-wrap:anywhere;text-align:center}
+.preview-image{width:100%;height:170px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#f5f6fa;overflow:hidden}
+.preview-image img{max-width:100%;max-height:100%;object-fit:contain}
+.preview-empty{color:#34475b;font-size:.82rem}
+.preview-panel.shiny-source{border-color:#d6b16a;background:linear-gradient(135deg,#322642,#253045,#2e2541);position:relative}
+.preview-panel.shiny-source>strong{color:#ffe4a8}
+.preview-panel.shiny-source .preview-image{border:3px solid #d4b879}
+.editor-hint,.legacy-info{font-size:.77rem;color:#bed0de;margin:12px 0 0;line-height:1.5}
+.editor-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:17px}
+.validate-card{background:#326d5e;border:1px solid #85d5bc;color:#fff;font-weight:850}
+.validate-card:hover{background:#408b77}
+.validate-card:disabled{opacity:.9;cursor:default;background:#225044}
+.exclude-card{background:#3c2d37;border:1px solid #a28a99}
+.editor-message{font-size:.79rem;color:#f4d697;flex:1;min-width:160px}
+.photo-actions{display:flex;gap:6px;margin-top:7px}
+.photo-actions button{min-height:34px;padding:7px 10px;flex:1;font-size:.72rem;font-weight:800}
+.photo[data-selected='true']{border-color:#a6e7ca;box-shadow:0 0 0 2px #61ae93}
+.photo[data-alternative='true']{border-color:#e7be70;box-shadow:0 0 0 2px #9e7a45}
+.photo[data-selected='true']::after{content:'VISUEL PRINCIPAL';font-size:.68rem}
+.photo[data-alternative='true']::after{content:'VISUEL ALTERNATIF';display:block;order:2;color:#f1cf8b;font-size:.68rem;font-weight:850}
+.photo-actions button[aria-pressed='true']{background:#387a68;border-color:#b1f2d8}
+.photo-actions button.choose-alt[aria-pressed='true']{background:#775625;border-color:#edc783}
+.import-label{display:flex;align-items:center;gap:6px;cursor:pointer;border-radius:8px;border:1px dashed #8c9eb2;padding:8px;color:#e7ebf4;font-size:.81rem}
+.import-label input{font-size:.73rem;max-width:220px;min-height:0;padding:2px;border:0;background:transparent}
+#storage-warning{color:#ffd69f;font-size:.8rem}
+#card-summary{color:#c9f6de}
+@media(max-width:710px){.editor-top{grid-template-columns:minmax(0,1fr)}.pick-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:460px){.card-editor{padding:11px}.card-previews{gap:7px}.preview-image{height:128px}.editor-actions{flex-direction:column;align-items:stretch}.editor-message{min-width:0}.photo-actions{flex-wrap:wrap}}
