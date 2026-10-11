@@ -44,3 +44,22 @@
 #card-summary{color:#c9f6de}
 @media(max-width:710px){.editor-top{grid-template-columns:minmax(0,1fr)}.pick-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:460px){.card-editor{padding:11px}.card-previews{gap:7px}.preview-image{height:128px}.editor-actions{flex-direction:column;align-items:stretch}.editor-message{min-width:0}.photo-actions{flex-wrap:wrap}}
+
+/* Atelier des illustrations stylisées : les originaux restent en annexe */
+.group .artwork-photos{margin-top:16px}
+.artwork-photo{border-color:#8f7aa9;background:#221e32}
+.artwork-photo>a{background:radial-gradient(circle at 50% 30%,#49405d,#1a1528);min-height:220px}
+.artwork-photo img{height:245px;border-radius:6px}
+.artwork-photo>span{color:#e5d5f2;font-weight:700}
+.artwork-photo>small{color:#bed1e0}
+.artwork-photo.artwork-unavailable{border-color:#b75c61}
+.artwork-error{color:#ffd3d3!important;font-weight:800}
+.originals-details{margin:17px 0 0;border-radius:10px;border:1px solid #55677d;padding:12px;background:#111c2a}
+.originals-details summary{cursor:pointer;color:#edca8e;font-weight:800;font-size:.88rem;padding:6px}
+.originals-details[open]{background:#151f2c}
+.originals-details .source-photos{padding:9px 0}
+.originals-details .photo{background:#151c25;opacity:.87}
+.no-artworks{padding:16px;border:1px dashed #ac8d7d;color:#f4d0b6;border-radius:9px;line-height:1.55}
+.group[data-artwork-count="0"] .card-editor{border-color:#916d55}
+.group[data-artwork-count="0"] .card-status{border-color:#d6a281;color:#ffd7ae}
+@media(max-width:580px){.artwork-photo img{height:230px}.originals-details{padding:8px}}
