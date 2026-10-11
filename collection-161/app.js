@@ -131,8 +131,8 @@ render();
     const response=await fetch("./assets/available.json",{cache:"no-store"});
     if(!response.ok)return;
     const manifest=await response.json();
-    if(manifest?.count===161 && Array.isArray(manifest.images) &&
-      new Set(manifest.images).size===161){
+    if(manifest?.count===160 && Array.isArray(manifest.images) &&
+      new Set(manifest.images).size===160){
       artworkPublished=true;
       render();
     }
