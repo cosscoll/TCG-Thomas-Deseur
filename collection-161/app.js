@@ -1,12 +1,16 @@
 import {PUBLIC_CARDS_160,PUBLIC_RARITIES,REQUIRED_PUBLIC_IDS,demoProgress160,demoNormalPack160} from "../data/public-cards-160.js";
 import {PHOTO_ORIGINS_177} from "../data/photo-origins-177.js";
+import {CARD_PHOTO_PAIRS_160} from "../data/correspondances-photo-illustration.js";
+const CORRECTED_PAIR_BY_ID=new Map(CARD_PHOTO_PAIRS_160.map(pair=>[pair.id,pair]));
+function verifiedSource(card){return CORRECTED_PAIR_BY_ID.get(card.id);}
+function verifiedMeta(card){return PHOTO_ORIGINS_177[verifiedSource(card)?.sourceReference];}
 const ORIGIN_SHORT={
  "images/100-1000-couches":"Vidéos 100 et 1000 couches",
  "images/serie-100-couches":"Série 100 couches",
  "images/personnages-thomas":"Personnages Thomas Deseur",
  "images/Braderie-de-Lille-2026":"Braderie de Lille 2026"
 };
-function cardName(card){return PHOTO_ORIGINS_177[card.reference]?.title??card.name;}
+function cardName(card){return "Carte "+String(card.collectionNumber).padStart(3,"0");}
 function originLabel(meta){return ORIGIN_SHORT[meta?.series]??"Source originale à préciser";}
 const $=id=>document.getElementById(id);
 const rarityNames=Object.fromEntries(PUBLIC_RARITIES.map(r=>[r.id,r.label]));
@@ -61,16 +65,17 @@ function render(){
   const inventory=scenarios[selected]();
   const cards=PUBLIC_CARDS_160.filter(card=>{
     const owned=(inventory[card.id]??0)>0;
-    return (sourceFilter==="all"||PHOTO_ORIGINS_177[card.reference]?.series===sourceFilter)
+    return (sourceFilter==="all"||verifiedMeta(card)?.series===sourceFilter)
       && (rarity==="all"||card.rarity===rarity)
       && (ownedFilter==="all"||(ownedFilter==="owned"&&owned)||(ownedFilter==="missing"&&!owned))
-      && (card.reference+" "+cardName(card)+" "+(PHOTO_ORIGINS_177[card.reference]?.origin??"")+" "+(PHOTO_ORIGINS_177[card.reference]?.groupId??"")).toLocaleLowerCase("fr").includes(search);
+      && (card.id+" "+card.reference+" "+verifiedSource(card)?.sourceReference+" "+(verifiedMeta(card)?.groupId??"")+" "+(verifiedMeta(card)?.origin??"")).toLocaleLowerCase("fr").includes(search);
   });
   $("cards-shown").textContent=cards.length+" carte"+(cards.length>1?"s":"")+" affichée"+(cards.length>1?"s":"");
   const fragment=document.createDocumentFragment();
   for(const card of cards){
     const owned=(inventory[card.id]??0)>0;
-    const metadata=PHOTO_ORIGINS_177[card.reference];
+    const pair=verifiedSource(card);
+    const metadata=verifiedMeta(card);
     const displayName=cardName(card);
     const el=button("article","card","");
     el.dataset.rarity=card.rarity;
@@ -82,7 +87,7 @@ function render(){
     if(artworkPublished){
       const image=document.createElement("img");
       image.src=card.artPath;
-      image.alt="Illustration : "+displayName+" — "+card.reference;
+      image.alt="Illustration "+card.id+" (photo source "+(pair?.sourceReference??"à vérifier")+")";
       image.loading="lazy";
       image.decoding="async";
       image.addEventListener("load",()=>{art.replaceChildren(image);art.classList.add("has-image")},{once:true});
@@ -94,15 +99,13 @@ function render(){
     art.setAttribute("role","img");
     art.setAttribute("aria-label","Illustration issue du PDF");
     const title=button("strong","card-title",displayName);
-    const subtitle=button("small","card-subtitle","Nom descriptif proposé");
-    const source=button("small","card-source",card.reference+" · "+(metadata?.groupId??"Groupe à vérifier"));
+    const subtitle=button("small","card-subtitle",pair?.proposedStatus==="primary"?"Illustration principale proposée":"Variante de costume mise de côté");
+    const source=button("small","card-source","Source ZIP : "+(pair?.sourceReference??"Non retrouvée")+" · "+(metadata?.groupId??"Groupe à vérifier"));
     const provenance=button("div","card-provenance");
     provenance.append(
-      button("span","card-meta-label","Origine de la photo :"),
+      button("span","card-meta-label","Photo originale identifiée :"),
       button("span","card-origin",originLabel(metadata)),
-      button("span","card-meta-small",metadata?
-        (metadata.groupCount+" prise"+(metadata.groupCount>1?"s":"")+" de vue rapprochée"+(metadata.groupCount>1?"s":"")+" · vue "+metadata.variant):
-        "Référence à vérifier")
+      button("span","card-meta-small","Référence de l'image de carte : "+card.id+". Groupe proposé : "+(pair?.groupId??"à vérifier")+".")
     );
     const links=button("div","card-links");
     if(metadata?.originUrl){
@@ -111,16 +114,21 @@ function render(){
       originLink.target="_blank";
       originLink.rel="noopener noreferrer";
       originLink.textContent="Source originale ↗";
-      originLink.setAttribute("aria-label","Voir la source originale de "+displayName+" ("+card.reference+")");
+      originLink.setAttribute("aria-label","Voir la source de la photo "+(pair?.sourceReference??card.id));
       links.append(originLink);
     }
     if(metadata?.groupId){
       const groupLink=document.createElement("a");
       groupLink.href="../tri-177/#"+encodeURIComponent(metadata.groupId);
       groupLink.textContent=metadata.groupCount>1?"Comparer les vues →":"Voir la photo →";
-      groupLink.setAttribute("aria-label","Comparer les photos de "+displayName+" ("+metadata.groupId+")");
+      groupLink.setAttribute("aria-label","Comparer les photos du groupe "+metadata.groupId);
       links.append(groupLink);
     }
+    const verification=document.createElement("a");
+    verification.href="../verification-photos/?carte="+encodeURIComponent(card.id);
+    verification.className="card-verify-link";
+    verification.textContent="Voir la photo correspondante →";
+    links.append(verification);
     const status=button("span","card-status",owned?"Possédée (exemple)":"Non possédée (exemple)");
     el.append(head,art,subtitle,title,source,provenance,links,status);
     fragment.append(el);
