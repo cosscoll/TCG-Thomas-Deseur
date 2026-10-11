@@ -28,7 +28,7 @@ test('160 cartes débloquent uniquement la démonstration du booster de collecti
   await expect(page.locator('#secret-dialog')).not.toBeVisible();
 });
 test('une récompense déjà récupérée bloque un deuxième booster',async({page})=>{
-  await page.getByRole('button',{name:'161 / 161'}).click();
+  await page.getByRole('button',{name:'Booster déjà récupéré'}).click();
   await expect(page.locator('#secret-status')).toHaveText('Récupéré');
   await expect(page.locator('#preview-secret')).toBeDisabled();
 });
