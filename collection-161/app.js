@@ -68,7 +68,7 @@ function render(){
     return (sourceFilter==="all"||verifiedMeta(card)?.series===sourceFilter)
       && (rarity==="all"||card.rarity===rarity)
       && (ownedFilter==="all"||(ownedFilter==="owned"&&owned)||(ownedFilter==="missing"&&!owned))
-      && (card.id+" "+card.reference+" "+verifiedSource(card)?.sourceReference+" "+(verifiedMeta(card)?.groupId??"")+" "+(verifiedMeta(card)?.origin??"")).toLocaleLowerCase("fr").includes(search);
+      && (card.id+" "+verifiedSource(card)?.sourceReference+" "+(verifiedMeta(card)?.groupId??"")+" "+(verifiedMeta(card)?.origin??"")).toLocaleLowerCase("fr").includes(search);
   });
   $("cards-shown").textContent=cards.length+" carte"+(cards.length>1?"s":"")+" affichée"+(cards.length>1?"s":"");
   const fragment=document.createDocumentFragment();
