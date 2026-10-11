@@ -53,6 +53,16 @@ test('mobile: pas de débordement à 320, 393, 820 pixels',async({page})=>{
   for(const width of [320,393,820]){
     await page.setViewportSize({width,height:800});
     const overflow=await page.evaluate(()=>Math.max(document.documentElement.scrollWidth-document.documentElement.clientWidth,document.body.scrollWidth-document.body.clientWidth));
+    if(overflow>2){
+      const offenders=await page.evaluate(()=>{
+        const cw=document.documentElement.clientWidth;
+        return [...document.querySelectorAll('body *')].map(node=>({node,r:node.getBoundingClientRect()}))
+        .filter(({node,r})=>r.width>0&&r.right>cw+2&&getComputedStyle(node).display!=="none")
+        .slice(0,12).map(({node,r})=>({tag:node.tagName,cl:String(node.className).slice(0,80),
+        right:Math.round(r.right),width:Math.round(r.width),txt:(node.textContent||'').trim().slice(0,40)}));
+      });
+      console.log('TCG_161_OVERFLOW_DIAGNOSTIC',JSON.stringify({width,overflow,offenders}));
+    }
     expect(overflow,`horizontal overflow on ${width}px`).toBeLessThanOrEqual(2);
   }
 });
