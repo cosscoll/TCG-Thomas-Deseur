@@ -17,6 +17,8 @@ on:
       - "tests/**"
       - "floot-collection/**"
       - "collection-161/**"
+      - "collection-validee/**"
+      - "tri-177/**"
       - "server/**"
       - "scripts/generate-seed-161.mjs"
       - "package.json"
@@ -36,6 +38,8 @@ on:
       - "tests/**"
       - "floot-collection/**"
       - "collection-161/**"
+      - "collection-validee/**"
+      - "tri-177/**"
       - "server/**"
       - "scripts/generate-seed-161.mjs"
       - "package.json"
@@ -76,7 +80,7 @@ jobs:
         run: npm install --no-save @playwright/test@1.56.1 @axe-core/playwright@4.10.2
       - name: Installer Chromium
         run: npx playwright install --with-deps chromium
-      - name: Vérifier le classeur fictif sur ordinateur et mobile
+      - name: Vérifier le classeur fictif et la collection approuvée sur ordinateur et mobile
         run: npx playwright test --config=floot-collection/playwright.config.mjs
       - name: Conserver captures et traces en cas d'échec
         if: failure()
