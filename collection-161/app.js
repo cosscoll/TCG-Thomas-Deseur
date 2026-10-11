@@ -36,22 +36,22 @@ function render(){
   $("unlock-fill").style.width=(progress.prerequisitesFound/160*100)+"%";
   const ready=progress.secretPackEligible;
   const finished=progress.secretPackAlreadyGranted;
-  $("secret-status").textContent=finished?"Obtenue":ready?"Débloqué":"Verrouillé";
-  $("secret-detail").textContent=finished?"Chevelu fait partie de la collection":
+  $("secret-status").textContent=finished?"Récupéré":ready?"Disponible":"Verrouillé";
+  $("secret-detail").textContent=finished?"Le booster de collection a été récupéré":
     ready?"Booster spécial disponible (simulation)":
     progress.prerequisitesMissing+" autres cartes à découvrir";
-  $("unlock-heading").textContent=finished?"Chevelu déjà obtenue":ready?
-    "Booster secret débloqué":"Booster secret verrouillé";
+  $("unlock-heading").textContent=finished?"Booster de collection déjà récupéré":ready?
+    "Booster de collection disponible":"Booster de collection verrouillé";
   $("unlock-explanation").textContent=finished?
     "La récompense a déjà été obtenue : elle n'est attribuée qu'une fois par joueur.":
-    ready?"Les 160 autres cartes, Lille comprise, sont réunies. Aperçu de l'ouverture secrète ci-dessous.":
+    ready?"Les 160 cartes visibles sont réunies. Le booster de collection peut être ouvert dans le jeu en ligne.":
     "Il faut posséder toutes les autres cartes. Il manque "+progress.prerequisitesMissing+" carte"+
     (progress.prerequisitesMissing>1?"s":"")+".";
   $("preview-secret").disabled=!ready;
   const search=$("search").value.trim().toLocaleLowerCase("fr");
   const rarity=$("rarity").value,ownedFilter=$("ownership").value;
   const inventory=scenarios[selected]();
-  const cards=CARDS_161.filter(card=>{
+  const cards=CARDS_161.filter(card=>card.id!==SECRET_CARD_ID).filter(card=>{
     const owned=(inventory[card.id]??0)>0;
     return (rarity==="all"||card.rarity===rarity)
       && (ownedFilter==="all"||(ownedFilter==="owned"&&owned)||(ownedFilter==="missing"&&!owned))
@@ -67,8 +67,8 @@ function render(){
     const head=button("div","card-head");
     head.append(button("span","rarity-name",rarityNames[card.rarity]),
       button("span","card-number","#"+String(card.collectionNumber).padStart(3,"0")));
-    const art=button("div","art-frame",card.id===SECRET_CARD_ID&&!owned?"CARTE SECRÈTE":"Illustration en attente de publication");
-    if(artworkPublished && !(card.id===SECRET_CARD_ID && !owned)){
+    const art=button("div","art-frame","Illustration en attente de publication");
+    if(artworkPublished){
       const image=document.createElement("img");
       image.src=card.artPath;
       image.alt="Illustration de "+card.name;
@@ -81,10 +81,8 @@ function render(){
       art.append(image);
     }
     art.setAttribute("role","img");
-    art.setAttribute("aria-label",card.id===SECRET_CARD_ID&&!owned?
-      "Illustration secrète cachée":"Illustration du PDF en attente de publication sur GitHub");
-    const title=button("strong","card-title",card.id===SECRET_CARD_ID&&!owned?
-      "Carte secrète à débloquer":card.name);
+    art.setAttribute("aria-label","Illustration issue du PDF");
+    const title=button("strong","card-title",card.name);
     const source=button("small","card-source",card.reference);
     const status=button("span","card-status",owned?"Possédée (exemple)":"Non possédée (exemple)");
     el.append(head,art,title,source,status);
@@ -118,17 +116,8 @@ for(const id of ["search","rarity","ownership"]){
 }
 $("preview-secret").addEventListener("click",()=>{
   if(!state().secretPackEligible)return;
-  if(artworkPublished){
-    const display=$("secret-dialog").querySelector(".secret-reveal");
-    if(!display.querySelector("img")){
-      const image=document.createElement("img");
-      image.src="./assets/cards/td-chevelu.webp";
-      image.alt="Illustration spéciale de la carte secrète Chevelu";
-      image.className="secret-reveal-image";
-      image.addEventListener("error",()=>image.remove(),{once:true});
-      display.prepend(image);
-    }
-  }
+  // The preview never reveals the real reward. Only the authenticated
+  // production app shows granted cards after the server confirms the opening.
   $("secret-dialog").showModal();
 });
 for(const id of ["close-secret","finish-secret"])$(id).addEventListener("click",()=>$("secret-dialog").close());
