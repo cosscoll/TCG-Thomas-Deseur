@@ -21,6 +21,8 @@ on:
       - "tri-177/**"
       - "server/**"
       - "scripts/generate-seed-161.mjs"
+      - "scripts/build-approved-catalogue.mjs"
+      - "scripts/check_published_approved.py"
       - "package.json"
       - ".github/workflows/deploy.yml"
   pull_request:
@@ -42,6 +44,8 @@ on:
       - "tri-177/**"
       - "server/**"
       - "scripts/generate-seed-161.mjs"
+      - "scripts/build-approved-catalogue.mjs"
+      - "scripts/check_published_approved.py"
       - "package.json"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
@@ -99,6 +103,7 @@ jobs:
           retention-days: 7
 
   pages-public:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     name: Contrôler le catalogue réellement publié sur GitHub Pages
     runs-on: ubuntu-latest
     timeout-minutes: 12
