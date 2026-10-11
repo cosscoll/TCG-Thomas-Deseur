@@ -49,3 +49,19 @@ footer{padding:35px 5%;border-top:1px solid var(--line);color:var(--muted);text-
 .art-frame img,.art-frame.has-image img{display:block;max-width:100%;min-width:0;width:100%;height:100%;object-fit:contain;object-position:center}
 .filters select{min-width:0}
 @media(max-width:900px){.hero>*{min-width:0}.workshop{min-width:0}}
+
+/* Informations documentaires des illustrations, distinctes des raretés du jeu. */
+.filters{grid-template-columns:1.35fr repeat(3,minmax(0,1fr))}
+.card-subtitle{font-size:.68rem;line-height:1.3;color:#d7b981;font-weight:700}
+.card-title{font-size:.99rem;line-height:1.32;min-height:2.6em;color:#fff4f5}
+.card-source{display:block;font-weight:750;color:#ebc78e;overflow-wrap:anywhere}
+.card-provenance{border-top:1px solid #66577b;padding-top:10px;display:flex;flex-direction:column;gap:5px;line-height:1.38;min-width:0}
+.card-meta-label{font-size:.72rem;color:#ddd2e3}
+.card-origin{font-size:.82rem;font-weight:750;color:#f0e3ef;overflow-wrap:anywhere}
+.card-meta-small{font-size:.69rem;color:#c5b5cb;line-height:1.48}
+.card-links{display:flex;flex-direction:column;gap:8px;align-items:flex-start;padding-top:9px;font-size:.76rem}
+.card-links a{color:#fbe1a8;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.card-links a:hover{color:white}
+@media(max-width:1050px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:660px){.filters{grid-template-columns:1fr}}
+@media(max-width:430px){.cards-grid{grid-template-columns:minmax(0,1fr)}.card-title{min-height:0}.card{padding:14px}.art-frame{max-height:340px}}
