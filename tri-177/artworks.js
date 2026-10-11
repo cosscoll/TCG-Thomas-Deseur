@@ -23,6 +23,11 @@ for(const group of document.querySelectorAll('.group')){
  const pairs=galleryByGroup.get(group.id)||[];
  const heading=group.querySelector('.heading small');
  heading.textContent=pairs.length+' illustration(s) stylisée(s) disponible(s) · '+sourceCount+' photo(s) originale(s)';
+ group.dataset.type=pairs.length===0?'none':pairs.length===1?'solo':'multi';
+ const note=group.querySelector('.notes');
+ if(note)note.textContent='Sélectionne tes illustrations de carte ci-dessous. Les photos d’origine sont consultables en bas du groupe, mais ne servent pas de visuels de carte.';
+ const badge=group.querySelector('.heading .badge');
+ if(badge)badge.textContent=pairs.length===0?'Aucun rendu stylisé':pairs.length===1?'1 illustration disponible':pairs.length+' rendus stylisés';
  const originals=make('details','originals-details');
  const summary=make('summary','','Voir les '+sourceCount+' photographies d’origine (références / comparaison)');
  originals.append(summary);
