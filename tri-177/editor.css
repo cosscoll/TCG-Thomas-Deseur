@@ -1,6 +1,5 @@
 
 /* Edition cartes 177 — affichage et selection lisibles sur mobile */
-.group .review{display:none}
 .card-editor{margin-top:20px;padding:17px;border:1px solid #55708b;border-radius:13px;background:linear-gradient(145deg,#202f46,#161e2b)}
 .editor-top,.pick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}
 .editor-top{grid-template-columns:minmax(0,1fr) auto;align-items:center}
