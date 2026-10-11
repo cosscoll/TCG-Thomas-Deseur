@@ -62,7 +62,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: npm test
+      - name: Reconstruire le catalogue confirmé et vérifier la reproductibilité
+        run: |
+          node scripts/build-approved-catalogue.mjs
+          git diff --exit-code -- data/catalogue-valide-67.json
+      - name: Exécuter tous les tests métier Node
+        run: npm test
 
   binder-browser:
     name: Classeur fictif — Chromium ordinateur et mobile
