@@ -1,15 +1,14 @@
-import {CARDS_161,RARITIES_161,REQUIRED_FOR_CHEVELU,SECRET_CARD_ID} from "../data/cards-161.js";
-import {getProgress161,simulateNormalPack161} from "../game/collection-161.js";
+import {PUBLIC_CARDS_160,PUBLIC_RARITIES,REQUIRED_PUBLIC_IDS,demoProgress160,demoNormalPack160} from "../data/public-cards-160.js";
 const $=id=>document.getElementById(id);
-const rarityNames=Object.fromEntries(RARITIES_161.map(r=>[r.id,r.label]));
+const rarityNames=Object.fromEntries(PUBLIC_RARITIES.map(r=>[r.id,r.label]));
 const demoOwned=Object.create(null);
 const scenarios=Object.freeze({
   demo:()=>({...demoOwned}),
   empty:()=>({}),
-  partial:()=>Object.fromEntries(REQUIRED_FOR_CHEVELU.slice(0,75).map(id=>[id,1])),
-  "without-lille":()=>Object.fromEntries(REQUIRED_FOR_CHEVELU.filter(id=>id!=="td_lille").map(id=>[id,1])),
-  eligible:()=>Object.fromEntries(REQUIRED_FOR_CHEVELU.map(id=>[id,1])),
-  complete:()=>Object.fromEntries([...REQUIRED_FOR_CHEVELU,SECRET_CARD_ID].map(id=>[id,1])),
+  partial:()=>Object.fromEntries(REQUIRED_PUBLIC_IDS.slice(0,75).map(id=>[id,1])),
+  "without-lille":()=>Object.fromEntries(REQUIRED_PUBLIC_IDS.filter(id=>id!=="td_lille").map(id=>[id,1])),
+  eligible:()=>Object.fromEntries(REQUIRED_PUBLIC_IDS.map(id=>[id,1])),
+  complete:()=>Object.fromEntries(REQUIRED_PUBLIC_IDS.map(id=>[id,1])),
 });
 let selected="empty";
 let artworkPublished=false;
@@ -19,7 +18,7 @@ const button=(name,className,text)=>{
   if(text!=null)el.textContent=String(text);
   return el;
 };
-function state(){return getProgress161(scenarios[selected](),{secretPackClaimed:selected==="complete"});}
+function state(){return demoProgress160(scenarios[selected](),selected==="complete");}
 function setState(id){
   if(!Object.hasOwn(scenarios,id))return;
   selected=id;
@@ -51,7 +50,7 @@ function render(){
   const search=$("search").value.trim().toLocaleLowerCase("fr");
   const rarity=$("rarity").value,ownedFilter=$("ownership").value;
   const inventory=scenarios[selected]();
-  const cards=CARDS_161.filter(card=>card.id!==SECRET_CARD_ID).filter(card=>{
+  const cards=PUBLIC_CARDS_160.filter(card=>{
     const owned=(inventory[card.id]??0)>0;
     return (rarity==="all"||card.rarity===rarity)
       && (ownedFilter==="all"||(ownedFilter==="owned"&&owned)||(ownedFilter==="missing"&&!owned))
@@ -94,7 +93,7 @@ function render(){
 $("draw-demo").addEventListener("click",()=>{
   // Illustrative only. This random draw never invokes an endpoint and must
   // not be interpreted as a server-authoritative reward.
-  const cards=simulateNormalPack161();
+  const cards=demoNormalPack160();
   const result=$("demo-pack-results");
   const fragment=document.createDocumentFragment();
   for(const [index,card] of cards.entries()){
