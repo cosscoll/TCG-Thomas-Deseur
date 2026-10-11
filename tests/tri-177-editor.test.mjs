@@ -50,7 +50,7 @@ test('editor validates names and one primary only; alternatives are optional and
  assert.match(editor,/const candidates=Array\.isArray\(saved\.alternatives\)/);
  assert.match(editor,/const alternatives=\[\]/);
  assert.match(editor,/s\.alternatives\.includes\(art\.ref\)/);
- assert.match(editor,/s\.alternatives=\[\.\.\.s\.alternatives,art\.ref\]/);
+ assert.match(editor,/:\[\.\.\.s\.alternatives,art\.ref\]/);
  assert.match(editor,/s\.alternatives=\[\];s\.shiny=false/);
  assert.match(editor,/Zéro variante est autorisé/);
  assert.match(editor,/const shiny=Boolean\(primary&&/);
