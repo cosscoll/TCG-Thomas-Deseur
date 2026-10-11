@@ -1,0 +1,571 @@
+{
+  "schema": "tcg-deseur-cards-v3",
+  "savedAt": "2026-10-11T20:26:43.511Z",
+  "cards": {
+    "COST-001": {
+      "name": "Thomas d'honneur",
+      "primary": "td_1_004",
+      "alternatives": [
+        "td_2_043"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-002": {
+      "name": "Sophie Deseur",
+      "primary": "td_1_001",
+      "alternatives": [
+        "td_3_005"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-003": {
+      "name": "Picasso Deseur",
+      "primary": "td_1_002",
+      "alternatives": [
+        "td_2_042",
+        "td_3_042"
+      ],
+      "shiny": false,
+      "status": "À examiner"
+    },
+    "COST-004": {
+      "name": "Roucoul Deseur",
+      "primary": "td_1_003",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-005": {
+      "name": "Thomas flingueur",
+      "primary": "td_1_005",
+      "alternatives": [
+        "td_2_003"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-006": {
+      "name": "Thomas baseball",
+      "primary": "td_1_007",
+      "alternatives": [
+        "td_3_011"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-007": {
+      "name": "Pieuvre Deseur",
+      "primary": "td_1_008",
+      "alternatives": [
+        "td_2_005"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-008": {
+      "name": "Thomas Tacos",
+      "primary": "td_1_006",
+      "alternatives": [
+        "td_3_023"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-009": {
+      "name": "Capitaine Deseur",
+      "primary": "td_1_012",
+      "alternatives": [
+        "td_3_024"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-010": {
+      "name": "Criminel Deseur",
+      "primary": "td_1_011",
+      "alternatives": [
+        "td_2_001"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-011": {
+      "name": "Thomas des neiges",
+      "primary": "td_2_007",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-012": {
+      "name": "Flibus le pingouin alcoolique",
+      "primary": "td_1_010",
+      "alternatives": [
+        "td_3_010"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-013": {
+      "name": "Glacier Deseur",
+      "primary": "td_2_008",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-014": {
+      "name": "Poisson thomas",
+      "primary": "td_3_001",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-015": {
+      "name": "Nemo Deseur",
+      "primary": "td_1_014",
+      "alternatives": [
+        "td_3_033"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-016": {
+      "name": "Thomas des glaces",
+      "primary": "td_3_031",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-017": {
+      "name": "Thomas des froids",
+      "primary": "td_3_043",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-018": {
+      "name": "Thomas le colon",
+      "primary": "td_1_020",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-019": {
+      "name": "Thomas des bois",
+      "primary": "td_1_019",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-020": {
+      "name": "Écureuil Deseur",
+      "primary": "td_1_018",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-021": {
+      "name": "Thomas l'abeille",
+      "primary": "td_1_021",
+      "alternatives": [
+        "td_3_016"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-022": {
+      "name": "Thomas la proie",
+      "primary": "td_1_023",
+      "alternatives": [
+        "td_3_015"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-023": {
+      "name": "Thomas lézard",
+      "primary": "td_1_022",
+      "alternatives": [
+        "td_3_022"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-024": {
+      "name": "Adjudant chef Deseur",
+      "primary": "td_1_024",
+      "alternatives": [
+        "td_3_037"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-025": {
+      "name": "Thomas pied carré",
+      "primary": "td_1_026",
+      "alternatives": [
+        "td_3_032"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-026": {
+      "name": "Thomas d'un soir",
+      "primary": "td_1_028",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-027": {
+      "name": "L'étalon Deseur",
+      "primary": "td_1_025",
+      "alternatives": [
+        "td_2_024"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-028": {
+      "name": "Thomas la trompe",
+      "primary": "td_1_027",
+      "alternatives": [
+        "td_3_035"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-029": {
+      "name": "Thomas qui griffe",
+      "primary": "td_2_019",
+      "alternatives": [
+        "td_3_040"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-030": {
+      "name": "Thomas doseur",
+      "primary": "td_2_023",
+      "alternatives": [
+        "td_3_039"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-031": {
+      "name": "Thomas rouleau laveur",
+      "primary": "td_3_036",
+      "alternatives": [
+        "td_1_030"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-032": {
+      "name": "Thomas facteur",
+      "primary": "td_1_032",
+      "alternatives": [
+        "td_2_025"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-033": {
+      "name": "Thomas among us",
+      "primary": "td_2_031",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-034": {
+      "name": "Thomas La Fleur",
+      "primary": "td_1_035",
+      "alternatives": [
+        "td_2_044"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-035": {
+      "name": "Thomas génie",
+      "primary": "td_3_038",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-036": {
+      "name": "Lego Deseur",
+      "primary": "td_1_036",
+      "alternatives": [
+        "td_2_027"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-037": {
+      "name": "Thomas brushing",
+      "primary": "td_2_030",
+      "alternatives": [
+        "td_3_029"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-038": {
+      "name": "Papy Deseur",
+      "primary": "td_1_040",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-039": {
+      "name": "Thomas hydroalcoolique",
+      "primary": "td_2_035",
+      "alternatives": [
+        "td_3_009"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-040": {
+      "name": "VLC Deseur",
+      "primary": "td_2_034",
+      "alternatives": [
+        "td_3_041"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-041": {
+      "name": "Thomas squelette",
+      "primary": "td_3_028",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-042": {
+      "name": "Barbie Deseur",
+      "primary": "td_3_002",
+      "alternatives": [
+        "td_1_043"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-043": {
+      "name": "Thomas caméléon",
+      "primary": "td_2_039",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-044": {
+      "name": "Thomas perd la tête",
+      "primary": "td_2_037",
+      "alternatives": [
+        "td_3_025"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-045": {
+      "name": "Thomas Kinder",
+      "primary": "td_3_003",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-046": {
+      "name": "Thomas la pince",
+      "primary": "td_2_045",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-047": {
+      "name": "Thomas Charmeur de serpent",
+      "primary": "td_2_048",
+      "alternatives": [
+        "td_3_014"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-048": {
+      "name": "",
+      "primary": "",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Écartée"
+    },
+    "COST-049": {
+      "name": "Thomas prend son bain",
+      "primary": "td_1_049",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-050": {
+      "name": "Caporal chef Deseur",
+      "primary": "td_1_045",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-051": {
+      "name": "Thomas nugget",
+      "primary": "td_1_051",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-052": {
+      "name": "Thomas chino",
+      "primary": "td_1_055",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-053": {
+      "name": "Thomas micro-onde",
+      "primary": "td_1_052",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-054": {
+      "name": "Gulli-viande",
+      "primary": "td_1_054",
+      "alternatives": [
+        "td_2_065"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-055": {
+      "name": "Thomas-terrazi",
+      "primary": "td_2_066",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-056": {
+      "name": "Haricot Deseur",
+      "primary": "td_1_059",
+      "alternatives": [
+        "td_2_058"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-057": {
+      "name": "Thomas x4",
+      "primary": "td_1_058",
+      "alternatives": [
+        "td_2_057"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-058": {
+      "name": "Thomas-kita",
+      "primary": "td_1_056",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-059": {
+      "name": "Thomas kiri",
+      "primary": "td_1_057",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-060": {
+      "name": "1000 couches de Thomas",
+      "primary": "td_1_062",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-061": {
+      "name": "Thomas 3 points",
+      "primary": "td_1_060",
+      "alternatives": [
+        "td_2_052"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-062": {
+      "name": "Thomas raclette",
+      "primary": "td_1_063",
+      "alternatives": [
+        "td_2_050"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-063": {
+      "name": "Thomas ",
+      "primary": "td_2_055",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Écartée"
+    },
+    "COST-064": {
+      "name": "Thomas ta soeur",
+      "primary": "td_1_065",
+      "alternatives": [
+        "td_2_056"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-065": {
+      "name": "Thomas-couteur",
+      "primary": "td_1_066",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-066": {
+      "name": "Thomas-gen de police",
+      "primary": "td_1_064",
+      "alternatives": [
+        "td_2_053"
+      ],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-067": {
+      "name": "Thomas démission",
+      "primary": "td_2_059",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-068": {
+      "name": "Thomas chic et choc",
+      "primary": "td_2_049",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    },
+    "COST-069": {
+      "name": "",
+      "primary": "td_3_020",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Écartée"
+    },
+    "COST-070": {
+      "name": "Thomas huîtres",
+      "primary": "td_lille",
+      "alternatives": [],
+      "shiny": false,
+      "status": "Validée"
+    }
+  }
+}
