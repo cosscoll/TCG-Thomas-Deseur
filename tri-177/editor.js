@@ -49,7 +49,8 @@ function persisted(group,refs){
  const migratedAlt=matchArt(saved.alternative,refs);
  const alternative=(saved.alternative===SHINY&&primary)?SHINY:(migratedAlt&&migratedAlt!==primary?migratedAlt:'');
  const existingStatus=validStates.includes(saved.status)?saved.status:(prevDecision==='Écarter du set'?'Écartée':'À examiner');
- const status=existingStatus==='Validée'&&(!primary||!alternative||!saved.name?.trim())?'À examiner':existingStatus;
+ const migratedFromPhoto=Boolean(saved.primary&&!refs.some(r=>r.ref===saved.primary));
+ const status=existingStatus==='Validée'&&(!primary||!alternative||!saved.name?.trim()||migratedFromPhoto)?'À examiner':existingStatus;
  return {name:typeof saved.name==='string'?saved.name.slice(0,90):'',primary,alternative,status};
 }
 function imageOf(card,ref){return card.refs.find(r=>r.ref===ref)}
@@ -257,7 +258,7 @@ importFile.addEventListener('change',async()=>{
    const candidate=matchArt(incoming.alternative,card.refs);
    const alternate=(incoming.alternative===SHINY&&primary)?SHINY:(candidate&&candidate!==primary?candidate:'');
    let status=validStates.includes(incoming.status)?incoming.status:'À examiner';
-   if(status==='Validée'&&(!name.trim()||!primary||!alternate))status='À examiner';
+   if(status==='Validée'&&(!name.trim()||!primary||!alternate||incoming.primary!==primary))status='À examiner';
    Object.assign(card.state,{name,primary,alternative:alternate,status});
    save(card);render(card);
   }
