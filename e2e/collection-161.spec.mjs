@@ -86,7 +86,7 @@ test('les 160 cartes utilisent la référence PHOTO réellement identifiée, san
   await expect(page.locator('#cards-grid .card-origin')).toHaveCount(160);
   await expect(page.locator('#cards-grid .card-links a[href^="https://"]')).toHaveCount(160);
   const names=await page.locator('.card-title').allTextContents();
-  expect(names.every(t=>/^Carte \\d{3}$/.test(t))).toBe(true);
+  expect(names.every(t=>/^Carte \d{3}$/.test(t))).toBe(true);
   const first=page.locator('#cards-grid .card').first();
   await expect(first).toContainText('Carte 001');
   await expect(first).toContainText('Source ZIP : REF-1-002');
