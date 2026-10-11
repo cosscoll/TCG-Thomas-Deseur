@@ -3,10 +3,10 @@ import AxeBuilder from '@axe-core/playwright';
 import {CARDS_161} from '../data/cards-161.js';
 
 test('les 160 illustrations visibles apparaissent automatiquement après publication du pack',async({page})=>{
-  const files=CARDS_161.map(c=>c.artPath.split('/').at(-1));
+  const files=CARDS_161.filter(c=>c.obtainableInDailyBooster).map(c=>c.artPath.split('/').at(-1));
   await page.route('**/assets/available.json',route=>route.fulfill({
     status:200,contentType:'application/json',
-    body:JSON.stringify({version:'161',count:161,images:files}),
+    body:JSON.stringify({version:'160-public',count:160,images:files}),
   }));
   const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGPgEpEDAABoAD1UCKP3AAAAAElFTkSuQmCC','base64');
   await page.route('**/*.webp',route=>route.fulfill({
