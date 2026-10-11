@@ -177,6 +177,8 @@ async function init(){
    const option=document.createElement("option");option.value=groupId;option.textContent=groupId;
    $("group").append(option);
   }
+  const linkedCard=new URLSearchParams(window.location.search).get("carte");
+  if(linkedCard&&byId.has(linkedCard)){mode="all";$("search").value=linkedCard;}
   for(const btn of document.querySelectorAll("[data-mode]"))
    btn.addEventListener("click",()=>{mode=btn.dataset.mode;render();});
   $("search").addEventListener("input",render);
