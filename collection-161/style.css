@@ -41,3 +41,11 @@ footer{padding:35px 5%;border-top:1px solid var(--line);color:var(--muted);text-
 .demo-pack-card[data-rarity=hors_serie]{border-top-color:#88eadb}
 @media(max-width:800px){#demo-pack-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:360px){#demo-pack-results{grid-template-columns:1fr}}
+
+/* Intrinsic dimensions of lazy-loaded card illustrations must not expand
+   the grid tracks beyond the viewport on tablets. */
+.filters label,.gallery-head,.cards-grid,.card,.art-frame{min-width:0;max-width:100%}
+.art-frame{grid-template-columns:minmax(0,1fr);overflow:hidden}
+.art-frame img,.art-frame.has-image img{display:block;max-width:100%;min-width:0;width:100%;height:100%;object-fit:contain;object-position:center}
+.filters select{min-width:0}
+@media(max-width:900px){.hero>*{min-width:0}.workshop{min-width:0}}
