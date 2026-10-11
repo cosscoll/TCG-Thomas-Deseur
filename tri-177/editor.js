@@ -244,10 +244,7 @@ importFile.addEventListener('change',async()=>{
    const alternate=incoming.alternative===SHINY?SHINY:(refs.includes(incoming.alternative)&&incoming.alternative!==primary?incoming.alternative:'');
    let status=validStates.includes(incoming.status)?incoming.status:'À examiner';
    if(status==='Validée'&&(!name.trim()||!alternate))status='À examiner';
-   card.state={name,primary,alternative:alternate,status};
-   // Keep all event handlers synchronized with the same mutable state object.
-   Object.assign(card.liveState,card.state);
-   card.state=card.liveState;
+   Object.assign(card.state,{name,primary,alternative:alternate,status});
    save(card);render(card);
   }
   update();window.alert('Sauvegarde importée.');
