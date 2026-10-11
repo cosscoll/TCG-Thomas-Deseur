@@ -27,26 +27,27 @@ test('l’atelier reprend les 67 noms approuvés, Picasso avec ses deux variante
 });
 
 test('filtrer, renommer et valider une carte sans variante conserve les changements',async({page})=>{
- await page.locator('#q').fill('Roucoul Deseur');
+ await page.locator('#q').fill('Thomas le colon');
  await expect(page.locator('section.group:not(.hidden)')).toHaveCount(1);
  await page.locator('#q').clear();
  await page.locator('#filter').selectOption('solo');
- await expect(page.locator('#COST-004')).toBeVisible();
- const target=page.locator('#COST-004');
+ await expect(page.locator('#COST-018')).toBeVisible();
+ const target=page.locator('#COST-018');
  await expect(target.locator('.artwork-photo')).toHaveCount(1);
- await target.locator('.card-name').fill('Roucoul test');
+ await target.locator('.card-name').fill('Thomas test sans variante');
  await target.locator('.validate-card').click();
  await expect(target.locator('.card-status')).toContainText('validée');
  await expect(target.locator('.variants-previews .variant-panel')).toHaveCount(0);
  await page.reload();
  await expect(page.locator('.card-editor')).toHaveCount(70);
- await expect(page.locator('#COST-004 .card-name')).toHaveValue('Roucoul test');
- await expect(page.locator('#COST-004 .card-status')).toContainText('validée');
+ await expect(page.locator('#COST-018 .card-name')).toHaveValue('Thomas test sans variante');
+ await expect(page.locator('#COST-018 .card-status')).toContainText('validée');
 });
 
 test('une carte peut avoir plusieurs variantes et être exportée en JSON',async({page})=>{
  const group=page.locator('#COST-005');
  await group.locator('.card-name').fill('Thomas test');
+ await group.locator('.clear-variants').click();
  const arts=group.locator('.artwork-photo');
  await arts.nth(1).locator('.choose-alt').click();
  await arts.nth(2).locator('.choose-alt').click();
