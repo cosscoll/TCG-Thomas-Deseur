@@ -72,3 +72,14 @@ test('aucun défilement horizontal sur téléphone',async({page})=>{
     expect(o,'Overflow on '+width+'px').toBeLessThanOrEqual(2);
   }
 });
+
+test('chaque photo originale indique sa galerie et un lien vers la provenance',async({page})=>{
+  await expect(page.locator('section.group .photo')).toHaveCount(177);
+  await expect(page.locator('section.group .photo .photo-provenance')).toHaveCount(177);
+  await expect(page.locator('section.group .photo .photo-origin-name')).toHaveCount(177);
+  await expect(page.locator('section.group .photo .photo-provenance a[href^="https://"]')).toHaveCount(177);
+  const card=page.locator('#COST-005 .photo').first();
+  await expect(card).toContainText('Costumes — vidéos 100 et 1000 couches');
+  await expect(card).toContainText('images/100-1000-couches/REF-1-005.png');
+  await expect(card.locator('.photo-provenance a')).toHaveAttribute('href',/tiermaker.com/);
+});
