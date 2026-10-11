@@ -1,0 +1,915 @@
+{
+  "schema": "tcg-deseur-approved-catalogue-v1",
+  "source": "data/choix-cartes-2026-10-11.json",
+  "savedAt": "2026-10-11T20:26:43.511Z",
+  "summary": {
+    "cards": 67,
+    "existingVariants": 38,
+    "excludedGroups": 3,
+    "usedArtworks": 105
+  },
+  "cards": [
+    {
+      "id": "COST-001",
+      "name": "Thomas d'honneur",
+      "main": {
+        "artworkId": "td_1_004",
+        "asset": "collection-161/assets/cards/td-1-004.webp",
+        "photoReference": "REF-1-001"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_043",
+          "asset": "collection-161/assets/cards/td-2-043.webp",
+          "photoReference": "REF-2-040"
+        }
+      ]
+    },
+    {
+      "id": "COST-002",
+      "name": "Sophie Deseur",
+      "main": {
+        "artworkId": "td_1_001",
+        "asset": "collection-161/assets/cards/td-1-001.webp",
+        "photoReference": "REF-1-002"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_005",
+          "asset": "collection-161/assets/cards/td-3-005.webp",
+          "photoReference": "REF-3-007"
+        }
+      ]
+    },
+    {
+      "id": "COST-003",
+      "name": "Picasso Deseur",
+      "main": {
+        "artworkId": "td_1_002",
+        "asset": "collection-161/assets/cards/td-1-002.webp",
+        "photoReference": "REF-1-003"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_042",
+          "asset": "collection-161/assets/cards/td-2-042.webp",
+          "photoReference": "REF-2-042"
+        },
+        {
+          "artworkId": "td_3_042",
+          "asset": "collection-161/assets/cards/td-3-042.webp",
+          "photoReference": "REF-3-043"
+        }
+      ]
+    },
+    {
+      "id": "COST-004",
+      "name": "Roucoul Deseur",
+      "main": {
+        "artworkId": "td_1_003",
+        "asset": "collection-161/assets/cards/td-1-003.webp",
+        "photoReference": "REF-1-004"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-005",
+      "name": "Thomas flingueur",
+      "main": {
+        "artworkId": "td_1_005",
+        "asset": "collection-161/assets/cards/td-1-005.webp",
+        "photoReference": "REF-1-005"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_003",
+          "asset": "collection-161/assets/cards/td-2-003.webp",
+          "photoReference": "REF-2-001"
+        }
+      ]
+    },
+    {
+      "id": "COST-006",
+      "name": "Thomas baseball",
+      "main": {
+        "artworkId": "td_1_007",
+        "asset": "collection-161/assets/cards/td-1-007.webp",
+        "photoReference": "REF-1-006"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_011",
+          "asset": "collection-161/assets/cards/td-3-011.webp",
+          "photoReference": "REF-3-009"
+        }
+      ]
+    },
+    {
+      "id": "COST-007",
+      "name": "Pieuvre Deseur",
+      "main": {
+        "artworkId": "td_1_008",
+        "asset": "collection-161/assets/cards/td-1-008.webp",
+        "photoReference": "REF-1-007"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_005",
+          "asset": "collection-161/assets/cards/td-2-005.webp",
+          "photoReference": "REF-2-005"
+        }
+      ]
+    },
+    {
+      "id": "COST-008",
+      "name": "Thomas Tacos",
+      "main": {
+        "artworkId": "td_1_006",
+        "asset": "collection-161/assets/cards/td-1-006.webp",
+        "photoReference": "REF-1-008"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_023",
+          "asset": "collection-161/assets/cards/td-3-023.webp",
+          "photoReference": "REF-3-025"
+        }
+      ]
+    },
+    {
+      "id": "COST-009",
+      "name": "Capitaine Deseur",
+      "main": {
+        "artworkId": "td_1_012",
+        "asset": "collection-161/assets/cards/td-1-012.webp",
+        "photoReference": "REF-1-009"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_024",
+          "asset": "collection-161/assets/cards/td-3-024.webp",
+          "photoReference": "REF-3-024"
+        }
+      ]
+    },
+    {
+      "id": "COST-010",
+      "name": "Criminel Deseur",
+      "main": {
+        "artworkId": "td_1_011",
+        "asset": "collection-161/assets/cards/td-1-011.webp",
+        "photoReference": "REF-1-010"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_001",
+          "asset": "collection-161/assets/cards/td-2-001.webp",
+          "photoReference": "REF-2-002"
+        }
+      ]
+    },
+    {
+      "id": "COST-011",
+      "name": "Thomas des neiges",
+      "main": {
+        "artworkId": "td_2_007",
+        "asset": "collection-161/assets/cards/td-2-007.webp",
+        "photoReference": "REF-2-006"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-012",
+      "name": "Flibus le pingouin alcoolique",
+      "main": {
+        "artworkId": "td_1_010",
+        "asset": "collection-161/assets/cards/td-1-010.webp",
+        "photoReference": "REF-1-012"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_010",
+          "asset": "collection-161/assets/cards/td-3-010.webp",
+          "photoReference": "REF-3-010"
+        }
+      ]
+    },
+    {
+      "id": "COST-013",
+      "name": "Glacier Deseur",
+      "main": {
+        "artworkId": "td_2_008",
+        "asset": "collection-161/assets/cards/td-2-008.webp",
+        "photoReference": "REF-2-007"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-014",
+      "name": "Poisson thomas",
+      "main": {
+        "artworkId": "td_3_001",
+        "asset": "collection-161/assets/cards/td-3-001.webp",
+        "photoReference": "REF-3-001"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-015",
+      "name": "Nemo Deseur",
+      "main": {
+        "artworkId": "td_1_014",
+        "asset": "collection-161/assets/cards/td-1-014.webp",
+        "photoReference": "REF-1-015"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_033",
+          "asset": "collection-161/assets/cards/td-3-033.webp",
+          "photoReference": "REF-3-030"
+        }
+      ]
+    },
+    {
+      "id": "COST-016",
+      "name": "Thomas des glaces",
+      "main": {
+        "artworkId": "td_3_031",
+        "asset": "collection-161/assets/cards/td-3-031.webp",
+        "photoReference": "REF-3-031"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-017",
+      "name": "Thomas des froids",
+      "main": {
+        "artworkId": "td_3_043",
+        "asset": "collection-161/assets/cards/td-3-043.webp",
+        "photoReference": "REF-3-042"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-018",
+      "name": "Thomas le colon",
+      "main": {
+        "artworkId": "td_1_020",
+        "asset": "collection-161/assets/cards/td-1-020.webp",
+        "photoReference": "REF-1-018"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-019",
+      "name": "Thomas des bois",
+      "main": {
+        "artworkId": "td_1_019",
+        "asset": "collection-161/assets/cards/td-1-019.webp",
+        "photoReference": "REF-1-019"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-020",
+      "name": "Écureuil Deseur",
+      "main": {
+        "artworkId": "td_1_018",
+        "asset": "collection-161/assets/cards/td-1-018.webp",
+        "photoReference": "REF-1-020"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-021",
+      "name": "Thomas l'abeille",
+      "main": {
+        "artworkId": "td_1_021",
+        "asset": "collection-161/assets/cards/td-1-021.webp",
+        "photoReference": "REF-1-021"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_016",
+          "asset": "collection-161/assets/cards/td-3-016.webp",
+          "photoReference": "REF-3-016"
+        }
+      ]
+    },
+    {
+      "id": "COST-022",
+      "name": "Thomas la proie",
+      "main": {
+        "artworkId": "td_1_023",
+        "asset": "collection-161/assets/cards/td-1-023.webp",
+        "photoReference": "REF-1-022"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_015",
+          "asset": "collection-161/assets/cards/td-3-015.webp",
+          "photoReference": "REF-3-015"
+        }
+      ]
+    },
+    {
+      "id": "COST-023",
+      "name": "Thomas lézard",
+      "main": {
+        "artworkId": "td_1_022",
+        "asset": "collection-161/assets/cards/td-1-022.webp",
+        "photoReference": "REF-1-023"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_022",
+          "asset": "collection-161/assets/cards/td-3-022.webp",
+          "photoReference": "REF-3-023"
+        }
+      ]
+    },
+    {
+      "id": "COST-024",
+      "name": "Adjudant chef Deseur",
+      "main": {
+        "artworkId": "td_1_024",
+        "asset": "collection-161/assets/cards/td-1-024.webp",
+        "photoReference": "REF-1-024"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_037",
+          "asset": "collection-161/assets/cards/td-3-037.webp",
+          "photoReference": "REF-3-037"
+        }
+      ]
+    },
+    {
+      "id": "COST-025",
+      "name": "Thomas pied carré",
+      "main": {
+        "artworkId": "td_1_026",
+        "asset": "collection-161/assets/cards/td-1-026.webp",
+        "photoReference": "REF-1-025"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_032",
+          "asset": "collection-161/assets/cards/td-3-032.webp",
+          "photoReference": "REF-3-033"
+        }
+      ]
+    },
+    {
+      "id": "COST-026",
+      "name": "Thomas d'un soir",
+      "main": {
+        "artworkId": "td_1_028",
+        "asset": "collection-161/assets/cards/td-1-028.webp",
+        "photoReference": "REF-1-026"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-027",
+      "name": "L'étalon Deseur",
+      "main": {
+        "artworkId": "td_1_025",
+        "asset": "collection-161/assets/cards/td-1-025.webp",
+        "photoReference": "REF-1-027"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_024",
+          "asset": "collection-161/assets/cards/td-2-024.webp",
+          "photoReference": "REF-2-026"
+        }
+      ]
+    },
+    {
+      "id": "COST-028",
+      "name": "Thomas la trompe",
+      "main": {
+        "artworkId": "td_1_027",
+        "asset": "collection-161/assets/cards/td-1-027.webp",
+        "photoReference": "REF-1-028"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_035",
+          "asset": "collection-161/assets/cards/td-3-035.webp",
+          "photoReference": "REF-3-036"
+        }
+      ]
+    },
+    {
+      "id": "COST-029",
+      "name": "Thomas qui griffe",
+      "main": {
+        "artworkId": "td_2_019",
+        "asset": "collection-161/assets/cards/td-2-019.webp",
+        "photoReference": "REF-2-022"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_040",
+          "asset": "collection-161/assets/cards/td-3-040.webp",
+          "photoReference": "REF-3-041"
+        }
+      ]
+    },
+    {
+      "id": "COST-030",
+      "name": "Thomas doseur",
+      "main": {
+        "artworkId": "td_2_023",
+        "asset": "collection-161/assets/cards/td-2-023.webp",
+        "photoReference": "REF-2-023"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_039",
+          "asset": "collection-161/assets/cards/td-3-039.webp",
+          "photoReference": "REF-3-038"
+        }
+      ]
+    },
+    {
+      "id": "COST-031",
+      "name": "Thomas rouleau laveur",
+      "main": {
+        "artworkId": "td_3_036",
+        "asset": "collection-161/assets/cards/td-3-036.webp",
+        "photoReference": "REF-3-035"
+      },
+      "variants": [
+        {
+          "artworkId": "td_1_030",
+          "asset": "collection-161/assets/cards/td-1-030.webp",
+          "photoReference": "REF-1-031"
+        }
+      ]
+    },
+    {
+      "id": "COST-032",
+      "name": "Thomas facteur",
+      "main": {
+        "artworkId": "td_1_032",
+        "asset": "collection-161/assets/cards/td-1-032.webp",
+        "photoReference": "REF-1-032"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_025",
+          "asset": "collection-161/assets/cards/td-2-025.webp",
+          "photoReference": "REF-2-025"
+        }
+      ]
+    },
+    {
+      "id": "COST-033",
+      "name": "Thomas among us",
+      "main": {
+        "artworkId": "td_2_031",
+        "asset": "collection-161/assets/cards/td-2-031.webp",
+        "photoReference": "REF-2-029"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-034",
+      "name": "Thomas La Fleur",
+      "main": {
+        "artworkId": "td_1_035",
+        "asset": "collection-161/assets/cards/td-1-035.webp",
+        "photoReference": "REF-1-034"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_044",
+          "asset": "collection-161/assets/cards/td-2-044.webp",
+          "photoReference": "REF-2-044"
+        }
+      ]
+    },
+    {
+      "id": "COST-035",
+      "name": "Thomas génie",
+      "main": {
+        "artworkId": "td_3_038",
+        "asset": "collection-161/assets/cards/td-3-038.webp",
+        "photoReference": "REF-3-040"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-036",
+      "name": "Lego Deseur",
+      "main": {
+        "artworkId": "td_1_036",
+        "asset": "collection-161/assets/cards/td-1-036.webp",
+        "photoReference": "REF-1-036"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_027",
+          "asset": "collection-161/assets/cards/td-2-027.webp",
+          "photoReference": "REF-2-030"
+        }
+      ]
+    },
+    {
+      "id": "COST-037",
+      "name": "Thomas brushing",
+      "main": {
+        "artworkId": "td_2_030",
+        "asset": "collection-161/assets/cards/td-2-030.webp",
+        "photoReference": "REF-2-031"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_029",
+          "asset": "collection-161/assets/cards/td-3-029.webp",
+          "photoReference": "REF-3-029"
+        }
+      ]
+    },
+    {
+      "id": "COST-038",
+      "name": "Papy Deseur",
+      "main": {
+        "artworkId": "td_1_040",
+        "asset": "collection-161/assets/cards/td-1-040.webp",
+        "photoReference": "REF-1-038"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-039",
+      "name": "Thomas hydroalcoolique",
+      "main": {
+        "artworkId": "td_2_035",
+        "asset": "collection-161/assets/cards/td-2-035.webp",
+        "photoReference": "REF-2-033"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_009",
+          "asset": "collection-161/assets/cards/td-3-009.webp",
+          "photoReference": "REF-3-011"
+        }
+      ]
+    },
+    {
+      "id": "COST-040",
+      "name": "VLC Deseur",
+      "main": {
+        "artworkId": "td_2_034",
+        "asset": "collection-161/assets/cards/td-2-034.webp",
+        "photoReference": "REF-2-032"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_041",
+          "asset": "collection-161/assets/cards/td-3-041.webp",
+          "photoReference": "REF-3-039"
+        }
+      ]
+    },
+    {
+      "id": "COST-041",
+      "name": "Thomas squelette",
+      "main": {
+        "artworkId": "td_3_028",
+        "asset": "collection-161/assets/cards/td-3-028.webp",
+        "photoReference": "REF-3-027"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-042",
+      "name": "Barbie Deseur",
+      "main": {
+        "artworkId": "td_3_002",
+        "asset": "collection-161/assets/cards/td-3-002.webp",
+        "photoReference": "REF-3-002"
+      },
+      "variants": [
+        {
+          "artworkId": "td_1_043",
+          "asset": "collection-161/assets/cards/td-1-043.webp",
+          "photoReference": "REF-1-042"
+        }
+      ]
+    },
+    {
+      "id": "COST-043",
+      "name": "Thomas caméléon",
+      "main": {
+        "artworkId": "td_2_039",
+        "asset": "collection-161/assets/cards/td-2-039.webp",
+        "photoReference": "REF-2-039"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-044",
+      "name": "Thomas perd la tête",
+      "main": {
+        "artworkId": "td_2_037",
+        "asset": "collection-161/assets/cards/td-2-037.webp",
+        "photoReference": "REF-2-038"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_025",
+          "asset": "collection-161/assets/cards/td-3-025.webp",
+          "photoReference": "REF-3-022"
+        }
+      ]
+    },
+    {
+      "id": "COST-045",
+      "name": "Thomas Kinder",
+      "main": {
+        "artworkId": "td_3_003",
+        "asset": "collection-161/assets/cards/td-3-003.webp",
+        "photoReference": "REF-3-004"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-046",
+      "name": "Thomas la pince",
+      "main": {
+        "artworkId": "td_2_045",
+        "asset": "collection-161/assets/cards/td-2-045.webp",
+        "photoReference": "REF-2-045"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-047",
+      "name": "Thomas Charmeur de serpent",
+      "main": {
+        "artworkId": "td_2_048",
+        "asset": "collection-161/assets/cards/td-2-048.webp",
+        "photoReference": "REF-2-046"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_014",
+          "asset": "collection-161/assets/cards/td-3-014.webp",
+          "photoReference": "REF-3-017"
+        }
+      ]
+    },
+    {
+      "id": "COST-049",
+      "name": "Thomas prend son bain",
+      "main": {
+        "artworkId": "td_1_049",
+        "asset": "collection-161/assets/cards/td-1-049.webp",
+        "photoReference": "REF-1-049"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-050",
+      "name": "Caporal chef Deseur",
+      "main": {
+        "artworkId": "td_1_045",
+        "asset": "collection-161/assets/cards/td-1-045.webp",
+        "photoReference": "REF-1-050"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-051",
+      "name": "Thomas nugget",
+      "main": {
+        "artworkId": "td_1_051",
+        "asset": "collection-161/assets/cards/td-1-051.webp",
+        "photoReference": "REF-1-051"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-052",
+      "name": "Thomas chino",
+      "main": {
+        "artworkId": "td_1_055",
+        "asset": "collection-161/assets/cards/td-1-055.webp",
+        "photoReference": "REF-1-052"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-053",
+      "name": "Thomas micro-onde",
+      "main": {
+        "artworkId": "td_1_052",
+        "asset": "collection-161/assets/cards/td-1-052.webp",
+        "photoReference": "REF-1-053"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-054",
+      "name": "Gulli-viande",
+      "main": {
+        "artworkId": "td_1_054",
+        "asset": "collection-161/assets/cards/td-1-054.webp",
+        "photoReference": "REF-1-054"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_065",
+          "asset": "collection-161/assets/cards/td-2-065.webp",
+          "photoReference": "REF-2-065"
+        }
+      ]
+    },
+    {
+      "id": "COST-055",
+      "name": "Thomas-terrazi",
+      "main": {
+        "artworkId": "td_2_066",
+        "asset": "collection-161/assets/cards/td-2-066.webp",
+        "photoReference": "REF-2-066"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-056",
+      "name": "Haricot Deseur",
+      "main": {
+        "artworkId": "td_1_059",
+        "asset": "collection-161/assets/cards/td-1-059.webp",
+        "photoReference": "REF-1-056"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_058",
+          "asset": "collection-161/assets/cards/td-2-058.webp",
+          "photoReference": "REF-2-058"
+        }
+      ]
+    },
+    {
+      "id": "COST-057",
+      "name": "Thomas x4",
+      "main": {
+        "artworkId": "td_1_058",
+        "asset": "collection-161/assets/cards/td-1-058.webp",
+        "photoReference": "REF-1-057"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_057",
+          "asset": "collection-161/assets/cards/td-2-057.webp",
+          "photoReference": "REF-2-059"
+        }
+      ]
+    },
+    {
+      "id": "COST-058",
+      "name": "Thomas-kita",
+      "main": {
+        "artworkId": "td_1_056",
+        "asset": "collection-161/assets/cards/td-1-056.webp",
+        "photoReference": "REF-1-058"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-059",
+      "name": "Thomas kiri",
+      "main": {
+        "artworkId": "td_1_057",
+        "asset": "collection-161/assets/cards/td-1-057.webp",
+        "photoReference": "REF-1-059"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-060",
+      "name": "1000 couches de Thomas",
+      "main": {
+        "artworkId": "td_1_062",
+        "asset": "collection-161/assets/cards/td-1-062.webp",
+        "photoReference": "REF-1-060"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-061",
+      "name": "Thomas 3 points",
+      "main": {
+        "artworkId": "td_1_060",
+        "asset": "collection-161/assets/cards/td-1-060.webp",
+        "photoReference": "REF-1-061"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_052",
+          "asset": "collection-161/assets/cards/td-2-052.webp",
+          "photoReference": "REF-2-051"
+        }
+      ]
+    },
+    {
+      "id": "COST-062",
+      "name": "Thomas raclette",
+      "main": {
+        "artworkId": "td_1_063",
+        "asset": "collection-161/assets/cards/td-1-063.webp",
+        "photoReference": "REF-1-062"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_050",
+          "asset": "collection-161/assets/cards/td-2-050.webp",
+          "photoReference": "REF-2-052"
+        }
+      ]
+    },
+    {
+      "id": "COST-064",
+      "name": "Thomas ta soeur",
+      "main": {
+        "artworkId": "td_1_065",
+        "asset": "collection-161/assets/cards/td-1-065.webp",
+        "photoReference": "REF-1-064"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_056",
+          "asset": "collection-161/assets/cards/td-2-056.webp",
+          "photoReference": "REF-2-054"
+        }
+      ]
+    },
+    {
+      "id": "COST-065",
+      "name": "Thomas-couteur",
+      "main": {
+        "artworkId": "td_1_066",
+        "asset": "collection-161/assets/cards/td-1-066.webp",
+        "photoReference": "REF-1-065"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-066",
+      "name": "Thomas-gen de police",
+      "main": {
+        "artworkId": "td_1_064",
+        "asset": "collection-161/assets/cards/td-1-064.webp",
+        "photoReference": "REF-1-066"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_053",
+          "asset": "collection-161/assets/cards/td-2-053.webp",
+          "photoReference": "REF-2-056"
+        }
+      ]
+    },
+    {
+      "id": "COST-067",
+      "name": "Thomas démission",
+      "main": {
+        "artworkId": "td_2_059",
+        "asset": "collection-161/assets/cards/td-2-059.webp",
+        "photoReference": "REF-2-057"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-068",
+      "name": "Thomas chic et choc",
+      "main": {
+        "artworkId": "td_2_049",
+        "asset": "collection-161/assets/cards/td-2-049.webp",
+        "photoReference": "REF-2-050"
+      },
+      "variants": []
+    },
+    {
+      "id": "COST-070",
+      "name": "Thomas huîtres",
+      "main": {
+        "artworkId": "td_lille",
+        "asset": "collection-161/assets/cards/td-lille.webp",
+        "photoReference": "REF-177-LILLE"
+      },
+      "variants": []
+    }
+  ],
+  "excludedGroups": [
+    "COST-048",
+    "COST-063",
+    "COST-069"
+  ]
+}
