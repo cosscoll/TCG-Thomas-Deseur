@@ -2,99 +2,56 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11101b">
-  <meta name="robots" content="noindex,nofollow">
-  <title>TCG Deseur — Boosters, cartes et collection</title>
-  <meta name="description" content="Prototype de jeu de collection : ouvre des boosters, trouve les cartes rares et complète ton classeur de 49 cartes.">
-  <link rel="stylesheet" href="./styles.css">
-  <script type="module" src="./app.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#151020">
+  <meta name="description" content="TCG Deseur : retrouve le jeu de collection en ligne et son catalogue de 160 cartes visibles. Termine ton classeur pour débloquer un booster unique.">
+  <title>TCG Deseur — Le jeu de collection</title>
+  <style>
+  :root{color-scheme:dark;font-family:Inter,system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(ellipse 80% 80% at 70% 20%,#382b53,#141020 65%,#100d19);color:#fbf5fa;min-height:100vh}
+  header,main,footer{width:min(1060px,calc(100% - 36px));margin:auto}
+  header{padding:24px 0;display:flex;gap:20px;align-items:center;justify-content:space-between;border-bottom:1px solid #675575}
+  a{color:#f9da9d}
+  header .brand{text-decoration:none;color:#f7dfa4;font-size:1.15rem;font-weight:900;letter-spacing:.13em}
+  header nav{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem}
+  main{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.7fr);gap:45px;align-items:center;padding:90px 0 100px}
+  .eyebrow{font-weight:800;color:#f9da9d;letter-spacing:.2em;font-size:.77rem}
+  h1{font-size:clamp(2.9rem,5.5vw,5.3rem);letter-spacing:-.06em;line-height:1.06;margin:18px 0 24px}
+  h1 em{font-style:normal;color:#f3cc8a}
+  p{color:#ddd2e4;line-height:1.75;max-width:580px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .action{display:inline-block;padding:13px 19px;border:1px solid #b8a3c4;border-radius:9px;text-decoration:none;font-weight:750}
+  .primary{background:#f3cc8a;color:#241a30;border-color:#f3cc8a}
+  .art{aspect-ratio:3/4;width:min(100%,260px);border:4px solid #ecd3a2;border-radius:19px;background:linear-gradient(145deg,#714c85,#23172f 70%,#131021);display:grid;place-items:center;text-align:center;justify-self:center;box-shadow:0 25px 65px #0008;transform:rotate(8deg);padding:28px;min-width:0}
+  .art strong{font-size:2.2rem;letter-spacing:.1em;color:#f8dba9}.art span{font-size:.83rem;letter-spacing:.15em}
+  .info{border-left:3px solid #f3cc8a;padding-left:13px;font-size:.91rem;margin-top:34px}
+  footer{padding:23px 0;border-top:1px solid #675575;color:#c8bbd2;font-size:.79rem}
+  @media(max-width:680px){main{grid-template-columns:minmax(0,1fr);padding:55px 0 70px;gap:42px}.art{width:210px;transform:rotate(5deg)}header{align-items:flex-start;flex-direction:column}}
+  @media(prefers-reduced-motion:reduce){.art{transform:none}}
+  </style>
 </head>
 <body>
-  <a class="skip" href="#ouvrir">Aller aux boosters</a>
-  <header class="topbar">
-    <a class="brand" href="#accueil" aria-label="TCG Deseur — accueil"><span class="brand-mark">TCG</span><span>TCG <b>DESEUR</b><small>Le jeu de collection</small></span></a>
-    <nav aria-label="Navigation principale"><a href="#ouvrir">Boosters</a><a href="#classeur">Mon classeur</a><a href="#compte">Mon compte</a></nav>
-    <span class="dev-label">Version de développement</span>
+  <header>
+    <a class="brand" href="./">TCG DESEUR</a>
+    <nav aria-label="Navigation principale">
+      <a href="./collection-161/">Catalogue</a>
+      <a href="https://budget-illimite-tcg.floot.app/login">Connexion</a>
+    </nav>
   </header>
   <main>
-    <section class="section-wrap" id="collection-161-entry" style="margin-top:28px;margin-bottom:12px;padding:20px;border:1px solid #9a799f;border-radius:16px;background:#2c223e">
-      <strong style="color:#ffd08a;font-size:1.1rem">Collection Origine — 160 cartes à découvrir</strong>
-      <p style="max-width:75ch;line-height:1.6">Complète les 160 cartes du classeur pour obtenir un booster de collection unique, contenant plusieurs cartes tirées au hasard et une surprise révélée à l'ouverture. Le véritable jeu est maintenant disponible sur Floot.</p>
-      <a class="primary-link" href="./collection-161/">Découvrir les 160 cartes du classeur →</a>
-    </section>
-    <section id="accueil" class="hero" aria-labelledby="heroTitle">
-      <div class="hero-copy">
-        <p class="eyebrow">49 cartes • 5 raretés • Une collection</p>
-        <h1 id="heroTitle">La chasse aux cartes <em>commence ici.</em></h1>
-        <p>Ouvre des boosters, trouve les cartes les plus rares et complète ton classeur. Ton prochain tirage pourrait révéler une carte secrète.</p>
-        <div class="hero-actions"><a href="#ouvrir" class="primary-link">Ouvrir un booster <span aria-hidden="true">↗</span></a><a href="#classeur" class="secondary-link">Explorer la collection</a></div>
-        <p class="hero-disclaimer">Prototype non officiel. Les cartes de démonstration restent locales jusqu'à l'activation des comptes.</p>
+    <section>
+      <span class="eyebrow">JEU DE COLLECTION</span>
+      <h1>La chasse aux cartes <em>commence ici.</em></h1>
+      <p>Découvre les 160 cartes du classeur, ouvre tes boosters et conserve toutes tes découvertes dans ton compte personnel. Complète le classeur pour débloquer un booster de collection exceptionnel : son contenu reste une surprise jusqu'à l'ouverture.</p>
+      <div class="actions">
+        <a class="action primary" href="https://budget-illimite-tcg.floot.app/">Jouer au TCG Deseur →</a>
+        <a class="action" href="./collection-161/">Découvrir les cartes</a>
       </div>
-      <div class="hero-graphic" aria-hidden="true"><div class="hero-glow"></div><div class="feature-card feature-back"><span>TCG</span><strong>?</strong><small>COLLECTION</small></div><div class="feature-card feature-front"><span>CARTE MYSTÈRE</span><strong>?</strong><small>ÉDITION ORIGINE</small></div></div>
+      <p class="info">Le jeu avec comptes, tirages et sauvegardes fonctionne sur Floot. Ce site GitHub présente les cartes visibles et renvoie vers le jeu officiel.</p>
     </section>
-    <section class="summary" aria-label="Ma progression">
-      <div><small>Cartes découvertes</small><strong id="summaryUnique">0 <span>/ 49</span></strong></div>
-      <div><small>Boosters ouverts</small><strong id="summaryOpened">0</strong></div>
-      <div><small>Collection complétée</small><strong id="summaryCompletion">0 %</strong></div>
-      <div><small>Mes doublons</small><strong id="summaryDuplicates">0</strong></div>
-    </section>
-    <section id="ouvrir" class="pack-section section-wrap" aria-labelledby="boosterTitle">
-      <div class="section-heading"><div><p class="eyebrow">01 / La découverte</p><h2 id="boosterTitle">Ouvre ton booster</h2><p>Chaque booster révèle cinq cartes. La cinquième est garantie <strong>Rare ou supérieure</strong>.</p></div><a href="#classeur" class="quiet-link">Consulter mon classeur <span aria-hidden="true">→</span></a></div>
-      <div class="pack-layout">
-        <div class="pack-presentation"><div class="pack-graphic" aria-hidden="true"><span>ÉDITION ORIGINE</span><strong>BUDGET<br>ILLIMITÉ</strong><div class="pack-question">?</div><small>5 CARTES À DÉCOUVRIR</small></div></div>
-        <div class="pack-panel"><span class="panel-kicker">BOOSTER ORIGINE</span><h3>5 cartes.<br>Un peu de suspense.</h3><p>Communes, Rares, Épiques, Légendaires ou Secrètes : chaque ouverture te rapproche des 49 cartes.</p><div class="rarity-chips" aria-label="Les cinq raretés"><span>Commune</span><span>Rare</span><span>Épique</span><span>Légendaire</span><span>Secrète</span></div><p id="boosterAvailability" class="availability" role="status" aria-live="polite">Démonstration : boosters gratuits et illimités sur cet appareil.</p><button id="openBooster" class="primary-button" type="button">Ouvrir mon booster <span aria-hidden="true">↗</span></button><p class="fine-print">Les taux sont provisoires. Aucune monnaie réelle ni achat.</p></div>
-      </div>
-    </section>
-    <section id="classeur" class="binder-section section-wrap" aria-labelledby="collectionTitle">
-      <div class="section-heading"><div><p class="eyebrow">02 / Ta collection</p><h2 id="collectionTitle">Mon classeur</h2><p>Découvre les cartes, surveille tes doublons et retrouve tes dernières ouvertures.</p></div></div>
-      <p id="collectionMode" class="collection-mode" role="status" aria-live="polite">Classeur de démonstration sur cet appareil.</p>
-      <div class="binder-overview">
-        <div class="overview-count"><strong id="collectionUnique">0 / 49</strong><span>Cartes différentes</span></div>
-        <div class="overview-count"><strong id="collectionTotal">0</strong><span>Cartes obtenues</span></div>
-        <div class="overview-count"><strong id="collectionDuplicates">0</strong><span>Doublons</span></div>
-        <div class="overview-count"><strong id="collectionOpened">0</strong><span>Boosters ouverts</span></div>
-      </div>
-      <div class="progress-group"><label for="collectionProgress">Progression du classeur <strong id="collectionPercent">0 %</strong></label><progress id="collectionProgress" max="49" value="0">0 sur 49</progress></div>
-      <div id="rarityCompletion" class="rarity-breakdown" aria-label="Progression par rareté"></div>
-      <div class="binder-tools">
-        <label>Afficher<select id="collectionOwnedFilter"><option value="all">Toutes les cartes</option><option value="owned">Cartes obtenues</option><option value="missing">Cartes manquantes</option><option value="duplicates">Mes doublons</option></select></label>
-        <label>Rareté<select id="collectionRarity"><option value="all">Toutes les raretés</option><option value="commune">Communes</option><option value="rare">Rares</option><option value="epique">Épiques</option><option value="legendaire">Légendaires</option><option value="secrete">Secrètes</option></select></label>
-        <label>Rechercher<input id="collectionSearch" type="search" placeholder="Nom de carte..." autocomplete="off"></label>
-        <p id="filterCount" class="filter-count" role="status"></p>
-      </div>
-      <div id="collectionGrid" class="collection-grid" aria-label="Les 49 cartes de la collection"></div>
-      <p id="collectionEmpty" class="empty" hidden>Aucune carte ne correspond à ces filtres.</p>
-      <div class="history"><h3>Dernières ouvertures</h3><div id="recentOpenings"><p>Ton premier booster t'attend.</p></div></div>
-    </section>
-    <section id="compte" class="account-section section-wrap" aria-labelledby="accountTitle">
-      <div class="section-heading"><div><p class="eyebrow">03 / Espace joueur</p><h2 id="accountTitle">Ton compte</h2><p>Prépare ton profil pour retrouver une collection officielle sur tous tes appareils lorsque le service sécurisé sera ouvert.</p></div></div>
-      <div class="account-shell">
-        <div><h3>Ta collection, au même endroit.</h3><p>Un compte te permettra de conserver tes cartes en ligne. Les cartes obtenues dans le mode démonstration ne donnent aucun avantage officiel et ne sont pas transférées automatiquement.</p></div>
-        <div class="account-card">
-          <p id="accountMessage" class="account-feedback" role="status" aria-live="polite"></p>
-          <div id="accountSetup"><strong>Inscriptions bientôt disponibles</strong><p>Le service Supabase n'est pas encore relié. Tu peux découvrir le jeu sans créer de compte.</p></div>
-          <div id="accountAnonymous" hidden>
-            <form id="accountForm" class="account-form">
-              <label>Je souhaite<select id="accountMode"><option value="signup">Créer mon compte</option><option value="signin">Me connecter</option></select></label>
-              <label id="accountNameLabel">Pseudonyme<input id="accountName" type="text" minlength="3" maxlength="30" autocomplete="nickname" placeholder="Ton pseudo"></label>
-              <label>E-mail<input id="accountEmail" type="email" autocomplete="email" required placeholder="adresse@exemple.fr"></label>
-              <label>Mot de passe<input id="accountPassword" type="password" minlength="8" autocomplete="new-password" required></label>
-              <button id="accountSubmit" class="primary-button" type="submit">Créer mon compte</button>
-              <button id="accountForgot" class="text-button" type="button">Mot de passe oublié ?</button>
-            </form>
-          </div>
-          <div id="accountPasswordRecovery" hidden class="account-form"><label>Nouveau mot de passe<input id="accountNewPassword" type="password" minlength="8" autocomplete="new-password"></label><button id="accountChangePassword" class="primary-button" type="button">Enregistrer</button></div>
-          <div id="accountMember" hidden><p>Connecté en tant que <strong id="accountUserEmail"></strong></p><div class="account-profile-edit"><label>Ton pseudonyme<input id="accountProfileName" type="text" minlength="3" maxlength="30" autocomplete="nickname"></label><button id="accountSaveProfile" class="secondary-button" type="button">Modifier mon pseudo</button></div><button id="accountSignOut" class="secondary-button" type="button">Me déconnecter</button></div>
-        </div>
-      </div>
-    </section>
+    <div class="art" aria-hidden="true"><span>ÉDITION ORIGINE</span><strong>TCG<br>DESEUR</strong><span>160 CARTES À DÉCOUVRIR</span></div>
   </main>
-  <footer><span>TCG Deseur — Prototype indépendant et non officiel.</span><span><a href="./solo/">Ancien prototype de combat</a> · <a href="https://github.com/cosscoll/TCG-Thomas-Deseur">Code sur GitHub</a></span></footer>
-  <dialog id="boosterDialog" aria-labelledby="resultTitle">
-    <div class="dialog-top"><div><p class="eyebrow">Ton booster est ouvert</p><h2 id="resultTitle">Les cartes découvertes</h2><p id="boosterModeNote">Les cartes ont été ajoutées au classeur de démonstration.</p></div><form method="dialog"><button type="submit" class="close-dialog" aria-label="Fermer le résultat">×</button></form></div>
-    <div id="boosterResults" class="booster-results"></div>
-    <div class="dialog-actions"><button id="openAgain" class="primary-button" type="button">Ouvrir un autre booster</button><form method="dialog"><button type="submit" class="secondary-button">Voir mon classeur</button></form></div>
-  </dialog>
+  <footer>TCG Deseur · Jeu de collection indépendant · Aucun achat obligatoire.</footer>
 </body>
 </html>
