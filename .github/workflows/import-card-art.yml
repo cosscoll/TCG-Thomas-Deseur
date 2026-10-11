@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'uploads/TCG_Deseur_161_Visuels_WEBP_GitHub.zip'
+      - '.github/workflows/import-card-art.yml'
   workflow_dispatch:
 
 permissions:
@@ -26,14 +27,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Télécharger l'archive vérifiée depuis la bibliothèque publique Floot
+        run: |
+          mkdir -p uploads
+          if [ ! -f uploads/TCG_Deseur_161_Visuels_WEBP_GitHub.zip ]; then
+            curl --fail --location --retry 2 --max-time 100 --output uploads/TCG_Deseur_161_Visuels_WEBP_GitHub.zip \
+              'https://budget-illimite-tcg.floot.app/_cdn/static/37c526f6-a403-4e06-8354-531d5544189b-TCG_Deseur_161_Visuels_WEBP_GitHub.zip'
+          fi
       - name: Vérifier la présence du ZIP
         id: archive
-        run: |
-          if [ -f uploads/TCG_Deseur_161_Visuels_WEBP_GitHub.zip ]; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
+        run: echo "exists=true" >> "$GITHUB_OUTPUT"
       - name: Contrôler et importer exactement 161 images
         if: steps.archive.outputs.exists == 'true'
         run: python scripts/import-card-art.py
@@ -43,6 +46,6 @@ jobs:
           git config user.name "TCG Deseur CI"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add collection-161/assets/
-          git rm uploads/TCG_Deseur_161_Visuels_WEBP_GitHub.zip
+          git rm -f --ignore-unmatch uploads/TCG_Deseur_161_Visuels_WEBP_GitHub.zip
           git commit -m "assets: publier les 161 illustrations TCG Deseur"
           git push
