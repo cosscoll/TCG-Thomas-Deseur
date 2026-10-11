@@ -80,19 +80,21 @@ test('booster ordinaire fictif donne cinq cartes sans secrète et une cinquième
   expect(requests).toEqual([]);
 });
 
-test('les 160 cartes présentent leur nom, référence, origine et leurs sources',async({page})=>{
+test('les 160 cartes utilisent la référence PHOTO réellement identifiée, sans noms attribués',async({page})=>{
   await expect(page.locator('#cards-grid .card')).toHaveCount(160);
   await expect(page.locator('#cards-grid .card-title')).toHaveCount(160);
   await expect(page.locator('#cards-grid .card-origin')).toHaveCount(160);
   await expect(page.locator('#cards-grid .card-links a[href^="https://"]')).toHaveCount(160);
   const names=await page.locator('.card-title').allTextContents();
-  expect(names.every(t=>!t.startsWith('Carte REF-'))).toBe(true);
-  await expect(page.locator('.card').filter({hasText:'Héros au casque vert et cape'})).toHaveCount(3);
-  await page.locator('#search').fill('Héros au casque vert');
+  expect(names.every(t=>/^Carte \\d{3}$/.test(t))).toBe(true);
+  const first=page.locator('#cards-grid .card').first();
+  await expect(first).toContainText('Carte 001');
+  await expect(first).toContainText('Source ZIP : REF-1-002');
+  await expect(first).toContainText('COST-002');
+  await page.locator('#search').fill('COST-005');
   await expect(page.locator('#cards-grid .card')).toHaveCount(3);
-  await expect(page.locator('#cards-grid .card').first()).toContainText('COST-005');
-  const href=await page.locator('#cards-grid .card').first().locator('a[href*="tri-177"]').getAttribute('href');
-  expect(href).toContain('#COST-005');
+  const href=await page.locator('#cards-grid .card').first().locator('a[href*="verification-photos"]').getAttribute('href');
+  expect(href).toMatch(/verification-photos\/\?carte=td_/);
 });
 test('la provenance filtre les cartes par série d’origine',async({page})=>{
   await page.locator('#origin').selectOption('images/100-1000-couches');
