@@ -31,16 +31,25 @@ function element(tag,cls,text){
 }
 function labeledText(parent,text,control){const l=element('label','editor-label');l.append(element('span','field-title',text),control);parent.append(l);return l}
 function option(value,label){const e=element('option','',label);e.value=value;return e}
-function getRefs(group){return [...group.querySelectorAll('.photo')].map(p=>({ref:p.querySelector('strong').textContent.trim(),src:p.querySelector('a').getAttribute('href'),node:p}))}
+function getRefs(group){return [...group.querySelectorAll('.artwork-photo')].map(p=>({
+ ref:p.dataset.cardId,sourceRef:p.dataset.sourceRef,
+ src:p.querySelector('a').getAttribute('href'),node:p
+}))}
+function matchArt(ref,artworks){
+ if(!ref)return '';
+ return artworks.find(x=>x.ref===ref||x.sourceRef===ref)?.ref||'';
+}
 function persisted(group,refs){
  let saved=null;
  try{saved=JSON.parse(read(KEY+group.id)||'null')}catch{}
  if(!saved||typeof saved!=='object')saved={};
  let prevPhoto=read('tcg_tri_photo_'+group.id);
  let prevDecision=read('tcg_tri_'+group.id);
- const primary=refs.some(r=>r.ref===saved.primary)?saved.primary:(refs.some(r=>r.ref===prevPhoto)?prevPhoto:refs[0].ref);
- const alternative=saved.alternative===SHINY?SHINY:(refs.some(r=>r.ref===saved.alternative&&r.ref!==primary)?saved.alternative:'');
- const status=validStates.includes(saved.status)?saved.status:(prevDecision==='Écarter du set'?'Écartée':'À examiner');
+ const primary=matchArt(saved.primary,refs)||matchArt(prevPhoto,refs)||refs[0]?.ref||'';
+ const migratedAlt=matchArt(saved.alternative,refs);
+ const alternative=(saved.alternative===SHINY&&primary)?SHINY:(migratedAlt&&migratedAlt!==primary?migratedAlt:'');
+ const existingStatus=validStates.includes(saved.status)?saved.status:(prevDecision==='Écarter du set'?'Écartée':'À examiner');
+ const status=existingStatus==='Validée'&&(!primary||!alternative||!saved.name?.trim())?'À examiner':existingStatus;
  return {name:typeof saved.name==='string'?saved.name.slice(0,90):'',primary,alternative,status};
 }
 function imageOf(card,ref){return card.refs.find(r=>r.ref===ref)}
@@ -48,7 +57,7 @@ function syncAlternativeOptions(card){
  const select=card.altSelect;
  select.replaceChildren(option('','Choisir une alternative…'),option(SHINY,'Version Shiny à créer depuis le visuel principal'));
  card.refs.forEach(r=>{
-   if(r.ref!==card.state.primary)select.append(option(r.ref,'Autre photo : '+r.ref));
+   if(r.ref!==card.state.primary)select.append(option(r.ref,'Autre illustration stylisée : '+r.ref));
  });
  if(card.state.alternative&&![...select.options].some(o=>o.value===card.state.alternative))card.state.alternative='';
  select.value=card.state.alternative;
@@ -68,12 +77,12 @@ function render(card){
  previewImage(card.mainImage,main&&main.src,'Aperçu du visuel principal '+s.primary);
  previewImage(card.altImage,(s.alternative===SHINY?main:alternate)?.src,'Aperçu de la source du visuel alternatif');
  card.mainCaption.textContent=s.primary||'À choisir';
- card.altCaption.textContent=s.alternative===SHINY?'Shiny à illustrer · source '+s.primary:(s.alternative||'À choisir');
+ card.altCaption.textContent=s.alternative===SHINY?'Shiny non créé · futur rendu à partir de '+s.primary:(s.alternative||'À choisir');
  card.altPanel.classList.toggle('shiny-source',s.alternative===SHINY);
  card.group.dataset.cardStatus=s.status;
- card.statusNode.textContent=s.status==='Validée'?'Carte validée':s.status==='Écartée'?'Carte écartée':'À examiner';
+ card.statusNode.textContent=card.refs.length===0?'Sans illustration stylisée':s.status==='Validée'?'Carte validée':s.status==='Écartée'?'Carte écartée':'À examiner';
  card.validateButton.textContent=s.status==='Validée'?'Carte validée ✓ (modifier pour réviser)':'Valider cette carte';
- card.validateButton.disabled=s.status==='Validée';
+ card.validateButton.disabled=s.status==='Validée'||card.refs.length===0;
  card.excludeButton.textContent=s.status==='Écartée'?'Réintégrer au tri':'Écarter cette carte';
  card.refs.forEach(r=>{
   r.node.dataset.selected=String(r.ref===s.primary);
@@ -109,7 +118,8 @@ function build(card){
  const altSelect=element('select','pick-alt');
  mainSelect.setAttribute('aria-label','Visuel principal pour '+card.id);
  altSelect.setAttribute('aria-label','Visuel alternatif pour '+card.id);
- card.refs.forEach(r=>mainSelect.append(option(r.ref,r.ref+' · '+r.node.querySelector('span').textContent)));
+ if(card.refs.length===0)mainSelect.append(option('','Aucune illustration stylisée disponible'));
+ card.refs.forEach(r=>mainSelect.append(option(r.ref,r.ref+' · source '+r.sourceRef)));
  labeledText(picks,'1. Visuel principal',mainSelect);
  labeledText(picks,'2. Visuel alternatif / Shiny',altSelect);
  box.append(picks);
@@ -123,7 +133,9 @@ function build(card){
  const altImage=element('div','preview-image');altPanel.append(altImage);
  const altCaption=element('small');altPanel.append(altCaption);
  previews.append(mainPanel,altPanel);box.append(previews);
- const hint=element('p','editor-hint','Alternative : choisis une autre photo du groupe, ou « Version Shiny à créer » pour prévoir une illustration spéciale basée sur la principale. Le rendu Shiny n’est pas encore créé.');
+ const hint=element('p','editor-hint',card.refs.length===0?
+   'Aucun rendu stylisé disponible pour ce groupe. La carte ne peut pas être validée. Consulte les photographies sources plus bas.' :
+   'Les images affichées sont les illustrations stylisées utilisées dans le classeur. Pour l’alternative, choisis un autre rendu existant ou une version Shiny à créer (non générée pour le moment).');
  box.append(hint);
  const actions=element('div','editor-actions');
  const validateButton=element('button','validate-card','Valider cette carte');validateButton.type='button';
@@ -142,8 +154,8 @@ function build(card){
  validateButton.addEventListener('click',()=>{
   if(!s.name.trim()){message.textContent='Indique d’abord le nom de la carte.';nameInput.focus();return}
   if(!s.primary){message.textContent='Choisis le visuel principal.';mainSelect.focus();return}
-  if(!s.alternative){message.textContent='Choisis une autre photo ou une version Shiny à créer.';altSelect.focus();return}
-  if(s.alternative===s.primary){message.textContent='Les deux photos doivent être différentes (ou choisis le Shiny).';altSelect.focus();return}
+  if(!s.alternative){message.textContent='Choisis une autre illustration stylisée ou une version Shiny à créer.';altSelect.focus();return}
+  if(s.alternative===s.primary){message.textContent='Les deux illustrations doivent être différentes (ou choisis le Shiny).';altSelect.focus();return}
   s.name=s.name.trim();s.status='Validée';save(card);render(card);update();
   message.textContent='Carte validée et sauvegardée. Exporte le CSV/JSON pour me transmettre tes choix.';
  });
@@ -156,7 +168,7 @@ function build(card){
   const main=element('button','choose-main','Principale');main.type='button';main.title='Choisir '+photo.ref+' comme principale';
   const alt=element('button','choose-alt','Alternative');alt.type='button';alt.title='Choisir '+photo.ref+' comme alternative';
   main.addEventListener('click',()=>{s.primary=photo.ref;if(s.alternative===photo.ref)s.alternative='';changed(card)});
-  alt.addEventListener('click',()=>{if(photo.ref===s.primary){message.textContent='Cette photo est déjà principale : choisis « Version Shiny à créer ».';return}s.alternative=photo.ref;changed(card)});
+  alt.addEventListener('click',()=>{if(photo.ref===s.primary){message.textContent='Ce rendu est déjà principal : choisis « Version Shiny à créer ».';return}s.alternative=photo.ref;changed(card)});
   actions.append(main,alt);photo.node.append(actions);
  }
  render(card);
@@ -197,14 +209,16 @@ search.addEventListener('input',update);filter.addEventListener('change',update)
 function rows(){
  return [...cards.values()].map(c=>{
   const s=c.state;
-  const alt=s.alternative===SHINY?imageOf(c,s.primary):imageOf(c,s.alternative);
+  const main=imageOf(c,s.primary);
+  const alt=s.alternative===SHINY?main:imageOf(c,s.alternative);
   return {
-   reference_carte:c.id,nom_carte:s.name,nom_provisoire:c.originalName,statut:s.status,
-   reference_visuel_principal:s.primary,url_visuel_principal:imageOf(c,s.primary)?.src||'',
-   type_visuel_alternatif:s.alternative===SHINY?'shiny_a_creer':s.alternative?'autre_photo':'non_defini',
-   reference_visuel_alternatif:s.alternative===SHINY?s.primary:s.alternative,
-   url_source_visuel_alternatif:alt?.src||'',
-   nombre_photos:c.refs.length, references_photos:c.refs.map(r=>r.ref).join(', '),
+   reference_groupe:c.id,nom_carte:s.name,nom_provisoire:c.originalName,statut:s.status,
+   id_illustration_principale:s.primary,reference_photo_source_principale:main?.sourceRef||'',fichier_illustration_principale:main?.src||'',
+   type_visuel_alternatif:s.alternative===SHINY?'shiny_a_creer':s.alternative?'autre_illustration_stylisee':'non_defini',
+   id_illustration_alternative:s.alternative===SHINY?'':s.alternative,
+   reference_photo_source_alternative:alt?.sourceRef||'',fichier_illustration_alternative:s.alternative===SHINY?'':alt?.src||'',
+   fichier_source_shiny_a_creer:s.alternative===SHINY?main?.src||'':'',
+   nombre_illustrations_stylisees:c.refs.length,ids_illustrations_du_groupe:c.refs.map(r=>r.ref).join(', '),
    decision_ancien_tri:read('tcg_tri_'+c.id)||''
   };
  });
@@ -238,12 +252,12 @@ importFile.addEventListener('change',async()=>{
   if(!window.confirm('Importer cette sauvegarde ? Elle remplacera les noms et les choix actuellement enregistrés dans ce navigateur.'))return;
   for(const card of cards.values()){
    const incoming=data.cards[card.id];if(!incoming||typeof incoming!=='object')continue;
-   const refs=card.refs.map(r=>r.ref);
    const name=typeof incoming.name==='string'?incoming.name.slice(0,90):'';
-   const primary=refs.includes(incoming.primary)?incoming.primary:refs[0];
-   const alternate=incoming.alternative===SHINY?SHINY:(refs.includes(incoming.alternative)&&incoming.alternative!==primary?incoming.alternative:'');
+   const primary=matchArt(incoming.primary,card.refs)||card.refs[0]?.ref||'';
+   const candidate=matchArt(incoming.alternative,card.refs);
+   const alternate=(incoming.alternative===SHINY&&primary)?SHINY:(candidate&&candidate!==primary?candidate:'');
    let status=validStates.includes(incoming.status)?incoming.status:'À examiner';
-   if(status==='Validée'&&(!name.trim()||!alternate))status='À examiner';
+   if(status==='Validée'&&(!name.trim()||!primary||!alternate))status='À examiner';
    Object.assign(card.state,{name,primary,alternative:alternate,status});
    save(card);render(card);
   }
