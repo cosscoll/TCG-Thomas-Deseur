@@ -1,4 +1,13 @@
 import {PUBLIC_CARDS_160,PUBLIC_RARITIES,REQUIRED_PUBLIC_IDS,demoProgress160,demoNormalPack160} from "../data/public-cards-160.js";
+import {PHOTO_ORIGINS_177} from "../data/photo-origins-177.js";
+const ORIGIN_SHORT={
+ "images/100-1000-couches":"Vidéos 100 et 1000 couches",
+ "images/serie-100-couches":"Série 100 couches",
+ "images/personnages-thomas":"Personnages Thomas Deseur",
+ "images/Braderie-de-Lille-2026":"Braderie de Lille 2026"
+};
+function cardName(card){return PHOTO_ORIGINS_177[card.reference]?.title??card.name;}
+function originLabel(meta){return ORIGIN_SHORT[meta?.series]??"Source originale à préciser";}
 const $=id=>document.getElementById(id);
 const rarityNames=Object.fromEntries(PUBLIC_RARITIES.map(r=>[r.id,r.label]));
 const demoOwned=Object.create(null);
@@ -54,12 +63,14 @@ function render(){
     const owned=(inventory[card.id]??0)>0;
     return (rarity==="all"||card.rarity===rarity)
       && (ownedFilter==="all"||(ownedFilter==="owned"&&owned)||(ownedFilter==="missing"&&!owned))
-      && (card.reference+" "+card.name).toLocaleLowerCase("fr").includes(search);
+      && (card.reference+" "+cardName(card)+" "+(PHOTO_ORIGINS_177[card.reference]?.origin??"")+" "+(PHOTO_ORIGINS_177[card.reference]?.groupId??"")).toLocaleLowerCase("fr").includes(search);
   });
   $("cards-shown").textContent=cards.length+" carte"+(cards.length>1?"s":"")+" affichée"+(cards.length>1?"s":"");
   const fragment=document.createDocumentFragment();
   for(const card of cards){
     const owned=(inventory[card.id]??0)>0;
+    const metadata=PHOTO_ORIGINS_177[card.reference];
+    const displayName=cardName(card);
     const el=button("article","card","");
     el.dataset.rarity=card.rarity;
     el.dataset.owned=String(owned);
@@ -70,7 +81,7 @@ function render(){
     if(artworkPublished){
       const image=document.createElement("img");
       image.src=card.artPath;
-      image.alt="Illustration de "+card.name;
+      image.alt="Illustration : "+displayName+" — "+card.reference;
       image.loading="lazy";
       image.decoding="async";
       image.addEventListener("load",()=>{art.replaceChildren(image);art.classList.add("has-image")},{once:true});
@@ -81,10 +92,36 @@ function render(){
     }
     art.setAttribute("role","img");
     art.setAttribute("aria-label","Illustration issue du PDF");
-    const title=button("strong","card-title",card.name);
-    const source=button("small","card-source",card.reference);
+    const title=button("strong","card-title",displayName);
+    const subtitle=button("small","card-subtitle","Nom descriptif proposé");
+    const source=button("small","card-source",card.reference+" · "+(metadata?.groupId??"Groupe à vérifier"));
+    const provenance=button("div","card-provenance");
+    provenance.append(
+      button("span","card-meta-label","Origine de la photo :"),
+      button("span","card-origin",originLabel(metadata)),
+      button("span","card-meta-small",metadata?
+        (metadata.groupCount+" prise"+(metadata.groupCount>1?"s":"")+" de vue rapprochée"+(metadata.groupCount>1?"s":"")+" · vue "+metadata.variant):
+        "Référence à vérifier")
+    );
+    const links=button("div","card-links");
+    if(metadata?.originUrl){
+      const originLink=document.createElement("a");
+      originLink.href=metadata.originUrl;
+      originLink.target="_blank";
+      originLink.rel="noopener noreferrer";
+      originLink.textContent="Source originale ↗";
+      originLink.setAttribute("aria-label","Voir la source originale de "+displayName+" ("+card.reference+")");
+      links.append(originLink);
+    }
+    if(metadata?.groupId){
+      const groupLink=document.createElement("a");
+      groupLink.href="../tri-177/#"+encodeURIComponent(metadata.groupId);
+      groupLink.textContent=metadata.groupCount>1?"Comparer les vues →":"Voir la photo →";
+      groupLink.setAttribute("aria-label","Comparer les photos de "+displayName+" ("+metadata.groupId+")");
+      links.append(groupLink);
+    }
     const status=button("span","card-status",owned?"Possédée (exemple)":"Non possédée (exemple)");
-    el.append(head,art,title,source,status);
+    el.append(head,art,subtitle,title,source,provenance,links,status);
     fragment.append(el);
   }
   $("cards-grid").replaceChildren(fragment);
@@ -100,7 +137,7 @@ $("draw-demo").addEventListener("click",()=>{
     const before=demoOwned[card.id]??0;
     demoOwned[card.id]=before+1;
     const item=button("li","demo-pack-card",
-      "#"+(index+1)+" · "+card.name+" · "+rarityNames[card.rarity]+" · "+
+      "#"+(index+1)+" · "+cardName(card)+" · "+rarityNames[card.rarity]+" · "+
       (before===0?"Nouvelle carte (fictive)":"Doublon (fictif)"));
     item.dataset.rarity=card.rarity;
     fragment.append(item);
