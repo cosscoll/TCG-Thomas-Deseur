@@ -69,7 +69,21 @@ function normalizeState(incoming,refs,legacyPrimary='',legacyDecision=''){
 function loadState(group,refs){
  let incoming={};
  try{incoming=JSON.parse(get(KEY+group.id)||'{}')}catch{}
- return normalizeState(incoming,refs,get('tcg_tri_photo_'+group.id)||'',get('tcg_tri_'+group.id)||'');
+ const accepted=window.__TCG_APPROVED_CARDS__?.[group.id];
+ const hasLocal=incoming&&typeof incoming==='object'&&!Array.isArray(incoming)&&Object.keys(incoming).length>0;
+ if(!hasLocal&&accepted){
+  return normalizeState(accepted,refs,'','');
+ }
+ const state=normalizeState(incoming,refs,get('tcg_tri_photo_'+group.id)||'',get('tcg_tri_'+group.id)||'');
+ if(accepted?.status==='Validée'&&state.status==='À examiner'){
+  // Ne valide que si le contenu de la copie locale est identique à celui
+  // explicitement confirmé sur GitHub ; toute modification garde son état.
+  const same=state.name===accepted.name&&state.primary===accepted.primary
+   &&JSON.stringify(state.alternatives)===JSON.stringify(accepted.alternatives)
+   &&state.shiny===Boolean(accepted.shiny);
+  if(same)state.status='Validée';
+ }
+ return state;
 }
 function label(parent,heading,control,klass){
  const lab=el('label',klass||'editor-label');
