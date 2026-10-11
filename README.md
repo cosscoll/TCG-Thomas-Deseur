@@ -1,12 +1,12 @@
-## Nouvelle collection de 161 cartes — mise à jour du 10 octobre 2026
+## Collection Origine — édition actuelle
 
-**La nouvelle collection est préparée sur GitHub :** [ouvrir l'aperçu des 161 cartes](https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/).
+**Jeu en ligne :** https://budget-illimite-tcg.floot.app  
+**Aperçu des cartes visibles :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/
 
-Elle comprend **159 cartes standards**, **Lille** hors-série et **Chevelu** secrète. La secrète a **0 % de chance dans les boosters ordinaires** : elle est délivrée dans **un booster spécial à ouverture unique** lorsque le serveur confirme que les **160 autres cartes** ont été obtenues (Lille comprise). Pour rendre Lille accessible, le nouveau pool ordinaire prévoit 2 % d'Hors-série, en remplaçant l'ancien taux de Secrètes (dont la nouvelle carte Chevelu sort du pool). Le cinquième emplacement demeure garanti Rare ou mieux. Les raretés individuelles des 159 cartes sont actuellement des propositions éditoriales.
+Le classeur comporte **160 cartes à découvrir** (159 standards et une Hors-série). Une fois le classeur complet, le joueur débloque **un booster spécial de cinq cartes**, dont plusieurs cartes aléatoires et une surprise révélée uniquement au moment de l'ouverture. Aucun achat requis.
 
-Le dépôt contient le [catalogue référencé de 161 cartes](data/cards-161.js), la [logique de déblocage](game/collection-161.js), le [contrat serveur atomique](server/secret-booster-161.mjs), la [migration préparée](server/migration-161.sql), des tests et une [note de livraison détaillée](docs/CATALOGUE_161_ET_CHEVELU.md).
+La distribution officielle, l'inventaire persistant et le gain unique sont contrôlés par le serveur Floot. Les 49 cartes historiques sont archivées dans les comptes existants. Le dépôt GitHub contient également une démonstration utilisant des données fictives, sans distribution réelle.
 
-**Statut réel :** la page GitHub Pages est un aperçu avec inventaires fictifs. Les **161 images WebP sont extraites et archivées**, mais elles ne sont pas encore transférées dans le dépôt (la galerie montre des espaces réservés jusqu'à import). Le jeu connecté en production reste sur Floot et **n'a pas été migré à 161 cartes** tant que son quota de développement et les tests de migration ne le permettent pas. Les 49 anciennes cartes et leurs exemplaires réels doivent être préservés.
 
 ---
 
