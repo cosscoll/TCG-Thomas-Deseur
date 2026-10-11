@@ -1,195 +1,265 @@
-/* Atelier TCG Deseur : nom, visuel principal, illustration alternative et validation.
-   Fonctionne sans serveur ; ne modifie jamais les images originales. */
-(function () {
+/* TCG Deseur — Atelier de sélection des illustrations stylisées.
+   1 visuel principal obligatoire et 0..N variantes optionnelles (dont Shiny à créer).
+   Aucune mutation du jeu ni suppression des originaux. */
+(() => {
 'use strict';
-const KEY='tcg_tri_card_v2_';
+const KEY='tcg_tri_card_v2_'; // même préfixe : migration sans perte des choix antérieurs
+const SCHEMA='tcg-deseur-cards-v3';
+const OLD_SCHEMA='tcg-deseur-cards-v2';
+const SHINY='SHINY_FROM_MAIN';
+const STATUSES=['À examiner','Validée','Écartée'];
 const groups=[...document.querySelectorAll('.group')];
 const search=document.querySelector('#q');
 const filter=document.querySelector('#filter');
 const shown=document.querySelector('#shown');
 const tools=document.querySelector('.tools');
 const exportButton=document.querySelector('#export');
-const SHINY='SHINY_FROM_MAIN';
-const validStates=['À examiner','Validée','Écartée'];
 const cards=new Map();
-let storageAvailable=true;
-try{localStorage.setItem('__tcg_tri_test__','1');localStorage.removeItem('__tcg_tri_test__')}catch{storageAvailable=false}
-function read(key){try{return localStorage.getItem(key)}catch{return null}}
-function save(card){try{localStorage.setItem(KEY+card.id,JSON.stringify(card.state))}catch{storageAvailable=false; storageWarning()}}
-function storageWarning(){
+let localStoreOk=true;
+try{localStorage.setItem('__tcg_tri_test__','1');localStorage.removeItem('__tcg_tri_test__')}catch{localStoreOk=false}
+function el(tag,cls,text){
+ const node=document.createElement(tag);
+ if(cls)node.className=cls;
+ if(text!==undefined)node.textContent=String(text);
+ return node;
+}
+function opt(value,label){const o=el('option','',label);o.value=value;return o}
+function get(key){try{return localStorage.getItem(key)}catch{return null}}
+function warnStorage(){
  if(document.querySelector('#storage-warning'))return;
- const e=document.createElement('span');e.id='storage-warning';e.setAttribute('role','alert');
- e.textContent='Sauvegarde locale indisponible : exporte tes choix avant de quitter cette page.';
- tools.append(e);
+ const note=el('span','', 'Sauvegarde locale indisponible : exporte une sauvegarde JSON avant de quitter.');
+ note.id='storage-warning';note.setAttribute('role','alert');tools.append(note);
 }
-if(!storageAvailable)storageWarning();
-function element(tag,cls,text){
- const e=document.createElement(tag);
- if(cls)e.className=cls;
- if(text!==undefined)e.textContent=text;
- return e;
+if(!localStoreOk)warnStorage();
+function save(card){
+ try{localStorage.setItem(KEY+card.id,JSON.stringify(card.state))}
+ catch{localStoreOk=false;warnStorage()}
 }
-function labeledText(parent,text,control){const l=element('label','editor-label');l.append(element('span','field-title',text),control);parent.append(l);return l}
-function option(value,label){const e=element('option','',label);e.value=value;return e}
-function getRefs(group){return [...group.querySelectorAll('.artwork-photo')].map(p=>({
- ref:p.dataset.cardId,sourceRef:p.dataset.sourceRef,
- src:p.querySelector('a').getAttribute('href'),node:p
-}))}
-function matchArt(ref,artworks){
- if(!ref)return '';
- return artworks.find(x=>x.ref===ref||x.sourceRef===ref)?.ref||'';
+function refsFrom(group){
+ return [...group.querySelectorAll('.artwork-photo')].map(node=>({
+  ref:node.dataset.cardId,
+  sourceRef:node.dataset.sourceRef,
+  src:node.querySelector('a').getAttribute('href'),
+  node
+ }));
 }
-function persisted(group,refs){
- let saved=null;
- try{saved=JSON.parse(read(KEY+group.id)||'null')}catch{}
- if(!saved||typeof saved!=='object')saved={};
- let prevPhoto=read('tcg_tri_photo_'+group.id);
- let prevDecision=read('tcg_tri_'+group.id);
- const primary=matchArt(saved.primary,refs)||matchArt(prevPhoto,refs)||refs[0]?.ref||'';
- const migratedAlt=matchArt(saved.alternative,refs);
- const alternative=(saved.alternative===SHINY&&primary)?SHINY:(migratedAlt&&migratedAlt!==primary?migratedAlt:'');
- const existingStatus=validStates.includes(saved.status)?saved.status:(prevDecision==='Écarter du set'?'Écartée':'À examiner');
- const migratedFromPhoto=Boolean(saved.primary&&!refs.some(r=>r.ref===saved.primary));
- const status=existingStatus==='Validée'&&(!primary||!alternative||!saved.name?.trim()||migratedFromPhoto)?'À examiner':existingStatus;
- return {name:typeof saved.name==='string'?saved.name.slice(0,90):'',primary,alternative,status};
+function artFor(card,ref){return card.refs.find(r=>r.ref===ref)}
+function normalizeRef(value,refs){
+ if(typeof value!=='string'||!value)return '';
+ return refs.find(r=>r.ref===value||r.sourceRef===value)?.ref||'';
 }
-function imageOf(card,ref){return card.refs.find(r=>r.ref===ref)}
-function syncAlternativeOptions(card){
- const select=card.altSelect;
- select.replaceChildren(option('','Choisir une alternative…'),option(SHINY,'Version Shiny à créer depuis le visuel principal'));
- card.refs.forEach(r=>{
-   if(r.ref!==card.state.primary)select.append(option(r.ref,'Autre illustration stylisée : '+r.ref));
+function normalizeState(incoming,refs,legacyPrimary='',legacyDecision=''){
+ const saved=incoming&&typeof incoming==='object'&&!Array.isArray(incoming)?incoming:{};
+ const primary=normalizeRef(saved.primary,refs)||normalizeRef(legacyPrimary,refs)||refs[0]?.ref||'';
+ const alternatives=[];
+ const candidates=Array.isArray(saved.alternatives)?saved.alternatives:[saved.alternative];
+ for(const candidate of candidates){
+  const ref=normalizeRef(candidate,refs);
+  if(ref&&ref!==primary&&!alternatives.includes(ref))alternatives.push(ref);
+ }
+ // Supporte l'ancien champ alternative="SHINY_FROM_MAIN" et le nouveau booléen shiny.
+ const shiny=Boolean(primary&&(saved.shiny===true||saved.alternative===SHINY));
+ const name=typeof saved.name==='string'?saved.name.slice(0,90):'';
+ const previous=STATUSES.includes(saved.status)?saved.status:(legacyDecision==='Écarter du set'?'Écartée':'À examiner');
+ const invalidPrimary=Boolean(saved.primary&&!refs.some(r=>r.ref===saved.primary));
+ // Une carte renommée/convertie à partir des photos doit être revérifiée.
+ const status=previous==='Validée'&&(!primary||!name.trim()||invalidPrimary)?'À examiner':previous;
+ return {name,primary,alternatives,shiny,status};
+}
+function loadState(group,refs){
+ let incoming={};
+ try{incoming=JSON.parse(get(KEY+group.id)||'{}')}catch{}
+ return normalizeState(incoming,refs,get('tcg_tri_photo_'+group.id)||'',get('tcg_tri_'+group.id)||'');
+}
+function label(parent,heading,control,klass){
+ const lab=el('label',klass||'editor-label');
+ lab.append(el('span','field-title',heading),control);
+ parent.append(lab);return lab;
+}
+function picture(where,src,description){
+ where.replaceChildren();
+ if(!src){where.append(el('span','preview-empty','Aucun visuel'));return}
+ const img=el('img');img.src=src;img.alt=description;img.loading='lazy';where.append(img);
+}
+function counts(card){
+ const num=card.state.alternatives.length+(card.state.shiny?1:0);
+ return num===0?'Aucune variante':num+' variante'+(num>1?'s':'')+(card.state.shiny?' (dont Shiny à créer)':'');
+}
+function drawAlternativePreviews(card){
+ const zone=card.alternativesPreview;
+ zone.replaceChildren();
+ const selected=card.state.alternatives;
+ if(!selected.length&&!card.state.shiny){
+  zone.append(el('p','no-variants','Aucune variante sélectionnée : cette carte peut être validée avec son seul visuel principal.'));
+  return;
+ }
+ selected.forEach((id,i)=>{
+  const art=artFor(card,id);
+  if(!art)return;
+  const panel=el('div','preview-panel variant-panel');
+  panel.append(el('strong','', 'VARIANTE '+(i+1)));
+  const frame=el('div','preview-image');picture(frame,art.src,'Variante '+id);panel.append(frame);
+  panel.append(el('small','',id+' · '+art.sourceRef));
+  const remove=el('button','remove-variant','Retirer cette variante');remove.type='button';
+  remove.setAttribute('aria-label','Retirer '+id+' des variantes de '+card.id);
+  remove.addEventListener('click',()=>{card.state.alternatives=card.state.alternatives.filter(v=>v!==id);markChanged(card)});
+  panel.append(remove);zone.append(panel);
  });
- if(card.state.alternative&&![...select.options].some(o=>o.value===card.state.alternative))card.state.alternative='';
- select.value=card.state.alternative;
-}
-function previewImage(parent,src,alt){
- parent.replaceChildren();
- if(!src){parent.append(element('span','preview-empty','À sélectionner'));return}
- const img=element('img');img.src=src;img.alt=alt;img.loading='lazy';parent.append(img);
+ if(card.state.shiny){
+  const main=artFor(card,card.state.primary);
+  const panel=el('div','preview-panel shiny-source variant-panel');
+  panel.append(el('strong','','SHINY À CRÉER'));
+  const frame=el('div','preview-image');picture(frame,main?.src,'Source principale du futur Shiny');panel.append(frame);
+  panel.append(el('small','','Rendu Shiny à produire · base '+(card.state.primary||'indéfinie')));
+  const remove=el('button','remove-variant','Ne plus prévoir ce Shiny');remove.type='button';
+  remove.addEventListener('click',()=>{card.state.shiny=false;markChanged(card)});
+  panel.append(remove);zone.append(panel);
+ }
 }
 function render(card){
  const s=card.state;
  card.nameInput.value=s.name;
  card.mainSelect.value=s.primary;
- syncAlternativeOptions(card);
- const main=imageOf(card,s.primary);
- const alternate=imageOf(card,s.alternative);
- previewImage(card.mainImage,main&&main.src,'Aperçu du visuel principal '+s.primary);
- previewImage(card.altImage,(s.alternative===SHINY?main:alternate)?.src,'Aperçu de la source du visuel alternatif');
- card.mainCaption.textContent=s.primary||'À choisir';
- card.altCaption.textContent=s.alternative===SHINY?'Shiny non créé · futur rendu à partir de '+s.primary:(s.alternative||'À choisir');
- card.altPanel.classList.toggle('shiny-source',s.alternative===SHINY);
+ const main=artFor(card,s.primary);
+ picture(card.mainImage,main?.src,'Illustration principale '+s.primary);
+ card.mainCaption.textContent=s.primary||'Aucune illustration';
+ card.shinyCheckbox.checked=s.shiny;
+ card.variantsCount.textContent=counts(card);
+ card.removeAllButton.disabled=!s.alternatives.length&&!s.shiny;
+ drawAlternativePreviews(card);
  card.group.dataset.cardStatus=s.status;
  card.statusNode.textContent=card.refs.length===0?'Sans illustration stylisée':s.status==='Validée'?'Carte validée':s.status==='Écartée'?'Carte écartée':'À examiner';
- card.validateButton.textContent=s.status==='Validée'?'Carte validée ✓ (modifier pour réviser)':'Valider cette carte';
+ card.validateButton.textContent=s.status==='Validée'?'Carte validée ✓':'Valider cette carte';
  card.validateButton.disabled=s.status==='Validée'||card.refs.length===0;
  card.excludeButton.textContent=s.status==='Écartée'?'Réintégrer au tri':'Écarter cette carte';
- card.refs.forEach(r=>{
-  r.node.dataset.selected=String(r.ref===s.primary);
-  r.node.dataset.alternative=String(r.ref===s.alternative);
-  const m=r.node.querySelector('.choose-main');
-  const a=r.node.querySelector('.choose-alt');
-  m.setAttribute('aria-pressed',String(r.ref===s.primary));
-  a.setAttribute('aria-pressed',String(r.ref===s.alternative));
-  a.disabled=r.ref===s.primary;
-  a.title=r.ref===s.primary?'Pour un Shiny du principal, utilise « Version Shiny à créer »':'Choisir comme image alternative';
- });
- const heading=card.group.querySelector('h2');
- heading.textContent=card.id+' · '+(s.name.trim()||card.originalName);
+ for(const art of card.refs){
+  const selected=art.ref===s.primary;
+  const alternative=s.alternatives.includes(art.ref);
+  art.node.dataset.selected=String(selected);
+  art.node.dataset.alternative=String(alternative);
+  const mainButton=art.node.querySelector('.choose-main');
+  const altButton=art.node.querySelector('.choose-alt');
+  mainButton.setAttribute('aria-pressed',String(selected));
+  altButton.setAttribute('aria-pressed',String(alternative));
+  altButton.disabled=selected;
+  altButton.textContent=alternative?'Retirer variante':'Ajouter variante';
+  altButton.title=selected?'Visuel principal déjà sélectionné':'Ajouter ou retirer une version alternative';
+ }
+ card.group.querySelector('h2').textContent=card.id+' · '+(s.name.trim()||card.originalName);
  card.group.dataset.customName=s.name.toLocaleLowerCase('fr');
 }
-function changed(card){
+function markChanged(card){
  if(card.state.status==='Validée'||card.state.status==='Écartée')card.state.status='À examiner';
- card.message.textContent='Choix enregistrés localement · validation à confirmer';
+ card.message.textContent='Choix sauvegardés · validation à confirmer';
  save(card);render(card);update();
 }
 function build(card){
- const group=card.group, review=group.querySelector('.review'), s=card.state;
- const box=element('div','card-editor');
- const top=element('div','editor-top');
- const nameInput=element('input','card-name');
- nameInput.type='text';nameInput.maxLength=90;nameInput.placeholder='Saisir le nom définitif de la carte';nameInput.value=s.name;
- nameInput.autocomplete='off';nameInput.setAttribute('aria-label','Nom définitif pour '+card.id);
- labeledText(top,'Nom de la carte',nameInput);
- const statusNode=element('span','card-status');top.append(statusNode);
- box.append(top);
- const picks=element('div','pick-grid');
- const mainSelect=element('select','pick-main');
- const altSelect=element('select','pick-alt');
- mainSelect.setAttribute('aria-label','Visuel principal pour '+card.id);
- altSelect.setAttribute('aria-label','Visuel alternatif pour '+card.id);
- if(card.refs.length===0)mainSelect.append(option('','Aucune illustration stylisée disponible'));
- card.refs.forEach(r=>mainSelect.append(option(r.ref,r.ref+' · source '+r.sourceRef)));
- labeledText(picks,'1. Visuel principal',mainSelect);
- labeledText(picks,'2. Visuel alternatif / Shiny',altSelect);
- box.append(picks);
- const previews=element('div','card-previews');
- const mainPanel=element('div','preview-panel');
- mainPanel.append(element('strong','','VISUEL PRINCIPAL'));
- const mainImage=element('div','preview-image');mainPanel.append(mainImage);
- const mainCaption=element('small');mainPanel.append(mainCaption);
- const altPanel=element('div','preview-panel');
- altPanel.append(element('strong','','VISUEL ALTERNATIF'));
- const altImage=element('div','preview-image');altPanel.append(altImage);
- const altCaption=element('small');altPanel.append(altCaption);
- previews.append(mainPanel,altPanel);box.append(previews);
- const hint=element('p','editor-hint',card.refs.length===0?
-   'Aucun rendu stylisé disponible pour ce groupe. La carte ne peut pas être validée. Consulte les photographies sources plus bas.' :
-   'Les images affichées sont les illustrations stylisées utilisées dans le classeur. Pour l’alternative, choisis un autre rendu existant ou une version Shiny à créer (non générée pour le moment).');
- box.append(hint);
- const actions=element('div','editor-actions');
- const validateButton=element('button','validate-card','Valider cette carte');validateButton.type='button';
- const excludeButton=element('button','exclude-card','Écarter cette carte');excludeButton.type='button';
- const message=element('span','editor-message');message.setAttribute('role','status');message.setAttribute('aria-live','polite');
- actions.append(validateButton,excludeButton,message);box.append(actions);
- const prevDecision=read('tcg_tri_'+card.id);
- if(prevDecision&&prevDecision!=='À examiner'){
-   box.append(element('small','legacy-info','Ancienne décision conservée : '+prevDecision));
- }
- review.replaceWith(box);
- Object.assign(card,{box,nameInput,statusNode,mainSelect,altSelect,mainPanel,mainImage,mainCaption,altPanel,altImage,altCaption,validateButton,excludeButton,message});
- nameInput.addEventListener('input',()=>{s.name=nameInput.value;changed(card)});
- mainSelect.addEventListener('change',()=>{s.primary=mainSelect.value;if(s.alternative===s.primary)s.alternative='';changed(card)});
- altSelect.addEventListener('change',()=>{s.alternative=altSelect.value;changed(card)});
- validateButton.addEventListener('click',()=>{
-  if(!s.name.trim()){message.textContent='Indique d’abord le nom de la carte.';nameInput.focus();return}
-  if(!s.primary){message.textContent='Choisis le visuel principal.';mainSelect.focus();return}
-  if(!s.alternative){message.textContent='Choisis une autre illustration stylisée ou une version Shiny à créer.';altSelect.focus();return}
-  if(s.alternative===s.primary){message.textContent='Les deux illustrations doivent être différentes (ou choisis le Shiny).';altSelect.focus();return}
+ const s=card.state;
+ const box=el('div','card-editor');
+ const top=el('div','editor-top');
+ const name=el('input','card-name');name.type='text';name.maxLength=90;
+ name.placeholder='Nom définitif de la carte';name.autocomplete='off';
+ name.setAttribute('aria-label','Nom de '+card.id);
+ label(top,'Nom de la carte',name);
+ const status=el('span','card-status');top.append(status);box.append(top);
+ const mainSection=el('div','single-main');
+ const mainPick=el('select','pick-main');
+ mainPick.setAttribute('aria-label','Illustration principale pour '+card.id);
+ if(!card.refs.length)mainPick.append(opt('','Aucune illustration stylisée disponible'));
+ for(const a of card.refs)mainPick.append(opt(a.ref,a.ref+' · origine '+a.sourceRef));
+ label(mainSection,'1. Illustration principale (obligatoire)',mainPick);
+ const mainPanel=el('div','preview-panel main-preview');
+ mainPanel.append(el('strong','','VISUEL PRINCIPAL'));
+ const mainFrame=el('div','preview-image');mainPanel.append(mainFrame);
+ const mainCaption=el('small');mainPanel.append(mainCaption);
+ mainSection.append(mainPanel);box.append(mainSection);
+ const altSection=el('section','alternative-section');
+ altSection.append(el('h3','','2. Variantes de la carte (facultatives)'));
+ altSection.append(el('p','editor-hint','Sélectionne zéro, une ou plusieurs illustrations alternatives dans la galerie au-dessus en cliquant sur « Ajouter variante ». Une carte sans variante est parfaitement valide.'));
+ const variantToolbar=el('div','variant-toolbar');
+ const variantCount=el('strong','variant-count');
+ const removeAll=el('button','clear-variants','Retirer toutes les variantes');removeAll.type='button';
+ const shinyLine=el('label','shiny-toggle');
+ const shinyCheckbox=el('input');shinyCheckbox.type='checkbox';
+ shinyCheckbox.setAttribute('aria-label','Prévoir une variante Shiny à créer pour '+card.id);
+ shinyLine.append(shinyCheckbox,el('span','','Prévoir aussi une version Shiny à créer (facultatif)'));
+ variantToolbar.append(variantCount,removeAll,shinyLine);
+ altSection.append(variantToolbar);
+ const variantPreviews=el('div','variants-previews');altSection.append(variantPreviews);
+ box.append(altSection);
+ const actions=el('div','editor-actions');
+ const validate=el('button','validate-card','Valider cette carte');validate.type='button';
+ const exclude=el('button','exclude-card','Écarter cette carte');exclude.type='button';
+ const message=el('span','editor-message');message.setAttribute('role','status');message.setAttribute('aria-live','polite');
+ actions.append(validate,exclude,message);box.append(actions);
+ const oldDecision=get('tcg_tri_'+card.id);
+ if(oldDecision&&oldDecision!=='À examiner')box.append(el('small','legacy-info','Ancienne décision conservée : '+oldDecision));
+ card.group.querySelector('.review').replaceWith(box);
+ Object.assign(card,{
+  box,nameInput:name,statusNode:status,mainSelect:mainPick,mainImage:mainFrame,mainCaption,
+  shinyCheckbox,alternativesPreview:variantPreviews,variantsCount:variantCount,
+  removeAllButton:removeAll,validateButton:validate,excludeButton:exclude,message
+ });
+ name.addEventListener('input',()=>{s.name=name.value;markChanged(card)});
+ mainPick.addEventListener('change',()=>{
+  const last=s.primary;
+  s.primary=mainPick.value;
+  s.alternatives=s.alternatives.filter(v=>v!==s.primary);
+  // Previous primary is not automatically turned into an alternative.
+  if(last!==s.primary)markChanged(card);
+ });
+ shinyCheckbox.addEventListener('change',()=>{s.shiny=shinyCheckbox.checked;markChanged(card)});
+ removeAll.addEventListener('click',()=>{s.alternatives=[];s.shiny=false;markChanged(card)});
+ validate.addEventListener('click',()=>{
+  if(!s.name.trim()){message.textContent='Donne d’abord un nom à la carte.';name.focus();return}
+  if(!s.primary){message.textContent='Choisis d’abord une illustration principale.';mainPick.focus();return}
+  // Zéro variante est autorisé. Seule la principale et le nom sont requis.
   s.name=s.name.trim();s.status='Validée';save(card);render(card);update();
-  message.textContent='Carte validée et sauvegardée. Exporte le CSV/JSON pour me transmettre tes choix.';
+  message.textContent='Carte validée avec '+counts(card).toLocaleLowerCase('fr')+'. Pense à exporter le CSV ou JSON.';
  });
- excludeButton.addEventListener('click',()=>{
+ exclude.addEventListener('click',()=>{
   s.status=s.status==='Écartée'?'À examiner':'Écartée';
-  save(card);render(card);update();message.textContent=s.status==='Écartée'?'Carte écartée du futur set (aucune image supprimée).':'Carte réintégrée au tri.';
+  save(card);render(card);update();
+  message.textContent=s.status==='Écartée'?'Carte écartée du futur set. Aucun fichier supprimé.':'Carte réintégrée au tri.';
  });
- for(const photo of card.refs){
-  const actions=element('div','photo-actions');
-  const main=element('button','choose-main','Principale');main.type='button';main.title='Choisir '+photo.ref+' comme principale';
-  const alt=element('button','choose-alt','Alternative');alt.type='button';alt.title='Choisir '+photo.ref+' comme alternative';
-  main.addEventListener('click',()=>{s.primary=photo.ref;if(s.alternative===photo.ref)s.alternative='';changed(card)});
-  alt.addEventListener('click',()=>{if(photo.ref===s.primary){message.textContent='Ce rendu est déjà principal : choisis « Version Shiny à créer ».';return}s.alternative=photo.ref;changed(card)});
-  actions.append(main,alt);photo.node.append(actions);
+ for(const art of card.refs){
+  const buttons=el('div','photo-actions');
+  const primary=el('button','choose-main','Principale');primary.type='button';
+  primary.setAttribute('aria-label','Définir '+art.ref+' comme visuel principal');
+  const toggle=el('button','choose-alt','Ajouter variante');toggle.type='button';
+  toggle.setAttribute('aria-label','Ajouter ou retirer '+art.ref+' des variantes');
+  primary.addEventListener('click',()=>{
+    if(s.primary===art.ref)return;
+    s.primary=art.ref;
+    s.alternatives=s.alternatives.filter(v=>v!==art.ref);
+    markChanged(card);
+  });
+  toggle.addEventListener('click',()=>{
+    if(s.primary===art.ref)return;
+    s.alternatives=s.alternatives.includes(art.ref)
+      ?s.alternatives.filter(v=>v!==art.ref)
+      :[...s.alternatives,art.ref];
+    markChanged(card);
+  });
+  buttons.append(primary,toggle);art.node.append(buttons);
  }
  render(card);
 }
 for(const group of groups){
- const refs=getRefs(group);
- const originalName=group.querySelector('h2').textContent.split(' · ').slice(1).join(' · ');
- const card={id:group.id,group,refs,originalName,state:persisted(group,refs)};
+ const refs=refsFrom(group);
+ const name=group.querySelector('h2').textContent.split(' · ').slice(1).join(' · ');
+ const card={id:group.id,group,refs,originalName:name,state:loadState(group,refs)};
  cards.set(card.id,card);build(card);
 }
-const moreFilters=[
- ['validated','Cartes validées'],
- ['pending','Cartes à examiner'],
- ['excluded','Cartes écartées']
-];
-moreFilters.forEach(([v,t])=>filter.append(option(v,t)));
-const summary=element('span','decision-stats');summary.id='card-summary';tools.append(summary);
-const exportJson=element('button','export-json','Exporter sauvegarde (.json)');exportJson.type='button';
-const importLabel=element('label','import-label','Importer une sauvegarde JSON');
-const importFile=element('input');importFile.type='file';importFile.accept='.json,application/json';importFile.setAttribute('aria-label','Importer une sauvegarde de cartes');
+[
+ ['validated','Cartes validées'],['pending','Cartes à examiner'],['excluded','Cartes écartées'],
+ ['no-variants','Sans variantes'],['with-variants','Avec variantes']
+].forEach(([value,label])=>filter.append(opt(value,label)));
+const summary=el('span','decision-stats');summary.id='card-summary';tools.append(summary);
+const exportJson=el('button','export-json','Exporter sauvegarde (.json)');exportJson.type='button';
+const importLabel=el('label','import-label','Importer sauvegarde JSON');
+const importFile=el('input');importFile.type='file';importFile.accept='.json,application/json';
+importFile.setAttribute('aria-label','Importer une sauvegarde des choix TCG Deseur');
 importLabel.append(importFile);tools.insertBefore(exportJson,shown);tools.insertBefore(importLabel,shown);
 function update(){
  const query=search.value.toLocaleLowerCase('fr').trim();
@@ -198,72 +268,90 @@ function update(){
   const s=card.state;
   if(s.status==='Validée')validated++;
   if(s.status==='Écartée')excluded++;
-  const matchText=(card.group.dataset.search+' '+s.name).toLocaleLowerCase('fr').includes(query);
+  const hasVariants=s.alternatives.length>0||s.shiny;
   const f=filter.value;
-  const matchFilter=f==='all'||f===card.group.dataset.type||(f==='urgent'&&card.group.dataset.status==='Haute priorité')||(f==='validated'&&s.status==='Validée')||(f==='pending'&&s.status==='À examiner')||(f==='excluded'&&s.status==='Écartée');
-  const ok=matchText&&matchFilter;card.group.classList.toggle('hidden',!ok);if(ok)visible++;
+  const matchText=(card.group.dataset.search+' '+s.name).toLocaleLowerCase('fr').includes(query);
+  const matchFilter=f==='all'||f===card.group.dataset.type
+   ||(f==='urgent'&&card.group.dataset.status==='Haute priorité')
+   ||(f==='validated'&&s.status==='Validée')
+   ||(f==='pending'&&s.status==='À examiner')
+   ||(f==='excluded'&&s.status==='Écartée')
+   ||(f==='no-variants'&&!hasVariants)
+   ||(f==='with-variants'&&hasVariants);
+  const ok=matchText&&matchFilter;
+  card.group.classList.toggle('hidden',!ok);if(ok)visible++;
  }
  shown.textContent=visible+' groupe(s) affiché(s)';
  summary.textContent=validated+' validée(s) · '+(cards.size-validated-excluded)+' à examiner · '+excluded+' écartée(s)';
 }
-search.addEventListener('input',update);filter.addEventListener('change',update);
+search.addEventListener('input',update);
+filter.addEventListener('change',update);
 function rows(){
- return [...cards.values()].map(c=>{
-  const s=c.state;
-  const main=imageOf(c,s.primary);
-  const alt=s.alternative===SHINY?main:imageOf(c,s.alternative);
+ return [...cards.values()].map(card=>{
+  const s=card.state,main=artFor(card,s.primary);
+  const variants=s.alternatives.map(ref=>artFor(card,ref)).filter(Boolean);
   return {
-   reference_groupe:c.id,nom_carte:s.name,nom_provisoire:c.originalName,statut:s.status,
-   id_illustration_principale:s.primary,reference_photo_source_principale:main?.sourceRef||'',fichier_illustration_principale:main?.src||'',
-   type_visuel_alternatif:s.alternative===SHINY?'shiny_a_creer':s.alternative?'autre_illustration_stylisee':'non_defini',
-   id_illustration_alternative:s.alternative===SHINY?'':s.alternative,
-   reference_photo_source_alternative:alt?.sourceRef||'',fichier_illustration_alternative:s.alternative===SHINY?'':alt?.src||'',
-   fichier_source_shiny_a_creer:s.alternative===SHINY?main?.src||'':'',
-   nombre_illustrations_stylisees:c.refs.length,ids_illustrations_du_groupe:c.refs.map(r=>r.ref).join(', '),
-   decision_ancien_tri:read('tcg_tri_'+c.id)||''
+   reference_groupe:card.id,nom_carte:s.name,nom_provisoire:card.originalName,statut:s.status,
+   id_illustration_principale:s.primary,reference_photo_source_principale:main?.sourceRef||'',
+   fichier_illustration_principale:main?.src||'',
+   nombre_variantes_existantes:variants.length,
+   ids_illustrations_alternatives:variants.map(v=>v.ref).join(' | '),
+   references_photos_sources_alternatives:variants.map(v=>v.sourceRef).join(' | '),
+   fichiers_illustrations_alternatives:variants.map(v=>v.src).join(' | '),
+   shiny_a_creer:s.shiny?'oui':'non',
+   fichier_source_shiny_a_creer:s.shiny?main?.src||'':'',
+   nombre_total_variantes:variants.length+(s.shiny?1:0),
+   nombre_illustrations_stylisees_du_groupe:card.refs.length,
+   ids_illustrations_du_groupe:card.refs.map(r=>r.ref).join(' | '),
+   decision_ancien_tri:get('tcg_tri_'+card.id)||''
   };
  });
 }
-function download(name,content,type){
- const url=URL.createObjectURL(new Blob([content],{type}));
- const a=element('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();
+function download(filename,text,type){
+ const url=URL.createObjectURL(new Blob([text],{type}));
+ const anchor=el('a');anchor.href=url;anchor.download=filename;
+ document.body.append(anchor);anchor.click();anchor.remove();
  window.setTimeout(()=>URL.revokeObjectURL(url),3000);
 }
-function safeCsv(v){
- let s=String(v??'').replaceAll('\r',' ').replaceAll('\n',' ');
- // Excel/LibreOffice injection guard for untrusted card names
- if(/^\s*[=+\-@]/.test(s))s="'"+s;
- return '"'+s.replaceAll('"','""')+'"';
+function safeCsv(value){
+ let val=String(value??'').replaceAll('\r',' ').replaceAll('\n',' ');
+ if(/^\s*[=+\-@]/.test(val))val="'"+val;
+ return '"'+val.replaceAll('"','""')+'"';
 }
 exportButton.textContent='Exporter les cartes (.csv)';
 exportButton.addEventListener('click',()=>{
- const data=rows(),headers=Object.keys(data[0]);
- download('TCG_Deseur_cartes_noms_visuels.csv','\ufeff'+[headers.map(safeCsv).join(';'),...data.map(row=>headers.map(h=>safeCsv(row[h])).join(';'))].join('\r\n'),'text/csv;charset=utf-8');
+ const data=rows(),columns=Object.keys(data[0]||{});
+ download('TCG_Deseur_cartes_noms_visuels.csv','\ufeff'+[
+  columns.map(safeCsv).join(';'),
+  ...data.map(row=>columns.map(col=>safeCsv(row[col])).join(';'))
+ ].join('\r\n'),'text/csv;charset=utf-8');
 });
 exportJson.addEventListener('click',()=>{
- const entries={};for(const card of cards.values())entries[card.id]={...card.state};
- download('TCG_Deseur_sauvegarde_tri.json',JSON.stringify({schema:'tcg-deseur-cards-v2',savedAt:new Date().toISOString(),cards:entries},null,2),'application/json;charset=utf-8');
+ const entries={};
+ for(const card of cards.values())entries[card.id]={...card.state,alternatives:[...card.state.alternatives]};
+ download('TCG_Deseur_sauvegarde_tri.json',JSON.stringify({
+  schema:SCHEMA,savedAt:new Date().toISOString(),cards:entries
+ },null,2),'application/json;charset=utf-8');
 });
 importFile.addEventListener('change',async()=>{
- const file=importFile.files&&importFile.files[0];if(!file)return;
+ const file=importFile.files?.[0];if(!file)return;
  try{
-  if(file.size>2_000_000)throw new Error('Fichier trop volumineux');
+  if(file.size>2_000_000)throw Error('Fichier trop volumineux.');
   const data=JSON.parse(await file.text());
-  if(data.schema!=='tcg-deseur-cards-v2'||!data.cards||typeof data.cards!=='object')throw new Error('Ce fichier ne correspond pas à une sauvegarde TCG Deseur.');
-  if(!window.confirm('Importer cette sauvegarde ? Elle remplacera les noms et les choix actuellement enregistrés dans ce navigateur.'))return;
+  if(![SCHEMA,OLD_SCHEMA].includes(data.schema)||!data.cards||typeof data.cards!=='object')
+   throw Error('Ce fichier ne correspond pas à une sauvegarde TCG Deseur.');
+  if(!window.confirm('Importer cette sauvegarde ? Les choix actuels du navigateur seront remplacés.'))return;
   for(const card of cards.values()){
-   const incoming=data.cards[card.id];if(!incoming||typeof incoming!=='object')continue;
-   const name=typeof incoming.name==='string'?incoming.name.slice(0,90):'';
-   const primary=matchArt(incoming.primary,card.refs)||card.refs[0]?.ref||'';
-   const candidate=matchArt(incoming.alternative,card.refs);
-   const alternate=(incoming.alternative===SHINY&&primary)?SHINY:(candidate&&candidate!==primary?candidate:'');
-   let status=validStates.includes(incoming.status)?incoming.status:'À examiner';
-   if(status==='Validée'&&(!name.trim()||!primary||!alternate||incoming.primary!==primary))status='À examiner';
-   Object.assign(card.state,{name,primary,alternative:alternate,status});
+   const incoming=data.cards[card.id];
+   if(!incoming||typeof incoming!=='object')continue;
+   const normalized=normalizeState(incoming,card.refs);
+   // La validation est conservée pour une sauvegarde récente si la source n'a pas été modifiée.
+   Object.assign(card.state,normalized);
    save(card);render(card);
   }
-  update();window.alert('Sauvegarde importée.');
- }catch(err){window.alert('Import impossible : '+err.message)}finally{importFile.value=''}
+  update();window.alert('Sauvegarde importée. Les variantes multiples et les cartes sans variante sont conservées.');
+ }catch(error){window.alert('Import impossible : '+error.message)}
+ finally{importFile.value=''}
 });
 update();
 })();
