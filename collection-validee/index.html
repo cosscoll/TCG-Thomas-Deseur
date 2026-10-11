@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#110e1b">
+<title>Collection validée — TCG Deseur</title>
+<meta name="description" content="Découvre les cartes validées de TCG Deseur : noms officiels, illustrations principales et variantes illustrées.">
+<link rel="stylesheet" href="./style.css"><script type="module" src="./app.js"></script>
+</head><body>
+<a class="skip" href="#gallery">Aller aux cartes</a>
+<header class="site-header">
+ <a class="brand" href="../" aria-label="Accueil TCG Deseur"><span class="logo">TCG</span><strong>DESEUR</strong></a>
+ <nav aria-label="Navigation"><a href="../">Accueil</a><a href="../collection-161/">Ancien classeur</a><a href="../tri-177/">Atelier de tri</a><a href="https://budget-illimite-tcg.floot.app/" rel="noopener noreferrer">Jouer ↗</a></nav>
+</header>
+<main>
+ <section class="intro">
+  <div class="intro-copy"><span class="eyebrow">SÉLECTION OFFICIELLE · ÉDITION ORIGINE</span>
+   <h1>Des personnages.<br><em>Une collection.</em></h1>
+   <p>Retrouve les noms, illustrations principales et variantes retenus à l'issue du tri. Les variantes sont des illustrations du même personnage, pas des personnages supplémentaires.</p>
+   <p class="notice">Catalogue de référence des visuels approuvés. <strong>Les tirages, boosters et inventaires du jeu Floot ne sont pas encore synchronisés avec cette sélection.</strong></p>
+  </div>
+  <div class="hero-card" aria-hidden="true"><span>ÉDITION ORIGINE</span><b>TCG<br>DESEUR</b><small>COLLECTION</small></div>
+ </section>
+ <section class="metrics" aria-label="Bilan du tri">
+  <div><strong id="total">—</strong><span>cartes retenues</span></div>
+  <div><strong id="variants">—</strong><span>variantes illustrées</span></div>
+  <div><strong id="excluded">—</strong><span>groupes écartés</span></div>
+ </section>
+ <section id="gallery" class="gallery" aria-labelledby="gallery-title">
+  <div class="section-head"><div><span class="eyebrow">LE CLASSEUR</span><h2 id="gallery-title">Les cartes retenues</h2></div><p id="count" role="status" aria-live="polite">Chargement des cartes…</p></div>
+  <div class="controls"><label>Rechercher une carte<input id="search" type="search" placeholder="Nom, référence…" autocomplete="off"></label>
+   <label>Filtrer les cartes<select id="filter"><option value="all">Toutes les cartes</option><option value="variants">Avec variantes</option><option value="none">Sans variante</option><option value="multi">Plusieurs variantes</option></select></label></div>
+  <p id="error" class="error" hidden role="alert"></p>
+  <div id="cards" class="cards"></div>
+  <p id="empty" hidden>Aucune carte ne correspond à cette recherche.</p>
+ </section>
+</main>
+<footer>TCG Deseur · Visuels issus des illustrations de la collection, sans création automatique · <a href="../tri-177/">Modifier le tri</a>.</footer>
+</body></html>
