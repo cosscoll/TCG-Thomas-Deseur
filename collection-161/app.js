@@ -57,11 +57,12 @@ function render(){
     (progress.prerequisitesMissing>1?"s":"")+".";
   $("preview-secret").disabled=!ready;
   const search=$("search").value.trim().toLocaleLowerCase("fr");
-  const rarity=$("rarity").value,ownedFilter=$("ownership").value;
+  const rarity=$("rarity").value,ownedFilter=$("ownership").value,sourceFilter=$("origin").value;
   const inventory=scenarios[selected]();
   const cards=PUBLIC_CARDS_160.filter(card=>{
     const owned=(inventory[card.id]??0)>0;
-    return (rarity==="all"||card.rarity===rarity)
+    return (sourceFilter==="all"||PHOTO_ORIGINS_177[card.reference]?.series===sourceFilter)
+      && (rarity==="all"||card.rarity===rarity)
       && (ownedFilter==="all"||(ownedFilter==="owned"&&owned)||(ownedFilter==="missing"&&!owned))
       && (card.reference+" "+cardName(card)+" "+(PHOTO_ORIGINS_177[card.reference]?.origin??"")+" "+(PHOTO_ORIGINS_177[card.reference]?.groupId??"")).toLocaleLowerCase("fr").includes(search);
   });
@@ -147,7 +148,7 @@ $("draw-demo").addEventListener("click",()=>{
   setState("demo");
 });
 for(const btn of document.querySelectorAll("[data-scenario]"))btn.addEventListener("click",()=>setState(btn.dataset.scenario));
-for(const id of ["search","rarity","ownership"]){
+for(const id of ["search","origin","rarity","ownership"]){
   $(id).addEventListener(id==="search"?"input":"change",render);
 }
 $("preview-secret").addEventListener("click",()=>{
