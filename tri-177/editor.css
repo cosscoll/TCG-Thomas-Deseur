@@ -63,3 +63,7 @@
 .group[data-artwork-count="0"] .card-editor{border-color:#916d55}
 .group[data-artwork-count="0"] .card-status{border-color:#d6a281;color:#ffd7ae}
 @media(max-width:580px){.artwork-photo img{height:230px}.originals-details{padding:8px}}
+
+/* Never flash the source photographs as selectable artwork before modules load. */
+#gallery .group>.photos:not(.artwork-photos){display:none}
+#gallery .group>.artwork-photos{display:grid}
