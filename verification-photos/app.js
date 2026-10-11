@@ -122,7 +122,7 @@ function matches(pair,search,series,group,unused=false){
  const ref=unused?pair:pair.sourceReference;
  const groupId=unused?PHOTO_ORIGINS_177[ref].groupId:pair.groupId;
  const query=unused?ref+" "+groupId:
-  [pair.id,pair.illustration,pair.previousReference,pair.sourceReference,pair.groupId].join(" ");
+  [pair.id,pair.illustration,pair.sourceReference,pair.groupId].join(" ");
  return (series==="all"||series===seriesOf(ref))
   && (group==="all"||group===groupId)
   && query.toLowerCase().includes(search);
