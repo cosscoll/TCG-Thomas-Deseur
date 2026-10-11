@@ -24,7 +24,7 @@ test('Picasso conserve exactement son visuel principal et ses deux variantes',as
  await expect(card.locator('.variant-item')).toHaveCount(2);
  await expect(card.locator('.variant-item').nth(0)).toContainText('td_2_042');
  await expect(card.locator('.variant-item').nth(1)).toContainText('td_3_042');
- const main=card.locator('> .image-frame img');
+ const main=card.locator('.image-frame img').first();
  await expect(main).toHaveAttribute('src',/td-1-002\.webp$/);
  await expect.poll(async()=>await main.evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
 });
