@@ -1,9 +1,9 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import {CARDS_161} from '../data/cards-161.js';
+import {PUBLIC_CARDS_160} from '../data/public-cards-160.js';
 
 test('les 160 illustrations visibles apparaissent automatiquement après publication du pack',async({page})=>{
-  const files=CARDS_161.filter(c=>c.obtainableInDailyBooster).map(c=>c.artPath.split('/').at(-1));
+  const files=PUBLIC_CARDS_160.map(c=>c.artPath.split('/').at(-1));
   await page.route('**/assets/available.json',route=>route.fulfill({
     status:200,contentType:'application/json',
     body:JSON.stringify({version:'160-public',count:160,images:files}),
