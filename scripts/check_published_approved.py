@@ -47,9 +47,24 @@ def verify_once():
     assert picasso["main"]["artworkId"] == "td_1_002"
     assert [art["artworkId"] for art in picasso["variants"]] == ["td_2_042", "td_3_042"]
 
+    # Invitation aux testeurs : la page doit pointer vers le VRAI jeu
+    # et ne doit pas proposer un formulaire recueillant des identifiants.
+    invitation = fetch("beta/").decode("utf-8")
+    assert "Test entre amis" in invitation
+    assert "https://budget-illimite-tcg.floot.app/login" in invitation
+    assert "https://budget-illimite-tcg.floot.app/" in invitation
+    assert '<meta name="robots" content="noindex,nofollow">' in invitation
+    assert 'name="password"' not in invitation and 'type="email"' not in invitation
+    assert 'id="feedback-form"' in invitation
+    js = fetch("beta/app.js").decode("utf-8")
+    assert "FormData(form)" in js and "navigator.clipboard" in js
+    assert "fetch(" not in js and "XMLHttpRequest" not in js
+    css = fetch("beta/style.css")
+    assert len(css) > 1000
+
     original = fetch("collection-161/assets/cards/td-1-002.webp")
     assert original[:4] == b"RIFF" and original[8:12] == b"WEBP", "Visuel stylisé inaccessible."
-    return "Site, galerie, manifeste 67/38/3 et illustration publique accessibles."
+    return "Accueil, galerie, manifeste 67/38/3, illustration et page bêta accessibles."
 
 
 def main():
