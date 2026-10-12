@@ -2,6 +2,8 @@
 
 **Catalogue créateur confirmé : 67 cartes distinctes et 38 illustrations alternatives, avec 3 groupes écartés.** Picasso Deseur est validé avec un rendu principal et deux alternatives.
 
+**Raretés et probabilités de la nouvelle édition (validées le 12/10/2026) :** 67 cartes réparties en 33 Communes, 21 Rares, 8 Épiques, 4 Légendaires et 1 Hors-série. Boosters classiques : cartes 1–3 = 100 % Communes ; carte 4 = 90 % Rare / 10 % Alternative ; carte 5 = 80 % Rare / 17 % Épique / 2 % Légendaire / 1 % Hors-série. **Ces règles sont en préparation sur GitHub, pas encore activées dans le backend Floot.** Le mécanisme précis de sélection des alternatives reste à définir. [Règles et tests](docs/REGLES_BOOSTER_67_2026-10-12.md).
+
 **Voir les fiches approuvées :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/  
 **Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
 **Consignes de développement et priorités :** [Feuille de route opérationnelle](docs/PLAN_AUTONOME_SUITE_2026-10-11.md)
