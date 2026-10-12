@@ -42,6 +42,21 @@ test('filtrage des variantes, puis réinitialisation de la recherche',async({pag
  await expect(page.locator('article.card')).toHaveCount(67);
 });
 
+
+test('provenance documentaire de chaque carte et filtre par galerie',async({page})=>{
+ await expect(page.locator('article.card .photo-origin')).toHaveCount(67);
+ await expect(page.locator('article.card .origin-link')).toHaveCount(67);
+ await expect(page.locator('article.card .origin-link').first()).toHaveAttribute('href',/^https:\/\/tiermaker\.com\//);
+ await page.locator('#origin').selectOption('images/serie-100-couches');
+ await expect(page.locator('article.card')).toHaveCount(15);
+ await page.locator('#origin').selectOption('images/personnages-thomas');
+ await expect(page.locator('article.card')).toHaveCount(8);
+ await page.locator('#origin').selectOption('images/Braderie-de-Lille-2026');
+ await expect(page.locator('article.card')).toHaveCount(1);
+ await page.locator('#origin').selectOption('all');
+ await expect(page.locator('article.card')).toHaveCount(67);
+});
+
 test('le catalogue reste dans le viewport, y compris sur mobile',async({page})=>{
  for(const width of [320,393,820]){
   await page.setViewportSize({width,height:840});
