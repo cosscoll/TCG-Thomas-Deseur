@@ -47,3 +47,21 @@ test('le formulaire d’inscription reste utilisable sur mobile et tablette, san
  }
  expect(writes).toEqual([]);
 });
+
+test('le lien d’invitation ouvre directement le formulaire d’inscription',async({page})=>{
+ const networkWrites=[];
+ page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))networkWrites.push(r.url());});
+ const response=await page.goto('/login?mode=register',{waitUntil:'domcontentloaded'});
+ expect(response?.status()).toBe(200);
+ await expect(page.getByRole('heading',{name:'Créer mon compte'})).toBeVisible();
+ await expect(page.locator('#register-display-name')).toBeVisible();
+ await expect(page.getByRole('button',{name:'Créer mon compte'})).toBeVisible();
+ expect(networkWrites).toEqual([]);
+});
+test('les surfaces invitées ne révèlent aucun contenu de récompense non annoncé',async({page})=>{
+ for(const path of ['/', '/login?mode=register']){
+  await page.goto(path);
+  const visible=await page.locator('body').innerText();
+  expect(visible).not.toMatch(/carte secrète|chevelu|récompense secrète/i);
+ }
+});
