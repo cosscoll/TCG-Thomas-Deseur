@@ -79,6 +79,7 @@ jobs:
           node scripts/build-approved-catalogue.mjs
           git diff --exit-code -- data/catalogue-valide-67.json
           node scripts/check-migration-compat.mjs
+          node scripts/validate-rarity-decisions.mjs data/raretes-validees-67.json --require-complete
           node scripts/stage-approved-edition.mjs
       - name: Exécuter tous les tests métier Node
         run: npm test
