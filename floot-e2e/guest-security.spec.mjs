@@ -25,6 +25,7 @@ function privateFields(value, path = "") {
 const cases = [
   { name: "classeur personnel", method: "GET", route: "/_api/collection" },
   { name: "ouverture du booster", method: "POST", route: "/_api/booster" },
+  { name: "booster de collection", method: "POST", route: "/_api/completion" },
   { name: "modification du profil", method: "POST", route: "/_api/profile" },
   { name: "validation de session", method: "GET", route: "/_api/auth/session" },
 ];
