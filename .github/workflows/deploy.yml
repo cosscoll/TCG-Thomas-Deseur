@@ -25,6 +25,8 @@ on:
       - "scripts/build-approved-catalogue.mjs"
       - "scripts/check_published_approved.py"
       - "scripts/check-migration-compat.mjs"
+      - "scripts/stage-approved-edition.mjs"
+      - "scripts/validate-rarity-decisions.mjs"
       - "package.json"
       - ".github/workflows/deploy.yml"
   pull_request:
@@ -50,6 +52,8 @@ on:
       - "scripts/build-approved-catalogue.mjs"
       - "scripts/check_published_approved.py"
       - "scripts/check-migration-compat.mjs"
+      - "scripts/stage-approved-edition.mjs"
+      - "scripts/validate-rarity-decisions.mjs"
       - "package.json"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
@@ -75,6 +79,7 @@ jobs:
           node scripts/build-approved-catalogue.mjs
           git diff --exit-code -- data/catalogue-valide-67.json
           node scripts/check-migration-compat.mjs
+          node scripts/stage-approved-edition.mjs
       - name: Exécuter tous les tests métier Node
         run: npm test
 
