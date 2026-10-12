@@ -30,7 +30,7 @@ Les passages ci-dessous sont **historiques** et décrivent notamment les version
 **Jeu en ligne :** https://budget-illimite-tcg.floot.app  
 **Aperçu des cartes visibles :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/
 
-Le classeur comporte **160 cartes à découvrir** (159 standards et une Hors-série). Une fois le classeur complet, le joueur débloque **un booster spécial de cinq cartes**, dont plusieurs cartes aléatoires et une surprise révélée uniquement au moment de l'ouverture. Aucun achat requis.
+Le classeur comporte **160 cartes à découvrir** (159 standards et une Hors-série). Une fois le classeur complet, le joueur débloque **un booster spécial de cinq cartes**, dont le contenu est à découvrir lors de l'ouverture. Aucun achat requis.
 
 La distribution officielle, l'inventaire persistant et le gain unique sont contrôlés par le serveur Floot. Les 49 cartes historiques sont archivées dans les comptes existants. Le dépôt GitHub contient également une démonstration utilisant des données fictives, sans distribution réelle.
 
