@@ -18,6 +18,7 @@ const cases = [
   { method: 'GET', path: '/_api/collection' },
   { method: 'GET', path: '/_api/auth/session' },
   { method: 'POST', path: '/_api/booster' },
+  { method: 'POST', path: '/_api/completion' },
   { method: 'POST', path: '/_api/profile' },
 ];
 const normalized = value => String(value).toLowerCase().replace(/[^a-z0-9]/g,'');
