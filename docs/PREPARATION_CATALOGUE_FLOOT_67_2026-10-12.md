@@ -44,6 +44,14 @@ node --test tests/stage-approved-edition.test.mjs
 
 Le mode par défaut imprime uniquement un bilan, le mode `--json` imprime le schéma complet **sans écrire dans la base**. Les contrôles empêchent les références d'images invalides, l'utilisation multiple d'une illustration, les collisions d'identifiants historiques et la perte silencieuse d'une variante.
 
+## Gestion des doublons validée
+
+Chaque carte classique possédée **deux fois ou plus** doit porter un compteur visible `×2`, `×3`, etc. indiquant le **total d'exemplaires** de cette référence. Les nombres proviennent de l'inventaire sauvegardé sur le serveur pour le compte authentifié, et restent identiques après reconnexion.
+
+Une copie supplémentaire accroît `totalCopies` et `extraCopies`, mais **pas** `uniqueOwned` ; le taux de complétion doit compter les cartes différentes, pas la totalité des copies. `game/collection-quantities-67.js` vérifie ce principe sans distribuer aucune carte, avec tests `tests/collection-quantities-67.test.mjs`.
+
+Cela ne décide pas encore si deux visuels alternatifs doivent avoir leur propre stock : leur statut reste à définir.
+
 ## Sécurité et précautions d'intégration
 
 1. **Ne pas toucher à la base Floot actuellement publiée** avant d'avoir vérifié les boosters et l'inscription réels avec des comptes de test autorisés.
