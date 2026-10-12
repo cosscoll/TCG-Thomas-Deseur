@@ -16,7 +16,7 @@ Ce document reflète les vérifications réellement effectuées sur le dépôt e
 **Publication :** deuxième déploiement de ce lot confirmé réussi par Floot sur https://budget-illimite-tcg.floot.app/ (job `a20a4d5d-a2a9-4cee-b2ed-863d5d5e4e72`).
 
 ## Vérifications sans modification de comptes
-- Le backend contient **161 entrées techniques historiques**, dont **160 cartes autorisées dans les boosters ordinaires** ; chaque carte ordinaire renvoie vers un fichier d'illustration qui existe dans le dépôt GitHub (160/160 correspondances de noms de fichiers).
+- Le backend conserve un catalogue technique provisoire distinct de l'édition approuvée. Toutes les illustrations des boosters ordinaires ont été retrouvées parmi les fichiers du dépôt GitHub.
 - Les clés d'inventaire sont structurées par utilisateur et carte, le système conserve ses historiques : aucun compte joueur ni stock réel modifié durant cette phase.
 - Les règles de sélection des cinq cartes restent contrôlées exclusivement par le serveur.
 - Les vérifications publiques automatiques sur les pages invitées, l'inscription, le mobile et les API anonymes sont exécutées dans `.github/workflows/floot-public-smoke.yml`. La dernière suite doit confirmer la nouvelle bannière « édition de test ». Les premiers contrôles publics du jour ont déjà réussi.
