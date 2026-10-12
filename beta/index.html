@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171122">
+<meta name="description" content="Participe au test de TCG Deseur : compte joueur, booster et collection. Toutes les cartes sont virtuelles et gratuites.">
+<title>Test entre amis — TCG Deseur</title>
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<a class="skip" href="#parcours">Aller au parcours de test</a>
+<header class="topbar">
+  <a class="brand" href="../"><span>TCG</span> DESEUR</a>
+  <nav aria-label="Navigation"><a href="#parcours">Comment jouer</a><a href="#retour">Donner un avis</a><a href="../collection-validee/">Voir les cartes</a></nav>
+</header>
+<main>
+<section class="hero" aria-labelledby="title">
+  <div class="hero-content">
+    <span class="eyebrow">ACCÈS TEST · COLLECTION VIRTUELLE</span>
+    <h1 id="title">Tu veux tester <em>TCG Deseur&nbsp;?</em></h1>
+    <p>Crée ton compte, ouvre un booster de cinq cartes et complète ton classeur. Pas de paiement ni de mécanique de combat.</p>
+    <div class="buttons"><a class="button primary" href="https://budget-illimite-tcg.floot.app/login" rel="noopener noreferrer">Créer un compte ou se connecter <span aria-hidden="true">↗</span></a>
+    <a class="button secondary" href="https://budget-illimite-tcg.floot.app/" rel="noopener noreferrer">Accéder au jeu <span aria-hidden="true">↗</span></a></div>
+    <p class="note"><strong>Version en vérification :</strong> l'inscription et l'ouverture réelle des boosters doivent encore être validées de bout en bout. Si une étape échoue, indique-le dans le compte rendu ci-dessous. Cette page d'accompagnement n'accorde aucun booster.</p>
+  </div>
+  <div class="mock-card" aria-hidden="true"><span>ÉDITION ORIGINE</span><strong>TCG<br>DESEUR</strong><span>TA COLLECTION COMMENCE ICI</span></div>
+</section>
+
+<section id="parcours" class="section">
+ <span class="eyebrow">03 ÉTAPES</span><h2>Comment participer au test</h2>
+ <div class="steps">
+  <article><span class="number">01</span><h3>Crée ton compte</h3><p>Sur le site du jeu, ouvre l'espace de connexion, choisis l'inscription, renseigne ton adresse e-mail, un pseudonyme et un mot de passe personnel. Si tu as déjà un compte, connecte-toi.</p></article>
+  <article><span class="number">02</span><h3>Ouvre un booster</h3><p>Depuis ton espace joueur, essaie d'ouvrir un booster de cinq cartes et de découvrir les cartes reçues. Le rythme normal prévu est d'un booster gratuit toutes les 24 heures par compte.</p></article>
+  <article><span class="number">03</span><h3>Vérifie ton classeur</h3><p>Retrouve les cartes reçues dans ta collection. Actualise la page puis reconnecte-toi : elles devraient toujours être présentes. Note ce qui fonctionne ou non.</p></article>
+ </div>
+ <p class="note">La collection approuvée de 67 personnages et leurs illustrations est visible dans le <a href="../collection-validee/">catalogue de référence</a>. Son intégration au jeu connecté n'est pas encore terminée : les cartes affichées dans le jeu peuvent différer pour le moment.</p>
+</section>
+
+<section id="retour" class="section report">
+ <div class="section-heading"><div><span class="eyebrow">TON AVIS NOUS AIDE</span><h2>Compte rendu de test</h2></div><p>Tu peux signaler un problème sans communiquer tes identifiants.</p></div>
+ <form id="feedback-form" autocomplete="off">
+  <fieldset>
+   <legend>Sur quel appareil as-tu joué ?</legend>
+   <div class="radio-row">
+    <label><input type="radio" name="device" value="Téléphone"> Téléphone</label>
+    <label><input type="radio" name="device" value="Ordinateur"> Ordinateur</label>
+    <label><input type="radio" name="device" value="Tablette"> Tablette</label>
+   </div>
+  </fieldset>
+  <div class="test-grid">
+   <label>Inscription / création de compte
+    <select name="signup"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Connexion à mon compte
+    <select name="login"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Ouverture du premier booster
+    <select name="booster"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Affichage des cinq cartes
+    <select name="reveal"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Cartes enregistrées dans ma collection
+    <select name="collection"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Cartes toujours présentes après reconnexion
+    <select name="persistence"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+  </div>
+  <label class="note-label" for="comments">Un bug, une remarque ou une idée ?</label>
+  <textarea id="comments" name="comments" rows="4" maxlength="1500" placeholder="Décris l'étape bloquée et le message d'erreur, sans données personnelles."></textarea>
+  <p class="privacy">Ne copie jamais de mot de passe, adresse e-mail, cookie, code de connexion ou autre donnée personnelle. Ce formulaire reste sur ton appareil : il n'envoie rien automatiquement.</p>
+  <div class="report-actions"><button type="button" id="prepare">Préparer mon compte rendu</button><button type="button" id="copy" disabled>Copier le compte rendu</button><button type="reset" class="reset">Effacer mes réponses</button></div>
+  <label class="note-label" for="output">Texte à transmettre à la personne qui t'a invité</label>
+  <textarea id="output" readonly rows="8" placeholder="Clique sur « Préparer mon compte rendu »." aria-live="polite"></textarea>
+  <p class="copy-state" id="copy-state" role="status" aria-live="polite"></p>
+ </form>
+</section>
+</main>
+<footer><span>TCG Deseur — version de test sans achat.</span><a href="../">Accueil</a><a href="../collection-validee/">Collection approuvée</a></footer>
+</body></html>
