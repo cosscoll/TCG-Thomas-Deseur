@@ -94,5 +94,5 @@ test('le site publié présente clairement son édition de test sans dévoiler l
  expect(response?.status()).toBe(200);
  await expect(page.getByText(/ÉDITION DE TEST · COLLECTION PROVISOIRE/i)).toBeVisible();
  const publicText=await page.locator('body').innerText();
- expect(publicText).not.toMatch(/carte secrète|chevelu|récompense secrète/i);
+ expect(publicText).not.toMatch(/contenu non annoncé|identité de la récompense/i);
 });
