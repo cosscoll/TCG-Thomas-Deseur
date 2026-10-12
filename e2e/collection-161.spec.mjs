@@ -107,3 +107,9 @@ test('la provenance filtre les cartes par série d’origine',async({page})=>{
   await expect(page.locator('#cards-grid .card')).toHaveCount(1);
   await expect(page.locator('#cards-grid')).toContainText('Braderie de Lille');
 });
+
+test('la démonstration publique ne dévoile pas la composition du booster de collection',async({page})=>{
+ await page.goto('/collection-161/');
+ await expect(page.locator('body')).not.toContainText(/surprise/i);
+ await expect(page.getByText(/booster de collection/i).first()).toBeVisible();
+});
