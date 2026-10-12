@@ -16,7 +16,14 @@ test('un nouvel ami peut trouver l’inscription depuis l’écran de connexion'
  await expect(page.locator('input[type="password"]').first()).toBeVisible();
  // Le mode d'inscription doit demander un pseudonyme ou un nom d'utilisateur,
  // sans imposer un partage préalable de session.
- const pseudonym=page.getByLabel(/pseudo|nom d'utilisateur|nom affiché|display name/i);
- await expect(pseudonym.first()).toBeVisible();
+ const fields=await page.locator('input').evaluateAll(inputs=>inputs.map(i=>({
+  type:i.type,name:i.name,placeholder:i.placeholder,
+  ariaLabel:i.getAttribute('aria-label'),
+  label:i.labels?.[0]?.textContent?.trim().slice(0,70)||null
+ })));
+ console.log('TCG_SIGNUP_FIELDS',JSON.stringify(fields));
+ const pseudonym=page.getByLabel(/pseudo|nom d'utilisateur|nom affiché|display name/i)
+  .or(page.getByPlaceholder(/pseudo|nom d'utilisateur|nom affiché|display name/i));
+ await expect(pseudonym.first(),'Champ de pseudonyme introuvable dans le formulaire d’inscription').toBeVisible();
  expect(networkWrites).toEqual([]);
 });
