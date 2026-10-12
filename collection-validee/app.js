@@ -1,5 +1,29 @@
 import {CARD_PHOTO_PAIRS_160} from '../data/correspondances-photo-illustration.js';
+import {PHOTO_ORIGINS_177} from '../data/photo-origins-177.js';
 const byId=new Map(CARD_PHOTO_PAIRS_160.map(c=>[c.id,c]));
+const originNames=Object.freeze({
+ 'images/100-1000-couches':'Costumes — 100 et 1000 couches',
+ 'images/serie-100-couches':'Série 100 couches',
+ 'images/personnages-thomas':'Personnages Thomas',
+ 'images/Braderie-de-Lille-2026':'Braderie de Lille 2026'
+});
+function getPhoto(ref){
+ const pair=byId.get(ref);
+ return pair?PHOTO_ORIGINS_177[pair.sourceReference]:null;
+}
+function originLink(ref){
+ const pair=byId.get(ref),meta=getPhoto(ref);
+ if(!pair)return null;
+ const wrap=make('div','photo-origin');
+ wrap.append(make('span','photo-ref','Photo source : '+pair.sourceReference));
+ if(meta?.originUrl){
+  const a=make('a','origin-link','Voir la galerie de référence ↗');
+  a.href=meta.originUrl;a.target='_blank';a.rel='noopener noreferrer';
+  a.setAttribute('aria-label','Consulter la galerie documentaire de '+pair.sourceReference);
+  wrap.append(a);
+ }
+ return wrap;
+}
 const $=id=>document.getElementById(id);
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
 const artSrc=id=>{
@@ -26,6 +50,10 @@ function cardView(card){
  caption.append(make('span','variant-badge',variantTotal===0?'Version unique':variantTotal+' variante'+(variantTotal>1?'s':'')));
  const label=make('div','card-label');
  label.append(make('h3','',card.name),make('small','',card.primary+' · Illustration principale'));
+ const meta=getPhoto(card.primary);
+ label.append(make('p','origin-title','Galerie documentaire : '+(originNames[meta?.series]??'Source à vérifier')));
+ const original=originLink(card.primary);
+ if(original)label.append(original);
  box.append(frame,caption,label);
  if(card.alternatives.length){
   const variants=make('div','card-variants');
@@ -34,6 +62,8 @@ function cardView(card){
   for(const [i,ref] of card.alternatives.entries()){
    const small=make('div','variant-item');
    small.append(image(ref,card.name+' — variante '+(i+1),true),make('small','',ref));
+   const photo=byId.get(ref);
+   if(photo)small.append(make('small','photo-ref',photo.sourceReference));
    thumbs.append(small);
   }
   variants.append(thumbs);box.append(variants);
@@ -44,10 +74,13 @@ function cardView(card){
 function render(){
  const search=$('search').value.toLocaleLowerCase('fr').trim();
  const mode=$('filter').value;
+ const origin=$('origin').value;
  const rows=approved.filter(c=>{
   const count=c.alternatives.length+(c.shiny?1:0);
+  const gallery=getPhoto(c.primary)?.series;
   return (mode==='all'||mode==='variants'&&count>0||mode==='none'&&count===0||mode==='multi'&&count>1)
-   && (c.name+' '+c.group+' '+c.primary+' '+c.alternatives.join(' ')).toLocaleLowerCase('fr').includes(search);
+   && (origin==='all'||origin===gallery)
+   && (c.name+' '+c.group+' '+c.primary+' '+c.alternatives.join(' ')+' '+byId.get(c.primary)?.sourceReference).toLocaleLowerCase('fr').includes(search);
  });
  const fragment=document.createDocumentFragment();
  for(const entry of rows)fragment.append(cardView(entry));
@@ -78,6 +111,7 @@ async function initialize(){
   $('excluded').textContent=discarded.length;
   $('search').addEventListener('input',render);
   $('filter').addEventListener('change',render);
+  $('origin').addEventListener('change',render);
   render();
  }catch(e){
   $('count').textContent='Chargement impossible';
