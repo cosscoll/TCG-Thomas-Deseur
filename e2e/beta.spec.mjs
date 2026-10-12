@@ -47,3 +47,44 @@ test('la page de test reste lisible sur téléphone, tablette et ordinateur',asy
   expect(sizes.body,'overflow body '+width).toBeLessThanOrEqual(2);
  }
 });
+
+test('le testeur peut enregistrer localement son rapport et modifier son navigateur sans rapport périmé',async({page})=>{
+ const networkWrites=[];
+ page.on('request',request=>{if(!['GET','HEAD'].includes(request.method()))networkWrites.push(request.url());});
+ await page.getByLabel('Navigateur utilisé').selectOption('Safari');
+ await page.getByLabel('Ouverture du premier booster').selectOption('Échec');
+ await page.getByRole('button',{name:'Préparer mon compte rendu'}).click();
+ await expect(page.locator('#output')).toHaveValue(/Navigateur : Safari/);
+ const downloadPromise=page.waitForEvent('download');
+ await page.getByRole('button',{name:'Enregistrer en .txt'}).click();
+ const download=await downloadPromise;
+ expect(download.suggestedFilename()).toBe('tcg-deseur-retour-de-test.txt');
+ await page.getByLabel('Navigateur utilisé').selectOption('Firefox');
+ await expect(page.locator('#output')).toBeEmpty();
+ await expect(page.locator('#copy')).toBeDisabled();
+ await expect(page.locator('#download')).toBeDisabled();
+ await expect(page.locator('#share')).toBeDisabled();
+ await page.getByRole('button',{name:'Préparer mon compte rendu'}).click();
+ await expect(page.locator('#output')).toHaveValue(/Navigateur : Firefox/);
+ expect(networkWrites).toEqual([]);
+});
+test('le partage du rapport nécessite toujours une action du testeur',async({page})=>{
+ await page.evaluate(()=>{
+  Object.defineProperty(navigator,'share',{configurable:true,value:async function(details){window.__betaShared=details;}});
+ });
+ await page.getByRole('button',{name:'Préparer mon compte rendu'}).click();
+ expect(await page.evaluate(()=>window.__betaShared??null)).toBe(null);
+ await page.getByRole('button',{name:'Partager mon retour'}).click();
+ const shareData=await page.evaluate(()=>window.__betaShared);
+ expect(shareData.title).toContain('TCG Deseur');
+ expect(shareData.text).toContain('RETOUR DE TEST');
+});
+test('masque les informations sensibles courantes dans un commentaire avant téléchargement',async({page})=>{
+ await page.locator('#comments').fill('Contact testeur@example.com URL https://exemple.fr/?access_token=fake123456&code=0000 Authorization: Bearer fakeToken12345');
+ await page.getByRole('button',{name:'Préparer mon compte rendu'}).click();
+ const text=await page.locator('#output').inputValue();
+ expect(text).not.toContain('testeur@example.com');
+ expect(text).not.toContain('fake123456');
+ expect(text).not.toContain('fakeToken12345');
+ expect(text).not.toContain('code=0000');
+});
