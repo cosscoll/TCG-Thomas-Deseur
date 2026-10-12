@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
 
 const ALLOWED=['À définir','Commune','Rare','Épique','Légendaire','Hors-série'];
 export function validateRarityDecisions(submission,catalogue,{requireComplete=false}={}){
@@ -43,4 +44,4 @@ function run(){
   console.log(JSON.stringify(result,null,2));
  }catch(error){console.error('Sauvegarde refusée : '+error.message);process.exitCode=1;}
 }
-if(process.argv[1] && fileURLToPath(import.meta.url)===fileURLToPath(new URL('file://'+process.argv[1].replace(/\\/g,'/'))))run();
+if(process.argv[1] && fileURLToPath(import.meta.url)===resolve(process.argv[1]))run();
