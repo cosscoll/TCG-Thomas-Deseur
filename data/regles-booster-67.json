@@ -1,0 +1,87 @@
+{
+  "schema": "tcg-deseur-booster-probabilities-v1",
+  "source": "creator-choice-2026-10-12",
+  "edition": "approved-67",
+  "appliesTo": "ordinary-booster-only",
+  "cardsPerBooster": 5,
+  "slots": [
+    {
+      "position": 1,
+      "outcomes": [
+        {
+          "kind": "rarity",
+          "rarity": "Commune",
+          "percentage": 100
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "outcomes": [
+        {
+          "kind": "rarity",
+          "rarity": "Commune",
+          "percentage": 100
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "outcomes": [
+        {
+          "kind": "rarity",
+          "rarity": "Commune",
+          "percentage": 100
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "outcomes": [
+        {
+          "kind": "rarity",
+          "rarity": "Rare",
+          "percentage": 90
+        },
+        {
+          "kind": "alternative",
+          "percentage": 10
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "outcomes": [
+        {
+          "kind": "rarity",
+          "rarity": "Rare",
+          "percentage": 80
+        },
+        {
+          "kind": "rarity",
+          "rarity": "Épique",
+          "percentage": 17
+        },
+        {
+          "kind": "rarity",
+          "rarity": "Légendaire",
+          "percentage": 2
+        },
+        {
+          "kind": "rarity",
+          "rarity": "Hors-série",
+          "percentage": 1
+        }
+      ]
+    }
+  ],
+  "alternativePolicy": {
+    "scope": "38 existing alternative artworks attached to the 67 characters",
+    "drawOfSpecificAlternative": "pending",
+    "rarityOfAlternative": "pending",
+    "inventoryTreatment": "pending",
+    "completionTreatment": "pending"
+  },
+  "rewardBooster": "excluded - no change to the collection-completion reward",
+  "deploymentStatus": "STAGING_ONLY_NOT_LIVE"
+}
