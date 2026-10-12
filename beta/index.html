@@ -53,6 +53,9 @@
    <label>Inscription / création de compte
     <select name="signup"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
    </label>
+   <label>Navigateur utilisé
+    <select name="browser"><option value="Non précisé">Non précisé</option><option value="Chrome">Chrome</option><option value="Safari">Safari</option><option value="Firefox">Firefox</option><option value="Edge">Edge</option><option value="Autre">Autre</option></select>
+   </label>
    <label>Connexion à mon compte
     <select name="login"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
    </label>
@@ -72,7 +75,12 @@
   <label class="note-label" for="comments">Un bug, une remarque ou une idée ?</label>
   <textarea id="comments" name="comments" rows="4" maxlength="1500" placeholder="Décris l'étape bloquée et le message d'erreur, sans données personnelles."></textarea>
   <p class="privacy">Ne copie jamais de mot de passe, adresse e-mail, cookie, code de connexion ou autre donnée personnelle. Ce formulaire reste sur ton appareil : il n'envoie rien automatiquement.</p>
-  <div class="report-actions"><button type="button" id="prepare">Préparer mon compte rendu</button><button type="button" id="copy" disabled>Copier le compte rendu</button><button type="reset" class="reset">Effacer mes réponses</button></div>
+  <details class="help" aria-label="Que faire si une étape échoue ?">
+    <summary>Une étape bloque ? Voici quoi vérifier.</summary>
+    <p>Si l'inscription ou la connexion échoue, copie uniquement le texte public du message d'erreur, sans ton adresse e-mail ni ton mot de passe. Si le booster ne s'ouvre pas, vérifie le compte à rebours, puis recharge la page et consulte ton classeur avant de réessayer. Si les cartes sont déjà enregistrées, ne recommence pas l'ouverture.</p>
+    <p>L'envoi de codes « mot de passe oublié » peut être limité pendant cette version de test. Tu peux transmettre ton rapport de problème à la personne qui t'a invité.</p>
+  </details>
+  <div class="report-actions"><button type="button" id="prepare">Préparer mon compte rendu</button><button type="button" id="copy" disabled>Copier le compte rendu</button><button type="button" id="download" disabled>Enregistrer en .txt</button><button type="button" id="share" disabled>Partager mon retour</button><button type="reset" class="reset">Effacer mes réponses</button></div>
   <label class="note-label" for="output">Texte à transmettre à la personne qui t'a invité</label>
   <textarea id="output" readonly rows="8" placeholder="Clique sur « Préparer mon compte rendu »." aria-live="polite"></textarea>
   <p class="copy-state" id="copy-state" role="status" aria-live="polite"></p>
