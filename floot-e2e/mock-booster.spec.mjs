@@ -58,8 +58,8 @@ for(const caseName of ['desktop-chromium','mobile-chromium']){
   test.skip(testInfo.project.name!==caseName);
   const state=await mockAuthenticatedState(page);
   await page.goto('/');
-  await expect(page.getByRole('button',{name:/Ouvrir mon booster/})).toBeEnabled();
-  await page.getByRole('button',{name:/Ouvrir mon booster/}).click();
+  await expect(page.locator('#booster').getByRole('button',{name:/Ouvrir mon booster/})).toBeEnabled();
+  await page.locator('#booster').getByRole('button',{name:/Ouvrir mon booster/}).click();
   await expect(page.getByText('Découverte de ton booster',{exact:true})).toBeVisible();
   await expect(page.getByText(/CARTE 1 SUR 5/)).toBeVisible();
   for(let n=1;n<5;n++){
@@ -68,7 +68,7 @@ for(const caseName of ['desktop-chromium','mobile-chromium']){
   }
   await expect(page.getByText('Bilan de ce booster')).toBeVisible();
   await page.getByRole('button',{name:/Voir mon classeur/}).click();
-  await expect(page.getByRole('button',{name:/Ouvrir mon booster/})).toBeDisabled();
+  await expect(page.locator('#booster').getByRole('button',{name:/Ouvrir mon booster/})).toBeDisabled();
   await expect(page.getByText(/Prochain booster dans/)).toBeVisible();
   await expect(page.getByText(/5 \/ 160/).first()).toBeVisible();
   expect(state.postCalls).toBe(1);
@@ -78,8 +78,8 @@ for(const caseName of ['desktop-chromium','mobile-chromium']){
 test('échec simulé du booster : aucune animation de récompense mensongère',async({page})=>{
  const state=await mockAuthenticatedState(page,{boosterFailure:true});
  await page.goto('/');
- await expect(page.getByRole('button',{name:/Ouvrir mon booster/})).toBeEnabled();
- await page.getByRole('button',{name:/Ouvrir mon booster/}).click();
+ await expect(page.locator('#booster').getByRole('button',{name:/Ouvrir mon booster/})).toBeEnabled();
+ await page.locator('#booster').getByRole('button',{name:/Ouvrir mon booster/}).click();
  await expect(page.getByRole('alert')).toContainText('Booster temporairement indisponible.');
  await expect(page.getByText('Découverte de ton booster',{exact:true})).toHaveCount(0);
  expect(state.postCalls).toBe(1);
