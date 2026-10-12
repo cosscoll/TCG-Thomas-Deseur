@@ -10,13 +10,13 @@ const build=()=>stageApprovedEdition(approved);
 
 test('prepares 67 distinct characters, 38 attached variants and exact public artwork URLs',()=>{
  const stage=build();
- assert.equal(stage.status,'NON_DÉPLOYABLE_AVANT_DÉCISIONS');
+ assert.equal(stage.status,'NON_DÉPLOYABLE_AVANT_CHOIX_VARIANTES');
  assert.deepEqual(stage.edition,{characterCount:67,baseArtworks:67,variantArtworks:38,totalArtworks:105});
  assert.equal(stage.cards.length,67);
  assert.equal(stage.cards.filter(c=>c.variants.length===2).length,1);
  assert.equal(stage.cards.reduce((n,c)=>n+c.variants.length,0),38);
  for(const card of stage.cards){
-  assert.equal(card.rarity,null);
+  assert.ok(['Commune','Rare','Épique','Légendaire','Hors-série'].includes(card.rarity));
   assert.equal(card.variantsCollectingRule,null);
   assert.ok(!Object.hasOwn(card,'legacyId'));
   assert.ok(!Object.hasOwn(card,'userId'));
@@ -32,7 +32,7 @@ test('does not flatten variants into distinct gameplay cards or modify the input
  assert.ok(Object.isFrozen(a));
  assert.ok(Object.isFrozen(a.cards[0]));
  assert.ok(Array.isArray(a.questionsPending));
- assert.deepEqual(a.questionsPending,['rarityPerCharacter','variantObtainingRule','variantCompletionEffect']);
+ assert.deepEqual(a.questionsPending,['variantObtainingRule','variantCompletionEffect']);
 });
 test('rejects invented duplicate artwork or duplicate character identifiers',()=>{
  const altered=clone();
@@ -57,4 +57,16 @@ test('rejects extra characters or dropped variants instead of silently migrating
  const changed=clone();
  changed.cards[0].variants=[];
  assert.throws(()=>stageApprovedEdition(changed),/105/);
+});
+
+test('the staging uses exact rarities submitted by the creator without modifying variants',()=>{
+ const decisions=JSON.parse(fs.readFileSync(new URL('../data/raretes-validees-67.json',import.meta.url),'utf8'));
+ const stage=build();
+ const actual={};
+ for(const card of stage.cards){
+  assert.equal(card.rarity,decisions.cards[card.characterId].rarity);
+  actual[card.rarity]=(actual[card.rarity]||0)+1;
+  assert.equal(card.variantsCollectingRule,null);
+ }
+ assert.deepEqual(actual,{'Épique':8,'Commune':33,'Légendaire':4,'Rare':21,'Hors-série':1});
 });
