@@ -20,7 +20,7 @@ function assetRef(art){
  assert.ok(art && typeof art==='object','Illustration manquante');
  assert.match(art.artworkId,/^td_(?:1|2|3)_\d{3}$|^td_lille$/,'Référence graphique inattendue');
  assert.match(art.asset,/^collection-161\/assets\/cards\/td-(?:[123]-\d{3}|lille)\.webp$/,'Lien illustration invalide');
- assert.match(art.photoReference,/^REF-(?:[123]-\d{3}|LILLE-\d{3})$/,'Photo source manquante');
+ assert.match(art.photoReference,/^REF-(?:[123]-\d{3}|177-LILLE)$/,'Photo source manquante');
  const assetPath=new URL('../'+art.asset,import.meta.url);
  assert.ok(existsSync(assetPath),'Illustration absente du dépôt : '+art.asset);
  return Object.freeze({
