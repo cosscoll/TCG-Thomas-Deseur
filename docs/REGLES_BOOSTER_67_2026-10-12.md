@@ -31,6 +31,20 @@ Fichier source conservé : `data/raretes-validees-67.json`. Il contient les 67 d
 
 **38 illustrations alternatives existantes** sont rattachées à ces personnages. Elles ne constituent pas, à ce stade, une sixième rareté.
 
+## Règle validée : quantité d'exemplaires et doublons dans le classeur
+
+**Précision du créateur, 12 octobre 2026 :** lorsqu'un joueur possède la même carte en deux exemplaires ou davantage, sa fiche de collection doit afficher visiblement le nombre **total d'exemplaires** possédés, sous la forme **×2**, **×3**, **×4**, etc.
+
+Une acquisition supplémentaire d'une carte déjà possédée **ne remplace pas** l'ancienne : le nombre d'exemplaires affiché augmente. Exemple : une carte déjà possédée ×2, puis obtenue de nouveau, est affichée ×3 après enregistrement serveur.
+
+Le nombre d'exemplaires et le nombre de cartes différentes doivent rester deux indicateurs séparés. Exemple : 3 exemplaires de la même carte = 3 copies, mais **1 personnage distinct obtenu**. La progression vers la collection complète n'augmente pas à chaque doublon.
+
+Le total doit provenir de l'inventaire **persistant du compte connecté**, jamais d'un compteur de démonstration local. Il doit être correct après fermeture, rechargement et reconnexion. L'affichage ne doit pas inventer de cartes ni altérer les quantités du serveur.
+
+Le traitement des **illustrations alternatives** comme quantités séparées ou versions d'un même personnage reste à valider ; cette règle de quantité s'applique d'ores et déjà aux cartes classiques.
+
+Implémentation de lecture seule pour la future édition : `game/collection-quantities-67.js` ; tests `tests/collection-quantities-67.test.mjs`. **Aucune modification Floot en ligne ne découle de cette documentation.**
+
 ## Ce qui reste à définir sans présumer du choix du créateur
 
 Le taux de **10 %** sur la carte 4 est fixé, mais plusieurs règles distinctes restent ouvertes :
