@@ -1,7 +1,7 @@
 /** Préparation d'édition 67 personnages + 38 illustrations alternatives.
  *
- * N'écrit JAMAIS dans Floot et ne modifie aucun joueur. Aucune rareté
- * ni méthode de distribution n'est déduite des illustrations.
+ * N'écrit JAMAIS dans Floot et ne modifie aucun joueur. Les raretés
+ * viennent exclusivement du fichier validé par le créateur.
  *
  * CLI (lecture seule) :
  *    node scripts/stage-approved-edition.mjs
@@ -12,9 +12,12 @@ import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 import {CARDS as historicalCards} from '../data/cards.js';
+import {validateRarityDecisions} from './validate-rarity-decisions.mjs';
 
 const publicAssets='https://cosscoll.github.io/TCG-Thomas-Deseur/';
 const catalogue=JSON.parse(readFileSync(new URL('../data/catalogue-valide-67.json',import.meta.url),'utf8'));
+const approvedRarities=JSON.parse(readFileSync(new URL('../data/raretes-validees-67.json',import.meta.url),'utf8'));
+validateRarityDecisions(approvedRarities,catalogue,{requireComplete:true});
 
 function assetRef(art){
  assert.ok(art && typeof art==='object','Illustration manquante');
@@ -55,7 +58,7 @@ export function stageApprovedEdition(input,{legacyIds=historicalCards.map(c=>c.i
    ordinal:index+1,
    main,
    variants,
-   rarity:null,
+   rarity:approvedRarities.cards[card.id].rarity,
    variantsCollectingRule:null
   });
  });
@@ -66,10 +69,10 @@ export function stageApprovedEdition(input,{legacyIds=historicalCards.map(c=>c.i
  assert.ok(input.excludedGroups.every(id=>!foundIds.has(id)),'Un groupe écarté est inclus');
  return Object.freeze({
   schema:'tcg-deseur-edition-staging-v1',
-  status:'NON_DÉPLOYABLE_AVANT_DÉCISIONS',
+  status:'NON_DÉPLOYABLE_AVANT_CHOIX_VARIANTES',
   source:'data/catalogue-valide-67.json',
   edition:{characterCount:67,baseArtworks:67,variantArtworks:38,totalArtworks:105},
-  questionsPending:['rarityPerCharacter','variantObtainingRule','variantCompletionEffect'],
+  questionsPending:['variantObtainingRule','variantCompletionEffect'],
   cards
  });
 }
