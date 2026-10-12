@@ -27,3 +27,23 @@ test('un nouvel ami peut trouver l’inscription depuis l’écran de connexion'
  await expect(pseudonym.first(),'Champ de pseudonyme introuvable dans le formulaire d’inscription').toBeVisible();
  expect(networkWrites).toEqual([]);
 });
+
+test('le formulaire d’inscription reste utilisable sur mobile et tablette, sans envoyer de données',async({page})=>{
+ const writes=[];
+ page.on('request',request=>{
+  if(!['GET','HEAD'].includes(request.method()))writes.push(new URL(request.url()).pathname);
+ });
+ for(const width of [320,393,820]){
+  await page.setViewportSize({width,height:860});
+  await page.goto('/login');
+  const signup=page.getByRole('button',{name:/s['’]?inscrire/i}).first();
+  await expect(signup).toBeVisible();
+  await signup.click();
+  await expect(page.getByRole('button',{name:'Créer mon compte'})).toBeVisible();
+  await expect(page.locator('#register-display-name')).toBeVisible();
+  await expect(page.getByText('Au moins 8 caractères.')).toBeVisible();
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+  expect(overflow,'Débordement horizontal inscription '+width+'px').toBeLessThanOrEqual(2);
+ }
+ expect(writes).toEqual([]);
+});
