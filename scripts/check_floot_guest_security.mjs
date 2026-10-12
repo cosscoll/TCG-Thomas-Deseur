@@ -77,6 +77,12 @@ for (const {method,path} of cases) {
     assert.doesNotMatch(text,/bearer\s+\S+|eyJ[A-Za-z0-9_-]{20,}/i);
     // Report non-sensitive policy metadata only.
     const cacheControl = response.headers.get('cache-control') ?? '(absent)';
+    // Both authenticated GET endpoints are private, even when the cookie is absent.
+    // Prevent a CDN/shared proxy from caching a denial or later leaking a session.
+    if (method === 'GET') {
+      assert.match(cacheControl,/\bprivate\b/i,`${path} must not be shared-cacheable`);
+      assert.match(cacheControl,/\bno-store\b/i,`${path} must not be stored`);
+    }
     console.log(JSON.stringify({path,status:response.status,cacheControl}));
   });
 }
