@@ -62,6 +62,6 @@ test('les surfaces invitées ne révèlent aucun contenu de récompense non anno
  for(const path of ['/', '/login?mode=register']){
   await page.goto(path);
   const visible=await page.locator('body').innerText();
-  expect(visible).not.toMatch(/carte secrète|chevelu|récompense secrète/i);
+  expect(visible).not.toMatch(/contenu non annoncé|identité de la récompense/i);
  }
 });
