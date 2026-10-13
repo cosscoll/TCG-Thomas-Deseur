@@ -108,7 +108,7 @@ export function markdown(report){
  'Le rapprochement de costumes et de scènes **demande une validation visuelle humaine**. Les URLs documentaires ne garantissent pas une vidéo ou une séquence spécifique. Ne modifier ni noms ni regroupements approuvés sur la base de cette seule analyse. Les éventuels choix de retouche ou d’alternative pourront être importés après validation du propriétaire.','',
  'Rapport régénérable par \`node scripts/audit-edition-67.mjs --write\`.',
  ''
- ]);
+ );
  return lines.join('\n');
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
