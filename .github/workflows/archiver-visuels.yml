@@ -27,7 +27,7 @@ jobs:
         run: python scripts/telecharger-visuels-originaux.py
       - name: Fournir une archive ZIP téléchargeable
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: 177-visuels-originaux
           path: |
