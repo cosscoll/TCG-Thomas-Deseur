@@ -30,7 +30,7 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
       - name: Vérifier les quatre API privées sans cookie (aucune récompense)
@@ -48,7 +48,7 @@ jobs:
         run: python -m unittest discover -s floot-e2e -p 'test_*.py' -v
       - name: Contrôler les pages et le refus des appels anonymes
         run: python scripts/check_floot_public.py
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
       - name: Installer Playwright pour les vérifications publiques
