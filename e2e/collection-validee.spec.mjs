@@ -64,3 +64,44 @@ test('le catalogue reste dans le viewport, y compris sur mobile',async({page})=>
   expect(dims.scroll,'Débordement horizontal à '+width+'px').toBeLessThanOrEqual(dims.inner+1);
  }
 });
+
+test('les 67 raretés validées apparaissent sur les fiches et dans le bilan',async({page})=>{
+ const labels=[['Commune',33],['Rare',21],['Épique',8],['Légendaire',4],['Hors-série',1]];
+ await expect(page.locator('#rarity-summary .rarity-stat')).toHaveCount(5);
+ for(const [i,[name,qty]] of labels.entries()){
+  const stat=page.locator('#rarity-summary .rarity-stat').nth(i);
+  await expect(stat.locator('.rarity-name')).toHaveText(name);
+  await expect(stat.locator('strong')).toHaveText(String(qty));
+  await expect(page.locator('article.card[data-rarity="'+name+'"]')).toHaveCount(qty);
+ }
+ await expect(page.locator('article.card .rarity-badge')).toHaveCount(67);
+});
+test('le filtre de rareté se combine avec la recherche et les variantes',async({page})=>{
+ await page.locator('#rarity').selectOption('Légendaire');
+ await expect(page.locator('article.card')).toHaveCount(4);
+ await page.locator('#filter').selectOption('multi');
+ await expect(page.locator('article.card')).toHaveCount(1);
+ await expect(page.locator('article.card h3')).toHaveText('Picasso Deseur');
+ await page.locator('#rarity').selectOption('Hors-série');
+ await expect(page.locator('#empty')).toBeVisible();
+ await page.locator('#filter').selectOption('all');
+ await expect(page.locator('article.card')).toHaveCount(1);
+ await expect(page.locator('article.card h3')).toHaveText('Thomas huîtres');
+ await page.locator('#rarity').selectOption('all');
+ await expect(page.locator('article.card')).toHaveCount(67);
+});
+test('les noms, références et raretés du créateur se correspondent exactement',async({page})=>{
+ const expected=await page.request.get('/data/raretes-validees-67.json');
+ expect(expected.ok()).toBe(true);
+ const rarityData=await expected.json();
+ const displayed=await page.locator('article.card').evaluateAll(els=>els.map(el=>({
+   id:el.getAttribute('data-group'),
+   rarity:el.getAttribute('data-rarity'),
+   name:el.querySelector('h3')?.textContent
+ })));
+ expect(displayed).toHaveLength(67);
+ for(const item of displayed){
+  expect(rarityData.cards[item.id].rarity).toBe(item.rarity);
+  expect(rarityData.cards[item.id].name).toBe(item.name);
+ }
+});
