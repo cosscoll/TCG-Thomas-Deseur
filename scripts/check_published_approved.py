@@ -112,6 +112,18 @@ def verify_once():
     if errors:
         raise AssertionError(f"{len(errors)} images uniformisées inaccessibles: " + " | ".join(errors[:12]))
 
+    mobile = json.loads(fetch("data/thumbs-approved-105.json"))
+    assert mobile["schema"] == "tcg-deseur-approved-thumbs-v1"
+    assert mobile["size"] == [384, 512]
+    assert len(mobile["images"]) == 105
+    thumb_paths = [item["thumb"] for item in mobile["images"]]
+    assert len(set(thumb_paths)) == 105
+    assert all(item["base"].replace("assets/uniform/","assets/thumbs/")==item["thumb"] for item in mobile["images"])
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        jobs = [pool.submit(check_image_head, path) for path in thumb_paths]
+        for job in as_completed(jobs):
+            job.result()
+
     # Invitation aux testeurs : la page doit pointer vers le VRAI jeu
     # et ne doit pas proposer un formulaire recueillant des identifiants.
     invitation = fetch("beta/").decode("utf-8")
@@ -129,7 +141,7 @@ def verify_once():
 
     original = fetch("collection-161/assets/cards/td-1-002.webp")
     assert original[:4] == b"RIFF" and original[8:12] == b"WEBP", "Visuel stylisé inaccessible."
-    return f"Accueil et galerie 68 cartes ; {all_live_images} originaux + 105 WebP uniformisés 768x1024 accessibles, et bêta accessible."
+    return f"Accueil et galerie 68 cartes ; {all_live_images} originaux + 105 WebP uniformisés 768x1024 + 105 miniatures mobiles 384x512 accessibles, et bêta accessible."
 
 
 def main():
