@@ -150,3 +150,21 @@ test('tous les 105 visuels approuvés existent ET se décodent dans Chromium',as
  });
  expect(errors,'Illustrations dont le chargement ou décodage a échoué').toEqual([]);
 });
+
+test('tri des 67 cartes sans perdre la Carte mystère et les filtres',async({page})=>{
+ await page.locator('#sort').selectOption('name');
+ const names=await page.locator('article.card[data-group] h3').allTextContents();
+ expect(names).toHaveLength(67);
+ expect(names).toEqual([...names].sort((a,b)=>a.localeCompare(b,'fr')));
+ await expect(page.locator('.mystery-card')).toHaveCount(1);
+ await page.locator('#sort').selectOption('variants');
+ await expect(page.locator('article.card[data-group] h3').first()).toHaveText('Picasso Deseur');
+ await page.locator('#sort').selectOption('rarity');
+ const firstRarity=await page.locator('article.card[data-group]').first().getAttribute('data-rarity');
+ expect(firstRarity).toBe('Commune');
+ await page.locator('#rarity').selectOption('Légendaire');
+ await expect(page.locator('article.card[data-group]')).toHaveCount(4);
+ await page.locator('#sort').selectOption('official');
+ await page.locator('#rarity').selectOption('all');
+ await expect(page.locator('article.card')).toHaveCount(68);
+});
