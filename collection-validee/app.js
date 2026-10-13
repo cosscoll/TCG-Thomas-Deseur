@@ -56,6 +56,10 @@ function image(id,name,variant=false,eager=false){
  const frame=make('div',variant?'image-frame variant-image':'image-frame');
  if(!src){frame.append(make('span','missing','Illustration indisponible'));return frame;}
  const img=make('img');
+ const thumb=src.replace('/assets/uniform/','/assets/thumbs/');
+ const srcSet=thumb+' 384w, '+src+' 768w';
+ img.srcset=srcSet;
+ img.sizes=variant?'(max-width:690px) 40vw, 140px':'(max-width:690px) 90vw, (max-width:1150px) 44vw, 250px';
  img.alt='Illustration '+name+' ('+id+')';
  img.loading=eager?'eager':'lazy';
  img.decoding='async';
@@ -67,6 +71,7 @@ function image(id,name,variant=false,eager=false){
   const original=originalArtSrc(id);
   if(!img.dataset.originalFallback && original){
    img.dataset.originalFallback='true';
+   img.removeAttribute('srcset');
    img.src=original;
    return;
   }
@@ -78,6 +83,7 @@ function image(id,name,variant=false,eager=false){
   retry.addEventListener('click',()=>{
    frame.classList.add('loading-art');
    delete img.dataset.originalFallback;
+   img.srcset=srcSet;
    frame.replaceChildren(img);
    img.src=src+'?retry='+Date.now();
   });
