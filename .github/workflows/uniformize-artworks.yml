@@ -1,0 +1,43 @@
+name: Uniformiser les 105 illustrations approuvées
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-artwork-normalization
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    name: Produire 105 WebP verticaux 3:4 et les valider
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer Pillow
+        run: python -m pip install 'Pillow==11.3.0'
+      - name: Tester les méthodes de recadrage sans perte
+        run: python -m unittest discover -s tests -p 'test_uniformize_approved_artworks.py' -v
+      - name: Générer les 105 images 768x1024 depuis les seuls originaux approuvés
+        run: python scripts/uniformize-approved-artworks.py
+      - name: Vérifier les 105 dimensions, fichiers sources et empreintes
+        run: python scripts/uniformize-approved-artworks.py --check
+      - name: Publier les fichiers de travail sans écraser les originaux
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/approved-artwork-uniform-105.json collection-validee/assets/uniform/
+          if git diff --cached --quiet; then
+            echo "Aucune modification nécessaire."
+          else
+            git commit -m "assets: 105 illustrations approuvées uniformisées sans modifier les sources"
+            git push origin HEAD:main
+          fi
