@@ -1,0 +1,45 @@
+name: Comparaison scénarios variantes 67 contre 105
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/comparer-variantes-collection.mjs'
+      - 'tests/comparer-variantes-collection.test.mjs'
+      - '.github/workflows/compare-variants.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-variant-comparison
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    name: Étudier 750 cohortes sans toucher aux vraies cartes
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier la simulation comparée
+        run: node --test tests/comparer-variantes-collection.test.mjs
+      - name: Générer les médianes et percentiles
+        run: node scripts/comparer-variantes-collection.mjs --report
+      - name: Conserver le rapport de comparaison
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/COMPARAISON_VARIANTES_67_VS_105_2026-10-13.md
+          if git diff --cached --quiet; then
+            echo "Rapport déjà à jour."
+          else
+            git commit -m "docs(balance): compare 67-card and 105-artwork completion assumptions"
+            git push origin HEAD:main
+          fi
