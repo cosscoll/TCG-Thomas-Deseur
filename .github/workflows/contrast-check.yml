@@ -1,0 +1,43 @@
+name: Contrastes statiques accessibles
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-contrast-static.mjs'
+      - 'tests/contrast-static.test.mjs'
+      - '.github/workflows/contrast-check.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-static-contrast
+  cancel-in-progress: false
+
+jobs:
+  contrast:
+    name: Vérifier et publier 12 contrastes texte sur fond
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tester formules et valeurs des paires
+        run: node --test tests/contrast-static.test.mjs
+      - name: Générer rapport statique
+        run: node scripts/check-contrast-static.mjs --write
+      - name: Conserver le rapport
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/CONTRASTES_PUBLICS_2026-10-13.md
+          if git diff --cached --quiet; then
+            echo "Contrastes inchangés."
+          else
+            git commit -m "docs(a11y): update public static contrast report"
+            git push origin HEAD:main
+          fi
