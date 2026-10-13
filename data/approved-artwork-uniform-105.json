@@ -1,0 +1,2008 @@
+{
+  "schema": "tcg-deseur-uniform-approved-artworks-v1",
+  "status": "PUBLISHED_VISUALS_PUBLIC_ONLY",
+  "size": [
+    768,
+    1024
+  ],
+  "aspectRatio": "3:4",
+  "technique": "entire original artwork contained; blurred artwork background extension; no cropping of foreground",
+  "originalsUnchanged": true,
+  "artworks": [
+    {
+      "characterId": "COST-001",
+      "artworkId": "td_1_004",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-004.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-004.webp",
+      "sourceSize": [
+        775,
+        1600
+      ],
+      "foregroundBounds": [
+        136,
+        0,
+        496,
+        1024
+      ],
+      "sourceSha256": "45eb9c21801e1dd92fcd66b8b4531b7883af6afce1ecf237d56925272899c05a",
+      "sha256": "4a4c453033baba1a4df06ade556743a6713bbf7a3451b13348a7a38c4ca36c21"
+    },
+    {
+      "characterId": "COST-001",
+      "artworkId": "td_2_043",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-043.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-043.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "8c9dfaac628aeb18cb98c47cfbe3036455ffcbbb8827dceaa154039e8d4239c8",
+      "sha256": "e42c12a2ffc5c0db67d9dd65b97e43f3c7f2da079e2a167fdcb9611562107251"
+    },
+    {
+      "characterId": "COST-002",
+      "artworkId": "td_1_001",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-001.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-001.webp",
+      "sourceSize": [
+        939,
+        1600
+      ],
+      "foregroundBounds": [
+        83,
+        0,
+        601,
+        1024
+      ],
+      "sourceSha256": "2c5001bcc6f8f173051b1c1b0e44174642d9ad74af06b96ae7e5e2c91ff76749",
+      "sha256": "ccc39ab75a5175a5b74ef84c0c15655162754a650301c5fb29e5ba0fd91d9b7a"
+    },
+    {
+      "characterId": "COST-002",
+      "artworkId": "td_3_005",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-005.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-005.webp",
+      "sourceSize": [
+        1292,
+        1218
+      ],
+      "foregroundBounds": [
+        0,
+        150,
+        768,
+        724
+      ],
+      "sourceSha256": "4e7b0cdf9d304b78c548a8bf41a5f72fc8fb2fa1afec2eb9d70a521b5623ebf2",
+      "sha256": "1e4d3aeadaa806cde4585bf90a71d2ba0e7e200601181b13c666bf62ef7a54ed"
+    },
+    {
+      "characterId": "COST-003",
+      "artworkId": "td_1_002",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-002.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-002.webp",
+      "sourceSize": [
+        1199,
+        1312
+      ],
+      "foregroundBounds": [
+        0,
+        92,
+        768,
+        840
+      ],
+      "sourceSha256": "7221a2254bb73bf8e9d3dcca8a2e0fa4f1712b1c18877620e18d73778bca0cc0",
+      "sha256": "082f466cf64b1757942b2a6a042fb2b17e5d38eafbdf7bb1cd9d45ad84e9bc61"
+    },
+    {
+      "characterId": "COST-003",
+      "artworkId": "td_2_042",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-042.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-042.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "41b0ceb2bab858cb74b109747e04cd1b4543638712730b95576227455c17111e",
+      "sha256": "63a8d025945c05136d9cfbd304e78fd49d556317b2def5d5fdbb88812c1db2ec"
+    },
+    {
+      "characterId": "COST-003",
+      "artworkId": "td_3_042",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-042.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-042.webp",
+      "sourceSize": [
+        1317,
+        1194
+      ],
+      "foregroundBounds": [
+        0,
+        164,
+        768,
+        696
+      ],
+      "sourceSha256": "e16a3fe83e5b165ce4d54b46ea7b79bedb7b5831c357820399bca889b5d55b31",
+      "sha256": "f7b1a8e0cb9fa528b078c6aab97c5031d3f812706abe91b10f6c79e7cdb946ec"
+    },
+    {
+      "characterId": "COST-004",
+      "artworkId": "td_1_003",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-003.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-003.webp",
+      "sourceSize": [
+        1012,
+        1555
+      ],
+      "foregroundBounds": [
+        51,
+        0,
+        666,
+        1024
+      ],
+      "sourceSha256": "c6fe71b3374388b8c8787880ecd627ec6fcafb1ad73e2e50798482f0e3c50739",
+      "sha256": "6015ab6878b5cc0167621705742988723ed75b1bc701852655b083db80abbc24"
+    },
+    {
+      "characterId": "COST-005",
+      "artworkId": "td_1_005",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-005.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-005.webp",
+      "sourceSize": [
+        1072,
+        1467
+      ],
+      "foregroundBounds": [
+        10,
+        0,
+        748,
+        1024
+      ],
+      "sourceSha256": "80216de5f992e9ec0242c7a6484e9def3d5f5833428a2f9f487ae757d8648ea1",
+      "sha256": "e7398d75ed8140f2d6adf044f3798840d05ffc5139c3ac7ed3d4398677f3d301"
+    },
+    {
+      "characterId": "COST-005",
+      "artworkId": "td_2_003",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-003.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-003.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "991292826650a1698eae0536931714b808344ba172cf549d6ef6288305270d29",
+      "sha256": "2ce01f3bca52fd03b693932bc0cf59f9e1d6f91ed757e1cec7693be158ece046"
+    },
+    {
+      "characterId": "COST-006",
+      "artworkId": "td_1_007",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-007.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-007.webp",
+      "sourceSize": [
+        1086,
+        1449
+      ],
+      "foregroundBounds": [
+        0,
+        0,
+        767,
+        1024
+      ],
+      "sourceSha256": "4498ed6bf2f5728d1ac222af00f239a2fc6748ffae79d02ffe98f8a7657c62ca",
+      "sha256": "050854eb89dca0a18afc06320250295a2ef08dcb88dc494ecd5e6d4f873e6f48"
+    },
+    {
+      "characterId": "COST-006",
+      "artworkId": "td_3_011",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-011.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-011.webp",
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "foregroundBounds": [
+        0,
+        161,
+        768,
+        702
+      ],
+      "sourceSha256": "c81b4f257b03c31b6bcaf3ac2bd8c298a111d738844e728bb9e3cd8947e4d2ca",
+      "sha256": "951d4608844ddeaed41bb40865a8fbed342af4cc09889d53c70eda02d7af213a"
+    },
+    {
+      "characterId": "COST-007",
+      "artworkId": "td_1_008",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-008.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-008.webp",
+      "sourceSize": [
+        1071,
+        1469
+      ],
+      "foregroundBounds": [
+        10,
+        0,
+        747,
+        1024
+      ],
+      "sourceSha256": "1fccba4dbb835c4a2c63a5d6cdb763aaa3c040bafea53b27c40b3661ea0d7136",
+      "sha256": "8dee0b178dee66d10dbb195e579612f2e00d4838ae6702b63e0b3c3a3af6c774"
+    },
+    {
+      "characterId": "COST-007",
+      "artworkId": "td_2_005",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-005.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-005.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "b6ac72d52f02c0379470e99cb1bd8828684e8278320fc441c4aa47954bb11de0",
+      "sha256": "23974090d823ec88026ba6d33e1c23c1138dbbe0d54ef5bc646d28e42e4b5d97"
+    },
+    {
+      "characterId": "COST-008",
+      "artworkId": "td_1_006",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-006.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-006.webp",
+      "sourceSize": [
+        1045,
+        1506
+      ],
+      "foregroundBounds": [
+        28,
+        0,
+        711,
+        1024
+      ],
+      "sourceSha256": "e05c5e116d1ad4bf235ec49810904c03bc0c9fe78a50632ef9686a0d80abefbd",
+      "sha256": "6659cb632c56946b6b2e58b3c7d8ea31e8a021e51467dca0763a38675474f2be"
+    },
+    {
+      "characterId": "COST-008",
+      "artworkId": "td_3_023",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-023.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-023.webp",
+      "sourceSize": [
+        1317,
+        1194
+      ],
+      "foregroundBounds": [
+        0,
+        164,
+        768,
+        696
+      ],
+      "sourceSha256": "ed85207267e05f734440b53357fa451fe8fedbe6c4cba52e0ede3c23b36cebb9",
+      "sha256": "512ec7f6611936667f4b76bf83cdfaffb6b165531530596bf7a9afdf3a5ddb1f"
+    },
+    {
+      "characterId": "COST-009",
+      "artworkId": "td_1_012",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-012.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-012.webp",
+      "sourceSize": [
+        1114,
+        1411
+      ],
+      "foregroundBounds": [
+        0,
+        25,
+        768,
+        973
+      ],
+      "sourceSha256": "75e56984f4a88e7f61b0179f776b5f3a03b77440227c34ccab34fc1798ae9e7c",
+      "sha256": "1e3f34e763564da90cd8425a6b8f764973f44372018488e8e8021a5f115861c6"
+    },
+    {
+      "characterId": "COST-009",
+      "artworkId": "td_3_024",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-024.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-024.webp",
+      "sourceSize": [
+        1293,
+        1216
+      ],
+      "foregroundBounds": [
+        0,
+        151,
+        768,
+        722
+      ],
+      "sourceSha256": "5d9de3b64aaa49d9e19b83fc802160961b7eeb715791daa0f66e8b248ab0b4b1",
+      "sha256": "ff1efe7880e93e90cd6e38403bdbbe8018234589f22ed5dbc5a0dd0e61a55b44"
+    },
+    {
+      "characterId": "COST-010",
+      "artworkId": "td_1_011",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-011.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-011.webp",
+      "sourceSize": [
+        1071,
+        1469
+      ],
+      "foregroundBounds": [
+        10,
+        0,
+        747,
+        1024
+      ],
+      "sourceSha256": "40de44cf23eb2ea5cbfac0942a663b92c5988a173480ba88cdb068ed55aa18ca",
+      "sha256": "fc4c7264f5367341a9127b6366eca5eedb0788610f428d1d9b9b6277b4fa6b5d"
+    },
+    {
+      "characterId": "COST-010",
+      "artworkId": "td_2_001",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-001.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-001.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "8002060163cb7e92990ce0f79e621939d595a2ac98c849353d342a70fb109f48",
+      "sha256": "e9cdb92362e013638d9465c18e357b01046c348b89cdc18214f91448bf07e219"
+    },
+    {
+      "characterId": "COST-011",
+      "artworkId": "td_2_007",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-007.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-007.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "aac260298529438d67fb9f9419af1c2b540880839f8d0fb656aaf3f3626c1b56",
+      "sha256": "a18efb2f11b98e9652996ed39d222efd3d5fcda12c7de45fdeddc5913dcbdfbc"
+    },
+    {
+      "characterId": "COST-012",
+      "artworkId": "td_1_010",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-010.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-010.webp",
+      "sourceSize": [
+        1067,
+        1474
+      ],
+      "foregroundBounds": [
+        13,
+        0,
+        741,
+        1024
+      ],
+      "sourceSha256": "94b2c8a171a945a1bc188f2414f8d8b069b562686eabae00e3d463452b8b09a0",
+      "sha256": "411c9b112b54b7584c169f358255b1ac7273a42df61bcf0ea86dda4a17bb649b"
+    },
+    {
+      "characterId": "COST-012",
+      "artworkId": "td_3_010",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-010.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-010.webp",
+      "sourceSize": [
+        1280,
+        1229
+      ],
+      "foregroundBounds": [
+        0,
+        143,
+        768,
+        737
+      ],
+      "sourceSha256": "48f3977a3710635c38ef84d9b8952b85a99972376fbf72a622b1aefd6727d726",
+      "sha256": "f0e39537d74ba15671cbc0b7b706c4d81b7efee143b7234c9066dca1e1b42aa1"
+    },
+    {
+      "characterId": "COST-013",
+      "artworkId": "td_2_008",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-008.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-008.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "bdc0bc71a542072866acb0bb9157ca9bbe2bf6053b901b25c6d29284911660fb",
+      "sha256": "fc4ca56a83fcc920e70788df599340c7e23c0dbf23b3ec35ede6085c6ae1f372"
+    },
+    {
+      "characterId": "COST-014",
+      "artworkId": "td_3_001",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-001.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-001.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "90216c6745d266f1208a622d1847ff6d1354af48c12fbe6a132e9e64c73d08b5",
+      "sha256": "00455a0e4c14f755e7ced1a6673463d218a299908fcbfa0eda4d79deae59333a"
+    },
+    {
+      "characterId": "COST-015",
+      "artworkId": "td_1_014",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-014.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-014.webp",
+      "sourceSize": [
+        1084,
+        1451
+      ],
+      "foregroundBounds": [
+        1,
+        0,
+        765,
+        1024
+      ],
+      "sourceSha256": "64a90ee7f03c0ad6b06200de74c67caf070e0afe41d0d1f64eae3ca3c6528c07",
+      "sha256": "9fd6a54cfc92a0e5b3d1f578eb96638418c80c782088bbd0f7499b3d2f70054f"
+    },
+    {
+      "characterId": "COST-015",
+      "artworkId": "td_3_033",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-033.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-033.webp",
+      "sourceSize": [
+        1296,
+        1214
+      ],
+      "foregroundBounds": [
+        0,
+        152,
+        768,
+        719
+      ],
+      "sourceSha256": "eb5bcbe266decc0e13289fe0d6e50bfcd3155dd7b8d96fd78ac651e5b81711aa",
+      "sha256": "89d93006c86971c4603b733450e82253b7d1c563f511b360941f7397f576756b"
+    },
+    {
+      "characterId": "COST-016",
+      "artworkId": "td_3_031",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-031.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-031.webp",
+      "sourceSize": [
+        1324,
+        1188
+      ],
+      "foregroundBounds": [
+        0,
+        167,
+        768,
+        689
+      ],
+      "sourceSha256": "d41b7e5c4b85a3fcba3c5be8d5e6cbbbf9add97a0de31e247348b8333da4ce1d",
+      "sha256": "8bdf22043f98710c910cbde84e187560bea20a65df9ec99eecaa8955c782d37d"
+    },
+    {
+      "characterId": "COST-017",
+      "artworkId": "td_3_043",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-043.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-043.webp",
+      "sourceSize": [
+        1368,
+        1149
+      ],
+      "foregroundBounds": [
+        0,
+        189,
+        768,
+        645
+      ],
+      "sourceSha256": "cb011942503d8a0f58aef77412bc75ba1913db47491bd838077c12d66b17fb01",
+      "sha256": "b9bfb1c903ef81baa2305cc5fb0632e15144797fc9183cb68b38f79709ad08c1"
+    },
+    {
+      "characterId": "COST-018",
+      "artworkId": "td_1_020",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-020.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-020.webp",
+      "sourceSize": [
+        1049,
+        1499
+      ],
+      "foregroundBounds": [
+        25,
+        0,
+        717,
+        1024
+      ],
+      "sourceSha256": "212631c3ecf37a9f4a4a74c6fcf6b8d18aba55b1915f28c34560248915675027",
+      "sha256": "2e21ba794b4bc67663ec83e4f3314d808f0b54524ad9834ab713b7c1cef52319"
+    },
+    {
+      "characterId": "COST-019",
+      "artworkId": "td_1_019",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-019.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-019.webp",
+      "sourceSize": [
+        1061,
+        1482
+      ],
+      "foregroundBounds": [
+        17,
+        0,
+        733,
+        1024
+      ],
+      "sourceSha256": "ca0ee425b6c3444ba5ce28c00f6780cb430562b0c121a834a64498ee75edae0d",
+      "sha256": "ab5a068048a364159b9404ce068a9ed62b6f6cb996fc872b050f562212f383b8"
+    },
+    {
+      "characterId": "COST-020",
+      "artworkId": "td_1_018",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-018.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-018.webp",
+      "sourceSize": [
+        1062,
+        1481
+      ],
+      "foregroundBounds": [
+        17,
+        0,
+        734,
+        1024
+      ],
+      "sourceSha256": "a8cc7da7c1be6612de1094230ca578cc8278af2c2859566fe283e705b9487b98",
+      "sha256": "171b910cc66b00fe76a48a4ee5209ffd35c3aa3f5d0cb3ea409d9f47e960b765"
+    },
+    {
+      "characterId": "COST-021",
+      "artworkId": "td_1_021",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-021.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-021.webp",
+      "sourceSize": [
+        1085,
+        1450
+      ],
+      "foregroundBounds": [
+        1,
+        0,
+        766,
+        1024
+      ],
+      "sourceSha256": "6e8d642ae9bc1db25158c679af4ab46f276f5d40bf9c20b761e5b4e09ec1481f",
+      "sha256": "1809ba2fec81633cd467d7ca08d899f03aac6c0a04037454d730519a0378eed8"
+    },
+    {
+      "characterId": "COST-021",
+      "artworkId": "td_3_016",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-016.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-016.webp",
+      "sourceSize": [
+        1345,
+        1170
+      ],
+      "foregroundBounds": [
+        0,
+        178,
+        768,
+        668
+      ],
+      "sourceSha256": "8a653c23bff78cba2bace8903decdf4d4a3859e978c9cfe0735be91da4dfad13",
+      "sha256": "be79c34406aa51827e30a60b46213325d8cc75f69107b78199f8b32429fbfec0"
+    },
+    {
+      "characterId": "COST-022",
+      "artworkId": "td_1_023",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-023.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-023.webp",
+      "sourceSize": [
+        1075,
+        1463
+      ],
+      "foregroundBounds": [
+        8,
+        0,
+        752,
+        1024
+      ],
+      "sourceSha256": "f2a9979f66bcbae11618cb13cf653dde0722c56cd41b568294b8f3f7307ef396",
+      "sha256": "6812c6d65d902fab6cc246f645052031be33562c21bbeaa92c45487ddbe2eeb3"
+    },
+    {
+      "characterId": "COST-022",
+      "artworkId": "td_3_015",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-015.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-015.webp",
+      "sourceSize": [
+        1218,
+        1291
+      ],
+      "foregroundBounds": [
+        0,
+        105,
+        768,
+        814
+      ],
+      "sourceSha256": "112aa29966e33a840d8725586240c224752de90e89f4254768b57f8d2f296df3",
+      "sha256": "379bcd956137b3ed1c7be35c47ee6d1a7065696a4ca8378f1f500087b3648b0d"
+    },
+    {
+      "characterId": "COST-023",
+      "artworkId": "td_1_022",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-022.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-022.webp",
+      "sourceSize": [
+        1099,
+        1431
+      ],
+      "foregroundBounds": [
+        0,
+        12,
+        768,
+        1000
+      ],
+      "sourceSha256": "46d7f3db2352db6caa0c793400f0f823aa3d53e41e2bb05e97bbcdaabf3c241f",
+      "sha256": "7cd3206c7d40bb5fe530ebae5cb8a44954f891dd3873bb07f98e5404e84ef7df"
+    },
+    {
+      "characterId": "COST-023",
+      "artworkId": "td_3_022",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-022.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-022.webp",
+      "sourceSize": [
+        1296,
+        1214
+      ],
+      "foregroundBounds": [
+        0,
+        152,
+        768,
+        719
+      ],
+      "sourceSha256": "29b9adcb3049ec7a40658931285faeb731a9881d9388260dd7263d931d042821",
+      "sha256": "0cd7bb59b89e4d28b008f5af19486c8077bafde299ee9107e202d91d5287032e"
+    },
+    {
+      "characterId": "COST-024",
+      "artworkId": "td_1_024",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-024.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-024.webp",
+      "sourceSize": [
+        1047,
+        1502
+      ],
+      "foregroundBounds": [
+        27,
+        0,
+        714,
+        1024
+      ],
+      "sourceSha256": "0e52647087df2dc9746dae0fead73eb4608fcbdecb237fbcfaf51655e6d892bc",
+      "sha256": "21af3a6a45ccadbfab25007ab3a014cdb2be83899bbbfaf817e0e8dd6f90dc1d"
+    },
+    {
+      "characterId": "COST-024",
+      "artworkId": "td_3_037",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-037.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-037.webp",
+      "sourceSize": [
+        1289,
+        1220
+      ],
+      "foregroundBounds": [
+        0,
+        148,
+        768,
+        727
+      ],
+      "sourceSha256": "11b144fa07c9fae258daaf8e876362f11d4926f61266d53124c293da30417895",
+      "sha256": "60479795b8379ad7001da016de5d1a0ab5c70eb0983b895c9c18dad220adc60a"
+    },
+    {
+      "characterId": "COST-025",
+      "artworkId": "td_1_026",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-026.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-026.webp",
+      "sourceSize": [
+        1078,
+        1460
+      ],
+      "foregroundBounds": [
+        6,
+        0,
+        756,
+        1024
+      ],
+      "sourceSha256": "3c4a784e713b9a26ad26a42da96d2fb58fd49c045492264c0dc1f2f844217729",
+      "sha256": "01fd5505cf655fde5e0095d7db0f8bd13dd741fd2667ea3621ff9c98019fd67a"
+    },
+    {
+      "characterId": "COST-025",
+      "artworkId": "td_3_032",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-032.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-032.webp",
+      "sourceSize": [
+        1353,
+        1163
+      ],
+      "foregroundBounds": [
+        0,
+        182,
+        768,
+        660
+      ],
+      "sourceSha256": "5b967399e3fd83a108154b7ac6e4d53e5b5d6754386f9d652486bf4799c07a9c",
+      "sha256": "bc5e8def1bd226be03ef6fd002f41e553d6f149a56d336f8c426827b6cd5b1c8"
+    },
+    {
+      "characterId": "COST-026",
+      "artworkId": "td_1_028",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-028.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-028.webp",
+      "sourceSize": [
+        1075,
+        1463
+      ],
+      "foregroundBounds": [
+        8,
+        0,
+        752,
+        1024
+      ],
+      "sourceSha256": "27e0fb8a7fbd932380b7fb77caa53cc6dc52433ed9dd80ef0adee5a8d12b1129",
+      "sha256": "6ecdba4b7062415452253748fbb5ed9eb3d3d98a9bf7a383298fd4cd9f6203b9"
+    },
+    {
+      "characterId": "COST-027",
+      "artworkId": "td_1_025",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-025.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-025.webp",
+      "sourceSize": [
+        1088,
+        1445
+      ],
+      "foregroundBounds": [
+        0,
+        2,
+        768,
+        1020
+      ],
+      "sourceSha256": "9a81ace5c51d923efa20f766d873270d98bb512037a9b47f7a819d650de1f870",
+      "sha256": "3f2d1edd5418260ae180422db5119cdcb6ec4a20ecc0a63623848251fd31771f"
+    },
+    {
+      "characterId": "COST-027",
+      "artworkId": "td_2_024",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-024.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-024.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "f363397467f891d6d98740caa1b1257ca7efd1f432d1804b01a63e10c77ecdec",
+      "sha256": "8f9ff2ba562efdf4af7482b5697e0eb79c0d7f86414a75479e071728ee1622db"
+    },
+    {
+      "characterId": "COST-028",
+      "artworkId": "td_1_027",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-027.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-027.webp",
+      "sourceSize": [
+        1095,
+        1436
+      ],
+      "foregroundBounds": [
+        0,
+        8,
+        768,
+        1007
+      ],
+      "sourceSha256": "ec9421acae58035fbaa40fccb653047542fc24f1519790af57d394a8c71a5f34",
+      "sha256": "fe557169057562cee5b2d1dedbbecca9640648e6fc66dbf9ccff65086f618a5e"
+    },
+    {
+      "characterId": "COST-028",
+      "artworkId": "td_3_035",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-035.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-035.webp",
+      "sourceSize": [
+        1282,
+        1227
+      ],
+      "foregroundBounds": [
+        0,
+        144,
+        768,
+        735
+      ],
+      "sourceSha256": "ef2968c35090548c8cef2ad70a88fbb666cf481cf5eba010ca4d8fef18a0e805",
+      "sha256": "7f882fad5879773263740ad5d0dd2dafcf68ffa48d7fe9d443031979d6703c84"
+    },
+    {
+      "characterId": "COST-029",
+      "artworkId": "td_2_019",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-019.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-019.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "55b7d9eca831f575a611916ee1a31e9d79425b5a7671f14a4d639ea7fa3f1434",
+      "sha256": "9b7a8e796d3afebcd7ddb4f04baa32e3d5bfba767d101e9ff002cb57a652ba48"
+    },
+    {
+      "characterId": "COST-029",
+      "artworkId": "td_3_040",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-040.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-040.webp",
+      "sourceSize": [
+        1293,
+        1216
+      ],
+      "foregroundBounds": [
+        0,
+        151,
+        768,
+        722
+      ],
+      "sourceSha256": "8dcb59315a19ea66fc1e6f4739a9899213a8bebecb05af41f69ac22312f2a5bc",
+      "sha256": "57e978846e99afeb211a55d3751c56e857cc03c0fdbef457fcac3013cea86ef9"
+    },
+    {
+      "characterId": "COST-030",
+      "artworkId": "td_2_023",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-023.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-023.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "364616e0c1c0b7b19ce106a511ef1b7860f017281ddf2f795d519f7ef641fefc",
+      "sha256": "c1593f2c25f374117c3e40027460a310986dcd097a936c84736fb25398c900cc"
+    },
+    {
+      "characterId": "COST-030",
+      "artworkId": "td_3_039",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-039.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-039.webp",
+      "sourceSize": [
+        1315,
+        1197
+      ],
+      "foregroundBounds": [
+        0,
+        162,
+        768,
+        699
+      ],
+      "sourceSha256": "335a5f5da8a9a22e735f73e5319fc7d67d95d1b6ddf47248de95516406dc153a",
+      "sha256": "2809db4b3d2671c352b127e63b5e4709d9dd4e854b5e7a77f17606c41b11dcd1"
+    },
+    {
+      "characterId": "COST-031",
+      "artworkId": "td_3_036",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-036.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-036.webp",
+      "sourceSize": [
+        1322,
+        1190
+      ],
+      "foregroundBounds": [
+        0,
+        166,
+        768,
+        691
+      ],
+      "sourceSha256": "64845698f00e8b79107e0b9122aa06d2b3663f6c36464aaa22152fa63786d68c",
+      "sha256": "ce7457557e19d5e3afab2d278aa5f47be1c991ead811444fa509d92eb9dff785"
+    },
+    {
+      "characterId": "COST-031",
+      "artworkId": "td_1_030",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-1-030.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-030.webp",
+      "sourceSize": [
+        1084,
+        1451
+      ],
+      "foregroundBounds": [
+        1,
+        0,
+        765,
+        1024
+      ],
+      "sourceSha256": "e67510b223acf05d2ef8961f7da862def14a7220fde7cf0e9afd153f5b92325f",
+      "sha256": "14347945ee08b9a811509a128606b71f9f51a41da7118720cd096bfec5d53071"
+    },
+    {
+      "characterId": "COST-032",
+      "artworkId": "td_1_032",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-032.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-032.webp",
+      "sourceSize": [
+        1114,
+        1412
+      ],
+      "foregroundBounds": [
+        0,
+        25,
+        768,
+        973
+      ],
+      "sourceSha256": "8d6aa6993685b638aa4eea12f80f51724c1a6ede59eab6e71cc6f7a3465ad64a",
+      "sha256": "7965e98403add3b26dfb32172b7bd326f75ac4f40923860e452bbeaaffd48ff4"
+    },
+    {
+      "characterId": "COST-032",
+      "artworkId": "td_2_025",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-025.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-025.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "f8595ab0bd2f331d91644d0c0c687d586a222e39db1ddc2a673cfbd15f31eda0",
+      "sha256": "128eff3332b47993dcd380c18e05e974671cdc1ab820e4dda6b6b2ca2879a8b7"
+    },
+    {
+      "characterId": "COST-033",
+      "artworkId": "td_2_031",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-031.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-031.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "95044ab8db6e8290af51c5474d9259ba0f2c0ad8e680349d66a931ba8557725a",
+      "sha256": "058d66777bc3c058cba8792c1f50356efe97875dc42bef09ae686187bd4d085f"
+    },
+    {
+      "characterId": "COST-034",
+      "artworkId": "td_1_035",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-035.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-035.webp",
+      "sourceSize": [
+        1078,
+        1459
+      ],
+      "foregroundBounds": [
+        5,
+        0,
+        757,
+        1024
+      ],
+      "sourceSha256": "e795db0db71e24fd863316dfe4c0464f444be5ba08078e93f35e5b585032e877",
+      "sha256": "6925e90b6165ed3413ec5360c93ec22b792737033cb3ddbc9231e330f7d4d829"
+    },
+    {
+      "characterId": "COST-034",
+      "artworkId": "td_2_044",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-044.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-044.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "4ac3d06251b44fc741581156a473d0876aaea4e343f4d64286d2112e06071331",
+      "sha256": "5ce413a39375c18f243205ead954d8d6d85e2b7faa698af8a903f48ff1ba0493"
+    },
+    {
+      "characterId": "COST-035",
+      "artworkId": "td_3_038",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-038.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-038.webp",
+      "sourceSize": [
+        1303,
+        1207
+      ],
+      "foregroundBounds": [
+        0,
+        156,
+        768,
+        711
+      ],
+      "sourceSha256": "f70b77f79f77a875008324d1fe42079cac382ae48d89d817a8df2c3a557911b1",
+      "sha256": "d919cb166f1c5867e0f38d5b877767ca3f6d96e9cb800621fc6f8c60fd1a6a9b"
+    },
+    {
+      "characterId": "COST-036",
+      "artworkId": "td_1_036",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-036.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-036.webp",
+      "sourceSize": [
+        1099,
+        1431
+      ],
+      "foregroundBounds": [
+        0,
+        12,
+        768,
+        1000
+      ],
+      "sourceSha256": "74aec563feeafa279bbffd8b6048a3ae140ba9a0f83522ef80e1ff9eecb77ab9",
+      "sha256": "f7936b09aedbb3fe53daeb33032302542547f60fadcbb41a623b915fd28e9d42"
+    },
+    {
+      "characterId": "COST-036",
+      "artworkId": "td_2_027",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-027.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-027.webp",
+      "sourceSize": [
+        1269,
+        1240
+      ],
+      "foregroundBounds": [
+        0,
+        137,
+        768,
+        750
+      ],
+      "sourceSha256": "7b91c22fd530dbf8f75df89167ad8e7ad491dc4fac432585fdb30b7675729ace",
+      "sha256": "d447ab80e1cc7c5485b8b6040d8229de3db42f771e094a336861c0e30ef0413a"
+    },
+    {
+      "characterId": "COST-037",
+      "artworkId": "td_2_030",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-030.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-030.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "14d892ff8d78d38333a65a43f4424bc2202c9926d1e3f1960d87b75eea58b737",
+      "sha256": "a397c2d26b698cdcc85883c96a3ecf7920e4fb95faf799ad5ffdb6843fac4238"
+    },
+    {
+      "characterId": "COST-037",
+      "artworkId": "td_3_029",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-029.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-029.webp",
+      "sourceSize": [
+        1380,
+        1140
+      ],
+      "foregroundBounds": [
+        0,
+        195,
+        768,
+        634
+      ],
+      "sourceSha256": "65b6e5d7d34c40a4794430bebf46c0e410e5063e48513e9a8b14c4f6b2d81c1c",
+      "sha256": "b36ea59556aa8ae64d07d3ce922cb4a03baefc6a9989f42fd574a6f9ad2d8515"
+    },
+    {
+      "characterId": "COST-038",
+      "artworkId": "td_1_040",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-040.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-040.webp",
+      "sourceSize": [
+        1051,
+        1496
+      ],
+      "foregroundBounds": [
+        24,
+        0,
+        719,
+        1024
+      ],
+      "sourceSha256": "12614d1a67c33e072f5e1f711ed164fd9c704525ad51871b9fb787eccfacff9e",
+      "sha256": "c490d4019a72ce1ebca830ab84c0ba7790c274edea3dfdfd9b99ef4f038fb391"
+    },
+    {
+      "characterId": "COST-039",
+      "artworkId": "td_2_035",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-035.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-035.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "08d1acff36aca98e30d2e0cb9f613aa9236d84697401d346faf54b91c3ab8415",
+      "sha256": "7efb99d78f059d461b0022ff1dec96513afdf9bf8f97a6954302738810b5e477"
+    },
+    {
+      "characterId": "COST-039",
+      "artworkId": "td_3_009",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-009.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-009.webp",
+      "sourceSize": [
+        1305,
+        1205
+      ],
+      "foregroundBounds": [
+        0,
+        157,
+        768,
+        709
+      ],
+      "sourceSha256": "6a6930c39193199309e6e7903cd4ccb53341bd0e46ba91939d4c14800a9741a5",
+      "sha256": "3ae58ba4c3ecbfac8b7e4ef867c3acf370200cee70ac392b812afdb9d2bdbd86"
+    },
+    {
+      "characterId": "COST-040",
+      "artworkId": "td_2_034",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-034.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-034.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "1e133e5faa341922c534d34ff966823988f4b34a4999c8623784b2068022746d",
+      "sha256": "e6e3926057ec641a7e11b260c8c6c8f40cb9ebb285c82fca9742e1f906e58de1"
+    },
+    {
+      "characterId": "COST-040",
+      "artworkId": "td_3_041",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-041.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-041.webp",
+      "sourceSize": [
+        1275,
+        1233
+      ],
+      "foregroundBounds": [
+        0,
+        140,
+        768,
+        743
+      ],
+      "sourceSha256": "edc6070f1603abace1293d63b33fef9e56538bc7a96dcadd60d2ef4463f446c3",
+      "sha256": "2f3a46d5c30fde1829b5df60ddfccefce732cb6df3efcc18f908fdf4bc6a84a6"
+    },
+    {
+      "characterId": "COST-041",
+      "artworkId": "td_3_028",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-028.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-028.webp",
+      "sourceSize": [
+        1234,
+        1274
+      ],
+      "foregroundBounds": [
+        0,
+        115,
+        768,
+        793
+      ],
+      "sourceSha256": "ed01639a5f069762105a7fc923e632997262bf98341c2a095c245aa0fe23bd76",
+      "sha256": "57180c204d2ba3b01191d56ddde7264dbf60ec154fe0571caf3b8e91bcf59c46"
+    },
+    {
+      "characterId": "COST-042",
+      "artworkId": "td_3_002",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-002.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-002.webp",
+      "sourceSize": [
+        1360,
+        1156
+      ],
+      "foregroundBounds": [
+        0,
+        185,
+        768,
+        653
+      ],
+      "sourceSha256": "51d6b0ba9918ba4caaf29e2b09c3b5187b8ba68472961df63a4d3ef8cd7dafe4",
+      "sha256": "d4b5434ee81271b91725b5267600506f901bdf23d1a82cdd11af7f41fa40b825"
+    },
+    {
+      "characterId": "COST-042",
+      "artworkId": "td_1_043",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-1-043.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-043.webp",
+      "sourceSize": [
+        1088,
+        1445
+      ],
+      "foregroundBounds": [
+        0,
+        2,
+        768,
+        1020
+      ],
+      "sourceSha256": "7d505a2c5ba1fa83a6b4f5d665b428b2395622af5530046dc3233c519ee6e58d",
+      "sha256": "be2d463ed1c4802254f2588376867181860067e8fadf1b6454876969454a6e47"
+    },
+    {
+      "characterId": "COST-043",
+      "artworkId": "td_2_039",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-039.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-039.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "6f2821a3d4b6a38b35a107af889ec73dc8e62b284fca52f3a03cad6ab8db911a",
+      "sha256": "9a8dad31c6777e57b7a810b5e0fbe5d98072dbb26f98ad051a18913c67dbb9bf"
+    },
+    {
+      "characterId": "COST-044",
+      "artworkId": "td_2_037",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-037.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-037.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "03ae77ef430b5d2844c166b6a059e1f7b59241e909ea686f244d5dd9a29017af",
+      "sha256": "c405d46d8f6d866bac453e88f66900d4d81eff515fc3975fe563fe18be8ec3a0"
+    },
+    {
+      "characterId": "COST-044",
+      "artworkId": "td_3_025",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-025.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-025.webp",
+      "sourceSize": [
+        1324,
+        1188
+      ],
+      "foregroundBounds": [
+        0,
+        167,
+        768,
+        689
+      ],
+      "sourceSha256": "992203e11df1ccd53057c172c5f0073a7d4acb5270a6bd4c44ee839c65cc7570",
+      "sha256": "511136a18b162d80d0dea876d4d3b762edc33a0073415e2aee35e533db37d664"
+    },
+    {
+      "characterId": "COST-045",
+      "artworkId": "td_3_003",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-3-003.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-003.webp",
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "foregroundBounds": [
+        0,
+        161,
+        768,
+        702
+      ],
+      "sourceSha256": "0f28e38deee2bb97dcf4e3c26aa43cc6bedb8c243f64409c7a2eb6419907b897",
+      "sha256": "015cd72b3fe96bdbfaa40b24fd762f959eb9ecee0d5b3a4afbc924e58cb2a6ac"
+    },
+    {
+      "characterId": "COST-046",
+      "artworkId": "td_2_045",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-045.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-045.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "b0054b9ddcef35b5a96b09a0d3618ff0578de5a67d2a1ea399148dfc4d1649fe",
+      "sha256": "93283caeb800d08a7e509d8f0a00a8ecd2fc38aa33b41ea0b44aa2f456598aee"
+    },
+    {
+      "characterId": "COST-047",
+      "artworkId": "td_2_048",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-048.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-048.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "5831814ae2bcc5fce9bcc605bf782ad41dae6df063569634ebc42916e5597f3a",
+      "sha256": "e463dfd35e83062c0b19975d85dcb785855bb800f1f210ee2cb76ff7b3eb54f9"
+    },
+    {
+      "characterId": "COST-047",
+      "artworkId": "td_3_014",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-3-014.webp",
+      "normalized": "collection-validee/assets/uniform/td-3-014.webp",
+      "sourceSize": [
+        1275,
+        1233
+      ],
+      "foregroundBounds": [
+        0,
+        140,
+        768,
+        743
+      ],
+      "sourceSha256": "e6f1ac03a9d5e85716763609f50e20e676c0f53ada198a13b8edf271e9619c48",
+      "sha256": "fdb000c8f2922c7180533de5cfb5724043347840f5390c772d1fdb1bbaa877bc"
+    },
+    {
+      "characterId": "COST-049",
+      "artworkId": "td_1_049",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-049.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-049.webp",
+      "sourceSize": [
+        1128,
+        1394
+      ],
+      "foregroundBounds": [
+        0,
+        37,
+        768,
+        949
+      ],
+      "sourceSha256": "4db8b5e4336745e37d2b15b399c8d689db911e6d91087fea6b698927928f85f3",
+      "sha256": "f5398124e41b09ab7dc1e1c08a463b249e8ece2111699d393a942453e6a24932"
+    },
+    {
+      "characterId": "COST-050",
+      "artworkId": "td_1_045",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-045.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-045.webp",
+      "sourceSize": [
+        966,
+        1600
+      ],
+      "foregroundBounds": [
+        75,
+        0,
+        618,
+        1024
+      ],
+      "sourceSha256": "8227c88ad3853547d271da66f4326931935697496e1ba93e83108f38a0ffc766",
+      "sha256": "8ae7e59ce77f54af67344b15e31295bc4238f33f0126f3868c2c6eaa4b287eab"
+    },
+    {
+      "characterId": "COST-051",
+      "artworkId": "td_1_051",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-051.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-051.webp",
+      "sourceSize": [
+        763,
+        1600
+      ],
+      "foregroundBounds": [
+        140,
+        0,
+        488,
+        1024
+      ],
+      "sourceSha256": "e141a3373ac25cf50e95d06a2db4b9e96ef5eaeb4ae159339ef30d0cf20ffd08",
+      "sha256": "92acfbcac37d85590ab6622ef9fe503db96972868557bc017103b6201a1a4aae"
+    },
+    {
+      "characterId": "COST-052",
+      "artworkId": "td_1_055",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-055.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-055.webp",
+      "sourceSize": [
+        878,
+        1600
+      ],
+      "foregroundBounds": [
+        103,
+        0,
+        562,
+        1024
+      ],
+      "sourceSha256": "0f4f84977182608843e364f0fc5dee294e268bbce6e35977f70c9b2192e2a6cc",
+      "sha256": "84ba484316489e7053c52dae80d101119a91171135985b54f1eb481b20f68eff"
+    },
+    {
+      "characterId": "COST-053",
+      "artworkId": "td_1_052",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-052.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-052.webp",
+      "sourceSize": [
+        1377,
+        1142
+      ],
+      "foregroundBounds": [
+        0,
+        193,
+        768,
+        637
+      ],
+      "sourceSha256": "e3f8488dcc359576747dcbde41aadac99cc1b3d485a375d9bf3597fa20de4c72",
+      "sha256": "ccfd8be5f757fdee09a43075aafd1ff5304972a529365ce81a12286469bb56d3"
+    },
+    {
+      "characterId": "COST-054",
+      "artworkId": "td_1_054",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-054.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-054.webp",
+      "sourceSize": [
+        1039,
+        1514
+      ],
+      "foregroundBounds": [
+        32,
+        0,
+        703,
+        1024
+      ],
+      "sourceSha256": "2c4b0f8ec94b3e149a7ab78cfa11c985d0678ed37af5646168b8bd93db3bea3e",
+      "sha256": "d94eee258c5110816df74fdaafcf91a98285f25d643714635b615998da534fe7"
+    },
+    {
+      "characterId": "COST-054",
+      "artworkId": "td_2_065",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-065.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-065.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "05c3543c22505e19e9b0e9382eace9a831c8b275cb4c729a3a42f7a8ca303fab",
+      "sha256": "c2221db1f119079279e215370282487a929142f56ab4d53881a18064665e5625"
+    },
+    {
+      "characterId": "COST-055",
+      "artworkId": "td_2_066",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-066.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-066.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "643b1198f860177157156b5e05581c3f1c8f8fa0f2e529dff2ae8864d3653979",
+      "sha256": "afb47d0494d98ab817705500164843c40c55141328c2206c318a70138b206e0a"
+    },
+    {
+      "characterId": "COST-056",
+      "artworkId": "td_1_059",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-059.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-059.webp",
+      "sourceSize": [
+        646,
+        1600
+      ],
+      "foregroundBounds": [
+        177,
+        0,
+        413,
+        1024
+      ],
+      "sourceSha256": "81a751ee9b65cfe802901c676661b8b41a0d1436df53a6ab7dcb672d87710dfc",
+      "sha256": "3d1ef357f78839dd8e43e1812c66461d76d3b05a6a8eaa42540d5d7543feed5b"
+    },
+    {
+      "characterId": "COST-056",
+      "artworkId": "td_2_058",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-058.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-058.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "fd4caa09090918da091e7e11ce531915cbf98a0e72f0840477e0c90b74b87c6d",
+      "sha256": "5a4902e5be3304cd48b3c55549e216d5f8477a9568fbb2154f2679ab2d3f3c4d"
+    },
+    {
+      "characterId": "COST-057",
+      "artworkId": "td_1_058",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-058.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-058.webp",
+      "sourceSize": [
+        1189,
+        1323
+      ],
+      "foregroundBounds": [
+        0,
+        84,
+        768,
+        855
+      ],
+      "sourceSha256": "d57fd02ba8ddd78cda421785bc43abb707018995c24a9523b49aa0aa2b204107",
+      "sha256": "2b1ee8ec35bf25e598b4e8b48ab341c392897b57b1a5940e18a2efd1f8abb7fe"
+    },
+    {
+      "characterId": "COST-057",
+      "artworkId": "td_2_057",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-057.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-057.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "0df241ef3c817d52de8a62d3d81e1659cdde9bda19c516a1e378a41548baa0fb",
+      "sha256": "f20078e0b42a3e4416a6ae1ff917fb3896997a40040e99e81ccaa5ddd7d08a9f"
+    },
+    {
+      "characterId": "COST-058",
+      "artworkId": "td_1_056",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-056.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-056.webp",
+      "sourceSize": [
+        1132,
+        1389
+      ],
+      "foregroundBounds": [
+        0,
+        41,
+        768,
+        942
+      ],
+      "sourceSha256": "8afdeb7bfd30df9decc53c4036dbd6c0538c88029d29616ac10c5c94111f957d",
+      "sha256": "66153efd8f291fd2f3dd6a9f21329ea5c9480ffed33452d3d34c09c6e6daa8d8"
+    },
+    {
+      "characterId": "COST-059",
+      "artworkId": "td_1_057",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-057.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-057.webp",
+      "sourceSize": [
+        1223,
+        1286
+      ],
+      "foregroundBounds": [
+        0,
+        108,
+        768,
+        808
+      ],
+      "sourceSha256": "3d850abcb3e22849117dcb42db72286c4e528474a38f629dcb4e2a143b92dc39",
+      "sha256": "68c9a1034b7925de96e0c34fae04e3974f8ab8f36de67621fa23879a00fdae3a"
+    },
+    {
+      "characterId": "COST-060",
+      "artworkId": "td_1_062",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-062.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-062.webp",
+      "sourceSize": [
+        962,
+        1600
+      ],
+      "foregroundBounds": [
+        76,
+        0,
+        616,
+        1024
+      ],
+      "sourceSha256": "ce8aadeb717be37b453e1c5ef552d34e056e37d6defffdb17d8ad7965f4b5094",
+      "sha256": "6c72336368981654e8431d87186717e3006740e4ff7c6dd93b669c33999f4d14"
+    },
+    {
+      "characterId": "COST-061",
+      "artworkId": "td_1_060",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-060.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-060.webp",
+      "sourceSize": [
+        758,
+        1600
+      ],
+      "foregroundBounds": [
+        141,
+        0,
+        485,
+        1024
+      ],
+      "sourceSha256": "c3095b5909e1af8f21c72447581ce17f6c676f9135a19de872d6df62f1688333",
+      "sha256": "11a055cc1ddcc3fb89630bb3de8c9f89ec145149a861f1ea2bcfc0e92dd185a1"
+    },
+    {
+      "characterId": "COST-061",
+      "artworkId": "td_2_052",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-052.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-052.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "40c48bd2430481cba3f3ccbf3e06d9d153081b14fc010833aee8ce941b1cfb50",
+      "sha256": "01384e2fa1c22d3c3e6707eb86a3e1c36b93fe3e3036f959bb873fe1830392f7"
+    },
+    {
+      "characterId": "COST-062",
+      "artworkId": "td_1_063",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-063.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-063.webp",
+      "sourceSize": [
+        885,
+        1600
+      ],
+      "foregroundBounds": [
+        101,
+        0,
+        566,
+        1024
+      ],
+      "sourceSha256": "37a98182d7a20e5f79b75dda18b51cc890757f5667879b4f12b46e4567992889",
+      "sha256": "9076a0897f67170fb0df2107c5547608cf2f6394cf567778881382d2e58f29b1"
+    },
+    {
+      "characterId": "COST-062",
+      "artworkId": "td_2_050",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-050.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-050.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "febd49499e0265d9f499865af44d26097d3740cb4534e587b2ce636623fdcf36",
+      "sha256": "71e83f8c945577cec8c45ca8077e4c9b2734adbd5fb476aad5e4d1a4732884af"
+    },
+    {
+      "characterId": "COST-064",
+      "artworkId": "td_1_065",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-065.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-065.webp",
+      "sourceSize": [
+        813,
+        1600
+      ],
+      "foregroundBounds": [
+        124,
+        0,
+        520,
+        1024
+      ],
+      "sourceSha256": "4f2a8d9088cc6a5e623db9fac266c500ce2b88faeb27e21b2cbaa231021c5e56",
+      "sha256": "8d771b3098588adb6d3ebcb68aa12b03401ca6df8a0993ae0c254fdea0150428"
+    },
+    {
+      "characterId": "COST-064",
+      "artworkId": "td_2_056",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-056.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-056.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "7716ca6635a3e91b1b7d8b19cbeaf10affb6bcf8359490bed12a4e44970d9d82",
+      "sha256": "d92bbb77f242b37bb812d2c990dae5b78f9c8f1fc9b57936efef7c715a0c1447"
+    },
+    {
+      "characterId": "COST-065",
+      "artworkId": "td_1_066",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-066.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-066.webp",
+      "sourceSize": [
+        1030,
+        1527
+      ],
+      "foregroundBounds": [
+        38,
+        0,
+        691,
+        1024
+      ],
+      "sourceSha256": "8170ce5b2b92694119e839b4b22008e0cd99fb091f1a2486a70e6984e530096a",
+      "sha256": "10db9d277471027749201f75fa7feab34ac80f1849b48a42b97144077dcd0d56"
+    },
+    {
+      "characterId": "COST-066",
+      "artworkId": "td_1_064",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-1-064.webp",
+      "normalized": "collection-validee/assets/uniform/td-1-064.webp",
+      "sourceSize": [
+        1010,
+        1558
+      ],
+      "foregroundBounds": [
+        52,
+        0,
+        664,
+        1024
+      ],
+      "sourceSha256": "7bc5e91d9f20e5cb6f33da78ad8ebd2c37bf53c9b96425e6485ce3abde15d423",
+      "sha256": "59f138c949d18fa27b273aef30371741f4278c2e3aa8271a36cd6551fa5f7efd"
+    },
+    {
+      "characterId": "COST-066",
+      "artworkId": "td_2_053",
+      "kind": "variant",
+      "source": "collection-161/assets/cards/td-2-053.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-053.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "d70790d1502ea72752cb75183caa52357ce537d461ea4526872b95100d2ece0e",
+      "sha256": "fb31ffbb3a83764e035d2c52539850c7d0ec6fdc9369c6b5f15ece13e130cfbd"
+    },
+    {
+      "characterId": "COST-067",
+      "artworkId": "td_2_059",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-059.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-059.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "4ac58027be728a4c05ab14924b73e91439b3faa7afa2c087db6215143e805d20",
+      "sha256": "e9dc7687bfef6723c2e1988ec2f3b5bd91b83ec0dd1086726be08ff404d84197"
+    },
+    {
+      "characterId": "COST-068",
+      "artworkId": "td_2_049",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-2-049.webp",
+      "normalized": "collection-validee/assets/uniform/td-2-049.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "foregroundBounds": [
+        0,
+        128,
+        768,
+        768
+      ],
+      "sourceSha256": "f167e6ea213525a90cec39528cc2917175cc3a404d1f1b79808172d397bee6a7",
+      "sha256": "a2e6a7d34ca1879c6a3de2cf387f75f507ae85e689e17c8bafc980080d7f88e2"
+    },
+    {
+      "characterId": "COST-070",
+      "artworkId": "td_lille",
+      "kind": "main",
+      "source": "collection-161/assets/cards/td-lille.webp",
+      "normalized": "collection-validee/assets/uniform/td-lille.webp",
+      "sourceSize": [
+        1562,
+        1007
+      ],
+      "foregroundBounds": [
+        0,
+        264,
+        768,
+        495
+      ],
+      "sourceSha256": "2790c404ba39816897d48f930bf6d4efc5df9ddcc3fcad674acb70fb06100299",
+      "sha256": "d6d524a4954a0e4b040014bd56a2557a4032296d7c1c719e81c8f1a0d91e91b1"
+    }
+  ]
+}
