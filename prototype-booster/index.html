@@ -1,0 +1,101 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#140c25">
+<title>Prototype d'ouverture de booster — TCG Deseur</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,sans-serif;--bg:#120d1c;--ink:#fff9ff;--accent:#f5cc88;--line:#776287}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 80% at 65% 0%,#46305b,#140e23 65%,var(--bg));color:var(--ink);min-width:300px}
+a{color:var(--accent)}header,main,footer{width:min(1000px,calc(100% - 30px));margin:0 auto}
+header{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+header strong{letter-spacing:.12em;color:var(--accent)}header nav{display:flex;gap:15px;flex-wrap:wrap}main{text-align:center;padding:35px 0 65px}
+.kicker{font-size:.76rem;font-weight:900;letter-spacing:.15em;color:var(--accent)}
+h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.12;letter-spacing:-.04em;margin:12px 0 17px}
+.intro{max-width:760px;margin:0 auto 16px;line-height:1.7;color:#d9cbdf}
+.warning{max-width:830px;margin:0 auto 30px;background:#32223f;border-left:3px solid var(--accent);padding:10px 15px;line-height:1.6;color:#f2e3f4}
+.stage{min-height:505px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;margin:auto}
+.progress{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.progress span{background:#453250;border:1px solid #ab8dbc;border-radius:50%;display:grid;place-items:center;font-weight:900;width:36px;height:36px}
+.progress span[aria-current="step"]{background:var(--accent);color:#22142f;border-color:var(--accent)}
+.card{width:min(300px,80vw);aspect-ratio:3/4;position:relative;display:flex;flex-direction:column;justify-content:space-between;border:4px solid #edd3a9;border-radius:18px;padding:14px;background:linear-gradient(155deg,#765b91,#36224b 70%,#24172e);box-shadow:0 25px 65px #0009;overflow:hidden}
+.card img{width:100%;min-height:0;flex:1;object-fit:cover;border-radius:10px;background:#261a3d}
+.card h2{font-size:1.08rem;margin:10px 0 4px;text-wrap:balance}.card small{color:#ffd8a4;font-weight:900}
+.card.back{align-items:center;justify-content:center}.card.back strong{font-size:2rem;color:#f6d9ac;letter-spacing:.13em}.card.back span{font-size:.8rem;letter-spacing:.15em}
+.card.reveal{animation:reveal .55s cubic-bezier(.2,.8,.2,1)}@keyframes reveal{0%{opacity:.35;transform:rotateY(-65deg) scale(.89)}to{opacity:1;transform:rotateY(0) scale(1)}}
+.control{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:20px 0}
+button{font:inherit;min-height:48px;border-radius:10px;padding:13px 20px;border:1px solid #ffe4ae;color:#25162b;background:#f4d093;font-weight:900;cursor:pointer}
+button.secondary{background:#362440;color:#fff}button:disabled{opacity:.48;cursor:not-allowed}button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:4px}
+#status{color:#e4d9ed;min-height:22px}#summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:25px 0;text-align:left}
+#summary article{background:#2a2037;border:1px solid #866f92;border-radius:9px;padding:7px;min-width:0}
+#summary img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;border-radius:6px}#summary strong{display:block;font-size:.77rem;line-height:1.4;margin:6px 0}#summary small{color:#f0d5a3;font-size:.7rem}
+footer{border-top:1px solid var(--line);padding:18px 0 30px;color:#d6c9dd;font-size:.78rem}
+@media(max-width:700px){#summary{grid-template-columns:repeat(3,minmax(0,1fr))}.stage{min-height:470px}}
+@media(max-width:460px){#summary{grid-template-columns:repeat(2,minmax(0,1fr))}.progress span{height:32px;width:32px}}
+@media(prefers-reduced-motion:reduce){.card.reveal{animation:none}}
+</style></head><body>
+<header><strong>TCG DESEUR</strong><nav><a href="../">Accueil</a><a href="../collection-validee/">Collection</a><a href="../beta/">Tester le jeu réel</a></nav></header>
+<main>
+<span class="kicker">PROTOTYPE UX · SANS COMPTE</span><h1>Une ouverture.<br>Cinq découvertes.</h1>
+<p class="intro">Cette maquette sert à valider l'expérience d'ouverture d'un booster avant intégration dans Floot. Les cinq cartes présentées sont un <strong>exemple déterministe</strong> conforme aux positions possibles, pas des récompenses tirées au hasard.</p>
+<p class="warning"><strong>Simulation uniquement :</strong> aucune carte n'est ajoutée à ton inventaire, aucun booster gratuit n'est consommé et aucun appel au serveur Floot n'est effectué. Pour jouer réellement, utilise le lien « Tester le jeu réel ».</p>
+<div class="progress" id="steps" aria-label="Progression des cinq révélations"></div>
+<div class="stage">
+<p role="status" id="status" aria-live="polite">Chargement du catalogue…</p>
+<div id="card" class="card back" aria-label="Booster de démonstration"><span>ÉDITION ORIGINE</span><strong>TCG<br>DESEUR</strong><span>5 CARTES</span></div>
+</div>
+<div class="control"><button id="start" disabled>Ouvrir le booster fictif</button>
+<button id="next" hidden>Révéler la carte suivante</button><button id="restart" class="secondary" hidden>Recommencer la simulation</button></div>
+<section id="result" hidden aria-labelledby="result-title"><h2 id="result-title">Bilan du booster de démonstration</h2>
+<p class="intro">Voici les cinq cartes de cet exemple. Aucun résultat ni inventaire n'a été enregistré.</p>
+<div id="summary"></div></section>
+</main><footer>TCG Deseur — simulation visuelle fictive, sans tirage ni transaction. Aucun élément de la Carte mystère n'est révélé.</footer>
+<script type="module">
+const $=id=>document.getElementById(id);
+let pack=[],index=-1;
+const toSrc=a=>'../'+a.main.assetPath.replace('collection-161/assets/cards/','collection-validee/assets/uniform/');
+const create=(tag,className,value)=>{const el=document.createElement(tag);if(className)el.className=className;if(value!==undefined)el.textContent=value;return el};
+function steps(){
+ const root=$('steps'),frag=document.createDocumentFragment();
+ for(let n=0;n<5;n++){const el=create('span','',String(n+1));if(index===n)el.setAttribute('aria-current','step');frag.append(el)}
+ root.replaceChildren(frag);
+}
+function renderOne(){
+ const a=pack[index],root=create('div','card reveal');root.dataset.rarity=a.rarity;
+ const img=create('img');img.src=toSrc(a);img.alt='Illustration de '+a.title;img.width=768;img.height=1024;
+ const title=create('h2','',a.title),rarity=create('small','',a.rarity);
+ root.append(img,title,rarity);$('card').replaceWith(root);root.id='card';
+ $('status').textContent='CARTE '+(index+1)+' SUR 5 · '+a.rarity;
+ steps();
+ $('next').hidden=index>=4;$('start').hidden=true;
+ if(index===4)finish();
+}
+function finish(){
+ const frag=document.createDocumentFragment();
+ for(const a of pack){const root=create('article'),img=create('img');img.src=toSrc(a);img.alt='';img.loading='lazy';
+ root.append(img,create('strong','',a.title),create('small','',a.rarity));frag.append(root)}
+ $('summary').replaceChildren(frag);$('result').hidden=false;$('restart').hidden=false;
+ $('status').textContent='Cinq cartes révélées. Cette simulation n’a rien enregistré.';
+}
+async function init(){
+ try{
+  const resp=await fetch('../data/edition-staging-67.json',{cache:'no-store'});
+  if(!resp.ok)throw Error('Catalogue non disponible');
+  const data=await resp.json();
+  if(data.cards.length!==67)throw Error('Collection approuvée incomplète');
+  const commons=data.cards.filter(c=>c.rarity==='Commune');
+  const rares=data.cards.filter(c=>c.rarity==='Rare');
+  const epics=data.cards.filter(c=>c.rarity==='Épique');
+  if(commons.length!==33||rares.length!==21||epics.length!==8)throw Error('Répartition inattendue');
+  pack=[commons[0],commons[1],commons[2],rares[0],epics[0]];
+  steps();$('status').textContent='Prêt pour la simulation de cinq cartes.';
+  $('start').disabled=false;
+ }catch(e){$('status').textContent='Impossible de charger la simulation : '+e.message}
+}
+$('start').addEventListener('click',()=>{if(pack.length!==5)return;index=0;renderOne();$('next').hidden=false});
+$('next').addEventListener('click',()=>{if(index<0||index>=4)return;index++;renderOne()});
+$('restart').addEventListener('click',()=>{
+ index=-1;$('result').hidden=true;$('restart').hidden=true;$('start').hidden=false;$('next').hidden=true;
+ const front=create('div','card back');front.id='card';
+ front.append(create('span','','ÉDITION ORIGINE'),create('strong','','TCG DESEUR'),create('span','','5 CARTES'));
+ $('card').replaceWith(front);steps();$('status').textContent='Simulation réinitialisée : aucun tirage enregistré.';
+});
+init();
+</script></body></html>
