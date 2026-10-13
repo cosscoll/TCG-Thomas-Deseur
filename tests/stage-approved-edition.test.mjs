@@ -70,3 +70,16 @@ test('the staging uses exact rarities submitted by the creator without modifying
  }
  assert.deepEqual(actual,{'Épique':8,'Commune':33,'Légendaire':4,'Rare':21,'Hors-série':1});
 });
+
+test('the published staging artifact exactly matches the derived and approved catalogue',()=>{
+ const publicStage=JSON.parse(fs.readFileSync(new URL('../data/edition-staging-67.json',import.meta.url),'utf8'));
+ const staged=build();
+ assert.deepEqual(publicStage,staged);
+ assert.equal(publicStage.status,'NON_DÉPLOYABLE_AVANT_CHOIX_VARIANTES');
+ assert.deepEqual(publicStage.questionsPending,['variantObtainingRule','variantCompletionEffect']);
+ assert.equal(publicStage.cards.filter(c=>c.variants.length>0).length,37);
+ const serialized=JSON.stringify(publicStage);
+ for(const key of ['password','email','userId','accessToken','secretReward']){
+  assert.equal(serialized.includes('"'+key+'"'),false);
+ }
+});
