@@ -11,7 +11,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"TCG Deseur — Collection Origine","url":"https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/","description":"Collection de 67 personnages connus et une Carte mystère sans détails révélés.","inLanguage":"fr"}</script>
 
 <meta name="description" content="TCG Deseur : une collection de 68 cartes, dont une Carte mystère. Découvre les 67 cartes connues et leurs variantes.">
-<link rel="stylesheet" href="./style.css?v=20261013-uniform105"><script type="module" src="./app.js?v=20261013-uniform105"></script>
+<link rel="stylesheet" href="./style.css?v=20261013-sort105"><script type="module" src="./app.js?v=20261013-sort105"></script>
 </head><body>
 <a class="skip" href="#gallery">Aller aux cartes</a>
 <header class="site-header">
@@ -41,6 +41,7 @@
   <div class="section-head"><div><span class="eyebrow">LE CLASSEUR</span><h2 id="gallery-title">Les cartes retenues</h2></div><p id="count" role="status" aria-live="polite">Chargement des cartes…</p></div>
   <div class="controls"><label>Rechercher une carte<input id="search" type="search" placeholder="Nom, référence…" autocomplete="off"></label>
    <label>Filtrer les cartes<select id="filter"><option value="all">Toutes les cartes</option><option value="variants">Avec variantes</option><option value="none">Sans variante</option><option value="multi">Plusieurs variantes</option></select></label>
+   <label>Trier les cartes<select id="sort"><option value="official">Ordre officiel</option><option value="name">Nom A → Z</option><option value="rarity">Rareté puis nom</option><option value="variants">Plus de variantes d’abord</option></select></label>
    <label>Rareté<select id="rarity"><option value="all">Toutes les raretés</option><option value="Commune">Commune</option><option value="Rare">Rare</option><option value="Épique">Épique</option><option value="Légendaire">Légendaire</option><option value="Hors-série">Hors-série</option><option value="mystere">Carte mystère</option></select></label>
    <label>Galerie de référence<select id="origin"><option value="all">Toutes les galeries</option><option value="images/100-1000-couches">Costumes — 100 et 1000 couches</option><option value="images/serie-100-couches">Série 100 couches</option><option value="images/personnages-thomas">Personnages Thomas</option><option value="images/Braderie-de-Lille-2026">Braderie de Lille 2026</option></select></label></div>
   <p id="error" class="error" hidden role="alert"></p>
