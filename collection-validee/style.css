@@ -41,3 +41,26 @@ footer{padding:22px 4%;border-top:1px solid #4e3e5d;color:#b9adbf;font-size:.75r
 .origin-link{font-size:.7rem;color:var(--gold);text-underline-offset:2px}
 .variant-item .photo-ref{opacity:.85;margin:2px 0}
 @media(max-width:1040px) and (min-width:691px){.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.controls label:first-child{grid-column:1/-1}}
+
+
+/* Raretes validees par le createur - edition de 67 cartes. */
+.rarity-summary{margin-top:55px}
+.rarity-summary .section-head h2{font-size:clamp(1.45rem,2.4vw,2.4rem)}
+.rarity-counts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:14px}
+.rarity-stat{display:flex;flex-direction:column;gap:11px;justify-content:space-between;border:1px solid #746386;border-left:4px solid var(--rarity-color,#aaa);border-radius:12px;background:#22192f;padding:14px 16px}
+.rarity-stat .rarity-name{font-size:.8rem;font-weight:750;color:#f3e9fa}
+.rarity-stat strong{font-size:1.85rem;line-height:1;color:var(--rarity-color,#eee)}
+.rarity-0{--rarity-color:#d0d5dd}
+.rarity-1{--rarity-color:#74bcff}
+.rarity-2{--rarity-color:#c5a0ff}
+.rarity-3{--rarity-color:#f8d287}
+.rarity-4{--rarity-color:#9ee0ce}
+.controls{grid-template-columns:minmax(0,1.7fr) repeat(3,minmax(155px,1fr))}
+.rarity-badge{font-size:.69rem;font-weight:800;border:1px solid var(--rarity-color,#aaa);color:var(--rarity-color,#eee);border-radius:18px;padding:5px 8px;background:#ffffff06}
+.card[data-rarity="Commune"]{border-top-color:#d0d5dd}
+.card[data-rarity="Rare"]{border-top-color:#74bcff}
+.card[data-rarity="Épique"]{border-top-color:#c5a0ff}
+.card[data-rarity="Légendaire"]{border-top-color:#f8d287}
+.card[data-rarity="Hors-série"]{border-top-color:#9ee0ce}
+@media(max-width:1040px) and (min-width:691px){.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.rarity-counts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:690px){.rarity-summary{margin-top:35px}.rarity-counts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.rarity-stat{padding:12px}.controls{grid-template-columns:minmax(0,1fr)}.rarity-stat strong{font-size:1.55rem}}
