@@ -6,6 +6,8 @@
 
 **Voir les fiches approuvées :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/  
 **Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
+**État de référence mis à jour :** [lire avant tout nouveau sprint](docs/ETAT_DE_REFERENCE_2026-10-13.md) pour éviter de repartir des anciens catalogues 160 ou d’un statut de staging devenu historique.
+
 **Suivi public des 88 chantiers hors Floot :** [Tableau d'avancement](https://cosscoll.github.io/TCG-Thomas-Deseur/avancement/), alimenté par [les 88 lignes justifiées](data/suivi-88-actions.json). « Réalisé » signifie livrable GitHub prêt, pas résultat validé dans Floot.
 
 **Atelier de maquettes PNG :** [formats carré, Story et bannière](https://cosscoll.github.io/TCG-Thomas-Deseur/kit-visuels/) assemblés localement à partir des images officielles ; aucune diffusion automatique.
