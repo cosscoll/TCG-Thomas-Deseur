@@ -28,6 +28,10 @@ const $=id=>document.getElementById(id);
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
 const artSrc=id=>{
  const pair=byId.get(id);
+ return pair?'./assets/uniform/'+encodeURIComponent(pair.illustration):null;
+};
+const originalArtSrc=id=>{
+ const pair=byId.get(id);
  return pair?'../collection-161/assets/cards/'+encodeURIComponent(pair.illustration):null;
 };
 let approved=[];
@@ -59,6 +63,13 @@ function image(id,name,variant=false,eager=false){
  frame.classList.add('loading-art');
  img.addEventListener('load',()=>frame.classList.remove('loading-art'));
  img.addEventListener('error',()=>{
+  // Publish/caching issues should never hide a character: fall back to the original.
+  const original=originalArtSrc(id);
+  if(!img.dataset.originalFallback && original){
+   img.dataset.originalFallback='true';
+   img.src=original;
+   return;
+  }
   frame.classList.remove('loading-art');
   const message=make('span','missing','Illustration temporairement indisponible');
   const retry=make('button','retry-art','Réessayer');
@@ -66,6 +77,7 @@ function image(id,name,variant=false,eager=false){
   retry.setAttribute('aria-label','Réessayer de charger l’illustration de '+name);
   retry.addEventListener('click',()=>{
    frame.classList.add('loading-art');
+   delete img.dataset.originalFallback;
    frame.replaceChildren(img);
    img.src=src+'?retry='+Date.now();
   });
