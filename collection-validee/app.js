@@ -31,6 +31,20 @@ const artSrc=id=>{
  return pair?'../collection-161/assets/cards/'+encodeURIComponent(pair.illustration):null;
 };
 let approved=[];
+const rarityOrder=Object.freeze(['Commune','Rare','Épique','Légendaire','Hors-série']);
+const expectedRarityCounts=Object.freeze({'Commune':33,'Rare':21,'Épique':8,'Légendaire':4,'Hors-série':1});
+function renderRaritySummary(){
+ const counts=Object.fromEntries(rarityOrder.map(name=>[name,approved.filter(c=>c.rarity===name).length]));
+ const parent=$('rarity-summary');
+ const nodes=rarityOrder.map(name=>{
+  const tile=make('div','rarity-stat rarity-'+rarityOrder.indexOf(name));
+  tile.setAttribute('role','group');
+  tile.setAttribute('aria-label',name+' : '+counts[name]+' cartes');
+  tile.append(make('span','rarity-name',name),make('strong','',counts[name]));
+  return tile;
+ });
+ parent.replaceChildren(...nodes);
+}
 function image(id,name,variant=false){
  const src=artSrc(id);
  const frame=make('div',variant?'image-frame variant-image':'image-frame');
@@ -43,9 +57,11 @@ function image(id,name,variant=false){
 function cardView(card){
  const box=make('article','card');
  box.dataset.group=card.group;
+ box.dataset.rarity=card.rarity;
  const frame=image(card.primary,card.name);
  const caption=make('div','card-top');
  caption.append(make('span','card-reference',card.group));
+ caption.append(make('span','rarity-badge rarity-'+rarityOrder.indexOf(card.rarity),card.rarity));
  const variantTotal=card.alternatives.length+(card.shiny?1:0);
  caption.append(make('span','variant-badge',variantTotal===0?'Version unique':variantTotal+' variante'+(variantTotal>1?'s':'')));
  const label=make('div','card-label');
@@ -75,10 +91,12 @@ function render(){
  const search=$('search').value.toLocaleLowerCase('fr').trim();
  const mode=$('filter').value;
  const origin=$('origin').value;
+ const rarity=$('rarity').value;
  const rows=approved.filter(c=>{
   const count=c.alternatives.length+(c.shiny?1:0);
   const gallery=getPhoto(c.primary)?.series;
-  return (mode==='all'||mode==='variants'&&count>0||mode==='none'&&count===0||mode==='multi'&&count>1)
+  return (rarity==='all'||c.rarity===rarity)
+   && (mode==='all'||mode==='variants'&&count>0||mode==='none'&&count===0||mode==='multi'&&count>1)
    && (origin==='all'||origin===gallery)
    && (c.name+' '+c.group+' '+c.primary+' '+c.alternatives.join(' ')+' '+byId.get(c.primary)?.sourceReference).toLocaleLowerCase('fr').includes(search);
  });
@@ -90,9 +108,14 @@ function render(){
 }
 async function initialize(){
  try{
-  const response=await fetch('../data/choix-cartes-2026-10-11.json',{cache:'no-store'});
-  if(!response.ok)throw Error('Impossible de récupérer la sélection publiée.');
-  const data=await response.json();
+  const [response,rarityResponse]=await Promise.all([
+   fetch('../data/choix-cartes-2026-10-11.json',{cache:'no-store'}),
+   fetch('../data/raretes-validees-67.json',{cache:'no-store'})
+  ]);
+  if(!response.ok||!rarityResponse.ok)throw Error('Impossible de récupérer le catalogue et ses raretés officielles.');
+  const [data,rarities]=await Promise.all([response.json(),rarityResponse.json()]);
+  if(rarities.schema!=='tcg-deseur-rarities-v1'||rarities.source!=='catalogue-valide-67.json'||
+     !rarities.cards||Object.keys(rarities.cards).length!==67)throw Error('Fichier des raretés incomplet.');
   if(data.schema!=='tcg-deseur-cards-v3'||!data.cards)throw Error('Format de catalogue incompatible.');
   const entries=Object.entries(data.cards);
   if(entries.length!==70)throw Error('Le fichier de sélection est incomplet.');
@@ -104,13 +127,21 @@ async function initialize(){
    if(!name?.trim()||byId.get(primary)?.groupId!==group||!Array.isArray(alternatives)
     ||new Set(alternatives).size!==alternatives.length||alternatives.some(id=>id===primary||byId.get(id)?.groupId!==group))
     throw Error('Correspondance non valide : '+group);
-   return {group,name,primary,alternatives,shiny};
+   const rarityChoice=rarities.cards[group];
+   if(!rarityChoice||rarityChoice.name!==name||!rarityOrder.includes(rarityChoice.rarity))
+    throw Error('Rareté manquante ou incohérente : '+group);
+   return {group,name,primary,alternatives,shiny,rarity:rarityChoice.rarity};
   });
+  const counts=Object.fromEntries(rarityOrder.map(name=>[name,approved.filter(c=>c.rarity===name).length]));
+  if(Object.entries(expectedRarityCounts).some(([name,qty])=>counts[name]!==qty))
+   throw Error('Répartition de raretés inattendue.');
+  renderRaritySummary();
   $('total').textContent=approved.length;
   $('variants').textContent=approved.reduce((sum,c)=>sum+c.alternatives.length,0);
   $('excluded').textContent=discarded.length;
   $('search').addEventListener('input',render);
   $('filter').addEventListener('change',render);
+  $('rarity').addEventListener('change',render);
   $('origin').addEventListener('change',render);
   render();
  }catch(e){
