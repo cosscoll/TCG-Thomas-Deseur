@@ -20,7 +20,7 @@ jobs:
       - name: Charger les sources officielles du dépôt
         uses: actions/checkout@v4
       - name: Installer Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Télécharger les 177 images originales, sans IA
