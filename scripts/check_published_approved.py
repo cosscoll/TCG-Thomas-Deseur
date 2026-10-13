@@ -139,9 +139,38 @@ def verify_once():
     css = fetch("beta/style.css")
     assert len(css) > 1000
 
+    # Pages de travail complémentaires : garantir la publication des vrais
+    # écrans et de leur source, sans toucher à un compte ou au serveur Floot.
+    boards = fetch("planches/").decode("utf-8")
+    assert 'id="primary-grid"' in boards and 'id="variant-grid"' in boards
+    assert 'id="print"' in boards and "edition-staging-67.json" in boards
+    assert "Carte mystère" not in boards.split("<script type=")[-1], "Aucune donnée privée ne doit être tirée du manifeste."
+
+    review = fetch("audit-visuels/").decode("utf-8")
+    assert 'id="items"' in review and 'id="download-json"' in review
+    review_js = fetch("audit-visuels/app.js").decode("utf-8")
+    assert "tcg-deseur-art-review-105-v1" in review_js
+
+    progress = fetch("avancement/").decode("utf-8")
+    assert 'id="items"' in progress and "88 actions" in progress
+    tracking = json.loads(fetch("data/suivi-88-actions.json"))
+    assert tracking["schema"] == "tcg-deseur-88-autonomy-status-v1"
+    assert len(tracking["actions"]) == 88
+    assert tracking["summary"]["delivered"] + tracking["summary"]["partial"] == 88
+
+    creative = fetch("kit-visuels/").decode("utf-8")
+    assert 'id="preview"' in creative and 'id="download"' in creative
+    assert "edition-staging-67.json" in creative and "thumbs/" in creative
+
+    sitemap = fetch("sitemap.xml").decode("utf-8")
+    assert "collection-validee/" in sitemap and "beta/" not in sitemap
+    assert "audit-visuels/" not in sitemap and "kit-visuels/" not in sitemap
+    robots = fetch("robots.txt").decode("utf-8")
+    assert "Sitemap:" in robots
+
     original = fetch("collection-161/assets/cards/td-1-002.webp")
     assert original[:4] == b"RIFF" and original[8:12] == b"WEBP", "Visuel stylisé inaccessible."
-    return f"Accueil et galerie 68 cartes ; {all_live_images} originaux + 105 WebP uniformisés 768x1024 + 105 miniatures mobiles 384x512 accessibles, et bêta accessible."
+    return f"Accueil, 68 emplacements, {all_live_images} originaux + 105 WebP uniformisés + 105 miniatures, planches, revue, kit PNG, suivi 88 actions et bêta accessibles."
 
 
 def main():
