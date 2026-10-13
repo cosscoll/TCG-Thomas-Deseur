@@ -8,6 +8,8 @@ La référence éditoriale reste `data/choix-cartes-2026-10-11.json`, à partir 
 
 Le nouvel outil `scripts/stage-approved-edition.mjs` transforme en lecture seule ce catalogue en un **schéma de transition**, contrôlé par `tests/stage-approved-edition.test.mjs`.
 
+**Livré avant le réarmement Floot :** [`data/edition-staging-67.json`](../data/edition-staging-67.json), manifeste préproduction contenant les **67 personnages, leurs raretés officielles, les URLs des 67 visuels principaux et 38 variantes**. Le fichier peut être directement lu par le futur backend, mais garde le statut `NON_DÉPLOYABLE_AVANT_CHOIX_VARIANTES`. La commande `node scripts/generate-approved-staging.mjs --check` interdit tout décalage entre ce fichier publié et les décisions du créateur. La [galerie publique](../collection-validee/) affiche maintenant les raretés et permet de filtrer chaque catégorie, sans accéder aux comptes Floot.
+
 | Information | Vérification |
 | --- | --- |
 | Personnages approuvés | 67 |
