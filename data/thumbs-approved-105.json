@@ -1,0 +1,955 @@
+{
+  "schema": "tcg-deseur-approved-thumbs-v1",
+  "size": [
+    384,
+    512
+  ],
+  "source": "data/approved-artwork-uniform-105.json",
+  "images": [
+    {
+      "artworkId": "td_1_004",
+      "base": "collection-validee/assets/uniform/td-1-004.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-004.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "4a4c453033baba1a4df06ade556743a6713bbf7a3451b13348a7a38c4ca36c21",
+      "thumbSha256": "1d42a8ef400e35de828ba5b244c1a72de882cfca423d9a04240cf3eb86ca58cd"
+    },
+    {
+      "artworkId": "td_2_043",
+      "base": "collection-validee/assets/uniform/td-2-043.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-043.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "e42c12a2ffc5c0db67d9dd65b97e43f3c7f2da079e2a167fdcb9611562107251",
+      "thumbSha256": "628252dea88539bd06a63171eb8d67bc3c83090336917fa5635a8db755b2e86b"
+    },
+    {
+      "artworkId": "td_1_001",
+      "base": "collection-validee/assets/uniform/td-1-001.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-001.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "ccc39ab75a5175a5b74ef84c0c15655162754a650301c5fb29e5ba0fd91d9b7a",
+      "thumbSha256": "9478872d0d49c47b17dcf28a258f0b91e719afdfcdbeff3a43afbbea8fb74335"
+    },
+    {
+      "artworkId": "td_3_005",
+      "base": "collection-validee/assets/uniform/td-3-005.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-005.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "1e4d3aeadaa806cde4585bf90a71d2ba0e7e200601181b13c666bf62ef7a54ed",
+      "thumbSha256": "4019ddddfbe09282285a791ab583d30d1a3b23242baabfd968b82c91ec7c1d2f"
+    },
+    {
+      "artworkId": "td_1_002",
+      "base": "collection-validee/assets/uniform/td-1-002.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-002.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "082f466cf64b1757942b2a6a042fb2b17e5d38eafbdf7bb1cd9d45ad84e9bc61",
+      "thumbSha256": "ff52dd07c8061afe922e2f54d56147906e0b9a399ea7fdf7d34f37c93acace73"
+    },
+    {
+      "artworkId": "td_2_042",
+      "base": "collection-validee/assets/uniform/td-2-042.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-042.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "63a8d025945c05136d9cfbd304e78fd49d556317b2def5d5fdbb88812c1db2ec",
+      "thumbSha256": "1beb57e3dcff7d1b658ee17e791faee39fc488f2cf055b8f64fcde1815c1426f"
+    },
+    {
+      "artworkId": "td_3_042",
+      "base": "collection-validee/assets/uniform/td-3-042.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-042.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "f7b1a8e0cb9fa528b078c6aab97c5031d3f812706abe91b10f6c79e7cdb946ec",
+      "thumbSha256": "51df4c9b9c17490c5a97fe996c0faf8be21a703708036be69f8e7c446821128e"
+    },
+    {
+      "artworkId": "td_1_003",
+      "base": "collection-validee/assets/uniform/td-1-003.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-003.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "6015ab6878b5cc0167621705742988723ed75b1bc701852655b083db80abbc24",
+      "thumbSha256": "661b6159e3e7ae7e23fde48e0044ebe282f7d87b84c2cd9ad44cf7099e59afe1"
+    },
+    {
+      "artworkId": "td_1_005",
+      "base": "collection-validee/assets/uniform/td-1-005.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-005.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "e7398d75ed8140f2d6adf044f3798840d05ffc5139c3ac7ed3d4398677f3d301",
+      "thumbSha256": "1ed2e74eafe28b68dd7c047a779e7d2feb5820d01e9099035e92ae2cbbf9e4e0"
+    },
+    {
+      "artworkId": "td_2_003",
+      "base": "collection-validee/assets/uniform/td-2-003.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-003.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "2ce01f3bca52fd03b693932bc0cf59f9e1d6f91ed757e1cec7693be158ece046",
+      "thumbSha256": "c9105abed859b65ef9ec027952fb5e0229b70211a11b6d2be138552074ac073b"
+    },
+    {
+      "artworkId": "td_1_007",
+      "base": "collection-validee/assets/uniform/td-1-007.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-007.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "050854eb89dca0a18afc06320250295a2ef08dcb88dc494ecd5e6d4f873e6f48",
+      "thumbSha256": "98c30a5554c7e7d38cdb080191a86d123071bdda14e24b259ef39656f4cc5993"
+    },
+    {
+      "artworkId": "td_3_011",
+      "base": "collection-validee/assets/uniform/td-3-011.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-011.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "951d4608844ddeaed41bb40865a8fbed342af4cc09889d53c70eda02d7af213a",
+      "thumbSha256": "5a2c2954b6685754fba196838b8dc6a429689937ef3afa691e3f8ba79ad41adf"
+    },
+    {
+      "artworkId": "td_1_008",
+      "base": "collection-validee/assets/uniform/td-1-008.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-008.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "8dee0b178dee66d10dbb195e579612f2e00d4838ae6702b63e0b3c3a3af6c774",
+      "thumbSha256": "4e4a119dfd7837ec3fe1266316069ff016ddedf4e7bb06318aa8367a519a22b2"
+    },
+    {
+      "artworkId": "td_2_005",
+      "base": "collection-validee/assets/uniform/td-2-005.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-005.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "23974090d823ec88026ba6d33e1c23c1138dbbe0d54ef5bc646d28e42e4b5d97",
+      "thumbSha256": "d3549aa0dc9a5614da8bdf5f0c5a0026834119a6ce14a9791d5bc0dd807e25d7"
+    },
+    {
+      "artworkId": "td_1_006",
+      "base": "collection-validee/assets/uniform/td-1-006.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-006.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "6659cb632c56946b6b2e58b3c7d8ea31e8a021e51467dca0763a38675474f2be",
+      "thumbSha256": "95aafbd2c413e3c261fb43b6d067cc3027eb2eb508af1b630dde545534c23750"
+    },
+    {
+      "artworkId": "td_3_023",
+      "base": "collection-validee/assets/uniform/td-3-023.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-023.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "512ec7f6611936667f4b76bf83cdfaffb6b165531530596bf7a9afdf3a5ddb1f",
+      "thumbSha256": "82ec98d75c90c3bba962681a5e2296fae9c72609aa2e1bd214a38437e1c8558c"
+    },
+    {
+      "artworkId": "td_1_012",
+      "base": "collection-validee/assets/uniform/td-1-012.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-012.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "1e3f34e763564da90cd8425a6b8f764973f44372018488e8e8021a5f115861c6",
+      "thumbSha256": "225c94aefab64130265b33f3529f202e6d45bcc4d96f59b77576ad0dcedb9db8"
+    },
+    {
+      "artworkId": "td_3_024",
+      "base": "collection-validee/assets/uniform/td-3-024.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-024.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "ff1efe7880e93e90cd6e38403bdbbe8018234589f22ed5dbc5a0dd0e61a55b44",
+      "thumbSha256": "c08aa1762c6a9df9a4b4da2c13b7ca1f57dacfc033d7d7c44df3fa106a259db8"
+    },
+    {
+      "artworkId": "td_1_011",
+      "base": "collection-validee/assets/uniform/td-1-011.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-011.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "fc4c7264f5367341a9127b6366eca5eedb0788610f428d1d9b9b6277b4fa6b5d",
+      "thumbSha256": "699b2d56aa69b1c93db95f037346536574c1a772b5a3acf9e24333389f3895f3"
+    },
+    {
+      "artworkId": "td_2_001",
+      "base": "collection-validee/assets/uniform/td-2-001.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-001.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "e9cdb92362e013638d9465c18e357b01046c348b89cdc18214f91448bf07e219",
+      "thumbSha256": "01cf2a690b9e9cd562890075466256ba449a47381fc927ceb9d0911c2ffef8ae"
+    },
+    {
+      "artworkId": "td_2_007",
+      "base": "collection-validee/assets/uniform/td-2-007.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-007.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "a18efb2f11b98e9652996ed39d222efd3d5fcda12c7de45fdeddc5913dcbdfbc",
+      "thumbSha256": "b5b187a9f15b47c5f21efcdc8bd77825298273d6f71fad16ba77f95d8fd649b6"
+    },
+    {
+      "artworkId": "td_1_010",
+      "base": "collection-validee/assets/uniform/td-1-010.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-010.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "411c9b112b54b7584c169f358255b1ac7273a42df61bcf0ea86dda4a17bb649b",
+      "thumbSha256": "9e3ea292921781aa582cd2edca3e785c4ba93521910da0e6ba9e587b73500adc"
+    },
+    {
+      "artworkId": "td_3_010",
+      "base": "collection-validee/assets/uniform/td-3-010.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-010.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "f0e39537d74ba15671cbc0b7b706c4d81b7efee143b7234c9066dca1e1b42aa1",
+      "thumbSha256": "316dd079353e459d68862e2e5900ed5d7afd1cde0495da2ab00e17fceb0c14ce"
+    },
+    {
+      "artworkId": "td_2_008",
+      "base": "collection-validee/assets/uniform/td-2-008.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-008.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "fc4ca56a83fcc920e70788df599340c7e23c0dbf23b3ec35ede6085c6ae1f372",
+      "thumbSha256": "84203a08a36dbe80f16712d901769b0ebc6ca5578ce20846a06b4ab483ec6a76"
+    },
+    {
+      "artworkId": "td_3_001",
+      "base": "collection-validee/assets/uniform/td-3-001.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-001.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "00455a0e4c14f755e7ced1a6673463d218a299908fcbfa0eda4d79deae59333a",
+      "thumbSha256": "b88e36b46de5d31a38082ac54ec9a4e643044aeded671e55b75c520bb15ffbcd"
+    },
+    {
+      "artworkId": "td_1_014",
+      "base": "collection-validee/assets/uniform/td-1-014.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-014.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "9fd6a54cfc92a0e5b3d1f578eb96638418c80c782088bbd0f7499b3d2f70054f",
+      "thumbSha256": "329db608ecd28adc6661cb1a557fc9ea65238644c75461903b153fe5a67b24ca"
+    },
+    {
+      "artworkId": "td_3_033",
+      "base": "collection-validee/assets/uniform/td-3-033.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-033.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "89d93006c86971c4603b733450e82253b7d1c563f511b360941f7397f576756b",
+      "thumbSha256": "a4b33bae91c58dfd8b07376a54d6ce4fc38fcfa78e68c388075c92622bb2d79b"
+    },
+    {
+      "artworkId": "td_3_031",
+      "base": "collection-validee/assets/uniform/td-3-031.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-031.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "8bdf22043f98710c910cbde84e187560bea20a65df9ec99eecaa8955c782d37d",
+      "thumbSha256": "4ff3713d8033afdeceb916a888591f5e9ca1e6c657cae02f14c53e3d488e4068"
+    },
+    {
+      "artworkId": "td_3_043",
+      "base": "collection-validee/assets/uniform/td-3-043.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-043.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "b9bfb1c903ef81baa2305cc5fb0632e15144797fc9183cb68b38f79709ad08c1",
+      "thumbSha256": "57d9787cc1ebd597a40a05b2d43b9e49ceb931ebbc887501d42d37346a830ed6"
+    },
+    {
+      "artworkId": "td_1_020",
+      "base": "collection-validee/assets/uniform/td-1-020.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-020.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "2e21ba794b4bc67663ec83e4f3314d808f0b54524ad9834ab713b7c1cef52319",
+      "thumbSha256": "029d707faf1af2d398048f8801b96d881477d87110038dffb93195444be9bf50"
+    },
+    {
+      "artworkId": "td_1_019",
+      "base": "collection-validee/assets/uniform/td-1-019.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-019.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "ab5a068048a364159b9404ce068a9ed62b6f6cb996fc872b050f562212f383b8",
+      "thumbSha256": "602c9c173c2d3f7919e9fb53eaedb7d7728008bd5150591200849c0cbceb4eb7"
+    },
+    {
+      "artworkId": "td_1_018",
+      "base": "collection-validee/assets/uniform/td-1-018.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-018.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "171b910cc66b00fe76a48a4ee5209ffd35c3aa3f5d0cb3ea409d9f47e960b765",
+      "thumbSha256": "4093033dd94018fe3a03b2c32e7ef0fbbd108034423f2954869bfc069504b386"
+    },
+    {
+      "artworkId": "td_1_021",
+      "base": "collection-validee/assets/uniform/td-1-021.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-021.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "1809ba2fec81633cd467d7ca08d899f03aac6c0a04037454d730519a0378eed8",
+      "thumbSha256": "934587c3e09ddfa1345d6113286bc81c7c509b458be27e5c8c26211bb49f0ca6"
+    },
+    {
+      "artworkId": "td_3_016",
+      "base": "collection-validee/assets/uniform/td-3-016.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-016.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "be79c34406aa51827e30a60b46213325d8cc75f69107b78199f8b32429fbfec0",
+      "thumbSha256": "705699c5ec91e52a7726380523ed0320e4c99a3dfa5702a97cce5a1c43bf5c69"
+    },
+    {
+      "artworkId": "td_1_023",
+      "base": "collection-validee/assets/uniform/td-1-023.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-023.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "6812c6d65d902fab6cc246f645052031be33562c21bbeaa92c45487ddbe2eeb3",
+      "thumbSha256": "1ed4050b905895abb96d9d6955245ae0b2f4122bb55834a21cde586d1d2aa677"
+    },
+    {
+      "artworkId": "td_3_015",
+      "base": "collection-validee/assets/uniform/td-3-015.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-015.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "379bcd956137b3ed1c7be35c47ee6d1a7065696a4ca8378f1f500087b3648b0d",
+      "thumbSha256": "7fab91be1d6f74297e7c69f3514501a5602de1ed578e4c72234db8cca7ddd791"
+    },
+    {
+      "artworkId": "td_1_022",
+      "base": "collection-validee/assets/uniform/td-1-022.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-022.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "7cd3206c7d40bb5fe530ebae5cb8a44954f891dd3873bb07f98e5404e84ef7df",
+      "thumbSha256": "efef528b77c825b182fdca9c339b4b69a31700ba57327b6647cc1088bcd643ef"
+    },
+    {
+      "artworkId": "td_3_022",
+      "base": "collection-validee/assets/uniform/td-3-022.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-022.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "0cd7bb59b89e4d28b008f5af19486c8077bafde299ee9107e202d91d5287032e",
+      "thumbSha256": "f2bef6e9d2a1e7a38c6d73d9a84ac1064f6cf77e659fa389c4009754acdb8dac"
+    },
+    {
+      "artworkId": "td_1_024",
+      "base": "collection-validee/assets/uniform/td-1-024.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-024.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "21af3a6a45ccadbfab25007ab3a014cdb2be83899bbbfaf817e0e8dd6f90dc1d",
+      "thumbSha256": "1ed79322294298806c7e160c9f1389464dc80e929a02b3d8178b0fdfbe7317c3"
+    },
+    {
+      "artworkId": "td_3_037",
+      "base": "collection-validee/assets/uniform/td-3-037.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-037.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "60479795b8379ad7001da016de5d1a0ab5c70eb0983b895c9c18dad220adc60a",
+      "thumbSha256": "e36ecf87b3aaeed29af332715e304caee44155e9a408a48e09855e4b2b5fd689"
+    },
+    {
+      "artworkId": "td_1_026",
+      "base": "collection-validee/assets/uniform/td-1-026.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-026.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "01fd5505cf655fde5e0095d7db0f8bd13dd741fd2667ea3621ff9c98019fd67a",
+      "thumbSha256": "de85716c17194ab4d1f5faa4c49ff6acf9487babcc05290ab723d5d5774b0a58"
+    },
+    {
+      "artworkId": "td_3_032",
+      "base": "collection-validee/assets/uniform/td-3-032.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-032.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "bc5e8def1bd226be03ef6fd002f41e553d6f149a56d336f8c426827b6cd5b1c8",
+      "thumbSha256": "5495e2cd5a90a4678adb41e9658969ca0a513780ff67c1a40b1d47d12a8d97c3"
+    },
+    {
+      "artworkId": "td_1_028",
+      "base": "collection-validee/assets/uniform/td-1-028.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-028.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "6ecdba4b7062415452253748fbb5ed9eb3d3d98a9bf7a383298fd4cd9f6203b9",
+      "thumbSha256": "df6de24b1e8546bfe8ba08247313841b076dca764779777aeb00e4ae5f871a93"
+    },
+    {
+      "artworkId": "td_1_025",
+      "base": "collection-validee/assets/uniform/td-1-025.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-025.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "3f2d1edd5418260ae180422db5119cdcb6ec4a20ecc0a63623848251fd31771f",
+      "thumbSha256": "84bcb2bbadbec6c99d127ab0cbfdc7e9271ab3de7cddc90bef12d7230324c10e"
+    },
+    {
+      "artworkId": "td_2_024",
+      "base": "collection-validee/assets/uniform/td-2-024.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-024.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "8f9ff2ba562efdf4af7482b5697e0eb79c0d7f86414a75479e071728ee1622db",
+      "thumbSha256": "1752647da9574e209c42d9d5eebafb4fe6aa7e68c2543c87fe1967a3566a6e78"
+    },
+    {
+      "artworkId": "td_1_027",
+      "base": "collection-validee/assets/uniform/td-1-027.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-027.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "fe557169057562cee5b2d1dedbbecca9640648e6fc66dbf9ccff65086f618a5e",
+      "thumbSha256": "6eb4fc073fd944a3aea9519ffd6bd4bb4980d786bb77163cd46c160ea7c8f68b"
+    },
+    {
+      "artworkId": "td_3_035",
+      "base": "collection-validee/assets/uniform/td-3-035.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-035.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "7f882fad5879773263740ad5d0dd2dafcf68ffa48d7fe9d443031979d6703c84",
+      "thumbSha256": "a0f4077b645bf3bd0eae8c4a500fb5d9303b9d34d2b315f77edecbe15fbd285f"
+    },
+    {
+      "artworkId": "td_2_019",
+      "base": "collection-validee/assets/uniform/td-2-019.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-019.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "9b7a8e796d3afebcd7ddb4f04baa32e3d5bfba767d101e9ff002cb57a652ba48",
+      "thumbSha256": "8a08ed6f25a7b64ba6fe109e34140d96c3c0b7d10a84e44a381db11c900951cd"
+    },
+    {
+      "artworkId": "td_3_040",
+      "base": "collection-validee/assets/uniform/td-3-040.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-040.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "57e978846e99afeb211a55d3751c56e857cc03c0fdbef457fcac3013cea86ef9",
+      "thumbSha256": "79c474170058d2f4683bfc57bd44305e50daf8297552b695fe1844fa86a162df"
+    },
+    {
+      "artworkId": "td_2_023",
+      "base": "collection-validee/assets/uniform/td-2-023.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-023.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "c1593f2c25f374117c3e40027460a310986dcd097a936c84736fb25398c900cc",
+      "thumbSha256": "4d18badf1546a612db77bd71c0b41398307eafc009ead6608996e977e6ddefd1"
+    },
+    {
+      "artworkId": "td_3_039",
+      "base": "collection-validee/assets/uniform/td-3-039.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-039.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "2809db4b3d2671c352b127e63b5e4709d9dd4e854b5e7a77f17606c41b11dcd1",
+      "thumbSha256": "dee33e377ec82697d0d6c107290879a32fa282bc20e620344b53d82aea070e65"
+    },
+    {
+      "artworkId": "td_3_036",
+      "base": "collection-validee/assets/uniform/td-3-036.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-036.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "ce7457557e19d5e3afab2d278aa5f47be1c991ead811444fa509d92eb9dff785",
+      "thumbSha256": "9049b3fb2ef6000d9d7fb446926d6090e2ea0581a0c6ba0517a8f8b246770ee0"
+    },
+    {
+      "artworkId": "td_1_030",
+      "base": "collection-validee/assets/uniform/td-1-030.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-030.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "14347945ee08b9a811509a128606b71f9f51a41da7118720cd096bfec5d53071",
+      "thumbSha256": "d4a601047faaffc3793cc5b12860a04bc18a050a76c02ad0893fc409e4f5b8b7"
+    },
+    {
+      "artworkId": "td_1_032",
+      "base": "collection-validee/assets/uniform/td-1-032.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-032.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "7965e98403add3b26dfb32172b7bd326f75ac4f40923860e452bbeaaffd48ff4",
+      "thumbSha256": "8778dd85fa4d14ce13b8f4c702303cd234ba2134ecc87d28df4aab731c84c1d0"
+    },
+    {
+      "artworkId": "td_2_025",
+      "base": "collection-validee/assets/uniform/td-2-025.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-025.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "128eff3332b47993dcd380c18e05e974671cdc1ab820e4dda6b6b2ca2879a8b7",
+      "thumbSha256": "10c5dad16c0f8828272724b2b425194df8b6aa42fcee0f262bbe9e948b8a9d45"
+    },
+    {
+      "artworkId": "td_2_031",
+      "base": "collection-validee/assets/uniform/td-2-031.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-031.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "058d66777bc3c058cba8792c1f50356efe97875dc42bef09ae686187bd4d085f",
+      "thumbSha256": "5cb6b9074463e8d09590b3abd1a13640fdf976ba2a94da71ab3081ff36ecae14"
+    },
+    {
+      "artworkId": "td_1_035",
+      "base": "collection-validee/assets/uniform/td-1-035.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-035.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "6925e90b6165ed3413ec5360c93ec22b792737033cb3ddbc9231e330f7d4d829",
+      "thumbSha256": "de80e7d4db787f4e777a400b354bb42d2161239fa75f7f43c74a3e0ba861a08d"
+    },
+    {
+      "artworkId": "td_2_044",
+      "base": "collection-validee/assets/uniform/td-2-044.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-044.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "5ce413a39375c18f243205ead954d8d6d85e2b7faa698af8a903f48ff1ba0493",
+      "thumbSha256": "c7c86bc046a524a54af4e558b44ec238fa51f403794b2a79861595315fe6e41d"
+    },
+    {
+      "artworkId": "td_3_038",
+      "base": "collection-validee/assets/uniform/td-3-038.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-038.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "d919cb166f1c5867e0f38d5b877767ca3f6d96e9cb800621fc6f8c60fd1a6a9b",
+      "thumbSha256": "16d015d5e90e7e93144baeb66fda57770716d11ce9d43d4b79d0a8949dd6cae6"
+    },
+    {
+      "artworkId": "td_1_036",
+      "base": "collection-validee/assets/uniform/td-1-036.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-036.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "f7936b09aedbb3fe53daeb33032302542547f60fadcbb41a623b915fd28e9d42",
+      "thumbSha256": "d7151b774c91f6d63580ac3b6ce37d5a9c6963ef704a15ab14a81ed72628b066"
+    },
+    {
+      "artworkId": "td_2_027",
+      "base": "collection-validee/assets/uniform/td-2-027.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-027.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "d447ab80e1cc7c5485b8b6040d8229de3db42f771e094a336861c0e30ef0413a",
+      "thumbSha256": "9b7d0f121d035fc1c2da3f92699bfc27c815c260f510f085cf37b9b1a7ed926f"
+    },
+    {
+      "artworkId": "td_2_030",
+      "base": "collection-validee/assets/uniform/td-2-030.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-030.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "a397c2d26b698cdcc85883c96a3ecf7920e4fb95faf799ad5ffdb6843fac4238",
+      "thumbSha256": "7417ea26c9f08fe93e686e24c4df38c997331ebb30e965d68514d739542d71f0"
+    },
+    {
+      "artworkId": "td_3_029",
+      "base": "collection-validee/assets/uniform/td-3-029.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-029.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "b36ea59556aa8ae64d07d3ce922cb4a03baefc6a9989f42fd574a6f9ad2d8515",
+      "thumbSha256": "1228a74da24f5456497f97c802d5ad1e77c2d86bfedd22ff2ef05ea18d83b76c"
+    },
+    {
+      "artworkId": "td_1_040",
+      "base": "collection-validee/assets/uniform/td-1-040.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-040.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "c490d4019a72ce1ebca830ab84c0ba7790c274edea3dfdfd9b99ef4f038fb391",
+      "thumbSha256": "90e98f7a70eafbda9271f0397aaff3ba669291508e03365193defaf8ea64265b"
+    },
+    {
+      "artworkId": "td_2_035",
+      "base": "collection-validee/assets/uniform/td-2-035.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-035.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "7efb99d78f059d461b0022ff1dec96513afdf9bf8f97a6954302738810b5e477",
+      "thumbSha256": "9fc8c1cbe4e6ec496edfbfed21321cd36cf46762b38e531a45866f8bc9437219"
+    },
+    {
+      "artworkId": "td_3_009",
+      "base": "collection-validee/assets/uniform/td-3-009.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-009.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "3ae58ba4c3ecbfac8b7e4ef867c3acf370200cee70ac392b812afdb9d2bdbd86",
+      "thumbSha256": "903e7582e088d661c872a4ef9d1afe3481765cf432e9b51140e71b3d9806ea58"
+    },
+    {
+      "artworkId": "td_2_034",
+      "base": "collection-validee/assets/uniform/td-2-034.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-034.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "e6e3926057ec641a7e11b260c8c6c8f40cb9ebb285c82fca9742e1f906e58de1",
+      "thumbSha256": "8cc61be2ed4c54ba57f519647525c301d3dd92c8dac628e4906bc22aeb85cbad"
+    },
+    {
+      "artworkId": "td_3_041",
+      "base": "collection-validee/assets/uniform/td-3-041.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-041.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "2f3a46d5c30fde1829b5df60ddfccefce732cb6df3efcc18f908fdf4bc6a84a6",
+      "thumbSha256": "214e1c52760166ed50965012d9710b95d2aa0a7fd869ca062d30c0d906a80596"
+    },
+    {
+      "artworkId": "td_3_028",
+      "base": "collection-validee/assets/uniform/td-3-028.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-028.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "57180c204d2ba3b01191d56ddde7264dbf60ec154fe0571caf3b8e91bcf59c46",
+      "thumbSha256": "95bed63f1b696fd6e7cb1e9b00615c9699c29724db5b0beb15ddefe775432eaf"
+    },
+    {
+      "artworkId": "td_3_002",
+      "base": "collection-validee/assets/uniform/td-3-002.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-002.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "d4b5434ee81271b91725b5267600506f901bdf23d1a82cdd11af7f41fa40b825",
+      "thumbSha256": "ba36e9d3ed796ba4e3cb2515cb0fe9a28bd374d15f7b5783578d1a6bac45d5c0"
+    },
+    {
+      "artworkId": "td_1_043",
+      "base": "collection-validee/assets/uniform/td-1-043.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-043.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "be2d463ed1c4802254f2588376867181860067e8fadf1b6454876969454a6e47",
+      "thumbSha256": "3e28fd1a93a029617067d23ad2a27bac6a6ac7507afe8b31a750214af32440d3"
+    },
+    {
+      "artworkId": "td_2_039",
+      "base": "collection-validee/assets/uniform/td-2-039.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-039.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "9a8dad31c6777e57b7a810b5e0fbe5d98072dbb26f98ad051a18913c67dbb9bf",
+      "thumbSha256": "7c2a8c08862a6bf8b552ab8df9abe5b6d13eda71cb0ddec022889b2dca196f88"
+    },
+    {
+      "artworkId": "td_2_037",
+      "base": "collection-validee/assets/uniform/td-2-037.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-037.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "c405d46d8f6d866bac453e88f66900d4d81eff515fc3975fe563fe18be8ec3a0",
+      "thumbSha256": "0c58b8efd3fb1f765f610120a5a0a9fde1a8d3324f6e868a63225ce8b599f433"
+    },
+    {
+      "artworkId": "td_3_025",
+      "base": "collection-validee/assets/uniform/td-3-025.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-025.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "511136a18b162d80d0dea876d4d3b762edc33a0073415e2aee35e533db37d664",
+      "thumbSha256": "68f612f27de2cadf051edd20736921cbddc89ca774b5a1d2297c58f68fe59ce1"
+    },
+    {
+      "artworkId": "td_3_003",
+      "base": "collection-validee/assets/uniform/td-3-003.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-003.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "015cd72b3fe96bdbfaa40b24fd762f959eb9ecee0d5b3a4afbc924e58cb2a6ac",
+      "thumbSha256": "811a59e3e95943a0eefd20cdadb114fc95e2e2271a2da53749a57d1f79a88766"
+    },
+    {
+      "artworkId": "td_2_045",
+      "base": "collection-validee/assets/uniform/td-2-045.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-045.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "93283caeb800d08a7e509d8f0a00a8ecd2fc38aa33b41ea0b44aa2f456598aee",
+      "thumbSha256": "4e947eb6591b015db01271958954e236fb098ce93675a3134a60cb4495ed04cd"
+    },
+    {
+      "artworkId": "td_2_048",
+      "base": "collection-validee/assets/uniform/td-2-048.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-048.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "e463dfd35e83062c0b19975d85dcb785855bb800f1f210ee2cb76ff7b3eb54f9",
+      "thumbSha256": "7b8a154ca94301c5bdb64eadc4d0b34803169c5974a6dfcbfadde9e14e491edb"
+    },
+    {
+      "artworkId": "td_3_014",
+      "base": "collection-validee/assets/uniform/td-3-014.webp",
+      "thumb": "collection-validee/assets/thumbs/td-3-014.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "fdb000c8f2922c7180533de5cfb5724043347840f5390c772d1fdb1bbaa877bc",
+      "thumbSha256": "51ed687e6f956495997ac5b3e3c5c7a81371dc8e38e0d8de682706e7b0395849"
+    },
+    {
+      "artworkId": "td_1_049",
+      "base": "collection-validee/assets/uniform/td-1-049.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-049.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "f5398124e41b09ab7dc1e1c08a463b249e8ece2111699d393a942453e6a24932",
+      "thumbSha256": "7cfae4651cf8d6d530c9d25db71cbdf31ca7415ff4a999b778221b040b239bf5"
+    },
+    {
+      "artworkId": "td_1_045",
+      "base": "collection-validee/assets/uniform/td-1-045.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-045.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "8ae7e59ce77f54af67344b15e31295bc4238f33f0126f3868c2c6eaa4b287eab",
+      "thumbSha256": "cd02747cef74c07897668d07224786c5d646a843d1fb835e19bcfae43298c681"
+    },
+    {
+      "artworkId": "td_1_051",
+      "base": "collection-validee/assets/uniform/td-1-051.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-051.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "92acfbcac37d85590ab6622ef9fe503db96972868557bc017103b6201a1a4aae",
+      "thumbSha256": "3028e52827248ef555c7f47f908a9ea6e9c976186e43d54228a1f9a43501c7f3"
+    },
+    {
+      "artworkId": "td_1_055",
+      "base": "collection-validee/assets/uniform/td-1-055.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-055.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "84ba484316489e7053c52dae80d101119a91171135985b54f1eb481b20f68eff",
+      "thumbSha256": "f4d06fc6f4ccfe6b7fb8d9788f4a259c21ab76bab49b84095d2d9db5e9308698"
+    },
+    {
+      "artworkId": "td_1_052",
+      "base": "collection-validee/assets/uniform/td-1-052.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-052.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "ccfd8be5f757fdee09a43075aafd1ff5304972a529365ce81a12286469bb56d3",
+      "thumbSha256": "4ad35d8f9296466da94b56bd4fb7c8f2014efb8eef2009b91e89eacd9fd89c56"
+    },
+    {
+      "artworkId": "td_1_054",
+      "base": "collection-validee/assets/uniform/td-1-054.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-054.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "d94eee258c5110816df74fdaafcf91a98285f25d643714635b615998da534fe7",
+      "thumbSha256": "4271beda8306f8e759b822d48900da6f705826bf6a15bb7fe52d01b99d115cab"
+    },
+    {
+      "artworkId": "td_2_065",
+      "base": "collection-validee/assets/uniform/td-2-065.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-065.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "c2221db1f119079279e215370282487a929142f56ab4d53881a18064665e5625",
+      "thumbSha256": "42939905c3ea275d01c7388af06f53a4b0fbea4840ccef41da05efe858de342e"
+    },
+    {
+      "artworkId": "td_2_066",
+      "base": "collection-validee/assets/uniform/td-2-066.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-066.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "afb47d0494d98ab817705500164843c40c55141328c2206c318a70138b206e0a",
+      "thumbSha256": "14b2e60a579d1b9655b85c230d5c5f4a307fe4d64608abc673c47c7ee8a42da2"
+    },
+    {
+      "artworkId": "td_1_059",
+      "base": "collection-validee/assets/uniform/td-1-059.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-059.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "3d1ef357f78839dd8e43e1812c66461d76d3b05a6a8eaa42540d5d7543feed5b",
+      "thumbSha256": "cfd8b4f9366445b825eb543661ca2cd0e4e9b3fccdda9db5b8f194e832ffa3bb"
+    },
+    {
+      "artworkId": "td_2_058",
+      "base": "collection-validee/assets/uniform/td-2-058.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-058.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "5a4902e5be3304cd48b3c55549e216d5f8477a9568fbb2154f2679ab2d3f3c4d",
+      "thumbSha256": "c24aa28e536f803d5f1d2cc45433b4c5f0902a8c8ed9ec4cdd37a3de94d9b3e7"
+    },
+    {
+      "artworkId": "td_1_058",
+      "base": "collection-validee/assets/uniform/td-1-058.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-058.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "2b1ee8ec35bf25e598b4e8b48ab341c392897b57b1a5940e18a2efd1f8abb7fe",
+      "thumbSha256": "f71c493cb95c4414f0864b48fa162cc8975d1f98572d43bfb1c45e4bf265aaed"
+    },
+    {
+      "artworkId": "td_2_057",
+      "base": "collection-validee/assets/uniform/td-2-057.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-057.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "f20078e0b42a3e4416a6ae1ff917fb3896997a40040e99e81ccaa5ddd7d08a9f",
+      "thumbSha256": "99d5e5f66fe86106f43d636d9e18c33ede07689b1b7d372e6add1a7b4149188e"
+    },
+    {
+      "artworkId": "td_1_056",
+      "base": "collection-validee/assets/uniform/td-1-056.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-056.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "66153efd8f291fd2f3dd6a9f21329ea5c9480ffed33452d3d34c09c6e6daa8d8",
+      "thumbSha256": "c5fe6ab762f96f922bf88d48fb070c8a3eee27235fce5f02f6d80a30aab4685e"
+    },
+    {
+      "artworkId": "td_1_057",
+      "base": "collection-validee/assets/uniform/td-1-057.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-057.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "68c9a1034b7925de96e0c34fae04e3974f8ab8f36de67621fa23879a00fdae3a",
+      "thumbSha256": "d27c051bde5c70a99c187c2e42b6753ffb59c52f7c04319a65f8d7e7720172c5"
+    },
+    {
+      "artworkId": "td_1_062",
+      "base": "collection-validee/assets/uniform/td-1-062.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-062.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "6c72336368981654e8431d87186717e3006740e4ff7c6dd93b669c33999f4d14",
+      "thumbSha256": "4853600555cfe7981ce8222c2c8676236224af5c24cf4902ac06c284bc56d127"
+    },
+    {
+      "artworkId": "td_1_060",
+      "base": "collection-validee/assets/uniform/td-1-060.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-060.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "11a055cc1ddcc3fb89630bb3de8c9f89ec145149a861f1ea2bcfc0e92dd185a1",
+      "thumbSha256": "bf3d4b7d2b35251a7e5fc4b89cc5205ae46c0a1fe51ed998ed84653c7e0d40ba"
+    },
+    {
+      "artworkId": "td_2_052",
+      "base": "collection-validee/assets/uniform/td-2-052.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-052.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "01384e2fa1c22d3c3e6707eb86a3e1c36b93fe3e3036f959bb873fe1830392f7",
+      "thumbSha256": "852d8afe1dca792fec64b4ea47c7f0dc491e7615d3134aa67c28d4d3fb60baca"
+    },
+    {
+      "artworkId": "td_1_063",
+      "base": "collection-validee/assets/uniform/td-1-063.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-063.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "9076a0897f67170fb0df2107c5547608cf2f6394cf567778881382d2e58f29b1",
+      "thumbSha256": "9c8669ac049581b7a42d22a0ac3c920cb5295de0452e1a02df6682c7538fafe5"
+    },
+    {
+      "artworkId": "td_2_050",
+      "base": "collection-validee/assets/uniform/td-2-050.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-050.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "71e83f8c945577cec8c45ca8077e4c9b2734adbd5fb476aad5e4d1a4732884af",
+      "thumbSha256": "0e91f1e1c570d501064cea3c833db5b4fedc7fae9e1bc3d506921b273897ec9e"
+    },
+    {
+      "artworkId": "td_1_065",
+      "base": "collection-validee/assets/uniform/td-1-065.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-065.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "8d771b3098588adb6d3ebcb68aa12b03401ca6df8a0993ae0c254fdea0150428",
+      "thumbSha256": "c978bd358d0bcaff904daa90d3fadab6bea2f1f5373ebdbfd891e656284463d1"
+    },
+    {
+      "artworkId": "td_2_056",
+      "base": "collection-validee/assets/uniform/td-2-056.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-056.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "d92bbb77f242b37bb812d2c990dae5b78f9c8f1fc9b57936efef7c715a0c1447",
+      "thumbSha256": "fbd028f9f012d85ac5c6aef9222034edeb6e586dd7b4c3983e83b0d0b1928cdd"
+    },
+    {
+      "artworkId": "td_1_066",
+      "base": "collection-validee/assets/uniform/td-1-066.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-066.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "10db9d277471027749201f75fa7feab34ac80f1849b48a42b97144077dcd0d56",
+      "thumbSha256": "825573a3c299e5cd41c26bc6188597dc92fc43973b1da698f52e68f49b30e3ee"
+    },
+    {
+      "artworkId": "td_1_064",
+      "base": "collection-validee/assets/uniform/td-1-064.webp",
+      "thumb": "collection-validee/assets/thumbs/td-1-064.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "59f138c949d18fa27b273aef30371741f4278c2e3aa8271a36cd6551fa5f7efd",
+      "thumbSha256": "15fd195a4aa844678033c0460cb6ab2d3e2124ea8fccf84f7aadd9d532ba3d84"
+    },
+    {
+      "artworkId": "td_2_053",
+      "base": "collection-validee/assets/uniform/td-2-053.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-053.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "fb31ffbb3a83764e035d2c52539850c7d0ec6fdc9369c6b5f15ece13e130cfbd",
+      "thumbSha256": "aec1ac6c52ba35e74c096008fa74bddbdc1b708997b7d8ac483e2bff11c99d70"
+    },
+    {
+      "artworkId": "td_2_059",
+      "base": "collection-validee/assets/uniform/td-2-059.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-059.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "e9dc7687bfef6723c2e1988ec2f3b5bd91b83ec0dd1086726be08ff404d84197",
+      "thumbSha256": "351628fc799bd81b1d1bc7a90f3f054166cfa56c9f8286d314a7f0b4458faccc"
+    },
+    {
+      "artworkId": "td_2_049",
+      "base": "collection-validee/assets/uniform/td-2-049.webp",
+      "thumb": "collection-validee/assets/thumbs/td-2-049.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "a2e6a7d34ca1879c6a3de2cf387f75f507ae85e689e17c8bafc980080d7f88e2",
+      "thumbSha256": "33908e5bd9f81d0ca71362c7bf66ce25b5160942ba7d9fe427c47337845ba7d0"
+    },
+    {
+      "artworkId": "td_lille",
+      "base": "collection-validee/assets/uniform/td-lille.webp",
+      "thumb": "collection-validee/assets/thumbs/td-lille.webp",
+      "width": 384,
+      "height": 512,
+      "baseSha256": "d6d524a4954a0e4b040014bd56a2557a4032296d7c1c719e81c8f1a0d91e91b1",
+      "thumbSha256": "fa9606593d0254559fa5d6156301370874db627a1dc6066d27032d596aa9fe38"
+    }
+  ]
+}
