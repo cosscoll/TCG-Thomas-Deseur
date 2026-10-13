@@ -57,7 +57,7 @@ Note : « Jeu de collection virtuelle gratuit. »
 
 ## Kit de production des visuels
 
-Formats proposés, non encore exportés : Story 1080 × 1920 ; publication 1080 × 1080 ; partage horizontal 1200 × 630 ; miniature vidéo 16:9.
+Formats proposés dans l’[atelier de maquettes](https://cosscoll.github.io/TCG-Thomas-Deseur/kit-visuels/), avec export PNG manuel à partir des personnages approuvés : Story 1080 × 1920 ; publication 1080 × 1080 ; partage horizontal 1200 × 630 ; miniature vidéo 16:9.
 Utiliser uniquement des illustrations principales approuvées, vérifier l'autorisation de communication correspondante, éviter toute représentation inventée d'un costume. Fond contrasté, texte court, cadre 3:4, lisibilité mobile et zone sûre sous les interfaces des réseaux.
 
 ## KPI à instrumenter plus tard
