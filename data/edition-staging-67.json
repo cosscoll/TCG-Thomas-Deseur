@@ -1,0 +1,1220 @@
+{
+  "schema": "tcg-deseur-edition-staging-v1",
+  "status": "NON_DÉPLOYABLE_AVANT_CHOIX_VARIANTES",
+  "source": "data/catalogue-valide-67.json",
+  "edition": {
+    "characterCount": 67,
+    "baseArtworks": 67,
+    "variantArtworks": 38,
+    "totalArtworks": 105
+  },
+  "questionsPending": [
+    "variantObtainingRule",
+    "variantCompletionEffect"
+  ],
+  "cards": [
+    {
+      "characterId": "COST-001",
+      "title": "Thomas d'honneur",
+      "ordinal": 1,
+      "main": {
+        "artworkId": "td_1_004",
+        "assetPath": "collection-161/assets/cards/td-1-004.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-004.webp",
+        "photoReference": "REF-1-001"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_043",
+          "assetPath": "collection-161/assets/cards/td-2-043.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-043.webp",
+          "photoReference": "REF-2-040"
+        }
+      ],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-002",
+      "title": "Sophie Deseur",
+      "ordinal": 2,
+      "main": {
+        "artworkId": "td_1_001",
+        "assetPath": "collection-161/assets/cards/td-1-001.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-001.webp",
+        "photoReference": "REF-1-002"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_005",
+          "assetPath": "collection-161/assets/cards/td-3-005.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-005.webp",
+          "photoReference": "REF-3-007"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-003",
+      "title": "Picasso Deseur",
+      "ordinal": 3,
+      "main": {
+        "artworkId": "td_1_002",
+        "assetPath": "collection-161/assets/cards/td-1-002.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-002.webp",
+        "photoReference": "REF-1-003"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_042",
+          "assetPath": "collection-161/assets/cards/td-2-042.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-042.webp",
+          "photoReference": "REF-2-042"
+        },
+        {
+          "artworkId": "td_3_042",
+          "assetPath": "collection-161/assets/cards/td-3-042.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-042.webp",
+          "photoReference": "REF-3-043"
+        }
+      ],
+      "rarity": "Légendaire",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-004",
+      "title": "Roucoul Deseur",
+      "ordinal": 4,
+      "main": {
+        "artworkId": "td_1_003",
+        "assetPath": "collection-161/assets/cards/td-1-003.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-003.webp",
+        "photoReference": "REF-1-004"
+      },
+      "variants": [],
+      "rarity": "Légendaire",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-005",
+      "title": "Thomas flingueur",
+      "ordinal": 5,
+      "main": {
+        "artworkId": "td_1_005",
+        "assetPath": "collection-161/assets/cards/td-1-005.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-005.webp",
+        "photoReference": "REF-1-005"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_003",
+          "assetPath": "collection-161/assets/cards/td-2-003.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-003.webp",
+          "photoReference": "REF-2-001"
+        }
+      ],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-006",
+      "title": "Thomas baseball",
+      "ordinal": 6,
+      "main": {
+        "artworkId": "td_1_007",
+        "assetPath": "collection-161/assets/cards/td-1-007.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-007.webp",
+        "photoReference": "REF-1-006"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_011",
+          "assetPath": "collection-161/assets/cards/td-3-011.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-011.webp",
+          "photoReference": "REF-3-009"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-007",
+      "title": "Pieuvre Deseur",
+      "ordinal": 7,
+      "main": {
+        "artworkId": "td_1_008",
+        "assetPath": "collection-161/assets/cards/td-1-008.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-008.webp",
+        "photoReference": "REF-1-007"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_005",
+          "assetPath": "collection-161/assets/cards/td-2-005.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-005.webp",
+          "photoReference": "REF-2-005"
+        }
+      ],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-008",
+      "title": "Thomas Tacos",
+      "ordinal": 8,
+      "main": {
+        "artworkId": "td_1_006",
+        "assetPath": "collection-161/assets/cards/td-1-006.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-006.webp",
+        "photoReference": "REF-1-008"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_023",
+          "assetPath": "collection-161/assets/cards/td-3-023.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-023.webp",
+          "photoReference": "REF-3-025"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-009",
+      "title": "Capitaine Deseur",
+      "ordinal": 9,
+      "main": {
+        "artworkId": "td_1_012",
+        "assetPath": "collection-161/assets/cards/td-1-012.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-012.webp",
+        "photoReference": "REF-1-009"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_024",
+          "assetPath": "collection-161/assets/cards/td-3-024.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-024.webp",
+          "photoReference": "REF-3-024"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-010",
+      "title": "Criminel Deseur",
+      "ordinal": 10,
+      "main": {
+        "artworkId": "td_1_011",
+        "assetPath": "collection-161/assets/cards/td-1-011.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-011.webp",
+        "photoReference": "REF-1-010"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_001",
+          "assetPath": "collection-161/assets/cards/td-2-001.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-001.webp",
+          "photoReference": "REF-2-002"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-011",
+      "title": "Thomas des neiges",
+      "ordinal": 11,
+      "main": {
+        "artworkId": "td_2_007",
+        "assetPath": "collection-161/assets/cards/td-2-007.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-007.webp",
+        "photoReference": "REF-2-006"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-012",
+      "title": "Flibus le pingouin alcoolique",
+      "ordinal": 12,
+      "main": {
+        "artworkId": "td_1_010",
+        "assetPath": "collection-161/assets/cards/td-1-010.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-010.webp",
+        "photoReference": "REF-1-012"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_010",
+          "assetPath": "collection-161/assets/cards/td-3-010.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-010.webp",
+          "photoReference": "REF-3-010"
+        }
+      ],
+      "rarity": "Légendaire",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-013",
+      "title": "Glacier Deseur",
+      "ordinal": 13,
+      "main": {
+        "artworkId": "td_2_008",
+        "assetPath": "collection-161/assets/cards/td-2-008.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-008.webp",
+        "photoReference": "REF-2-007"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-014",
+      "title": "Poisson thomas",
+      "ordinal": 14,
+      "main": {
+        "artworkId": "td_3_001",
+        "assetPath": "collection-161/assets/cards/td-3-001.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-001.webp",
+        "photoReference": "REF-3-001"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-015",
+      "title": "Nemo Deseur",
+      "ordinal": 15,
+      "main": {
+        "artworkId": "td_1_014",
+        "assetPath": "collection-161/assets/cards/td-1-014.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-014.webp",
+        "photoReference": "REF-1-015"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_033",
+          "assetPath": "collection-161/assets/cards/td-3-033.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-033.webp",
+          "photoReference": "REF-3-030"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-016",
+      "title": "Thomas des glaces",
+      "ordinal": 16,
+      "main": {
+        "artworkId": "td_3_031",
+        "assetPath": "collection-161/assets/cards/td-3-031.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-031.webp",
+        "photoReference": "REF-3-031"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-017",
+      "title": "Thomas des froids",
+      "ordinal": 17,
+      "main": {
+        "artworkId": "td_3_043",
+        "assetPath": "collection-161/assets/cards/td-3-043.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-043.webp",
+        "photoReference": "REF-3-042"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-018",
+      "title": "Thomas le colon",
+      "ordinal": 18,
+      "main": {
+        "artworkId": "td_1_020",
+        "assetPath": "collection-161/assets/cards/td-1-020.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-020.webp",
+        "photoReference": "REF-1-018"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-019",
+      "title": "Thomas des bois",
+      "ordinal": 19,
+      "main": {
+        "artworkId": "td_1_019",
+        "assetPath": "collection-161/assets/cards/td-1-019.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-019.webp",
+        "photoReference": "REF-1-019"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-020",
+      "title": "Écureuil Deseur",
+      "ordinal": 20,
+      "main": {
+        "artworkId": "td_1_018",
+        "assetPath": "collection-161/assets/cards/td-1-018.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-018.webp",
+        "photoReference": "REF-1-020"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-021",
+      "title": "Thomas l'abeille",
+      "ordinal": 21,
+      "main": {
+        "artworkId": "td_1_021",
+        "assetPath": "collection-161/assets/cards/td-1-021.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-021.webp",
+        "photoReference": "REF-1-021"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_016",
+          "assetPath": "collection-161/assets/cards/td-3-016.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-016.webp",
+          "photoReference": "REF-3-016"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-022",
+      "title": "Thomas la proie",
+      "ordinal": 22,
+      "main": {
+        "artworkId": "td_1_023",
+        "assetPath": "collection-161/assets/cards/td-1-023.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-023.webp",
+        "photoReference": "REF-1-022"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_015",
+          "assetPath": "collection-161/assets/cards/td-3-015.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-015.webp",
+          "photoReference": "REF-3-015"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-023",
+      "title": "Thomas lézard",
+      "ordinal": 23,
+      "main": {
+        "artworkId": "td_1_022",
+        "assetPath": "collection-161/assets/cards/td-1-022.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-022.webp",
+        "photoReference": "REF-1-023"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_022",
+          "assetPath": "collection-161/assets/cards/td-3-022.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-022.webp",
+          "photoReference": "REF-3-023"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-024",
+      "title": "Adjudant chef Deseur",
+      "ordinal": 24,
+      "main": {
+        "artworkId": "td_1_024",
+        "assetPath": "collection-161/assets/cards/td-1-024.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-024.webp",
+        "photoReference": "REF-1-024"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_037",
+          "assetPath": "collection-161/assets/cards/td-3-037.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-037.webp",
+          "photoReference": "REF-3-037"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-025",
+      "title": "Thomas pied carré",
+      "ordinal": 25,
+      "main": {
+        "artworkId": "td_1_026",
+        "assetPath": "collection-161/assets/cards/td-1-026.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-026.webp",
+        "photoReference": "REF-1-025"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_032",
+          "assetPath": "collection-161/assets/cards/td-3-032.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-032.webp",
+          "photoReference": "REF-3-033"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-026",
+      "title": "Thomas d'un soir",
+      "ordinal": 26,
+      "main": {
+        "artworkId": "td_1_028",
+        "assetPath": "collection-161/assets/cards/td-1-028.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-028.webp",
+        "photoReference": "REF-1-026"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-027",
+      "title": "L'étalon Deseur",
+      "ordinal": 27,
+      "main": {
+        "artworkId": "td_1_025",
+        "assetPath": "collection-161/assets/cards/td-1-025.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-025.webp",
+        "photoReference": "REF-1-027"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_024",
+          "assetPath": "collection-161/assets/cards/td-2-024.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-024.webp",
+          "photoReference": "REF-2-026"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-028",
+      "title": "Thomas la trompe",
+      "ordinal": 28,
+      "main": {
+        "artworkId": "td_1_027",
+        "assetPath": "collection-161/assets/cards/td-1-027.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-027.webp",
+        "photoReference": "REF-1-028"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_035",
+          "assetPath": "collection-161/assets/cards/td-3-035.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-035.webp",
+          "photoReference": "REF-3-036"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-029",
+      "title": "Thomas qui griffe",
+      "ordinal": 29,
+      "main": {
+        "artworkId": "td_2_019",
+        "assetPath": "collection-161/assets/cards/td-2-019.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-019.webp",
+        "photoReference": "REF-2-022"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_040",
+          "assetPath": "collection-161/assets/cards/td-3-040.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-040.webp",
+          "photoReference": "REF-3-041"
+        }
+      ],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-030",
+      "title": "Thomas doseur",
+      "ordinal": 30,
+      "main": {
+        "artworkId": "td_2_023",
+        "assetPath": "collection-161/assets/cards/td-2-023.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-023.webp",
+        "photoReference": "REF-2-023"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_039",
+          "assetPath": "collection-161/assets/cards/td-3-039.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-039.webp",
+          "photoReference": "REF-3-038"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-031",
+      "title": "Thomas rouleau laveur",
+      "ordinal": 31,
+      "main": {
+        "artworkId": "td_3_036",
+        "assetPath": "collection-161/assets/cards/td-3-036.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-036.webp",
+        "photoReference": "REF-3-035"
+      },
+      "variants": [
+        {
+          "artworkId": "td_1_030",
+          "assetPath": "collection-161/assets/cards/td-1-030.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-030.webp",
+          "photoReference": "REF-1-031"
+        }
+      ],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-032",
+      "title": "Thomas facteur",
+      "ordinal": 32,
+      "main": {
+        "artworkId": "td_1_032",
+        "assetPath": "collection-161/assets/cards/td-1-032.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-032.webp",
+        "photoReference": "REF-1-032"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_025",
+          "assetPath": "collection-161/assets/cards/td-2-025.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-025.webp",
+          "photoReference": "REF-2-025"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-033",
+      "title": "Thomas among us",
+      "ordinal": 33,
+      "main": {
+        "artworkId": "td_2_031",
+        "assetPath": "collection-161/assets/cards/td-2-031.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-031.webp",
+        "photoReference": "REF-2-029"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-034",
+      "title": "Thomas La Fleur",
+      "ordinal": 34,
+      "main": {
+        "artworkId": "td_1_035",
+        "assetPath": "collection-161/assets/cards/td-1-035.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-035.webp",
+        "photoReference": "REF-1-034"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_044",
+          "assetPath": "collection-161/assets/cards/td-2-044.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-044.webp",
+          "photoReference": "REF-2-044"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-035",
+      "title": "Thomas génie",
+      "ordinal": 35,
+      "main": {
+        "artworkId": "td_3_038",
+        "assetPath": "collection-161/assets/cards/td-3-038.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-038.webp",
+        "photoReference": "REF-3-040"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-036",
+      "title": "Lego Deseur",
+      "ordinal": 36,
+      "main": {
+        "artworkId": "td_1_036",
+        "assetPath": "collection-161/assets/cards/td-1-036.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-036.webp",
+        "photoReference": "REF-1-036"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_027",
+          "assetPath": "collection-161/assets/cards/td-2-027.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-027.webp",
+          "photoReference": "REF-2-030"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-037",
+      "title": "Thomas brushing",
+      "ordinal": 37,
+      "main": {
+        "artworkId": "td_2_030",
+        "assetPath": "collection-161/assets/cards/td-2-030.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-030.webp",
+        "photoReference": "REF-2-031"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_029",
+          "assetPath": "collection-161/assets/cards/td-3-029.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-029.webp",
+          "photoReference": "REF-3-029"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-038",
+      "title": "Papy Deseur",
+      "ordinal": 38,
+      "main": {
+        "artworkId": "td_1_040",
+        "assetPath": "collection-161/assets/cards/td-1-040.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-040.webp",
+        "photoReference": "REF-1-038"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-039",
+      "title": "Thomas hydroalcoolique",
+      "ordinal": 39,
+      "main": {
+        "artworkId": "td_2_035",
+        "assetPath": "collection-161/assets/cards/td-2-035.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-035.webp",
+        "photoReference": "REF-2-033"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_009",
+          "assetPath": "collection-161/assets/cards/td-3-009.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-009.webp",
+          "photoReference": "REF-3-011"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-040",
+      "title": "VLC Deseur",
+      "ordinal": 40,
+      "main": {
+        "artworkId": "td_2_034",
+        "assetPath": "collection-161/assets/cards/td-2-034.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-034.webp",
+        "photoReference": "REF-2-032"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_041",
+          "assetPath": "collection-161/assets/cards/td-3-041.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-041.webp",
+          "photoReference": "REF-3-039"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-041",
+      "title": "Thomas squelette",
+      "ordinal": 41,
+      "main": {
+        "artworkId": "td_3_028",
+        "assetPath": "collection-161/assets/cards/td-3-028.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-028.webp",
+        "photoReference": "REF-3-027"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-042",
+      "title": "Barbie Deseur",
+      "ordinal": 42,
+      "main": {
+        "artworkId": "td_3_002",
+        "assetPath": "collection-161/assets/cards/td-3-002.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-002.webp",
+        "photoReference": "REF-3-002"
+      },
+      "variants": [
+        {
+          "artworkId": "td_1_043",
+          "assetPath": "collection-161/assets/cards/td-1-043.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-043.webp",
+          "photoReference": "REF-1-042"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-043",
+      "title": "Thomas caméléon",
+      "ordinal": 43,
+      "main": {
+        "artworkId": "td_2_039",
+        "assetPath": "collection-161/assets/cards/td-2-039.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-039.webp",
+        "photoReference": "REF-2-039"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-044",
+      "title": "Thomas perd la tête",
+      "ordinal": 44,
+      "main": {
+        "artworkId": "td_2_037",
+        "assetPath": "collection-161/assets/cards/td-2-037.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-037.webp",
+        "photoReference": "REF-2-038"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_025",
+          "assetPath": "collection-161/assets/cards/td-3-025.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-025.webp",
+          "photoReference": "REF-3-022"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-045",
+      "title": "Thomas Kinder",
+      "ordinal": 45,
+      "main": {
+        "artworkId": "td_3_003",
+        "assetPath": "collection-161/assets/cards/td-3-003.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-003.webp",
+        "photoReference": "REF-3-004"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-046",
+      "title": "Thomas la pince",
+      "ordinal": 46,
+      "main": {
+        "artworkId": "td_2_045",
+        "assetPath": "collection-161/assets/cards/td-2-045.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-045.webp",
+        "photoReference": "REF-2-045"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-047",
+      "title": "Thomas Charmeur de serpent",
+      "ordinal": 47,
+      "main": {
+        "artworkId": "td_2_048",
+        "assetPath": "collection-161/assets/cards/td-2-048.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-048.webp",
+        "photoReference": "REF-2-046"
+      },
+      "variants": [
+        {
+          "artworkId": "td_3_014",
+          "assetPath": "collection-161/assets/cards/td-3-014.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-3-014.webp",
+          "photoReference": "REF-3-017"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-049",
+      "title": "Thomas prend son bain",
+      "ordinal": 48,
+      "main": {
+        "artworkId": "td_1_049",
+        "assetPath": "collection-161/assets/cards/td-1-049.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-049.webp",
+        "photoReference": "REF-1-049"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-050",
+      "title": "Caporal chef Deseur",
+      "ordinal": 49,
+      "main": {
+        "artworkId": "td_1_045",
+        "assetPath": "collection-161/assets/cards/td-1-045.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-045.webp",
+        "photoReference": "REF-1-050"
+      },
+      "variants": [],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-051",
+      "title": "Thomas nugget",
+      "ordinal": 50,
+      "main": {
+        "artworkId": "td_1_051",
+        "assetPath": "collection-161/assets/cards/td-1-051.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-051.webp",
+        "photoReference": "REF-1-051"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-052",
+      "title": "Thomas chino",
+      "ordinal": 51,
+      "main": {
+        "artworkId": "td_1_055",
+        "assetPath": "collection-161/assets/cards/td-1-055.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-055.webp",
+        "photoReference": "REF-1-052"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-053",
+      "title": "Thomas micro-onde",
+      "ordinal": 52,
+      "main": {
+        "artworkId": "td_1_052",
+        "assetPath": "collection-161/assets/cards/td-1-052.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-052.webp",
+        "photoReference": "REF-1-053"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-054",
+      "title": "Gulli-viande",
+      "ordinal": 53,
+      "main": {
+        "artworkId": "td_1_054",
+        "assetPath": "collection-161/assets/cards/td-1-054.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-054.webp",
+        "photoReference": "REF-1-054"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_065",
+          "assetPath": "collection-161/assets/cards/td-2-065.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-065.webp",
+          "photoReference": "REF-2-065"
+        }
+      ],
+      "rarity": "Légendaire",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-055",
+      "title": "Thomas-terrazi",
+      "ordinal": 54,
+      "main": {
+        "artworkId": "td_2_066",
+        "assetPath": "collection-161/assets/cards/td-2-066.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-066.webp",
+        "photoReference": "REF-2-066"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-056",
+      "title": "Haricot Deseur",
+      "ordinal": 55,
+      "main": {
+        "artworkId": "td_1_059",
+        "assetPath": "collection-161/assets/cards/td-1-059.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-059.webp",
+        "photoReference": "REF-1-056"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_058",
+          "assetPath": "collection-161/assets/cards/td-2-058.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-058.webp",
+          "photoReference": "REF-2-058"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-057",
+      "title": "Thomas x4",
+      "ordinal": 56,
+      "main": {
+        "artworkId": "td_1_058",
+        "assetPath": "collection-161/assets/cards/td-1-058.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-058.webp",
+        "photoReference": "REF-1-057"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_057",
+          "assetPath": "collection-161/assets/cards/td-2-057.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-057.webp",
+          "photoReference": "REF-2-059"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-058",
+      "title": "Thomas-kita",
+      "ordinal": 57,
+      "main": {
+        "artworkId": "td_1_056",
+        "assetPath": "collection-161/assets/cards/td-1-056.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-056.webp",
+        "photoReference": "REF-1-058"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-059",
+      "title": "Thomas kiri",
+      "ordinal": 58,
+      "main": {
+        "artworkId": "td_1_057",
+        "assetPath": "collection-161/assets/cards/td-1-057.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-057.webp",
+        "photoReference": "REF-1-059"
+      },
+      "variants": [],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-060",
+      "title": "1000 couches de Thomas",
+      "ordinal": 59,
+      "main": {
+        "artworkId": "td_1_062",
+        "assetPath": "collection-161/assets/cards/td-1-062.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-062.webp",
+        "photoReference": "REF-1-060"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-061",
+      "title": "Thomas 3 points",
+      "ordinal": 60,
+      "main": {
+        "artworkId": "td_1_060",
+        "assetPath": "collection-161/assets/cards/td-1-060.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-060.webp",
+        "photoReference": "REF-1-061"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_052",
+          "assetPath": "collection-161/assets/cards/td-2-052.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-052.webp",
+          "photoReference": "REF-2-051"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-062",
+      "title": "Thomas raclette",
+      "ordinal": 61,
+      "main": {
+        "artworkId": "td_1_063",
+        "assetPath": "collection-161/assets/cards/td-1-063.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-063.webp",
+        "photoReference": "REF-1-062"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_050",
+          "assetPath": "collection-161/assets/cards/td-2-050.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-050.webp",
+          "photoReference": "REF-2-052"
+        }
+      ],
+      "rarity": "Commune",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-064",
+      "title": "Thomas ta soeur",
+      "ordinal": 62,
+      "main": {
+        "artworkId": "td_1_065",
+        "assetPath": "collection-161/assets/cards/td-1-065.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-065.webp",
+        "photoReference": "REF-1-064"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_056",
+          "assetPath": "collection-161/assets/cards/td-2-056.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-056.webp",
+          "photoReference": "REF-2-054"
+        }
+      ],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-065",
+      "title": "Thomas-couteur",
+      "ordinal": 63,
+      "main": {
+        "artworkId": "td_1_066",
+        "assetPath": "collection-161/assets/cards/td-1-066.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-066.webp",
+        "photoReference": "REF-1-065"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-066",
+      "title": "Thomas-gen de police",
+      "ordinal": 64,
+      "main": {
+        "artworkId": "td_1_064",
+        "assetPath": "collection-161/assets/cards/td-1-064.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-1-064.webp",
+        "photoReference": "REF-1-066"
+      },
+      "variants": [
+        {
+          "artworkId": "td_2_053",
+          "assetPath": "collection-161/assets/cards/td-2-053.webp",
+          "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-053.webp",
+          "photoReference": "REF-2-056"
+        }
+      ],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-067",
+      "title": "Thomas démission",
+      "ordinal": 65,
+      "main": {
+        "artworkId": "td_2_059",
+        "assetPath": "collection-161/assets/cards/td-2-059.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-059.webp",
+        "photoReference": "REF-2-057"
+      },
+      "variants": [],
+      "rarity": "Épique",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-068",
+      "title": "Thomas chic et choc",
+      "ordinal": 66,
+      "main": {
+        "artworkId": "td_2_049",
+        "assetPath": "collection-161/assets/cards/td-2-049.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-2-049.webp",
+        "photoReference": "REF-2-050"
+      },
+      "variants": [],
+      "rarity": "Rare",
+      "variantsCollectingRule": null
+    },
+    {
+      "characterId": "COST-070",
+      "title": "Thomas huîtres",
+      "ordinal": 67,
+      "main": {
+        "artworkId": "td_lille",
+        "assetPath": "collection-161/assets/cards/td-lille.webp",
+        "imageUrl": "https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/assets/cards/td-lille.webp",
+        "photoReference": "REF-177-LILLE"
+      },
+      "variants": [],
+      "rarity": "Hors-série",
+      "variantsCollectingRule": null
+    }
+  ]
+}
