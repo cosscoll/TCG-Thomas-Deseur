@@ -1,0 +1,45 @@
+name: Simulation collection 67 cartes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/simuler-boosters-67.mjs'
+      - 'tests/simuler-boosters-67.test.mjs'
+      - '.github/workflows/analytics-collection.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-deseur-analytics
+  cancel-in-progress: false
+
+jobs:
+  simulate:
+    name: Un million de boosters fictifs, mille joueurs
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier le moteur fictif et l'absence de récompense réelle
+        run: node --test tests/simuler-boosters-67.test.mjs
+      - name: Exécuter le million de boosters et générer le rapport
+        run: node scripts/simuler-boosters-67.mjs --report
+      - name: Publier le rapport reproductible
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ANALYSE_PROBABILITES_67_2026-10-13.md
+          if git diff --cached --quiet; then
+            echo "Le rapport est déjà à jour."
+          else
+            git commit -m "docs(stats): publish 1 million booster and completion forecasts"
+            git push origin HEAD:main
+          fi
