@@ -1,0 +1,45 @@
+name: Audit intégral catalogue 67/105
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-edition-67.mjs'
+      - 'tests/audit-edition-67.test.mjs'
+      - '.github/workflows/audit-approved-67.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-deseur-catalogue-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Auditer noms, raretés, origines photo et variantes
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Contrôler les 105 correspondances et références de source
+        run: node --test tests/audit-edition-67.test.mjs
+      - name: Générer la matrice 105 images et le rapport
+        run: node scripts/audit-edition-67.mjs --write
+      - name: Publier les rapports de référence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/audit-catalogue-105.csv docs/AUDIT_CATALOGUE_67_2026-10-13.md
+          if git diff --cached --quiet; then
+            echo "Matrice et audit déjà à jour."
+          else
+            git commit -m "docs(audit): publish 105-source verification and retouch priorities"
+            git push origin HEAD:main
+          fi
