@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#171222">
+<title>Audit visuel — 105 illustrations | TCG Deseur</title>
+<meta name="description" content="Comparaison des 105 illustrations approuvées : original, version 3:4 et revue manuelle.">
+<link rel="stylesheet" href="./style.css"><script defer type="module" src="./app.js"></script></head>
+<body>
+<a class="skip" href="#items">Aller aux images</a>
+<header class="top"><a href="../">TCG DESEUR</a><nav><a href="../collection-validee/">Collection validée</a><a href="../beta/">Bêta</a></nav></header>
+<main>
+<section class="intro"><span class="eyebrow">ATELIER DE CONTRÔLE · ÉDITION ORIGINE</span>
+<h1>105 illustrations. Une seule norme.</h1>
+<p>Compare chaque visuel d'origine avec son export au format <strong>3:4 — 768 × 1 024 px</strong>. Le sujet doit rester intégralement visible : vêtements, pose, visage, accessoires et décor important. La prolongation du fond flouté ne recrée pas une nouvelle scène.</p>
+<p class="notice">Les décisions sont enregistrées <strong>uniquement dans ce navigateur</strong>, puis exportables en JSON ou CSV. Elles ne changent aucune carte sur GitHub ni dans Floot. La Carte mystère n'est pas incluse.</p>
+</section>
+<section aria-label="Progression de la revue" class="stats"><div><strong id="count">—</strong><small>illustrations chargées</small></div><div><strong id="approved">0</strong><small>validées</small></div><div><strong id="retouch">0</strong><small>à retoucher</small></div><div><strong id="pending">—</strong><small>sans décision</small></div></section>
+<section class="controls" aria-label="Recherche et filtres">
+<label>Recherche<input id="search" type="search" placeholder="Nom, illustration, photo d'origine…" autocomplete="off"></label>
+<label>Rareté<select id="rarity"><option value="all">Toutes</option><option>Commune</option><option>Rare</option><option>Épique</option><option>Légendaire</option><option>Hors-série</option></select></label>
+<label>Type<select id="type"><option value="all">Principales et variantes</option><option value="main">Principales</option><option value="variant">Alternatives</option></select></label>
+<label>Décision<select id="decision"><option value="all">Tous les états</option><option value="pending">Non examinés</option><option value="approved">Validés</option><option value="retouch">À retoucher</option></select></label>
+</section>
+<div class="actions"><button id="download-json" type="button">Exporter les décisions (JSON)</button><button id="download-csv" type="button">Exporter en CSV</button><button id="clear" type="button" class="danger">Effacer les décisions locales</button></div>
+<p role="status" id="live-status" aria-live="polite"></p><p role="alert" id="error" hidden></p>
+<section id="items" class="items" aria-label="Comparaisons originales et harmonisées"></section><p id="empty" hidden>Aucun visuel pour cette sélection.</p>
+</main><footer>Outil de revue documentaire — 67 personnages connus, 38 variantes. Aucune donnée de compte joueur.</footer>
+</body></html>
