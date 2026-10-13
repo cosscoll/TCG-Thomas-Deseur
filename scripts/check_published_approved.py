@@ -91,6 +91,27 @@ def verify_once():
     assert "mysteryCardView" in js, "Le rendu de la Carte mystère est absent."
     all_live_images = check_all_published_artworks(raw["cards"])
 
+    # Les nouveaux visuels gardent les sources intactes, mais sont tous au
+    # format final vertical 768 × 1024. Le manifeste public liste leur
+    # provenance et la vérification de leur intégrité est faite dans CI.
+    uniform = json.loads(fetch("data/approved-artwork-uniform-105.json"))
+    assert uniform["schema"] == "tcg-deseur-uniform-approved-artworks-v1"
+    assert uniform["size"] == [768, 1024] and uniform["aspectRatio"] == "3:4"
+    assert uniform["originalsUnchanged"] is True
+    paths = [art["normalized"] for art in uniform["artworks"]]
+    assert len(paths) == len(set(paths)) == 105
+    assert sum(art["kind"] == "main" for art in uniform["artworks"]) == 67
+    assert "assets/uniform/" in js, "La galerie n'utilise pas encore les images uniformisées."
+    errors = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        jobs = [pool.submit(check_image_head, path) for path in paths]
+        for job in as_completed(jobs):
+            try: job.result()
+            except (AssertionError, ValueError, urllib.error.URLError, TimeoutError, OSError) as exc:
+                errors.append(str(exc))
+    if errors:
+        raise AssertionError(f"{len(errors)} images uniformisées inaccessibles: " + " | ".join(errors[:12]))
+
     # Invitation aux testeurs : la page doit pointer vers le VRAI jeu
     # et ne doit pas proposer un formulaire recueillant des identifiants.
     invitation = fetch("beta/").decode("utf-8")
@@ -108,7 +129,7 @@ def verify_once():
 
     original = fetch("collection-161/assets/cards/td-1-002.webp")
     assert original[:4] == b"RIFF" and original[8:12] == b"WEBP", "Visuel stylisé inaccessible."
-    return f"Accueil et galerie 68 cartes, 67 connues, 38 variantes ; {all_live_images} images WebP publiques accessibles, et bêta accessible."
+    return f"Accueil et galerie 68 cartes ; {all_live_images} originaux + 105 WebP uniformisés 768x1024 accessibles, et bêta accessible."
 
 
 def main():
