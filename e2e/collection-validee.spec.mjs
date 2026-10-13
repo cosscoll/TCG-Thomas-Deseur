@@ -129,6 +129,7 @@ test('tous les 105 visuels approuvés existent ET se décodent dans Chromium',as
  test.setTimeout(120_000);
  await expect(page.locator('article.card[data-group] .image-frame img')).toHaveCount(105);
  await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('src',/\/assets\/uniform\/td-.*\.webp$/);
+ await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('srcset',/\/assets\/thumbs\/td-.*\.webp 384w, .*\/assets\/uniform\/td-.*\.webp 768w/);
  const errors=await page.evaluate(async()=>{
   const entries=[...document.querySelectorAll('article.card[data-group] .image-frame img')].map(el=>({
    src:el.getAttribute('src'),alt:el.getAttribute('alt')
@@ -167,4 +168,21 @@ test('tri des 67 cartes sans perdre la Carte mystère et les filtres',async({pag
  await page.locator('#sort').selectOption('official');
  await page.locator('#rarity').selectOption('all');
  await expect(page.locator('article.card')).toHaveCount(68);
+});
+
+test('les miniatures responsives 384×512 sont disponibles et se décodent',async({page})=>{
+ const response=await page.request.get('/data/thumbs-approved-105.json');
+ expect(response.ok()).toBe(true);
+ const data=await response.json();
+ expect(data.images).toHaveLength(105);
+ const unique=new Set(data.images.map(i=>i.thumb));
+ expect(unique.size).toBe(105);
+ const first=data.images[0];
+ const thumb=await page.request.get('/'+first.thumb);
+ expect(thumb.ok()).toBe(true);
+ const dims=await page.evaluate(async p=>{
+  const img=new Image();img.src='/'+p;
+  await img.decode();return [img.naturalWidth,img.naturalHeight];
+ },first.thumb);
+ expect(dims).toEqual([384,512]);
 });
