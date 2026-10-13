@@ -4,8 +4,8 @@
   "scope": "GitHub et préparations sans accès Floot. Statuts = livrables préparés, pas certification du jeu connecté.",
   "summary": {
     "total": 88,
-    "delivered": 65,
-    "partial": 23
+    "delivered": 67,
+    "partial": 21
   },
   "groups": [
     {
@@ -66,8 +66,8 @@
       "category": "Catalogue et illustrations",
       "title": "Repérer les doublons visuels restants",
       "status": "partiel",
-      "note": "Aucun doublon binaire SHA-256, mais similitudes de pose/scène à vérifier visuellement.",
-      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+      "note": "5 460 comparaisons perceptuelles réalisées ; 30 paires candidates à examiner, aucune fusion automatique.",
+      "proof": "docs/REVUE_SIMILARITES_105_2026-10-13.md"
     },
     {
       "id": 4,
@@ -561,9 +561,9 @@
       "id": 65,
       "category": "Parcours et bêta-testeurs",
       "title": "Préparer les animations de révélation",
-      "status": "partiel",
-      "note": "Storyboard écrit ; rendu d’animation réelle nécessite validation graphique et intégration Floot.",
-      "proof": "docs/PROTOCOLE_BETA_ET_QUALITE_2026-10-13.md"
+      "status": "réalisé",
+      "note": "Prototype interactif de 5 révélations utilisant les personnages approuvés, aucune attribution. Intégration Floot ultérieure.",
+      "proof": "prototype-booster/"
     },
     {
       "id": 66,
@@ -585,9 +585,9 @@
       "id": 68,
       "category": "Communication et lancement",
       "title": "Préparer les visuels promotionnels",
-      "status": "partiel",
-      "note": "Planches illustrées disponibles, supports promotionnels définitifs à valider.",
-      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+      "status": "réalisé",
+      "note": "Atelier de maquettes PNG carré, Story et bannière à partir des illustrations approuvées. Diffusion et droits à valider.",
+      "proof": "kit-visuels/"
     },
     {
       "id": 69,
