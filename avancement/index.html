@@ -1,0 +1,85 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Suivi des 88 actions — TCG Deseur</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark;--bg:#130e21;--surface:#241a35;--edge:#725d84;--fg:#f9f4ff;--sub:#d9cce1;--hi:#f7c98e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);min-width:300px}
+a{color:var(--hi)}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--hi);outline-offset:3px}
+header,main,footer{max-width:1260px;margin:0 auto;padding:22px 20px}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--edge);flex-wrap:wrap;gap:10px}
+header>a{font-size:1.1rem;font-weight:900;letter-spacing:.12em;text-decoration:none}
+nav{display:flex;gap:20px;flex-wrap:wrap}.kicker{color:var(--hi);font-weight:900;letter-spacing:.15em;font-size:.76rem}
+h1{font-size:clamp(2rem,4.5vw,3.75rem);line-height:1.08;letter-spacing:-.035em;margin:12px 0}
+p{color:var(--sub);max-width:1000px;line-height:1.6}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:28px 0}
+.summary>div{background:var(--surface);border:1px solid var(--edge);padding:18px;border-radius:12px}.summary strong{display:block;font-size:clamp(1.6rem,3vw,2.7rem);color:var(--hi)}
+.summary span{color:var(--sub);font-size:.8rem}.progress{height:12px;background:#453353;border-radius:99px;overflow:hidden;margin-bottom:20px}
+.progress span{display:block;height:100%;background:var(--hi)}.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:20px 0 12px}
+label{display:flex;flex-direction:column;gap:7px;font-size:.85rem;font-weight:800;color:var(--sub)}
+input,select{background:#392948;border:1px solid #b9a3ca;color:#fff;padding:12px;border-radius:9px;min-width:0;font:inherit}
+#items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.task{border:1px solid var(--edge);background:var(--surface);padding:17px;border-radius:12px;min-width:0}.task h2{font-size:1rem;line-height:1.4;margin:10px 0}.task p{font-size:.84rem;margin-bottom:8px}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:7px;flex-wrap:wrap}.id{font-weight:900;font-size:.82rem}
+.state{border-radius:22px;padding:5px 10px;font-size:.73rem;border:1px solid #c2accf;font-weight:800;color:#f9f2ff}
+.state.done{border-color:#cba260;color:#ffdcaa}.state.partial{border-color:#a9a3ae;color:#e8dfe9}
+.proof{display:inline-block;margin-top:7px;font-weight:850;font-size:.8rem}
+.notice{padding:12px 16px;border-left:3px solid var(--hi);background:#2e203f}
+#error{background:#6c2d44;padding:12px}footer{border-top:1px solid var(--edge);font-size:.82rem;color:var(--sub)}
+@media(max-width:830px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}#items{grid-template-columns:1fr}}
+@media(max-width:500px){header,main,footer{padding:14px}.filters{grid-template-columns:1fr}.filters label:first-child{grid-column:auto}.summary>div{padding:11px}.task{padding:12px}}
+</style></head><body>
+<header><a href="../">TCG DESEUR</a><nav><a href="../collection-validee/">Collection</a><a href="../audit-visuels/">Contrôle des images</a><a href="../planches/">Planches</a><a href="../beta/">Bêta</a></nav></header>
+<main><span class="kicker">FEUILLE DE ROUTE · 13 OCTOBRE 2026</span><h1>88 actions.<br>Un suivi vérifiable.</h1>
+<p>Chaque tâche renvoie à un livrable du dépôt GitHub. <strong>« Réalisé » désigne le livrable hors Floot</strong>, et ne signifie pas que toutes ses conséquences sont intégrées ou validées dans le jeu connecté.</p>
+<p class="notice">La limitation des boosters est toujours active dans le jeu Floot tant que la modification n'a pas été publiée et vérifiée. Les questions de droits d'image, certaines vérifications visuelles et le statut définitif des variantes restent à traiter séparément.</p>
+<section class="summary" aria-label="Bilan des 88 tâches">
+<div><strong id="total">88</strong><span>Actions recensées</span></div><div><strong id="done">—</strong><span>Livrables réalisés</span></div>
+<div><strong id="partial">—</strong><span>Travaux partiels</span></div><div><strong id="shown">—</strong><span>Actions visibles</span></div>
+</section><div class="progress" role="img" aria-label="Progression des livrables hors Floot"><span id="bar" style="width:0%"></span></div>
+<section class="filters" aria-label="Filtres du tableau des tâches">
+<label>Rechercher<input id="query" type="search" placeholder="Nom de tâche, numéro, mot-clé…" autocomplete="off"></label>
+<label>Groupe<select id="category"><option value="all">Tous les chantiers</option></select></label>
+<label>État<select id="state"><option value="all">Tous les états</option><option value="réalisé">Réalisé</option><option value="partiel">Partiel</option></select></label>
+</section><p id="message" role="status" aria-live="polite">Chargement des livrables…</p><p id="error" role="alert" hidden></p>
+<section id="items" aria-label="Les 88 actions"></section>
+</main><footer>Projet TCG Deseur — l'atelier ne diffuse aucune donnée de compte ni détail de la Carte mystère.</footer>
+<script type="module">
+const $=id=>document.getElementById(id);
+let actions=[];
+const base='https://github.com/cosscoll/TCG-Thomas-Deseur/';
+const e=(tag,cls,content)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(content!==undefined)n.textContent=String(content);return n};
+function render(){
+ const q=$('query').value.trim().toLocaleLowerCase('fr'),cat=$('category').value,state=$('state').value;
+ const filtered=actions.filter(a=>(cat==='all'||a.category===cat)&&(state==='all'||a.status===state)
+  &&(!q||[a.id,a.title,a.category,a.note].join(' ').toLocaleLowerCase('fr').includes(q)));
+ const frag=document.createDocumentFragment();
+ for(const a of filtered){
+  const item=e('article','task'),meta=e('div','meta');
+  meta.append(e('span','id','#'+String(a.id).padStart(2,'0')+' · '+a.category));
+  const badge=e('span','state '+(a.status==='réalisé'?'done':'partial'),a.status==='réalisé'?'Livrable réalisé':'Partiel');
+  meta.append(badge);
+  item.append(meta,e('h2','',a.title),e('p','',a.note));
+  const link=e('a','proof','Consulter la preuve / le livrable →');
+  link.href=a.proof.startsWith('https://')?a.proof:base+'blob/main/'+a.proof;
+  if(a.proof.endsWith('/'))link.href=base+'tree/main/'+a.proof;
+  link.target='_blank';link.rel='noopener noreferrer';item.append(link);frag.append(item);
+ }
+ $('items').replaceChildren(frag);
+ $('shown').textContent=String(filtered.length);
+ $('message').textContent=filtered.length+' action(s) correspondent à ta recherche.';
+}
+(async()=>{
+ try{
+  const result=await fetch('../data/suivi-88-actions.json',{cache:'no-store'});
+  if(!result.ok)throw Error('Fichier du suivi inaccessible');
+  const data=await result.json();
+  if(data.schema!=='tcg-deseur-88-autonomy-status-v1'||data.actions.length!==88)throw Error('Suivi incomplet');
+  actions=data.actions;
+  $('done').textContent=String(data.summary.delivered);
+  $('partial').textContent=String(data.summary.partial);
+  $('bar').style.width=(100*data.summary.delivered/88).toFixed(2)+'%';
+  for(const group of data.groups){const opt=e('option','',group.name);opt.value=group.name;$('category').append(opt)}
+  render();
+ }catch(err){$('error').hidden=false;$('error').textContent='Suivi non disponible : '+err.message}
+})();
+for(const id of ['query','category','state'])$(id).addEventListener('input',render);
+</script></body></html>
