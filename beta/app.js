@@ -11,7 +11,13 @@ const fields=[
  ['booster','Ouverture du premier booster'],
  ['reveal','Révélation des cinq cartes'],
  ['collection','Cartes dans le classeur'],
- ['persistence','Cartes présentes après reconnexion']
+ ['persistence','Cartes présentes après reconnexion'],
+ ['order','Ordre des cinq raretés conforme'],
+ ['catalogue','Classeur de 68 emplacements et noms'],
+ ['images','Affichage des illustrations'],
+ ['duplicates','Compteur des exemplaires en double'],
+ ['mystery','Carte mystère masquée'],
+ ['successive','Deux boosters consécutifs (mode illimité uniquement)']
 ];
 function redact(text){
  return String(text||'').trim().slice(0,1500)
