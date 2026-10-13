@@ -57,3 +57,18 @@ test('all images are same 3:4 proportions after output normalization',async({pag
  });
  expect(errors).toEqual([]);
 });
+
+test('la sélection de 30 rapprochements est consultable sans toucher aux cartes',async({page})=>{
+ const link=page.getByRole('link',{name:/30 comparaisons côte à côte/});
+ await expect(link).toHaveAttribute('href','./assets/similarites-candidates.jpg');
+ const response=await page.request.get('/audit-visuels/assets/similarites-candidates.jpg');
+ expect(response.status()).toBe(200);
+ expect(response.headers()['content-type']).toMatch(/image\/jpeg/);
+ const manifest=await page.request.get('/data/similarites-visuelles-105.json');
+ expect(manifest.ok()).toBe(true);
+ const d=await manifest.json();
+ expect(d.approvedPublicImages).toBe(105);
+ expect(d.comparedPairs).toBe(5460);
+ expect(d.candidatePairs.length).toBe(30);
+ expect(d.candidatePairs.every(item=>item.review==='visual-ranking-only')).toBe(true);
+});
