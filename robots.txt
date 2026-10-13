@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cosscoll.github.io/TCG-Thomas-Deseur/sitemap.xml
