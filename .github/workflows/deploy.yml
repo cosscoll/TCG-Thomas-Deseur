@@ -26,6 +26,7 @@ on:
       - "scripts/check_published_approved.py"
       - "scripts/check-migration-compat.mjs"
       - "scripts/stage-approved-edition.mjs"
+      - "scripts/generate-approved-staging.mjs"
       - "scripts/validate-rarity-decisions.mjs"
       - "package.json"
       - ".github/workflows/deploy.yml"
@@ -53,6 +54,7 @@ on:
       - "scripts/check_published_approved.py"
       - "scripts/check-migration-compat.mjs"
       - "scripts/stage-approved-edition.mjs"
+      - "scripts/generate-approved-staging.mjs"
       - "scripts/validate-rarity-decisions.mjs"
       - "package.json"
       - ".github/workflows/deploy.yml"
@@ -81,6 +83,7 @@ jobs:
           node scripts/check-migration-compat.mjs
           node scripts/validate-rarity-decisions.mjs data/raretes-validees-67.json --require-complete
           node scripts/stage-approved-edition.mjs
+          node scripts/generate-approved-staging.mjs --check
       - name: Exécuter tous les tests métier Node
         run: npm test
 
