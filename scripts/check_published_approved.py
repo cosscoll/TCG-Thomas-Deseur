@@ -158,6 +158,11 @@ def verify_once():
     assert len(tracking["actions"]) == 88
     assert tracking["summary"]["delivered"] + tracking["summary"]["partial"] == 88
 
+    prototype = fetch("prototype-booster/").decode("utf-8")
+    assert 'id="start"' in prototype and 'id="next"' in prototype
+    assert 'id="summary"' in prototype and "edition-staging-67.json" in prototype
+    assert "Simulation uniquement" in prototype and "noindex,nofollow" in prototype
+
     creative = fetch("kit-visuels/").decode("utf-8")
     assert 'id="preview"' in creative and 'id="download"' in creative
     assert "edition-staging-67.json" in creative and "thumbs/" in creative
