@@ -32,6 +32,18 @@ function report(){
  const device=entries.get('device')||'Non précisé';
  const browser=entries.get('browser')||'Non précisé';
  const feedback=fields.map(([key,label])=>'- '+label+' : '+entries.get(key));
+ const failures=fields.filter(([key])=>entries.get(key)==='Échec');
+ const p0Keys=new Set(['signup','login','booster','persistence','order','mystery','successive']);
+ const critical=failures.some(([key])=>p0Keys.has(key));
+ const categories={
+  signup:'Compte',login:'Compte',booster:'Booster',reveal:'Booster',
+  persistence:'Sauvegarde',order:'Règles du tirage',collection:'Collection',
+  catalogue:'Catalogue',images:'Images',duplicates:'Collection',
+  mystery:'Confidentialité',successive:'Booster bêta'
+ };
+ const summary=failures.length
+  ? 'Priorité suggérée : '+(critical?'P0 — bloquant':'P1 — majeur')+' ; domaines : '+[...new Set(failures.map(([key])=>categories[key]))].join(', ')
+  : 'Priorité suggérée : aucune erreur cochée (vérifier les remarques).';
  const comment=redact(entries.get('comments'));
  return [
   'TCG DESEUR — RETOUR DE TEST',
@@ -40,6 +52,9 @@ function report(){
   '',
   'Étapes vérifiées :',
   ...feedback,
+  '',
+  summary,
+  'Classement automatique indicatif ; à confirmer lors de la vérification du bug.',
   '',
   'Remarque ou erreur :',
   comment||'(aucune remarque)',
