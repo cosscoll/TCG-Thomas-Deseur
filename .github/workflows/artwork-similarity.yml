@@ -1,0 +1,39 @@
+name: Détecter ressemblances des 105 illustrations
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/reperer-similarites-105.py'
+      - '.github/workflows/artwork-similarity.yml'
+permissions:
+  contents: write
+concurrency:
+  group: tcg-artwork-similarity
+  cancel-in-progress: false
+jobs:
+  compare:
+    name: 5 460 paires de 105 illustrations publiques
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'Pillow==11.3.0'
+      - name: Calculer les scores et planches de contrôle
+        run: python scripts/reperer-similarites-105.py
+      - name: Vérifier résultats et images
+        run: python scripts/reperer-similarites-105.py --check
+      - name: Publier le rapport candidat, jamais une suppression automatique
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/similarites-visuelles-105.json docs/REVUE_SIMILARITES_105_2026-10-13.md audit-visuels/assets/similarites-candidates.jpg
+          if git diff --cached --quiet; then echo "Contrôles déjà à jour."; else
+            git commit -m "docs(images): publish review-only perceptual duplicate candidates"
+            git push origin HEAD:main
+          fi
