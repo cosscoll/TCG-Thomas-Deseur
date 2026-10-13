@@ -6,7 +6,7 @@
 
 **Voir les fiches approuvées :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/  
 **Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
-**Consignes de développement et priorités :** [Feuille de route opérationnelle](docs/PLAN_AUTONOME_SUITE_2026-10-11.md)
+**Prochaines priorités :** [Plan de reprise Floot du 14 octobre — bêta illimitée, recette 68 cartes, images et lancement](docs/PLAN_REPRISE_FLOOT_14_10_2026.md).
 
 | Ressource | Utilité |
 | --- | --- |
@@ -20,6 +20,8 @@
 | [Ancienne démo à 160 illustrations](collection-161/) | Archive de démonstration, **pas** la nouvelle collection Floot |
 
 **Deux environnements synchronisés au 13 octobre :** GitHub conserve le catalogue documentaire des 67 personnages et 38 visuels alternatifs ; **Floot utilise désormais réellement cette édition** avec 68 emplacements affichés (dont une « Carte mystère » masquée). Le serveur Floot gère comptes, tirages, doublons et délai de 24 h. L'ancien inventaire 160 est archivé et non supprimé ; quatre cartes anciennes correspondant exactement à l'édition ont été créditées de façon tracée. [Rapport technique de publication et de tests](docs/LIVRAISON_FLOOT_ORIGINE_68_2026-10-13.md).
+
+**Décision bêta du 13 octobre :** supprimer le délai de 24 heures jusqu'au lancement officiel. **Cette modification est planifiée, pas encore déployée dans Floot** : le quota actuel est toujours actif sur le site, en attendant la prochaine fenêtre de développement. [Suivi prioritaire #12](https://github.com/cosscoll/TCG-Thomas-Deseur/issues/12).
 
 **État des vérifications :** 16 suites Floot réussies, TypeScript propre, publication effective confirmée par Floot et code frontend de l'édition 68 réellement visible dans le bundle HTTP du site public. **Une ouverture authentifiée du NOUVEAU booster reste à recetter** : la dernière ouverture confirmée par le créateur concerne l'ancien moteur, avant migration. Les anciennes cinq cartes restent en archive ; quatre sont liées au nouveau catalogue. L'uniformisation du format des 105 illustrations reste à réaliser.
 
