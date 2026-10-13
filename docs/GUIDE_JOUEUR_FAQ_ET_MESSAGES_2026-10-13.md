@@ -74,6 +74,10 @@ Les quatre cartes reconnues de l'ancien classeur ont été transférées avec un
 | Alternative tirée | « Version alternative · {nom du personnage} » |
 | Bêta non déployée | « La disponibilité de ton prochain booster est indiquée ci-dessous. » |
 
+## Aperçu du futur parcours de révélation
+
+Un [prototype fictif de cinq révélations](https://cosscoll.github.io/TCG-Thomas-Deseur/prototype-booster/) permet de prévisualiser les titres, raretés et animations sur téléphone, sans ouvrir de vrai booster ni toucher aux comptes. Il ne constitue pas la version finale du jeu.
+
 ## Conditions éditoriales
 
 Ne jamais suggérer qu'une probabilité implique un tirage garanti. Ne pas révéler le contenu du booster de collection. Ne pas annoncer la suppression des 24 h avant la vérification Floot. Ne jamais demander les identifiants de connexion dans un retour de test. Les textes de cet état de préparation ne changent pas automatiquement l'application Floot.
