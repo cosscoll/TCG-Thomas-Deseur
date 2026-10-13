@@ -23,7 +23,7 @@ footer{border-top:1px solid var(--line);padding:18px 0 35px;color:var(--muted);f
 <main><span class="eyebrow">KIT VISUEL · DOCUMENTS DE PRÉPARATION</span>
 <h1>Créer un visuel à partir<br>des cartes approuvées.</h1>
 <p>Choisis trois personnages officiels et un format. La composition utilise uniquement les illustrations existantes : aucune image de personnage n'est recréée. Tu peux exporter un PNG haute résolution pour le faire relire avant publication.</p>
-<p class="notice">Ce générateur prépare des **maquettes**. Avant toute diffusion, faire vérifier les droits de reproduction et de représentation, les textes de communication et la charte graphique finale. La Carte mystère n'est pas incluse.</p>
+<p class="notice">Ce générateur prépare des <strong>maquettes</strong>. Avant toute diffusion, faire vérifier les droits de reproduction et de représentation, les textes de communication et la charte graphique finale. La Carte mystère n'est pas incluse.</p>
 <div class="controls">
 <label>Format<select id="format"><option value="square">Publication carrée — 1080 × 1080</option><option value="story">Story — 1080 × 1920</option><option value="landscape">Lien et bannière — 1200 × 630</option></select></label>
 <label>Accroche<select id="headline"><option value="collection">67 personnages. Une collection.</option><option value="packs">Cinq cartes par booster.</option><option value="rare">Commune. Rare. Épique. Légendaire.</option></select></label>
@@ -68,14 +68,14 @@ async function paint(){
  drawText('TCG  DESEUR',pad,top,'900 '+(isWide?35:48)+'px system-ui',w-pad*2,'#f6d39d');
  roundedRect(pad,top+(isWide?62:74),isWide?200:240,5,2,'#f6d39d');
  const titleY=top+(isWide?102:115),titleSize=isWide?58:66;
- drawText(headlines[$('headline').value],pad,titleY,'900 '+titleSize+'px system-ui',w-pad*2,'#ffffff');
- drawText(subtitles[$('headline').value],pad,titleY+titleSize+4,'850 '+(isWide?40:48)+'px system-ui',w-pad*2,'#f6d39d');
+ drawText(headlines[$('headline').value],pad,titleY,'900 '+titleSize+'px system-ui',isWide?495:w-pad*2,'#ffffff');
+ drawText(subtitles[$('headline').value],pad,titleY+titleSize+4,'850 '+(isWide?40:48)+'px system-ui',isWide?495:w-pad*2,'#f6d39d');
  const picks=selected();
  const positions=isWide?[[610,240,165,220],[795,215,165,220],[980,240,165,220]]:
   isStory?[[64,535,290,386],[395,480,290,386],[725,535,290,386]]:
   [[65,360,290,385],[395,318,290,385],[725,360,290,385]];
  await Promise.all(picks.map(c=>new Promise(resolve=>{
-  const img=image(c);if(img.complete&&img.naturalWidth>0)return resolve();
+  const img=image(c);if(img.complete)return resolve();
   img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true});
  })));
  picks.forEach((c,i)=>{
