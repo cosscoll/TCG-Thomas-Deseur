@@ -20,10 +20,10 @@
   <div class="hero-content">
     <span class="eyebrow">ACCÈS TEST · COLLECTION VIRTUELLE</span>
     <h1 id="title">Tu veux tester <em>TCG Deseur&nbsp;?</em></h1>
-    <p>Crée ton compte, ouvre un booster de cinq cartes et complète ton classeur. Pas de paiement ni de mécanique de combat.</p>
+    <p>Crée ton compte, ouvre un booster de cinq cartes et explore le classeur de 68 emplacements : 67 cartes connues et une Carte mystère. Pas de paiement ni de mécanique de combat.</p>
     <div class="buttons"><a class="button primary" href="https://budget-illimite-tcg.floot.app/login?mode=register" rel="noopener noreferrer">Créer un compte ou se connecter <span aria-hidden="true">↗</span></a>
     <a class="button secondary" href="https://budget-illimite-tcg.floot.app/" rel="noopener noreferrer">Accéder au jeu <span aria-hidden="true">↗</span></a></div>
-    <p class="note"><strong>Version en vérification :</strong> l'inscription et l'ouverture réelle des boosters doivent encore être validées de bout en bout. Si une étape échoue, indique-le dans le compte rendu ci-dessous. Cette page d'accompagnement n'accorde aucun booster.</p>
+    <p class="note"><strong>Version en vérification :</strong> l'ouverture réelle d'un booster de la nouvelle édition doit encore être validée de bout en bout. Si une étape échoue, indique-le dans le compte rendu ci-dessous. Cette page d'accompagnement n'accorde aucun booster.</p>
   </div>
   <div class="mock-card" aria-hidden="true"><span>ÉDITION ORIGINE</span><strong>TCG<br>DESEUR</strong><span>TA COLLECTION COMMENCE ICI</span></div>
 </section>
@@ -32,10 +32,10 @@
  <span class="eyebrow">03 ÉTAPES</span><h2>Comment participer au test</h2>
  <div class="steps">
   <article><span class="number">01</span><h3>Crée ton compte</h3><p>Sur le site du jeu, ouvre l'espace de connexion, choisis l'inscription, renseigne ton adresse e-mail, un pseudonyme et un mot de passe personnel. Si tu as déjà un compte, connecte-toi.</p></article>
-  <article><span class="number">02</span><h3>Ouvre un booster</h3><p>Depuis ton espace joueur, essaie d'ouvrir un booster de cinq cartes et de découvrir les cartes reçues. Le rythme normal prévu est d'un booster gratuit toutes les 24 heures par compte.</p></article>
+  <article><span class="number">02</span><h3>Ouvre un booster</h3><p>Depuis ton espace joueur, essaie d'ouvrir un booster de cinq cartes et de découvrir les cartes reçues. Le site impose encore temporairement un délai de 24 heures. Sa suppression pendant la bêta est prévue, mais n'est pas encore active : ne tente une seconde ouverture que si le bouton est disponible.</p></article>
   <article><span class="number">03</span><h3>Vérifie ton classeur</h3><p>Retrouve les cartes reçues dans ta collection. Actualise la page puis reconnecte-toi : elles devraient toujours être présentes. Note ce qui fonctionne ou non.</p></article>
  </div>
- <p class="note">La collection approuvée de 67 personnages et leurs illustrations est visible dans le <a href="../collection-validee/">catalogue de référence</a>. Son intégration au jeu connecté n'est pas encore terminée : les cartes affichées dans le jeu peuvent différer pour le moment.</p>
+ <p class="note">Les 67 personnages approuvés, leurs raretés et les 105 illustrations harmonisées sont visibles dans le <a href="../collection-validee/">catalogue de référence</a>. Le classeur connecté utilise désormais cette édition et doit afficher 68 emplacements, dont une Carte mystère sans révélation.</p>
 </section>
 
 <section id="retour" class="section report">
@@ -71,13 +71,31 @@
    <label>Cartes toujours présentes après reconnexion
     <select name="persistence"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
    </label>
+   <label>Bonnes raretés dans l'ordre (3 Communes, puis Rare/Alternative, puis Rare ou supérieure)
+    <select name="order"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Classeur de 68 emplacements avec les bons noms
+    <select name="catalogue"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Illustrations visibles et lisibles
+    <select name="images"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Doublons affichés avec leur quantité (×2, ×3…)
+    <select name="duplicates"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Carte mystère masquée tant qu'elle n'est pas obtenue
+    <select name="mystery"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
+   <label>Deux boosters consécutifs sans attendre (après activation du mode illimité)
+    <select name="successive"><option value="Non testé">Non testé</option><option value="Réussi">Réussi</option><option value="Échec">Échec</option></select>
+   </label>
   </div>
   <label class="note-label" for="comments">Un bug, une remarque ou une idée ?</label>
   <textarea id="comments" name="comments" rows="4" maxlength="1500" placeholder="Décris l'étape bloquée et le message d'erreur, sans données personnelles."></textarea>
   <p class="privacy">Ne copie jamais de mot de passe, adresse e-mail, cookie, code de connexion ou autre donnée personnelle. Ce formulaire reste sur ton appareil : il n'envoie rien automatiquement.</p>
   <details class="help" aria-label="Que faire si une étape échoue ?">
     <summary>Une étape bloque ? Voici quoi vérifier.</summary>
-    <p>Si l'inscription ou la connexion échoue, copie uniquement le texte public du message d'erreur, sans ton adresse e-mail ni ton mot de passe. Si le booster ne s'ouvre pas, vérifie le compte à rebours, puis recharge la page et consulte ton classeur avant de réessayer. Si les cartes sont déjà enregistrées, ne recommence pas l'ouverture.</p>
+    <p>Si l'inscription ou la connexion échoue, copie uniquement le texte public du message d'erreur, sans ton adresse e-mail ni ton mot de passe. Si le booster ne s'ouvre pas, relève le message d'erreur sans données personnelles, recharge la page et consulte ton classeur avant de réessayer. Durant la phase actuelle, le délai de 24 heures peut encore apparaître jusqu'à mise à jour du jeu. Si les cartes sont déjà enregistrées, ne recommence pas l'ouverture.</p>
     <p>L'envoi de codes « mot de passe oublié » peut être limité pendant cette version de test. Tu peux transmettre ton rapport de problème à la personne qui t'a invité.</p>
   </details>
   <div class="report-actions"><button type="button" id="prepare">Préparer mon compte rendu</button><button type="button" id="copy" disabled>Copier le compte rendu</button><button type="button" id="download" disabled>Enregistrer en .txt</button><button type="button" id="share" disabled>Partager mon retour</button><button type="reset" class="reset">Effacer mes réponses</button></div>
