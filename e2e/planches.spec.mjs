@@ -39,5 +39,5 @@ test('document printable ne montre que les illustrations publiques',async({page}
  expect(new Set(requested).size).toBe(105);
  expect(requested.every(path=>path.includes('/assets/uniform/')&&!path.includes('reward'))).toBe(true);
  expect(await page.locator('article.card img').count()).toBe(105);
- await expect(page.locator('article.card')).not.toContainText(/modalité de récompense|identité privée/i);
+ await expect(page.locator('body')).not.toContainText(/modalité de récompense|identité privée/i);
 });
