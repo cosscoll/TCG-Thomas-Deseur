@@ -128,6 +128,7 @@ test('tous les 105 visuels approuvés existent ET se décodent dans Chromium',as
  test.skip(testInfo.project.name!=='desktop-chromium','Un décodage complet sur un navigateur suffit.');
  test.setTimeout(120_000);
  await expect(page.locator('article.card[data-group] .image-frame img')).toHaveCount(105);
+ await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('src',/\/assets\/uniform\/td-.*\.webp$/);
  const errors=await page.evaluate(async()=>{
   const entries=[...document.querySelectorAll('article.card[data-group] .image-frame img')].map(el=>({
    src:el.getAttribute('src'),alt:el.getAttribute('alt')
@@ -140,7 +141,8 @@ test('tous les 105 visuels approuvés existent ET se décodent dans Chromium',as
     img.src=entry.src;
     try{
      await img.decode();
-     if(!img.naturalWidth||!img.naturalHeight)throw Error('Dimensions nulles');
+     if(img.naturalWidth!==768||img.naturalHeight!==1024)
+      throw Error('Dimensions incorrectes (attendu 768 × 1024, obtenu '+img.naturalWidth+' × '+img.naturalHeight+')');
     }catch(error){failures.push(entry.alt+' : '+entry.src+' : '+error.message)}
    }));
   }
