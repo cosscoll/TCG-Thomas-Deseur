@@ -64,3 +64,19 @@ footer{padding:22px 4%;border-top:1px solid #4e3e5d;color:#b9adbf;font-size:.75r
 .card[data-rarity="Hors-série"]{border-top-color:#9ee0ce}
 @media(max-width:1040px) and (min-width:691px){.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.rarity-counts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:690px){.rarity-summary{margin-top:35px}.rarity-counts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.rarity-stat{padding:12px}.controls{grid-template-columns:minmax(0,1fr)}.rarity-stat strong{font-size:1.55rem}}
+
+
+/* Emplacement public numéro 68 : illustration et identité non publiées. */
+.mystery-card{border-top-color:#c8b1ef;position:relative;background:linear-gradient(155deg,#29203d,#100d1c)}
+.mystery-image{background:radial-gradient(ellipse at 50% 40%,#614b8270,transparent 65%),repeating-linear-gradient(135deg,#21192c 0 10px,#251b33 10px 20px);border:1px solid #83759a;position:relative}
+.mystery-illustration{width:min(74%,175px);aspect-ratio:3/4;border:2px solid #b9a7d499;border-radius:14px;display:grid;place-items:center;background:linear-gradient(150deg,#44335e,#1c152b);box-shadow:inset 0 0 18px #d7c9ed17,0 8px 25px #0004;transform:rotate(-5deg)}
+.mystery-glyph{font-size:clamp(4.5rem,9vw,6.8rem);color:#e0d4f5;text-shadow:0 0 35px #a991d277;font-weight:900;line-height:1}
+.mystery-label{padding:5px 9px;border:1px solid #a98bc6;border-radius:40px;color:#dfcaed;background:#372845;font-size:.69rem;font-weight:800}
+.mystery-card h3{color:#ead9ff}.mystery-description{font-size:1rem;letter-spacing:.35em;color:#ab91c3;margin-bottom:0;font-weight:900}
+.rarity-explainer{font-size:.83rem;color:var(--muted);margin:12px 0 0}
+.loading-art{background:linear-gradient(110deg,#2d2140 5%,#533d67 45%,#2d2140 85%);background-size:220% 100%;animation:art-loading 2s ease-in-out infinite}
+@keyframes art-loading{to{background-position-x:-220%}}
+.image-frame .retry-art{margin:10px;min-height:36px;border:1px solid #d6c4e4;border-radius:8px;padding:8px 13px;color:#faf4ff;background:#38294b;cursor:pointer}
+.image-frame:has(.retry-art){flex-direction:column}
+.image-frame .retry-art:hover{background:#49355f}
+@media(prefers-reduced-motion:reduce){.loading-art{animation:none}.mystery-illustration{transform:none}}
