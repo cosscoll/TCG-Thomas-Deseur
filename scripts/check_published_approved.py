@@ -3,6 +3,7 @@
 Pas de compte, cookie, token, API booster ou base de données.
 """
 import json
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 import sys
 import time
@@ -26,6 +27,44 @@ def fetch(path):
         return response.read()
 
 
+def check_image_head(path):
+    req = urllib.request.Request(
+        BASE + path,
+        method="HEAD",
+        headers={"User-Agent": "TCG-Deseur-Images/1.0", "Cache-Control": "no-cache"},
+    )
+    with urllib.request.urlopen(req, timeout=15) as response:
+        if response.status != 200:
+            raise AssertionError(f"{path}: image HTTP {response.status}")
+        media_type = response.headers.get("Content-Type", "").split(";")[0].lower().strip()
+        if media_type != "image/webp":
+            raise AssertionError(f"{path}: Type inattendu {media_type}")
+        length = int(response.headers.get("Content-Length", "0"))
+        if length < 1000:
+            raise AssertionError(f"{path}: image vide ou incomplète ({length} octets)")
+        return path
+
+
+def check_all_published_artworks(cards):
+    assets = [image["asset"] for card in cards
+              for image in [card["main"], *card["variants"]]]
+    assert len(assets) == len(set(assets)) == 105, "105 images distinctes attendues."
+    failures = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        pending = {pool.submit(check_image_head, asset): asset for asset in assets}
+        for future in as_completed(pending):
+            try:
+                future.result()
+            except (AssertionError, ValueError, urllib.error.URLError, TimeoutError, OSError) as exc:
+                failures.append(str(exc))
+    if failures:
+        raise AssertionError(
+            f"{len(failures)} illustration(s) indisponibles : " +
+            " | ".join(failures[:12])
+        )
+    return len(assets)
+
+
 def verify_once():
     home = fetch("").decode("utf-8")
     assert "collection-validee/" in home, "L'accueil n'annonce pas le nouveau catalogue."
@@ -46,6 +85,11 @@ def verify_once():
     assert picasso["name"] == "Picasso Deseur"
     assert picasso["main"]["artworkId"] == "td_1_002"
     assert [art["artworkId"] for art in picasso["variants"]] == ["td_2_042", "td_3_042"]
+    assert "68 cartes" in home, "L'accueil ne montre pas les 68 cartes."
+    assert "68 cartes" in html, "La galerie ne montre pas les 68 cartes."
+    assert "Carte mystère" in html, "La carte mystère n'est pas présentée."
+    assert "mysteryCardView" in js, "Le rendu de la Carte mystère est absent."
+    all_live_images = check_all_published_artworks(raw["cards"])
 
     # Invitation aux testeurs : la page doit pointer vers le VRAI jeu
     # et ne doit pas proposer un formulaire recueillant des identifiants.
@@ -64,7 +108,7 @@ def verify_once():
 
     original = fetch("collection-161/assets/cards/td-1-002.webp")
     assert original[:4] == b"RIFF" and original[8:12] == b"WEBP", "Visuel stylisé inaccessible."
-    return "Accueil, galerie, manifeste 67/38/3, illustration et page bêta accessibles."
+    return f"Accueil et galerie 68 cartes, 67 connues, 38 variantes ; {all_live_images} images WebP publiques accessibles, et bêta accessible."
 
 
 def main():
