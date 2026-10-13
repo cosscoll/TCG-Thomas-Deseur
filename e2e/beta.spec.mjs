@@ -88,3 +88,17 @@ test('masque les informations sensibles courantes dans un commentaire avant tél
  expect(text).not.toContain('fakeToken12345');
  expect(text).not.toContain('code=0000');
 });
+
+test('classement local P0/P1 des erreurs sans envoi automatique',async({page})=>{
+ const writes=[];page.on('request',r=>{if(['POST','PUT','PATCH','DELETE'].includes(r.method()))writes.push(r.url())});
+ await page.getByLabel('Ouverture du premier booster').selectOption('Échec');
+ await page.getByLabel('Illustrations visibles et lisibles').selectOption('Échec');
+ await page.getByRole('button',{name:'Préparer mon compte rendu'}).click();
+ await expect(page.locator('#output')).toHaveValue(/P0 — bloquant/);
+ await expect(page.locator('#output')).toHaveValue(/Booster, Images/);
+ expect(writes).toEqual([]);
+ await page.getByRole('button',{name:'Effacer mes réponses'}).click();
+ await page.getByLabel('Illustrations visibles et lisibles').selectOption('Échec');
+ await page.getByRole('button',{name:'Préparer mon compte rendu'}).click();
+ await expect(page.locator('#output')).toHaveValue(/P1 — majeur/);
+});
