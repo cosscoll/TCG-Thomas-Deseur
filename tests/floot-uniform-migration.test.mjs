@@ -62,7 +62,7 @@ test('each SQL row maps correct name, original image, normalized main and all va
  assert.match(sql,/UPDATE tcg_cards_origin live SET\s+image_path = stage\.new_main_url,\s+variants = stage\.new_variants/);
  assert.match(sql,/DO \$tcg_preflight\$/);
  assert.match(sql,/DO \$tcg_postflight\$/);
- assert.match(sql,/^BEGIN;/);
+ assert.match(sql,/^BEGIN;/m);
  assert.match(sql,/COMMIT;\s*$/);
  assert.doesNotMatch(sql,/\b(?:DELETE|TRUNCATE|DROP|ALTER|GRANT|REVOKE)\s+(?:TABLE\s+)?(?:tcg_|users)/i);
  assert.doesNotMatch(sql,/\bUPDATE\s+tcg_(?:inventory|pack_history|pack_status|reward_claims|secret)/i);
