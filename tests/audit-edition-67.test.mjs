@@ -18,5 +18,5 @@ test('approved catalogue is fully attributed to 105 distinct photographic source
   assert.match(r.finalImagePath,/^collection-validee\/assets\/uniform\//);
  }
  assert.ok(csv(rows).split('\n').length>=106);
- assert.match(markdown(audit()),/revue visuelle humaine/);
+ assert.match(markdown(audit()),/validation visuelle humaine/);
 });
