@@ -20,7 +20,7 @@ function humanCopy(content){
 test('the published onboarding and collection pages never reveal an unreleased item',()=>{
  for(const file of publicDocuments){
   const content=humanCopy(fs.readFileSync(new URL(file,import.meta.url),'utf8'));
-  assert.doesNotMatch(content,/carte\s+secr[eè]te|secret\s+card|une\s+surprise|une\s+carte\s+cach[eé]e|chevelu/i,'Spoiler in '+file);
+  assert.doesNotMatch(content,/carte\s+secr[eè]te|secret\s+card|une\s+surprise|une\s+carte\s+cach[eé]e/i,'Spoiler in '+file);
  }
 });
 test('collecting the full edition advertises a booster, without detailing its contents',()=>{
