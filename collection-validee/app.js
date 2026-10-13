@@ -31,6 +31,8 @@ const artSrc=id=>{
  return pair?'../collection-161/assets/cards/'+encodeURIComponent(pair.illustration):null;
 };
 let approved=[];
+const publicCardTotal=68;
+const mysterySearchTerms=['carte mystère','carte mystere','mystère','mystere','68'];
 const rarityOrder=Object.freeze(['Commune','Rare','Épique','Légendaire','Hors-série']);
 const expectedRarityCounts=Object.freeze({'Commune':33,'Rare':21,'Épique':8,'Légendaire':4,'Hors-série':1});
 function renderRaritySummary(){
@@ -45,20 +47,54 @@ function renderRaritySummary(){
  });
  parent.replaceChildren(...nodes);
 }
-function image(id,name,variant=false){
+function image(id,name,variant=false,eager=false){
  const src=artSrc(id);
  const frame=make('div',variant?'image-frame variant-image':'image-frame');
+ if(!src){frame.append(make('span','missing','Illustration indisponible'));return frame;}
  const img=make('img');
- if(src){img.src=src;img.alt='Illustration '+name+' ('+id+')';img.loading='lazy';img.decoding='async';
-  img.addEventListener('error',()=>{frame.replaceChildren(make('span','missing','Illustration indisponible'))});frame.append(img);
- }else frame.append(make('span','missing','Illustration indisponible'));
+ img.alt='Illustration '+name+' ('+id+')';
+ img.loading=eager?'eager':'lazy';
+ img.decoding='async';
+ if(eager)img.fetchPriority='high';
+ frame.classList.add('loading-art');
+ img.addEventListener('load',()=>frame.classList.remove('loading-art'));
+ img.addEventListener('error',()=>{
+  frame.classList.remove('loading-art');
+  const message=make('span','missing','Illustration temporairement indisponible');
+  const retry=make('button','retry-art','Réessayer');
+  retry.type='button';
+  retry.setAttribute('aria-label','Réessayer de charger l’illustration de '+name);
+  retry.addEventListener('click',()=>{
+   frame.classList.add('loading-art');
+   frame.replaceChildren(img);
+   img.src=src+'?retry='+Date.now();
+  });
+  frame.replaceChildren(message,retry);
+ });
+ img.src=src;
+ frame.append(img);
  return frame;
 }
-function cardView(card){
+function mysteryCardView(){
+ const box=make('article','card mystery-card');
+ box.dataset.mystery='true';
+ const frame=make('div','image-frame mystery-image');
+ const silhouette=make('div','mystery-illustration');
+ silhouette.setAttribute('aria-hidden','true');
+ silhouette.append(make('span','mystery-glyph','?'));
+ frame.append(silhouette);
+ const caption=make('div','card-top');
+ caption.append(make('span','card-reference','68 / 68'),make('span','mystery-label','À découvrir'));
+ const label=make('div','card-label');
+ label.append(make('h3','','Carte mystère'),make('p','mystery-description','???'));
+ box.append(frame,caption,label);
+ return box;
+}
+function cardView(card,index=0){
  const box=make('article','card');
  box.dataset.group=card.group;
  box.dataset.rarity=card.rarity;
- const frame=image(card.primary,card.name);
+ const frame=image(card.primary,card.name,false,index<8);
  const caption=make('div','card-top');
  caption.append(make('span','card-reference',card.group));
  caption.append(make('span','rarity-badge rarity-'+rarityOrder.indexOf(card.rarity),card.rarity));
@@ -100,11 +136,15 @@ function render(){
    && (origin==='all'||origin===gallery)
    && (c.name+' '+c.group+' '+c.primary+' '+c.alternatives.join(' ')+' '+byId.get(c.primary)?.sourceReference).toLocaleLowerCase('fr').includes(search);
  });
+ const mysteryVisible=(rarity==='all'||rarity==='mystere')&&mode==='all'&&origin==='all'
+  && (!search||mysterySearchTerms.some(term=>term.includes(search)));
  const fragment=document.createDocumentFragment();
- for(const entry of rows)fragment.append(cardView(entry));
+ for(const [index,entry] of rows.entries())fragment.append(cardView(entry,index));
+ if(mysteryVisible)fragment.append(mysteryCardView());
  $('cards').replaceChildren(fragment);
- $('count').textContent=rows.length+' / '+approved.length+' cartes affichées';
- $('empty').hidden=rows.length>0;
+ const displayed=rows.length+(mysteryVisible?1:0);
+ $('count').textContent=displayed+' / '+publicCardTotal+' cartes affichées';
+ $('empty').hidden=displayed>0;
 }
 async function initialize(){
  try{
@@ -136,7 +176,7 @@ async function initialize(){
   if(Object.entries(expectedRarityCounts).some(([name,qty])=>counts[name]!==qty))
    throw Error('Répartition de raretés inattendue.');
   renderRaritySummary();
-  $('total').textContent=approved.length;
+  $('total').textContent=publicCardTotal;
   $('variants').textContent=approved.reduce((sum,c)=>sum+c.alternatives.length,0);
   $('excluded').textContent=discarded.length;
   $('search').addEventListener('input',render);
