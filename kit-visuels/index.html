@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#110d1f">
+<title>Atelier de visuels — TCG Deseur</title>
+<style>
+:root{font-family:system-ui,Arial,sans-serif;color-scheme:dark;--bg:#141020;--panel:#241c33;--line:#896e9a;--ink:#fff9ff;--muted:#d9cce4;--gold:#f7d2a0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}
+header,main,footer{width:min(1200px,calc(100% - 32px));margin:0 auto}header{padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+header>a{font-weight:900;color:var(--gold);text-decoration:none;letter-spacing:.1em}nav{display:flex;gap:15px;flex-wrap:wrap}a{color:var(--gold)}
+main{padding:34px 0 80px}.eyebrow{color:var(--gold);font-weight:900;font-size:.78rem;letter-spacing:.16em}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.15;margin:10px 0}
+p{color:var(--muted);max-width:850px;line-height:1.6}.notice{border-left:3px solid var(--gold);padding:12px 16px;background:#30243f}
+.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:25px 0;background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:13px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:.83rem}select{font:inherit;min-height:46px;background:#3a2b4b;color:#fff;border:1px solid #b29bbd;padding:11px;border-radius:8px;min-width:0}
+#preview{display:block;width:min(100%,620px);height:auto;margin:0 auto;border:1px solid #a897aa;border-radius:8px;background:#20172b;box-shadow:0 15px 40px #0008}
+.actions{display:flex;gap:12px;margin:20px 0;justify-content:center;flex-wrap:wrap}button{font:inherit;background:#f4ce90;color:#211524;border:none;padding:14px 22px;border-radius:9px;font-weight:900;cursor:pointer}
+select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#status{min-height:25px;text-align:center;color:var(--muted)}#error{color:#ffb5cb;padding:10px}
+footer{border-top:1px solid var(--line);padding:18px 0 35px;color:var(--muted);font-size:.79rem}
+@media(max-width:650px){.controls{grid-template-columns:1fr;padding:12px}}
+</style>
+</head><body>
+<header><a href="../">TCG DESEUR</a><nav><a href="../collection-validee/">Collection</a><a href="../planches/">Planches</a><a href="../avancement/">Avancement</a></nav></header>
+<main><span class="eyebrow">KIT VISUEL · DOCUMENTS DE PRÉPARATION</span>
+<h1>Créer un visuel à partir<br>des cartes approuvées.</h1>
+<p>Choisis trois personnages officiels et un format. La composition utilise uniquement les illustrations existantes : aucune image de personnage n'est recréée. Tu peux exporter un PNG haute résolution pour le faire relire avant publication.</p>
+<p class="notice">Ce générateur prépare des **maquettes**. Avant toute diffusion, faire vérifier les droits de reproduction et de représentation, les textes de communication et la charte graphique finale. La Carte mystère n'est pas incluse.</p>
+<div class="controls">
+<label>Format<select id="format"><option value="square">Publication carrée — 1080 × 1080</option><option value="story">Story — 1080 × 1920</option><option value="landscape">Lien et bannière — 1200 × 630</option></select></label>
+<label>Accroche<select id="headline"><option value="collection">67 personnages. Une collection.</option><option value="packs">Cinq cartes par booster.</option><option value="rare">Commune. Rare. Épique. Légendaire.</option></select></label>
+<label>Carte 1<select id="card0"></select></label>
+<label>Carte 2<select id="card1"></select></label>
+<label>Carte 3<select id="card2"></select></label>
+<label>Accroche secondaire<select id="sub"><option value="launch">Découvre le TCG Deseur</option><option value="coming">Lancement à venir</option><option value="beta">Collection en préparation</option></select></label>
+</div>
+<p id="status" role="status" aria-live="polite">Chargement des illustrations…</p><p id="error" role="alert" hidden></p>
+<canvas id="preview" width="1080" height="1080" role="img" aria-label="Aperçu du visuel promotionnel, construit à partir de trois cartes approuvées"></canvas>
+<div class="actions"><button id="download" type="button" disabled>Exporter ce visuel en PNG</button></div>
+</main><footer>TCG Deseur · Atelier d'export de maquettes · Pas de diffusion automatique ni accès à Floot.</footer>
+<script type="module">
+const $=id=>document.getElementById(id),ctx=$('preview').getContext('2d');
+let cards=[],imageCache=new Map(),timer=0;
+const FORMAT={square:[1080,1080],story:[1080,1920],landscape:[1200,630]};
+const headlines={collection:'67 PERSONNAGES.',packs:'CINQ CARTES.',rare:'COLLECTION ORIGINE.'};
+const subtitles={collection:'UNE COLLECTION.',packs:'PAR BOOSTER.',rare:'CINQ RARETÉS.'};
+function drawText(text,x,y,font,max,color='#fff'){
+ ctx.fillStyle=color;ctx.font=font;ctx.textBaseline='top';
+ ctx.fillText(text,x,y,max);
+}
+function roundedRect(x,y,w,h,r,color){
+ ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();
+}
+function image(card){
+ const src='../'+card.main.assetPath.replace('collection-161/assets/cards/','collection-validee/assets/thumbs/');
+ if(imageCache.has(src))return imageCache.get(src);
+ const img=new Image();img.decoding='async';img.src=src;imageCache.set(src,img);return img;
+}
+const selected=()=>[0,1,2].map(n=>cards.find(c=>c.characterId===$('card'+n).value)).filter(Boolean);
+async function paint(){
+ if(!cards.length)return;
+ const [w,h]=FORMAT[$('format').value]||FORMAT.square,canvas=$('preview');
+ canvas.width=w;canvas.height=h;
+ const grad=ctx.createLinearGradient(0,0,w,h);
+ grad.addColorStop(0,'#482b65');grad.addColorStop(.58,'#23172e');grad.addColorStop(1,'#110d1d');
+ ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+ const isStory=h>w,isWide=w>h;
+ const pad=isWide?58:72;
+ const top=isStory?135:isWide?68:92;
+ drawText('TCG  DESEUR',pad,top,'900 '+(isWide?35:48)+'px system-ui',w-pad*2,'#f6d39d');
+ roundedRect(pad,top+(isWide?62:74),isWide?200:240,5,2,'#f6d39d');
+ const titleY=top+(isWide?102:115),titleSize=isWide?58:66;
+ drawText(headlines[$('headline').value],pad,titleY,'900 '+titleSize+'px system-ui',w-pad*2,'#ffffff');
+ drawText(subtitles[$('headline').value],pad,titleY+titleSize+4,'850 '+(isWide?40:48)+'px system-ui',w-pad*2,'#f6d39d');
+ const picks=selected();
+ const positions=isWide?[[610,240,165,220],[795,215,165,220],[980,240,165,220]]:
+  isStory?[[64,535,290,386],[395,480,290,386],[725,535,290,386]]:
+  [[65,360,290,385],[395,318,290,385],[725,360,290,385]];
+ await Promise.all(picks.map(c=>new Promise(resolve=>{
+  const img=image(c);if(img.complete&&img.naturalWidth>0)return resolve();
+  img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true});
+ })));
+ picks.forEach((c,i)=>{
+  const [x,y,width,height]=positions[i],img=image(c);
+  ctx.save();ctx.shadowBlur=25;ctx.shadowColor='#000a';
+  roundedRect(x-5,y-5,width+10,height+65,16,'#f9d5a2');ctx.restore();
+  roundedRect(x,y,width,height+55,11,'#23192e');
+  if(img.naturalWidth>0){
+   ctx.save();ctx.beginPath();ctx.roundRect(x,y,width,height,10);ctx.clip();
+   ctx.drawImage(img,x,y,width,height);ctx.restore();
+  }else {drawText('Illustration indisponible',x+10,y+20,'600 15px system-ui',width-20)}
+  drawText(c.title,x+8,y+height+8,'800 '+(isWide?14:18)+'px system-ui',width-16,'#fff9ff');
+  drawText(c.rarity,x+8,y+height+32,'700 '+(isWide?12:14)+'px system-ui',width-16,'#f7d2a0');
+ });
+ const footY=isStory?1485:isWide?530:865,footSize=isStory?36:isWide?27:32;
+ drawText($('sub').selectedOptions[0].textContent.toUpperCase(),pad,footY,'800 '+footSize+'px system-ui',w-pad*2,'#f8dcaf');
+ drawText('67 CARTES CONNUES  ·  1 CARTE MYSTÈRE',pad,footY+footSize+22,'650 '+(isWide?17:20)+'px system-ui',w-pad*2,'#e0d4e7');
+ drawText('Maquette — utilisation sous réserve de droits et validation.',pad,h-57,'500 17px system-ui',w-pad*2,'#c4b4cb');
+ $('status').textContent='Aperçu prêt : '+w+' × '+h+' pixels, trois cartes officielles.';
+ $('download').disabled=false;
+}
+function schedule(){clearTimeout(timer);timer=setTimeout(()=>paint().catch(e=>{
+ $('error').hidden=false;$('error').textContent='Erreur de rendu : '+e.message
+}),50)}
+(async()=>{
+ try{
+  const response=await fetch('../data/edition-staging-67.json',{cache:'no-store'});
+  if(!response.ok)throw Error('Catalogue indisponible');
+  const data=await response.json();cards=data.cards;
+  if(cards?.length!==67)throw Error('67 personnages attendus');
+  for(const n of [0,1,2]){
+   const el=$('card'+n);
+   for(const c of cards){const o=document.createElement('option');o.value=c.characterId;o.textContent=c.title+' · '+c.rarity;el.append(o)}
+   el.selectedIndex=n;
+  }
+  schedule();
+ }catch(e){$('error').hidden=false;$('error').textContent='Impossible de charger les personnages : '+e.message;}
+})();
+for(const id of ['format','headline','card0','card1','card2','sub'])$(id).addEventListener('change',schedule);
+$('download').addEventListener('click',()=>{
+ const canvas=$('preview');canvas.toBlob(blob=>{
+  if(!blob){$('error').hidden=false;$('error').textContent='Impossible de créer le fichier PNG';return}
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='tcg-deseur-maquette-'+$('format').value+'.png';
+  document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+ },'image/png');
+});
+</script></body></html>
