@@ -38,20 +38,22 @@ def analyze():
         for j in range(i+1,len(arts)):
             full=(hs[i][0]^hs[j][0]).bit_count()
             middle=(hs[i][1]^hs[j][1]).bit_count()
-            if full<=10 or middle<=9:
-                a,b=arts[i],arts[j]
-                cand.append({"a":a["artworkId"],"b":b["artworkId"],
-                             "characterA":a["characterId"],"characterB":b["characterId"],
-                             "sourceA":a["source"],"sourceB":b["source"],
-                             "distanceFull":full,"distanceCenter":middle,
-                             "sameCharacter":a["characterId"]==b["characterId"],
-                             "review":"candidate-needs-human-confirmation"})
+            a,b=arts[i],arts[j]
+            cand.append({"a":a["artworkId"],"b":b["artworkId"],
+                         "characterA":a["characterId"],"characterB":b["characterId"],
+                         "sourceA":a["source"],"sourceB":b["source"],
+                         "distanceFull":full,"distanceCenter":middle,
+                         "sameCharacter":a["characterId"]==b["characterId"],
+                         "strictMatch":bool(full<=10 or middle<=9),
+                         "review":"visual-ranking-only"})
     cand.sort(key=lambda x:(min(x["distanceFull"],x["distanceCenter"]),
                             x["distanceFull"]+x["distanceCenter"],x["a"],x["b"]))
+    strict=sum(p["strictMatch"] for p in cand)
     return {"schema":"tcg-deseur-similarities-candidates-v1","approvedPublicImages":105,
             "comparedPairs":5460,"algorithm":"grayscale dHash 9x8 (whole/central 68x76%)",
-            "warning":"No similarity is proof of same costume, scene or situation",
-            "candidatePairs":cand}
+            "warning":"Nearest neighbours are a review shortlist, not proved duplicates",
+            "strictThresholdMatches":strict,
+            "candidatePairs":cand[:30]}
 def report(data):
     pairs=data["candidatePairs"]
     lines=[
@@ -61,7 +63,7 @@ def report(data):
     "",
     "Analyse des 5 460 paires possibles parmi les 105 visuels publics approuvés. Les empreintes dHash comparent la disposition générale des nuances de gris dans l'image complète et son centre. Aucune photo originale, carte ou rareté n'est modifiée.",
     "",
-    "Paires candidates : "+str(len(pairs))+" ; entre personnages différents : "+str(sum(not p["sameCharacter"] for p in pairs))+" ; entre versions d'un même personnage : "+str(sum(p["sameCharacter"] for p in pairs))+".",
+    "Paires franchissant les seuils stricts : "+str(data["strictThresholdMatches"])+". Les **30 plus proches visuellement**, même en l'absence de dépassement de seuil, sont soumises à une revue : "+str(sum(not p["sameCharacter"] for p in pairs))+" entre personnages distincts et "+str(sum(p["sameCharacter"] for p in pairs))+" du même personnage.",
     "",
     "Planche comparative des 30 premières paires : [consulter les images](../audit-visuels/assets/similarites-candidates.jpg).",
     "",
