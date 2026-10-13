@@ -1,0 +1,8 @@
+{
+  "schema": "tcg-deseur-similarities-candidates-v1",
+  "approvedPublicImages": 105,
+  "comparedPairs": 5460,
+  "algorithm": "grayscale dHash 9x8 (whole/central 68x76%)",
+  "warning": "No similarity is proof of same costume, scene or situation",
+  "candidatePairs": []
+}
