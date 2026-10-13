@@ -8,6 +8,8 @@
 **Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
 **Suivi public des 88 chantiers hors Floot :** [Tableau d'avancement](https://cosscoll.github.io/TCG-Thomas-Deseur/avancement/), alimenté par [les 88 lignes justifiées](data/suivi-88-actions.json). « Réalisé » signifie livrable GitHub prêt, pas résultat validé dans Floot.
 
+**Atelier de maquettes PNG :** [formats carré, Story et bannière](https://cosscoll.github.io/TCG-Thomas-Deseur/kit-visuels/) assemblés localement à partir des images officielles ; aucune diffusion automatique.
+
 **Planches imprimables :** [67 illustrations principales et 38 alternatives](https://cosscoll.github.io/TCG-Thomas-Deseur/planches/). Les originaux et les versions optimisées restent séparés.
 
 **Prochaines priorités :** [Plan de reprise Floot du 14 octobre — bêta illimitée, recette 68 cartes, images et lancement](docs/PLAN_REPRISE_FLOOT_14_10_2026.md).
