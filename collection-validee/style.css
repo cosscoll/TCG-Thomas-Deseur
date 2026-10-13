@@ -80,3 +80,7 @@ footer{padding:22px 4%;border-top:1px solid #4e3e5d;color:#b9adbf;font-size:.75r
 .image-frame:has(.retry-art){flex-direction:column}
 .image-frame .retry-art:hover{background:#49355f}
 @media(prefers-reduced-motion:reduce){.loading-art{animation:none}.mystery-illustration{transform:none}}
+
+/* Every approved source now has a non-destructive, pre-rendered 3:4 artwork. */
+.card>.image-frame,.variant-item .image-frame{aspect-ratio:3/4;height:auto;min-height:0}
+.image-frame img{display:block;width:100%;height:100%;object-fit:cover}
