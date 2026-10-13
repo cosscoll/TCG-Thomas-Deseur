@@ -148,6 +148,10 @@ function render(){
    && (origin==='all'||origin===gallery)
    && (c.name+' '+c.group+' '+c.primary+' '+c.alternatives.join(' ')+' '+byId.get(c.primary)?.sourceReference).toLocaleLowerCase('fr').includes(search);
  });
+ const sort=$('sort').value;
+ if(sort==='name')rows.sort((a,b)=>a.name.localeCompare(b.name,'fr'));
+ else if(sort==='rarity')rows.sort((a,b)=>rarityOrder.indexOf(a.rarity)-rarityOrder.indexOf(b.rarity)||a.name.localeCompare(b.name,'fr'));
+ else if(sort==='variants')rows.sort((a,b)=>b.alternatives.length-a.alternatives.length||a.name.localeCompare(b.name,'fr'));
  const mysteryVisible=(rarity==='all'||rarity==='mystere')&&mode==='all'&&origin==='all'
   && (!search||mysterySearchTerms.some(term=>term.includes(search)));
  const fragment=document.createDocumentFragment();
@@ -195,6 +199,7 @@ async function initialize(){
   $('filter').addEventListener('change',render);
   $('rarity').addEventListener('change',render);
   $('origin').addEventListener('change',render);
+  $('sort').addEventListener('change',render);
   render();
  }catch(e){
   $('count').textContent='Chargement impossible';
