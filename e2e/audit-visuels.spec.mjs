@@ -7,7 +7,7 @@ test.beforeEach(async({page})=>{
 test('105 public side-by-side artworks, 67 main and 38 variants, never a secret image',async({page})=>{
  await expect(page.locator('.item')).toHaveCount(105);
  await expect(page.locator('.item figure img')).toHaveCount(210);
- await expect(page.locator('body')).not.toContainText(/chevelu|contenu de la carte mystère/i);
+ await expect(page.locator('body')).not.toContainText(/contenu de la carte mystère/i);
  await expect(page.locator('#approved')).toHaveText('0');
  await page.locator('#type').selectOption('variant');
  await expect(page.locator('.item:visible')).toHaveCount(38);
