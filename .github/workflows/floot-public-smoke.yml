@@ -2,6 +2,12 @@ name: Floot — contrôle public (sans compte)
 
 on:
   workflow_dispatch:
+    inputs:
+      beta_unlimited:
+        description: "Activer les tests navigateur de deux boosters consécutifs APRÈS publication du mode illimité Floot"
+        required: false
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
@@ -50,6 +56,8 @@ jobs:
       - name: Installer Chromium et ses dépendances
         run: npx playwright install --with-deps chromium
       - name: Tester les pages publiques sur ordinateur et mobile
+        env:
+          TCG_BETA_UNLIMITED: ${{ github.event_name == 'workflow_dispatch' && inputs.beta_unlimited && '1' || '0' }}
         run: npx playwright test --config=floot-e2e/playwright.config.mjs
       - name: Conserver les traces en cas d'échec
         if: failure()
