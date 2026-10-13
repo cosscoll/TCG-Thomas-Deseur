@@ -1,8 +1,8 @@
-# TCG Deseur — état courant (11 octobre 2026)
+# TCG Deseur — édition Origine publiée le 13 octobre 2026
 
 **Collection annoncée : 68 cartes au total — 67 cartes connues avec raretés validées, et une Carte mystère sans détails publiés.** Les 67 cartes connues sont issues du tri des illustrations, avec 38 variantes et 3 groupes écartés.
 
-**Raretés et probabilités de la nouvelle édition (validées le 12/10/2026) :** 67 cartes réparties en 33 Communes, 21 Rares, 8 Épiques, 4 Légendaires et 1 Hors-série. Boosters classiques : cartes 1–3 = 100 % Communes ; carte 4 = 90 % Rare / 10 % Alternative ; carte 5 = 80 % Rare / 17 % Épique / 2 % Légendaire / 1 % Hors-série. **Ces règles sont en préparation sur GitHub, pas encore activées dans le backend Floot.** Le mécanisme précis de sélection des alternatives reste à définir. [Règles et tests](docs/REGLES_BOOSTER_67_2026-10-12.md).
+**Raretés et probabilités de la nouvelle édition (validées le 12/10/2026) :** 67 cartes réparties en 33 Communes, 21 Rares, 8 Épiques, 4 Légendaires et 1 Hors-série. Boosters classiques : cartes 1–3 = 100 % Communes ; carte 4 = 90 % Rare / 10 % Alternative ; carte 5 = 80 % Rare / 17 % Épique / 2 % Légendaire / 1 % Hors-série. **Ces règles sont maintenant actives côté serveur Floot.** La branche de 10 % tire provisoirement l'une des 38 illustrations alternatives ; elle garde l'identité et la rareté de son personnage et augmente ses copies. Le statut définitif des variantes dans la collection reste à valider. [Règles et tests](docs/REGLES_BOOSTER_67_2026-10-12.md).
 
 **Voir les fiches approuvées :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/  
 **Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
@@ -12,16 +12,16 @@
 | --- | --- |
 | [Choix approuvés](data/choix-cartes-2026-10-11.json) | Décisions exactes, noms, illustrations principales et alternatives |
 | [Manifeste des 67 cartes](data/catalogue-valide-67.json) | Export public strict, lisible par le futur jeu |
-| [Manifeste de préparation Floot](data/edition-staging-67.json) | 67 noms + raretés validées + 105 références de visuels, **non déployable tant que les variantes ne sont pas réglées** |
+| [Manifeste de préparation Floot](data/edition-staging-67.json) | Source historique de la migration, 67 noms + raretés validées + 105 références visuelles. Son statut interne reste « staging » pour garder la trace des décisions encore ouvertes sur les variantes. |
 | [Galerie avec raretés](collection-validee/) | Découvrir les 68 emplacements : 67 cartes détaillées et une Carte mystère sans identité divulguée |
 | [Générateur](scripts/build-approved-catalogue.mjs) | Reconstruit le manifeste et vérifie les identifiants |
 | [Collection approuvée](collection-validee/) | Catalogue statique présenté sur GitHub Pages |
 | [Atelier](tri-177/) | Éditeur des choix des cartes |
 | [Ancienne démo à 160 illustrations](collection-161/) | Archive de démonstration, **pas** la nouvelle collection Floot |
 
-**Attention aux deux environnements :** la collection approuvée est intégrée dans GitHub, **pas encore dans le jeu Floot**. Les comptes, les quotas et les boosters du jeu réel restent pilotés par son serveur. La prochaine tâche urgente est de diagnostiquer et rétablir l'ouverture des boosters du créateur sur Floot, puis de synchroniser prudemment la collection sans altérer les possessions des joueurs.
+**Deux environnements synchronisés au 13 octobre :** GitHub conserve le catalogue documentaire des 67 personnages et 38 visuels alternatifs ; **Floot utilise désormais réellement cette édition** avec 68 emplacements affichés (dont une « Carte mystère » masquée). Le serveur Floot gère comptes, tirages, doublons et délai de 24 h. L'ancien inventaire 160 est archivé et non supprimé ; quatre cartes anciennes correspondant exactement à l'édition ont été créditées de façon tracée. [Rapport technique de publication et de tests](docs/LIVRAISON_FLOOT_ORIGINE_68_2026-10-13.md).
 
-**État des vérifications :** tests d'intégrité et tests navigateur ajoutés au dépôt ; les résultats des exécutions GitHub Actions les plus récentes doivent être contrôlés. L'accès HTTP public indépendant à GitHub Pages n'a pas pu être vérifié depuis le présent environnement. Aucune attribution de booster au compte du créateur n'a été réalisée.
+**État des vérifications :** 16 suites Floot réussies, TypeScript propre, publication effective confirmée par Floot et code frontend de l'édition 68 réellement visible dans le bundle HTTP du site public. **Une ouverture authentifiée du NOUVEAU booster reste à recetter** : la dernière ouverture confirmée par le créateur concerne l'ancien moteur, avant migration. Les anciennes cinq cartes restent en archive ; quatre sont liées au nouveau catalogue. L'uniformisation du format des 105 illustrations reste à réaliser.
 
 ---
 
@@ -29,9 +29,9 @@
 
 Les passages ci-dessous sont **historiques** et décrivent notamment les versions à 49/160 cartes, avant la validation des 67 personnages. Ils ne décrivent pas le contenu actuel approuvé.
 
-## Collection Origine — édition actuelle
+## Archive technique — prototype historique à 160 cartes (NON ACTUEL)
 
-**Jeu en ligne :** https://budget-illimite-tcg.floot.app  
+**Jeu en ligne (désormais passé à 68 cartes) :** https://budget-illimite-tcg.floot.app  
 **Aperçu des cartes visibles :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/
 
 Le classeur comporte **160 cartes à découvrir** (159 standards et une Hors-série). Une fois le classeur complet, le joueur débloque **un booster spécial de cinq cartes**, dont le contenu est à découvrir lors de l'ouverture. Aucun achat requis.
