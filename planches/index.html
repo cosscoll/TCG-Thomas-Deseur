@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#171322">
+<title>Planches imprimables — TCG Deseur Origine</title>
+<style>
+:root{font-family:system-ui,Arial,sans-serif;--bg:#120d1e;--panel:#241b33;--ink:#fff7f4;--muted:#d8cce5;--accent:#ffd18e;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}
+header,main{max-width:1450px;margin:auto;padding:18px 24px}header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #715e80;gap:12px;flex-wrap:wrap}
+a{color:var(--accent)}h1{font-size:clamp(2rem,4vw,3.5rem);line-height:1.1}p{color:var(--muted);line-height:1.65;max-width:860px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 30px}button,select{padding:12px;border:1px solid #b7a1c7;color:#fff;background:#453253;border-radius:8px;font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffd18e;outline-offset:2px}
+.head{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #b69bcb;gap:16px;margin-bottom:25px}.head h2{font-size:clamp(1.4rem,2.5vw,2.3rem);margin:12px 0}
+.eyebrow{font-size:.7rem;letter-spacing:.19em;font-weight:900;color:var(--accent)}
+.deck{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-bottom:60px}.card{min-width:0;background:var(--panel);border:1px solid #836a95;padding:9px;border-radius:12px;break-inside:avoid;page-break-inside:avoid;display:flex;flex-direction:column;gap:7px}
+.card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:#4a3a53;border-radius:7px}
+.card strong{font-size:clamp(.75rem,.93vw,.99rem);line-height:1.32;overflow-wrap:anywhere}.card .ref{font-size:.69rem;color:var(--muted);overflow-wrap:anywhere}.pill{padding:5px 8px;font-size:.67rem;font-weight:800;border:1px solid #ba9ec1;border-radius:40px;align-self:start}
+.card[data-rarity="Commune"] .pill{color:#d5e7ef}.card[data-rarity="Rare"] .pill{color:#a6d5ff}.card[data-rarity="Épique"] .pill{color:#d2b1ff}.card[data-rarity="Légendaire"] .pill{color:#ffe0a3}.card[data-rarity="Hors-série"] .pill{color:#ffbfcf}
+.note{background:#322541;border-left:3px solid #e9bb7c;padding:10px 14px;margin:15px 0}#error{color:#ffb3bd}
+@media(max-width:1150px){.deck{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:760px){.deck{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}header,main{padding:15px}.card strong{font-size:.89rem}}
+@media print{@page{size:A4 portrait;margin:9mm}
+:root{color-scheme:light}body{background:#fff;color:#16111f;-webkit-print-color-adjust:exact;print-color-adjust:exact}header,.controls,.intro,.note,nav{display:none!important}
+main{padding:0;margin:0;max-width:none}.head{break-before:page;margin:0 0 4mm;border-bottom:2px solid #30223c}.head h2{font-size:16pt}.head p,.eyebrow{color:#333;font-size:9pt}
+.deck{grid-template-columns:repeat(4,minmax(0,1fr));gap:3mm;margin:0}.card{background:#fff;color:#181120;border:1px solid #999;padding:2mm;gap:2mm;border-radius:3mm}.card img{aspect-ratio:3/4}.card strong{font-size:9pt;line-height:1.15}.card .ref{font-size:7pt;color:#333}.pill{color:#1a1a1a!important;font-size:7pt;padding:1mm 2mm}
+body[data-view="main"] #alternative,body[data-view="variant"] #main{display:none!important}
+}
+</style></head>
+<body data-view="all">
+<header><a href="../"><strong>TCG DESEUR</strong></a><nav><a href="../collection-validee/">Collection</a> · <a href="../audit-visuels/">Audit visuel</a> · <a href="../beta/">Bêta</a></nav></header>
+<main><div class="intro"><span class="eyebrow">ÉDITION ORIGINE · PLANCHES DE RÉFÉRENCE</span><h1>67 cartes.<br>38 illustrations alternatives.</h1>
+<p>Planches publiques destinées à comparer, contrôler et imprimer les cartes approuvées, avec leur nom, rareté et référence photographique. Les visuels proviennent des fichiers 3:4 validés dans le dépôt. Les 68ᵉ détails non publics ne figurent pas ici.</p>
+<p class="note">Pour imprimer : choisir « Imprimer / Enregistrer en PDF » et sélectionner le fond graphique. Ces planches ne remplacent pas une validation des droits sur les photographies ni les modèles de cartes du jeu Floot.</p>
+</div>
+<div class="controls"><label>Afficher <select id="view"><option value="all">Toutes les illustrations (105)</option><option value="main">67 cartes principales</option><option value="variant">38 illustrations alternatives</option></select></label>
+<label>Classement <select id="sort"><option value="official">Ordre officiel</option><option value="name">Nom alphabétique</option><option value="rarity">Rareté puis nom</option></select></label>
+<button type="button" id="print">Imprimer / Enregistrer en PDF</button></div>
+<p role="status" id="status" aria-live="polite">Chargement des 105 visuels…</p>
+<p role="alert" id="error" hidden></p>
+<section id="main" aria-labelledby="main-title"><div class="head"><div><span class="eyebrow">PLANCHE 01</span><h2 id="main-title">67 illustrations principales</h2></div><span>67 personnages</span></div><div id="primary-grid" class="deck"></div></section>
+<section id="alternative" aria-labelledby="variant-title"><div class="head"><div><span class="eyebrow">PLANCHE 02</span><h2 id="variant-title">38 illustrations alternatives</h2></div><span>Variantes rattachées aux personnages</span></div><div id="variant-grid" class="deck"></div></section>
+</main>
+<script type="module">
+const $$=id=>document.getElementById(id);
+let original=[];
+const rarities=['Commune','Rare','Épique','Légendaire','Hors-série'];
+function cardNode(a){
+ const item=document.createElement('article');item.className='card';item.dataset.rarity=a.rarity;item.dataset.name=a.name;
+ const img=document.createElement('img');img.src='../'+a.image;img.loading='lazy';img.decoding='async';img.alt='Illustration de '+a.name;
+ img.width=768;img.height=1024;
+ const chip=document.createElement('span');chip.className='pill';chip.textContent=a.rarity;
+ const name=document.createElement('strong');name.textContent=a.name+(a.variant?' — variante '+a.variant:'');
+ const ref=document.createElement('span');ref.className='ref';ref.textContent=a.characterId+' · '+a.photoReference;
+ item.append(img,chip,name,ref);return item;
+}
+function render(){
+ const order=$$('sort').value;
+ const sort=(a,b)=>order==='official'?a.order-b.order:order==='name'?a.name.localeCompare(b.name,'fr')||a.order-b.order:rarities.indexOf(a.rarity)-rarities.indexOf(b.rarity)||a.name.localeCompare(b.name,'fr');
+ for(const [kind,target]of [['main','primary-grid'],['variant','variant-grid']]){
+  const frag=document.createDocumentFragment();
+  for(const art of original.filter(a=>a.kind===kind).sort(sort))frag.append(cardNode(art));
+  $$(target).replaceChildren(frag);
+ }
+}
+(async()=>{
+ try{
+  const response=await fetch('../data/edition-staging-67.json',{cache:'no-store'});
+  if(!response.ok)throw Error('Catalogue indisponible');
+  const catalogue=await response.json();
+  if(catalogue.cards?.length!==67||catalogue.cards.reduce((n,c)=>n+c.variants.length,0)!==38)throw Error('Catalogue non conforme');
+  original=catalogue.cards.flatMap((card,index)=>[
+   {name:card.title,characterId:card.characterId,rarity:card.rarity,kind:'main',order:index,image:card.main.assetPath.replace('collection-161/assets/cards/','collection-validee/assets/uniform/'),photoReference:card.main.photoReference},
+   ...card.variants.map((a,i)=>({name:card.title,characterId:card.characterId,rarity:card.rarity,kind:'variant',variant:i+1,order:index*10+i,image:a.assetPath.replace('collection-161/assets/cards/','collection-validee/assets/uniform/'),photoReference:a.photoReference}))
+  ]);
+  render();$$('status').textContent='105 illustrations publiques chargées · 67 principales · 38 alternatives';
+ }catch(error){$$('error').hidden=false;$$('error').textContent='Chargement impossible : '+error.message}
+})();
+$$('view').addEventListener('change',e=>{document.body.dataset.view=e.target.value;$$('main').hidden=e.target.value==='variant';$$('alternative').hidden=e.target.value==='main'});
+$$('sort').addEventListener('change',render);
+$$('print').addEventListener('click',()=>window.print());
+</script></body></html>
