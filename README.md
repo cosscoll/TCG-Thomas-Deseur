@@ -10,6 +10,8 @@
 
 **Suivi public des 88 chantiers hors Floot :** [Tableau d'avancement](https://cosscoll.github.io/TCG-Thomas-Deseur/avancement/), alimenté par [les 88 lignes justifiées](data/suivi-88-actions.json). « Réalisé » signifie livrable GitHub prêt, pas résultat validé dans Floot.
 
+**Prototype d’ouverture sans compte :** [animation et révélation de cinq cartes approuvées](https://cosscoll.github.io/TCG-Thomas-Deseur/prototype-booster/), uniquement une simulation UX, sans attribution ni modification Floot.
+
 **Atelier de maquettes PNG :** [formats carré, Story et bannière](https://cosscoll.github.io/TCG-Thomas-Deseur/kit-visuels/) assemblés localement à partir des images officielles ; aucune diffusion automatique.
 
 **Planches imprimables :** [67 illustrations principales et 38 alternatives](https://cosscoll.github.io/TCG-Thomas-Deseur/planches/). Les originaux et les versions optimisées restent séparés.
