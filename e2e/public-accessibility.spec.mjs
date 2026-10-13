@@ -9,6 +9,7 @@ const pages=[
  {path:'/avancement/',ready:'#total'},
  {path:'/beta/',ready:'#feedback-form'},
  {path:'/kit-visuels/',ready:'#preview'},
+ {path:'/prototype-booster/',ready:'#start'},
 ];
 for(const target of pages){
  test('WCAG A/AA sur la page publique '+target.path,async({page},info)=>{
