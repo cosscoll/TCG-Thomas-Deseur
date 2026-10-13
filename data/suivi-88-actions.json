@@ -1,0 +1,761 @@
+{
+  "schema": "tcg-deseur-88-autonomy-status-v1",
+  "date": "2026-10-13",
+  "scope": "GitHub et préparations sans accès Floot. Statuts = livrables préparés, pas certification du jeu connecté.",
+  "summary": {
+    "total": 88,
+    "delivered": 65,
+    "partial": 23
+  },
+  "groups": [
+    {
+      "min": 1,
+      "max": 12,
+      "name": "Catalogue et illustrations"
+    },
+    {
+      "min": 13,
+      "max": 28,
+      "name": "Galerie GitHub, UX et référencement"
+    },
+    {
+      "min": 29,
+      "max": 40,
+      "name": "Probabilités et logique de collection"
+    },
+    {
+      "min": 41,
+      "max": 54,
+      "name": "Tests, sécurité et fiabilité"
+    },
+    {
+      "min": 55,
+      "max": 66,
+      "name": "Parcours et bêta-testeurs"
+    },
+    {
+      "min": 67,
+      "max": 78,
+      "name": "Communication et lancement"
+    },
+    {
+      "min": 79,
+      "max": 88,
+      "name": "Gestion et organisation"
+    }
+  ],
+  "actions": [
+    {
+      "id": 1,
+      "category": "Catalogue et illustrations",
+      "title": "Auditer les 67 noms, identifiants, raretés et références",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+    },
+    {
+      "id": 2,
+      "category": "Catalogue et illustrations",
+      "title": "Vérifier les 105 correspondances image-personnage",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+    },
+    {
+      "id": 3,
+      "category": "Catalogue et illustrations",
+      "title": "Repérer les doublons visuels restants",
+      "status": "partiel",
+      "note": "Aucun doublon binaire SHA-256, mais similitudes de pose/scène à vérifier visuellement.",
+      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+    },
+    {
+      "id": 4,
+      "category": "Catalogue et illustrations",
+      "title": "Vérifier le rattachement des 38 alternatives",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+    },
+    {
+      "id": 5,
+      "category": "Catalogue et illustrations",
+      "title": "Contrôler les sources photographiques documentaires",
+      "status": "partiel",
+      "note": "Origine documentaire contrôlée ; provenance vidéo exacte et droits non certifiés.",
+      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+    },
+    {
+      "id": 6,
+      "category": "Catalogue et illustrations",
+      "title": "Produire une planche des 67 illustrations principales",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "planches/"
+    },
+    {
+      "id": 7,
+      "category": "Catalogue et illustrations",
+      "title": "Produire une planche des 38 illustrations alternatives",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "planches/"
+    },
+    {
+      "id": 8,
+      "category": "Catalogue et illustrations",
+      "title": "Vérifier format, dimensions et cadrage des 105 images",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "data/approved-artwork-uniform-105.json"
+    },
+    {
+      "id": 9,
+      "category": "Catalogue et illustrations",
+      "title": "Identifier les fonds prolongés nécessitant une retouche",
+      "status": "partiel",
+      "note": "Onze visuels à grandes marges signalés pour revue.",
+      "proof": "docs/AUDIT_CATALOGUE_67_2026-10-13.md"
+    },
+    {
+      "id": 10,
+      "category": "Catalogue et illustrations",
+      "title": "Optimiser le poids des images",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "data/thumbs-approved-105.json"
+    },
+    {
+      "id": 11,
+      "category": "Catalogue et illustrations",
+      "title": "Produire des miniatures mobiles",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "data/thumbs-approved-105.json"
+    },
+    {
+      "id": 12,
+      "category": "Catalogue et illustrations",
+      "title": "Préparer les fiches documentaires de cartes",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "data/audit-catalogue-105.csv"
+    },
+    {
+      "id": 13,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Auditer la structure et navigation de la galerie",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 14,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Améliorer le design des fiches",
+      "status": "partiel",
+      "note": "Tri et lisibilité améliorés ; validation esthétique et ergonomique approfondie incomplète.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 15,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Optimiser la galerie sur téléphone et tablette",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 16,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Contrôler les noms longs et références",
+      "status": "partiel",
+      "note": "Tests automatiques existants ; revue manuelle des noms les plus longs à terminer.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 17,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Améliorer les filtres par rareté, source et variante",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 18,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Ajouter un tri par nom, référence et rareté",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "collection-validee/"
+    },
+    {
+      "id": 19,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Comparer illustrations principales et alternatives",
+      "status": "partiel",
+      "note": "Alternatives visibles ensemble, mais comparaison interactive par superposition non disponible.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 20,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Améliorer les erreurs et états de chargement d’image",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 21,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Optimiser le chargement progressif des 105 images",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "collection-validee/"
+    },
+    {
+      "id": 22,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Auditer les contrastes",
+      "status": "partiel",
+      "note": "Vérifications de styles et contrastes préparées ; contrôle WCAG exhaustif non certifié.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 23,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Améliorer la navigation clavier et l’accessibilité",
+      "status": "partiel",
+      "note": "Tests Chromium et focus ; lecteurs d’écran réels non validés.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 24,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Corriger les débordements et mises en page",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 25,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Améliorer le SEO de la galerie publique",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 26,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Contrôler métadonnées, liens et titres",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 27,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Préserver la confidentialité de la Carte mystère",
+      "status": "partiel",
+      "note": "Contrôles automatisés des ressources visibles ; une inspection de l’historique public reste nécessaire.",
+      "proof": "docs/AUDIT_UX_ACCESSIBILITE_GITHUB_2026-10-13.md"
+    },
+    {
+      "id": 28,
+      "category": "Galerie GitHub, UX et référencement",
+      "title": "Vérifier les publications réelles de GitHub Pages",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "https://github.com/cosscoll/TCG-Thomas-Deseur/actions"
+    },
+    {
+      "id": 29,
+      "category": "Probabilités et logique de collection",
+      "title": "Contrôler les probabilités des cinq emplacements",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 30,
+      "category": "Probabilités et logique de collection",
+      "title": "Simuler 10 000 à 1 000 000 de boosters",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "scripts/simuler-boosters-67.mjs"
+    },
+    {
+      "id": 31,
+      "category": "Probabilités et logique de collection",
+      "title": "Mesurer les fréquences observées des raretés",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 32,
+      "category": "Probabilités et logique de collection",
+      "title": "Calculer le nombre de boosters pour les 67 personnages",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 33,
+      "category": "Probabilités et logique de collection",
+      "title": "Estimer les doublons et la progression",
+      "status": "partiel",
+      "note": "Doublons au sein d’un booster mesurés ; trajectoires individuelles non détaillées.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 34,
+      "category": "Probabilités et logique de collection",
+      "title": "Estimer les jours nécessaires à un booster quotidien",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 35,
+      "category": "Probabilités et logique de collection",
+      "title": "Comparer règle quotidienne et bêta illimitée",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 36,
+      "category": "Probabilités et logique de collection",
+      "title": "Mesurer l’impact des 38 alternatives",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/COMPARAISON_VARIANTES_67_VS_105_2026-10-13.md"
+    },
+    {
+      "id": 37,
+      "category": "Probabilités et logique de collection",
+      "title": "Identifier des déséquilibres de collection",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 38,
+      "category": "Probabilités et logique de collection",
+      "title": "Tester les compteurs et quantités de cartes",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "tests/collection-quantities-67.test.mjs"
+    },
+    {
+      "id": 39,
+      "category": "Probabilités et logique de collection",
+      "title": "Tester le caractère unique de chaque personnage",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 40,
+      "category": "Probabilités et logique de collection",
+      "title": "Préparer la recette du booster de complétion",
+      "status": "partiel",
+      "note": "Recette préparée ; attribution réelle de la récompense non testée sans Floot.",
+      "proof": "docs/ANALYSE_PROBABILITES_67_2026-10-13.md"
+    },
+    {
+      "id": 41,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Auditer la structure du dépôt GitHub",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 42,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Repérer les fichiers et mentions de l’ancienne édition 160",
+      "status": "partiel",
+      "note": "Archive historique conservée volontairement ; nettoyage non destructif à poursuivre.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 43,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Vérifier les manifestes JSON officiels",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 44,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Tester la migration SQL des 105 illustrations",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "tests/floot-uniform-migration.test.mjs"
+    },
+    {
+      "id": 45,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Éviter la suppression accidentelle de cartes",
+      "status": "partiel",
+      "note": "Préflight SQL et tests ; restauration DB réelle non effectuée.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 46,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Préparer sauvegarde et restauration de données",
+      "status": "partiel",
+      "note": "Procédures documentées ; sauvegarde réelle Floot non autorisée hors serveur.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 47,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Tester les comptes et boosters avec réponses fictives",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 48,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Tester deux boosters consécutifs sans attente",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "floot-e2e/mock-booster.spec.mjs"
+    },
+    {
+      "id": 49,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Tester erreurs réseau et réponses serveur invalides",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 50,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Contrôler la présence de données privées dans les ressources publiques",
+      "status": "partiel",
+      "note": "Tests de non-divulgation en place ; scan exhaustif historique du dépôt non garanti.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 51,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Contrôler les dépendances et vulnérabilités",
+      "status": "partiel",
+      "note": "Dependabot hebdomadaire configuré ; revue CVE dépendances Floot à effectuer.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 52,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Renforcer les contrôles GitHub Actions",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "https://github.com/cosscoll/TCG-Thomas-Deseur/actions"
+    },
+    {
+      "id": 53,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Produire des rapports de tests lisibles",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 54,
+      "category": "Tests, sécurité et fiabilité",
+      "title": "Préparer une procédure de retour arrière Floot",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 55,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Préparer le parcours d’accueil d’un joueur",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/GUIDE_JOUEUR_FAQ_ET_MESSAGES_2026-10-13.md"
+    },
+    {
+      "id": 56,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Rédiger le guide du joueur",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/GUIDE_JOUEUR_FAQ_ET_MESSAGES_2026-10-13.md"
+    },
+    {
+      "id": 57,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Rédiger la FAQ du jeu",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/GUIDE_JOUEUR_FAQ_ET_MESSAGES_2026-10-13.md"
+    },
+    {
+      "id": 58,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Améliorer la page d’invitation bêta",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "beta/"
+    },
+    {
+      "id": 59,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Préparer le protocole des testeurs",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PROTOCOLE_BETA_ET_QUALITE_2026-10-13.md"
+    },
+    {
+      "id": 60,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Améliorer le formulaire de remontée des bugs",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "beta/"
+    },
+    {
+      "id": 61,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Classer les bugs remontés dans les comptes rendus",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "beta/"
+    },
+    {
+      "id": 62,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Définir les scénarios de recette multi-écrans",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PROTOCOLE_BETA_ET_QUALITE_2026-10-13.md"
+    },
+    {
+      "id": 63,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Rédiger les messages d’erreur et confirmation",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/GUIDE_JOUEUR_FAQ_ET_MESSAGES_2026-10-13.md"
+    },
+    {
+      "id": 64,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Rédiger les textes de progression et de réussite",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PROTOCOLE_BETA_ET_QUALITE_2026-10-13.md"
+    },
+    {
+      "id": 65,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Préparer les animations de révélation",
+      "status": "partiel",
+      "note": "Storyboard écrit ; rendu d’animation réelle nécessite validation graphique et intégration Floot.",
+      "proof": "docs/PROTOCOLE_BETA_ET_QUALITE_2026-10-13.md"
+    },
+    {
+      "id": 66,
+      "category": "Parcours et bêta-testeurs",
+      "title": "Préparer un tableau des bugs et correctifs",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "https://github.com/cosscoll/TCG-Thomas-Deseur/issues"
+    },
+    {
+      "id": 67,
+      "category": "Communication et lancement",
+      "title": "Établir le calendrier de communication",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 68,
+      "category": "Communication et lancement",
+      "title": "Préparer les visuels promotionnels",
+      "status": "partiel",
+      "note": "Planches illustrées disponibles, supports promotionnels définitifs à valider.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 69,
+      "category": "Communication et lancement",
+      "title": "Rédiger des publications pour les réseaux",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 70,
+      "category": "Communication et lancement",
+      "title": "Préparer un teaser préservant le mystère",
+      "status": "partiel",
+      "note": "Storyboard de teaser préparé ; vidéo finale non produite.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 71,
+      "category": "Communication et lancement",
+      "title": "Préparer la présentation du jeu",
+      "status": "partiel",
+      "note": "Documents de présentation prêts ; pitch investisseur visuel non finalisé.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 72,
+      "category": "Communication et lancement",
+      "title": "Rédiger les textes d’accueil final",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 73,
+      "category": "Communication et lancement",
+      "title": "Préparer le kit des bêta-testeurs",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 74,
+      "category": "Communication et lancement",
+      "title": "Rédiger une FAQ publique",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 75,
+      "category": "Communication et lancement",
+      "title": "Préparer les documents légaux et confidentialité",
+      "status": "partiel",
+      "note": "Trames juridiques préparées ; identité de l’éditeur, droits et textes légaux à confirmer.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 76,
+      "category": "Communication et lancement",
+      "title": "Définir les KPI de lancement",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 77,
+      "category": "Communication et lancement",
+      "title": "Préparer un calendrier de lancement progressif",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 78,
+      "category": "Communication et lancement",
+      "title": "Préparer la checklist de lancement",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_COMMUNICATION_LANCEMENT_2026-10-13.md"
+    },
+    {
+      "id": 79,
+      "category": "Gestion et organisation",
+      "title": "Mettre à jour la feuille de route",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 80,
+      "category": "Gestion et organisation",
+      "title": "Organiser les priorités par sprint",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 81,
+      "category": "Gestion et organisation",
+      "title": "Cartographier les dépendances",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 82,
+      "category": "Gestion et organisation",
+      "title": "Classer et suivre les tickets GitHub",
+      "status": "partiel",
+      "note": "Tickets ouverts suivis ; pas de clôture sans preuve de résolution.",
+      "proof": "https://github.com/cosscoll/TCG-Thomas-Deseur/issues"
+    },
+    {
+      "id": 83,
+      "category": "Gestion et organisation",
+      "title": "Définir les critères de fin de fonctionnalité",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 84,
+      "category": "Gestion et organisation",
+      "title": "Documenter les procédures de déploiement",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/RUNBOOK_EXPLOITATION_SAUVEGARDE_DEPLOIEMENT_2026-10-13.md"
+    },
+    {
+      "id": 85,
+      "category": "Gestion et organisation",
+      "title": "Conserver les décisions de collection et de règles",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 86,
+      "category": "Gestion et organisation",
+      "title": "Préparer les bilans automatiques GitHub",
+      "status": "partiel",
+      "note": "Actions publient des rapports ; bilan consolidé automatisé à stabiliser.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 87,
+      "category": "Gestion et organisation",
+      "title": "Constituer le dossier de référence",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/ROADMAP_SPRINTS_RISQUES_KPI_2026-10-13.md"
+    },
+    {
+      "id": 88,
+      "category": "Gestion et organisation",
+      "title": "Préparer les interventions au déblocage Floot",
+      "status": "réalisé",
+      "note": "Livrable hors Floot réalisé ; résultats à interpréter dans son périmètre documenté.",
+      "proof": "docs/PLAN_REPRISE_FLOOT_14_10_2026.md"
+    }
+  ],
+  "blockers": [
+    "Activer les boosters illimités dans Floot.",
+    "Tester un vrai booster authentifié de la nouvelle édition.",
+    "Migrer dans Floot les chemins des 105 images approuvées.",
+    "Valider les règles définitives des 38 alternatives.",
+    "Vérifier les droits sur les images et l’identité publique, ainsi que les textes légaux.",
+    "Effectuer une revue humaine des images et des tests sur des appareils réels."
+  ]
+}
