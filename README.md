@@ -12,6 +12,8 @@
 | --- | --- |
 | [Choix approuvés](data/choix-cartes-2026-10-11.json) | Décisions exactes, noms, illustrations principales et alternatives |
 | [Manifeste des 67 cartes](data/catalogue-valide-67.json) | Export public strict, lisible par le futur jeu |
+| [Manifeste de préparation Floot](data/edition-staging-67.json) | 67 noms + raretés validées + 105 références de visuels, **non déployable tant que les variantes ne sont pas réglées** |
+| [Galerie avec raretés](collection-validee/) | Voir les cartes, leurs raretés, leurs variantes et leurs provenances |
 | [Générateur](scripts/build-approved-catalogue.mjs) | Reconstruit le manifeste et vérifie les identifiants |
 | [Collection approuvée](collection-validee/) | Catalogue statique présenté sur GitHub Pages |
 | [Atelier](tri-177/) | Éditeur des choix des cartes |
