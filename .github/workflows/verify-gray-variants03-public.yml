@@ -1,0 +1,33 @@
+name: Vérifier les variantes 21 à 30 publiées sans recadrage
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verify-variants03-live.py'
+      - '.github/workflows/verify-gray-variants03-public.yml'
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tcg-gray-variants03-public-smoke
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'Pillow==11.3.0'
+      - name: Inspecter les dix variantes publiées et les comparer pixel à pixel
+        run: python scripts/verify-variants03-live.py
