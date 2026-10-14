@@ -10,7 +10,7 @@ BASE = "https://cosscoll.github.io/TCG-Thomas-Deseur/"
 
 def fetch(path):
     request = Request(BASE + path, headers={
-        "User-Agent": "TCG-Deseur-Gray-BG-Next10/1.0",
+        "User-Agent": "TCG-Deseur-Gray-BG-Third10/1.0",
         "Cache-Control": "no-cache",
     })
     with urlopen(request, timeout=30) as response:
@@ -32,7 +32,7 @@ def validate():
     html = fetch("collection-validee/").decode("utf-8")
     assert "GRAY_THIRD10" in gallery and "gray-extended-third10" in gallery
     assert "gray-thumbs-third10" in gallery and "20261014-gray30" in html
-    for i, card in enumerate(info["items"], start=11):
+    for i, card in enumerate(info["items"], start=21):
         assert card["characterId"] == f"COST-{i:03d}"
         orig, picture, thumb = map(image, (card["source"],card["image"],card["thumbnail"]))
         assert picture.size == expected and thumb.size == (384,512)
