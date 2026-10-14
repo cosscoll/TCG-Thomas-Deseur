@@ -25,6 +25,24 @@ for before, after in changes.items():
     if before not in source:
         raise ValueError(f"Base image script has changed; missing token: {before}")
     source = source.replace(before, after)
+# The original artwork of card 11 is wider than 1200px. Compute the smallest
+# common 3:4 canvas that holds every source at 1:1 resolution, with no clipping.
+canvas_calculation = """
+def next_ten_canvas_size():
+    catalog = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    originals = [
+        Image.open(ROOT / card["main"]["assetPath"]).size
+        for card in catalog["cards"][10:20]
+    ]
+    required_width = max(1200, *(max(w, (h*3+3)//4) for w,h in originals))
+    width = ((required_width+2)//3)*3
+    return (width, width*4//3)
+SIZE = next_ten_canvas_size()
+"""
+if "SIZE = (1200, 1600)" not in source:
+    raise ValueError("Base image canvas setting was changed unexpectedly")
+source = source.replace("SIZE = (1200, 1600)", canvas_calculation)
+source = source.replace("1200 x 1600", "portrait 3:4")
 # Running with __name__='__main__' keeps --check and write behavior identical.
 exec(compile(source, str(original_script), "exec"), {
     "__name__": "__main__",
