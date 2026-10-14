@@ -43,6 +43,15 @@ if "SIZE = (1200, 1600)" not in source:
     raise ValueError("Base image canvas setting was changed unexpectedly")
 source = source.replace("SIZE = (1200, 1600)", canvas_calculation)
 source = source.replace("1200 x 1600", "portrait 3:4")
+# Some later illustrations have no neutral gray corner at all. In that case,
+# use the perimeter's median luminosity as a neutral gray; never retouch pixels.
+source = source.replace(
+    'raise ValueError("Cannot confidently identify a gray backdrop from the original corners")',
+    'edge = [rgb.getpixel(p) for p in ((0,0), (w-1,0), (0,h-1), (w-1,h-1))]\\n'
+    '        tone = round(statistics.median(sum(pixel)/3 for pixel in edge))\\n'
+    '        return (tone, tone, tone)',
+)
+
 # Running with __name__='__main__' keeps --check and write behavior identical.
 exec(compile(source, str(original_script), "exec"), {
     "__name__": "__main__",
