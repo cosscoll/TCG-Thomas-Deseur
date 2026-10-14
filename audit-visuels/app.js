@@ -1,6 +1,11 @@
 const $=id=>document.getElementById(id);
 const STORAGE='tcg-deseur-art-review-105-v1';
 const ROOT='../';
+const FIRST10_GRAY=new Set(['td_1_004','td_1_001','td_1_002','td_1_003','td_1_005','td_1_007','td_1_008','td_1_006','td_1_012','td_1_011']);
+const finalImage=a=>FIRST10_GRAY.has(a.artworkId)
+  ? 'collection-validee/assets/gray-extended-first10/'+a.source.split('/').at(-1)
+  : a.normalized;
+
 const api={cards:[],metadata:[],decisions:{}};
 const local=()=>{try{const v=JSON.parse(localStorage.getItem(STORAGE)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch{return {}}};
 const setLocal=()=>{try{localStorage.setItem(STORAGE,JSON.stringify(api.decisions));return true}catch{return false}};
@@ -21,13 +26,16 @@ function item(card,art,kind,index){
  const meta=elt('div','meta');for(const label of [card.characterId,card.rarity,art.artworkId,art.photoReference,kind==='main'?'Principale':'Alternative'])meta.append(elt('span','chip',label));
  article.append(meta);
  const compare=elt('div','compare');
- for(const [label,path] of [['Avant — original',a.source],['Après — uniformisé',a.normalized]]){
+ for(const [label,path] of [['Avant — original',a.source],
+   [FIRST10_GRAY.has(a.artworkId)?'Après — fond gris prolongé, sujet inchangé':'Après — uniformisé',finalImage(a)]]){
   const figure=elt('figure'),caption=elt('figcaption','',label),img=elt('img');
   img.src=imgUrl(path);img.alt=label+' pour '+card.title;img.loading='lazy';img.decoding='async';
   img.addEventListener('error',()=>{caption.textContent+=' — Erreur de chargement';figure.style.borderColor='#f77'});
   figure.append(caption,img);compare.append(figure);
  }
- article.append(compare,elt('small','ratio','Source : '+a.sourceSize.join(' × ')+' px · Premier plan dans l’export : '+a.foregroundBounds.join(', ')+' px'));
+ article.append(compare,elt('small','ratio',FIRST10_GRAY.has(a.artworkId)
+ ? 'Source : '+a.sourceSize.join(' × ')+' px · Export 1200 × 1600 px · Original intégré sans aucun recadrage ni zoom'
+ : 'Source : '+a.sourceSize.join(' × ')+' px · Premier plan dans l’export : '+a.foregroundBounds.join(', ')+' px'));
  const footer=elt('footer');
  for(const [decision,label]of [['approved','Valider'],['retouch','À retoucher'],['pending','À revoir']]){
   const button=elt('button','',label);button.type='button';
