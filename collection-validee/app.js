@@ -27,7 +27,7 @@ function originLink(ref){
 const $=id=>document.getElementById(id);
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
 // All 67 approved main artworks use pixel-identical sources with extended gray canvas.
-// The first 10 of 38 alternative illustrations now also use pixel-preserved gray canvases; 28 remain untouched.
+// The first 20 of 38 alternative illustrations use pixel-preserved gray canvases; 18 remain untouched.
 const GRAY_FIRST10=new Set(['td_1_004','td_1_001','td_1_002','td_1_003','td_1_005','td_1_007','td_1_008','td_1_006','td_1_012','td_1_011']);
 const GRAY_NEXT10=new Set(['td_2_007','td_1_010','td_2_008','td_3_001','td_1_014','td_3_031','td_3_043','td_1_020','td_1_019','td_1_018']);
 const GRAY_THIRD10=new Set(['td_1_021','td_1_023','td_1_022','td_1_024','td_1_026','td_1_028','td_1_025','td_1_027','td_2_019','td_2_023']);
@@ -36,10 +36,11 @@ const GRAY_FIFTH10=new Set(['td_3_028','td_3_002','td_2_039','td_2_037','td_3_00
 const GRAY_SIXTH10=new Set(['td_1_055','td_1_052','td_1_054','td_2_066','td_1_059','td_1_058','td_1_056','td_1_057','td_1_062','td_1_060']);
 const GRAY_FINAL7=new Set(['td_1_063','td_1_065','td_1_066','td_1_064','td_2_059','td_2_049','td_lille']);
 const GRAY_VARIANTS01=new Set(['td_2_043','td_3_005','td_2_042','td_3_042','td_2_003','td_3_011','td_2_005','td_3_023','td_3_024','td_2_001']);
+const GRAY_VARIANTS02=new Set(['td_3_010','td_3_033','td_3_016','td_3_015','td_3_022','td_3_037','td_3_032','td_2_024','td_3_035','td_3_040']);
 const artSrc=id=>{
  const pair=byId.get(id);
  if(!pair)return null;
- const directory=GRAY_FIRST10.has(id)?'gray-extended-first10':GRAY_NEXT10.has(id)?'gray-extended-next10':GRAY_THIRD10.has(id)?'gray-extended-third10':GRAY_FOURTH10.has(id)?'gray-extended-fourth10':GRAY_FIFTH10.has(id)?'gray-extended-fifth10':GRAY_SIXTH10.has(id)?'gray-extended-sixth10':GRAY_FINAL7.has(id)?'gray-extended-final7':GRAY_VARIANTS01.has(id)?'gray-extended-variants01':'uniform';
+ const directory=GRAY_FIRST10.has(id)?'gray-extended-first10':GRAY_NEXT10.has(id)?'gray-extended-next10':GRAY_THIRD10.has(id)?'gray-extended-third10':GRAY_FOURTH10.has(id)?'gray-extended-fourth10':GRAY_FIFTH10.has(id)?'gray-extended-fifth10':GRAY_SIXTH10.has(id)?'gray-extended-sixth10':GRAY_FINAL7.has(id)?'gray-extended-final7':GRAY_VARIANTS01.has(id)?'gray-extended-variants01':GRAY_VARIANTS02.has(id)?'gray-extended-variants02':'uniform';
  return './assets/'+directory+'/'+encodeURIComponent(pair.illustration);
 };
 const originalArtSrc=id=>{
@@ -68,7 +69,7 @@ function image(id,name,variant=false,eager=false){
  const frame=make('div',variant?'image-frame variant-image':'image-frame');
  if(!src){frame.append(make('span','missing','Illustration indisponible'));return frame;}
  const img=make('img');
- const corrected=GRAY_FIRST10.has(id)||GRAY_NEXT10.has(id)||GRAY_THIRD10.has(id)||GRAY_FOURTH10.has(id)||GRAY_FIFTH10.has(id)||GRAY_SIXTH10.has(id)||GRAY_FINAL7.has(id)||GRAY_VARIANTS01.has(id);
+ const corrected=GRAY_FIRST10.has(id)||GRAY_NEXT10.has(id)||GRAY_THIRD10.has(id)||GRAY_FOURTH10.has(id)||GRAY_FIFTH10.has(id)||GRAY_SIXTH10.has(id)||GRAY_FINAL7.has(id)||GRAY_VARIANTS01.has(id)||GRAY_VARIANTS02.has(id);
  const thumb=GRAY_FIRST10.has(id)
   ?src.replace('/assets/gray-extended-first10/','/assets/gray-thumbs-first10/')
   :GRAY_NEXT10.has(id)
@@ -85,8 +86,10 @@ function image(id,name,variant=false,eager=false){
         ?src.replace('/assets/gray-extended-final7/','/assets/gray-thumbs-final7/')
         :GRAY_VARIANTS01.has(id)
          ?src.replace('/assets/gray-extended-variants01/','/assets/gray-thumbs-variants01/')
-         :src.replace('/assets/uniform/','/assets/thumbs/');
- const srcSet=thumb+' 384w, '+src+' '+(GRAY_VARIANTS01.has(id)?'1317':GRAY_FINAL7.has(id)?'1563':GRAY_SIXTH10.has(id)?'1377':GRAY_FIFTH10.has(id)?'1362':GRAY_FOURTH10.has(id)?'1323':GRAY_THIRD10.has(id)?'1254':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
+         :GRAY_VARIANTS02.has(id)
+          ?src.replace('/assets/gray-extended-variants02/','/assets/gray-thumbs-variants02/')
+          :src.replace('/assets/uniform/','/assets/thumbs/');
+ const srcSet=thumb+' 384w, '+src+' '+(GRAY_VARIANTS02.has(id)?'1353':GRAY_VARIANTS01.has(id)?'1317':GRAY_FINAL7.has(id)?'1563':GRAY_SIXTH10.has(id)?'1377':GRAY_FIFTH10.has(id)?'1362':GRAY_FOURTH10.has(id)?'1323':GRAY_THIRD10.has(id)?'1254':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
  img.srcset=srcSet;
  img.sizes=variant?'(max-width:690px) 40vw, 140px':'(max-width:690px) 90vw, (max-width:1150px) 44vw, 250px';
  img.alt='Illustration '+name+' ('+id+')';
