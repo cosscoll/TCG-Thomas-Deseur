@@ -1,0 +1,377 @@
+{
+  "schema": "tcg-deseur-gray-background-variants02-v1",
+  "method": "Extend neutral-gray canvas; preserve every original source pixel at native 1:1 resolution",
+  "size": [
+    1353,
+    1804
+  ],
+  "thumbnailSize": [
+    384,
+    512
+  ],
+  "sourceEdition": "data/edition-staging-67.json",
+  "onlySecondTenAlternativeImages": true,
+  "originalsUnchanged": true,
+  "items": [
+    {
+      "ordinal": 11,
+      "characterId": "COST-012",
+      "name": "Flibus le pingouin alcoolique",
+      "artworkId": "td_3_010",
+      "source": "collection-161/assets/cards/td-3-010.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-010.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-010.webp",
+      "sourceSize": [
+        1280,
+        1229
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        36,
+        287,
+        1280,
+        1229
+      ],
+      "grayRGB": [
+        137,
+        147,
+        169
+      ],
+      "sourceSha256": "48f3977a3710635c38ef84d9b8952b85a99972376fbf72a622b1aefd6727d726",
+      "imageSha256": "e2cf105127130c1d4a999103b22f77f6d602a005a4a19f74d8217b79ffe4d969",
+      "thumbnailSha256": "76563d6ee2b1cdc5334faad5b42397bd3e7530796a072b7508491e0110e10d49",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 12,
+      "characterId": "COST-015",
+      "name": "Nemo Deseur",
+      "artworkId": "td_3_033",
+      "source": "collection-161/assets/cards/td-3-033.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-033.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-033.webp",
+      "sourceSize": [
+        1296,
+        1214
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        28,
+        295,
+        1296,
+        1214
+      ],
+      "grayRGB": [
+        142,
+        152,
+        174
+      ],
+      "sourceSha256": "eb5bcbe266decc0e13289fe0d6e50bfcd3155dd7b8d96fd78ac651e5b81711aa",
+      "imageSha256": "4b2898d1cd139fe14434865e68fd5b3733c3f514239712b19e6d7e160cee6d01",
+      "thumbnailSha256": "dcfbb7730dc02f56f93274700b960202095a1e52af4a833aeca01a57d0d1103a",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 13,
+      "characterId": "COST-021",
+      "name": "Thomas l'abeille",
+      "artworkId": "td_3_016",
+      "source": "collection-161/assets/cards/td-3-016.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-016.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-016.webp",
+      "sourceSize": [
+        1345,
+        1170
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        4,
+        317,
+        1345,
+        1170
+      ],
+      "grayRGB": [
+        139,
+        146,
+        171
+      ],
+      "sourceSha256": "8a653c23bff78cba2bace8903decdf4d4a3859e978c9cfe0735be91da4dfad13",
+      "imageSha256": "ebc87225c0009627d74e487896c6adf6c9cb8250a8230e6b59af11cb8716b29d",
+      "thumbnailSha256": "395e5b8190233d5fcacbcca8736da14b43a12a36f8584b8c42623f3a8a04af99",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 14,
+      "characterId": "COST-022",
+      "name": "Thomas la proie",
+      "artworkId": "td_3_015",
+      "source": "collection-161/assets/cards/td-3-015.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-015.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-015.webp",
+      "sourceSize": [
+        1218,
+        1291
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        67,
+        256,
+        1218,
+        1291
+      ],
+      "grayRGB": [
+        30,
+        40,
+        40
+      ],
+      "sourceSha256": "112aa29966e33a840d8725586240c224752de90e89f4254768b57f8d2f296df3",
+      "imageSha256": "5107fb93a58776529965e292eb919604fbe6fba9ef9673cbb26633a2f4eade12",
+      "thumbnailSha256": "7f5c4042f18d165a1b814ef947ba1eeb0a77c7e9026b7d3b8a40c78a87f53b7a",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 15,
+      "characterId": "COST-023",
+      "name": "Thomas lézard",
+      "artworkId": "td_3_022",
+      "source": "collection-161/assets/cards/td-3-022.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-022.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-022.webp",
+      "sourceSize": [
+        1296,
+        1214
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        28,
+        295,
+        1296,
+        1214
+      ],
+      "grayRGB": [
+        122,
+        132,
+        154
+      ],
+      "sourceSha256": "29b9adcb3049ec7a40658931285faeb731a9881d9388260dd7263d931d042821",
+      "imageSha256": "8630459e3a96c502500a132d2c1e871ccc2e99e2846f18c76615a0a201128f2a",
+      "thumbnailSha256": "a0064c5258f753dc737e313e94c47f70eb13e31ae32cd2e0c7573e0bc48f059f",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 16,
+      "characterId": "COST-024",
+      "name": "Adjudant chef Deseur",
+      "artworkId": "td_3_037",
+      "source": "collection-161/assets/cards/td-3-037.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-037.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-037.webp",
+      "sourceSize": [
+        1289,
+        1220
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        32,
+        292,
+        1289,
+        1220
+      ],
+      "grayRGB": [
+        124,
+        120,
+        101
+      ],
+      "sourceSha256": "11b144fa07c9fae258daaf8e876362f11d4926f61266d53124c293da30417895",
+      "imageSha256": "9d11c07ed245a216e5dc6789bf20768045d80734cc6c4a838713ec256b54a4e3",
+      "thumbnailSha256": "7ec0cd3c7f6144248cdab8e815a186a49c7dc4ecf6b531d4d06ad1496776fb54",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 17,
+      "characterId": "COST-025",
+      "name": "Thomas pied carré",
+      "artworkId": "td_3_032",
+      "source": "collection-161/assets/cards/td-3-032.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-032.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-032.webp",
+      "sourceSize": [
+        1353,
+        1163
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        0,
+        320,
+        1353,
+        1163
+      ],
+      "grayRGB": [
+        231,
+        234,
+        240
+      ],
+      "sourceSha256": "5b967399e3fd83a108154b7ac6e4d53e5b5d6754386f9d652486bf4799c07a9c",
+      "imageSha256": "69d776e870d43269ad359ed3c5e5b3d20e25503b3619f2f8188e14683b74ab7e",
+      "thumbnailSha256": "21a9ddb6e8d30758d4034117d1ea10516e92d1c35ff5a4e9134ac1ed7d95c503",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 18,
+      "characterId": "COST-027",
+      "name": "L'étalon Deseur",
+      "artworkId": "td_2_024",
+      "source": "collection-161/assets/cards/td-2-024.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-2-024.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-2-024.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        49,
+        275,
+        1254,
+        1254
+      ],
+      "grayRGB": [
+        138,
+        148,
+        170
+      ],
+      "sourceSha256": "f363397467f891d6d98740caa1b1257ca7efd1f432d1804b01a63e10c77ecdec",
+      "imageSha256": "2982cd915bb7c2557e53f9387c9fc3a38742af037089e9b4aff11611f2a4e257",
+      "thumbnailSha256": "046881422dbb07cb08556e15322bb0d3a2e6df10fda8f5f6dd484b8c2885f3a9",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 19,
+      "characterId": "COST-028",
+      "name": "Thomas la trompe",
+      "artworkId": "td_3_035",
+      "source": "collection-161/assets/cards/td-3-035.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-035.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-035.webp",
+      "sourceSize": [
+        1282,
+        1227
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        35,
+        288,
+        1282,
+        1227
+      ],
+      "grayRGB": [
+        140,
+        150,
+        171
+      ],
+      "sourceSha256": "ef2968c35090548c8cef2ad70a88fbb666cf481cf5eba010ca4d8fef18a0e805",
+      "imageSha256": "a389cf69c622e9bffab926941e5d75c62d66984ae37a53313359a9812ee067df",
+      "thumbnailSha256": "33783dc048b96eeae0d2a9252841917faa22417c781c648361d44af3753d1f5f",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 20,
+      "characterId": "COST-029",
+      "name": "Thomas qui griffe",
+      "artworkId": "td_3_040",
+      "source": "collection-161/assets/cards/td-3-040.webp",
+      "image": "collection-validee/assets/gray-extended-variants02/td-3-040.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-variants02/td-3-040.webp",
+      "sourceSize": [
+        1293,
+        1216
+      ],
+      "outputSize": [
+        1353,
+        1804
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        30,
+        294,
+        1293,
+        1216
+      ],
+      "grayRGB": [
+        145,
+        155,
+        177
+      ],
+      "sourceSha256": "8dcb59315a19ea66fc1e6f4739a9899213a8bebecb05af41f69ac22312f2a5bc",
+      "imageSha256": "424225532ebf7e14af4deb86550c028abd1b64d4add63b0e2d991c6562f5063d",
+      "thumbnailSha256": "40aea3e36f1e8712d09f5f8e5ad66a442cd717658aa53e707c0cce153cd882a8",
+      "originalPixelsUntouched": true
+    }
+  ]
+}
