@@ -1,0 +1,377 @@
+{
+  "schema": "tcg-deseur-gray-background-sixth10-v1",
+  "method": "Flat gray background extended around each unscaled original; no subject cropping or resizing; lossless pixel identity",
+  "size": [
+    1377,
+    1836
+  ],
+  "thumbnailSize": [
+    384,
+    512
+  ],
+  "sourceEdition": "data/edition-staging-67.json",
+  "onlySixthTenMainImages": true,
+  "originalsUnchanged": true,
+  "items": [
+    {
+      "ordinal": 51,
+      "characterId": "COST-052",
+      "name": "Thomas chino",
+      "artworkId": "td_1_055",
+      "source": "collection-161/assets/cards/td-1-055.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-055.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-055.webp",
+      "sourceSize": [
+        878,
+        1600
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        249,
+        118,
+        878,
+        1600
+      ],
+      "grayRGB": [
+        123,
+        124,
+        121
+      ],
+      "sourceSha256": "0f4f84977182608843e364f0fc5dee294e268bbce6e35977f70c9b2192e2a6cc",
+      "imageSha256": "88160b6531ffd2d261d12b44eb96437a9c1bfd44830f50757c585502ad6dcf53",
+      "thumbnailSha256": "4786927d9ad76a3beb10d00b2438bfcf89e29fb85af4154f08bc854c5306d809",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 52,
+      "characterId": "COST-053",
+      "name": "Thomas micro-onde",
+      "artworkId": "td_1_052",
+      "source": "collection-161/assets/cards/td-1-052.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-052.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-052.webp",
+      "sourceSize": [
+        1377,
+        1142
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        0,
+        347,
+        1377,
+        1142
+      ],
+      "grayRGB": [
+        123,
+        123,
+        122
+      ],
+      "sourceSha256": "e3f8488dcc359576747dcbde41aadac99cc1b3d485a375d9bf3597fa20de4c72",
+      "imageSha256": "923afc48e24e38cc63fd05158700cca64165e6486192569b7377ed5e1b870b28",
+      "thumbnailSha256": "5b8887d617c61e3bfae7d280c85e7bbe820aae4abe93792936b488857cafec00",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 53,
+      "characterId": "COST-054",
+      "name": "Gulli-viande",
+      "artworkId": "td_1_054",
+      "source": "collection-161/assets/cards/td-1-054.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-054.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-054.webp",
+      "sourceSize": [
+        1039,
+        1514
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        169,
+        161,
+        1039,
+        1514
+      ],
+      "grayRGB": [
+        127,
+        126,
+        124
+      ],
+      "sourceSha256": "2c4b0f8ec94b3e149a7ab78cfa11c985d0678ed37af5646168b8bd93db3bea3e",
+      "imageSha256": "8dce3c6bdc926bf8dc0f984bd0ac9cd4434dd9385c49b890cca1856c4d0829de",
+      "thumbnailSha256": "eac03e4307a2f7913f4a918b100313652da7aed3987fb18f68e5252a4ab8fc9b",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 54,
+      "characterId": "COST-055",
+      "name": "Thomas-terrazi",
+      "artworkId": "td_2_066",
+      "source": "collection-161/assets/cards/td-2-066.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-2-066.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-2-066.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        61,
+        291,
+        1254,
+        1254
+      ],
+      "grayRGB": [
+        238,
+        236,
+        242
+      ],
+      "sourceSha256": "643b1198f860177157156b5e05581c3f1c8f8fa0f2e529dff2ae8864d3653979",
+      "imageSha256": "0cd61ab34079e9817d2b74e8d9dc5e600d8afdc06e625bea7ac3a94cc743dbdc",
+      "thumbnailSha256": "fa3a16f48fbbc1db6f9a06ad00025a0dbe26308c76cd469a3a6f28b6180d9ada",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 55,
+      "characterId": "COST-056",
+      "name": "Haricot Deseur",
+      "artworkId": "td_1_059",
+      "source": "collection-161/assets/cards/td-1-059.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-059.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-059.webp",
+      "sourceSize": [
+        646,
+        1600
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        365,
+        118,
+        646,
+        1600
+      ],
+      "grayRGB": [
+        133,
+        131,
+        130
+      ],
+      "sourceSha256": "81a751ee9b65cfe802901c676661b8b41a0d1436df53a6ab7dcb672d87710dfc",
+      "imageSha256": "fd67ff423eadf435e4d91d79ade11dbae9a0ea5a36986cbbe441bf623f889f6b",
+      "thumbnailSha256": "f6e5dcd7c6437813d19eac802c364b96439bf4113985a07e39adfaeea3e8dcbb",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 56,
+      "characterId": "COST-057",
+      "name": "Thomas x4",
+      "artworkId": "td_1_058",
+      "source": "collection-161/assets/cards/td-1-058.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-058.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-058.webp",
+      "sourceSize": [
+        1189,
+        1323
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        94,
+        256,
+        1189,
+        1323
+      ],
+      "grayRGB": [
+        119,
+        117,
+        116
+      ],
+      "sourceSha256": "d57fd02ba8ddd78cda421785bc43abb707018995c24a9523b49aa0aa2b204107",
+      "imageSha256": "e653a90a010114d3fd115c1f5cb37ecb9cdc39d79499829867e030bffb1f5289",
+      "thumbnailSha256": "591ff0a4ff34b596b55a42eed44017fa5d3dbe16de428cf11b6bd282f6403742",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 57,
+      "characterId": "COST-058",
+      "name": "Thomas-kita",
+      "artworkId": "td_1_056",
+      "source": "collection-161/assets/cards/td-1-056.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-056.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-056.webp",
+      "sourceSize": [
+        1132,
+        1389
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        122,
+        223,
+        1132,
+        1389
+      ],
+      "grayRGB": [
+        120,
+        120,
+        119
+      ],
+      "sourceSha256": "8afdeb7bfd30df9decc53c4036dbd6c0538c88029d29616ac10c5c94111f957d",
+      "imageSha256": "d041a2650b5af918e3a0cf7dcdb0ee08a8d80d1b1b4351272022582bf21d9b6c",
+      "thumbnailSha256": "ff819ee5ebc4505159292b85a9864fcd2f51d25e4b9ea52ad64d620dd3b2fe8e",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 58,
+      "characterId": "COST-059",
+      "name": "Thomas kiri",
+      "artworkId": "td_1_057",
+      "source": "collection-161/assets/cards/td-1-057.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-057.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-057.webp",
+      "sourceSize": [
+        1223,
+        1286
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        77,
+        275,
+        1223,
+        1286
+      ],
+      "grayRGB": [
+        123,
+        123,
+        125
+      ],
+      "sourceSha256": "3d850abcb3e22849117dcb42db72286c4e528474a38f629dcb4e2a143b92dc39",
+      "imageSha256": "88b00e1adc0845b6561f6cb4eae3f595c157f058a6c4887063ac6652fdd1bf8a",
+      "thumbnailSha256": "5a2c3335ac8af57da37125c0a0b67e09b8550e801b3f7d5c84e85da53d9f544c",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 59,
+      "characterId": "COST-060",
+      "name": "1000 couches de Thomas",
+      "artworkId": "td_1_062",
+      "source": "collection-161/assets/cards/td-1-062.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-062.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-062.webp",
+      "sourceSize": [
+        962,
+        1600
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        207,
+        118,
+        962,
+        1600
+      ],
+      "grayRGB": [
+        108,
+        109,
+        106
+      ],
+      "sourceSha256": "ce8aadeb717be37b453e1c5ef552d34e056e37d6defffdb17d8ad7965f4b5094",
+      "imageSha256": "36976ac88333b9bb19c2cd68819096c1038009f767f2148c87738cfe604d22b4",
+      "thumbnailSha256": "c8376c8027c523cb90799b3fd837efcf4628dd77b567b8b082a10b47a1cb8b90",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 60,
+      "characterId": "COST-061",
+      "name": "Thomas 3 points",
+      "artworkId": "td_1_060",
+      "source": "collection-161/assets/cards/td-1-060.webp",
+      "image": "collection-validee/assets/gray-extended-sixth10/td-1-060.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-sixth10/td-1-060.webp",
+      "sourceSize": [
+        758,
+        1600
+      ],
+      "outputSize": [
+        1377,
+        1836
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        309,
+        118,
+        758,
+        1600
+      ],
+      "grayRGB": [
+        130,
+        131,
+        130
+      ],
+      "sourceSha256": "c3095b5909e1af8f21c72447581ce17f6c676f9135a19de872d6df62f1688333",
+      "imageSha256": "980de3e2d24ee84caae26af26f1ed03326fb002417484f176bdc5efb68ee1b31",
+      "thumbnailSha256": "3c97b6982e74dc75cc13c27775bc5edbfe9c3680149b414fb901979177de194b",
+      "originalPixelsUntouched": true
+    }
+  ]
+}
