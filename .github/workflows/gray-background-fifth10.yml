@@ -1,0 +1,47 @@
+name: Cartes 41 à 50 — prolonger uniquement le fond gris
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/extend-gray-background-fifth10.py'
+      - '.github/workflows/gray-background-fifth10.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-gray-background-fifth10
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    name: Produire les cartes 41 à 50 sans retoucher les originaux
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer Pillow
+        run: python -m pip install 'Pillow==11.3.0'
+      - name: Ajouter uniquement le fond gris
+        run: python scripts/extend-gray-background-fifth10.py
+      - name: Vérifier pixels, tailles et miniatures
+        run: python scripts/extend-gray-background-fifth10.py --check
+      - name: Publier les images et leurs preuves
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add collection-validee/assets/gray-extended-fifth10/ collection-validee/assets/gray-thumbs-fifth10/ data/gray-background-fifth10.json audit-visuels/assets/gray-background-fifth10-before-after.jpg
+          if git diff --cached --quiet; then
+            echo "Les dix cartes suivantes sont déjà produites."
+          else
+            git commit -m "assets(images): extend gray backgrounds for official cards 41-50 without cropping"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
