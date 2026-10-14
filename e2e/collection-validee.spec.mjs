@@ -128,8 +128,8 @@ test('tous les 105 visuels approuvés existent ET se décodent dans Chromium',as
  test.skip(testInfo.project.name!=='desktop-chromium','Un décodage complet sur un navigateur suffit.');
  test.setTimeout(120_000);
  await expect(page.locator('article.card[data-group] .image-frame img')).toHaveCount(105);
- await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('src',/\/assets\/uniform\/td-.*\.webp$/);
- await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('srcset',/\/assets\/thumbs\/td-.*\.webp 384w, .*\/assets\/uniform\/td-.*\.webp 768w/);
+ await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('src',/\/assets\/gray-extended-first10\/td-.*\.webp$/);
+ await expect(page.locator('article.card[data-group] .image-frame img').first()).toHaveAttribute('srcset',/\/assets\/gray-thumbs-first10\/td-.*\.webp 384w, .*\/assets\/gray-extended-first10\/td-.*\.webp 1200w/);
  const errors=await page.evaluate(async()=>{
   const entries=[...document.querySelectorAll('article.card[data-group] .image-frame img')].map(el=>({
    src:el.getAttribute('src'),alt:el.getAttribute('alt')
@@ -142,8 +142,9 @@ test('tous les 105 visuels approuvés existent ET se décodent dans Chromium',as
     img.src=entry.src;
     try{
      await img.decode();
-     if(img.naturalWidth!==768||img.naturalHeight!==1024)
-      throw Error('Dimensions incorrectes (attendu 768 × 1024, obtenu '+img.naturalWidth+' × '+img.naturalHeight+')');
+     const expected=entry.src.includes('/gray-extended-first10/')?[1200,1600]:[768,1024];
+      if(img.naturalWidth!==expected[0]||img.naturalHeight!==expected[1])
+       throw Error('Dimensions incorrectes (attendu '+expected.join(' × ')+', obtenu '+img.naturalWidth+' × '+img.naturalHeight+')');
     }catch(error){failures.push(entry.alt+' : '+entry.src+' : '+error.message)}
    }));
   }
@@ -185,4 +186,23 @@ test('les miniatures responsives 384×512 sont disponibles et se décodent',asyn
   await img.decode();return [img.naturalWidth,img.naturalHeight];
  },first.thumb);
  expect(dims).toEqual([384,512]);
+});
+
+test('les 10 originaux sont conservés en entier, seul le fond gris a été prolongé',async({page})=>{
+ const response=await page.request.get('/data/gray-background-first10.json');
+ expect(response.ok()).toBe(true);
+ const data=await response.json();
+ expect(data.items).toHaveLength(10);
+ expect(data.items.map(x=>x.characterId)).toEqual(Array.from({length:10},(_,i)=>'COST-'+String(i+1).padStart(3,'0')));
+ for(const item of data.items){
+  expect(item.originalPixelsUntouched).toBe(true);
+  expect(item.outputSize).toEqual([1200,1600]);
+  const [left,top,w,h]=item.originalPixelPosition;
+  expect([w,h]).toEqual(item.sourceSize);
+  expect(left).toBeGreaterThanOrEqual(0);expect(top).toBeGreaterThanOrEqual(0);
+  expect(left+w).toBeLessThanOrEqual(1200);expect(top+h).toBeLessThanOrEqual(1600);
+  expect(item.image).toMatch(/^collection-validee\/assets\/gray-extended-first10\//);
+  const img=await page.request.get('/'+item.image);
+  expect(img.ok()).toBe(true);
+ }
 });
