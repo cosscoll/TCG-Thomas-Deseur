@@ -1,0 +1,46 @@
+name: Dix cartes — prolonger uniquement le fond gris
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/extend-gray-background-first10.py'
+      - '.github/workflows/gray-background-first10.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tcg-gray-background-10
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    name: Contrôler les dix originaux sans recadrage ni zoom
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer le traitement bitmap
+        run: python -m pip install 'Pillow==11.3.0'
+      - name: Créer les dix cadres 1200x1600 à fond gris, sans modifier les originaux
+        run: python scripts/extend-gray-background-first10.py
+      - name: Contrôler les dix correspondances, images, vignettes et pixels source
+        run: python scripts/extend-gray-background-first10.py --check
+      - name: Conserver les nouvelles images à part et la planche de comparaison
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add collection-validee/assets/gray-extended-first10/ collection-validee/assets/gray-thumbs-first10/ data/gray-background-first10.json audit-visuels/assets/gray-background-first10-before-after.jpg
+          if git diff --cached --quiet; then
+            echo "Les dix cartes corrigées existent déjà."
+          else
+            git commit -m "assets(images): first ten unscaled characters with extended gray backgrounds"
+            git push origin HEAD:main
+          fi
