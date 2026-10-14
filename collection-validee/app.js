@@ -71,7 +71,7 @@ function image(id,name,variant=false,eager=false){
    :GRAY_THIRD10.has(id)
     ?src.replace('/assets/gray-extended-third10/','/assets/gray-thumbs-third10/')
     :src.replace('/assets/uniform/','/assets/thumbs/');
- const srcSet=thumb+' 384w, '+src+' '+(GRAY_THIRD10.has(id)?'1200':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
+ const srcSet=thumb+' 384w, '+src+' '+(GRAY_THIRD10.has(id)?'1254':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
  img.srcset=srcSet;
  img.sizes=variant?'(max-width:690px) 40vw, 140px':'(max-width:690px) 90vw, (max-width:1150px) 44vw, 250px';
  img.alt='Illustration '+name+' ('+id+')';
