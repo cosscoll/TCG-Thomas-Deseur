@@ -47,8 +47,8 @@ source = source.replace("1200 x 1600", "portrait 3:4")
 # use the perimeter's median luminosity as a neutral gray; never retouch pixels.
 source = source.replace(
     'raise ValueError("Cannot confidently identify a gray backdrop from the original corners")',
-    'edge = [rgb.getpixel(p) for p in ((0,0), (w-1,0), (0,h-1), (w-1,h-1))]\\n'
-    '        tone = round(statistics.median(sum(pixel)/3 for pixel in edge))\\n'
+    'edge = [rgb.getpixel(p) for p in ((0,0), (w-1,0), (0,h-1), (w-1,h-1))]\n'
+    '        tone = round(statistics.median(sum(pixel)/3 for pixel in edge))\n'
     '        return (tone, tone, tone)',
 )
 
