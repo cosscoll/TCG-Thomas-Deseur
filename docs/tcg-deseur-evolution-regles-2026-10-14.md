@@ -47,6 +47,21 @@ Supprimer du rendu de la page principale et du classeur les blocs « Archive per
 
 Sous les 5 cartes révélées, supprimer **tout** le récapitulatif : liste des cartes, « Bilan de ce booster », compte des nouvelles cartes, doublons et rareté maximale. Après avoir révélé toutes les cartes, afficher un bouton très visible **« Ouvrir un autre booster »** uniquement si le joueur détient encore un booster ouvrable dans son stock standard ou cadeau. Le clic lance le nouveau tirage **côté serveur**, remet la révélation à la première carte et affiche cinq nouvelles cartes sans rechargement. Bloquer les clics simultanés, afficher chargement/erreurs, et synchroniser réserve et classeur. Si stock épuisé : ne pas afficher un bouton qui ne fonctionne pas ; indiquer plutôt le délai de recharge ou l'absence de boosters.
 
+## 6. Comptes indépendants et tests multi-joueurs réels
+
+**Exigence ajoutée le 14 octobre par le propriétaire : chaque personne invitée à tester TCG Deseur doit pouvoir créer son propre compte et jouer de façon autonome.** L'inscription, la connexion, la déconnexion, la reprise de session, l'ouverture des boosters et la sauvegarde durable des cartes sont des **critères bloquants avant la distribution de l'accès bêta**.
+
+- Inscription publique sur invitation par lien (aucun compte manuel à créer par l'administrateur), avec adresse e-mail valide, mot de passe sécurisé et pseudonyme ; accepter plusieurs joueurs différents, empêcher les doublons d'e-mail et résister aux inscriptions simultanées. Tous les nouveaux inscrits ont le rôle `user`, jamais `admin`.
+- Connexion/déconnexion fonctionnelles, session protégée, gestion des erreurs et de l'expiration de session ; sur ordinateur **et** mobile. Après une déconnexion puis une reconnexion, retrouver intégralement l'inventaire et le stock de boosters.
+- Chaque nouveau joueur commence avec son propre état de progression, son inventaire par illustration principale/alternative, et son stock de boosters régénérables prévu par la règle **12 heures, maximum 3** ; aucun héritage de la collection d'une autre personne.
+- Ouverture de boosters via tirage uniquement serveur et en transaction : cinq cartes par booster standard, contrôle de la réserve, sauvegarde de chaque illustration réellement tirée, doublons, historique, rareté et mise à jour immédiate de l'interface. Rechargement de page ou changement d'appareil ne doit rien effacer.
+- Isolation stricte des joueurs côté API et base : joueur A ne peut voir, modifier ni obtenir la collection ou les boosters du joueur B ; aucune route client ne permet de choisir un `user_id` arbitraire. Les cadeaux et codes promotionnels respectent cette même isolation.
+- Réaliser **des tests d'intégration réels** avec au minimum deux comptes de test créés par les voies publiques, pas seulement des tests unitaires : A/B s'inscrivent et se connectent, chacun ouvre un booster ; A se déconnecte, B continue sans voir ses cartes ; A se reconnecte et retrouve exactement son historique, ses quantités, ses variantes et son solde ; vérifier erreurs de mot de passe, compte déjà existant, recharge 12 h et stockage max 3.
+- Tester les ouvertures simultanées et les doubles clics : un seul crédit consommé par ouverture réussie, pas de corruption de l'inventaire, aucun double prélèvement involontaire.
+- Vérifier le fonctionnement **sur la version publique publiée**, pas seulement dans l'éditeur, avec vérification du rendu et des interactions sur mobile et bureau. Ne pas annoncer la bêta prête tant que les tests multi-joueurs réels ne sont pas réussis.
+- Ne jamais utiliser les comptes ou collections de vrais joueurs pour les tests destructifs. Créer et nettoyer exclusivement des comptes éphémères de recette identifiables et autorisés.
+- Si la procédure de récupération du mot de passe par e-mail dépend encore d'une configuration externe, la documenter honnêtement avant de distribuer la bêta ; ne pas annoncer cette récupération comme opérationnelle sans test effectif.
+
 ## Ordre de travail et critères de validation
 
 1. Migration schéma/stock 12 h et plafond 3, avec tests d'horloge, reprise à 3/3, nouvel utilisateur, connexions simultanées et absence de régression.
@@ -54,6 +69,6 @@ Sous les 5 cartes révélées, supprimer **tout** le récapitulatif : liste des 
 3. Rendu alternatives et suppression des archives UI sans détruire les données.
 4. Simplification de la fenêtre de booster, bouton conditionné au stock restant, récupération des erreurs et tests.
 5. Codes cadeaux administrables et effets personnalisables dans un ensemble de règles sûres, tests de concurrence et de quotas.
-6. Typecheck, tests Jasmine, tests HTTP d'accès, parcours utilisateur authentifié sur compte de test, audit desktop/mobile, publication Floot, vérification de la version publique.
+6. Tests d'intégration à plusieurs comptes : inscription, ouverture des boosters, inventaire par illustration, sauvegarde/reconnexion, isolation et concurrence.\n7. Typecheck, tests Jasmine, tests HTTP d'accès, audit desktop/mobile, publication Floot, vérification de la version publique et recette multi-joueurs.
 
 Aucune des modifications de ce document n'est réputée livrée tant qu'elle n'a pas été réellement intégrée, testée et publiée dans Floot.
