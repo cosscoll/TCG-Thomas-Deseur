@@ -26,16 +26,17 @@ function originLink(ref){
 }
 const $=id=>document.getElementById(id);
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
-// Only these forty official main illustrations use pixel-identical sources
-// with extended gray canvas. The other 65 artworks are unchanged.
+// Only these fifty official main illustrations use pixel-identical sources
+// with extended gray canvas. The other 55 artworks are unchanged.
 const GRAY_FIRST10=new Set(['td_1_004','td_1_001','td_1_002','td_1_003','td_1_005','td_1_007','td_1_008','td_1_006','td_1_012','td_1_011']);
 const GRAY_NEXT10=new Set(['td_2_007','td_1_010','td_2_008','td_3_001','td_1_014','td_3_031','td_3_043','td_1_020','td_1_019','td_1_018']);
 const GRAY_THIRD10=new Set(['td_1_021','td_1_023','td_1_022','td_1_024','td_1_026','td_1_028','td_1_025','td_1_027','td_2_019','td_2_023']);
 const GRAY_FOURTH10=new Set(['td_3_036','td_1_032','td_2_031','td_1_035','td_3_038','td_1_036','td_2_030','td_1_040','td_2_035','td_2_034']);
+const GRAY_FIFTH10=new Set(['td_3_028','td_3_002','td_2_039','td_2_037','td_3_003','td_2_045','td_2_048','td_1_049','td_1_045','td_1_051']);
 const artSrc=id=>{
  const pair=byId.get(id);
  if(!pair)return null;
- const directory=GRAY_FIRST10.has(id)?'gray-extended-first10':GRAY_NEXT10.has(id)?'gray-extended-next10':GRAY_THIRD10.has(id)?'gray-extended-third10':GRAY_FOURTH10.has(id)?'gray-extended-fourth10':'uniform';
+ const directory=GRAY_FIRST10.has(id)?'gray-extended-first10':GRAY_NEXT10.has(id)?'gray-extended-next10':GRAY_THIRD10.has(id)?'gray-extended-third10':GRAY_FOURTH10.has(id)?'gray-extended-fourth10':GRAY_FIFTH10.has(id)?'gray-extended-fifth10':'uniform';
  return './assets/'+directory+'/'+encodeURIComponent(pair.illustration);
 };
 const originalArtSrc=id=>{
@@ -64,7 +65,7 @@ function image(id,name,variant=false,eager=false){
  const frame=make('div',variant?'image-frame variant-image':'image-frame');
  if(!src){frame.append(make('span','missing','Illustration indisponible'));return frame;}
  const img=make('img');
- const corrected=GRAY_FIRST10.has(id)||GRAY_NEXT10.has(id)||GRAY_THIRD10.has(id)||GRAY_FOURTH10.has(id);
+ const corrected=GRAY_FIRST10.has(id)||GRAY_NEXT10.has(id)||GRAY_THIRD10.has(id)||GRAY_FOURTH10.has(id)||GRAY_FIFTH10.has(id);
  const thumb=GRAY_FIRST10.has(id)
   ?src.replace('/assets/gray-extended-first10/','/assets/gray-thumbs-first10/')
   :GRAY_NEXT10.has(id)
@@ -73,8 +74,10 @@ function image(id,name,variant=false,eager=false){
     ?src.replace('/assets/gray-extended-third10/','/assets/gray-thumbs-third10/')
     :GRAY_FOURTH10.has(id)
      ?src.replace('/assets/gray-extended-fourth10/','/assets/gray-thumbs-fourth10/')
-     :src.replace('/assets/uniform/','/assets/thumbs/');
- const srcSet=thumb+' 384w, '+src+' '+(GRAY_FOURTH10.has(id)?'1323':GRAY_THIRD10.has(id)?'1254':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
+     :GRAY_FIFTH10.has(id)
+      ?src.replace('/assets/gray-extended-fifth10/','/assets/gray-thumbs-fifth10/')
+      :src.replace('/assets/uniform/','/assets/thumbs/');
+ const srcSet=thumb+' 384w, '+src+' '+(GRAY_FIFTH10.has(id)?'1362':GRAY_FOURTH10.has(id)?'1323':GRAY_THIRD10.has(id)?'1254':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
  img.srcset=srcSet;
  img.sizes=variant?'(max-width:690px) 40vw, 140px':'(max-width:690px) 90vw, (max-width:1150px) 44vw, 250px';
  img.alt='Illustration '+name+' ('+id+')';
