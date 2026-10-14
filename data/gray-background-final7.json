@@ -1,0 +1,269 @@
+{
+  "schema": "tcg-deseur-gray-background-final7-v1",
+  "method": "Flat gray background extended around each unscaled original; no subject cropping or resizing; lossless pixel identity",
+  "size": [
+    1563,
+    2084
+  ],
+  "thumbnailSize": [
+    384,
+    512
+  ],
+  "sourceEdition": "data/edition-staging-67.json",
+  "onlyFinalSevenMainImages": true,
+  "originalsUnchanged": true,
+  "items": [
+    {
+      "ordinal": 61,
+      "characterId": "COST-062",
+      "name": "Thomas raclette",
+      "artworkId": "td_1_063",
+      "source": "collection-161/assets/cards/td-1-063.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-1-063.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-1-063.webp",
+      "sourceSize": [
+        885,
+        1600
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        339,
+        242,
+        885,
+        1600
+      ],
+      "grayRGB": [
+        133,
+        131,
+        130
+      ],
+      "sourceSha256": "37a98182d7a20e5f79b75dda18b51cc890757f5667879b4f12b46e4567992889",
+      "imageSha256": "fdc33d2e521d264dabe93e2a346cee76da17f23e85ccfbf638f6331c36820f2e",
+      "thumbnailSha256": "6730ff169a905336a507fe6e42e017a4be2fbf978a5907aac1363e5713c407d8",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 62,
+      "characterId": "COST-064",
+      "name": "Thomas ta soeur",
+      "artworkId": "td_1_065",
+      "source": "collection-161/assets/cards/td-1-065.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-1-065.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-1-065.webp",
+      "sourceSize": [
+        813,
+        1600
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        375,
+        242,
+        813,
+        1600
+      ],
+      "grayRGB": [
+        127,
+        127,
+        125
+      ],
+      "sourceSha256": "4f2a8d9088cc6a5e623db9fac266c500ce2b88faeb27e21b2cbaa231021c5e56",
+      "imageSha256": "0ecd971e29e600da3cea834439a7e46ce73dbd15e9c4449c1103192bf112c1c8",
+      "thumbnailSha256": "5093d02769c2f132a2e02e33e81965d51a1c76c040b3dd5b391a58fe4aa43cd1",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 63,
+      "characterId": "COST-065",
+      "name": "Thomas-couteur",
+      "artworkId": "td_1_066",
+      "source": "collection-161/assets/cards/td-1-066.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-1-066.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-1-066.webp",
+      "sourceSize": [
+        1030,
+        1527
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        266,
+        278,
+        1030,
+        1527
+      ],
+      "grayRGB": [
+        122,
+        123,
+        121
+      ],
+      "sourceSha256": "8170ce5b2b92694119e839b4b22008e0cd99fb091f1a2486a70e6984e530096a",
+      "imageSha256": "c114afacd44ed020291486a0af78bb9a78b0115b152d4de8a0c3e3e1c1a33728",
+      "thumbnailSha256": "9dc7b67bc6a3f424cc590796f0edaa72b672e405fb8c26b8d24043e6f6076d8d",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 64,
+      "characterId": "COST-066",
+      "name": "Thomas-gen de police",
+      "artworkId": "td_1_064",
+      "source": "collection-161/assets/cards/td-1-064.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-1-064.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-1-064.webp",
+      "sourceSize": [
+        1010,
+        1558
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        276,
+        263,
+        1010,
+        1558
+      ],
+      "grayRGB": [
+        108,
+        108,
+        106
+      ],
+      "sourceSha256": "7bc5e91d9f20e5cb6f33da78ad8ebd2c37bf53c9b96425e6485ce3abde15d423",
+      "imageSha256": "d90e00bc23dd0514c77183235fe1952c7f85116c1fb23225d737f468431ab0d9",
+      "thumbnailSha256": "94e555f75e37b6e0eaf8942d573e12f640f431af106ecfa006584b3eccf385a2",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 65,
+      "characterId": "COST-067",
+      "name": "Thomas démission",
+      "artworkId": "td_2_059",
+      "source": "collection-161/assets/cards/td-2-059.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-2-059.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-2-059.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        154,
+        415,
+        1254,
+        1254
+      ],
+      "grayRGB": [
+        123,
+        123,
+        122
+      ],
+      "sourceSha256": "4ac58027be728a4c05ab14924b73e91439b3faa7afa2c087db6215143e805d20",
+      "imageSha256": "e6cc251eeeb541f98f994985434803a0f203ed64aad6ee47dde3bdf5a92a091b",
+      "thumbnailSha256": "cb281f387b67a94ae28a411687b1ee080d8845264b9af515d49276839b24d12c",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 66,
+      "characterId": "COST-068",
+      "name": "Thomas chic et choc",
+      "artworkId": "td_2_049",
+      "source": "collection-161/assets/cards/td-2-049.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-2-049.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-2-049.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        154,
+        415,
+        1254,
+        1254
+      ],
+      "grayRGB": [
+        142,
+        142,
+        142
+      ],
+      "sourceSha256": "f167e6ea213525a90cec39528cc2917175cc3a404d1f1b79808172d397bee6a7",
+      "imageSha256": "184565401a939768d62408039d8db188a54a67b6d74b6c4f64c559f184ae075b",
+      "thumbnailSha256": "f392541770e5e18abfddd6eacf76c520b6a35bc6f0c204f3e9a002d3ec9ef793",
+      "originalPixelsUntouched": true
+    },
+    {
+      "ordinal": 67,
+      "characterId": "COST-070",
+      "name": "Thomas huîtres",
+      "artworkId": "td_lille",
+      "source": "collection-161/assets/cards/td-lille.webp",
+      "image": "collection-validee/assets/gray-extended-final7/td-lille.webp",
+      "thumbnail": "collection-validee/assets/gray-thumbs-final7/td-lille.webp",
+      "sourceSize": [
+        1562,
+        1007
+      ],
+      "outputSize": [
+        1563,
+        2084
+      ],
+      "thumbnailSize": [
+        384,
+        512
+      ],
+      "originalPixelPosition": [
+        0,
+        538,
+        1562,
+        1007
+      ],
+      "grayRGB": [
+        138,
+        138,
+        138
+      ],
+      "sourceSha256": "2790c404ba39816897d48f930bf6d4efc5df9ddcc3fcad674acb70fb06100299",
+      "imageSha256": "bc51a859f03b230ab46f3e44ce951d55002286ad466588a401dd44dfdc6d5c9e",
+      "thumbnailSha256": "2a5ed97f286f4e772a8c52cf0c0ac61b9e30417867405f04c9439cd797bfbdbc",
+      "originalPixelsUntouched": true
+    }
+  ]
+}
