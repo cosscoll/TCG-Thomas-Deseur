@@ -62,14 +62,25 @@ Sous les 5 cartes révélées, supprimer **tout** le récapitulatif : liste des 
 - Ne jamais utiliser les comptes ou collections de vrais joueurs pour les tests destructifs. Créer et nettoyer exclusivement des comptes éphémères de recette identifiables et autorisés.
 - Si la procédure de récupération du mot de passe par e-mail dépend encore d'une configuration externe, la documenter honnêtement avant de distribuer la bêta ; ne pas annoncer cette récupération comme opérationnelle sans test effectif.
 
-## Ordre de travail et critères de validation
+## Ordre de priorité impératif — confirmé le 15 octobre 2026
 
-1. Migration schéma/stock 12 h et plafond 3, avec tests d'horloge, reprise à 3/3, nouvel utilisateur, connexions simultanées et absence de régression.
-2. Inventaire indépendant des 105 illustrations et condition de booster exceptionnel à 105/105, récupération probante depuis l'historique, tests de sécurité/confidentialité.
-3. Rendu des alternatives **juste après leur carte principale dans le classeur unique**, avec lien visuel et vérification de possession préalable lors de chaque mode d'obtention ; suppression des archives UI sans détruire les données.
-4. Simplification de la fenêtre de booster, bouton conditionné au stock restant, récupération des erreurs et tests.
-5. Codes cadeaux administrables et effets personnalisables dans un ensemble de règles sûres, tests de concurrence et de quotas.
-6. Tests d'intégration à plusieurs comptes : inscription, ouverture des boosters, inventaire par illustration, sauvegarde/reconnexion, isolation et concurrence.
-7. Typecheck, tests Jasmine, tests HTTP d'accès, audit desktop/mobile, publication Floot, vérification de la version publique et recette multi-joueurs.
+L'utilisateur demande explicitement de traiter les **10 chantiers dans l'ordre 1 → 2 → 3 → 4 → 5 → 6 → 8 → 9 → 7 → 10**, avec la numérotation de sa liste initiale. Ne pas les réordonner sans nouvelle instruction.
+
+1. **Comptes joueurs fonctionnels** : inscription, connexion, séparation des comptes et persistance.
+2. **Recharge des boosters** : un toutes les 12 heures, trois maximum en réserve.
+3. **Alternatives** : 38 illustrations dans le classeur unique, chaque alternative immédiatement après sa carte de base ; obtention possible seulement si la base était déjà possédée avant tirage / attribution.
+4. **Booster exceptionnel** : les 105 illustrations distinctes sont nécessaires pour le déverrouiller ; protéger la confidentialité de son contenu.
+5. **Création de codes cadeaux personnalisés** par l'administrateur : code exact choisi et effets configurables, y compris boosters ordinaires/spéciaux/personnalisés et cartes.
+6. **Saisie et utilisation des codes** par les joueurs, avec crédit et historique persistants.
+8. **Retrait des anciennes archives de l'interface**, sans suppression de leurs données.
+9. **Sauvegarde et sécurisation des données**, anti-abus et anti-concurrence.
+7. **Simplification de l'ouverture des boosters** : supprimer le récapitulatif, bouton « Ouvrir un autre booster » quand une ouverture reste disponible.
+10. **Recette finale et publication vérifiée** : tests multi-joueurs, responsive, contrôle du site public.
+
+L'**ordre des priorités** ne dispense pas de tester chaque modification sensible avant de poursuivre, ni d'assurer les migrations nécessaires à la sécurité des données. En cas de quota Floot insuffisant, terminer et fiabiliser les étapes prioritaires avant de commencer les étapes secondaires. Les chantiers 5 et 6 sont bien prioritaires sur les chantiers 8, 9, 7 et 10, conformément à la décision de l'utilisateur.
+
+## Tests et critères de validation
+
+Pour chaque chantier, assurer les migrations et vérifications minimales sans attendre la recette finale. À l'étape 10 : TypeScript, tests Jasmine, tests HTTP, authentification multi-joueurs, intégrité des inventaires, concurrence, responsive et publication avec contrôle de la version publique.
 
 Aucune des modifications de ce document n'est réputée livrée tant qu'elle n'a pas été réellement intégrée, testée et publiée dans Floot.
