@@ -1,184 +1,43 @@
-# TCG Deseur — édition Origine publiée le 13 octobre 2026
+# TCG Deseur — Édition Origine
 
-**Collection annoncée : 68 cartes au total — 67 cartes connues avec raretés validées, et une Carte mystère sans détails publiés.** Les 67 cartes connues sont issues du tri des illustrations, avec 38 variantes et 3 groupes écartés.
+**Jeu de collection publié sur Floot le 16 octobre 2026 :** [Ouvrir TCG Deseur](https://budget-illimite-tcg.floot.app)
 
-**Raretés et probabilités de la nouvelle édition (validées le 12/10/2026) :** 67 cartes réparties en 33 Communes, 21 Rares, 8 Épiques, 4 Légendaires et 1 Hors-série. Boosters classiques : cartes 1–3 = 100 % Communes ; carte 4 = 90 % Rare / 10 % Alternative ; carte 5 = 80 % Rare / 17 % Épique / 2 % Légendaire / 1 % Hors-série. **Ces règles sont maintenant actives côté serveur Floot.** La branche de 10 % tire provisoirement l'une des 38 illustrations alternatives ; elle garde l'identité et la rareté de son personnage et augmente ses copies. Le statut définitif des variantes dans la collection reste à valider. [Règles et tests](docs/REGLES_BOOSTER_67_2026-10-12.md).
+**Vitrine et galerie documentaire GitHub Pages :** https://cosscoll.github.io/TCG-Thomas-Deseur/
 
-**Voir les fiches approuvées :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/  
-**Jouer / comptes et boosters réels :** https://budget-illimite-tcg.floot.app  
-**État de référence mis à jour :** [lire avant tout nouveau sprint](docs/ETAT_DE_REFERENCE_2026-10-13.md) pour éviter de repartir des anciens catalogues 160 ou d’un statut de staging devenu historique.
+## Règles actuellement déployées
 
-**Suivi public des 88 chantiers hors Floot :** [Tableau d'avancement](https://cosscoll.github.io/TCG-Thomas-Deseur/avancement/), alimenté par [les 88 lignes justifiées](data/suivi-88-actions.json). « Réalisé » signifie livrable GitHub prêt, pas résultat validé dans Floot.
+- **105 illustrations publiques à collectionner** : 67 cartes de base et 38 illustrations alternatives, chacune comptabilisée individuellement.
+- Dans le classeur, l'alternative est placée **immédiatement après sa carte principale**. Elle ne peut être obtenue que lorsque cette base était **déjà possédée avant** le tirage ou l'attribution.
+- **Un booster classique régénérable toutes les 12 heures**, avec un stock plafonné à **3** et un premier booster disponible dès l'inscription. Les boosters cadeaux sont conservés séparément.
+- Chaque booster classique donne 5 cartes : trois Communes garanties, une 4e carte Rare (90 %) ou alternative éligible (10 %), une 5e Rare (80 %), Épique (17 %), Légendaire (2 %) ou Hors-série (1 %). Si aucune alternative n'est éligible, la 4e carte est Rare.
+- La possession des **105 illustrations distinctes** permet de débloquer un **booster exceptionnel**, dont le contenu n'est pas révélé ici.
+- Les joueurs peuvent créer un compte, ouvrir leurs boosters, retrouver leurs cartes et doublons, utiliser des codes cadeaux. L'administration peut créer des codes exacts de son choix : boosters classiques, spéciaux, personnalisés et cartes officielles, dans des limites contrôlées.
+- Les anciennes collections ont été retirées de l'interface du jeu sans supprimer les données historiques de la base.
 
-**Prototype d’ouverture sans compte :** [animation et révélation de cinq cartes approuvées](https://cosscoll.github.io/TCG-Thomas-Deseur/prototype-booster/), uniquement une simulation UX, sans attribution ni modification Floot.
+## Développement et hébergement
 
-**Atelier de maquettes PNG :** [formats carré, Story et bannière](https://cosscoll.github.io/TCG-Thomas-Deseur/kit-visuels/) assemblés localement à partir des images officielles ; aucune diffusion automatique.
-
-**Planches imprimables :** [67 illustrations principales et 38 alternatives](https://cosscoll.github.io/TCG-Thomas-Deseur/planches/). Les originaux et les versions optimisées restent séparés.
-
-**Prochaines priorités :** [Plan de reprise Floot du 14 octobre — bêta illimitée, recette 68 cartes, images et lancement](docs/PLAN_REPRISE_FLOOT_14_10_2026.md).
-
-| Ressource | Utilité |
+| Surface | Usage |
 | --- | --- |
-| [Choix approuvés](data/choix-cartes-2026-10-11.json) | Décisions exactes, noms, illustrations principales et alternatives |
-| [Manifeste des 67 cartes](data/catalogue-valide-67.json) | Export public strict, lisible par le futur jeu |
-| [Manifeste de préparation Floot](data/edition-staging-67.json) | Source historique de la migration, 67 noms + raretés validées + 105 références visuelles. Son statut interne reste « staging » pour garder la trace des décisions encore ouvertes sur les variantes. |
-| [Galerie avec raretés](collection-validee/) | Découvrir les 68 emplacements : 67 cartes détaillées et une Carte mystère sans identité divulguée |
-| [Générateur](scripts/build-approved-catalogue.mjs) | Reconstruit le manifeste et vérifie les identifiants |
-| [Collection approuvée](collection-validee/) | Catalogue statique présenté sur GitHub Pages |
-| [Atelier](tri-177/) | Éditeur des choix des cartes |
-| [Ancienne démo à 160 illustrations](collection-161/) | Archive de démonstration, **pas** la nouvelle collection Floot |
+| **Floot** — https://budget-illimite-tcg.floot.app | Jeu fonctionnel : authentification, logique serveur, base de données, tirages et sauvegardes. |
+| **GitHub** — `floot-app/` | Copie des fichiers source du jeu et du panneau codes cadeaux ; leur présence sur GitHub ne constitue pas un second hébergement backend. |
+| **GitHub Pages** — `index.html`, `collection-validee/`, `avancement/` | Portail documentaire, aperçu et liens vers le jeu. GitHub Pages seul ne peut pas exécuter les endpoints Floot ni sa base PostgreSQL. |
 
-**Deux environnements synchronisés au 13 octobre :** GitHub conserve le catalogue documentaire des 67 personnages et 38 visuels alternatifs ; **Floot utilise désormais réellement cette édition** avec 68 emplacements affichés (dont une « Carte mystère » masquée). Le serveur Floot gère comptes, tirages, doublons et délai de 24 h. L'ancien inventaire 160 est archivé et non supprimé ; quatre cartes anciennes correspondant exactement à l'édition ont été créditées de façon tracée. [Rapport technique de publication et de tests](docs/LIVRAISON_FLOOT_ORIGINE_68_2026-10-13.md).
+### Tests vérifiés le 16 octobre 2026
 
-**Décision bêta du 13 octobre :** supprimer le délai de 24 heures jusqu'au lancement officiel. **Cette modification est planifiée, pas encore déployée dans Floot** : le quota actuel est toujours actif sur le site, en attendant la prochaine fenêtre de développement. [Suivi prioritaire #12](https://github.com/cosscoll/TCG-Thomas-Deseur/issues/12).
+- Contrôle TypeScript sans erreur.
+- 21 fichiers de tests Jasmine réussis (20 tests courants et un fichier dédié aux codes cadeaux).
+- Deux comptes de recette distincts ont réussi à s'inscrire, à ouvrir chacun un booster de 5 cartes et à retrouver leurs collections sauvegardées. Test de déconnexion/reconnexion réussi. Comptes éphémères ensuite supprimés.
+- Vérification de refus serveur de la création de codes par un compte non administrateur (403), et de refus des accès anonymes aux API concernées (401).
+- Publication Floot confirmée et page publique accessible en HTTPS (HTTP 200).
 
-**État des vérifications :** 16 suites Floot réussies, TypeScript propre, publication effective confirmée par Floot et code frontend de l'édition 68 réellement visible dans le bundle HTTP du site public. **Une ouverture authentifiée du NOUVEAU booster reste à recetter** : la dernière ouverture confirmée par le créateur concerne l'ancien moteur, avant migration. Les anciennes cinq cartes restent en archive ; quatre sont liées au nouveau catalogue. L'uniformisation du format des 105 illustrations reste à réaliser.
+**Contrôles complémentaires encore nécessaires** : création et utilisation complète d'un code cadeau par un administrateur de test autorisé ; inspection visuelle mobile authentifiée ; validation utilisateur de la nouvelle interface et surveillance des premières ouvertures en production. Il n'y a pas lieu d'annoncer ces contrôles comme réussis avant leur réalisation.
 
----
+## Ressources
 
-## Historique des éditions et des prototypes
+- [Cahier des charges et ordre de priorité 1-2-3-4-5-6-8-9-7-10](docs/tcg-deseur-evolution-regles-2026-10-14.md).
+- [Journal de reprise des migrations et des fonctionnalités](docs/floot-reprise-2026-10-16.md).
+- [Tableau public des 88 actions historiques](avancement/).
+- [Galerie des illustrations approuvées](collection-validee/).
+- [Codes sources sauvegardés](floot-app/).
 
-Les passages ci-dessous sont **historiques** et décrivent notamment les versions à 49/160 cartes, avant la validation des 67 personnages. Ils ne décrivent pas le contenu actuel approuvé.
-
-## Archive technique — prototype historique à 160 cartes (NON ACTUEL)
-
-**Jeu en ligne (désormais passé à 68 cartes) :** https://budget-illimite-tcg.floot.app  
-**Aperçu des cartes visibles :** https://cosscoll.github.io/TCG-Thomas-Deseur/collection-161/
-
-Le classeur comporte **160 cartes à découvrir** (159 standards et une Hors-série). Une fois le classeur complet, le joueur débloque **un booster spécial de cinq cartes**, dont le contenu est à découvrir lors de l'ouverture. Aucun achat requis.
-
-La distribution officielle, l'inventaire persistant et le gain unique sont contrôlés par le serveur Floot. Les 49 cartes historiques sont archivées dans les comptes existants. Le dépôt GitHub contient également une démonstration utilisant des données fictives, sans distribution réelle.
-
-
----
-
-# TCG Deseur — Le jeu de collection
-
-Jeu de collection indépendant et non officiel inspiré des apparitions et personnages de Thomas Deseur.
-
-**Application active :** https://budget-illimite-tcg.floot.app  
-**Connexion :** https://budget-illimite-tcg.floot.app/login
-
-## Plateforme de référence
-
-**Le développement actif, les comptes et la collection serveur sont sur Floot.** Le projet à reprendre est `1d1c3807-73a6-49c5-a59e-ec097d8caddf`.
-
-Ce dépôt conserve le catalogue historique, les prototypes, leurs tests et la documentation. **Il ne contient pas encore une sauvegarde du code actuel de Floot.** Aucun export ni mécanisme de synchronisation automatique n'est configuré ici.
-
-| Emplacement | Usage |
-| --- | --- |
-| Application Floot | Jeu actif avec comptes, boosters et collection serveur |
-| Ce dépôt GitHub | Catalogue historique, prototypes et documentation de reprise |
-| GitHub Pages | Démonstration locale historique, indépendante des comptes Floot |
-| `solo/` | Ancien prototype de combat, conservé en archive |
-| `account/` et `supabase/` | Ancienne préparation Supabase, abandonnée ; ne pas l'activer |
-
-Le prototype statique reste accessible à https://cosscoll.github.io/TCG-Thomas-Deseur/. Sa collection locale ne doit jamais être importée comme inventaire officiel.
-
-
-Une [page de démonstration du classeur](floot-collection/demo.html) permet désormais de vérifier les compteurs, les catégories de rareté, les doublons et les filtres avec trois inventaires fictifs (vide, partiel, complet). Elle est **isolée du jeu Floot**, ne se connecte à aucun compte et n'attribue aucune carte. Le [déploiement GitHub Pages du prototype](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946337589) a réussi, mais **l'accès HTTP public de la page n'a pas pu être vérifié indépendamment depuis cet environnement**. URL proposée, non certifiée : https://cosscoll.github.io/TCG-Thomas-Deseur/floot-collection/demo.html
-
-La [suite GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) a validé **80 tests sur 80**, dont sept contrôles statiques destinés à maintenir cette démonstration non connectée. Cet état était historique : les tests Chromium ont ensuite été exécutés (66 parcours réussis le 10 octobre).
-
-**Livraison élargie du 9 octobre :** [six volets fonctionnels préparés](docs/COLLECTION_LIVRAISON_2026-10-09.md) — doubles avancés, 15 objectifs de collection sans récompense, bilan d'un booster confirmé, historique de tirages, cinq vues dans la démo et diagnostic d'inventaire. [120 tests Node réussis sur 120](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37948492892). **État historique du 9 octobre** : les tests ont depuis été exécutés et le classeur a été intégré dans Floot le 10 octobre.
-
-**Validation de la collection (9 octobre, soirée) :** [48 parcours Chromium ordinateur/mobile et 142 tests Node réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37978835656). La démo comporte maintenant une fiche de carte navigable au clavier, des raccourcis par rareté et de possession, un export CSV sécurisé (données **fictives uniquement**), ainsi qu'un contrôle Axe WCAG 2.0/2.1 A/AA sur les vues testées. Voir le [journal de livraison](docs/COLLECTION_LIVRAISON_2026-10-09.md). **Ce n'est pas une publication des nouveaux modules dans Floot.**
-
-**Dernière version Floot :** le bilan de révélation des cinq cartes est également publié, avec **six suites de tests Floot réussies**. [Preuves et limites de validation](docs/FLOOT_INTEGRATION_2026-10-10.md).
-
-**Nouvelles préparations du 10 octobre (GitHub uniquement) :** [simulateur exact de découverte, rangs de collectionneur et révélation 3D](docs/EVOLUTION_COLLECTION_2026-10-10.md). Validation : [155 tests Node et 66 tests navigateur Chromium réussis](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/38076323343). Ces travaux ne sont **pas** publiés dans le jeu Floot et ne modifient aucun compte ni inventaire. La réouverture du quota Floot est annoncée pour le 11 octobre à 09:00 UTC. Les correctifs Floot déjà en attente restent prioritaires.
-
-**Version active du 10 octobre :** les fonctions de classeur auparavant préparées sur GitHub sont désormais **intégrées et publiées directement dans Floot**. [Journal complet de publication et tests](docs/FLOOT_INTEGRATION_2026-10-10.md). Les 49 IDs/raretés historiques ont été comparés à PostgreSQL et concordent exactement. TypeScript propre, cinq suites Jasmine réussies, publication réussie et HTTP public vérifié ; **le parcours authentifié n'est pas encore testé en navigateur**.
-
-## Priorité actuelle : la collection, sans les illustrations
-
-Les visuels des cartes sont toujours en préparation. Le travail de développement est recentré sur **les raretés, les quantités possédées, les doublons, les cartes manquantes, les statistiques de complétion, la recherche et les filtres du classeur**.
-
-Le [modèle de collection indépendant des images](floot-collection/collection-model.mjs) et sa [conception fonctionnelle détaillée](docs/CONCEPTION_COLLECTION_FLOOT.md) sont enregistrés sur GitHub. Les [30 tests du modèle](tests/floot-collection-model.test.mjs) ont été validés dans la [CI GitHub (71/71)](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37945719773). **État historique du 9 octobre** : le classeur a ensuite été intégré et publié dans Floot ; les nouveaux rangs, prévisions et l'animation 3D restent, eux, uniquement sur GitHub.
-
-Les questions de combat, de PvP, de boutique, d'échange ou de génération de visuels restent hors périmètre ; les règles de tirage existantes restent inchangées.
-
-## Périmètre actuel
-
-Le chantier concerne uniquement les comptes joueurs, l'ouverture de boosters et le classeur.
-
-L'application propose des boosters de cinq cartes, cinq raretés, une révélation progressive, un classeur avec filtres et recherche, un historique, la modification du pseudonyme et un export JSON. Le catalogue historique comporte 49 cartes.
-
-La règle affichée est provisoire : **un booster gratuit par compte toutes les 24 heures**, avec une cinquième carte Rare ou supérieure. Le tirage et l'attribution doivent rester côté serveur. Aucun achat, aucune monnaie, aucun combat/PvP et aucune nouvelle illustration ne font partie du chantier actuel.
-
-## État vérifié le 9 octobre 2026
-
-Floot confirme que l'application est publiée. Les pages d'accueil et de connexion répondent HTTP 200. Les API de session, collection, booster et profil rejettent les appels anonymes avec HTTP 401.
-
-**Ces contrôles ne valident pas un parcours joueur connecté**, la séparation de deux comptes, la concurrence des boosters, la délivrabilité des e-mails ou l'ergonomie mobile. Cette limite date de la reprise du 9 octobre : la base et le code serveur ont été relus et vérifiés le 10 octobre, sans accès à des comptes authentifiés de test.
-
-Résultats, blocage, points à corriger et méthode de reprise : [Reprise Floot du 9 octobre](docs/FLOOT_REPRISE_2026-10-09.md).
-
-**Plan d'intervention prêt pour le 10 octobre 2026 :** [consulter les corrections, scénarios de tests et critères de publication](docs/PLAN_REPRISE_2026-10-10.md).
-
-**Recette détaillée Floot :** [matrice des 36 scénarios comptes, boosters, classeur et publication](docs/MATRICE_RECETTE_FLOOT.md). Le workflow [Floot — contrôle public](.github/workflows/floot-public-smoke.yml) utilise les tests séparés dans [`floot-e2e/`](floot-e2e/), sans accès aux comptes réels et sans planification récurrente ; ses tests se déclenchent maintenant lors des modifications de la recette publique (ou manuellement). Organisation du travail demandé en autonomie : [Suivi autonome](docs/FLOOT_SUIVI_AUTONOME.md). La programmation quotidienne « Développement TCG Deseur » a été **désactivée** le 9 octobre 2026 à la demande de l'utilisateur ; « Brief du matin » a été réactivé. Le développement reprend uniquement lors d'une session demandée explicitement, sans tâche récurrente.
-
-## Vérifier la compatibilité des 49 cartes
-
-Le catalogue historique est dans `data/cards.js`. Un comparateur en **lecture seule** permet de vérifier qu'un export non personnel du catalogue Floot contient exactement les **mêmes 49 identifiants et raretés**, sans cartes nouvelles, manquantes ou dupliquées.
-
-```bash
-node scripts/compare_floot_catalogue.mjs chemin/vers/cartes-floot-anonymisees.json
-```
-
-Le fichier JSON attendu est un tableau de lignes `{"id":"matelas","rarity":"commune"}` et doit contenir **uniquement** ces deux champs. Vérifier les noms de colonnes et les valeurs réelles dans Floot avant de produire le fichier ; ne jamais exporter un inventaire ni des informations joueurs.
-
-Le script dispose de **12 tests unitaires**, intégrés à `npm test`. Le workflow [GitHub Actions du 9 octobre](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37943567646) a terminé avec **43 tests réussis et zéro échec**. Le vrai catalogue PostgreSQL n'a pas encore été comparé.
-
-## Vérifier la version publique
-
-Le contrôle ci-dessous utilise uniquement la bibliothèque standard Python. Il teste deux pages et quatre refus d'accès anonymes ; il ne crée pas de compte, n'utilise aucune session et ne demande aucune récupération de mot de passe.
-
-```bash
-python3 scripts/check_floot_public.py
-# Windows : py scripts/check_floot_public.py
-```
-
-Il affiche un résultat JSON et retourne un code non nul si un contrôle échoue. Il n'est pas encore intégré à un workflow planifié.
-
-## Organisation historique du dépôt
-
-```text
-.
-├── index.html                   Prototype statique de collection
-├── styles.css                   Interface du prototype
-├── app.js                       Contrôleur du prototype
-├── data/cards.js                Catalogue historique des 49 cartes
-├── game/                        Moteurs locaux et anciens modules
-├── account/                     Ancienne intégration Supabase, inactive
-├── supabase/                    Migrations historiques, ne pas appliquer
-├── solo/                        Ancien prototype de combat
-├── tests/                       Tests du prototype historique
-├── e2e/                         Tests navigateur du prototype
-├── scripts/check_floot_public.py Contrôle HTTP de l'application Floot
-├── .github/workflows/           Workflows du prototype
-├── docs/                        Documentation et archives
-└── research/                    Recherches et références
-```
-
-Les documents marqués **Archive** décrivent d'anciennes étapes. Leurs instructions Supabase et leurs objectifs de combat ne sont plus le plan de développement.
-
-## Tester le prototype historique
-
-```bash
-python3 -m http.server 8000
-npm test
-npm run balance
-```
-
-Ouvrir http://localhost:8000/. Ces commandes concernent le code historique de ce dépôt, **pas** l'application Floot ni sa base.
-
-## Sauvegarde du code Floot à préparer
-
-Un [vérificateur d'intégrité en lecture seule](scripts/verify_floot_export.py) et sa [procédure détaillée](docs/SAUVEGARDE_CODE_FLOOT.md) sont maintenant disponibles. Ils ont été testés sur des exports fictifs, **pas encore sur les sources Floot réelles**. Les tests d'accessibilité supplémentaires sont dans [`floot-e2e/accessibility.spec.mjs`](floot-e2e/accessibility.spec.mjs).
-
-
-Après récupération de l'accès, exporter les sources réellement présentes dans Floot, avec leurs dépendances et la version du projet. Les conserver dans un emplacement distinct et clairement documenté, sans écraser le catalogue, les prototypes ou l'historique Git.
-
-Vérifier ensuite les sources exportées et leur correspondance au déploiement. Une sauvegarde du code ne remplace pas une sauvegarde PostgreSQL. Ne pas annoncer une synchronisation effectuée tant que l'export et sa vérification n'ont pas eu lieu.
+Aucun achat ni paiement n'est nécessaire. Le projet est une création indépendante. Les détails des récompenses confidentielles et les données personnelles des joueurs ne doivent pas être publiés sur ce dépôt.
