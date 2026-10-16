@@ -7,7 +7,7 @@ import {createGiftCode} from '../endpoints/gift_create_POST.schema';
 import {redeemGiftCode} from '../endpoints/gift_redeem_POST.schema';
 import type {GiftReward} from '../helpers/tcgGiftCodes';
 import styles from './TcgGiftCodes.module.css';
-type Art={id:string;name:string;alternative:boolean;parentId:string|null};
+type Art={id:string;name:string;numericReference:string;alternative:boolean;parentId:string|null};
 type Props={logged:boolean;isAdmin:boolean;cards:Art[]};
 export function TcgGiftCodes({logged,isAdmin,cards}:Props){
  const qc=useQueryClient();
@@ -23,6 +23,7 @@ export function TcgGiftCodes({logged,isAdmin,cards}:Props){
    const reward=await redeemGiftCode(code);
    setCode('');setResult(reward.message+' '+reward.packs+' booster(s) et '+reward.cards.length+' type(s) de carte(s).');
    await qc.invalidateQueries({queryKey:['tcg-collection']});
+   await qc.invalidateQueries({queryKey:['tcg-leaderboard']});
   }catch(err){setError(err instanceof Error?err.message:'Code indisponible.');}
   finally{setLoading(false);}
  }
@@ -31,12 +32,12 @@ export function TcgGiftCodes({logged,isAdmin,cards}:Props){
   if(!Number.isInteger(draftQty)||draftQty<1||draftQty>1000){setCreateError('Quantité comprise entre 1 et 1 000.');return;}
   let reward:GiftReward;
   if(draftType==='card'){
-   const artId=draftArt||cards[0]?.id;
-   if(!cards.some(c=>c.id===artId)){setCreateError('Sélectionne une carte.');return;}
+   const artId=draftArt||cards[0]?.numericReference;
+   if(!cards.some(c=>c.numericReference===artId||c.id===artId)){setCreateError('Sélectionne une carte.');return;}
    reward={type:'card',artworkId:artId,quantity:draftQty};
   }else if(draftType==='custom'){
    const ids=customCards.split(/[,;\s]+/).map(s=>s.trim()).filter(Boolean);
-   if(ids.length!==5||ids.some(id=>!cards.some(c=>c.id===id))){setCreateError('Indique exactement cinq références officielles.');return;}
+   if(ids.length!==5||ids.some(id=>!cards.some(c=>c.numericReference===id||c.id===id))){setCreateError('Indique exactement cinq références officielles.');return;}
    reward={type:'packs',kind:'custom',quantity:draftQty,rules:{fixedArtworkIds:ids}};
   }else if(draftType==='special'){
    reward={type:'packs',kind:'special',quantity:draftQty,rules:{rarityFloor:draftRarity as 'rare'}};
@@ -54,7 +55,7 @@ export function TcgGiftCodes({logged,isAdmin,cards}:Props){
   finally{setCreating(false);}
  }
  const showReward=(r:GiftReward)=>r.type==='card'
-  ?r.quantity+' × '+(cards.find(c=>c.id===r.artworkId)?.name||r.artworkId)
+  ?r.quantity+' × '+(cards.find(c=>c.id===r.artworkId||c.numericReference===r.artworkId)?.name||r.artworkId)
   :r.quantity+' booster(s) '+(r.kind==='normal'?'classique(s)':r.kind==='special'?'spécial(aux)':'personnalisé(s)');
  return <section className={styles.section} id="codes">
   <h2>Codes cadeaux</h2>
@@ -89,12 +90,12 @@ export function TcgGiftCodes({logged,isAdmin,cards}:Props){
      <Select value={draftRarity} onValueChange={setDraftRarity}><SelectTrigger><SelectValue/></SelectTrigger><SelectContent>
       {['rare','epique','legendaire','hors_serie'].map(r=><SelectItem value={r} key={r}>{r}</SelectItem>)}
      </SelectContent></Select></label>}
-    {draftType==='card'&&<label className={styles.wide}>Carte officielle
-     <Select value={draftArt||cards[0]?.id||''} onValueChange={setDraftArt}><SelectTrigger><SelectValue placeholder="Choisir une carte"/></SelectTrigger>
-      <SelectContent>{cards.map(c=><SelectItem key={c.id} value={c.id}>{c.id} — {c.name}{c.alternative?' (alternative)':''}</SelectItem>)}</SelectContent>
+    {draftType==='card'&&<label className={styles.wide}>Carte officielle — référence unique à 8 chiffres
+     <Select value={draftArt||cards[0]?.numericReference||''} onValueChange={setDraftArt}><SelectTrigger><SelectValue placeholder="Choisir une carte"/></SelectTrigger>
+      <SelectContent>{cards.map(c=><SelectItem key={c.id} value={c.numericReference}>{c.numericReference} — {c.name}{c.alternative?' (alternative)':''}</SelectItem>)}</SelectContent>
      </Select></label>}
-    {draftType==='custom'&&<label className={styles.wide}>Cinq références de cartes, séparées par des virgules
-     <Input value={customCards} placeholder="COST-001, COST-002, COST-003, COST-004, COST-005" onChange={e=>setCustomCards(e.target.value)}/>
+    {draftType==='custom'&&<label className={styles.wide}>Cinq références numériques de 8 chiffres, séparées par des virgules
+     <Input value={customCards} placeholder="87763625, 77763387, 73820321, 87763625, 77763387" onChange={e=>setCustomCards(e.target.value)}/>
      <small>Les alternatives exigent la carte de base déjà obtenue avant l'ouverture.</small>
     </label>}
     <Button type="button" variant="outline" onClick={addReward} disabled={rewards.length>=12}>Ajouter cette récompense</Button>

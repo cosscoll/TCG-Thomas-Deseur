@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../components/Dialog";
 import { TcgBinder } from "../components/TcgBinder";
 import { TcgGiftCodes } from "../components/TcgGiftCodes";
+import { TcgLeaderboard } from "../components/TcgLeaderboard";
 import { serializeCollectionExport } from "../helpers/tcgCollectionExport";
 import styles from "./_index.module.css";
 
@@ -76,6 +77,7 @@ export default function Home() {
     },
     onSettled: () => {
       qc.invalidateQueries({ queryKey: ["tcg-collection"] });
+      qc.invalidateQueries({ queryKey: ["tcg-leaderboard"] });
       setNow(Date.now());
     },
   });
@@ -105,6 +107,7 @@ export default function Home() {
       onLogin({ ...authState.user, displayName: result.displayName });
       setEditingProfile(false);
       setProfileNotice("Ton pseudo a été enregistré.");
+      qc.invalidateQueries({ queryKey: ["tcg-leaderboard"] });
     },
   });
   useEffect(() => {
@@ -259,6 +262,8 @@ export default function Home() {
           {logged && collection.isLoading && <div className={styles.empty}>Chargement du classeur…</div>}
           {logged && collection.isError && <div className={styles.empty} role="alert"><p>Ton classeur n'a pas pu être chargé.</p><Button onClick={() => collection.refetch()}>Réessayer</Button></div>}
         </section>
+
+        <TcgLeaderboard />
 
         <section id="profile" className={styles.account}>
           <div><p className={styles.kicker}>03 / ESPACE JOUEUR</p><h2>Un compte, une collection.</h2><p>Retrouve ta progression sur plusieurs appareils, sans sauvegarde locale fragile.</p></div>
