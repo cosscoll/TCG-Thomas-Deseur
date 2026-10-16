@@ -19,10 +19,11 @@
   *{box-sizing:border-box}
   body{margin:0;background:radial-gradient(ellipse 80% 80% at 70% 20%,#382b53,#141020 65%,#100d19);color:#fbf5fa;min-height:100vh}
   header,main,footer{width:min(1060px,calc(100% - 36px));margin:auto}
-  header{padding:24px 0;display:flex;gap:20px;align-items:center;justify-content:space-between;border-bottom:1px solid #675575}
+  header{padding:14px 0;display:flex;align-items:center;justify-content:flex-end;min-height:68px}
   a{color:#f9da9d}
-  header .brand{text-decoration:none;color:#f7dfa4;font-size:1.15rem;font-weight:900;letter-spacing:.13em}
-  header nav{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem}
+  header .auth-link{display:inline-flex;justify-content:center;align-items:center;min-height:43px;padding:11px 20px;border-radius:10px;background:#f3cc8a;color:#241a30;text-decoration:none;font-weight:800;white-space:nowrap;transition:background .2s ease,transform .2s ease}
+  header .auth-link:hover{background:#ffe1a9;transform:translateY(-1px)}
+  header .auth-link:focus-visible{outline:3px solid #fff;outline-offset:4px}
   main{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.7fr);gap:45px;align-items:center;padding:90px 0 100px}
   .eyebrow{font-weight:800;color:#f9da9d;letter-spacing:.2em;font-size:.77rem}
   h1{font-size:clamp(2.9rem,5.5vw,5.3rem);letter-spacing:-.06em;line-height:1.06;margin:18px 0 24px}
@@ -35,19 +36,13 @@
   .art strong{font-size:2.2rem;letter-spacing:.1em;color:#f8dba9}.art span{font-size:.83rem;letter-spacing:.15em}
   .info{border-left:3px solid #f3cc8a;padding-left:13px;font-size:.91rem;margin-top:34px}
   footer{padding:23px 0;border-top:1px solid #675575;color:#c8bbd2;font-size:.79rem}
-  @media(max-width:680px){main{grid-template-columns:minmax(0,1fr);padding:55px 0 70px;gap:42px}.art{width:210px;transform:rotate(5deg)}header{align-items:flex-start;flex-direction:column}}
+  @media(max-width:680px){main{grid-template-columns:minmax(0,1fr);padding:55px 0 70px;gap:42px}.art{width:210px;transform:rotate(5deg)}header{min-height:62px;padding:10px 0}.auth-link{font-size:.9rem}}
   @media(prefers-reduced-motion:reduce){.art{transform:none}}
   </style>
 </head>
 <body>
   <header>
-    <a class="brand" href="./">TCG DESEUR</a>
-    <nav aria-label="Navigation principale">
-      <a href="./collection-validee/">Collection · 105 illustrations</a>
-      <a href="./verification-photos/">Références photo</a><a href="./planches/">Planches imprimables</a><a href="./kit-visuels/">Créer un visuel</a><a href="./avancement/">Avancement</a><a href="./audit-visuels/">Atelier des 105 images</a>
-      <a href="./tri-177/">177 photos du ZIP</a>
-      <a href="https://budget-illimite-tcg.floot.app/login">Connexion</a>
-    </nav>
+    <a class="auth-link" href="https://budget-illimite-tcg.floot.app/login">Connexion / Créer un compte</a>
   </header>
   <main>
     <section>
