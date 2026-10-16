@@ -19,7 +19,7 @@
   *{box-sizing:border-box}
   body{margin:0;background:radial-gradient(ellipse 80% 80% at 70% 20%,#382b53,#141020 65%,#100d19);color:#fbf5fa;min-height:100vh}
   header,main,footer{width:min(1060px,calc(100% - 36px));margin:auto}
-  header{padding:14px 0;display:flex;align-items:center;justify-content:flex-end;min-height:68px}
+  header{padding:14px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px}
   a{color:#f9da9d}
   header .auth-link{display:inline-flex;justify-content:center;align-items:center;min-height:43px;padding:11px 20px;border-radius:10px;background:#f3cc8a;color:#241a30;text-decoration:none;font-weight:800;white-space:nowrap;transition:background .2s ease,transform .2s ease}
   header .auth-link:hover{background:#ffe1a9;transform:translateY(-1px)}
@@ -42,6 +42,7 @@
 </head>
 <body>
   <header>
+    <a class="action" href="https://cosscoll.github.io/Avancement-Projet/#/tcg/overview" style="font-size:.9rem;min-height:43px;padding:10px 13px" aria-label="Suivre l’avancement du projet TCG">Avancement ↗</a>
     <a class="auth-link" href="https://budget-illimite-tcg.floot.app/login">Connexion / Créer un compte</a>
   </header>
   <main>
