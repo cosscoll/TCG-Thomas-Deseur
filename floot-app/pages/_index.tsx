@@ -168,6 +168,7 @@ export default function Home() {
         <nav aria-label="Navigation principale">
           <a href="#booster">Boosters</a>
           <a href="#collection">Classeur</a>
+          <a href="#classement">Classement</a>
           <a href="#profile">Compte</a>
         </nav>
         {logged
