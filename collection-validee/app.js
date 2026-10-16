@@ -50,8 +50,8 @@ const originalArtSrc=id=>{
  return pair?'../collection-161/assets/cards/'+encodeURIComponent(pair.illustration):null;
 };
 let approved=[];
-const publicCardTotal=68;
-const mysterySearchTerms=['carte mystère','carte mystere','mystère','mystere','68'];
+const publicCardTotal=105;
+const officialSlots=new Map();
 const rarityOrder=Object.freeze(['Commune','Rare','Épique','Légendaire','Hors-série']);
 const expectedRarityCounts=Object.freeze({'Commune':33,'Rare':21,'Épique':8,'Légendaire':4,'Hors-série':1});
 function renderRaritySummary(){
@@ -131,28 +131,13 @@ function image(id,name,variant=false,eager=false){
  frame.append(img);
  return frame;
 }
-function mysteryCardView(){
- const box=make('article','card mystery-card');
- box.dataset.mystery='true';
- const frame=make('div','image-frame mystery-image');
- const silhouette=make('div','mystery-illustration');
- silhouette.setAttribute('aria-hidden','true');
- silhouette.append(make('span','mystery-glyph','?'));
- frame.append(silhouette);
- const caption=make('div','card-top');
- caption.append(make('span','card-reference','68 / 68'),make('span','mystery-label','À découvrir'));
- const label=make('div','card-label');
- label.append(make('h3','','Carte mystère'),make('p','mystery-description','???'));
- box.append(frame,caption,label);
- return box;
-}
 function cardView(card,index=0){
  const box=make('article','card');
  box.dataset.group=card.group;
  box.dataset.rarity=card.rarity;
  const frame=image(card.primary,card.name,false,index<8);
  const caption=make('div','card-top');
- caption.append(make('span','card-reference',card.group));
+ caption.append(make('span','card-reference',String(officialSlots.get(card.primary)||'?').padStart(3,'0')+' / 105 · '+card.group));
  caption.append(make('span','rarity-badge rarity-'+rarityOrder.indexOf(card.rarity),card.rarity));
  const variantTotal=card.alternatives.length+(card.shiny?1:0);
  caption.append(make('span','variant-badge',variantTotal===0?'Version unique':variantTotal+' variante'+(variantTotal>1?'s':'')));
@@ -163,20 +148,22 @@ function cardView(card,index=0){
  const original=originLink(card.primary);
  if(original)label.append(original);
  box.append(frame,caption,label);
- if(card.alternatives.length){
-  const variants=make('div','card-variants');
-  variants.append(make('h4','','Variantes ('+card.alternatives.length+')'));
-  const thumbs=make('div','thumbs');
-  for(const [i,ref] of card.alternatives.entries()){
-   const small=make('div','variant-item');
-   small.append(image(ref,card.name+' — variante '+(i+1),true),make('small','',ref));
-   const photo=byId.get(ref);
-   if(photo)small.append(make('small','photo-ref',photo.sourceReference));
-   thumbs.append(small);
-  }
-  variants.append(thumbs);box.append(variants);
- }
- if(card.shiny)box.append(make('p','shiny-note','Version Shiny prévue : illustration spécifique non produite.'));
+
+ return box;
+}
+function alternativeCardView(card,ref,index){
+ const box=make('article','card alternative-slot');
+ box.dataset.group=card.group;box.dataset.rarity=card.rarity;box.dataset.alternative='true';
+ box.append(image(ref,card.name+' — alternative '+(index+1),false));
+ const caption=make('div','card-top');
+ caption.append(make('span','card-reference',String(officialSlots.get(ref)||'?').padStart(3,'0')+' / 105 · '+card.group));
+ caption.append(make('span','variant-badge','Illustration alternative'));
+ const label=make('div','card-label');
+ label.append(make('h3','',card.name+' — alternative '+(index+1)));
+ label.append(make('small','',ref+' · Reliée à la carte de base '+card.primary));
+ const orig=originLink(ref);
+ if(orig)label.append(orig);
+ box.append(caption,label);
  return box;
 }
 function render(){
@@ -196,14 +183,14 @@ function render(){
  if(sort==='name')rows.sort((a,b)=>a.name.localeCompare(b.name,'fr'));
  else if(sort==='rarity')rows.sort((a,b)=>rarityOrder.indexOf(a.rarity)-rarityOrder.indexOf(b.rarity)||a.name.localeCompare(b.name,'fr'));
  else if(sort==='variants')rows.sort((a,b)=>b.alternatives.length-a.alternatives.length||a.name.localeCompare(b.name,'fr'));
- const mysteryVisible=(rarity==='all'||rarity==='mystere')&&mode==='all'&&origin==='all'
-  && (!search||mysterySearchTerms.some(term=>term.includes(search)));
  const fragment=document.createDocumentFragment();
- for(const [index,entry] of rows.entries())fragment.append(cardView(entry,index));
- if(mysteryVisible)fragment.append(mysteryCardView());
+ for(const [index,entry] of rows.entries()){
+  fragment.append(cardView(entry,index));
+  for(const [variantIndex,ref] of entry.alternatives.entries())fragment.append(alternativeCardView(entry,ref,variantIndex));
+ }
  $('cards').replaceChildren(fragment);
- const displayed=rows.length+(mysteryVisible?1:0);
- $('count').textContent=displayed+' / '+publicCardTotal+' cartes affichées';
+ const displayed=rows.reduce((n,c)=>n+1+c.alternatives.length,0);
+ $('count').textContent=displayed+' / '+publicCardTotal+' illustrations affichées';
  $('empty').hidden=displayed>0;
 }
 async function initialize(){
@@ -235,6 +222,12 @@ async function initialize(){
   const counts=Object.fromEntries(rarityOrder.map(name=>[name,approved.filter(c=>c.rarity===name).length]));
   if(Object.entries(expectedRarityCounts).some(([name,qty])=>counts[name]!==qty))
    throw Error('Répartition de raretés inattendue.');
+  let slot=0;
+  for(const card of approved){
+   officialSlots.set(card.primary,++slot);
+   for(const ref of card.alternatives)officialSlots.set(ref,++slot);
+  }
+  if(slot!==105||officialSlots.size!==105)throw Error('Le catalogue doit contenir 105 illustrations distinctes.');
   renderRaritySummary();
   $('total').textContent=publicCardTotal;
   $('variants').textContent=approved.reduce((sum,c)=>sum+c.alternatives.length,0);
