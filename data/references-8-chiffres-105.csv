@@ -1,0 +1,106 @@
+position;reference_8_chiffres;type;nom;identifiant_interne;carte_base
+1;87763625;principale;Thomas d'honneur;COST-001;COST-001
+2;94552394;alternative;Thomas d'honneur;td_2_043;COST-001
+3;77763387;principale;Sophie Deseur;COST-002;COST-002
+4;70621101;alternative;Sophie Deseur;td_3_005;COST-002
+5;73820321;principale;Picasso Deseur;COST-003;COST-003
+6;53519644;alternative;Picasso Deseur;td_2_042;COST-003
+7;17650322;alternative;Picasso Deseur;td_3_042;COST-003
+8;33047543;principale;Roucoul Deseur;COST-004;COST-004
+9;58712719;principale;Thomas flingueur;COST-005;COST-005
+10;84105540;alternative;Thomas flingueur;td_2_003;COST-005
+11;23201686;principale;Thomas baseball;COST-006;COST-006
+12;19523270;alternative;Thomas baseball;td_3_011;COST-006
+13;17569484;principale;Pieuvre Deseur;COST-007;COST-007
+14;37610880;alternative;Pieuvre Deseur;td_2_005;COST-007
+15;72143523;principale;Thomas Tacos;COST-008;COST-008
+16;11142126;alternative;Thomas Tacos;td_3_023;COST-008
+17;57985796;principale;Capitaine Deseur;COST-009;COST-009
+18;30354301;alternative;Capitaine Deseur;td_3_024;COST-009
+19;18737215;principale;Criminel Deseur;COST-010;COST-010
+20;62784609;alternative;Criminel Deseur;td_2_001;COST-010
+21;74785833;principale;Thomas des neiges;COST-011;COST-011
+22;39071224;principale;Flibus le pingouin alcoolique;COST-012;COST-012
+23;65919247;alternative;Flibus le pingouin alcoolique;td_3_010;COST-012
+24;43851732;principale;Glacier Deseur;COST-013;COST-013
+25;90753502;principale;Poisson thomas;COST-014;COST-014
+26;78612686;principale;Nemo Deseur;COST-015;COST-015
+27;11127071;alternative;Nemo Deseur;td_3_033;COST-015
+28;32616174;principale;Thomas des glaces;COST-016;COST-016
+29;15860675;principale;Thomas des froids;COST-017;COST-017
+30;12338189;principale;Thomas le colon;COST-018;COST-018
+31;18095343;principale;Thomas des bois;COST-019;COST-019
+32;93083711;principale;Écureuil Deseur;COST-020;COST-020
+33;15478921;principale;Thomas l'abeille;COST-021;COST-021
+34;99967600;alternative;Thomas l'abeille;td_3_016;COST-021
+35;37457036;principale;Thomas la proie;COST-022;COST-022
+36;67884694;alternative;Thomas la proie;td_3_015;COST-022
+37;38459212;principale;Thomas lézard;COST-023;COST-023
+38;65123797;alternative;Thomas lézard;td_3_022;COST-023
+39;74810620;principale;Adjudant chef Deseur;COST-024;COST-024
+40;14721970;alternative;Adjudant chef Deseur;td_3_037;COST-024
+41;23066987;principale;Thomas pied carré;COST-025;COST-025
+42;75512289;alternative;Thomas pied carré;td_3_032;COST-025
+43;79596977;principale;Thomas d'un soir;COST-026;COST-026
+44;75419868;principale;L'étalon Deseur;COST-027;COST-027
+45;65859982;alternative;L'étalon Deseur;td_2_024;COST-027
+46;66927177;principale;Thomas la trompe;COST-028;COST-028
+47;42287477;alternative;Thomas la trompe;td_3_035;COST-028
+48;48435901;principale;Thomas qui griffe;COST-029;COST-029
+49;23550771;alternative;Thomas qui griffe;td_3_040;COST-029
+50;68211402;principale;Thomas doseur;COST-030;COST-030
+51;22521485;alternative;Thomas doseur;td_3_039;COST-030
+52;43656600;principale;Thomas rouleau laveur;COST-031;COST-031
+53;58137889;alternative;Thomas rouleau laveur;td_1_030;COST-031
+54;53432249;principale;Thomas facteur;COST-032;COST-032
+55;24291029;alternative;Thomas facteur;td_2_025;COST-032
+56;13766309;principale;Thomas among us;COST-033;COST-033
+57;23325686;principale;Thomas La Fleur;COST-034;COST-034
+58;94074221;alternative;Thomas La Fleur;td_2_044;COST-034
+59;65136804;principale;Thomas génie;COST-035;COST-035
+60;12724653;principale;Lego Deseur;COST-036;COST-036
+61;46883375;alternative;Lego Deseur;td_2_027;COST-036
+62;43301829;principale;Thomas brushing;COST-037;COST-037
+63;69343173;alternative;Thomas brushing;td_3_029;COST-037
+64;56176105;principale;Papy Deseur;COST-038;COST-038
+65;25091704;principale;Thomas hydroalcoolique;COST-039;COST-039
+66;46582442;alternative;Thomas hydroalcoolique;td_3_009;COST-039
+67;60914337;principale;VLC Deseur;COST-040;COST-040
+68;18633402;alternative;VLC Deseur;td_3_041;COST-040
+69;10085865;principale;Thomas squelette;COST-041;COST-041
+70;79376836;principale;Barbie Deseur;COST-042;COST-042
+71;57767710;alternative;Barbie Deseur;td_1_043;COST-042
+72;76612529;principale;Thomas caméléon;COST-043;COST-043
+73;55233499;principale;Thomas perd la tête;COST-044;COST-044
+74;45212043;alternative;Thomas perd la tête;td_3_025;COST-044
+75;42709852;principale;Thomas Kinder;COST-045;COST-045
+76;94353917;principale;Thomas la pince;COST-046;COST-046
+77;46614211;principale;Thomas Charmeur de serpent;COST-047;COST-047
+78;26695261;alternative;Thomas Charmeur de serpent;td_3_014;COST-047
+79;66689989;principale;Thomas prend son bain;COST-049;COST-049
+80;54217700;principale;Caporal chef Deseur;COST-050;COST-050
+81;19581675;principale;Thomas nugget;COST-051;COST-051
+82;34085852;principale;Thomas chino;COST-052;COST-052
+83;13681753;principale;Thomas micro-onde;COST-053;COST-053
+84;52248155;principale;Gulli-viande;COST-054;COST-054
+85;82621302;alternative;Gulli-viande;td_2_065;COST-054
+86;63134677;principale;Thomas-terrazi;COST-055;COST-055
+87;39469265;principale;Haricot Deseur;COST-056;COST-056
+88;47124866;alternative;Haricot Deseur;td_2_058;COST-056
+89;17164739;principale;Thomas x4;COST-057;COST-057
+90;36511096;alternative;Thomas x4;td_2_057;COST-057
+91;50773067;principale;Thomas-kita;COST-058;COST-058
+92;87977379;principale;Thomas kiri;COST-059;COST-059
+93;17598650;principale;1000 couches de Thomas;COST-060;COST-060
+94;63352058;principale;Thomas 3 points;COST-061;COST-061
+95;18010222;alternative;Thomas 3 points;td_2_052;COST-061
+96;54116746;principale;Thomas raclette;COST-062;COST-062
+97;52610550;alternative;Thomas raclette;td_2_050;COST-062
+98;80759123;principale;Thomas ta soeur;COST-064;COST-064
+99;93282558;alternative;Thomas ta soeur;td_2_056;COST-064
+100;70490171;principale;Thomas-couteur;COST-065;COST-065
+101;11405936;principale;Thomas-gen de police;COST-066;COST-066
+102;87940556;alternative;Thomas-gen de police;td_2_053;COST-066
+103;58529212;principale;Thomas démission;COST-067;COST-067
+104;11687638;principale;Thomas chic et choc;COST-068;COST-068
+105;22309433;principale;Thomas huîtres;COST-070;COST-070

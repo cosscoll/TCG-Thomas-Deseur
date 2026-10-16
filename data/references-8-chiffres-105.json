@@ -1,0 +1,847 @@
+{
+  "schema": "tcg-deseur-artwork-references-v1",
+  "description": "References publiques 8 chiffres (67 bases + 38 alternatives); sans identite de recompense confidentielle.",
+  "total": 105,
+  "artworks": [
+    {
+      "artworkId": "COST-001",
+      "cardId": "COST-001",
+      "name": "Thomas d'honneur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "87763625"
+    },
+    {
+      "artworkId": "td_2_043",
+      "cardId": "COST-001",
+      "name": "Thomas d'honneur",
+      "alternative": true,
+      "parentId": "COST-001",
+      "numericReference": "94552394"
+    },
+    {
+      "artworkId": "COST-002",
+      "cardId": "COST-002",
+      "name": "Sophie Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "77763387"
+    },
+    {
+      "artworkId": "td_3_005",
+      "cardId": "COST-002",
+      "name": "Sophie Deseur",
+      "alternative": true,
+      "parentId": "COST-002",
+      "numericReference": "70621101"
+    },
+    {
+      "artworkId": "COST-003",
+      "cardId": "COST-003",
+      "name": "Picasso Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "73820321"
+    },
+    {
+      "artworkId": "td_2_042",
+      "cardId": "COST-003",
+      "name": "Picasso Deseur",
+      "alternative": true,
+      "parentId": "COST-003",
+      "numericReference": "53519644"
+    },
+    {
+      "artworkId": "td_3_042",
+      "cardId": "COST-003",
+      "name": "Picasso Deseur",
+      "alternative": true,
+      "parentId": "COST-003",
+      "numericReference": "17650322"
+    },
+    {
+      "artworkId": "COST-004",
+      "cardId": "COST-004",
+      "name": "Roucoul Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "33047543"
+    },
+    {
+      "artworkId": "COST-005",
+      "cardId": "COST-005",
+      "name": "Thomas flingueur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "58712719"
+    },
+    {
+      "artworkId": "td_2_003",
+      "cardId": "COST-005",
+      "name": "Thomas flingueur",
+      "alternative": true,
+      "parentId": "COST-005",
+      "numericReference": "84105540"
+    },
+    {
+      "artworkId": "COST-006",
+      "cardId": "COST-006",
+      "name": "Thomas baseball",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "23201686"
+    },
+    {
+      "artworkId": "td_3_011",
+      "cardId": "COST-006",
+      "name": "Thomas baseball",
+      "alternative": true,
+      "parentId": "COST-006",
+      "numericReference": "19523270"
+    },
+    {
+      "artworkId": "COST-007",
+      "cardId": "COST-007",
+      "name": "Pieuvre Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "17569484"
+    },
+    {
+      "artworkId": "td_2_005",
+      "cardId": "COST-007",
+      "name": "Pieuvre Deseur",
+      "alternative": true,
+      "parentId": "COST-007",
+      "numericReference": "37610880"
+    },
+    {
+      "artworkId": "COST-008",
+      "cardId": "COST-008",
+      "name": "Thomas Tacos",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "72143523"
+    },
+    {
+      "artworkId": "td_3_023",
+      "cardId": "COST-008",
+      "name": "Thomas Tacos",
+      "alternative": true,
+      "parentId": "COST-008",
+      "numericReference": "11142126"
+    },
+    {
+      "artworkId": "COST-009",
+      "cardId": "COST-009",
+      "name": "Capitaine Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "57985796"
+    },
+    {
+      "artworkId": "td_3_024",
+      "cardId": "COST-009",
+      "name": "Capitaine Deseur",
+      "alternative": true,
+      "parentId": "COST-009",
+      "numericReference": "30354301"
+    },
+    {
+      "artworkId": "COST-010",
+      "cardId": "COST-010",
+      "name": "Criminel Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "18737215"
+    },
+    {
+      "artworkId": "td_2_001",
+      "cardId": "COST-010",
+      "name": "Criminel Deseur",
+      "alternative": true,
+      "parentId": "COST-010",
+      "numericReference": "62784609"
+    },
+    {
+      "artworkId": "COST-011",
+      "cardId": "COST-011",
+      "name": "Thomas des neiges",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "74785833"
+    },
+    {
+      "artworkId": "COST-012",
+      "cardId": "COST-012",
+      "name": "Flibus le pingouin alcoolique",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "39071224"
+    },
+    {
+      "artworkId": "td_3_010",
+      "cardId": "COST-012",
+      "name": "Flibus le pingouin alcoolique",
+      "alternative": true,
+      "parentId": "COST-012",
+      "numericReference": "65919247"
+    },
+    {
+      "artworkId": "COST-013",
+      "cardId": "COST-013",
+      "name": "Glacier Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "43851732"
+    },
+    {
+      "artworkId": "COST-014",
+      "cardId": "COST-014",
+      "name": "Poisson thomas",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "90753502"
+    },
+    {
+      "artworkId": "COST-015",
+      "cardId": "COST-015",
+      "name": "Nemo Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "78612686"
+    },
+    {
+      "artworkId": "td_3_033",
+      "cardId": "COST-015",
+      "name": "Nemo Deseur",
+      "alternative": true,
+      "parentId": "COST-015",
+      "numericReference": "11127071"
+    },
+    {
+      "artworkId": "COST-016",
+      "cardId": "COST-016",
+      "name": "Thomas des glaces",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "32616174"
+    },
+    {
+      "artworkId": "COST-017",
+      "cardId": "COST-017",
+      "name": "Thomas des froids",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "15860675"
+    },
+    {
+      "artworkId": "COST-018",
+      "cardId": "COST-018",
+      "name": "Thomas le colon",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "12338189"
+    },
+    {
+      "artworkId": "COST-019",
+      "cardId": "COST-019",
+      "name": "Thomas des bois",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "18095343"
+    },
+    {
+      "artworkId": "COST-020",
+      "cardId": "COST-020",
+      "name": "Écureuil Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "93083711"
+    },
+    {
+      "artworkId": "COST-021",
+      "cardId": "COST-021",
+      "name": "Thomas l'abeille",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "15478921"
+    },
+    {
+      "artworkId": "td_3_016",
+      "cardId": "COST-021",
+      "name": "Thomas l'abeille",
+      "alternative": true,
+      "parentId": "COST-021",
+      "numericReference": "99967600"
+    },
+    {
+      "artworkId": "COST-022",
+      "cardId": "COST-022",
+      "name": "Thomas la proie",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "37457036"
+    },
+    {
+      "artworkId": "td_3_015",
+      "cardId": "COST-022",
+      "name": "Thomas la proie",
+      "alternative": true,
+      "parentId": "COST-022",
+      "numericReference": "67884694"
+    },
+    {
+      "artworkId": "COST-023",
+      "cardId": "COST-023",
+      "name": "Thomas lézard",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "38459212"
+    },
+    {
+      "artworkId": "td_3_022",
+      "cardId": "COST-023",
+      "name": "Thomas lézard",
+      "alternative": true,
+      "parentId": "COST-023",
+      "numericReference": "65123797"
+    },
+    {
+      "artworkId": "COST-024",
+      "cardId": "COST-024",
+      "name": "Adjudant chef Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "74810620"
+    },
+    {
+      "artworkId": "td_3_037",
+      "cardId": "COST-024",
+      "name": "Adjudant chef Deseur",
+      "alternative": true,
+      "parentId": "COST-024",
+      "numericReference": "14721970"
+    },
+    {
+      "artworkId": "COST-025",
+      "cardId": "COST-025",
+      "name": "Thomas pied carré",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "23066987"
+    },
+    {
+      "artworkId": "td_3_032",
+      "cardId": "COST-025",
+      "name": "Thomas pied carré",
+      "alternative": true,
+      "parentId": "COST-025",
+      "numericReference": "75512289"
+    },
+    {
+      "artworkId": "COST-026",
+      "cardId": "COST-026",
+      "name": "Thomas d'un soir",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "79596977"
+    },
+    {
+      "artworkId": "COST-027",
+      "cardId": "COST-027",
+      "name": "L'étalon Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "75419868"
+    },
+    {
+      "artworkId": "td_2_024",
+      "cardId": "COST-027",
+      "name": "L'étalon Deseur",
+      "alternative": true,
+      "parentId": "COST-027",
+      "numericReference": "65859982"
+    },
+    {
+      "artworkId": "COST-028",
+      "cardId": "COST-028",
+      "name": "Thomas la trompe",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "66927177"
+    },
+    {
+      "artworkId": "td_3_035",
+      "cardId": "COST-028",
+      "name": "Thomas la trompe",
+      "alternative": true,
+      "parentId": "COST-028",
+      "numericReference": "42287477"
+    },
+    {
+      "artworkId": "COST-029",
+      "cardId": "COST-029",
+      "name": "Thomas qui griffe",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "48435901"
+    },
+    {
+      "artworkId": "td_3_040",
+      "cardId": "COST-029",
+      "name": "Thomas qui griffe",
+      "alternative": true,
+      "parentId": "COST-029",
+      "numericReference": "23550771"
+    },
+    {
+      "artworkId": "COST-030",
+      "cardId": "COST-030",
+      "name": "Thomas doseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "68211402"
+    },
+    {
+      "artworkId": "td_3_039",
+      "cardId": "COST-030",
+      "name": "Thomas doseur",
+      "alternative": true,
+      "parentId": "COST-030",
+      "numericReference": "22521485"
+    },
+    {
+      "artworkId": "COST-031",
+      "cardId": "COST-031",
+      "name": "Thomas rouleau laveur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "43656600"
+    },
+    {
+      "artworkId": "td_1_030",
+      "cardId": "COST-031",
+      "name": "Thomas rouleau laveur",
+      "alternative": true,
+      "parentId": "COST-031",
+      "numericReference": "58137889"
+    },
+    {
+      "artworkId": "COST-032",
+      "cardId": "COST-032",
+      "name": "Thomas facteur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "53432249"
+    },
+    {
+      "artworkId": "td_2_025",
+      "cardId": "COST-032",
+      "name": "Thomas facteur",
+      "alternative": true,
+      "parentId": "COST-032",
+      "numericReference": "24291029"
+    },
+    {
+      "artworkId": "COST-033",
+      "cardId": "COST-033",
+      "name": "Thomas among us",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "13766309"
+    },
+    {
+      "artworkId": "COST-034",
+      "cardId": "COST-034",
+      "name": "Thomas La Fleur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "23325686"
+    },
+    {
+      "artworkId": "td_2_044",
+      "cardId": "COST-034",
+      "name": "Thomas La Fleur",
+      "alternative": true,
+      "parentId": "COST-034",
+      "numericReference": "94074221"
+    },
+    {
+      "artworkId": "COST-035",
+      "cardId": "COST-035",
+      "name": "Thomas génie",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "65136804"
+    },
+    {
+      "artworkId": "COST-036",
+      "cardId": "COST-036",
+      "name": "Lego Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "12724653"
+    },
+    {
+      "artworkId": "td_2_027",
+      "cardId": "COST-036",
+      "name": "Lego Deseur",
+      "alternative": true,
+      "parentId": "COST-036",
+      "numericReference": "46883375"
+    },
+    {
+      "artworkId": "COST-037",
+      "cardId": "COST-037",
+      "name": "Thomas brushing",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "43301829"
+    },
+    {
+      "artworkId": "td_3_029",
+      "cardId": "COST-037",
+      "name": "Thomas brushing",
+      "alternative": true,
+      "parentId": "COST-037",
+      "numericReference": "69343173"
+    },
+    {
+      "artworkId": "COST-038",
+      "cardId": "COST-038",
+      "name": "Papy Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "56176105"
+    },
+    {
+      "artworkId": "COST-039",
+      "cardId": "COST-039",
+      "name": "Thomas hydroalcoolique",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "25091704"
+    },
+    {
+      "artworkId": "td_3_009",
+      "cardId": "COST-039",
+      "name": "Thomas hydroalcoolique",
+      "alternative": true,
+      "parentId": "COST-039",
+      "numericReference": "46582442"
+    },
+    {
+      "artworkId": "COST-040",
+      "cardId": "COST-040",
+      "name": "VLC Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "60914337"
+    },
+    {
+      "artworkId": "td_3_041",
+      "cardId": "COST-040",
+      "name": "VLC Deseur",
+      "alternative": true,
+      "parentId": "COST-040",
+      "numericReference": "18633402"
+    },
+    {
+      "artworkId": "COST-041",
+      "cardId": "COST-041",
+      "name": "Thomas squelette",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "10085865"
+    },
+    {
+      "artworkId": "COST-042",
+      "cardId": "COST-042",
+      "name": "Barbie Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "79376836"
+    },
+    {
+      "artworkId": "td_1_043",
+      "cardId": "COST-042",
+      "name": "Barbie Deseur",
+      "alternative": true,
+      "parentId": "COST-042",
+      "numericReference": "57767710"
+    },
+    {
+      "artworkId": "COST-043",
+      "cardId": "COST-043",
+      "name": "Thomas caméléon",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "76612529"
+    },
+    {
+      "artworkId": "COST-044",
+      "cardId": "COST-044",
+      "name": "Thomas perd la tête",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "55233499"
+    },
+    {
+      "artworkId": "td_3_025",
+      "cardId": "COST-044",
+      "name": "Thomas perd la tête",
+      "alternative": true,
+      "parentId": "COST-044",
+      "numericReference": "45212043"
+    },
+    {
+      "artworkId": "COST-045",
+      "cardId": "COST-045",
+      "name": "Thomas Kinder",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "42709852"
+    },
+    {
+      "artworkId": "COST-046",
+      "cardId": "COST-046",
+      "name": "Thomas la pince",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "94353917"
+    },
+    {
+      "artworkId": "COST-047",
+      "cardId": "COST-047",
+      "name": "Thomas Charmeur de serpent",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "46614211"
+    },
+    {
+      "artworkId": "td_3_014",
+      "cardId": "COST-047",
+      "name": "Thomas Charmeur de serpent",
+      "alternative": true,
+      "parentId": "COST-047",
+      "numericReference": "26695261"
+    },
+    {
+      "artworkId": "COST-049",
+      "cardId": "COST-049",
+      "name": "Thomas prend son bain",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "66689989"
+    },
+    {
+      "artworkId": "COST-050",
+      "cardId": "COST-050",
+      "name": "Caporal chef Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "54217700"
+    },
+    {
+      "artworkId": "COST-051",
+      "cardId": "COST-051",
+      "name": "Thomas nugget",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "19581675"
+    },
+    {
+      "artworkId": "COST-052",
+      "cardId": "COST-052",
+      "name": "Thomas chino",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "34085852"
+    },
+    {
+      "artworkId": "COST-053",
+      "cardId": "COST-053",
+      "name": "Thomas micro-onde",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "13681753"
+    },
+    {
+      "artworkId": "COST-054",
+      "cardId": "COST-054",
+      "name": "Gulli-viande",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "52248155"
+    },
+    {
+      "artworkId": "td_2_065",
+      "cardId": "COST-054",
+      "name": "Gulli-viande",
+      "alternative": true,
+      "parentId": "COST-054",
+      "numericReference": "82621302"
+    },
+    {
+      "artworkId": "COST-055",
+      "cardId": "COST-055",
+      "name": "Thomas-terrazi",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "63134677"
+    },
+    {
+      "artworkId": "COST-056",
+      "cardId": "COST-056",
+      "name": "Haricot Deseur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "39469265"
+    },
+    {
+      "artworkId": "td_2_058",
+      "cardId": "COST-056",
+      "name": "Haricot Deseur",
+      "alternative": true,
+      "parentId": "COST-056",
+      "numericReference": "47124866"
+    },
+    {
+      "artworkId": "COST-057",
+      "cardId": "COST-057",
+      "name": "Thomas x4",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "17164739"
+    },
+    {
+      "artworkId": "td_2_057",
+      "cardId": "COST-057",
+      "name": "Thomas x4",
+      "alternative": true,
+      "parentId": "COST-057",
+      "numericReference": "36511096"
+    },
+    {
+      "artworkId": "COST-058",
+      "cardId": "COST-058",
+      "name": "Thomas-kita",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "50773067"
+    },
+    {
+      "artworkId": "COST-059",
+      "cardId": "COST-059",
+      "name": "Thomas kiri",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "87977379"
+    },
+    {
+      "artworkId": "COST-060",
+      "cardId": "COST-060",
+      "name": "1000 couches de Thomas",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "17598650"
+    },
+    {
+      "artworkId": "COST-061",
+      "cardId": "COST-061",
+      "name": "Thomas 3 points",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "63352058"
+    },
+    {
+      "artworkId": "td_2_052",
+      "cardId": "COST-061",
+      "name": "Thomas 3 points",
+      "alternative": true,
+      "parentId": "COST-061",
+      "numericReference": "18010222"
+    },
+    {
+      "artworkId": "COST-062",
+      "cardId": "COST-062",
+      "name": "Thomas raclette",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "54116746"
+    },
+    {
+      "artworkId": "td_2_050",
+      "cardId": "COST-062",
+      "name": "Thomas raclette",
+      "alternative": true,
+      "parentId": "COST-062",
+      "numericReference": "52610550"
+    },
+    {
+      "artworkId": "COST-064",
+      "cardId": "COST-064",
+      "name": "Thomas ta soeur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "80759123"
+    },
+    {
+      "artworkId": "td_2_056",
+      "cardId": "COST-064",
+      "name": "Thomas ta soeur",
+      "alternative": true,
+      "parentId": "COST-064",
+      "numericReference": "93282558"
+    },
+    {
+      "artworkId": "COST-065",
+      "cardId": "COST-065",
+      "name": "Thomas-couteur",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "70490171"
+    },
+    {
+      "artworkId": "COST-066",
+      "cardId": "COST-066",
+      "name": "Thomas-gen de police",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "11405936"
+    },
+    {
+      "artworkId": "td_2_053",
+      "cardId": "COST-066",
+      "name": "Thomas-gen de police",
+      "alternative": true,
+      "parentId": "COST-066",
+      "numericReference": "87940556"
+    },
+    {
+      "artworkId": "COST-067",
+      "cardId": "COST-067",
+      "name": "Thomas démission",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "58529212"
+    },
+    {
+      "artworkId": "COST-068",
+      "cardId": "COST-068",
+      "name": "Thomas chic et choc",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "11687638"
+    },
+    {
+      "artworkId": "COST-070",
+      "cardId": "COST-070",
+      "name": "Thomas huîtres",
+      "alternative": false,
+      "parentId": null,
+      "numericReference": "22309433"
+    }
+  ]
+}
