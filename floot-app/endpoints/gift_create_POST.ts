@@ -25,7 +25,10 @@ export async function handle(request:Request){
   const catalog=await db.selectFrom('tcgCardsOrigin')
    .select(['id','name','rarity','reference','sourceReference','imagePath','ordinal','normalBooster','variants']).execute();
   const known=tcgArtworkCatalog(catalog);
-  const rewards=validateGiftRewards(input.rewards,new Set(known.map(c=>c.id)));
+  const references=await db.selectFrom('tcgArtworkRefs').select(['artworkId','numericReference']).where('private','=',false).execute();
+  if(references.length!==105)throw Error('Références de collection incomplètes.');
+  const rewards=validateGiftRewards(input.rewards,new Set(known.map(c=>c.id)),
+   new Map(references.map(ref=>[ref.numericReference,ref.artworkId])));
   const hash=hashGiftCode(code);
   await db.insertInto('tcgGiftCodes').values({codeHash:hash,label:input.label.trim(),
    rewards:sql`${JSON.stringify(rewards)}::jsonb`,maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();

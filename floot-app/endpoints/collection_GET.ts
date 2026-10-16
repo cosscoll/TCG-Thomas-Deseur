@@ -9,7 +9,7 @@ const headers={"Content-Type":"application/json","Cache-Control":"private, no-st
 export async function handle(request:Request){
  try{
   const {user}=await getServerUserSession(request);
-  const [catalog,owned,status,history,claim,giftPacks,legacy]=await Promise.all([
+  const [catalog,owned,status,history,claim,giftPacks,legacy,references]=await Promise.all([
    db.selectFrom("tcgCardsOrigin")
     .select(["id","name","rarity","reference","sourceReference","imagePath","ordinal","normalBooster","variants"])
     .orderBy("ordinal","asc").execute(),
@@ -19,13 +19,19 @@ export async function handle(request:Request){
     .where("userId","=",user.id).orderBy("createdAt","desc").orderBy("id","desc").limit(10).execute(),
    db.selectFrom("tcgRewardClaimsOrigin").select("userId").where("userId","=",user.id).executeTakeFirst(),
    db.selectFrom("tcgGiftPacks").select(["remaining"]).where("userId","=",user.id).execute(),
-   db.selectFrom("tcgInventoryOrigin").select(["cardId","quantity"]).where("userId","=",user.id).execute()
+   db.selectFrom("tcgInventoryOrigin").select(["cardId","quantity"]).where("userId","=",user.id).execute(),
+   db.selectFrom("tcgArtworkRefs").select(["artworkId","numericReference"]).execute()
   ]);
   if(catalog.length!==68||catalog.filter(c=>!c.normalBooster).length!==1)throw Error("Édition Origine incomplète.");
   const privateCard=catalog.find(c=>!c.normalBooster)!;
   const knownOwned=new Set(owned.filter(row=>row.quantity>0).map(row=>row.artworkId));
   const claimed=Boolean(claim)||knownOwned.has(privateCard.id)||legacy.some(c=>c.cardId===privateCard.id&&c.quantity>0);
-  const allCards=tcgArtworkCatalog(catalog,claimed);
+  const referenceByArtwork=new Map(references.map(ref=>[ref.artworkId,ref.numericReference]));
+   const allCards=tcgArtworkCatalog(catalog,claimed).map(card=>{
+    const numericReference=referenceByArtwork.get(card.id);
+    if(!numericReference)throw Error("Référence numérique manquante.");
+    return {...card,numericReference};
+   });
   const ownership=owned.map(c=>({cardId:c.artworkId,quantity:c.quantity}))
    .filter(row=>allCards.some(c=>c.id===row.cardId));
   if(claimed&&!ownership.some(row=>row.cardId===privateCard.id)){

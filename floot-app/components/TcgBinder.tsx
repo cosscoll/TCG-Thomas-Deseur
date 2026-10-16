@@ -159,6 +159,7 @@ export function TcgBinder({ data }: { data: CollectionData }) {
               <span className={styles.cardRarity}>{card.alternative ? "Illustration alternative" : getLabel(card.rarity)}</span>
               <span className={styles.art} aria-hidden="true">{card.owned && card.imagePath ? <img src={card.imagePath} alt="" loading="lazy" decoding="async" className={styles.cardImage} /> : "?"}</span>
               <strong>{card.name}</strong>
+              {card.numericReference && <span>Réf. carte : <b>{card.numericReference}</b></span>}
               {card.alternative && <span className={styles.altLink}>↳ Variante de sa carte de base</span>}
               {card.sourceReference && <span>Source : {card.sourceReference}</span>}
               <span>{card.owned ? "Exemplaires : " + card.quantity : "Manquante"}</span>
@@ -206,7 +207,7 @@ export function TcgBinder({ data }: { data: CollectionData }) {
       }}>
         {selected && <><DialogHeader>
           <DialogTitle>{selected.name}</DialogTitle>
-          <DialogDescription>{selected.alternative?"Alternative de sa carte de base · ":getLabel(selected.rarity)+" · "} Carte {selected.index + 1} sur {binder.total}.</DialogDescription>
+          <DialogDescription>{selected.alternative?"Alternative de sa carte de base · ":getLabel(selected.rarity)+" · "} Carte {selected.index + 1} sur {binder.total}. {selected.numericReference && "Référence : "+selected.numericReference}</DialogDescription>
         </DialogHeader>
         <div className={styles.detailArt} aria-hidden="true">{selected.owned && selected.imagePath ? <img src={selected.imagePath} alt="" className={styles.detailImage} /> : "?"}</div>
         <div className={styles.detailStats}>

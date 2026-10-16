@@ -8,7 +8,7 @@ export const RARITY_LABELS: Record<Rarity,string> = {
 const LEGACY_COUNTS:Partial<Record<Rarity,number>>={commune:17,rare:15,epique:10,legendaire:4,secrete:3};
 const EDITION_COUNTS:Partial<Record<Rarity,number>>={commune:95,rare:35,epique:18,legendaire:11,hors_serie:1,secrete:1};
 const ORIGIN_COUNTS:Partial<Record<Rarity,number>>={commune:33,rare:21,epique:8,legendaire:4,hors_serie:1};
-export type CatalogueCard={id:string;name:string;rarity:string;imagePath?:string;reference?:string;sourceReference?:string|null;ordinal?:number;alternative?:boolean;parentId?:string|null};
+export type CatalogueCard={id:string;name:string;rarity:string;imagePath?:string;reference?:string;numericReference?:string;sourceReference?:string|null;ordinal?:number;alternative?:boolean;parentId?:string|null};
 export type InventoryRow = { cardId: string; quantity: number };
 export type BinderCard = CatalogueCard & {
   quantity: number; owned: boolean; extraCopies: number; index: number;
@@ -103,7 +103,7 @@ export function filterBinder(binder: Binder, { ownership = "all", rarity = "all"
     (ownership === "all" || (ownership === "owned" && card.owned) ||
       (ownership === "missing" && !card.owned) ||
       (ownership === "duplicates" && card.extraCopies > 0)) &&
-    (!query || normalize(card.name).includes(query) || normalize(card.id).includes(query))
+    (!query || normalize(card.name).includes(query) || normalize(card.id).includes(query) || normalize(card.numericReference??"").includes(query))
   );
   return [...result].sort((a, b) => {
     if (sort === "copies") return b.quantity - a.quantity || a.index - b.index;
@@ -119,10 +119,10 @@ const csvField = (value: string | number): string => {
 };
 /** Only card data: no player name, account ID, email or auth state. */
 export function binderCsv(binder: Binder): string {
-  const header = ["ID", "Carte", "Rareté", "Possédée", "Exemplaires", "Doublons supplémentaires"];
+  const header = ["ID", "Référence (8 chiffres)", "Carte", "Rareté", "Possédée", "Exemplaires", "Doublons supplémentaires"];
   const lines = [header.map(csvField).join(";")];
   for (const card of binder.cards) {
-    lines.push([card.id, card.name, card.rarity, card.owned ? "Oui" : "Non",
+    lines.push([card.id, card.numericReference??"",card.name, card.rarity, card.owned ? "Oui" : "Non",
       card.quantity, card.extraCopies].map(csvField).join(";"));
   }
   return "\ufeff" + lines.join("\r\n") + "\r\n";

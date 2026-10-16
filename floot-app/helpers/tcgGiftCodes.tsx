@@ -9,16 +9,22 @@ export function normalizeGiftCode(input:unknown):string{
  return code;
 }
 export function hashGiftCode(code:string):string{return createHash('sha256').update('TCG-DESEUR:CODE:'+code).digest('hex');}
-export function validateGiftRewards(input:unknown,artworkIds:ReadonlySet<string>):GiftReward[]{
+export function validateGiftRewards(input:unknown,artworkIds:ReadonlySet<string>,references:ReadonlyMap<string,string>=new Map()):GiftReward[]{
  if(!Array.isArray(input)||input.length<1||input.length>12)throw Error('Ajoute de 1 à 12 récompenses.');
+ const resolve=(raw:unknown):string|undefined=>{
+  if(typeof raw!=='string')return undefined;
+  const id=references.get(raw)??raw;
+  return artworkIds.has(id)?id:undefined;
+ };
  return input.map((item:unknown)=>{
   if(!item||typeof item!=='object')throw Error('Récompense invalide.');
   const r=item as Record<string,unknown>;
   if(!Number.isInteger(r.quantity)||(r.quantity as number)<1||(r.quantity as number)>1000)throw Error('Quantité de récompense invalide.');
   const quantity=r.quantity as number;
   if(r.type==='card'){
-   if(typeof r.artworkId!=='string'||!artworkIds.has(r.artworkId))throw Error('Carte offerte inconnue.');
-   return {type:'card',artworkId:r.artworkId,quantity} as GiftReward;
+   const id=resolve(r.artworkId);
+   if(!id)throw Error('Carte offerte inconnue.');
+   return {type:'card',artworkId:id,quantity} as GiftReward;
   }
   if(r.type!=='packs'||!['normal','special','custom'].includes(String(r.kind)))throw Error('Type de récompense inconnu.');
   const kind=r.kind as PackKind;
@@ -31,15 +37,15 @@ export function validateGiftRewards(input:unknown,artworkIds:ReadonlySet<string>
   }
   if(kind==='custom'){
    if(!Array.isArray(rule.fixedArtworkIds)||rule.fixedArtworkIds.length!==5||
-      rule.fixedArtworkIds.some((id:unknown)=>typeof id!=='string'||!artworkIds.has(id)))
+      rule.fixedArtworkIds.some((id:unknown)=>!resolve(id)))
     throw Error('Un booster personnalisé doit contenir cinq illustrations officielles exactes.');
-   rules.fixedArtworkIds=rule.fixedArtworkIds as string[];
+   rules.fixedArtworkIds=rule.fixedArtworkIds.map(resolve) as string[];
   }
   if(Array.isArray(rule.poolArtworkIds)){
    if(rule.poolArtworkIds.length<1||rule.poolArtworkIds.length>105||
-      rule.poolArtworkIds.some((id:unknown)=>typeof id!=='string'||!artworkIds.has(id)))
+      rule.poolArtworkIds.some((id:unknown)=>!resolve(id)))
     throw Error('Sélection de cartes inconnue.');
-   rules.poolArtworkIds=rule.poolArtworkIds as string[];
+   rules.poolArtworkIds=rule.poolArtworkIds.map(resolve) as string[];
   }
   return {type:'packs',kind,quantity,rules} as GiftReward;
  });

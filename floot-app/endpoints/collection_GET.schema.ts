@@ -1,6 +1,6 @@
 import superjson from "superjson";
 export type OutputType={
- cards:{id:string;cardId:string;name:string;rarity:string;reference:string;sourceReference:string|null;imagePath:string;ordinal:number;alternative:boolean;parentId:string|null}[];
+ cards:{id:string;cardId:string;name:string;rarity:string;reference:string;numericReference:string;sourceReference:string|null;imagePath:string;ordinal:number;alternative:boolean;parentId:string|null}[];
  owned:{cardId:string;quantity:number}[];
  opened:number;boosterUnlimited:boolean;nextAvailable:string|null;stock:number;giftStock:number;
  history:{cards:string[];artworks?:string[];createdAt:string;kind:string}[];

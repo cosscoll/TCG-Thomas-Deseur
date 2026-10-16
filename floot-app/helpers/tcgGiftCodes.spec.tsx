@@ -16,6 +16,12 @@ describe("TCG : codes cadeaux sécurisés",()=>{
    {type:"card",artworkId:"ALT_001",quantity:1}],artworks);
   expect(r.length).toBe(4);
  });
+ it("résout les références numériques de huit chiffres en IDs internes",()=>{
+  const refs=new Map([["12345678","COST-001"],["87654321","ALT_001"]]);
+  const rewards=validateGiftRewards([{type:"card",artworkId:"87654321",quantity:2}],artworks,refs);
+  expect(rewards[0]).toEqual({type:"card",artworkId:"ALT_001",quantity:2});
+  expect(()=>validateGiftRewards([{type:"card",artworkId:"11111111",quantity:1}],artworks,refs)).toThrow();
+ });
  it("interdit les illustrations hors catalogue et les lots mal formés",()=>{
   expect(()=>validateGiftRewards([{type:"card",artworkId:"reward_hidden",quantity:1}],artworks)).toThrow();
   expect(()=>validateGiftRewards([{type:"packs",kind:"custom",quantity:1,rules:{fixedArtworkIds:["COST-001"]}}],artworks)).toThrow();
