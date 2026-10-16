@@ -1,0 +1,36 @@
+.wrapper{width:100%;display:flex;flex-direction:column;gap:22px;color:#f8f2f8}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.metric{background:#261e35;color:#f9f4fb;border:1px solid #635274;border-radius:13px;display:flex;flex-direction:column;align-items:flex-start;gap:11px;padding:19px;text-align:left;min-width:0}
+button.metric{cursor:pointer}button.metric:hover{border-color:#f8cc88;background:#332742}
+.metric span{font-size:.8rem;color:#d7cee3}.metric strong{font-size:clamp(1.4rem,2.4vw,2rem);color:#ffdf9e;line-height:1.1;font-variant-numeric:tabular-nums}.metric small{color:#cfc4db;font-size:.75rem}
+.overall{border:1px solid #655274;padding:21px;background:#241d30;border-radius:16px}
+.progressTitle{display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;margin-bottom:13px}.progressTitle strong{color:#f8cc88}
+.bar,.miniBar,.goalTrack{display:block;background:#493952;overflow:hidden;border-radius:100px;height:11px;width:100%}
+.bar>span,.miniBar>i,.goalTrack>i{display:block;height:100%;background:#f8cc88;border-radius:inherit}
+.rarityGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:19px}
+.rarityBox{background:#30263c;border:1px solid #796584;color:#e4daed;display:flex;flex-direction:column;gap:8px;padding:13px 12px;border-radius:10px;text-align:left;cursor:pointer;min-width:0}
+.rarityBox:hover{background:#443451;border-color:#f8cc88}.rarityBox strong{color:#fff;font-variant-numeric:tabular-nums}.rarityBox span{font-size:.78rem}.miniBar{height:6px}
+.rarityBox[data-rarity=rare] .miniBar>i{background:#85bafa}.rarityBox[data-rarity=epique] .miniBar>i{background:#c9a0ff}.rarityBox[data-rarity=legendaire] .miniBar>i{background:#f8cc88}.rarityBox[data-rarity=secrete] .miniBar>i{background:#f9a4d3}
+.navigation{display:flex;flex-wrap:wrap;gap:10px;border-bottom:1px solid #5d4d6e;padding-bottom:16px}
+.viewHeader{display:flex;align-items:center;justify-content:space-between;gap:20px}.viewHeader h3,.goalsView h3,.history h3{font-size:1.3rem;margin:0 0 7px}.viewHeader p,.goalsView>p,.history>p{font-size:.84rem;color:#d1c5dd;line-height:1.55;margin:0}
+.filters{display:grid;grid-template-columns:minmax(160px,1.4fr) repeat(3,minmax(130px,1fr));gap:10px}
+.results{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:.8rem;color:#d9cfe2}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:12px}
+.card{min-width:0;min-height:207px;background:linear-gradient(150deg,#382a47,#1e192a);border:1px solid #a391b8;border-top:3px solid #b4acc4;border-radius:12px;color:#fff8f6;display:flex;flex-direction:column;gap:10px;padding:14px;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.card:hover{transform:translateY(-2px);border-color:#f8cc88}.card[data-alternative=true]{border-left:3px solid #e9bd78;position:relative}.card[data-alternative=true]::before{content:'↳';position:absolute;left:4px;top:7px;color:#e9bd78;font-weight:700}.altLink{color:#e9bd78!important}.card:focus-visible,.rarityBox:focus-visible,.metric:focus-visible{outline:3px solid #ffdb91;outline-offset:3px}
+.card[data-owned=false]{background:#211b2e;border-style:dashed}
+.card[data-rarity=rare]{border-top-color:#85bafa}.card[data-rarity=epique]{border-top-color:#d3a4ff}.card[data-rarity=legendaire]{border-top-color:#f8cc88}.card[data-rarity=secrete]{border-top-color:#f0a1c6}
+.card .art{height:64px;display:grid;place-items:center;color:#f8cc88;font-size:3rem}.card strong{font-size:.84rem;line-height:1.35}
+.card>span:not(.art){font-size:.75rem;color:#ddd2e8}.card .cardRarity{font-weight:700;color:#f8cc88}.card .duplicate{color:#bceecf!important;font-weight:750;margin-top:auto}
+.empty,.error{background:#241f33;border:1px solid #6f6084;padding:26px;border-radius:12px;color:#f8f2fa;line-height:1.6}
+.error{border-color:#f6a1ae}
+.goalGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}.goal{display:flex;flex-direction:column;gap:10px;background:#2b2339;border:1px solid #706080;border-radius:12px;padding:17px}.goal[data-achieved=true]{border-color:#58a789}.goal strong{font-size:.89rem}.goal span{font-size:.79rem;color:#d5cbdc}.goalTrack{height:7px}
+.goalsView h3 span{font-size:.86rem;color:#f8cc88;margin-left:8px}.history{display:flex;flex-direction:column;gap:12px}.historyEntry{border:1px solid #766486;background:#2b233a;padding:18px;border-radius:12px;display:flex;flex-direction:column;gap:10px}.historyEntry strong{color:#f8cc88}.historyEntry>span{font-size:.82rem;color:#ddd2e7}
+.historyCards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.historyCard{min-width:0;display:flex;flex-direction:column;gap:10px;padding:12px;background:#211a2d;border:1px solid #6e5d7d;border-radius:9px;overflow-wrap:anywhere}.historyCard small{font-size:.7rem;color:#f8cc88}.historyCard span{font-size:.76rem}.historyArt{width:100%;height:150px;object-fit:contain;border-radius:8px;background:#191225;display:block}.historyVariant{color:#a8e7ce!important;font-weight:750}
+.detail{max-width:min(500px,calc(100vw - 24px));max-height:90dvh;overflow-y:auto}.detailArt{height:150px;display:grid;place-items:center;border:1px solid #6e5e80;border-radius:12px;background:radial-gradient(#564067,#231a30);font-size:5rem;color:#f8cc88}.detailStats{display:flex;flex-wrap:wrap;gap:15px;justify-content:space-between;background:#291f37;padding:15px;border-radius:9px;font-size:.83rem}.detailStats strong{color:#f8cc88}.detailNavigation{display:flex;align-items:center;justify-content:space-between;gap:10px}.detailNavigation span{white-space:nowrap;font-size:.8rem;color:#d6ccdc}
+@media(max-width:900px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.rarityGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.goalGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.historyCards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:540px){.wrapper{gap:17px}.metrics{gap:8px}.metric{padding:13px}.rarityGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{padding:10px;min-height:190px}.goalGrid{grid-template-columns:minmax(0,1fr)}.viewHeader{align-items:flex-start;flex-direction:column;gap:12px}.historyCards{grid-template-columns:repeat(2,minmax(0,1fr))}.detailNavigation{gap:5px}.detailNavigation button{font-size:.75rem;padding-inline:9px}}
+@media(max-width:340px){.grid{grid-template-columns:minmax(0,1fr)}.rarityGrid{grid-template-columns:minmax(0,1fr)}.detailNavigation{flex-wrap:wrap}}
+.card .art{height:165px;overflow:hidden;border-radius:9px;background:#191225}.cardImage{height:100%;width:100%;object-fit:contain;display:block}.detailArt{height:min(58vh,430px);overflow:hidden}.detailImage{width:100%;height:100%;object-fit:contain;display:block}.rarityBox[data-rarity=hors_serie] .miniBar>i{background:#82e5d1}.card[data-rarity=hors_serie]{border-top-color:#82e5d1}
+@media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+
