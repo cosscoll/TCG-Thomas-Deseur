@@ -52,6 +52,7 @@ const originalArtSrc=id=>{
 let approved=[];
 const publicCardTotal=105;
 const officialSlots=new Map();
+const numericReferences=new Map();
 const rarityOrder=Object.freeze(['Commune','Rare','Épique','Légendaire','Hors-série']);
 const expectedRarityCounts=Object.freeze({'Commune':33,'Rare':21,'Épique':8,'Légendaire':4,'Hors-série':1});
 function renderRaritySummary(){
@@ -137,7 +138,7 @@ function cardView(card,index=0){
  box.dataset.rarity=card.rarity;
  const frame=image(card.primary,card.name,false,index<8);
  const caption=make('div','card-top');
- caption.append(make('span','card-reference',String(officialSlots.get(card.primary)||'?').padStart(3,'0')+' / 105 · '+card.group));
+ caption.append(make('span','card-reference',String(officialSlots.get(card.primary)||'?').padStart(3,'0')+' / 105 · Réf. '+(numericReferences.get(card.primary)||'')));
  caption.append(make('span','rarity-badge rarity-'+rarityOrder.indexOf(card.rarity),card.rarity));
  const variantTotal=card.alternatives.length+(card.shiny?1:0);
  caption.append(make('span','variant-badge',variantTotal===0?'Version unique':variantTotal+' variante'+(variantTotal>1?'s':'')));
@@ -156,7 +157,7 @@ function alternativeCardView(card,ref,index){
  box.dataset.group=card.group;box.dataset.rarity=card.rarity;box.dataset.alternative='true';
  box.append(image(ref,card.name+' — alternative '+(index+1),false));
  const caption=make('div','card-top');
- caption.append(make('span','card-reference',String(officialSlots.get(ref)||'?').padStart(3,'0')+' / 105 · '+card.group));
+ caption.append(make('span','card-reference',String(officialSlots.get(ref)||'?').padStart(3,'0')+' / 105 · Réf. '+(numericReferences.get(ref)||'')));
  caption.append(make('span','variant-badge','Illustration alternative'));
  const label=make('div','card-label');
  label.append(make('h3','',card.name+' — alternative '+(index+1)));
@@ -195,12 +196,19 @@ function render(){
 }
 async function initialize(){
  try{
-  const [response,rarityResponse]=await Promise.all([
+  const [response,rarityResponse,referenceResponse]=await Promise.all([
    fetch('../data/choix-cartes-2026-10-11.json',{cache:'no-store'}),
-   fetch('../data/raretes-validees-67.json',{cache:'no-store'})
+   fetch('../data/raretes-validees-67.json',{cache:'no-store'}),
+   fetch('../data/references-8-chiffres-105.json',{cache:'no-store'})
   ]);
-  if(!response.ok||!rarityResponse.ok)throw Error('Impossible de récupérer le catalogue et ses raretés officielles.');
-  const [data,rarities]=await Promise.all([response.json(),rarityResponse.json()]);
+  if(!response.ok||!rarityResponse.ok||!referenceResponse.ok)throw Error('Impossible de récupérer le catalogue, ses raretés ou ses références.');
+  const [data,rarities,refData]=await Promise.all([response.json(),rarityResponse.json(),referenceResponse.json()]);
+  if(refData.schema!=='tcg-deseur-artwork-references-v1'||!Array.isArray(refData.artworks)||refData.artworks.length!==105)throw Error('Les références de huit chiffres sont incomplètes.');
+  for(const entry of refData.artworks){
+   if(!/^[0-9]{8}$/.test(entry.numericReference)||numericReferences.has(entry.artworkId))throw Error('Référence invalide ou répétée.');
+   numericReferences.set(entry.artworkId,entry.numericReference);
+  }
+  if(new Set(numericReferences.values()).size!==105)throw Error('Des références identiques ont été détectées.');
   if(rarities.schema!=='tcg-deseur-rarities-v1'||rarities.source!=='catalogue-valide-67.json'||
      !rarities.cards||Object.keys(rarities.cards).length!==67)throw Error('Fichier des raretés incomplet.');
   if(data.schema!=='tcg-deseur-cards-v3'||!data.cards)throw Error('Format de catalogue incompatible.');
@@ -227,7 +235,7 @@ async function initialize(){
    officialSlots.set(card.primary,++slot);
    for(const ref of card.alternatives)officialSlots.set(ref,++slot);
   }
-  if(slot!==105||officialSlots.size!==105)throw Error('Le catalogue doit contenir 105 illustrations distinctes.');
+  if(slot!==105||officialSlots.size!==105||[...officialSlots.keys()].some(id=>!numericReferences.has(id)))throw Error('Le catalogue doit contenir 105 illustrations avec leurs références.');
   renderRaritySummary();
   $('total').textContent=publicCardTotal;
   $('variants').textContent=approved.reduce((sum,c)=>sum+c.alternatives.length,0);
