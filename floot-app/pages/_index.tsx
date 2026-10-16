@@ -288,7 +288,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>TCG Deseur — Prototype indépendant non officiel. Collection uniquement.</footer>
+      <footer>© 2026 Cosme Collomb · TCG Deseur — Prototype indépendant non officiel. <a href="https://cosscoll.github.io/TCG-Thomas-Deseur/legal/#mentions" target="_blank" rel="noopener noreferrer">Mentions légales</a> · <a href="https://cosscoll.github.io/TCG-Thomas-Deseur/legal/#confidentialite" target="_blank" rel="noopener noreferrer">Confidentialité</a> · <a href="https://cosscoll.github.io/TCG-Thomas-Deseur/legal/#reglement" target="_blank" rel="noopener noreferrer">Règlement</a>.</footer>
       <Dialog open={showDraw} onOpenChange={setShowDraw}>
         <DialogContent className={styles.drawDialog}>
           <DialogHeader>
