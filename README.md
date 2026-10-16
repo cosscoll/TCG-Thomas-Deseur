@@ -14,6 +14,20 @@
 - Les joueurs peuvent créer un compte, ouvrir leurs boosters, retrouver leurs cartes et doublons, utiliser des codes cadeaux. L'administration peut créer des codes exacts de son choix : boosters classiques, spéciaux, personnalisés et cartes officielles, dans des limites contrôlées.
 - Les anciennes collections ont été retirées de l'interface du jeu sans supprimer les données historiques de la base.
 
+## Références uniques des illustrations — 16 octobre 2026
+
+Une référence permanente à **8 chiffres** a été attribuée à chacune des **105 illustrations publiques** (67 cartes de base + 38 alternatives). Deux illustrations différentes ne partagent jamais le même numéro ; le numéro est associé à l'artwork ID interne et ne change pas après un tirage.
+
+- [Référentiel lisible en CSV — 105 cartes](data/references-8-chiffres-105.csv)
+- [Référentiel JSON officiel — 105 cartes](data/references-8-chiffres-105.json)
+- [Voir les numéros dans la galerie des 105 illustrations](https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/)
+
+Pour les codes cadeaux spéciaux, le backend de préparation convertit la référence numérique en illustration officielle précise tout en conservant son ID technique historique. Les références ne sont **pas** elles-mêmes des codes cadeaux : l'administrateur crée un code de distribution distinct. Aucune référence ni identité de carte confidentielle n'est présente dans les fichiers publics.
+
+**État Floot :** la base des 106 références, y compris une privée, a été migrée et les endpoints existants de collection/code cadeau ont été adaptés dans l'éditeur. **Cette évolution n'est pas encore republiée dans le jeu** (quota Floot épuisé le 16 octobre, remise à zéro le 17 octobre à 09:00 UTC).
+
+**Classement global demandé :** joueurs classés par nombre d'illustrations différentes, puis par nombre total de boosters ouverts croissant à égalité. L'endpoint du classement a été écrit dans Floot mais l'interface n'a pas pu être intégrée avant blocage. Sources prêtes sur [la branche de reprise du classement](https://github.com/cosscoll/TCG-Thomas-Deseur/tree/dev/references-leaderboard-2026-10-16), sans prétendre qu'elle est déjà déployée.
+
 ## Développement et hébergement
 
 | Surface | Usage |
