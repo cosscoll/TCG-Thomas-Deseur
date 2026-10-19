@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Archives de costumes — Budget Illimité TCG</title>
+<title>Archives de costumes — TCG Thomas Deseur</title>
 <meta name="description" content="Recherche visuelle des apparitions de Thomas Deseur. Captures indexées et liens de sources.">
 <style>
 :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:#10101b;color:#fff7ee;--muted:#beb6c9;--gold:#ffce86;--purple:#a28cff}
@@ -35,7 +35,7 @@ footer{font-size:.78rem;color:var(--muted);border-top:1px solid #ffffff1f}
 </head>
 <body>
 <a class="skip" href="#archives">Aller aux références</a>
-<header><a class="brand" href="../index.html">BUDGET ILLIMITÉ</a><a class="back" href="../index.html">← Retour au jeu</a></header>
+<header><a class="brand" href="../index.html">TCG THOMAS DESEUR</a><a class="back" href="../index.html">← Retour au jeu</a></header>
 <main><aside class="notice"><strong>Critère du jeu :</strong> Thomas dans un déguisement, un costume, un rôle visuellement identifiable, un camouflage ou une mise en scène particulière. <a href="./exploration.html">Voir uniquement les apparitions correspondant à ce critère ↗</a>. Les 176 captures ci-dessous restent des pistes non encore attribuées précisément aux vidéos d'origine.</aside>
 <section class="hero">
 <p class="eyebrow">Recherche de sources · 8 octobre 2026</p>
@@ -64,15 +64,16 @@ footer{font-size:.78rem;color:var(--muted);border-top:1px solid #ffffff1f}
 <div id="sourceGrid" class="sources-grid"></div>
 </section>
 </main>
-<footer>Budget Illimité, projet fan-made non officiel. Les créateurs des vidéos et des captures conservent leurs droits. Aucune licence de réutilisation n'est supposée.</footer>
+<footer>TCG Thomas Deseur, projet fan-made non officiel. Les créateurs des vidéos et des captures conservent leurs droits. Aucune licence de réutilisation n'est supposée.</footer>
 <script type="module">
 import {CARDS} from "../data/cards.js";
+import {readMigratedStorage} from "../game/legacy-storage.js";
 const by=id=>document.getElementById(id);
 const options=CARDS.map(c=>({id:c.id,name:c.name}));
-const key="budget-illimite:visual-attributions:v1";
+const key="tcg-thomas-deseur:visual-attributions:v1";
 let refs=[],sources=[],displayed=0,filtered=[];
 let assignments={};
-try {const v=JSON.parse(localStorage.getItem(key)||"{}");if(v&&typeof v==="object"&&!Array.isArray(v))assignments=v} catch {}
+try {const v=JSON.parse(readMigratedStorage(localStorage,key)||"{}");if(v&&typeof v==="object"&&!Array.isArray(v))assignments=v} catch {}
 const elem=(tag,className,text)=>{const e=document.createElement(tag);if(className)e.className=className;if(text!=null)e.textContent=text;return e};
 function save(){try{localStorage.setItem(key,JSON.stringify(assignments))}catch{}}
 function refreshCounts(){by("mappedCount").textContent=String(Object.values(assignments).filter(v=>options.some(o=>o.id===v)).length)}
