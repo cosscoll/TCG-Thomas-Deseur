@@ -81,7 +81,15 @@ def publish(payload):
         for entry in files:
             target=ROOT/entry
             target.parent.mkdir(parents=True,exist_ok=True)
-            target.write_bytes(z.read(entry))
+            data=z.read(entry)
+            if entry=="tri-177/index.html":
+                # The verified historical ZIP includes an obsolete Floot URL.
+                # Rebind it without modifying the archived source or pictures.
+                original_hosts=set(re.findall(rb"https://[a-z0-9-]+\.floot\.app",data))
+                if len(original_hosts)!=1:
+                    raise RuntimeError("Adresse Floot de la galerie non identifiable")
+                data=data.replace(next(iter(original_hosts)),b"https://tcg-thomas-deseur.floot.app")
+            target.write_bytes(data)
         print(f"IMPORTED={len(images)} WEBP, GROUPS={len(ids)}, TOTAL_FILES={len(files)}")
 
 if __name__=="__main__":
