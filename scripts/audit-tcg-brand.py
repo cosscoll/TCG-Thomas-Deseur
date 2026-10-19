@@ -39,6 +39,13 @@ if unexpected:
     print(f"ECHEC: {len(unexpected)} référence(s) non justifiées à l'ancienne dénomination.")
     raise SystemExit(1)
 print("OK : aucune ancienne marque dans les interfaces et sources actives.")
+official="https://tcg-thomas-deseur.floot.app"
+for page in ("index.html","beta/index.html","collection-validee/index.html","tri-177/index.html","avancement/index.html"):
+    if official not in (root/page).read_text("utf-8"):
+        print(f"ECHEC : le lien canonique est absent dans {page}")
+        raise SystemExit(1)
+print("OK : les principales pages publiques utilisent toutes l'adresse officielle.")
+
 print(f"SOUS-DOMAINE FLOOT ACTIF: {len(technical)}")
 for e in technical:print("DOMAINE_TECHNIQUE: "+e)
 print(f"Adresse officielle actuelle : https://{domain}")
