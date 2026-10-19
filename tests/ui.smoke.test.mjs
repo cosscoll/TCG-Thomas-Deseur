@@ -98,7 +98,7 @@ test("solo UI: from card catalog and deck editing through a finished match", asy
   assert.equal(Number(get("matchesWon").textContent) + Number(get("matchesLost").textContent), 1);
   assert.equal(get("aiDifficulty").disabled, false);
   assert.ok(get("battleResultNotice").textContent.length > 20);
-  assert.equal(JSON.parse(database.get("budget-illimite:solo-progress:v1")).played, 1);
+  assert.equal(JSON.parse(database.get("tcg-thomas-deseur:solo-progress:v1")).played, 1);
 
   get("startMatch").click();
   assert.equal(get("matchesPlayed").textContent, "1");
@@ -111,6 +111,6 @@ test("solo UI: from card catalog and deck editing through a finished match", asy
   assert.equal(get("matchesPlayed").textContent, "1");
   get("simulateBooster").click();
   assert.equal(get("boosterResults").children.length, 5);
-  assert.equal(database.get("budget-illimite:solo-difficulty:v1"), "decouverte");
+  assert.equal(database.get("tcg-thomas-deseur:solo-difficulty:v1"), "decouverte");
   assert.equal(get("soloBadgeList").children.length, 6);
 });
