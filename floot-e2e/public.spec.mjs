@@ -3,13 +3,13 @@ import { test, expect } from "@playwright/test";
 // Public, non-authenticated smoke tests for the LIVE Floot app.
 // Never create accounts, submit login credentials, open boosters, or modify player data.
 
-test("l'accueil public affiche TCG Deseur sans erreur JavaScript non interceptée", async ({ page }) => {
+test("l'accueil public affiche TCG Thomas Deseur sans erreur JavaScript non interceptée", async ({ page }) => {
   const uncaughtErrors = [];
   page.on("pageerror", (error) => uncaughtErrors.push(error.message));
   const response = await page.goto("/", { waitUntil: "domcontentloaded" });
   expect(response?.status()).toBe(200);
-  await expect(page).toHaveTitle(/TCG Deseur/i);
-  await expect(page.locator("body")).toContainText(/TCG\s*Deseur/i);
+  await expect(page).toHaveTitle(/TCG(?:[- ]Thomas)?[- ]Deseur/i);
+  await expect(page.locator("body")).toContainText(/TCG(?:\s+Thomas)?\s+Deseur/i);
   await expect(page.locator("body")).not.toContainText(/Internal Server Error|Application error/i);
   expect(uncaughtErrors).toEqual([]);
 });
@@ -17,7 +17,7 @@ test("l'accueil public affiche TCG Deseur sans erreur JavaScript non intercepté
 test("la connexion dispose de champs e-mail et mot de passe sans soumettre de données", async ({ page }) => {
   const response = await page.goto("/login", { waitUntil: "domcontentloaded" });
   expect(response?.status()).toBe(200);
-  await expect(page).toHaveTitle(/TCG Deseur/i);
+  await expect(page).toHaveTitle(/TCG(?:[- ]Thomas)?[- ]Deseur/i);
   const email = page.locator('input[type="email"]').first();
   const password = page.locator('input[type="password"]').first();
   await expect(email).toBeVisible();
@@ -39,7 +39,7 @@ test("les pages publiques restent lisibles aux différentes largeurs", async ({ 
     for (const path of ["/", "/login"]) {
       const response = await page.goto(path, { waitUntil: "load" });
       expect(response?.status()).toBe(200);
-      await expect(page).toHaveTitle(/TCG Deseur/i);
+      await expect(page).toHaveTitle(/TCG(?:[- ]Thomas)?[- ]Deseur/i);
       // Floot may hydrate after the initial HTML has loaded.
       await expect(page.locator("#root")).not.toBeEmpty();
       await page.evaluate(async () => { await document.fonts.ready; });
@@ -89,12 +89,12 @@ test("les pages publiques restent lisibles aux différentes largeurs", async ({ 
 
 // This file deliberately does not exercise boosters or forms requiring accounts.
 
-test('le site publié présente l’édition Origine à 68 cartes sans dévoiler la récompense',async({page})=>{
+test('le jeu publié présente les 105 illustrations sans dévoiler la récompense',async({page})=>{
  const response=await page.goto('/',{waitUntil:'domcontentloaded'});
  expect(response?.status()).toBe(200);
- await expect(page.getByText(/ÉDITION ORIGINE · 68 CARTES/i)).toBeVisible();
- await expect(page.locator('body')).toContainText(/67 cartes officielles/i);
- await expect(page.locator('body')).toContainText(/Carte mystère/i);
+ await expect(page.locator('body')).toContainText(/105 ILLUSTRATIONS/i);
+ await expect(page.locator('body')).toContainText(/67 cartes de base/i);
+ await expect(page.locator('body')).toContainText(/38 alternatives/i);
  const publicText=await page.locator('body').innerText();
- expect(publicText).not.toMatch(/COLLECTION PROVISOIRE|160 cartes|contenu non annoncé|identité de la récompense/i);
+ expect(publicText).not.toMatch(/COLLECTION PROVISOIRE|160 cartes|68 cartes|identité de la récompense/i);
 });
