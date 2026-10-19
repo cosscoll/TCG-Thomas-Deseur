@@ -102,6 +102,17 @@ def produce_primary(session, original):
     for k in range(1, n):
         if sizes[k, cv2.CC_STAT_AREA] < max(15, h*w//70000):
             foreground[cc == k] = 0
+    # Ensemble prudent de deux détecteurs : la segmentation chromatique
+    # préserve les accessoires et le modèle IA retrouve des tissus neutres
+    # que le simple seuil de fond pouvait effacer (gris, blanc, beige).
+    if session is not None:
+        from rembg import remove
+        ml = np.asarray(remove(original.convert("RGB"), session=session,
+                               only_mask=True).convert("L"), dtype=np.uint8)
+        share = np.mean(ml > 105)
+        if 0.045 <= share <= 0.93:
+            restored = (ml >= 105) & (foreground < 128)
+            foreground = np.maximum(foreground, (ml >= 105).astype(np.uint8) * 255)
     fraction = float(np.mean(foreground > 127))
     if not 0.045 <= fraction <= 0.95:
         raise ValueError(f"Masque incohérent ({fraction:.1%})")
@@ -157,7 +168,8 @@ def main(check=False):
                     raise ValueError(f"Format incorrect: {artwork_id}")
         print(f"Vérifié: {EXPECTED} détourages, images originales intactes.")
         return
-    session = None
+    from rembg import new_session
+    session = new_session("u2net")
     DEST.mkdir(parents=True, exist_ok=True)
     PREVIEW.parent.mkdir(parents=True, exist_ok=True)
     contact = Image.new("RGB", (8 * 152, 14 * 198), (235, 235, 235))
@@ -193,7 +205,7 @@ def main(check=False):
         "status": "REVIEW_REQUIRED_NOT_LIVE", "reviewRequiredCount": len(review_required),
         "reviewRequired": review_required,
         "background": "#808080", "size": list(SIZE),
-        "model": "opencv-neutral-background-reconstruction-v2", "originalsUntouched": True,
+        "model": "opencv-neutral-background-plus-u2net-union-v3", "originalsUntouched": True,
         "artworks": report}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     main(check=True)
     print(f"Sorties: {len(report)}; images à corriger/revoir: {len(review_required)}",flush=True)
