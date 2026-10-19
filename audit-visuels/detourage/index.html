@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Contrôle des 105 détourages — TCG Deseur</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#f5f0f8;background:#120f1c;--edge:#6a5c79;--accent:#f7d096}
+*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1360px;margin:auto;padding:20px}
+header{border-bottom:1px solid var(--edge);display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+a{color:var(--accent)}h1{font-size:clamp(1.6rem,3.2vw,2.7rem);margin:8px 0}p{color:#d4cbd9;line-height:1.6;max-width:1000px}
+.controls{display:flex;align-items:end;flex-wrap:wrap;gap:14px;background:#221b30;padding:16px;border:1px solid var(--edge);border-radius:12px;margin:18px 0}
+label{display:grid;gap:6px;font-weight:650;font-size:.85rem}input,select{padding:10px;background:#33273e;border:1px solid #9e8bac;border-radius:8px;color:white;min-height:40px}
+button{background:#3b2d4b;border:1px solid #ad98ba;border-radius:8px;color:white;padding:10px 12px;cursor:pointer}button[aria-pressed=true]{border-color:var(--accent);background:#72543a}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:15px}.item{border:1px solid var(--edge);background:#221b30;border-radius:12px;overflow:hidden}
+.item h2{font-size:.9rem;margin:14px 14px 8px;display:flex;justify-content:space-between;gap:10px}.item small{font-size:.76rem;color:#decfac}
+.pictures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:0 8px 10px}.pictures>figure{margin:0;min-width:0}
+.pictures img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#808080;border-radius:5px;display:block}
+.pictures figcaption{font-size:.7rem;color:#e0d4e9;padding:5px 1px}
+.item[data-review=true]{border-color:#f0af89}.flag{margin:0 12px 12px;color:#ffc8a7;font-size:.8rem}
+body.only-after .pictures{grid-template-columns:1fr}body.only-after figure.before{display:none}body.only-before .pictures{grid-template-columns:1fr}body.only-before figure.after{display:none}
+#summary{font-size:.85rem;color:#f8d8a6}footer{border-top:1px solid var(--edge);margin-top:30px}
+@media(max-width:620px){header,main,footer{padding:14px}#grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.pictures{grid-template-columns:1fr}.item{min-width:0}.item h2{font-size:.75rem}.pictures figcaption{font-size:.66rem}}
+@media(max-width:420px){#grid{grid-template-columns:1fr}.pictures{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head><body>
+<header><a href="../../">TCG DESEUR</a><nav><a href="../../avancement/">Avancement</a> · <a href="../../collection-validee/">Galerie</a> · <a href="../">Audit général</a></nav></header>
+<main><p>CONTRÔLE QUALITÉ · ÉDITION ORIGINE</p><h1>105 illustrations — avant / après</h1>
+<p>Comparaison des 67 cartes principales et de leurs 38 alternatives. Les originaux sont préservés. Les nouveaux visuels possèdent une toile de 768 × 1 024 pixels avec fond uni <strong>#808080</strong>. Une vérification automatique des dimensions et des empreintes ne remplace pas l’inspection des bords, costumes et accessoires.</p>
+<div class="controls"><label>Rechercher une illustration<input id="search" type="search" placeholder="Ex. td_1_021" autocomplete="off"></label>
+<label>Type<select id="kind"><option value="all">Toutes (105)</option><option value="main">Cartes de base (67)</option><option value="alternative">Alternatives (38)</option></select></label>
+<div role="group" aria-label="Mode de comparaison"><button type="button" data-mode="compare" aria-pressed="true">Comparer</button> <button type="button" data-mode="only-after" aria-pressed="false">Après</button> <button type="button" data-mode="only-before" aria-pressed="false">Avant</button></div>
+<span id="summary">Chargement...</span></div><div id="grid"></div><p id="error" role="alert" hidden></p>
+</main><footer>Cette page montre seulement les illustrations publiques approuvées. Elle ne contient ni données de joueurs ni contenu des récompenses confidentielles.</footer>
+<script type="module">
+const root="/TCG-Thomas-Deseur/";
+const search=document.querySelector("#search"),kind=document.querySelector("#kind"),grid=document.querySelector("#grid"),summary=document.querySelector("#summary"),error=document.querySelector("#error");
+let artworks=[];
+function node(tag,cls,value){const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=value;return el;}
+function figure(label,path,klass,id){const f=node("figure",klass);const img=node("img");img.loading="lazy";img.decoding="async";img.src=root+path;img.alt=label+" "+id;f.append(img,node("figcaption","",label));return f;}
+function show(){
+ const query=search.value.toLowerCase().trim();const type=kind.value;
+ const filtered=artworks.filter(item=>(type==="all"||item.kind===type)&&item.artworkId.toLowerCase().includes(query));
+ const frag=document.createDocumentFragment();
+ for(const item of filtered){
+  const card=node("article","item");card.dataset.review=String(Boolean(item.reviewRequired));card.append(node("h2","",item.artworkId+" · "+(item.kind==="main"?"principale":"alternative")));
+  const pics=node("div","pictures");pics.append(figure("Original",item.source,"before",item.artworkId),figure("Fond uniforme",item.output,"after",item.artworkId));card.append(pics);
+  if(item.reviewRequired)card.append(node("p","flag","Détourage à contrôler"));
+  frag.append(card);
+ }
+ grid.replaceChildren(frag);summary.textContent=filtered.length+" / 105 visibles";
+}
+search.addEventListener("input",show);kind.addEventListener("change",show);
+for(const button of document.querySelectorAll("button[data-mode]"))button.addEventListener("click",()=>{
+ const selected=button.dataset.mode;document.body.className=selected==="compare"?"":selected;
+ for(const b of document.querySelectorAll("button[data-mode]"))b.setAttribute("aria-pressed",String(b===button));
+});
+try{
+ const response=await fetch(root+"data/detourage-105.json",{cache:"no-store"});
+ if(!response.ok)throw Error("Manifeste introuvable : "+response.status);
+ const data=await response.json();
+ if(!Array.isArray(data.artworks)||data.artworks.length!==105||new Set(data.artworks.map(i=>i.artworkId)).size!==105)throw Error("Catalogue incomplet ou non unique");
+ artworks=data.artworks;show();
+}catch(e){error.hidden=false;error.textContent=String(e);summary.textContent="Contrôle indisponible";}
+</script></body></html>
