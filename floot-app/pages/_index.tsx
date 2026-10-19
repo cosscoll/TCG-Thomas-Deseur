@@ -155,8 +155,8 @@ export default function Home() {
   return (
     <div className={styles.app}>
       <Helmet htmlAttributes={{lang:"fr"}}>
-        <title>TCG Deseur | Boosters et collection de cartes</title>
-        <meta name="description" content="TCG Deseur : ouvre un booster de cinq cartes, découvre des raretés et complète ton classeur personnel en ligne." />
+        <title>TCG Thomas Deseur | Boosters et collection de cartes</title>
+        <meta name="description" content="TCG Thomas Deseur : ouvre un booster de cinq cartes, découvre des raretés et complète ton classeur personnel en ligne." />
       </Helmet>
       <header className={styles.header}>
         <Link to="/" className={styles.brand}>
