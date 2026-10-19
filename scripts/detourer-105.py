@@ -40,7 +40,7 @@ def sources():
         raise ValueError("Le lot ne contient pas 105 illustrations distinctes.")
     return entries
 
-def produce(session, original):
+def produce_primary(session, original):
     """Retire seulement le fond connecté aux bords, sans effacer les costumes.
 
     Les anciens fonds de ces illustrations sont presque unis (gris/bleutés).
@@ -121,6 +121,26 @@ def produce(session, original):
                                      (SIZE[1]-fitted.height)//2))
     return canvas.convert("RGB"), [int(v) for v in bounds], round(fraction, 4)
 
+def produce(session, original, artwork_id=None):
+    """Never abort 105 assets on a single uncertain cutout.
+
+    A failure produces a conservative REVIEW-ONLY placeholder which keeps
+    the entire original intact. It is NOT eligible for production publication.
+    """
+    import cv2
+    try:
+        image, bounds, fraction = produce_primary(session, original)
+        return image, bounds, fraction, "edge-bg", None
+    except (ValueError, cv2.error) as exc:
+        w,h=original.size
+        rgb=original.convert("RGB")
+        foreground=ImageOps.contain(rgb,(int(SIZE[0]*.91),int(SIZE[1]*.91)),
+                                  method=Image.Resampling.LANCZOS)
+        canvas=Image.new("RGB", SIZE, BG)
+        canvas.paste(foreground,((SIZE[0]-foreground.width)//2,
+                                  (SIZE[1]-foreground.height)//2))
+        return canvas,[0,0,w,h],1.0,"fallback-contain-needs-review",str(exc)
+
 def main(check=False):
     entries = sources()
     if check:
@@ -143,9 +163,12 @@ def main(check=False):
     contact = Image.new("RGB", (8 * 152, 14 * 198), (235, 235, 235))
     pen = ImageDraw.Draw(contact)
     report = []
+    review_required = []
     for i, (artwork_id, kind, source, dest) in enumerate(entries):
         with Image.open(source) as im:
-            image, bounds, mask_fraction = produce(session, im)
+            image, bounds, mask_fraction, method, problem = produce(session, im, artwork_id)
+        if problem:
+            review_required.append({'artworkId': artwork_id, 'reason': problem})
         image.save(dest, "WEBP", quality=91, method=6)
         # Extérieurs grisés identiques. Vérifier qu'aucun fond de photo n'y subsiste.
         for xy in ((0, 0), (SIZE[0] - 1, 0), (0, SIZE[1] - 1), (SIZE[0] - 1, SIZE[1] - 1)):
@@ -160,17 +183,20 @@ def main(check=False):
                        "source": source.relative_to(ROOT).as_posix(),
                        "output": dest.relative_to(ROOT).as_posix(),
                        "sourceSha": digest(source), "outputSha": digest(dest),
-                       "maskBounds": bounds, "maskCoverage": mask_fraction})
+                       "maskBounds": bounds, "maskCoverage": mask_fraction,
+                       "method": method, "reviewRequired": bool(problem)})
         print(f"{i + 1:03d}/{EXPECTED} {artwork_id} {kind}", flush=True)
     if len(report) != EXPECTED:
         raise ValueError("Lot incomplet")
     contact.save(PREVIEW, "JPEG", quality=88)
     REPORT.write_text(json.dumps({"schema": "tcg-deseur-cutout-105-v1",
-        "status": "ASSETS_GENERATED_NOT_YET_LIVE",
+        "status": "REVIEW_REQUIRED_NOT_LIVE", "reviewRequiredCount": len(review_required),
+        "reviewRequired": review_required,
         "background": "#808080", "size": list(SIZE),
         "model": "opencv-neutral-background-reconstruction-v2", "originalsUntouched": True,
         "artworks": report}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     main(check=True)
+    print(f"Sorties: {len(report)}; images à corriger/revoir: {len(review_required)}",flush=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
