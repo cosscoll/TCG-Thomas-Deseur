@@ -4,7 +4,7 @@
 **Priorité : ces décisions remplacent toute consigne précédente contradictoire** (notamment boosters illimités et objectif de complétion limité à 67).
 
 Application Floot existante : `1d1c3807-73a6-49c5-a59e-ec097d8caddf`.
-Production actuelle : https://tcg-thomas-deseur.floot.app (ancien nom de domaine ; nom visible TCG Deseur).
+Adresse de production depuis le 19 octobre 2026 : https://tcg-thomas-deseur.floot.app (même projet Floot, ancien sous-domaine libéré).
 
 ## 1. Système de codes cadeaux administrable
 
