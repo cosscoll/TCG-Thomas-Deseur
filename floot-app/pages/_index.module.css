@@ -36,7 +36,7 @@
 .revealedCards span{font-size:.72rem;padding:5px 8px;border:1px solid #5f5370;border-radius:6px;color:#dcd2e8;max-width:100%}
 @keyframes revealCardEnter{from{transform:translateY(15px) scale(.94);opacity:.3}to{transform:translateY(0) scale(1);opacity:1}}
 @media(max-width:800px){.accountDetails{align-items:flex-start}.profileForm{max-width:100%}}
-@media(max-width:500px){.results{flex-wrap:wrap}.revealCard{width:min(100%,205px);padding:15px}.revealCard b{font-size:3.7rem}.drawDialog{padding:15px}}
+@media(max-width:500px){.header{gap:12px}.header nav{min-width:0;max-width:100%;flex-wrap:wrap;justify-content:center;column-gap:14px;row-gap:10px}.header nav a{white-space:nowrap}.results{flex-wrap:wrap}.revealCard{width:min(100%,205px);padding:15px}.revealCard b{font-size:3.7rem}.drawDialog{padding:15px}}
 .packRecap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:15px 0;padding:15px;background:#2a2338;border:1px solid #87719c;border-radius:12px;font-size:.83rem}
 .packRecap strong{width:100%;text-align:center;color:#ffdfa0;font-size:.95rem}
 .packRecap span{padding:8px 10px;border:1px solid #68577a;background:#1d1829;border-radius:8px;color:#f5ecf6}
