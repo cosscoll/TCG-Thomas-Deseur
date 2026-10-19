@@ -41,4 +41,5 @@ if unexpected:
 print("OK : aucune ancienne marque dans les interfaces et sources actives.")
 print(f"SOUS-DOMAINE FLOOT ACTIF: {len(technical)}")
 for e in technical:print("DOMAINE_TECHNIQUE: "+e)
-print("RAPPEL : le changement de sous-domaine Floot exige une interruption et confirmation préalable ; ne pas supprimer les liens actifs.")
+print(f"Adresse officielle actuelle : https://{domain}")
+print("Les anciens identifiants locaux et chemins historiques restent uniquement pour la compatibilité.")

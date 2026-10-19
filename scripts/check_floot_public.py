@@ -100,8 +100,8 @@ def check(case):
             if "text/html" not in content_type:
                 raise ValueError("Page is not HTML")
             title = re.search(r"<title[^>]*>(.*?)</title>", body, re.DOTALL)
-            if not title or "TCG Deseur" not in title.group(1):
-                raise ValueError("Missing TCG Deseur page identity")
+            if not title or not re.search(r"\bTCG(?:[- ]Thomas)?[- ]Deseur\b", title.group(1), re.IGNORECASE):
+                raise ValueError("Missing TCG Thomas Deseur page identity")
             if 'id="root"' not in body:
                 raise ValueError("Missing application mount")
         result["passed"] = True

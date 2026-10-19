@@ -133,7 +133,18 @@ class PublicSmokeTests(unittest.TestCase):
         response = FakeResponse(status=200, content_type="text/html", body='<html><head><title>Autre site</title></head><body><div id="root"></div></body></html>', url=checker.BASE_URL + "/")
         result, _ = self.call(response, path="/")
         self.assertFalse(result["passed"])
-        self.assertIn("TCG Deseur", result["error"])
+        self.assertIn("TCG Thomas Deseur", result["error"])
+
+    def test_canonical_public_titles_pass(self):
+        for page_title in ("TCG Thomas Deseur | Boosters et collection", "TCG-Thomas-Deseur"):
+            response = FakeResponse(
+                status=200, content_type="text/html",
+                body=f'<html><head><title>{page_title}</title></head><body><div id="root"></div></body></html>',
+                url=checker.BASE_URL + "/",
+            )
+            with self.subTest(title=page_title):
+                result, _ = self.call(response, path="/")
+                self.assertTrue(result["passed"], result.get("error"))
 
     def test_valid_public_page_passes(self):
         response = FakeResponse(status=200, content_type="text/html", body='<html><head><title>TCG Deseur</title></head><body><div id="root"></div></body></html>', url=checker.BASE_URL + "/")
