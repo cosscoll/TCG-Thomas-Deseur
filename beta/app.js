@@ -59,7 +59,7 @@ function report(){
   'Remarque ou erreur :',
   comment||'(aucune remarque)',
   '',
-  'Lien du jeu : https://budget-illimite-tcg.floot.app/',
+  'Lien du jeu : https://tcg-thomas-deseur.floot.app/',
   '',
   'Aucun identifiant ou mot de passe demandé.'
  ].join('\n');

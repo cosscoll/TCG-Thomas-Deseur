@@ -2,7 +2,7 @@
 
 > **Nom officiel : TCG-Thomas-Deseur.** Le sous-domaine Floot historique reste une adresse technique de service, **pas le nom du jeu**. Pour le changer sans perdre l’accès des joueurs, il faut prévoir une transition du domaine et de leurs liens existants.
 
-**Jeu de collection publié sur Floot le 16 octobre 2026 :** [Ouvrir TCG Deseur](https://budget-illimite-tcg.floot.app)
+**Jeu de collection publié sur Floot le 16 octobre 2026 :** [Ouvrir TCG Deseur](https://tcg-thomas-deseur.floot.app)
 
 **Vitrine et galerie documentaire GitHub Pages :** https://cosscoll.github.io/TCG-Thomas-Deseur/
 
@@ -34,7 +34,7 @@ Pour les codes cadeaux spéciaux, le backend de préparation convertit la réfé
 
 | Surface | Usage |
 | --- | --- |
-| **Floot** — https://budget-illimite-tcg.floot.app | Jeu fonctionnel : authentification, logique serveur, base de données, tirages et sauvegardes. |
+| **Floot** — https://tcg-thomas-deseur.floot.app | Jeu fonctionnel : authentification, logique serveur, base de données, tirages et sauvegardes. |
 | **GitHub** — `floot-app/` | Copie des fichiers source du jeu et du panneau codes cadeaux ; leur présence sur GitHub ne constitue pas un second hébergement backend. |
 | **GitHub Pages** — `index.html`, `collection-validee/`, `avancement/` | Portail documentaire, aperçu et liens vers le jeu. GitHub Pages seul ne peut pas exécuter les endpoints Floot ni sa base PostgreSQL. |
 
