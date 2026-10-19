@@ -27,8 +27,18 @@ for file in root.rglob("*"):
         else:
             violations.append(entry)
 print(f"AUDIT: {visited} fichiers texte.")
-print(f"ANCIENNE MARQUE hors adresse technique : {len(violations)}")
-for e in violations:print("RENOMMER: "+e)
+allowed_historical_files={
+    "game/legacy-storage.js",  # lecture des anciennes sauvegardes, pas un titre
+    "tests/storage-migration.test.mjs",  # teste cette rétrocompatibilité
+    "docs/AUDIT_ET_FEUILLE_DE_ROUTE.md",  # chemin réellement utilisé avant migration
+}
+unexpected=[e for e in violations if e.split(":",1)[0] not in allowed_historical_files]
+print(f"ANCIENNE MARQUE hors adresse technique : {len(violations)} (historiques autorisées : {len(violations)-len(unexpected)})")
+for e in violations:print(("TRACE_HISTORIQUE: " if e not in unexpected else "RENOMMER: ")+e)
+if unexpected:
+    print(f"ECHEC: {len(unexpected)} référence(s) non justifiées à l'ancienne dénomination.")
+    raise SystemExit(1)
+print("OK : aucune ancienne marque dans les interfaces et sources actives.")
 print(f"SOUS-DOMAINE FLOOT ACTIF: {len(technical)}")
 for e in technical:print("DOMAINE_TECHNIQUE: "+e)
 print("RAPPEL : le changement de sous-domaine Floot exige une interruption et confirmation préalable ; ne pas supprimer les liens actifs.")
