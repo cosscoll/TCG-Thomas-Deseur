@@ -2,7 +2,7 @@
 
 **Plan consolidé le 10 octobre 2026.** Ceci n'est pas une tâche automatisée ni une garantie de travail en arrière-plan. Reprise à effectuer pendant une nouvelle session d'intervention, avec état du quota vérifié en temps réel.
 
-**Floot production** : projet `1d1c3807-73a6-49c5-a59e-ec097d8caddf` — https://budget-illimite-tcg.floot.app  
+**Floot production** : projet `1d1c3807-73a6-49c5-a59e-ec097d8caddf` — https://tcg-thomas-deseur.floot.app  
 **Code de conception/recette** : https://github.com/cosscoll/TCG-Thomas-Deseur  
 **Quota bloqué le 10 octobre, réinitialisation indiquée le 11 octobre 2026 à 09:00 UTC.**
 

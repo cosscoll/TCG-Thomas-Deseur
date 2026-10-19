@@ -3,7 +3,7 @@
 ## Résultat publié
 
 **Projet de production :** `1d1c3807-73a6-49c5-a59e-ec097d8caddf` (Floot, PostgreSQL intégré).  
-**URL conservée :** https://budget-illimite-tcg.floot.app  
+**URL conservée :** https://tcg-thomas-deseur.floot.app  
 **État :** publication Floot réussie le 10 octobre 2026, job `79101791-9a0f-4da6-8a4d-a870a7e66639` terminé avec `succeeded`.  
 **Checkpoint Floot :** « Classeur TCG complet et comptes isolés », id `da85422a-28b7-466e-8d17-a07f424b7da6`.  
 **Aucune base de données joueur modifiée manuellement.**
@@ -43,7 +43,7 @@ Un second lot a été **développé, testé et publié dans le même Floot** apr
 - `pages/_index.tsx` et `pages/_index.module.css` : récapitulatif visible après révélation des cinq cartes dans la modale d'ouverture.
 - **Six suites Jasmine Floot réussies** ; typecheck propre.
 - **Checkpoint :** « Récapitulatif des cinq cartes après booster », `e440359a-a936-49f8-9fca-f515d02ff8d5`.
-- **Dernière publication Floot :** job `9b0cfe0f-9765-433c-8f76-c81f4aeab79b` terminé **succeeded** sur https://budget-illimite-tcg.floot.app.
+- **Dernière publication Floot :** job `9b0cfe0f-9765-433c-8f76-c81f4aeab79b` terminé **succeeded** sur https://tcg-thomas-deseur.floot.app.
 - **Vérification publique du bundle actuel :** accueil 200, entrypoint `/_assets/index-BBWDp-2s.js` ; le chunk `/_assets/_index-sSaNrDWr.js` répond 200 et contient « Bilan de ce booster », « Mes doublons » et le nom de l'export CSV ; `/_api/collection` sans session répond 401.
 
 Limite : aucun booster réel n'a été consommé et la révélation n'a pas été testée dans un navigateur avec un compte joueur. Les tests portent sur le code/les données fictives et les assets publics réellement déployés.

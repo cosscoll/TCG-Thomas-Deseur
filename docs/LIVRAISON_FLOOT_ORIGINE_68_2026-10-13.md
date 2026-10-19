@@ -2,7 +2,7 @@
 
 ## Statut prouvé
 
-**Publication de la nouvelle édition confirmée par Floot** : job `daaedf69-a0bf-4509-95ec-55788ec8d0dc` terminé avec état `succeeded`, URL publique https://budget-illimite-tcg.floot.app.
+**Publication de la nouvelle édition confirmée par Floot** : job `daaedf69-a0bf-4509-95ec-55788ec8d0dc` terminé avec état `succeeded`, URL publique https://tcg-thomas-deseur.floot.app.
 
 Un contrôle HTTP de production confirme `GET /` → **200** et des API privées protégées sans cookie (`/_api/collection`, `/_api/booster`, `/_api/completion` → **401**). Le vrai module JavaScript d'accueil publié `/_assets/_index-C7uR0Gd7.js` répond **200** et inclut les textes « ÉDITION ORIGINE · 68 CARTES », « 67 cartes officielles », les nouvelles probabilités et l'archive de l'ancienne édition. Il ne contient aucun des noms/références privés interdits de la récompense. Ces vérifications ne remplacent **pas** l'ouverture authentifiée d'un booster **nouvelle édition**.
 

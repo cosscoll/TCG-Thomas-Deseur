@@ -4,7 +4,7 @@
 
 ## Environnement
 
-- Jeu vivant : https://budget-illimite-tcg.floot.app/
+- Jeu vivant : https://tcg-thomas-deseur.floot.app/
 - Page d'invitation et retour : https://cosscoll.github.io/TCG-Thomas-Deseur/beta/
 - Catalogue de référence : https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/
 - Atelier de revue visuelle : https://cosscoll.github.io/TCG-Thomas-Deseur/audit-visuels/

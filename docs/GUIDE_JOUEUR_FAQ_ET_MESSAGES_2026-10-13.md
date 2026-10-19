@@ -6,7 +6,7 @@
 
 TCG Deseur est un jeu de collection de cartes virtuelles. Le but est de réunir les **67 personnages connus** du classeur « Origine ». Un **68ᵉ emplacement**, simplement appelé « Carte mystère », est visible sans en révéler l'identité ni le visuel. Chaque personnage possède une illustration principale et certains ont des versions alternatives.
 
-**Pour commencer :** va sur https://budget-illimite-tcg.floot.app/, crée ton compte avec ton e-mail, ton pseudo et ton mot de passe, puis connecte-toi. Le catalogue visuel public est consultable sans compte sur https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/.
+**Pour commencer :** va sur https://tcg-thomas-deseur.floot.app/, crée ton compte avec ton e-mail, ton pseudo et ton mot de passe, puis connecte-toi. Le catalogue visuel public est consultable sans compte sur https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/.
 
 ## Comment fonctionne un booster ?
 

@@ -1,7 +1,7 @@
 # TCG Deseur — Préparation des prochaines mécaniques de collection
 
 Date : 10 octobre 2026. **Travail effectué sur GitHub uniquement.**
-L'application jouable reste sur [Floot](https://budget-illimite-tcg.floot.app), distincte de la démonstration de GitHub Pages. Les derniers correctifs Floot relatifs à la sécurité et au classeur sont toujours **non publiés**, en attente de quota et de validation ([reprise précise](FLOOT_SESSION_2026-10-10_FIN_DU_QUOTA.md)).
+L'application jouable reste sur [Floot](https://tcg-thomas-deseur.floot.app), distincte de la démonstration de GitHub Pages. Les derniers correctifs Floot relatifs à la sécurité et au classeur sont toujours **non publiés**, en attente de quota et de validation ([reprise précise](FLOOT_SESSION_2026-10-10_FIN_DU_QUOTA.md)).
 
 ## 1. Prévision mathématique des nouvelles cartes — implémentée sur GitHub
 

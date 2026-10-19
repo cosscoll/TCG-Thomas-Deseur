@@ -1,7 +1,7 @@
 # TCG Deseur — Matrice de recette Floot
 
 **Version préparée :** 9 octobre 2026  
-**Application à contrôler :** https://budget-illimite-tcg.floot.app  
+**Application à contrôler :** https://tcg-thomas-deseur.floot.app  
 **Projet de développement :** `1d1c3807-73a6-49c5-a59e-ec097d8caddf`
 
 > Ce document définit **des tests à réaliser**. Ce ne sont pas des résultats. Les tests CI publics non authentifiés sont séparés des tests multi-comptes qui nécessitent un environnement autorisé.

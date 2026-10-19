@@ -1,6 +1,6 @@
 # TCG Deseur — Suite de travail du 10 octobre 2026, quota Floot atteint
 
-**Source de vérité de l'application :** projet Floot `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, https://budget-illimite-tcg.floot.app. Les sources locales GitHub ne sont **pas** synchronisées automatiquement avec Floot.
+**Source de vérité de l'application :** projet Floot `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, https://tcg-thomas-deseur.floot.app. Les sources locales GitHub ne sont **pas** synchronisées automatiquement avec Floot.
 
 ## État confirmé de la production
 
