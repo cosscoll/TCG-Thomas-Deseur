@@ -41,25 +41,84 @@ def sources():
     return entries
 
 def produce(session, original):
-    from rembg import remove
-    rgba = remove(original.convert("RGB"), session=session, post_process_mask=True).convert("RGBA")
-    alpha = rgba.getchannel("A")
-    # Ignorer les traces imperceptibles, mais ne jamais recadrer une partie visible.
-    bounds = alpha.point(lambda x: 255 if x > 8 else 0).getbbox()
-    if not bounds:
+    """Retire seulement le fond connecté aux bords, sans effacer les costumes.
+
+    Les anciens fonds de ces illustrations sont presque unis (gris/bleutés).
+    La segmentation chromatique est préférable au modèle généraliste qui
+    confond parfois des costumes avec le décor et détruit des parties entières.
+    """
+    import cv2
+    import numpy as np
+    rgb = np.asarray(original.convert("RGB"), dtype=np.uint8)
+    h, w = rgb.shape[:2]
+    # Bordure large : les sources peuvent toucher plusieurs bords, mais
+    # le fond des illustrations 3D est mat et chromatiquement neutre.
+    rim = max(4, min(h, w) // 24)
+    border = np.zeros((h, w), bool)
+    border[:rim] = True
+    border[-rim:] = True
+    border[:, :rim] = True
+    border[:, -rim:] = True
+    intensity = rgb.astype(np.int16)
+    saturation = intensity.max(2) - intensity.min(2)
+    brightness = intensity.mean(2)
+    eligible = border & (saturation < 56) & (brightness > 65) & (brightness < 223)
+    samples = rgb[eligible]
+    if len(samples) < 128:
+        raise ValueError("Fond neutre insuffisant, détourage manuel requis.")
+    samples = samples[::max(1, len(samples) // 12000)].astype(np.float32)
+    K = min(4, max(1, len(samples) // 150))
+    cv2.setRNGSeed(2110)
+    _, labels, centers = cv2.kmeans(samples, K, None,
+        (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 24, 0.3),
+        2, cv2.KMEANS_PP_CENTERS)
+    counts = np.bincount(labels[:, 0], minlength=K)
+    neutral_centers = sorted(zip(counts, centers), key=lambda x: -x[0])
+    # Un ou deux tons de fond proches afin de respecter les légers dégradés.
+    base = neutral_centers[0][1]
+    bg_centers = [base]
+    for count, center in neutral_centers[1:]:
+        if count > 0.12 * len(samples) and np.linalg.norm(center - base) < 38:
+            bg_centers.append(center)
+    px = rgb.astype(np.float32)
+    distances = np.minimum.reduce([np.sqrt(np.sum((px - center) ** 2, axis=2))
+                                    for center in bg_centers])
+    bg_color = distances < 32
+    # Conserver les zones grises enclavées dans les contours du personnage.
+    labels_count, comps, stats, _ = cv2.connectedComponentsWithStats(
+        bg_color.astype(np.uint8), connectivity=8)
+    bg_connected = np.zeros((h, w), dtype=np.uint8)
+    for k in range(1, labels_count):
+        x, y, cw, ch, area = stats[k]
+        touches_edge = x == 0 or y == 0 or x + cw >= w or y + ch >= h
+        if touches_edge and area > max(100, (h * w) // 8000):
+            bg_connected[comps == k] = 255
+    if np.mean(bg_connected > 0) < 0.025:
+        raise ValueError("Fond non détecté avec assez de confiance.")
+    foreground = (bg_connected == 0).astype(np.uint8) * 255
+    # Retirer exclusivement le bruit isolé très fin ; conserver tout accessoire
+    # visible, y compris ceux séparés du personnage.
+    n, cc, sizes, _ = cv2.connectedComponentsWithStats(foreground, 8)
+    for k in range(1, n):
+        if sizes[k, cv2.CC_STAT_AREA] < max(15, h*w//70000):
+            foreground[cc == k] = 0
+    fraction = float(np.mean(foreground > 127))
+    if not 0.045 <= fraction <= 0.95:
+        raise ValueError(f"Masque incohérent ({fraction:.1%})")
+    points = cv2.findNonZero(foreground)
+    if points is None:
         raise ValueError("Masque vide")
-    visible_pixels = sum(1 for v in alpha.resize((128, 128)).getdata() if v > 70)
-    fraction = visible_pixels / (128 * 128)
-    if not 0.045 <= fraction <= 0.88:
-        raise ValueError(f"Masque incohérent ({fraction:.1%}): revue requise")
-    # Conserver absolument tous les pixels du personnage; taille sans découpe.
+    bx, by, bw, bh = cv2.boundingRect(points)
+    bounds = (bx, by, bx + bw, by + bh)
+    feather = cv2.GaussianBlur(foreground, (3, 3), 0.75)
+    rgba = original.convert("RGBA")
+    rgba.putalpha(Image.fromarray(feather))
     subject = rgba.crop(bounds)
     fitted = ImageOps.contain(subject, (int(SIZE[0] * 0.91), int(SIZE[1] * 0.91)),
                               method=Image.Resampling.LANCZOS)
     canvas = Image.new("RGBA", SIZE, (*BG, 255))
-    x = (SIZE[0] - fitted.width) // 2
-    y = (SIZE[1] - fitted.height) // 2
-    canvas.alpha_composite(fitted, (x, y))
+    canvas.alpha_composite(fitted, ((SIZE[0]-fitted.width)//2,
+                                     (SIZE[1]-fitted.height)//2))
     return canvas.convert("RGB"), [int(v) for v in bounds], round(fraction, 4)
 
 def main(check=False):
@@ -78,8 +137,7 @@ def main(check=False):
                     raise ValueError(f"Format incorrect: {artwork_id}")
         print(f"Vérifié: {EXPECTED} détourages, images originales intactes.")
         return
-    from rembg import new_session
-    session = new_session("u2net")
+    session = None
     DEST.mkdir(parents=True, exist_ok=True)
     PREVIEW.parent.mkdir(parents=True, exist_ok=True)
     contact = Image.new("RGB", (8 * 152, 14 * 198), (235, 235, 235))
@@ -110,7 +168,7 @@ def main(check=False):
     REPORT.write_text(json.dumps({"schema": "tcg-deseur-cutout-105-v1",
         "status": "ASSETS_GENERATED_NOT_YET_LIVE",
         "background": "#808080", "size": list(SIZE),
-        "model": "u2net", "originalsUntouched": True,
+        "model": "opencv-neutral-background-reconstruction-v2", "originalsUntouched": True,
         "artworks": report}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     main(check=True)
 
