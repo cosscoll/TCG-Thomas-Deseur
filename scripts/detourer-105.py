@@ -62,7 +62,7 @@ def produce_primary(session, original):
     intensity = rgb.astype(np.int16)
     saturation = intensity.max(2) - intensity.min(2)
     brightness = intensity.mean(2)
-    eligible = border & (saturation < 56) & (brightness > 65) & (brightness < 223)
+    eligible = border & (saturation < 66) & (brightness > 58) & (brightness < 253)
     samples = rgb[eligible]
     if len(samples) < 128:
         raise ValueError("Fond neutre insuffisant, détourage manuel requis.")
@@ -78,12 +78,12 @@ def produce_primary(session, original):
     base = neutral_centers[0][1]
     bg_centers = [base]
     for count, center in neutral_centers[1:]:
-        if count > 0.12 * len(samples) and np.linalg.norm(center - base) < 38:
+        if count > 0.12 * len(samples) and np.linalg.norm(center - base) < 65:
             bg_centers.append(center)
     px = rgb.astype(np.float32)
     distances = np.minimum.reduce([np.sqrt(np.sum((px - center) ** 2, axis=2))
                                     for center in bg_centers])
-    bg_color = distances < 32
+    bg_color = distances < 66
     # Conserver les zones grises enclavées dans les contours du personnage.
     labels_count, comps, stats, _ = cv2.connectedComponentsWithStats(
         bg_color.astype(np.uint8), connectivity=8)
