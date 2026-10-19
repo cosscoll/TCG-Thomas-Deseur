@@ -4,7 +4,7 @@
 
 ## Édition en vigueur
 
-Le **jeu connecté Floot** se trouve sur https://budget-illimite-tcg.floot.app/ et utilise l’**édition Origine** à 68 emplacements, dont 67 personnages nommés et une Carte mystère. Le catalogue public est composé de **33 Communes, 21 Rares, 8 Épiques, 4 Légendaires et 1 Hors-série**, plus l’emplacement neutre.
+Le **jeu connecté Floot** se trouve sur https://tcg-thomas-deseur.floot.app/ et utilise l’**édition Origine** à 68 emplacements, dont 67 personnages nommés et une Carte mystère. Le catalogue public est composé de **33 Communes, 21 Rares, 8 Épiques, 4 Légendaires et 1 Hors-série**, plus l’emplacement neutre.
 
 La base Floot de l’édition Origine est distincte de l’ancien prototype. L’ancien inventaire et les historiques n’ont pas été supprimés. Quatre illustrations de l’ancienne édition ont été rattachées sans ambiguïté au nouveau catalogue, la cinquième est conservée dans l’archive sans nouveau crédit.
 

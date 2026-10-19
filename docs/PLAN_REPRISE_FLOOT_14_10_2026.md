@@ -4,7 +4,7 @@
 
 ## Source de vérité et périmètre à préserver
 
-- **Floot ACTIF** : projet `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, https://budget-illimite-tcg.floot.app ; publication de l'édition Origine le 13/10/2026 confirmée par job `daaedf69-a0bf-4509-95ec-55788ec8d0dc`.
+- **Floot ACTIF** : projet `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, https://tcg-thomas-deseur.floot.app ; publication de l'édition Origine le 13/10/2026 confirmée par job `daaedf69-a0bf-4509-95ec-55788ec8d0dc`.
 - **GitHub** : `cosscoll/TCG-Thomas-Deseur` est le dépôt documentaire et de tests ; modifier GitHub **ne déploie pas** directement du code Floot.
 - **68 emplacements** : 67 personnages connus (33 Communes, 21 Rares, 8 Épiques, 4 Légendaires, 1 Hors-série) + une **Carte mystère** sans divulgation du nom véritable, de l'illustration ou des modalités précises d'obtention.
 - **105 illustrations retenues** : 67 principales + 38 alternatives, dont l'inventaire indépendant et la participation à la complétion restent à décider par le créateur. En production actuelle, illustration alternative uniformément tirée parmi 38 sur la branche 10 %, rattachée au personnage avec sa propre image mémorisée dans l'historique du booster.

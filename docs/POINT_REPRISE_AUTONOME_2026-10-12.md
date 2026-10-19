@@ -13,7 +13,7 @@ Ce document reflète les vérifications réellement effectuées sur le dépôt e
 
 **Validation interne Floot :** `typecheck: clean`, **14 fichiers de tests Jasmine réussis, aucun échec**. Checkpoints : « Classeur confidentiel et comptes bêta » (`28c3c163-7e98-4d6b-9c9b-e0153eff0a7c`) et « Archive privée des anciennes cartes » (`19928f76-0c9c-452d-9aac-95e4f5e167d5`).
 
-**Publication :** deuxième déploiement de ce lot confirmé réussi par Floot sur https://budget-illimite-tcg.floot.app/ (job `a20a4d5d-a2a9-4cee-b2ed-863d5d5e4e72`).
+**Publication :** deuxième déploiement de ce lot confirmé réussi par Floot sur https://tcg-thomas-deseur.floot.app/ (job `a20a4d5d-a2a9-4cee-b2ed-863d5d5e4e72`).
 
 ## Vérifications sans modification de comptes
 - Le backend conserve un catalogue technique provisoire distinct de l'édition approuvée. Toutes les illustrations des boosters ordinaires ont été retrouvées parmi les fichiers du dépôt GitHub.

@@ -70,7 +70,7 @@ Les routes privées sont refusées en anonyme avec HTTP 401 (classeur, booster, 
 - **Livrable supplémentaire :** une interface statique de démonstration créée dans `floot-collection/demo.html`, `demo.mjs` et `demo.css` : statistiques, jauges par rareté, filtres et tris, badges de doublons, placeholders neutres pour les visuels encore en fabrication. Elle utilise des **données de démonstration uniquement** et ne change aucun inventaire réel.
 - **Tests :** sept tests statiques ajoutés sous `tests/floot-binder-demo.test.mjs`. Une première exécution a échoué sur un faux positif concernant un commentaire du fichier JS, puis le problème a été corrigé. La [dernière CI GitHub réussie](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946338311) donne **80 tests réussis, 0 échec**.
 - **Déploiement :** GitHub Pages a confirmé `completed/success` pour [ce workflow](https://github.com/cosscoll/TCG-Thomas-Deseur/actions/runs/37946337589). **La requête HTTP directe vers l'URL Pages a échoué depuis les outils disponibles** (résolution DNS/accès interdit). Il est interdit d'affirmer que l'URL est vérifiée accessible et visible ; il faudra ouvrir la page dans un vrai navigateur pour lever cette incertitude.
-- **Floot actif :** aucun changement. L'application `https://budget-illimite-tcg.floot.app` reste publiée, mais ne contient pas encore ce nouveau module.
+- **Floot actif :** aucun changement. L'application `https://tcg-thomas-deseur.floot.app` reste publiée, mais ne contient pas encore ce nouveau module.
 - **Prochaine action :** tester l'aperçu en navigateur puis, lorsque Floot sera disponible, lire les composants du classeur courant et y intégrer les données/statistiques sans reconstruire toute l'interface.
 
 ## Mise à jour finale — récapitulatif de booster (10 octobre 2026)
@@ -80,7 +80,7 @@ Un second lot a été **développé, testé et publié dans le même Floot** apr
 - `pages/_index.tsx` et `pages/_index.module.css` : récapitulatif visible après révélation des cinq cartes dans la modale d'ouverture.
 - **Six suites Jasmine Floot réussies** ; typecheck propre.
 - **Checkpoint :** « Récapitulatif des cinq cartes après booster », `e440359a-a936-49f8-9fca-f515d02ff8d5`.
-- **Dernière publication Floot :** job `9b0cfe0f-9765-433c-8f76-c81f4aeab79b` terminé **succeeded** sur https://budget-illimite-tcg.floot.app.
+- **Dernière publication Floot :** job `9b0cfe0f-9765-433c-8f76-c81f4aeab79b` terminé **succeeded** sur https://tcg-thomas-deseur.floot.app.
 - **Vérification publique du bundle actuel :** accueil 200, entrypoint `/_assets/index-BBWDp-2s.js` ; le chunk `/_assets/_index-sSaNrDWr.js` répond 200 et contient « Bilan de ce booster », « Mes doublons » et le nom de l'export CSV ; `/_api/collection` sans session répond 401.
 
 Limite : aucun booster réel n'a été consommé et la révélation n'a pas été testée dans un navigateur avec un compte joueur. Les tests portent sur le code/les données fictives et les assets publics réellement déployés.
@@ -98,7 +98,7 @@ La version publique continue à servir la dernière build validée avant cette s
 
 **Livré :** classeur privé 49 cartes, raretés, doublons, uniques/manquantes, progression et 15 objectifs, filtres/recherche/tri, fiches, historique des dix derniers boosters et export CSV. Les modifications de sessions/logout ont été sécurisées. Le backend de tirage et les comptes réels n'ont pas été modifiés.
 
-**Contrôles réalisés :** 49 identifiants et raretés Floot concordants avec l'archive GitHub ; TypeScript sans erreur ; 5 suites Jasmine réussies ; checkpoint `da85422a-28b7-466e-8d17-a07f424b7da6` ; publication `79101791-9a0f-4da6-8a4d-a870a7e66639` réussie sur https://budget-illimite-tcg.floot.app ; GET accueil/connexion 200, collection anonyme 401, bundle frontend publié contenant les nouvelles fonctions.
+**Contrôles réalisés :** 49 identifiants et raretés Floot concordants avec l'archive GitHub ; TypeScript sans erreur ; 5 suites Jasmine réussies ; checkpoint `da85422a-28b7-466e-8d17-a07f424b7da6` ; publication `79101791-9a0f-4da6-8a4d-a870a7e66639` réussie sur https://tcg-thomas-deseur.floot.app ; GET accueil/connexion 200, collection anonyme 401, bundle frontend publié contenant les nouvelles fonctions.
 
 **Limites :** pas de parcours authentifié en navigateur ni de capture du preview Floot (fenêtre éditeur absente). Ne pas confondre vérification du bundle publié avec un test des interactions après connexion. L'intégration est publiée, mais la recette multi-comptes reste à compléter.
 
@@ -116,7 +116,7 @@ La version publique continue à servir la dernière build validée avant cette s
 
 ### Source de vérité et état connu
 
-- **Floot actif :** projet `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, application publique https://budget-illimite-tcg.floot.app. **Aucune création de nouveau projet.**
+- **Floot actif :** projet `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, application publique https://tcg-thomas-deseur.floot.app. **Aucune création de nouveau projet.**
 - **GitHub :** `cosscoll/TCG-Thomas-Deseur` contient prototype historique, catalogue, documents et vérifications publiques, mais **pas encore le code serveur Floot actuel ni une sauvegarde PostgreSQL**.
 - **Documentation exécutable :** [plan du 10 octobre](PLAN_REPRISE_2026-10-10.md), [36 critères de recette](MATRICE_RECETTE_FLOOT.md), [audit des risques](FLOOT_REPRISE_2026-10-09.md).
 - **Contrôle public :** `scripts/check_floot_public.py` (six contrôles précédemment exécutés) ; `floot-e2e/` et `.github/workflows/floot-public-smoke.yml` créés pour des tests publics **manuels**, sans authentification. L'exécution réelle des nouveaux tests Playwright et du workflow reste à confirmer.
@@ -184,7 +184,7 @@ L'objectif est de **faire avancer l'application, pas d'accumuler de la documenta
 
 **Vérifications observées :** 14 tests unitaires Python exécutés localement, **14 réussis, zéro échec** ; vérification de syntaxe JavaScript du test Playwright avec `node --check`, sans erreur. Les nouveaux tests Playwright **n'ont pas été exécutés contre le site Floot** : le réseau du conteneur ne permet pas d'atteindre l'hôte. Il n'est pas possible d'en déduire le comportement responsive réel.
 
-**Publication active :** vérification `get_publish_status` : `published=true`, domaine `https://budget-illimite-tcg.floot.app`, visibilité publique, forfait Floot gratuit. Aucune publication ni modification applicative Floot dans cette session.
+**Publication active :** vérification `get_publish_status` : `published=true`, domaine `https://tcg-thomas-deseur.floot.app`, visibilité publique, forfait Floot gratuit. Aucune publication ni modification applicative Floot dans cette session.
 
 **Limites / prochaine action :** à la reprise des actions Floot, relire les helpers d'authentification et l'endpoint de déconnexion, reproduire les cas A04–A08 puis corriger les défauts démontrés. Ensuite exécuter `typecheck`, tests unitaires Floot et contrôles navigateur autorisés. Ne pas confondre les nouveaux contrôles anonymes avec un test des transactions, des comptes ou de PostgreSQL. Ne pas réactiver d'automatisation.
 
@@ -213,7 +213,7 @@ L'objectif est de **faire avancer l'application, pas d'accumuler de la documenta
 - Tests du vérificateur de sauvegarde préparés précédemment : 13 scénarios réussis localement, non exécutés par le workflow GitHub CI du prototype.
 - Tentative de lancement automatique supplémentaire des tests navigateur publics depuis GitHub : **refusée par les contrôles de sécurité de l'outil** ; aucun changement de déclencheur n'a été appliqué. Ne pas insister ou contourner ce refus.
 
-**Floot publié :** inchangé à https://budget-illimite-tcg.floot.app. **Important :** le succès GitHub valide les tests du catalogue historique et des scripts, **pas** la concordance des 49 lignes réellement stockées dans PostgreSQL Floot, ni la connexion joueur, les boosters ou l'UX mobile.
+**Floot publié :** inchangé à https://tcg-thomas-deseur.floot.app. **Important :** le succès GitHub valide les tests du catalogue historique et des scripts, **pas** la concordance des 49 lignes réellement stockées dans PostgreSQL Floot, ni la connexion joueur, les boosters ou l'UX mobile.
 
 **Prochaine action concrète en session, quand Floot redevient accessible :** lire la structure réelle de `tcg_cards` et exporter uniquement les slugs/raretés (aucune donnée personnelle), comparer avec `scripts/compare_floot_catalogue.mjs`, puis traiter l'authentification et la séparation des comptes selon [la matrice de recette](MATRICE_RECETTE_FLOOT.md). Valider, créer un checkpoint et publier uniquement après vérifications.
 
@@ -231,7 +231,7 @@ Relire la documentation courante dans GitHub, vérifier l'accès au projet Floot
 
 ## Consigne préparée pour chaque exécution
 
-Reprends et fais avancer TCG Deseur en autonomie, dans ce même chat, sans attendre que Cosme écrive « continue ». Utilise le connecteur Floot et le projet EXISTANT 1d1c3807-73a6-49c5-a59e-ec097d8caddf, publié à https://budget-illimite-tcg.floot.app. Le dépôt connecté cosscoll/TCG-Thomas-Deseur conserve les archives et la documentation ; il n'est pas encore un export des sources Floot.
+Reprends et fais avancer TCG Deseur en autonomie, dans ce même chat, sans attendre que Cosme écrive « continue ». Utilise le connecteur Floot et le projet EXISTANT 1d1c3807-73a6-49c5-a59e-ec097d8caddf, publié à https://tcg-thomas-deseur.floot.app. Le dépôt connecté cosscoll/TCG-Thomas-Deseur conserve les archives et la documentation ; il n'est pas encore un export des sources Floot.
 
 Commence par lire les versions courantes de README.md, docs/FLOOT_REPRISE_2026-10-09.md et docs/FLOOT_SUIVI_AUTONOME.md dans GitHub, ainsi que le document de reprise « Texte collé(1).txt » s'il est accessible dans ce chat. Ne dépends pas d'un chemin scratch d'une ancienne exécution. Vérifie les dernières consignes de Cosme et l'état réel du projet pour ne pas répéter du travail terminé ni écraser une modification concurrente.
 

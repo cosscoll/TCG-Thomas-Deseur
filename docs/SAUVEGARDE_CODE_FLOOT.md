@@ -5,7 +5,7 @@
 ## Application source
 
 - Projet : `1d1c3807-73a6-49c5-a59e-ec097d8caddf`
-- Application active : https://budget-illimite-tcg.floot.app
+- Application active : https://tcg-thomas-deseur.floot.app
 - Dépôt : `cosscoll/TCG-Thomas-Deseur` (archives, documents, outils de test, **pas** code courant du jeu)
 
 ### Procédure à exécuter à la prochaine session où Floot est disponible

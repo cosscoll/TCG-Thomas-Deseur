@@ -2,7 +2,7 @@
 
 ## Périmètre et priorité
 
-Le jeu de comptes et boosters actifs est **Floot**, pas GitHub Pages : https://budget-illimite-tcg.floot.app/. Le catalogue public et la page d'invitation sont sur GitHub Pages. La collection approuvée comporte **67 cartes principales et 38 variantes graphiques**. Les raretés définitives restent à choisir par le créateur ; aucune n'a été inventée ou affectée ici.
+Le jeu de comptes et boosters actifs est **Floot**, pas GitHub Pages : https://tcg-thomas-deseur.floot.app/. Le catalogue public et la page d'invitation sont sur GitHub Pages. La collection approuvée comporte **67 cartes principales et 38 variantes graphiques**. Les raretés définitives restent à choisir par le créateur ; aucune n'a été inventée ou affectée ici.
 
 ## Blocage réel sur Floot
 

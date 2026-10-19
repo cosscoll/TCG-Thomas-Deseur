@@ -4,8 +4,8 @@
 
 L'application existante a été retrouvée : `1d1c3807-73a6-49c5-a59e-ec097d8caddf`, intitulée **TCG Deseur**. Floot la déclare publiée, publique, sur le forfait gratuit.
 
-URL active : https://budget-illimite-tcg.floot.app  
-Connexion : https://budget-illimite-tcg.floot.app/login
+URL active : https://tcg-thomas-deseur.floot.app  
+Connexion : https://tcg-thomas-deseur.floot.app/login
 
 **Aucune modification de l'application Floot, de sa base ou de son déploiement n'a été réalisée pendant cette reprise.** Le travail disponible a porté sur les contrôles publics et sur la documentation GitHub.
 
