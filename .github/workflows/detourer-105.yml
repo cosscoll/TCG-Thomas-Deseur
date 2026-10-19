@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Installer le détourage sur processeur sans service payant
-        run: python -m pip install 'rembg[cpu]==2.0.67' 'Pillow==11.3.0'
+        run: python -m pip install 'opencv-python-headless==4.10.0.84' 'numpy==1.26.4' 'Pillow==11.3.0'
       - name: Générer 105 sujets sur fond uniforme sans toucher aux originaux
         run: python scripts/detourer-105.py
       - name: Vérifier les 105 sorties et les empreintes des originaux
