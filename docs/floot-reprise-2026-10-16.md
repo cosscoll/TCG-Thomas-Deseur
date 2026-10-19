@@ -45,7 +45,7 @@ Ordre **1 → 2 → 3 → 4 → 5 → 6 → 8 → 9 → 7 → 10**, conforme au 
 3. **Terminer le style** `components/TcgBinder.module.css` pour `data-alternative=true` et `altLink`; `pages/_index.module.css` pour `finalActions`. Contrôler order visuel juste après base, y compris sur mobile.
 4. **Vérifier la gestion des codes cadeau/boosters spéciaux** et ne pas faire passer le résultat comme prêt avant mise en place du front.
 5. **Jasmine, TypeScript, sécurité, tests réseau, deux comptes d'essai isolés** et contrôle post-déploiement public. Les comptes doivent créer leurs inventaires et les récupérer après reconnexion, sans contamination interjoueurs. Éviter de modifier les comptes authentiques durant la recette.
-6. **Créer un checkpoint Floot**, publier le domaine `budget-illimite-tcg` et vérifier HTTP et UI réels.
+6. **Créer un checkpoint Floot**, republier sur le sous-domaine Floot existant et vérifier HTTP et UI réels.
 
 Le quota de 100 actions semble aussi avoir été consommé par des interventions de l'automation programmée. Regrouper les écritures, éviter les allers-retours, et démarrer les tests ainsi que la publication suffisamment tôt. Si nécessaire publier d'abord un palier cohérent au lieu de bloquer toutes les livraisons.
 
