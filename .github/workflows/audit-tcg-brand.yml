@@ -1,0 +1,21 @@
+name: TCG Thomas Deseur — Audit de nomenclature
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/audit-tcg-brand.yml"
+      - "scripts/audit-tcg-brand.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-name:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lister les références historiques sans modifier les données
+        run: python scripts/audit-tcg-brand.py
