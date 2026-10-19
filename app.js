@@ -1,6 +1,7 @@
 import { CARDS, RARITIES } from "./data/cards.js";
 import { emptyCollection, normalizeCollection, openDemoPack, collectionStats, LOCAL_COLLECTION_KEY } from "./game/collection.js";
 import { accountsConfigured } from "./account/client.js";
+import { readMigratedStorage } from "./game/legacy-storage.js";
 import { initAccountPanel } from "./account/panel.js";
 import { fetchCloudCollection, claimCloudBooster } from "./account/cloud-collection.js";
 
@@ -21,7 +22,7 @@ let sessionVersion = 0;
 let openingInProgress = false;
 
 try {
-  demoCollection = normalizeCollection(JSON.parse(localStorage.getItem(LOCAL_COLLECTION_KEY) || "null"), CARDS);
+  demoCollection = normalizeCollection(JSON.parse(readMigratedStorage(localStorage, LOCAL_COLLECTION_KEY) || "null"), CARDS);
 } catch { demoCollection = emptyCollection(); }
 const isCloud = () => Boolean(accountsConfigured() && accountClient && accountUser);
 const collectionMode = () => !accountsConfigured() ? "demo" : isCloud() ? "cloud" : "locked";
