@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root {
+  --z-overlay: 400;
+  --z-spotlight: 1000; /* Tutorial spotlights/guided help */
+  --z-critical: 2000; /* Critical system notifications */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+}
+:root {
+  --background: #12101d; --foreground:#faf7f1;
+  --surface:#211c30; --surface-foreground:#f9f5f0;
+  --sidebar:#1a1628; --sidebar-foreground:#f8f6f1;
+  --card:#2b233a; --card-foreground:#f7f3e9;
+  --popup:#28213a; --popup-foreground:#fff9ed;
+  --primary:#f8cc88; --primary-foreground:#1c1425;
+  --secondary:#423353; --secondary-foreground:#f9f3fd;
+  --accent:#ba9cee; --accent-foreground:#1d142e;
+  --muted:#342d43; --muted-foreground:#bdb4ca;
+  --success:#91e0b4; --success-foreground:#17251b;
+  --error:#fc91ac; --error-foreground:#33141c;
+  --warning:#f9bd7b; --warning-foreground:#372116;
+  --info:#aaa6ef; --info-foreground:#191932;
+  --info-hover:#bab6ff; --info-active:#8580de;
+  --border:#52465f;
+  --font-family-base:'DM Sans',sans-serif;
+  --font-family-display:'Bricolage Grotesque',sans-serif;
+  --font-family-monospace:ui-monospace,monospace;
+  --font-family-cursive:serif;
+  --shadow:0 3px 14px #0003;
+  --shadow-md:0 9px 32px #0005;
+  --shadow-lg:0 22px 54px #0008;
+  --shadow-focus:0 0 0 3px #c5adff88;
+  --radius-sm:5px; --radius:10px; --radius-md:14px; --radius-lg:20px; --radius-full:999px;
+  --animation-duration-fast:120ms; --animation-duration-normal:240ms; --animation-duration-slow:400ms;
+  --chart-color-1:#f8cc88; --chart-color-2:#b29ce4; --chart-color-3:#95d9b7; --chart-color-4:#ed9bb0; --chart-color-5:#91b5e5;
+}
+/* Badge gratuit Floot : visible intégralement sur les écrans étroits, sans cacher la marque. */
+@media(max-width:500px){#__Floot-madewithFloot{left:auto!important;right:8px!important;max-width:calc(100vw - 16px)!important}}
+.dark { --background:#12101d; --foreground:#faf7f1; --surface:#211c30; --surface-foreground:#f9f5f0; --sidebar:#1a1628; --sidebar-foreground:#f8f6f1; --card:#2b233a; --card-foreground:#f7f3e9; --popup:#28213a; --popup-foreground:#fff9ed; --primary:#f8cc88; --primary-foreground:#1c1425; --secondary:#423353; --secondary-foreground:#f9f3fd; --accent:#ba9cee; --accent-foreground:#1d142e; --muted:#342d43; --muted-foreground:#bdb4ca; --success:#91e0b4; --success-foreground:#17251b; --error:#fc91ac; --error-foreground:#33141c; --warning:#f9bd7b; --warning-foreground:#372116; --info:#aaa6ef; --info-foreground:#191932; --info-hover:#bab6ff; --info-active:#8580de; --border:#52465f; }
