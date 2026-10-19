@@ -1,4 +1,4 @@
-# Correspondances visuelles — 49 cartes Budget Illimité
+# Correspondances visuelles — 49 cartes TCG Thomas Deseur (archive)
 
 Mise à jour : 8 octobre 2026.
 
