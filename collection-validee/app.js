@@ -41,9 +41,7 @@ const GRAY_VARIANTS03=new Set(['td_3_039','td_1_030','td_2_025','td_2_044','td_2
 const GRAY_VARIANTS04=new Set(['td_3_014','td_2_065','td_2_058','td_2_057','td_2_052','td_2_050','td_2_056','td_2_053']);
 const artSrc=id=>{
  const pair=byId.get(id);
- if(!pair)return null;
- const directory=GRAY_FIRST10.has(id)?'gray-extended-first10':GRAY_NEXT10.has(id)?'gray-extended-next10':GRAY_THIRD10.has(id)?'gray-extended-third10':GRAY_FOURTH10.has(id)?'gray-extended-fourth10':GRAY_FIFTH10.has(id)?'gray-extended-fifth10':GRAY_SIXTH10.has(id)?'gray-extended-sixth10':GRAY_FINAL7.has(id)?'gray-extended-final7':GRAY_VARIANTS01.has(id)?'gray-extended-variants01':GRAY_VARIANTS02.has(id)?'gray-extended-variants02':GRAY_VARIANTS03.has(id)?'gray-extended-variants03':GRAY_VARIANTS04.has(id)?'gray-extended-variants04':'uniform';
- return './assets/'+directory+'/'+encodeURIComponent(pair.illustration);
+ return pair?'./assets/detourees/'+encodeURIComponent(pair.illustration):null;
 };
 const originalArtSrc=id=>{
  const pair=byId.get(id);
@@ -72,31 +70,7 @@ function image(id,name,variant=false,eager=false){
  const frame=make('div',variant?'image-frame variant-image':'image-frame');
  if(!src){frame.append(make('span','missing','Illustration indisponible'));return frame;}
  const img=make('img');
- const corrected=GRAY_FIRST10.has(id)||GRAY_NEXT10.has(id)||GRAY_THIRD10.has(id)||GRAY_FOURTH10.has(id)||GRAY_FIFTH10.has(id)||GRAY_SIXTH10.has(id)||GRAY_FINAL7.has(id)||GRAY_VARIANTS01.has(id)||GRAY_VARIANTS02.has(id)||GRAY_VARIANTS03.has(id)||GRAY_VARIANTS04.has(id);
- const thumb=GRAY_FIRST10.has(id)
-  ?src.replace('/assets/gray-extended-first10/','/assets/gray-thumbs-first10/')
-  :GRAY_NEXT10.has(id)
-   ?src.replace('/assets/gray-extended-next10/','/assets/gray-thumbs-next10/')
-   :GRAY_THIRD10.has(id)
-    ?src.replace('/assets/gray-extended-third10/','/assets/gray-thumbs-third10/')
-    :GRAY_FOURTH10.has(id)
-     ?src.replace('/assets/gray-extended-fourth10/','/assets/gray-thumbs-fourth10/')
-     :GRAY_FIFTH10.has(id)
-      ?src.replace('/assets/gray-extended-fifth10/','/assets/gray-thumbs-fifth10/')
-      :GRAY_SIXTH10.has(id)
-       ?src.replace('/assets/gray-extended-sixth10/','/assets/gray-thumbs-sixth10/')
-       :GRAY_FINAL7.has(id)
-        ?src.replace('/assets/gray-extended-final7/','/assets/gray-thumbs-final7/')
-        :GRAY_VARIANTS01.has(id)
-         ?src.replace('/assets/gray-extended-variants01/','/assets/gray-thumbs-variants01/')
-         :GRAY_VARIANTS02.has(id)
-          ?src.replace('/assets/gray-extended-variants02/','/assets/gray-thumbs-variants02/')
-          :GRAY_VARIANTS03.has(id)
-           ?src.replace('/assets/gray-extended-variants03/','/assets/gray-thumbs-variants03/')
-           :GRAY_VARIANTS04.has(id)
-            ?src.replace('/assets/gray-extended-variants04/','/assets/gray-thumbs-variants04/')
-            :src.replace('/assets/uniform/','/assets/thumbs/');
- const srcSet=thumb+' 384w, '+src+' '+(GRAY_VARIANTS04.has(id)?'1275':GRAY_VARIANTS03.has(id)?'1380':GRAY_VARIANTS02.has(id)?'1353':GRAY_VARIANTS01.has(id)?'1317':GRAY_FINAL7.has(id)?'1563':GRAY_SIXTH10.has(id)?'1377':GRAY_FIFTH10.has(id)?'1362':GRAY_FOURTH10.has(id)?'1323':GRAY_THIRD10.has(id)?'1254':GRAY_NEXT10.has(id)?'1368':corrected?'1200':'768')+'w';
+ const srcSet=src+' 768w';
  img.srcset=srcSet;
  img.sizes=variant?'(max-width:690px) 40vw, 140px':'(max-width:690px) 90vw, (max-width:1150px) 44vw, 250px';
  img.alt='Illustration '+name+' ('+id+')';
