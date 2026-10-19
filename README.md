@@ -1,6 +1,6 @@
 # TCG-Thomas-Deseur — Édition Origine
 
-> **Nom officiel : TCG-Thomas-Deseur.** Le sous-domaine Floot historique reste une adresse technique de service, **pas le nom du jeu**. Pour le changer sans perdre l’accès des joueurs, il faut prévoir une transition du domaine et de leurs liens existants.
+> **Nom officiel : TCG-Thomas-Deseur.** Depuis le 19 octobre 2026, l'application existante est publiée sur **https://tcg-thomas-deseur.floot.app**. L'ancienne adresse Floot a été libérée. Les comptes et collections restent sur le même projet ; les joueurs doivent utiliser la nouvelle adresse, se reconnecter si nécessaire et réinstaller tout ancien raccourci d'application.
 
 **Jeu de collection publié sur Floot le 16 octobre 2026 :** [Ouvrir TCG Deseur](https://tcg-thomas-deseur.floot.app)
 
