@@ -2,8 +2,8 @@ import {test,expect} from '@playwright/test';
 test.beforeEach(async({page})=>{await page.goto('/beta/');});
 test('la page de test propose inscription et accès au vrai jeu, sans serveur secondaire',async({page})=>{
  await expect(page).toHaveTitle(/Test entre amis — TCG Deseur/);
- await expect(page.getByRole('link',{name:/Créer un compte ou se connecter/})).toHaveAttribute('href','https://budget-illimite-tcg.floot.app/login?mode=register');
- await expect(page.getByRole('link',{name:/Accéder au jeu/})).toHaveAttribute('href','https://budget-illimite-tcg.floot.app/');
+ await expect(page.getByRole('link',{name:/Créer un compte ou se connecter/})).toHaveAttribute('href','https://tcg-thomas-deseur.floot.app/login?mode=register');
+ await expect(page.getByRole('link',{name:/Accéder au jeu/})).toHaveAttribute('href','https://tcg-thomas-deseur.floot.app/');
  await expect(page.getByRole('heading',{name:/Comment participer au test/})).toBeVisible();
  await expect(page.locator('form input[type="password"]')).toHaveCount(0);
  await expect(page.locator('form input[type="email"]')).toHaveCount(0);

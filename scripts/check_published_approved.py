@@ -128,8 +128,8 @@ def verify_once():
     # et ne doit pas proposer un formulaire recueillant des identifiants.
     invitation = fetch("beta/").decode("utf-8")
     assert "Test entre amis" in invitation
-    assert "https://budget-illimite-tcg.floot.app/login" in invitation
-    assert "https://budget-illimite-tcg.floot.app/" in invitation
+    assert "https://tcg-thomas-deseur.floot.app/login" in invitation
+    assert "https://tcg-thomas-deseur.floot.app/" in invitation
     assert '<meta name="robots" content="noindex,nofollow">' in invitation
     assert 'name="password"' not in invitation and 'type="email"' not in invitation
     assert 'id="feedback-form"' in invitation

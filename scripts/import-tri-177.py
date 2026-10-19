@@ -12,7 +12,7 @@ import re
 import os
 
 ROOT=Path(__file__).resolve().parents[1]
-URL="https://budget-illimite-tcg.floot.app/_cdn/static/546c639b-e78b-4afe-9dbb-5a5e801a45cf-TCG_Deseur_Galerie_GitHub_177.zip"
+URL="https://tcg-thomas-deseur.floot.app/_cdn/static/546c639b-e78b-4afe-9dbb-5a5e801a45cf-TCG_Deseur_Galerie_GitHub_177.zip"
 EXPECTED_SHA256="ce449ecfd54c5ba4a2350633b68c99b68bd996317dfbcab9dda2dfa90b9627d3"
 EXPECTED_IMAGE_COUNT=177
 EXPECTED_GROUP_COUNT=70

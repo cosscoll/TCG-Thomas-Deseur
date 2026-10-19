@@ -8,7 +8,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-const baseURL = process.env.TCG_FLOOT_URL ?? 'https://budget-illimite-tcg.floot.app';
+const baseURL = process.env.TCG_FLOOT_URL ?? 'https://tcg-thomas-deseur.floot.app';
 const PRIVATE = new Set([
   'email','password','passwordhash','token','accesstoken','refreshtoken',
   'jwt','cookie','cookies','userid','displayname','cardid','inventory',

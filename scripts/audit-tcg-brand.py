@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 root=Path(__file__).resolve().parents[1]
 old_name=re.compile(r"budget[ _-]*(?:illimit(?:é|e|és|es)|illimite)",re.I)
-domain="budget-illimite-tcg.floot.app"
+domain="tcg-thomas-deseur.floot.app"
 skip={".git","node_modules",".venv","dist","build","__pycache__"}
 text_suffixes={".html",".css",".js",".mjs",".jsx",".ts",".tsx",".md",".txt",".json",".yaml",".yml",".py",".sql",".xml",".sh",".svg",".toml"}
 violations=[]

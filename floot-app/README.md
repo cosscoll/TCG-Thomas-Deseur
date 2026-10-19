@@ -5,7 +5,7 @@ Ce dossier regroupe **les fichiers du jeu récupérés et versionnés depuis l'�
 Ce dossier n'est **ni une seconde application active ni un déploiement autonome** : Floot fournit le routeur de pages, l'hébergement, la gestion des variables d'environnement, les endpoints `/_api/*` et la base PostgreSQL. Les fichiers de ce miroir permettent d'auditer et de continuer le développement sur GitHub. Pour reconstituer un environnement complet en dehors de Floot, il reste à adapter le runtime, les imports des composants préinstallés et les migrations du schéma, sans exporter de secrets ni données joueurs.
 
 ## Accès
-- Jeu public : https://budget-illimite-tcg.floot.app
+- Jeu public : https://tcg-thomas-deseur.floot.app
 - Sources : https://github.com/cosscoll/TCG-Thomas-Deseur/tree/main/floot-app
 - Portail GitHub Pages : https://cosscoll.github.io/TCG-Thomas-Deseur/
 - Journal : ../docs/floot-reprise-2026-10-16.md

@@ -14,7 +14,7 @@ from urllib.error import HTTPError
 from urllib.request import Request, build_opener
 
 
-BASE_URL = "https://budget-illimite-tcg.floot.app"
+BASE_URL = "https://tcg-thomas-deseur.floot.app"
 CHECKS = (
     ("GET", "/", None, 200),
     ("GET", "/login", None, 200),

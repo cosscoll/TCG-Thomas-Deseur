@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = process.env.TCG_FLOOT_URL ?? "https://budget-illimite-tcg.floot.app";
+const baseURL = process.env.TCG_FLOOT_URL ?? "https://tcg-thomas-deseur.floot.app";
 
 export default defineConfig({
   testDir: ".",
