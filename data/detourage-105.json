@@ -1,13 +1,8 @@
 {
   "schema": "tcg-deseur-cutout-105-v1",
   "status": "REVIEW_REQUIRED_NOT_LIVE",
-  "reviewRequiredCount": 1,
-  "reviewRequired": [
-    {
-      "artworkId": "td_3_032",
-      "reason": "Fond non détecté avec assez de confiance."
-    }
-  ],
+  "reviewRequiredCount": 0,
+  "reviewRequired": [],
   "background": "#808080",
   "size": [
     768,
@@ -22,14 +17,14 @@
       "source": "collection-161/assets/cards/td-1-004.webp",
       "output": "collection-validee/assets/detourees/td-1-004.webp",
       "sourceSha": "45eb9c21801e1dd92fcd66b8b4531b7883af6afce1ecf237d56925272899c05a",
-      "outputSha": "89dcdf6035a11f937a8cf4852bcfcce20ad9fd7c193de16ba2387c4a54f63489",
+      "outputSha": "3f9aa15966e4e79d0b9e5a40294ce17ae31ba7ad9e41ba2bc5da94e5dc5af9d2",
       "maskBounds": [
         0,
         19,
         775,
         1600
       ],
-      "maskCoverage": 0.6265,
+      "maskCoverage": 0.5886,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -39,14 +34,14 @@
       "source": "collection-161/assets/cards/td-2-043.webp",
       "output": "collection-validee/assets/detourees/td-2-043.webp",
       "sourceSha": "8c9dfaac628aeb18cb98c47cfbe3036455ffcbbb8827dceaa154039e8d4239c8",
-      "outputSha": "ab97da736e70111ecce6863102835814034031464f8b531c402007b0848440c0",
+      "outputSha": "4e6a074f4a8c28caabcc6c663527d1cf6a56b86bb9dbc64fa2468e61c2c61b24",
       "maskBounds": [
         0,
         0,
         1254,
         1254
       ],
-      "maskCoverage": 0.6328,
+      "maskCoverage": 0.6255,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -56,14 +51,14 @@
       "source": "collection-161/assets/cards/td-1-001.webp",
       "output": "collection-validee/assets/detourees/td-1-001.webp",
       "sourceSha": "2c5001bcc6f8f173051b1c1b0e44174642d9ad74af06b96ae7e5e2c91ff76749",
-      "outputSha": "d10c30fa3e3cfaf1aa26538b6c7458bb2d06e640a440629dfb6cfbaf29348add",
+      "outputSha": "58b8f21fcdd2c7b79f2467a0dcda515a9655b523bd69f0c58f5ba47151cec98d",
       "maskBounds": [
         0,
-        18,
+        19,
         910,
         1600
       ],
-      "maskCoverage": 0.5863,
+      "maskCoverage": 0.584,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -73,14 +68,14 @@
       "source": "collection-161/assets/cards/td-3-005.webp",
       "output": "collection-validee/assets/detourees/td-3-005.webp",
       "sourceSha": "4e7b0cdf9d304b78c548a8bf41a5f72fc8fb2fa1afec2eb9d70a521b5623ebf2",
-      "outputSha": "b7a0c64d9e5b19a6c1f491a9f73cff69f82d27427ffbe2e844e609d60ae4bce1",
+      "outputSha": "4917ac13631f3c9688da0fb5cb6c6ca654a4bcd5fd213de549a538628a3fbf75",
       "maskBounds": [
         0,
         0,
         1045,
         1218
       ],
-      "maskCoverage": 0.5226,
+      "maskCoverage": 0.508,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -90,14 +85,14 @@
       "source": "collection-161/assets/cards/td-1-002.webp",
       "output": "collection-validee/assets/detourees/td-1-002.webp",
       "sourceSha": "7221a2254bb73bf8e9d3dcca8a2e0fa4f1712b1c18877620e18d73778bca0cc0",
-      "outputSha": "7685f81d07ad47f043bcf99bf010722819c30b3ea9e7cc3f8744b492f8d13966",
+      "outputSha": "d71af64c40fd8aae390fd1efd59856002042eff4d9e67c41afa1ea6f3dfdd197",
       "maskBounds": [
         84,
         0,
-        1160,
+        1159,
         1312
       ],
-      "maskCoverage": 0.5163,
+      "maskCoverage": 0.5156,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -107,14 +102,14 @@
       "source": "collection-161/assets/cards/td-2-042.webp",
       "output": "collection-validee/assets/detourees/td-2-042.webp",
       "sourceSha": "41b0ceb2bab858cb74b109747e04cd1b4543638712730b95576227455c17111e",
-      "outputSha": "9b8348c3f16fd84f192ef9680ed9bf943ce73809fdd6dc2430b07b1a957f8a38",
+      "outputSha": "ad59aa860fd69c459f17f8d7fd2d9b00aa9569ac8c5192a75ebfa53c213dc272",
       "maskBounds": [
         0,
         4,
         1167,
         1254
       ],
-      "maskCoverage": 0.6625,
+      "maskCoverage": 0.6486,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -124,14 +119,14 @@
       "source": "collection-161/assets/cards/td-3-042.webp",
       "output": "collection-validee/assets/detourees/td-3-042.webp",
       "sourceSha": "e16a3fe83e5b165ce4d54b46ea7b79bedb7b5831c357820399bca889b5d55b31",
-      "outputSha": "20def84edd46c264f06ce93dd88fcbd63e24683cc0a9b0ac00c65406de69cf93",
+      "outputSha": "59b8c54f6c9d24cc6781c2d092bdb7270adaf2b3b856cb5af47ad3c9d3abc747",
       "maskBounds": [
         132,
         0,
         1265,
         1194
       ],
-      "maskCoverage": 0.5555,
+      "maskCoverage": 0.5517,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -141,14 +136,14 @@
       "source": "collection-161/assets/cards/td-1-003.webp",
       "output": "collection-validee/assets/detourees/td-1-003.webp",
       "sourceSha": "c6fe71b3374388b8c8787880ecd627ec6fcafb1ad73e2e50798482f0e3c50739",
-      "outputSha": "ec4279f19e4f3a7d8b47f4402b0d5cf1aa46fc0231dc3b94800b33cbade4f509",
+      "outputSha": "62572ac0c3d719eff3081cfbdd68e3c1710e769d370368504f3ca9a328bdd054",
       "maskBounds": [
         0,
         26,
         1012,
         1555
       ],
-      "maskCoverage": 0.636,
+      "maskCoverage": 0.5431,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -158,14 +153,14 @@
       "source": "collection-161/assets/cards/td-1-005.webp",
       "output": "collection-validee/assets/detourees/td-1-005.webp",
       "sourceSha": "80216de5f992e9ec0242c7a6484e9def3d5f5833428a2f9f487ae757d8648ea1",
-      "outputSha": "896c0c5298ca172b64b713e9203225eef54a64b25ea55da73dd051e411ccb9a4",
+      "outputSha": "2be9dcbe90f5d4927540607955202dc8a5969633a82269e2e96578929f5ad0fe",
       "maskBounds": [
-        31,
+        32,
         47,
         993,
         1467
       ],
-      "maskCoverage": 0.5443,
+      "maskCoverage": 0.5436,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -175,14 +170,14 @@
       "source": "collection-161/assets/cards/td-2-003.webp",
       "output": "collection-validee/assets/detourees/td-2-003.webp",
       "sourceSha": "991292826650a1698eae0536931714b808344ba172cf549d6ef6288305270d29",
-      "outputSha": "c4ad21e8cc1737b446bfadfd222af52fb06867055268531d4ccabc575381df02",
+      "outputSha": "130ccd4748a96308487a39a77f29e675243dc80351e7c39f5e5d58964c86f246",
       "maskBounds": [
         35,
-        0,
+        69,
         1254,
         1254
       ],
-      "maskCoverage": 0.6846,
+      "maskCoverage": 0.5143,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -192,14 +187,14 @@
       "source": "collection-161/assets/cards/td-1-007.webp",
       "output": "collection-validee/assets/detourees/td-1-007.webp",
       "sourceSha": "4498ed6bf2f5728d1ac222af00f239a2fc6748ffae79d02ffe98f8a7657c62ca",
-      "outputSha": "a7080abd552054fcf3066c5e045f5ac4ca6d5db5ffcc2025f9b7ac7870020cfb",
+      "outputSha": "0b20c138dd3c84c38d728606256a2bc158c5457cf37877a7032fe1d4fbe1bd74",
       "maskBounds": [
-        55,
+        56,
         30,
-        938,
+        937,
         1449
       ],
-      "maskCoverage": 0.422,
+      "maskCoverage": 0.3927,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -209,14 +204,14 @@
       "source": "collection-161/assets/cards/td-3-011.webp",
       "output": "collection-validee/assets/detourees/td-3-011.webp",
       "sourceSha": "c81b4f257b03c31b6bcaf3ac2bd8c298a111d738844e728bb9e3cd8947e4d2ca",
-      "outputSha": "e886d641a8ab5cb002df4e426b06d66306da883f58ad96a7b7f6d32509152775",
+      "outputSha": "dd2595e0bef5f22223274f98f0cc85ebf38c985e744cc69db5b7245c7af3567a",
       "maskBounds": [
-        140,
+        222,
         0,
         1312,
         1199
       ],
-      "maskCoverage": 0.7418,
+      "maskCoverage": 0.636,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -226,14 +221,14 @@
       "source": "collection-161/assets/cards/td-1-008.webp",
       "output": "collection-validee/assets/detourees/td-1-008.webp",
       "sourceSha": "1fccba4dbb835c4a2c63a5d6cdb763aaa3c040bafea53b27c40b3661ea0d7136",
-      "outputSha": "4454f3b71b09b0428263f2bc87cf4dde85bac53b495bd4a89f28d444af8805d0",
+      "outputSha": "ef528fcd7edbae109eccb8dd5ebd81e12e104ba8f934955efe2b81592ec5f9ce",
       "maskBounds": [
         36,
-        1,
+        2,
         1040,
         1469
       ],
-      "maskCoverage": 0.6101,
+      "maskCoverage": 0.6096,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -243,14 +238,14 @@
       "source": "collection-161/assets/cards/td-2-005.webp",
       "output": "collection-validee/assets/detourees/td-2-005.webp",
       "sourceSha": "b6ac72d52f02c0379470e99cb1bd8828684e8278320fc441c4aa47954bb11de0",
-      "outputSha": "d06724c7962449a3794a64938d368eb46f4e610aca9207b62de22b3215664050",
+      "outputSha": "4d8ef12279c3082831f1b764dd8ccd187c6b38807ac2883ca9931e24795b2437",
       "maskBounds": [
         0,
-        50,
-        1183,
+        51,
+        1180,
         1254
       ],
-      "maskCoverage": 0.6787,
+      "maskCoverage": 0.6781,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -260,14 +255,14 @@
       "source": "collection-161/assets/cards/td-1-006.webp",
       "output": "collection-validee/assets/detourees/td-1-006.webp",
       "sourceSha": "e05c5e116d1ad4bf235ec49810904c03bc0c9fe78a50632ef9686a0d80abefbd",
-      "outputSha": "7ab1debf6c5a1861d988e774af159e09a816d4cbfc57537462c7082750420180",
+      "outputSha": "2abce5fb1defcdef750530836beed4c51b42bad7cb1b467cf20a9ebf75f29beb",
       "maskBounds": [
         40,
-        68,
+        69,
         1005,
         1506
       ],
-      "maskCoverage": 0.609,
+      "maskCoverage": 0.6084,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -277,14 +272,14 @@
       "source": "collection-161/assets/cards/td-3-023.webp",
       "output": "collection-validee/assets/detourees/td-3-023.webp",
       "sourceSha": "ed85207267e05f734440b53357fa451fe8fedbe6c4cba52e0ede3c23b36cebb9",
-      "outputSha": "78e604837315f05418780e0f626c85168a4cc3dcb999fd2b27c3bd7fb6e28835",
+      "outputSha": "b7b5bb14516ae884a69ae243b2b9f1ffc837cdeb447d7ba8069eb4e9132b6003",
       "maskBounds": [
         0,
         0,
         1317,
         1194
       ],
-      "maskCoverage": 0.8457,
+      "maskCoverage": 0.8442,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -294,14 +289,14 @@
       "source": "collection-161/assets/cards/td-1-012.webp",
       "output": "collection-validee/assets/detourees/td-1-012.webp",
       "sourceSha": "75e56984f4a88e7f61b0179f776b5f3a03b77440227c34ccab34fc1798ae9e7c",
-      "outputSha": "84149f11a45e6a7ff0569363f7487fa722f2ca15924a4303d24883dac86156e1",
+      "outputSha": "06fec3bff87faa8ec7b438e9d88982f229593ade27c46af565ddc0385e15aa0e",
       "maskBounds": [
         0,
         2,
         1114,
         1411
       ],
-      "maskCoverage": 0.7259,
+      "maskCoverage": 0.7255,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -311,14 +306,14 @@
       "source": "collection-161/assets/cards/td-3-024.webp",
       "output": "collection-validee/assets/detourees/td-3-024.webp",
       "sourceSha": "5d9de3b64aaa49d9e19b83fc802160961b7eeb715791daa0f66e8b248ab0b4b1",
-      "outputSha": "2d68a4a7d5837d2b62bf43145aac8949fc54ee910777a069fc4c2018bc069a11",
+      "outputSha": "2fdb1a240cec7975a427148907c91dba97f0cbba78e00187cee1de4f5feaedc6",
       "maskBounds": [
         0,
         0,
         1293,
         1216
       ],
-      "maskCoverage": 0.7328,
+      "maskCoverage": 0.6394,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -328,14 +323,14 @@
       "source": "collection-161/assets/cards/td-1-011.webp",
       "output": "collection-validee/assets/detourees/td-1-011.webp",
       "sourceSha": "40de44cf23eb2ea5cbfac0942a663b92c5988a173480ba88cdb068ed55aa18ca",
-      "outputSha": "459ae95909f5ec629d47ca1c87c843c0b89a9e099abe717991ff6522a482948c",
+      "outputSha": "497444ca2fc1c8d6abab4de4fb612c5f9c321c10534b12e1284006cb52098825",
       "maskBounds": [
         0,
         44,
         1071,
         1469
       ],
-      "maskCoverage": 0.7291,
+      "maskCoverage": 0.6962,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -345,14 +340,14 @@
       "source": "collection-161/assets/cards/td-2-001.webp",
       "output": "collection-validee/assets/detourees/td-2-001.webp",
       "sourceSha": "8002060163cb7e92990ce0f79e621939d595a2ac98c849353d342a70fb109f48",
-      "outputSha": "e44e179d2cfd50f046795e3ee882f3da830053aed09a7867974595be6f6ec0d2",
+      "outputSha": "d98613eb11f64726f4a70190f5d32df129f7023267342c8c2781d01ea53f47b9",
       "maskBounds": [
         0,
         16,
         1245,
         1254
       ],
-      "maskCoverage": 0.5491,
+      "maskCoverage": 0.5251,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -362,14 +357,14 @@
       "source": "collection-161/assets/cards/td-2-007.webp",
       "output": "collection-validee/assets/detourees/td-2-007.webp",
       "sourceSha": "aac260298529438d67fb9f9419af1c2b540880839f8d0fb656aaf3f3626c1b56",
-      "outputSha": "7a1af9225a13b5b6f6db6075214b9175afc85983c101d843d4aacfaaca2a466c",
+      "outputSha": "f7efdabc622dd3b329ea46a5fe73ec3c65d62decd55fdd1bfb4f565b1167d7ae",
       "maskBounds": [
         166,
-        0,
-        1066,
+        3,
+        1065,
         1254
       ],
-      "maskCoverage": 0.5131,
+      "maskCoverage": 0.3923,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -379,14 +374,14 @@
       "source": "collection-161/assets/cards/td-1-010.webp",
       "output": "collection-validee/assets/detourees/td-1-010.webp",
       "sourceSha": "94b2c8a171a945a1bc188f2414f8d8b069b562686eabae00e3d463452b8b09a0",
-      "outputSha": "c9c39b7101e272d26103f8abe61a9abe837777152c8bf51922c5b0147f1630c1",
+      "outputSha": "eb43a78b269998f56918fdcf72548e4b588e2a7c55b9c60a735013fab6c6b2c5",
       "maskBounds": [
         43,
         0,
         1039,
         1474
       ],
-      "maskCoverage": 0.6511,
+      "maskCoverage": 0.6506,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -396,14 +391,14 @@
       "source": "collection-161/assets/cards/td-3-010.webp",
       "output": "collection-validee/assets/detourees/td-3-010.webp",
       "sourceSha": "48f3977a3710635c38ef84d9b8952b85a99972376fbf72a622b1aefd6727d726",
-      "outputSha": "0aa90aebd7bae384dd667539423f2cca46ccb25c5f04c08c933557e214308c6d",
+      "outputSha": "b71f34875a46f2cc58ec20d9abe166b08e4692f17dce8d74c664a7a895422fa2",
       "maskBounds": [
-        41,
+        42,
         0,
         1166,
         1229
       ],
-      "maskCoverage": 0.5302,
+      "maskCoverage": 0.5295,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -413,14 +408,14 @@
       "source": "collection-161/assets/cards/td-2-008.webp",
       "output": "collection-validee/assets/detourees/td-2-008.webp",
       "sourceSha": "bdc0bc71a542072866acb0bb9157ca9bbe2bf6053b901b25c6d29284911660fb",
-      "outputSha": "2735eb2c79bf1623b78abd89c50bdda6bc6ef25999e7d21493a69b666e68854a",
+      "outputSha": "80c158cc2a872d77a891aba73b74d5746c2d12b2bbbecfedd7b92fd482539bfe",
       "maskBounds": [
         222,
         0,
         1045,
         1254
       ],
-      "maskCoverage": 0.4115,
+      "maskCoverage": 0.3911,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -430,14 +425,14 @@
       "source": "collection-161/assets/cards/td-3-001.webp",
       "output": "collection-validee/assets/detourees/td-3-001.webp",
       "sourceSha": "90216c6745d266f1208a622d1847ff6d1354af48c12fbe6a132e9e64c73d08b5",
-      "outputSha": "74195700511fb5105d1437ea8827b72bf939d8390ea91196d2fbc4a9a2b048cb",
+      "outputSha": "02f941a36a40974cfaae031ac83a1d11ee9acf0112191463686073002fe2ed98",
       "maskBounds": [
         36,
-        0,
+        12,
         1254,
         1254
       ],
-      "maskCoverage": 0.743,
+      "maskCoverage": 0.2914,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -447,14 +442,14 @@
       "source": "collection-161/assets/cards/td-1-014.webp",
       "output": "collection-validee/assets/detourees/td-1-014.webp",
       "sourceSha": "64a90ee7f03c0ad6b06200de74c67caf070e0afe41d0d1f64eae3ca3c6528c07",
-      "outputSha": "bb5c27f100793c81b5018984463a28d0c1292d10b0585ea8b7b39ca37a4f6e07",
+      "outputSha": "5d15db08662332f721a172cd2a9a64ed9e1b383834494c5d82031ff4ce5d25e6",
       "maskBounds": [
         76,
         6,
-        981,
+        980,
         1451
       ],
-      "maskCoverage": 0.5984,
+      "maskCoverage": 0.5978,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -464,14 +459,14 @@
       "source": "collection-161/assets/cards/td-3-033.webp",
       "output": "collection-validee/assets/detourees/td-3-033.webp",
       "sourceSha": "eb5bcbe266decc0e13289fe0d6e50bfcd3155dd7b8d96fd78ac651e5b81711aa",
-      "outputSha": "99889a670adf8527bd14c958db32676dbaa6262dd4d5d4fb15867abe7774489d",
+      "outputSha": "469a536172b516def7bef9108f9c7e89972a5140b6cc4a1f397bac4623c3ba04",
       "maskBounds": [
         0,
         0,
         1296,
         1214
       ],
-      "maskCoverage": 0.7776,
+      "maskCoverage": 0.7653,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -481,14 +476,14 @@
       "source": "collection-161/assets/cards/td-3-031.webp",
       "output": "collection-validee/assets/detourees/td-3-031.webp",
       "sourceSha": "d41b7e5c4b85a3fcba3c5be8d5e6cbbbf9add97a0de31e247348b8333da4ce1d",
-      "outputSha": "7c162e47ec1fa10823c8a9f45b29897dfd17b1e34f982fd2397c24340b49c6d1",
+      "outputSha": "e5ae9198fdacf4d95b26f491d2a7602692aeaeb729905b4e4cc7102a7631b3d8",
       "maskBounds": [
-        201,
+        202,
         3,
         1324,
         1188
       ],
-      "maskCoverage": 0.5675,
+      "maskCoverage": 0.5328,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -498,14 +493,14 @@
       "source": "collection-161/assets/cards/td-3-043.webp",
       "output": "collection-validee/assets/detourees/td-3-043.webp",
       "sourceSha": "cb011942503d8a0f58aef77412bc75ba1913db47491bd838077c12d66b17fb01",
-      "outputSha": "0bbb639363df30d608cd5442c7fe7a7d0add3407c15da21192eb3f1a909eb8c3",
+      "outputSha": "b5385568abe921fcf6b5dba61de18d1553979988bebfa3b12f151c5f6a754240",
       "maskBounds": [
         44,
         0,
         1348,
         1149
       ],
-      "maskCoverage": 0.5925,
+      "maskCoverage": 0.5211,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -515,14 +510,14 @@
       "source": "collection-161/assets/cards/td-1-020.webp",
       "output": "collection-validee/assets/detourees/td-1-020.webp",
       "sourceSha": "212631c3ecf37a9f4a4a74c6fcf6b8d18aba55b1915f28c34560248915675027",
-      "outputSha": "5e7c4daadfb077b353156452239d65aaa07b037e8e411aa53b4fcadaca8047a0",
+      "outputSha": "75b923cf76c64fb7dda582f6b077b06177bd44e1885d5ddc0b68fdc5f7005b0b",
       "maskBounds": [
         51,
         49,
         965,
         1499
       ],
-      "maskCoverage": 0.54,
+      "maskCoverage": 0.4287,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -532,14 +527,14 @@
       "source": "collection-161/assets/cards/td-1-019.webp",
       "output": "collection-validee/assets/detourees/td-1-019.webp",
       "sourceSha": "ca0ee425b6c3444ba5ce28c00f6780cb430562b0c121a834a64498ee75edae0d",
-      "outputSha": "d249150bc5dab4ed9934a678c9449448a0ebb8b9c47b2956ebe832fee00a8af4",
+      "outputSha": "0e21cce7b72e07a1d55cc9ac007c1a9b0d04e4e5fb84f6705983c11cab2fa95d",
       "maskBounds": [
         27,
         31,
         948,
         1482
       ],
-      "maskCoverage": 0.6038,
+      "maskCoverage": 0.6033,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -549,14 +544,14 @@
       "source": "collection-161/assets/cards/td-1-018.webp",
       "output": "collection-validee/assets/detourees/td-1-018.webp",
       "sourceSha": "a8cc7da7c1be6612de1094230ca578cc8278af2c2859566fe283e705b9487b98",
-      "outputSha": "4836076e860dd28fa62ae9c068f8f55f8d0fbd372813d2f6275708840158cce6",
+      "outputSha": "0a0b5295283caf74d4c6549d9760efd89d6db9e37207ca4e20d15de536cece1d",
       "maskBounds": [
         14,
         32,
         1048,
         1481
       ],
-      "maskCoverage": 0.5893,
+      "maskCoverage": 0.5717,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -566,14 +561,14 @@
       "source": "collection-161/assets/cards/td-1-021.webp",
       "output": "collection-validee/assets/detourees/td-1-021.webp",
       "sourceSha": "6e8d642ae9bc1db25158c679af4ab46f276f5d40bf9c20b761e5b4e09ec1481f",
-      "outputSha": "2ff2883657caa9d659856898852be0b1c9d0d5e0d754668de0df5c0d25bcc787",
+      "outputSha": "465c683dd3d19e4dae2467cb413d42555320afa3ea404b7cf11428f4f70f2404",
       "maskBounds": [
         50,
         22,
         987,
         1450
       ],
-      "maskCoverage": 0.4972,
+      "maskCoverage": 0.4966,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -583,14 +578,14 @@
       "source": "collection-161/assets/cards/td-3-016.webp",
       "output": "collection-validee/assets/detourees/td-3-016.webp",
       "sourceSha": "8a653c23bff78cba2bace8903decdf4d4a3859e978c9cfe0735be91da4dfad13",
-      "outputSha": "525856f37e127033ca52770ab27fe5f1d8141b1d8e2927e38df6a604358fe48c",
+      "outputSha": "c7297b308fe5c97c016294d4e101467215131652169c0fd01a4db87770cf4c0e",
       "maskBounds": [
         83,
-        0,
+        35,
         1345,
         1170
       ],
-      "maskCoverage": 0.6451,
+      "maskCoverage": 0.5826,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -600,14 +595,14 @@
       "source": "collection-161/assets/cards/td-1-023.webp",
       "output": "collection-validee/assets/detourees/td-1-023.webp",
       "sourceSha": "f2a9979f66bcbae11618cb13cf653dde0722c56cd41b568294b8f3f7307ef396",
-      "outputSha": "5a279c41c064b229e22885b3acbe86c9ec1a99c8a7d291ec958b4fc90d863960",
+      "outputSha": "cacc26cb89bf659e888ee8baa99ba2037b78ad9ecc8ff22e144c223e2b9b9995",
       "maskBounds": [
         39,
         15,
         957,
         1463
       ],
-      "maskCoverage": 0.658,
+      "maskCoverage": 0.6575,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -617,14 +612,14 @@
       "source": "collection-161/assets/cards/td-3-015.webp",
       "output": "collection-validee/assets/detourees/td-3-015.webp",
       "sourceSha": "112aa29966e33a840d8725586240c224752de90e89f4254768b57f8d2f296df3",
-      "outputSha": "00ef3375177049ca3b1c3c98a2408a220f9c798a1a58f2e07b8874fc822d9776",
+      "outputSha": "0408afba8b64b555102185f4b3ab5d633c6328eec9433ab423a96d5fe90b136f",
       "maskBounds": [
         0,
         0,
         1183,
         1291
       ],
-      "maskCoverage": 0.7652,
+      "maskCoverage": 0.7253,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -634,14 +629,14 @@
       "source": "collection-161/assets/cards/td-1-022.webp",
       "output": "collection-validee/assets/detourees/td-1-022.webp",
       "sourceSha": "46d7f3db2352db6caa0c793400f0f823aa3d53e41e2bb05e97bbcdaabf3c241f",
-      "outputSha": "1f8f19604dbff4ab3ebd0d955679af7b597350361cb51a404c779aea8ed93243",
+      "outputSha": "25b19f0f921b49a4acf40779312062589c171d12677535b35a71ddfe5e487340",
       "maskBounds": [
         108,
         16,
         970,
         1431
       ],
-      "maskCoverage": 0.5296,
+      "maskCoverage": 0.5291,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -651,14 +646,14 @@
       "source": "collection-161/assets/cards/td-3-022.webp",
       "output": "collection-validee/assets/detourees/td-3-022.webp",
       "sourceSha": "29b9adcb3049ec7a40658931285faeb731a9881d9388260dd7263d931d042821",
-      "outputSha": "93fc0b886305443b4c174db671ea12dd250a982a45d37e8d644fce9027aaa29c",
+      "outputSha": "a9d395a320f903776a735dc9187af1852a48d03d42128df6696a41d35ee982e9",
       "maskBounds": [
         0,
         0,
         1256,
         1214
       ],
-      "maskCoverage": 0.6324,
+      "maskCoverage": 0.6228,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -668,14 +663,14 @@
       "source": "collection-161/assets/cards/td-1-024.webp",
       "output": "collection-validee/assets/detourees/td-1-024.webp",
       "sourceSha": "0e52647087df2dc9746dae0fead73eb4608fcbdecb237fbcfaf51655e6d892bc",
-      "outputSha": "3b631226f28fc59ee4c6eb0967017882bf0d923279428562692a61430a3b2f6d",
+      "outputSha": "90ff31dc18fb28b475af95a5f1216095798caeadae805ea9627535c9f3709ac1",
       "maskBounds": [
         0,
         80,
         1047,
         1502
       ],
-      "maskCoverage": 0.6967,
+      "maskCoverage": 0.4137,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -685,14 +680,14 @@
       "source": "collection-161/assets/cards/td-3-037.webp",
       "output": "collection-validee/assets/detourees/td-3-037.webp",
       "sourceSha": "11b144fa07c9fae258daaf8e876362f11d4926f61266d53124c293da30417895",
-      "outputSha": "777bc66b6a0e9870f746d0ad779dc4ef5b7648d74c360b9d5f0bee8633485a29",
+      "outputSha": "5c3a6bf85e41175657ba52250a1a1b86f6b84e3a58322d6d54b0fb24fed3618e",
       "maskBounds": [
         0,
         19,
-        992,
+        918,
         1220
       ],
-      "maskCoverage": 0.4841,
+      "maskCoverage": 0.443,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -702,14 +697,14 @@
       "source": "collection-161/assets/cards/td-1-026.webp",
       "output": "collection-validee/assets/detourees/td-1-026.webp",
       "sourceSha": "3c4a784e713b9a26ad26a42da96d2fb58fd49c045492264c0dc1f2f844217729",
-      "outputSha": "ab55e3b923550a6afd7b4f995c5c0d8123e83a48c6ca4c282fa44d9e45356b17",
+      "outputSha": "e3082a4ba7372f4d5e74ef30cdfad0375666fb2e1a4b0bbfed97c4909d53fd27",
       "maskBounds": [
         48,
-        19,
+        20,
         1036,
         1460
       ],
-      "maskCoverage": 0.6549,
+      "maskCoverage": 0.6518,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -719,16 +714,16 @@
       "source": "collection-161/assets/cards/td-3-032.webp",
       "output": "collection-validee/assets/detourees/td-3-032.webp",
       "sourceSha": "5b967399e3fd83a108154b7ac6e4d53e5b5d6754386f9d652486bf4799c07a9c",
-      "outputSha": "04647ef088a546519f10c58d353dd5f3c0c4b96cc604d55ba474f9a49c177371",
+      "outputSha": "862978286596ec259faa753b3228a39b35f221b904e1ffaee19ab4940b7d26a2",
       "maskBounds": [
         0,
         0,
-        1353,
+        1210,
         1163
       ],
-      "maskCoverage": 1.0,
-      "method": "fallback-contain-needs-review",
-      "reviewRequired": true
+      "maskCoverage": 0.7522,
+      "method": "edge-bg",
+      "reviewRequired": false
     },
     {
       "artworkId": "td_1_028",
@@ -736,14 +731,14 @@
       "source": "collection-161/assets/cards/td-1-028.webp",
       "output": "collection-validee/assets/detourees/td-1-028.webp",
       "sourceSha": "27e0fb8a7fbd932380b7fb77caa53cc6dc52433ed9dd80ef0adee5a8d12b1129",
-      "outputSha": "f1648e451fb0951aa0173b0db0789df8c943df87d8273b9f869186c54afe2b52",
+      "outputSha": "5a0d2018488f947d03c6c1bacb8dd5c71e1b57ee81179c308f8f452f807c0260",
       "maskBounds": [
         84,
         48,
         981,
         1463
       ],
-      "maskCoverage": 0.6946,
+      "maskCoverage": 0.6941,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -753,14 +748,14 @@
       "source": "collection-161/assets/cards/td-1-025.webp",
       "output": "collection-validee/assets/detourees/td-1-025.webp",
       "sourceSha": "9a81ace5c51d923efa20f766d873270d98bb512037a9b47f7a819d650de1f870",
-      "outputSha": "950997168d705c010d5069da4670e685fe5dce6550a871fa10f03f5e3b14dfbb",
+      "outputSha": "1be1a625204f5b16d4cb64c8096e62a91a51a354b20ca59625a3235a04759884",
       "maskBounds": [
-        103,
+        104,
         64,
-        1082,
+        1081,
         1445
       ],
-      "maskCoverage": 0.5573,
+      "maskCoverage": 0.5567,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -770,14 +765,14 @@
       "source": "collection-161/assets/cards/td-2-024.webp",
       "output": "collection-validee/assets/detourees/td-2-024.webp",
       "sourceSha": "f363397467f891d6d98740caa1b1257ca7efd1f432d1804b01a63e10c77ecdec",
-      "outputSha": "5f5144da62f3600ad51dd1028d2a22874f4a3d560466bdcb6345365f34efc432",
+      "outputSha": "7f6de2c96a765882173ac653ec122cd8705adca6f0372cd51fbb33f153afa9db",
       "maskBounds": [
         34,
-        0,
-        1189,
+        37,
+        1188,
         1254
       ],
-      "maskCoverage": 0.7221,
+      "maskCoverage": 0.6093,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -787,14 +782,14 @@
       "source": "collection-161/assets/cards/td-1-027.webp",
       "output": "collection-validee/assets/detourees/td-1-027.webp",
       "sourceSha": "ec9421acae58035fbaa40fccb653047542fc24f1519790af57d394a8c71a5f34",
-      "outputSha": "1c1c9ce80d87f27c46632293966924073658fdebc52444106a29905cdf790fbc",
+      "outputSha": "6b17e07b54d2707dd852a2ec0a3d1ba82bc396e3073a396086a16f4888873c3b",
       "maskBounds": [
         23,
-        40,
+        41,
         1095,
         1436
       ],
-      "maskCoverage": 0.6961,
+      "maskCoverage": 0.6679,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -804,14 +799,14 @@
       "source": "collection-161/assets/cards/td-3-035.webp",
       "output": "collection-validee/assets/detourees/td-3-035.webp",
       "sourceSha": "ef2968c35090548c8cef2ad70a88fbb666cf481cf5eba010ca4d8fef18a0e805",
-      "outputSha": "2cd82569c8a7da7f53f53741a88145dd7b878a8ba57c20425973cfc2f860e959",
+      "outputSha": "75a380ccc2083ca96d57c89503c311f0efcf51f3c0454b41a094ad7a29775670",
       "maskBounds": [
-        85,
+        86,
         0,
         1282,
         1227
       ],
-      "maskCoverage": 0.6505,
+      "maskCoverage": 0.5694,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -821,14 +816,14 @@
       "source": "collection-161/assets/cards/td-2-019.webp",
       "output": "collection-validee/assets/detourees/td-2-019.webp",
       "sourceSha": "55b7d9eca831f575a611916ee1a31e9d79425b5a7671f14a4d639ea7fa3f1434",
-      "outputSha": "57272088f1255be9ebb1d6d598781bfd29dd9a71061558e7eeec9d6138c76623",
+      "outputSha": "41fc6d30f60cbe73dcdf3d488591b3056e1575ae64a1335a78d0b0fd2501f5d8",
       "maskBounds": [
         13,
-        66,
+        67,
         1254,
         1254
       ],
-      "maskCoverage": 0.4928,
+      "maskCoverage": 0.4648,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -838,14 +833,14 @@
       "source": "collection-161/assets/cards/td-3-040.webp",
       "output": "collection-validee/assets/detourees/td-3-040.webp",
       "sourceSha": "8dcb59315a19ea66fc1e6f4739a9899213a8bebecb05af41f69ac22312f2a5bc",
-      "outputSha": "eec1adb5c28c8450ab37110a7d131055e06ef6c56006b18fa5f6aa8e4bc73f4b",
+      "outputSha": "344dd3d17b5b9b856c632cdfc701131f2d8e3a741b96d7e4a1905c7300c3e9ef",
       "maskBounds": [
         0,
         0,
         1293,
         1216
       ],
-      "maskCoverage": 0.6912,
+      "maskCoverage": 0.6304,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -855,14 +850,14 @@
       "source": "collection-161/assets/cards/td-2-023.webp",
       "output": "collection-validee/assets/detourees/td-2-023.webp",
       "sourceSha": "364616e0c1c0b7b19ce106a511ef1b7860f017281ddf2f795d519f7ef641fefc",
-      "outputSha": "501ee0c2534fea12881aa8270434eb0e7b3edd70e4ca5ba46d57a6cfa39be4a4",
+      "outputSha": "fc25f3dbd2c83e89830f87d5a2f936d2aff13f3c12bd0dcd2de63cd956641a76",
       "maskBounds": [
         138,
         0,
-        1141,
+        1140,
         1254
       ],
-      "maskCoverage": 0.4252,
+      "maskCoverage": 0.3651,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -872,14 +867,14 @@
       "source": "collection-161/assets/cards/td-3-039.webp",
       "output": "collection-validee/assets/detourees/td-3-039.webp",
       "sourceSha": "335a5f5da8a9a22e735f73e5319fc7d67d95d1b6ddf47248de95516406dc153a",
-      "outputSha": "aba77bbac81dc01954e446e76a8f15df67b11ee334e8d20d113f1d6127fd16d0",
+      "outputSha": "4c8c1d35089cec8888fd30de93b352820793e4eeabf34191684c3dfcbb54e84a",
       "maskBounds": [
         0,
-        152,
+        181,
         1315,
         1197
       ],
-      "maskCoverage": 0.4213,
+      "maskCoverage": 0.3679,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -889,14 +884,14 @@
       "source": "collection-161/assets/cards/td-3-036.webp",
       "output": "collection-validee/assets/detourees/td-3-036.webp",
       "sourceSha": "64845698f00e8b79107e0b9122aa06d2b3663f6c36464aaa22152fa63786d68c",
-      "outputSha": "cde688f064cca6b1af5350cd7071e13f3783e40a005c2882c06cedbbf8b18ff0",
+      "outputSha": "19685bf68b2ff4540f7b274a52148d89a5a20079d4bdaff8242837bdcafc3ce7",
       "maskBounds": [
         0,
-        24,
+        25,
         1322,
         1190
       ],
-      "maskCoverage": 0.6742,
+      "maskCoverage": 0.6648,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -906,14 +901,14 @@
       "source": "collection-161/assets/cards/td-1-030.webp",
       "output": "collection-validee/assets/detourees/td-1-030.webp",
       "sourceSha": "e67510b223acf05d2ef8961f7da862def14a7220fde7cf0e9afd153f5b92325f",
-      "outputSha": "449ece6e4f83cf138fec29904f35252986cd76edb00a26cc35a73d5e99e296c6",
+      "outputSha": "fbb08de847d0992029c0a2f62fdadf52e8364392eb17addceeb3a45bc0b646b4",
       "maskBounds": [
         33,
         46,
         1056,
         1451
       ],
-      "maskCoverage": 0.7268,
+      "maskCoverage": 0.7261,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -923,14 +918,14 @@
       "source": "collection-161/assets/cards/td-1-032.webp",
       "output": "collection-validee/assets/detourees/td-1-032.webp",
       "sourceSha": "8d6aa6993685b638aa4eea12f80f51724c1a6ede59eab6e71cc6f7a3465ad64a",
-      "outputSha": "9e7733b21e2dadd28baf197a34a07bda751050fe1d1425df7807a6cd23ae2461",
+      "outputSha": "74bb75b16b8df4e34fcfa8c016059b66273bd2ea373e3a2d000b6d1dfb4f4172",
       "maskBounds": [
-        67,
+        68,
         28,
         995,
         1412
       ],
-      "maskCoverage": 0.5318,
+      "maskCoverage": 0.5313,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -940,14 +935,14 @@
       "source": "collection-161/assets/cards/td-2-025.webp",
       "output": "collection-validee/assets/detourees/td-2-025.webp",
       "sourceSha": "f8595ab0bd2f331d91644d0c0c687d586a222e39db1ddc2a673cfbd15f31eda0",
-      "outputSha": "61170d1aa89e84a4c3aa9b1d656bc13667cb91c9e15c7f52554fd2b715bf620a",
+      "outputSha": "aa6185ae8becd187fffc042fb9e8f85e86e10bb270aaa3a6d3e9cc87bbb6bfef",
       "maskBounds": [
         41,
-        26,
+        28,
         1207,
         1254
       ],
-      "maskCoverage": 0.5304,
+      "maskCoverage": 0.4986,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -957,14 +952,14 @@
       "source": "collection-161/assets/cards/td-2-031.webp",
       "output": "collection-validee/assets/detourees/td-2-031.webp",
       "sourceSha": "95044ab8db6e8290af51c5474d9259ba0f2c0ad8e680349d66a931ba8557725a",
-      "outputSha": "a8bfbba5a25dee98062e883ee7744d491a7fbfce419e40b28d67988ccd769bd4",
+      "outputSha": "0c846f2a2ac5a19990954bea4159492ae5cfe2f06fec559a9ea1a6e1b8163b0f",
       "maskBounds": [
         42,
         8,
         1107,
         1254
       ],
-      "maskCoverage": 0.5722,
+      "maskCoverage": 0.5632,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -974,14 +969,14 @@
       "source": "collection-161/assets/cards/td-1-035.webp",
       "output": "collection-validee/assets/detourees/td-1-035.webp",
       "sourceSha": "e795db0db71e24fd863316dfe4c0464f444be5ba08078e93f35e5b585032e877",
-      "outputSha": "8168f4fb0aab793830da6847fb114e43906b949096750834d574bb35470f4bb5",
+      "outputSha": "77e679c252f1c719fe36f0f3fb75690fa5dd044c974ad3035e42a9a786637852",
       "maskBounds": [
         15,
         16,
         1062,
         1459
       ],
-      "maskCoverage": 0.6152,
+      "maskCoverage": 0.6146,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -991,14 +986,14 @@
       "source": "collection-161/assets/cards/td-2-044.webp",
       "output": "collection-validee/assets/detourees/td-2-044.webp",
       "sourceSha": "4ac3d06251b44fc741581156a473d0876aaea4e343f4d64286d2112e06071331",
-      "outputSha": "005ae5e4b31ed96ed73c0045dd51e451e037e882f3921c8132d9ff44820d971c",
+      "outputSha": "e2a53e51a54b980e8d0f3daf117f0967e3c18b29f3d1b3a4de7aa4f12a07e5fa",
       "maskBounds": [
         0,
-        33,
+        34,
         1254,
         1254
       ],
-      "maskCoverage": 0.6037,
+      "maskCoverage": 0.5567,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1008,14 +1003,14 @@
       "source": "collection-161/assets/cards/td-3-038.webp",
       "output": "collection-validee/assets/detourees/td-3-038.webp",
       "sourceSha": "f70b77f79f77a875008324d1fe42079cac382ae48d89d817a8df2c3a557911b1",
-      "outputSha": "21f2a2b9e9857ac282c5d75c863cb9a5dbb978c1d24b8ab94749e6828fb1ab29",
+      "outputSha": "0e9c1c2cb9d8d387e372ea8b3daa3504f55d423dace7bf7e1c8da566748296e3",
       "maskBounds": [
-        97,
+        100,
         0,
         1295,
         1207
       ],
-      "maskCoverage": 0.6029,
+      "maskCoverage": 0.5957,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1025,14 +1020,14 @@
       "source": "collection-161/assets/cards/td-1-036.webp",
       "output": "collection-validee/assets/detourees/td-1-036.webp",
       "sourceSha": "74aec563feeafa279bbffd8b6048a3ae140ba9a0f83522ef80e1ff9eecb77ab9",
-      "outputSha": "0aade5a98ba9d4d6efd2e0d41df06974ff56e205e5928121470b0d6420b0c570",
+      "outputSha": "009431486f7bdd7dca6af588e58317fdbf87037113fefb9e376a9dc90a28e9c0",
       "maskBounds": [
         31,
         58,
         1099,
         1431
       ],
-      "maskCoverage": 0.5311,
+      "maskCoverage": 0.5256,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1042,14 +1037,14 @@
       "source": "collection-161/assets/cards/td-2-027.webp",
       "output": "collection-validee/assets/detourees/td-2-027.webp",
       "sourceSha": "7b91c22fd530dbf8f75df89167ad8e7ad491dc4fac432585fdb30b7675729ace",
-      "outputSha": "3ba0f479b2a6ace7ce30abba2c6ac3abe5e770df724c7cf792abca54383b62bc",
+      "outputSha": "7dcaa2112690b6439d8fde7a005d839bfe0e7a3074eacb8edcbe9bb62d44186d",
       "maskBounds": [
-        58,
-        0,
+        59,
+        25,
         1261,
         1240
       ],
-      "maskCoverage": 0.6764,
+      "maskCoverage": 0.5079,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1059,14 +1054,14 @@
       "source": "collection-161/assets/cards/td-2-030.webp",
       "output": "collection-validee/assets/detourees/td-2-030.webp",
       "sourceSha": "14d892ff8d78d38333a65a43f4424bc2202c9926d1e3f1960d87b75eea58b737",
-      "outputSha": "42c19f6888135968ea574808023859bd8862722e7b8d5a91b7426cbbcc4758bb",
+      "outputSha": "2bfb2fb6c60ed6d8b65d45d59f98cb73d1f0d20cd1369101569b466bbc4bfb1f",
       "maskBounds": [
         300,
-        22,
+        23,
         976,
         1254
       ],
-      "maskCoverage": 0.4189,
+      "maskCoverage": 0.4184,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1076,14 +1071,14 @@
       "source": "collection-161/assets/cards/td-3-029.webp",
       "output": "collection-validee/assets/detourees/td-3-029.webp",
       "sourceSha": "65b6e5d7d34c40a4794430bebf46c0e410e5063e48513e9a8b14c4f6b2d81c1c",
-      "outputSha": "8a53df20eff0536925c2d489da5b0d94ca1edf93d2d012fb25177023cb092c28",
+      "outputSha": "04f477feaa80bfd98b9dfd976f8e6ae657968761c9702194a1f5ecd9df9ac638",
       "maskBounds": [
+        221,
         0,
-        0,
-        1380,
+        1260,
         1140
       ],
-      "maskCoverage": 0.5767,
+      "maskCoverage": 0.5136,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1093,14 +1088,14 @@
       "source": "collection-161/assets/cards/td-1-040.webp",
       "output": "collection-validee/assets/detourees/td-1-040.webp",
       "sourceSha": "12614d1a67c33e072f5e1f711ed164fd9c704525ad51871b9fb787eccfacff9e",
-      "outputSha": "80d3e5894a4330f75d420febf62b9fa477d30689778c405664a9bfb645981431",
+      "outputSha": "4916ed80a95bf9fdc0a733139023e078070c0a9d5fc49575bc43a3ec43c49057",
       "maskBounds": [
-        56,
-        44,
+        57,
+        45,
         1051,
         1496
       ],
-      "maskCoverage": 0.6449,
+      "maskCoverage": 0.6029,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1110,14 +1105,14 @@
       "source": "collection-161/assets/cards/td-2-035.webp",
       "output": "collection-validee/assets/detourees/td-2-035.webp",
       "sourceSha": "08d1acff36aca98e30d2e0cb9f613aa9236d84697401d346faf54b91c3ab8415",
-      "outputSha": "ac181fa2e2d6eb9d7db8cdb22a3101f0bb2e15fa1080b0a308b300d6423899a3",
+      "outputSha": "4a90f6f23d3330e199cc6b5ac016f9e34a5d91ffede5431c2afdd570f24f2340",
       "maskBounds": [
-        200,
+        263,
         0,
         1106,
         1254
       ],
-      "maskCoverage": 0.5614,
+      "maskCoverage": 0.4252,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1127,14 +1122,14 @@
       "source": "collection-161/assets/cards/td-3-009.webp",
       "output": "collection-validee/assets/detourees/td-3-009.webp",
       "sourceSha": "6a6930c39193199309e6e7903cd4ccb53341bd0e46ba91939d4c14800a9741a5",
-      "outputSha": "e84c023db2d938e0076bc18709439b428e5238d0bc69816697a697d196d3534a",
+      "outputSha": "23565a5729a33f517e197f2d6beae08c42d2b418651c698635c73965efa3f6e8",
       "maskBounds": [
         0,
-        0,
+        27,
         1264,
         1205
       ],
-      "maskCoverage": 0.7131,
+      "maskCoverage": 0.5504,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1144,14 +1139,14 @@
       "source": "collection-161/assets/cards/td-2-034.webp",
       "output": "collection-validee/assets/detourees/td-2-034.webp",
       "sourceSha": "1e133e5faa341922c534d34ff966823988f4b34a4999c8623784b2068022746d",
-      "outputSha": "8278492122f61ac8f15b3a15d93f2304370dc189604bdda50cefa3b3bd0cfa11",
+      "outputSha": "54361a56769c9c9a2b7d13ae84ea5e46f23ba1c68feafe7f6e71fc77b3bc5e04",
       "maskBounds": [
         192,
         16,
         993,
         1254
       ],
-      "maskCoverage": 0.421,
+      "maskCoverage": 0.3827,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1161,14 +1156,14 @@
       "source": "collection-161/assets/cards/td-3-041.webp",
       "output": "collection-validee/assets/detourees/td-3-041.webp",
       "sourceSha": "edc6070f1603abace1293d63b33fef9e56538bc7a96dcadd60d2ef4463f446c3",
-      "outputSha": "6c92d8d8d116c904b7181f167954480752b51e01cc904957d1600119389a163b",
+      "outputSha": "dabecddcf69bb30db82b87d44f061cb1db6556b28c0509e82b5b525f30ab365b",
       "maskBounds": [
         0,
         0,
         1275,
         1233
       ],
-      "maskCoverage": 0.6225,
+      "maskCoverage": 0.5271,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1178,14 +1173,14 @@
       "source": "collection-161/assets/cards/td-3-028.webp",
       "output": "collection-validee/assets/detourees/td-3-028.webp",
       "sourceSha": "ed01639a5f069762105a7fc923e632997262bf98341c2a095c245aa0fe23bd76",
-      "outputSha": "c7257c11cbeda8976b3303ba4e6b27a3c544b716e94f784d1c6be32439810ca2",
+      "outputSha": "45fe4088c4399e7969698f32d1eb0ba4c0c7bf3b3c2d911522b8274361051f2d",
       "maskBounds": [
-        120,
-        6,
-        1016,
+        122,
+        7,
+        784,
         1274
       ],
-      "maskCoverage": 0.4495,
+      "maskCoverage": 0.3014,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1195,14 +1190,14 @@
       "source": "collection-161/assets/cards/td-3-002.webp",
       "output": "collection-validee/assets/detourees/td-3-002.webp",
       "sourceSha": "51d6b0ba9918ba4caaf29e2b09c3b5187b8ba68472961df63a4d3ef8cd7dafe4",
-      "outputSha": "8a397821e7cff34b4b5aaaf50945d277eabe78b23b1a6378385c16067218c575",
+      "outputSha": "62477610ab0ca84fa1eb0a2446b129f7b001b03abcd26dfc9f301a8205900898",
       "maskBounds": [
-        156,
+        203,
         0,
         1281,
         1156
       ],
-      "maskCoverage": 0.6779,
+      "maskCoverage": 0.6592,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1212,14 +1207,14 @@
       "source": "collection-161/assets/cards/td-1-043.webp",
       "output": "collection-validee/assets/detourees/td-1-043.webp",
       "sourceSha": "7d505a2c5ba1fa83a6b4f5d665b428b2395622af5530046dc3233c519ee6e58d",
-      "outputSha": "1084733c6ff7e2bcca5b5bb2fa2fd26a1826d13f999f5dc6212851169a16c30a",
+      "outputSha": "f468753d2bd4d99c8d61fe73921a7c6c0c52e70eb8fd94d954d0a7f021cbdc73",
       "maskBounds": [
         122,
-        9,
+        10,
         951,
-        1435
+        1434
       ],
-      "maskCoverage": 0.6578,
+      "maskCoverage": 0.6572,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1229,14 +1224,14 @@
       "source": "collection-161/assets/cards/td-2-039.webp",
       "output": "collection-validee/assets/detourees/td-2-039.webp",
       "sourceSha": "6f2821a3d4b6a38b35a107af889ec73dc8e62b284fca52f3a03cad6ab8db911a",
-      "outputSha": "9dbacc5c91394778e9785ebe193cbb2a2a7bf1e1ae6a9d417b378b1a622bc89d",
+      "outputSha": "58562bdc4121830b4fe19269feee2e5fc4c09b50e18e8004903986bc2c2db057",
       "maskBounds": [
         169,
         16,
         1180,
         1254
       ],
-      "maskCoverage": 0.5142,
+      "maskCoverage": 0.5113,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1246,14 +1241,14 @@
       "source": "collection-161/assets/cards/td-2-037.webp",
       "output": "collection-validee/assets/detourees/td-2-037.webp",
       "sourceSha": "03ae77ef430b5d2844c166b6a059e1f7b59241e909ea686f244d5dd9a29017af",
-      "outputSha": "59ffafe8057f3c37473708cafe4116a5329ae936c107f43dbd1b4ba83312c675",
+      "outputSha": "a5ba0e8ec2558b33c627ff7af9ddc86d8cda9da65bbe230938ad759ecbeb9ed2",
       "maskBounds": [
         0,
-        17,
+        18,
         1170,
         1254
       ],
-      "maskCoverage": 0.5444,
+      "maskCoverage": 0.5271,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1263,14 +1258,14 @@
       "source": "collection-161/assets/cards/td-3-025.webp",
       "output": "collection-validee/assets/detourees/td-3-025.webp",
       "sourceSha": "992203e11df1ccd53057c172c5f0073a7d4acb5270a6bd4c44ee839c65cc7570",
-      "outputSha": "6df348c70118139c7d21af16f5adf84ef5997511d101c4293cecb6d2d38aa2a9",
+      "outputSha": "ef31e597570c1e55adb0d486d685f303c61adc957558a9306aa51f41fbb28fca",
       "maskBounds": [
         0,
-        76,
+        77,
         1324,
         1188
       ],
-      "maskCoverage": 0.6264,
+      "maskCoverage": 0.626,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1280,14 +1275,14 @@
       "source": "collection-161/assets/cards/td-3-003.webp",
       "output": "collection-validee/assets/detourees/td-3-003.webp",
       "sourceSha": "0f28e38deee2bb97dcf4e3c26aa43cc6bedb8c243f64409c7a2eb6419907b897",
-      "outputSha": "6e8d955a0584bb6155ce323127cef8bcf0b062f34aad0997114464c1e15e784b",
+      "outputSha": "21adc9eb7989aac9a95d396a2e9fec6c641398e3de4b81df4696d8d746112d1d",
       "maskBounds": [
-        0,
+        35,
         0,
         1312,
         1199
       ],
-      "maskCoverage": 0.6266,
+      "maskCoverage": 0.579,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1297,14 +1292,14 @@
       "source": "collection-161/assets/cards/td-2-045.webp",
       "output": "collection-validee/assets/detourees/td-2-045.webp",
       "sourceSha": "b0054b9ddcef35b5a96b09a0d3618ff0578de5a67d2a1ea399148dfc4d1649fe",
-      "outputSha": "eeb9a0c85d2eab4bdddcebd7b814a5cde44fc77fd9a99d8c4a39e74fbedd2f91",
+      "outputSha": "d13cb329302dbb474d342d25763cecc59e1ecb6ef3ed81f391ab9dfc38cafe8b",
       "maskBounds": [
-        61,
+        62,
         0,
-        1196,
+        1195,
         1254
       ],
-      "maskCoverage": 0.6265,
+      "maskCoverage": 0.4442,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1314,14 +1309,14 @@
       "source": "collection-161/assets/cards/td-2-048.webp",
       "output": "collection-validee/assets/detourees/td-2-048.webp",
       "sourceSha": "5831814ae2bcc5fce9bcc605bf782ad41dae6df063569634ebc42916e5597f3a",
-      "outputSha": "d84bb2133c93ebd54af5fb03a732297a4bf1e679f4fd14fb71ac6bbef5aaa637",
+      "outputSha": "208b62d362fcf9385853a9675cebfba3ef2e962f57a10a03121c39fe82e5f299",
       "maskBounds": [
         63,
-        47,
+        48,
         1237,
         1254
       ],
-      "maskCoverage": 0.5566,
+      "maskCoverage": 0.549,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1331,14 +1326,14 @@
       "source": "collection-161/assets/cards/td-3-014.webp",
       "output": "collection-validee/assets/detourees/td-3-014.webp",
       "sourceSha": "e6f1ac03a9d5e85716763609f50e20e676c0f53ada198a13b8edf271e9619c48",
-      "outputSha": "5530c8980923f2240918c862feca247ccf411fc9c1c3cf3c21be3c7f3c5f37e5",
+      "outputSha": "2a458d1bfbb286e7d12d699849e6b3b67cb34e292ff8919852031061f3b4a848",
       "maskBounds": [
         135,
         0,
-        1195,
+        1194,
         1233
       ],
-      "maskCoverage": 0.5247,
+      "maskCoverage": 0.3914,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1348,14 +1343,14 @@
       "source": "collection-161/assets/cards/td-1-049.webp",
       "output": "collection-validee/assets/detourees/td-1-049.webp",
       "sourceSha": "4db8b5e4336745e37d2b15b399c8d689db911e6d91087fea6b698927928f85f3",
-      "outputSha": "7e84a91ec0e756c3fa6bc873b190520832533884bafe117896ad13128ed9db7d",
+      "outputSha": "c6bda2fb134e4a9bbfa18396c378ae6bb599e2ae2691d3909733a1e0414b272c",
       "maskBounds": [
         0,
         38,
         1128,
         1394
       ],
-      "maskCoverage": 0.5444,
+      "maskCoverage": 0.4,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1365,14 +1360,14 @@
       "source": "collection-161/assets/cards/td-1-045.webp",
       "output": "collection-validee/assets/detourees/td-1-045.webp",
       "sourceSha": "8227c88ad3853547d271da66f4326931935697496e1ba93e83108f38a0ffc766",
-      "outputSha": "8557aba1dce76b5b330aa4c68a92f30c72784a88b6a7836a1a4a5c58b520d5be",
+      "outputSha": "7fd1764e0a4eb39a5ec398092ec8e234f959add0bbab03d431a8c22869021b25",
       "maskBounds": [
         0,
         0,
         905,
         1600
       ],
-      "maskCoverage": 0.5848,
+      "maskCoverage": 0.5841,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1382,14 +1377,14 @@
       "source": "collection-161/assets/cards/td-1-051.webp",
       "output": "collection-validee/assets/detourees/td-1-051.webp",
       "sourceSha": "e141a3373ac25cf50e95d06a2db4b9e96ef5eaeb4ae159339ef30d0cf20ffd08",
-      "outputSha": "dcb94d47a7474bfdc3756d6497a8234e02c6a92ae211b858024fc68e4c0cfa0b",
+      "outputSha": "c4aa74ff8e10e8f2bf8c3cc26d8cc1a1c60d310cfa9e029360bbc3c57f3ec014",
       "maskBounds": [
-        25,
+        26,
         0,
         722,
         1600
       ],
-      "maskCoverage": 0.5922,
+      "maskCoverage": 0.5906,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1399,14 +1394,14 @@
       "source": "collection-161/assets/cards/td-1-055.webp",
       "output": "collection-validee/assets/detourees/td-1-055.webp",
       "sourceSha": "0f4f84977182608843e364f0fc5dee294e268bbce6e35977f70c9b2192e2a6cc",
-      "outputSha": "12f288586bcaf2675e980f2198623bbec416b8fce04c71f1e43524a79069079d",
+      "outputSha": "d2d8716048db6e3dc28359af64b86f72b03459e228d6009a919371e06c3222f8",
       "maskBounds": [
         0,
         24,
         878,
         1600
       ],
-      "maskCoverage": 0.6565,
+      "maskCoverage": 0.656,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1416,14 +1411,14 @@
       "source": "collection-161/assets/cards/td-1-052.webp",
       "output": "collection-validee/assets/detourees/td-1-052.webp",
       "sourceSha": "e3f8488dcc359576747dcbde41aadac99cc1b3d485a375d9bf3597fa20de4c72",
-      "outputSha": "44a964f4ff0e965dfd75f0c6965123de5b161fc6410039c601359a7197271511",
+      "outputSha": "3a3967cfd0fd97ad39d10365e31253f1784cc7e5fafb0dcd54d8813c8bf95900",
       "maskBounds": [
         0,
         0,
         1344,
         1142
       ],
-      "maskCoverage": 0.8972,
+      "maskCoverage": 0.8744,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1433,14 +1428,14 @@
       "source": "collection-161/assets/cards/td-1-054.webp",
       "output": "collection-validee/assets/detourees/td-1-054.webp",
       "sourceSha": "2c4b0f8ec94b3e149a7ab78cfa11c985d0678ed37af5646168b8bd93db3bea3e",
-      "outputSha": "0b17c299d582c7b28e4f1817c849c0a000b29583f0babea008c2727dcf2def0a",
+      "outputSha": "4a75c3c665ec7aa39a6395867499c1e62ebdfaaefa79a71efaf424e55cccf300",
       "maskBounds": [
         0,
         15,
         1026,
         1514
       ],
-      "maskCoverage": 0.6661,
+      "maskCoverage": 0.6646,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1450,14 +1445,14 @@
       "source": "collection-161/assets/cards/td-2-065.webp",
       "output": "collection-validee/assets/detourees/td-2-065.webp",
       "sourceSha": "05c3543c22505e19e9b0e9382eace9a831c8b275cb4c729a3a42f7a8ca303fab",
-      "outputSha": "4ee3e2dc8b3433058a4a3e01ea80e681e61624ad361ef776f404299306e03558",
+      "outputSha": "e82c1fdd8f3e4e3233756ce73da11cafa0744daeb321c88e28ad5115c2e6f6f1",
       "maskBounds": [
         25,
         13,
         1254,
         1254
       ],
-      "maskCoverage": 0.687,
+      "maskCoverage": 0.6824,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1467,14 +1462,14 @@
       "source": "collection-161/assets/cards/td-2-066.webp",
       "output": "collection-validee/assets/detourees/td-2-066.webp",
       "sourceSha": "643b1198f860177157156b5e05581c3f1c8f8fa0f2e529dff2ae8864d3653979",
-      "outputSha": "33cddf0cf2214a6c854244e922d999c9d45f968b69ae9df2be9eca9b2dc2d054",
+      "outputSha": "436ecf9cfa81d25d0bfed9659f71fa63a3053cb9a45f4b29a9002fa13323b700",
       "maskBounds": [
         117,
         0,
         1254,
         1254
       ],
-      "maskCoverage": 0.6721,
+      "maskCoverage": 0.4928,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1484,14 +1479,14 @@
       "source": "collection-161/assets/cards/td-1-059.webp",
       "output": "collection-validee/assets/detourees/td-1-059.webp",
       "sourceSha": "81a751ee9b65cfe802901c676661b8b41a0d1436df53a6ab7dcb672d87710dfc",
-      "outputSha": "76aebb23b236acd3a2d41c83463f33db242730ae45244d52b0c28f1b4ab006da",
+      "outputSha": "5aa4016f4e569a76b4d67c37327de524cfde1732750ff8b06938713f07ddafd2",
       "maskBounds": [
         0,
         13,
         646,
         1600
       ],
-      "maskCoverage": 0.7389,
+      "maskCoverage": 0.7381,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1501,14 +1496,14 @@
       "source": "collection-161/assets/cards/td-2-058.webp",
       "output": "collection-validee/assets/detourees/td-2-058.webp",
       "sourceSha": "fd4caa09090918da091e7e11ce531915cbf98a0e72f0840477e0c90b74b87c6d",
-      "outputSha": "4018a6a9cbfc3e9a4461ab341822372ebe510e3f67da73a9c6272bb16e125467",
+      "outputSha": "4a60640598e90943e3703f78e8eb2d3ceb4611cc26702f71536c3383a0b7f007",
       "maskBounds": [
         0,
         0,
         1254,
         1254
       ],
-      "maskCoverage": 0.7214,
+      "maskCoverage": 0.7193,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1518,14 +1513,14 @@
       "source": "collection-161/assets/cards/td-1-058.webp",
       "output": "collection-validee/assets/detourees/td-1-058.webp",
       "sourceSha": "d57fd02ba8ddd78cda421785bc43abb707018995c24a9523b49aa0aa2b204107",
-      "outputSha": "c03097f6d5661126cfc44c44e4ec38b12f7889de7aafbfaa20430283fadafe80",
+      "outputSha": "66c072df46809e0367f09dcbdbe1e0fe964efbd6d2f7ba56ca88b44c76b9c631",
       "maskBounds": [
         0,
         0,
         1189,
         1323
       ],
-      "maskCoverage": 0.865,
+      "maskCoverage": 0.8647,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1535,14 +1530,14 @@
       "source": "collection-161/assets/cards/td-2-057.webp",
       "output": "collection-validee/assets/detourees/td-2-057.webp",
       "sourceSha": "0df241ef3c817d52de8a62d3d81e1659cdde9bda19c516a1e378a41548baa0fb",
-      "outputSha": "f028795360c56939f3651e822c62ef48aa737f5c56d5c609c23913acebb0b999",
+      "outputSha": "8502e936b91aca59d10543436495be810337a4be365d33ce989ad89e6536a723",
       "maskBounds": [
         40,
         7,
         1254,
         1254
       ],
-      "maskCoverage": 0.749,
+      "maskCoverage": 0.7487,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1552,14 +1547,14 @@
       "source": "collection-161/assets/cards/td-1-056.webp",
       "output": "collection-validee/assets/detourees/td-1-056.webp",
       "sourceSha": "8afdeb7bfd30df9decc53c4036dbd6c0538c88029d29616ac10c5c94111f957d",
-      "outputSha": "f4cb4c4a213b3bcb46535022f7247e68815c82c33151e02b3515ec32e0460b96",
+      "outputSha": "3e65ac81ec86c00fa83566b3f8649d62d4c316df1afa1fd4ca53e46c949ae6d5",
       "maskBounds": [
         0,
         0,
         1132,
         1389
       ],
-      "maskCoverage": 0.5112,
+      "maskCoverage": 0.5015,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1569,14 +1564,14 @@
       "source": "collection-161/assets/cards/td-1-057.webp",
       "output": "collection-validee/assets/detourees/td-1-057.webp",
       "sourceSha": "3d850abcb3e22849117dcb42db72286c4e528474a38f629dcb4e2a143b92dc39",
-      "outputSha": "ea4415426c6725de200a46f0510578c8974e78c2ab8b5701f6ed28fbc43af202",
+      "outputSha": "9eb1d170319c53fbbadf3f4937afdf368040340ee2ce483a724c70c5d5fb1509",
       "maskBounds": [
         14,
         0,
         1223,
         1286
       ],
-      "maskCoverage": 0.5934,
+      "maskCoverage": 0.5896,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1586,14 +1581,14 @@
       "source": "collection-161/assets/cards/td-1-062.webp",
       "output": "collection-validee/assets/detourees/td-1-062.webp",
       "sourceSha": "ce8aadeb717be37b453e1c5ef552d34e056e37d6defffdb17d8ad7965f4b5094",
-      "outputSha": "a3e2c80490048ea774fcb11e385bb39966196f251470216f3e1292ab851eeccf",
+      "outputSha": "d1aeb8de46d7530be39504f674ef665b1832b71dd398afcfaf840e688ecb37e5",
       "maskBounds": [
         0,
         0,
         962,
         1600
       ],
-      "maskCoverage": 0.7574,
+      "maskCoverage": 0.7481,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1603,14 +1598,14 @@
       "source": "collection-161/assets/cards/td-1-060.webp",
       "output": "collection-validee/assets/detourees/td-1-060.webp",
       "sourceSha": "c3095b5909e1af8f21c72447581ce17f6c676f9135a19de872d6df62f1688333",
-      "outputSha": "f3c48bb6c3e5d23aa508d2e69f04fdfd7f168a3db079e395b02768aa85d163b3",
+      "outputSha": "ce6c27db987a46e0dbd988c03b3d76e49abc7f5623a7ed78fecfa4485ee55e97",
       "maskBounds": [
-        6,
+        7,
         9,
         752,
         1600
       ],
-      "maskCoverage": 0.6564,
+      "maskCoverage": 0.6546,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1620,14 +1615,14 @@
       "source": "collection-161/assets/cards/td-2-052.webp",
       "output": "collection-validee/assets/detourees/td-2-052.webp",
       "sourceSha": "40c48bd2430481cba3f3ccbf3e06d9d153081b14fc010833aee8ce941b1cfb50",
-      "outputSha": "880e01153a0b158d5fadd2d1cc2a5cb4f547875862c4bc5bd695c23da2badaac",
+      "outputSha": "3a633aa39248851aa61125c02ff3ef35e33d726665424ad10f6bca5bcee803e5",
       "maskBounds": [
-        64,
-        14,
+        65,
+        15,
         1219,
         1254
       ],
-      "maskCoverage": 0.555,
+      "maskCoverage": 0.4477,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1637,14 +1632,14 @@
       "source": "collection-161/assets/cards/td-1-063.webp",
       "output": "collection-validee/assets/detourees/td-1-063.webp",
       "sourceSha": "37a98182d7a20e5f79b75dda18b51cc890757f5667879b4f12b46e4567992889",
-      "outputSha": "df4b559169ce03a0e202822b655c75f6c9c33a37dfc2b31d6a6694400cda40cf",
+      "outputSha": "9179ad31bcc5cfe0787d08b70c8e185aa8ff4e31ddf34654a8d0dbd66869fd58",
       "maskBounds": [
         27,
         6,
-        878,
+        877,
         1600
       ],
-      "maskCoverage": 0.5549,
+      "maskCoverage": 0.5542,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1654,14 +1649,14 @@
       "source": "collection-161/assets/cards/td-2-050.webp",
       "output": "collection-validee/assets/detourees/td-2-050.webp",
       "sourceSha": "febd49499e0265d9f499865af44d26097d3740cb4534e587b2ce636623fdcf36",
-      "outputSha": "450ed66d484641b9ff317b2248a8821f6d42d1f0e043fbad213f582dbd6df314",
+      "outputSha": "77c6301d4c26edf84f231aceeef172243082aa6adacb4fbb082b2de34c95a632",
       "maskBounds": [
         144,
-        0,
+        17,
         1182,
         1254
       ],
-      "maskCoverage": 0.7211,
+      "maskCoverage": 0.7086,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1671,14 +1666,14 @@
       "source": "collection-161/assets/cards/td-1-065.webp",
       "output": "collection-validee/assets/detourees/td-1-065.webp",
       "sourceSha": "4f2a8d9088cc6a5e623db9fac266c500ce2b88faeb27e21b2cbaa231021c5e56",
-      "outputSha": "b1791b49068cba7951da1638c227e1af804acef7de15de7369bca26bcfa93838",
+      "outputSha": "7abeb358b31c8f887d324bacfa545126127788a5494c74b71aca33f6a7c0883e",
       "maskBounds": [
         0,
-        19,
+        28,
         789,
         1600
       ],
-      "maskCoverage": 0.4995,
+      "maskCoverage": 0.497,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1688,14 +1683,14 @@
       "source": "collection-161/assets/cards/td-2-056.webp",
       "output": "collection-validee/assets/detourees/td-2-056.webp",
       "sourceSha": "7716ca6635a3e91b1b7d8b19cbeaf10affb6bcf8359490bed12a4e44970d9d82",
-      "outputSha": "29b5eaa97cb40f6e467b8f2dfcc95a01cd7669ea717b2624834441dad8abce4c",
+      "outputSha": "2884a4e60331f1cf32ed632ace8ec2557892d3f01441e364d2ecef0747904e20",
       "maskBounds": [
         0,
         8,
         1254,
         1254
       ],
-      "maskCoverage": 0.6913,
+      "maskCoverage": 0.6858,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1705,14 +1700,14 @@
       "source": "collection-161/assets/cards/td-1-066.webp",
       "output": "collection-validee/assets/detourees/td-1-066.webp",
       "sourceSha": "8170ce5b2b92694119e839b4b22008e0cd99fb091f1a2486a70e6984e530096a",
-      "outputSha": "79e5636ef29cae8c5c70fd9fb77ca0a8867227bae67c6cd4cc326bf4485167c8",
+      "outputSha": "c53fcc76ac06a57a106f22a63df96373b06b0eea89d0fafe1e51e876d7756cc6",
       "maskBounds": [
-        15,
+        16,
         16,
         1005,
         1527
       ],
-      "maskCoverage": 0.5297,
+      "maskCoverage": 0.5291,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1722,14 +1717,14 @@
       "source": "collection-161/assets/cards/td-1-064.webp",
       "output": "collection-validee/assets/detourees/td-1-064.webp",
       "sourceSha": "7bc5e91d9f20e5cb6f33da78ad8ebd2c37bf53c9b96425e6485ce3abde15d423",
-      "outputSha": "ef5d18d0de4450a04a376d403689acec280b728056d1b5bcc03a0932a9a4a75b",
+      "outputSha": "39bafa694c7b7a49771e223883733b794ce662eefba556e8f545c03a2231ea87",
       "maskBounds": [
         0,
         0,
         1010,
         1558
       ],
-      "maskCoverage": 0.6831,
+      "maskCoverage": 0.6806,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1739,14 +1734,14 @@
       "source": "collection-161/assets/cards/td-2-053.webp",
       "output": "collection-validee/assets/detourees/td-2-053.webp",
       "sourceSha": "d70790d1502ea72752cb75183caa52357ce537d461ea4526872b95100d2ece0e",
-      "outputSha": "c7c9b7c62a339f1ea0542d8d1d4ed0a2b035bdd4ccd17b61c5d4900976c0f0e7",
+      "outputSha": "ef98433eabe1e5099a008e61cdcd7926b1696c2502394fcabeae042023cd9461",
       "maskBounds": [
         0,
         24,
         1240,
         1254
       ],
-      "maskCoverage": 0.607,
+      "maskCoverage": 0.6065,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1756,14 +1751,14 @@
       "source": "collection-161/assets/cards/td-2-059.webp",
       "output": "collection-validee/assets/detourees/td-2-059.webp",
       "sourceSha": "4ac58027be728a4c05ab14924b73e91439b3faa7afa2c087db6215143e805d20",
-      "outputSha": "b7db837f13aeee7162700743813b8073c10f81f306178f145bcaed671f63be42",
+      "outputSha": "57c4a05a113c3aface96018d8a706256dbe3bea0b1174d0e3404dda396485ffd",
       "maskBounds": [
         51,
         0,
         1244,
         1254
       ],
-      "maskCoverage": 0.7749,
+      "maskCoverage": 0.7745,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1773,14 +1768,14 @@
       "source": "collection-161/assets/cards/td-2-049.webp",
       "output": "collection-validee/assets/detourees/td-2-049.webp",
       "sourceSha": "f167e6ea213525a90cec39528cc2917175cc3a404d1f1b79808172d397bee6a7",
-      "outputSha": "e60ae8f9667d936055ca74c3256ebcc0b53280c101b9a928a825df3f92748660",
+      "outputSha": "6c5204143f37e39968d25e4411a38df9eeed671f6ac8d3ebbae5ebaa3611baae",
       "maskBounds": [
-        128,
-        0,
-        1112,
+        253,
+        36,
+        1095,
         1254
       ],
-      "maskCoverage": 0.6625,
+      "maskCoverage": 0.4602,
       "method": "edge-bg",
       "reviewRequired": false
     },
@@ -1790,14 +1785,14 @@
       "source": "collection-161/assets/cards/td-lille.webp",
       "output": "collection-validee/assets/detourees/td-lille.webp",
       "sourceSha": "2790c404ba39816897d48f930bf6d4efc5df9ddcc3fcad674acb70fb06100299",
-      "outputSha": "e4b097037bc6b81e402a95f14b8b8b984b6579f5bd4c9e69d14d676058e2dc37",
+      "outputSha": "4aab33e087e83f40da7d25f4c1f423ec4bf4f83a4ddac15378a8febaa1eea495",
       "maskBounds": [
-        162,
-        18,
-        1240,
+        163,
+        19,
+        587,
         973
       ],
-      "maskCoverage": 0.3607,
+      "maskCoverage": 0.1123,
       "method": "edge-bg",
       "reviewRequired": false
     }
