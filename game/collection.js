@@ -1,7 +1,7 @@
 import { simulateBooster } from "./booster.js";
 
 export const COLLECTION_VERSION = 1;
-export const LOCAL_COLLECTION_KEY = "budget-illimite:demo-collection:v1";
+export const LOCAL_COLLECTION_KEY = "tcg-thomas-deseur:demo-collection:v1";
 export const COLLECTION_HISTORY_MAX = 20;
 
 export function emptyCollection() {
