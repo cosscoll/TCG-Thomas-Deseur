@@ -2,6 +2,7 @@ import { CARDS, RARITIES } from "../data/cards.js";
 import { simulateBooster } from "../game/booster.js";
 import { createMatch, applyAction, legalActions, chooseAiAction, validateDeck, cardStats, DECK_SIZE, WIN_KOS, AI_DIFFICULTIES, suggestBalancedDeck } from "../game/engine.js";
 import { emptySoloProgress, normalizeSoloProgress, SOLO_BADGES, earnedSoloBadges, recordSoloResult } from "../game/progress.js";
+import { readMigratedStorage } from "../game/legacy-storage.js";
 
 const byId = id => document.getElementById(id);
 const search = byId("search");
@@ -11,12 +12,12 @@ const grid = byId("cardGrid");
 const modal = byId("cardDialog");
 const markButton = byId("markCard");
 const rarityLabels = Object.fromEntries(RARITIES.map(r => [r.id, r.label]));
-const STORAGE_KEY = "budget-illimite:documentation-markers:v1";
+const STORAGE_KEY = "tcg-thomas-deseur:documentation-markers:v1";
 let selected = null;
 let marked = new Set();
 
 try {
-  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  const saved = JSON.parse(readMigratedStorage(localStorage, STORAGE_KEY) || "[]");
   if (Array.isArray(saved)) marked = new Set(saved.filter(id => CARDS.some(c => c.id === id)));
 } catch {
   // Le catalogue reste consultable même lorsque le stockage est indisponible.
@@ -135,25 +136,25 @@ const DEFAULT_PLAYER_DECK = Object.freeze([
 const DEFAULT_AI_DECK = Object.freeze([
   "costume", "touriste", "arnaque", "regent", "igne", "otage", "moules", "entite"
 ]);
-const DECK_STORAGE_KEY = "budget-illimite:solo-deck:v1";
+const DECK_STORAGE_KEY = "tcg-thomas-deseur:solo-deck:v1";
 const cardById = new Map(CARDS.map(card => [card.id, card]));
 let currentDeck = [...DEFAULT_PLAYER_DECK];
 let match = null;
 let matchEpoch = 0;
 let matchResultRecorded = false;
 let activeDifficulty = "normal";
-const PROGRESS_STORAGE_KEY = "budget-illimite:solo-progress:v1";
-const DIFFICULTY_STORAGE_KEY = "budget-illimite:solo-difficulty:v1";
+const PROGRESS_STORAGE_KEY = "tcg-thomas-deseur:solo-progress:v1";
+const DIFFICULTY_STORAGE_KEY = "tcg-thomas-deseur:solo-difficulty:v1";
 let soloProgress = emptySoloProgress();
 
 try {
-  soloProgress = normalizeSoloProgress(JSON.parse(localStorage.getItem(PROGRESS_STORAGE_KEY) || "null"));
-  const savedDifficulty = localStorage.getItem(DIFFICULTY_STORAGE_KEY);
+  soloProgress = normalizeSoloProgress(JSON.parse(readMigratedStorage(localStorage, PROGRESS_STORAGE_KEY) || "null"));
+  const savedDifficulty = readMigratedStorage(localStorage, DIFFICULTY_STORAGE_KEY);
   if (AI_DIFFICULTIES.includes(savedDifficulty)) byId("aiDifficulty").value = savedDifficulty;
 } catch { /* browser storage is optional */ }
 
 try {
-  const savedDeck = JSON.parse(localStorage.getItem(DECK_STORAGE_KEY) || "null");
+  const savedDeck = JSON.parse(readMigratedStorage(localStorage, DECK_STORAGE_KEY) || "null");
   if (Array.isArray(savedDeck) && savedDeck.every(id => cardById.has(id)) && new Set(savedDeck).size === savedDeck.length && savedDeck.length <= DECK_SIZE) {
     currentDeck = savedDeck;
   }
