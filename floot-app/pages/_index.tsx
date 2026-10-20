@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Download } from "lucide-react";
 import { Helmet } from "react-helmet";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth, AUTH_QUERY_KEY } from "../helpers/useAuth";
@@ -13,6 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../components/Dialog";
 import { TcgBinder } from "../components/TcgBinder";
 import { TcgGiftCodes } from "../components/TcgGiftCodes";
+import { usePwaInstall } from "../helpers/tcgPwaInstall";
 import { serializeCollectionExport } from "../helpers/tcgCollectionExport";
 import styles from "./_index.module.css";
 
@@ -35,6 +37,13 @@ function remainingTime(milliseconds: number): string {
 export default function Home() {
   const { authState, logout, onLogin } = useAuth();
   const qc = useQueryClient();
+  const navigate = useNavigate();
+  const { installed, canPrompt, install } = usePwaInstall();
+  const installGame = async () => {
+    if (!canPrompt) { navigate("/installer"); return; }
+    const result = await install();
+    if (result === "manual" || result === "dismissed") navigate("/installer");
+  };
   const logged = authState.type === "authenticated";
   const userId = logged ? authState.user.id : null;
   const userIdRef = useRef(userId);
@@ -165,6 +174,8 @@ export default function Home() {
         <nav aria-label="Navigation principale">
           <a href="#booster">Boosters</a>
           <a href="#collection">Classeur</a>
+          <Link to="/classement">Classement</Link>
+          <Link to="/installer">Installer</Link>
           <a href="#profile">Compte</a>
         </nav>
         {logged
@@ -173,6 +184,10 @@ export default function Home() {
       </header>
 
       <main className={styles.content}>
+        {!installed && <aside className={styles.installStrip} aria-label="Installer TCG Thomas Deseur">
+          <span><strong>TCG Deseur sur ton téléphone</strong><small>Gratuit · Même compte · Même collection</small></span>
+          <Button size="sm" onClick={installGame}><Download size={18} aria-hidden="true" /> Installer le jeu</Button>
+        </aside>}
         <section className={styles.hero}>
           <div>
             <p className={styles.kicker}>TCG DESEUR · ÉDITION ORIGINE · 105 ILLUSTRATIONS</p>
@@ -282,7 +297,11 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>TCG Deseur — Prototype indépendant non officiel. Collection uniquement.</footer>
+      <footer>
+        <span>TCG Deseur — Prototype indépendant non officiel. Collection uniquement.</span>
+        <Link to="/installer">Installer l'application</Link>
+        <Link to="/confidentialite-regles">Confidentialité · Règles · Propriété</Link>
+      </footer>
       <Dialog open={showDraw} onOpenChange={setShowDraw}>
         <DialogContent className={styles.drawDialog}>
           <DialogHeader>
@@ -314,4 +333,3 @@ export default function Home() {
     </div>
   );
 }
-
