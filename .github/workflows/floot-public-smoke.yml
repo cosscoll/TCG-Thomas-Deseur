@@ -26,7 +26,7 @@ concurrency:
 jobs:
   anonymous-security:
     name: Sécurité des API sans compte
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
         run: node --test scripts/check_floot_guest_security.mjs
 
   smoke:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4

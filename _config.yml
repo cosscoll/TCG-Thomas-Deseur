@@ -1,27 +1,66 @@
-# Limit published GitHub Pages to static, user-facing assets.
-# This is NOT an access control on the repository itself:
-# change the repository visibility to Private in GitHub Settings.
-# Jekyll 3 replaces default exclusions, so keep the platform defaults.
+# TCG Deseur - publish only the public site, legal notice and 105 card artworks.
+# This is an exposure control for GitHub Pages, NOT privacy for the Git repository.
+# Keep GitHub's Jekyll defaults when setting a custom exclude list.
 exclude:
   - .github
   - .gitignore
-  - .sass-cache
   - .jekyll-cache
-  - gemfiles
+  - .sass-cache
   - Gemfile
   - Gemfile.lock
-  - node_modules
-  - vendor
   - README.md
-  - package.json
-  - package-lock.json
-  - floot-app
-  - supabase
-  - security
-  - scripts
-  - tests
-  - e2e
-  - floot-e2e
+  - account
+  - app.js
+  - audit-visuels
+  - avancement
+  - beta
+  - collection-161
+  - collection-validee/app.js
+  - collection-validee/assets/gray-extended-fifth10
+  - collection-validee/assets/gray-extended-final7
+  - collection-validee/assets/gray-extended-first10
+  - collection-validee/assets/gray-extended-fourth10
+  - collection-validee/assets/gray-extended-next10
+  - collection-validee/assets/gray-extended-sixth10
+  - collection-validee/assets/gray-extended-third10
+  - collection-validee/assets/gray-extended-variants01
+  - collection-validee/assets/gray-extended-variants02
+  - collection-validee/assets/gray-extended-variants03
+  - collection-validee/assets/gray-extended-variants04
+  - collection-validee/assets/gray-thumbs-fifth10
+  - collection-validee/assets/gray-thumbs-final7
+  - collection-validee/assets/gray-thumbs-first10
+  - collection-validee/assets/gray-thumbs-fourth10
+  - collection-validee/assets/gray-thumbs-next10
+  - collection-validee/assets/gray-thumbs-sixth10
+  - collection-validee/assets/gray-thumbs-third10
+  - collection-validee/assets/gray-thumbs-variants01
+  - collection-validee/assets/gray-thumbs-variants02
+  - collection-validee/assets/gray-thumbs-variants03
+  - collection-validee/assets/gray-thumbs-variants04
+  - collection-validee/assets/thumbs
+  - collection-validee/assets/uniform
+  - collection-validee/style.css
+  - data
   - docs
+  - e2e
+  - floot-app
+  - floot-collection
+  - floot-e2e
+  - game
+  - kit-visuels
+  - node_modules
+  - package.json
+  - planches
+  - prototype-booster
+  - research
+  - scripts
+  - security
+  - solo
+  - styles.css
+  - supabase
+  - tests
+  - tri-177
   - uploads
-  - data/migrations
+  - vendor
+  - verification-photos

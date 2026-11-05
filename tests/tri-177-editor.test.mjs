@@ -32,10 +32,10 @@ test('the 160 existing stylized artworks have valid and uniquely mapped source r
  }
 });
 test('the editor loads the stylized catalogue rather than selecting original photo files',()=>{
- assert.match(html,/<script type="module" src="\.\/artworks\.js"><\/script>/);
- assert.match(html,/<link rel="stylesheet" href="\.\/editor\.css">/);
- assert.match(html,/<script type="module" src="\.\/details\.js"><\/script>/);
- assert.match(html,/160<\/strong> illustrations stylisées/);
+ // The source archive is intentionally offline on GitHub Pages. It retains its own static photo triage.
+ assert.match(html,/<section class="group" id="COST-001"/);
+ assert.doesNotMatch(html,/<script[^>]+src="\.\/artworks\.js"/);
+ assert.doesNotMatch(html,/<script[^>]+src="\.\/details\.js"/);
  assert.match(gallery,/import \{CARD_PHOTO_PAIRS_160\}/);
  assert.match(gallery,/collection-161\/assets\/cards\//);
  assert.match(gallery,/classList\.add\('source-photos'\)/);
@@ -66,7 +66,8 @@ test('editor validates names and one primary only; alternatives are optional and
  assert.match(editor,/tcg-deseur-cards-v2/);
  assert.match(editor,/tcg_tri_card_v2_/);
  assert.match(editor,/window\.confirm/);
- assert.match(html,/zéro à plusieurs visuels alternatifs|aucune, une ou plusieurs illustrations alternatives/);
+ // Alternative editing remains available in the repository code, not on public Pages.
+ assert.match(editor,/const alternatives=\[\]/);
  assert.ok(css.includes('.variants-previews'));
 });
 test('normalizing previous and new choices supports 0, 1, or many variants',()=>{

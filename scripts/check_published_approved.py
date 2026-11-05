@@ -1,197 +1,72 @@
 #!/usr/bin/env python3
-"""Vérifie uniquement le contenu PUBLIC de GitHub Pages.
-Pas de compte, cookie, token, API booster ou base de données.
+"""Check that only approved TCG content is publicly served by GitHub Pages.
+Never exercise logged-in APIs or emit private credentials.
 """
-import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
-import sys
 import time
 import urllib.error
 import urllib.request
 
 BASE = "https://cosscoll.github.io/TCG-Thomas-Deseur/"
-TRIES = int(os.environ.get("TCG_PUBLIC_CHECK_TRIES", "24"))
-DELAY = float(os.environ.get("TCG_PUBLIC_CHECK_DELAY", "15"))
+TRIES = int(os.environ.get("TCG_PUBLIC_CHECK_TRIES", "16"))
+DELAY = float(os.environ.get("TCG_PUBLIC_CHECK_DELAY", "10"))
+AGENT = "TCG-Deseur-Public-Surface-Check/2.0"
 
+PUBLIC_IMAGES = ["td-1-004.webp","td-2-043.webp","td-1-001.webp","td-3-005.webp","td-1-002.webp","td-2-042.webp","td-3-042.webp","td-1-003.webp","td-1-005.webp","td-2-003.webp","td-1-007.webp","td-3-011.webp","td-1-008.webp","td-2-005.webp","td-1-006.webp","td-3-023.webp","td-1-012.webp","td-3-024.webp","td-1-011.webp","td-2-001.webp","td-2-007.webp","td-1-010.webp","td-3-010.webp","td-2-008.webp","td-3-001.webp","td-1-014.webp","td-3-033.webp","td-3-031.webp","td-3-043.webp","td-1-020.webp","td-1-019.webp","td-1-018.webp","td-1-021.webp","td-3-016.webp","td-1-023.webp","td-3-015.webp","td-1-022.webp","td-3-022.webp","td-1-024.webp","td-3-037.webp","td-1-026.webp","td-3-032.webp","td-1-028.webp","td-1-025.webp","td-2-024.webp","td-1-027.webp","td-3-035.webp","td-2-019.webp","td-3-040.webp","td-2-023.webp","td-3-039.webp","td-3-036.webp","td-1-030.webp","td-1-032.webp","td-2-025.webp","td-2-031.webp","td-1-035.webp","td-2-044.webp","td-3-038.webp","td-1-036.webp","td-2-027.webp","td-2-030.webp","td-3-029.webp","td-1-040.webp","td-2-035.webp","td-3-009.webp","td-2-034.webp","td-3-041.webp","td-3-028.webp","td-3-002.webp","td-1-043.webp","td-2-039.webp","td-2-037.webp","td-3-025.webp","td-3-003.webp","td-2-045.webp","td-2-048.webp","td-3-014.webp","td-1-049.webp","td-1-045.webp","td-1-051.webp","td-1-055.webp","td-1-052.webp","td-1-054.webp","td-2-065.webp","td-2-066.webp","td-1-059.webp","td-2-058.webp","td-1-058.webp","td-2-057.webp","td-1-056.webp","td-1-057.webp","td-1-062.webp","td-1-060.webp","td-2-052.webp","td-1-063.webp","td-2-050.webp","td-1-065.webp","td-2-056.webp","td-1-066.webp","td-1-064.webp","td-2-053.webp","td-2-059.webp","td-2-049.webp","td-lille.webp"]
 
-def fetch(path):
-    url = BASE + path
-    req = urllib.request.Request(
-        url,
-        headers={"User-Agent": "TCG-Deseur-Public-Integrity-Check/1.0", "Cache-Control": "no-cache"},
-    )
-    with urllib.request.urlopen(req, timeout=15) as response:
-        if response.status != 200:
-            raise AssertionError(f"{path}: HTTP {response.status}")
-        return response.read()
+BLOCKED = [
+    "floot-app/endpoints/gift_create_POST.ts",
+    "floot-app/helpers/db.tsx",
+    "supabase/VERIFIER_INSTALLATION.sql",
+    "security/tcg-gift-attempt-windows.sql",
+    "scripts/check_published_approved.py",
+    "tests/tri-177-editor.test.mjs",
+    "tri-177/index.html",
+    "tri-177/images_nommes/REF-1-001.webp",
+    "collection-161/index.html",
+    "data/choix-cartes-2026-10-11.json",
+    "data/photo-origins-177.js",
+    "collection-validee/app.js",
+    "collection-validee/assets/uniform/",
+    "README.md",
+]
 
-
-def check_image_head(path):
-    req = urllib.request.Request(
-        BASE + path,
-        method="HEAD",
-        headers={"User-Agent": "TCG-Deseur-Images/1.0", "Cache-Control": "no-cache"},
-    )
-    with urllib.request.urlopen(req, timeout=15) as response:
-        if response.status != 200:
-            raise AssertionError(f"{path}: image HTTP {response.status}")
-        media_type = response.headers.get("Content-Type", "").split(";")[0].lower().strip()
-        if media_type != "image/webp":
-            raise AssertionError(f"{path}: Type inattendu {media_type}")
-        length = int(response.headers.get("Content-Length", "0"))
-        if length < 1000:
-            raise AssertionError(f"{path}: image vide ou incomplète ({length} octets)")
-        return path
-
-
-def check_all_published_artworks(cards):
-    assets = [image["asset"] for card in cards
-              for image in [card["main"], *card["variants"]]]
-    assert len(assets) == len(set(assets)) == 105, "105 images distinctes attendues."
-    failures = []
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        pending = {pool.submit(check_image_head, asset): asset for asset in assets}
-        for future in as_completed(pending):
-            try:
-                future.result()
-            except (AssertionError, ValueError, urllib.error.URLError, TimeoutError, OSError) as exc:
-                failures.append(str(exc))
-    if failures:
-        raise AssertionError(
-            f"{len(failures)} illustration(s) indisponibles : " +
-            " | ".join(failures[:12])
-        )
-    return len(assets)
-
+def get(path, method="GET"):
+    req = urllib.request.Request(BASE + path, method=method, headers={"User-Agent": AGENT, "Cache-Control": "no-cache"})
+    try:
+        with urllib.request.urlopen(req, timeout=13) as response:
+            return response.status, response.headers.get("Content-Type", ""), response.read() if method == "GET" else b""
+    except urllib.error.HTTPError as error:
+        return error.code, error.headers.get("Content-Type", ""), b""
 
 def verify_once():
-    home = fetch("").decode("utf-8")
-    assert "collection-validee/" in home, "L'accueil n'annonce pas le nouveau catalogue."
-
-    html = fetch("collection-validee/").decode("utf-8")
-    assert 'id="cards"' in html and './app.js' in html, "La galerie approuvée est absente."
-
-    js = fetch("collection-validee/app.js").decode("utf-8")
-    assert 'choix-cartes-2026-10-11.json' in js, "Le code public n'utilise pas les choix approuvés."
-
-    raw = json.loads(fetch("data/catalogue-valide-67.json"))
-    assert raw["schema"] == "tcg-deseur-approved-catalogue-v1"
-    assert raw["summary"] == {
-        "cards": 67, "existingVariants": 38, "excludedGroups": 3, "usedArtworks": 105
-    }, "Le manifeste public n'est pas à jour."
-    assert len(raw["cards"]) == 67
-    picasso = next(card for card in raw["cards"] if card["id"] == "COST-003")
-    assert picasso["name"] == "Picasso Deseur"
-    assert picasso["main"]["artworkId"] == "td_1_002"
-    assert [art["artworkId"] for art in picasso["variants"]] == ["td_2_042", "td_3_042"]
-    assert "68 cartes" in home, "L'accueil ne montre pas les 68 cartes."
-    assert "68 cartes" in html, "La galerie ne montre pas les 68 cartes."
-    assert "Carte mystère" in html, "La carte mystère n'est pas présentée."
-    assert "mysteryCardView" in js, "Le rendu de la Carte mystère est absent."
-    all_live_images = check_all_published_artworks(raw["cards"])
-
-    # Les nouveaux visuels gardent les sources intactes, mais sont tous au
-    # format final vertical 768 × 1024. Le manifeste public liste leur
-    # provenance et la vérification de leur intégrité est faite dans CI.
-    uniform = json.loads(fetch("data/approved-artwork-uniform-105.json"))
-    assert uniform["schema"] == "tcg-deseur-uniform-approved-artworks-v1"
-    assert uniform["size"] == [768, 1024] and uniform["aspectRatio"] == "3:4"
-    assert uniform["originalsUnchanged"] is True
-    paths = [art["normalized"] for art in uniform["artworks"]]
-    assert len(paths) == len(set(paths)) == 105
-    assert sum(art["kind"] == "main" for art in uniform["artworks"]) == 67
-    assert "assets/uniform/" in js, "La galerie n'utilise pas encore les images uniformisées."
-    errors = []
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        jobs = [pool.submit(check_image_head, path) for path in paths]
-        for job in as_completed(jobs):
-            try: job.result()
-            except (AssertionError, ValueError, urllib.error.URLError, TimeoutError, OSError) as exc:
-                errors.append(str(exc))
-    if errors:
-        raise AssertionError(f"{len(errors)} images uniformisées inaccessibles: " + " | ".join(errors[:12]))
-
-    mobile = json.loads(fetch("data/thumbs-approved-105.json"))
-    assert mobile["schema"] == "tcg-deseur-approved-thumbs-v1"
-    assert mobile["size"] == [384, 512]
-    assert len(mobile["images"]) == 105
-    thumb_paths = [item["thumb"] for item in mobile["images"]]
-    assert len(set(thumb_paths)) == 105
-    assert all(item["base"].replace("assets/uniform/","assets/thumbs/")==item["thumb"] for item in mobile["images"])
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        jobs = [pool.submit(check_image_head, path) for path in thumb_paths]
-        for job in as_completed(jobs):
-            job.result()
-
-    # Invitation aux testeurs : la page doit pointer vers le VRAI jeu
-    # et ne doit pas proposer un formulaire recueillant des identifiants.
-    invitation = fetch("beta/").decode("utf-8")
-    assert "Test entre amis" in invitation
-    assert "https://tcg-thomas-deseur.floot.app/login" in invitation
-    assert "https://tcg-thomas-deseur.floot.app/" in invitation
-    assert '<meta name="robots" content="noindex,nofollow">' in invitation
-    assert 'name="password"' not in invitation and 'type="email"' not in invitation
-    assert 'id="feedback-form"' in invitation
-    js = fetch("beta/app.js").decode("utf-8")
-    assert "FormData(form)" in js and "navigator.clipboard" in js
-    assert "fetch(" not in js and "XMLHttpRequest" not in js
-    css = fetch("beta/style.css")
-    assert len(css) > 1000
-
-    # Pages de travail complémentaires : garantir la publication des vrais
-    # écrans et de leur source, sans toucher à un compte ou au serveur Floot.
-    boards = fetch("planches/").decode("utf-8")
-    assert 'id="primary-grid"' in boards and 'id="variant-grid"' in boards
-    assert 'id="print"' in boards and "edition-staging-67.json" in boards
-    assert "Carte mystère" not in boards.split("<script type=")[-1], "Aucune donnée privée ne doit être tirée du manifeste."
-
-    review = fetch("audit-visuels/").decode("utf-8")
-    assert 'id="items"' in review and 'id="download-json"' in review
-    review_js = fetch("audit-visuels/app.js").decode("utf-8")
-    assert "tcg-deseur-art-review-105-v1" in review_js
-
-    progress = fetch("avancement/").decode("utf-8")
-    assert 'id="items"' in progress and "88 actions" in progress
-    tracking = json.loads(fetch("data/suivi-88-actions.json"))
-    assert tracking["schema"] == "tcg-deseur-88-autonomy-status-v1"
-    assert len(tracking["actions"]) == 88
-    assert tracking["summary"]["delivered"] + tracking["summary"]["partial"] == 88
-
-    prototype = fetch("prototype-booster/").decode("utf-8")
-    assert 'id="start"' in prototype and 'id="next"' in prototype
-    assert 'id="summary"' in prototype and "edition-staging-67.json" in prototype
-    assert "Simulation uniquement" in prototype and "noindex,nofollow" in prototype
-
-    creative = fetch("kit-visuels/").decode("utf-8")
-    assert 'id="preview"' in creative and 'id="download"' in creative
-    assert "edition-staging-67.json" in creative and "thumbs/" in creative
-
-    sitemap = fetch("sitemap.xml").decode("utf-8")
-    assert "collection-validee/" in sitemap and "beta/" not in sitemap
-    assert "audit-visuels/" not in sitemap and "kit-visuels/" not in sitemap
-    robots = fetch("robots.txt").decode("utf-8")
-    assert "Sitemap:" in robots
-
-    original = fetch("collection-161/assets/cards/td-1-002.webp")
-    assert original[:4] == b"RIFF" and original[8:12] == b"WEBP", "Visuel stylisé inaccessible."
-    return f"Accueil, 68 emplacements, {all_live_images} originaux + 105 WebP uniformisés + 105 miniatures, planches, revue, kit PNG, suivi 88 actions et bêta accessibles."
-
-
-def main():
-    last_error = None
-    for attempt in range(1, TRIES + 1):
-        try:
-            print(f"[{attempt}/{TRIES}] Contrôle GitHub Pages :", verify_once(), flush=True)
-            return 0
-        except (AssertionError, KeyError, ValueError, urllib.error.URLError, TimeoutError) as error:
-            last_error = error
-            print(f"[{attempt}/{TRIES}] Pas encore prêt : {error}", flush=True)
-            if attempt < TRIES:
-                time.sleep(DELAY)
-    print(f"ÉCHEC après {TRIES} essais. Dernier problème : {last_error}", file=sys.stderr)
-    return 1
-
+    for public in ("", "legal/", "collection-validee/"):
+        status, _, body = get(public)
+        assert status == 200, f"Public page {public}: {status}"
+        assert b"TCG" in body, f"Public page {public}: content missing"
+    _, _, gallery = get("collection-validee/")
+    assert gallery.count(b'<article class="tile">') == 105, "Expected 105 public illustrations"
+    assert b"floot-app" not in gallery and b"photo-origins" not in gallery, "Unexpected private code references"
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        requests = {pool.submit(get, f"collection-validee/assets/detourees/{name}", "HEAD"): name for name in PUBLIC_IMAGES}
+        failures = []
+        for future in as_completed(requests):
+            code, media, _ = future.result()
+            if code != 200 or not media.lower().startswith("image/webp"):
+                failures.append((requests[future], code, media))
+    assert not failures, f"{len(failures)} artworks unavailable; samples: {failures[:5]}"
+    for private in BLOCKED:
+        status, _, _ = get(private)
+        assert status == 404, f"BLOCKED file exposed publicly: {private}: HTTP {status}"
+    return f"PUBLIC PASS: 3 site pages, 105 artworks; {len(BLOCKED)} internal paths blocked"
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    for i in range(1, TRIES + 1):
+        try:
+            print(f"[{i}/{TRIES}] {verify_once()}", flush=True)
+            break
+        except (AssertionError, OSError, TimeoutError, urllib.error.URLError) as error:
+            print(f"[{i}/{TRIES}] WAIT: {error}", flush=True)
+            if i == TRIES: raise SystemExit(1)
+            time.sleep(DELAY)
