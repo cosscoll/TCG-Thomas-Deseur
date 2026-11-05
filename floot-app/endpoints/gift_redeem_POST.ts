@@ -1,4 +1,5 @@
 import {db} from '../helpers/db';
+import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from '../helpers/getServerUserSession';
 import {NotAuthenticatedError} from '../helpers/getSetServerSession';
 import {normalizeGiftCode,hashGiftCode,validateGiftRewards} from '../helpers/tcgGiftCodes';
@@ -11,10 +12,24 @@ class GiftFailure extends Error{}
 const headers={'Content-Type':'application/json','Cache-Control':'private,no-store'};
 const fail=(status:number,error:string)=>new Response(superjson.stringify({error}),{status,headers});
 export async function handle(request:Request){
+ const blocked = tcgMutationGuard(request);
+ if (blocked) return blocked;
  let userId:number;
  try{userId=(await getServerUserSession(request)).user.id;}
  catch(error){if(error instanceof NotAuthenticatedError)return fail(401,'Connexion requise.');return fail(500,'Session indisponible.');}
  try{
+  // Persistent per-account throttle: invalid guesses count even when redemption fails.
+  const attempt=await sql<{attempts:number}>`
+    INSERT INTO tcg_gift_attempt_windows(user_id,attempts,window_started_at)
+    VALUES (${userId},1,NOW())
+    ON CONFLICT (user_id) DO UPDATE SET
+      attempts=CASE WHEN tcg_gift_attempt_windows.window_started_at <= NOW()-INTERVAL '15 minutes'
+        THEN 1 ELSE tcg_gift_attempt_windows.attempts+1 END,
+      window_started_at=CASE WHEN tcg_gift_attempt_windows.window_started_at <= NOW()-INTERVAL '15 minutes'
+        THEN NOW() ELSE tcg_gift_attempt_windows.window_started_at END
+    RETURNING attempts
+  `.execute(db);
+  if(Number(attempt.rows[0]?.attempts??99)>10)return fail(429,'Trop de tentatives. Réessaie dans 15 minutes.');
   const parsed=superjson.parse<{code:string}>(await request.text());
   const hash=hashGiftCode(normalizeGiftCode(parsed?.code));
   const output=await db.transaction().execute(async trx=>{
@@ -31,7 +46,8 @@ export async function handle(request:Request){
     .select(['id','name','rarity','reference','sourceReference','imagePath','ordinal','normalBooster','variants']).execute();
    const artworks=tcgArtworkCatalog(catalog);
    const artById=new Map(artworks.map(c=>[c.id,c]));
-   const rewards=validateGiftRewards(code.rewards,new Set(artById.keys()));
+   const storedRewards=typeof code.rewards==='string'?JSON.parse(code.rewards):code.rewards;
+   const rewards=validateGiftRewards(storedRewards,new Set(artById.keys()));
    const current=await trx.selectFrom('tcgArtworkInventory').select(['artworkId','quantity'])
     .where('userId','=',userId).execute();
    const owned=new Set(current.filter(c=>c.quantity>0).map(c=>c.artworkId));
@@ -71,4 +87,3 @@ export async function handle(request:Request){
   return fail(500,'Code temporairement indisponible.');
  }
 }
-

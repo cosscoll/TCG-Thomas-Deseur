@@ -1,5 +1,6 @@
 // adapt this to the database schema and helpers if necessary
 import { db } from "../../helpers/db";
+import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
 import { sql } from "kysely";
 import { schema } from "./register_with_password_POST.schema";
 import { randomBytes } from "crypto";
@@ -12,6 +13,8 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 export async function handle(request: Request) {
+  const blocked = tcgMutationGuard(request);
+  if (blocked) return blocked;
   try {
     const json = superjson.parse(await request.text());
     const { email, password, displayName } = schema.parse(json);
@@ -129,4 +132,3 @@ export async function handle(request: Request) {
     );
   }
 }
-

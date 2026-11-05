@@ -1,5 +1,6 @@
 // adapt this to your database schema
 import { db } from "../../helpers/db";
+import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
 import { sql } from "kysely";
 import { schema } from "./login_with_password_POST.schema";
 import { compare } from "bcryptjs";
@@ -36,6 +37,8 @@ function safeToDate(
 }
 
 export async function handle(request: Request) {
+  const blocked = tcgMutationGuard(request);
+  if (blocked) return blocked;
   try {
     const json = superjson.parse(await request.text());
     const { email, password } = schema.parse(json);
@@ -281,4 +284,3 @@ export async function handle(request: Request) {
     );
   }
 }
-

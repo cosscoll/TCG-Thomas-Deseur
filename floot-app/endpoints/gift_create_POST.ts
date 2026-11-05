@@ -1,4 +1,5 @@
 import {db} from '../helpers/db';
+import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from '../helpers/getServerUserSession';
 import {NotAuthenticatedError} from '../helpers/getSetServerSession';
 import {normalizeGiftCode,hashGiftCode,validateGiftRewards} from '../helpers/tcgGiftCodes';
@@ -9,6 +10,8 @@ import type {InputType,OutputType} from './gift_create_POST.schema';
 const headers={'Content-Type':'application/json','Cache-Control':'private,no-store'};
 const fail=(status:number,error:string)=>new Response(superjson.stringify({error}),{status,headers});
 export async function handle(request:Request){
+ const blocked = tcgMutationGuard(request);
+ if (blocked) return blocked;
  try{
   const {user}=await getServerUserSession(request);
   if(user.role!=='admin')return fail(403,'Accès administrateur réservé.');
@@ -25,10 +28,13 @@ export async function handle(request:Request){
   const catalog=await db.selectFrom('tcgCardsOrigin')
    .select(['id','name','rarity','reference','sourceReference','imagePath','ordinal','normalBooster','variants']).execute();
   const known=tcgArtworkCatalog(catalog);
-  const rewards=validateGiftRewards(input.rewards,new Set(known.map(c=>c.id)));
+  const references=await db.selectFrom('tcgArtworkRefs').select(['artworkId','numericReference']).where('private','=',false).execute();
+  if(references.length!==105)throw Error('Références de collection incomplètes.');
+  const rewards=validateGiftRewards(input.rewards,new Set(known.map(c=>c.id)),
+   new Map(references.map(ref=>[ref.numericReference,ref.artworkId])));
   const hash=hashGiftCode(code);
   await db.insertInto('tcgGiftCodes').values({codeHash:hash,label:input.label.trim(),
-   rewards:sql`${JSON.stringify(rewards)}::jsonb`,maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();
+   rewards:sql.raw("'"+JSON.stringify(rewards).replace(/'/g,"''")+"'::jsonb"),maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();
   return new Response(superjson.stringify({code,label:input.label.trim(),maxUses:input.maxUses,rewardCount:rewards.length} satisfies OutputType),{headers});
  }catch(error){
   if(error instanceof NotAuthenticatedError)return fail(401,'Connexion requise.');
@@ -37,4 +43,3 @@ export async function handle(request:Request){
   console.error('Gift creation',error);return fail(500,'Impossible de créer le code pour le moment.');
  }
 }
-

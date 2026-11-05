@@ -57,3 +57,7 @@ Pour les codes cadeaux spéciaux, le backend de préparation convertit la réfé
 - [Codes sources sauvegardés](floot-app/).
 
 Aucun achat ni paiement n'est nécessaire. Le projet est une création indépendante. Les détails des récompenses confidentielles et les données personnelles des joueurs ne doivent pas être publiés sur ce dépôt.
+
+## Sécurité — 5 novembre 2026
+
+Les protections Floot du jeu (anti-requêtes intersites, limitation des essais de codes cadeaux, HMAC des codes de récupération) ont été renforcées et publiées. Voir [les contrôles et les limites](docs/SECURITE_CORRECTIONS_2026-11-05.md). Le code de `floot-app/` est un miroir de référence, et non un backend déployé par GitHub Pages.

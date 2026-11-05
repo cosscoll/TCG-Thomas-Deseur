@@ -1,4 +1,5 @@
 import {db} from "../helpers/db";
+import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from "../helpers/getServerUserSession";
 import {NotAuthenticatedError} from "../helpers/getSetServerSession";
 import {tcgOriginRules} from "../helpers/tcgOriginRules";
@@ -14,6 +15,8 @@ class NoPacks extends Error{}
 const headers={"Content-Type":"application/json","Cache-Control":"private, no-store"};
 const tiers=["commune","rare","epique","legendaire","hors_serie"];
 export async function handle(request:Request){
+ const blocked = tcgMutationGuard(request);
+ if (blocked) return blocked;
  let userId:number;
  try{userId=(await getServerUserSession(request)).user.id;}
  catch(e){
@@ -117,4 +120,3 @@ export async function handle(request:Request){
    {status:e instanceof NoPacks?429:500,headers});
  }
 }
-
