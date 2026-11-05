@@ -65,7 +65,49 @@ for rel in tracked:
 if public_artworks != 105:
     failures.append(f"Expected exactly 105 approved WebP artworks; found {public_artworks}")
 
+# Detect accidental credential commits without printing any credential value.
+# A known-pattern scanner is only a guardrail, not a complete secret audit.
+SECRET_PATTERNS = [
+    ("GitHub token", re.compile(r"\b(?:ghp_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{60,})\b")),
+    ("OpenAI API key", re.compile(r"\bsk-(?:proj|svcacct)-[A-Za-z0-9_-]{20,}\b")),
+    ("Anthropic API key", re.compile(r"\bsk-ant-api\d+-[A-Za-z0-9_-]{25,}\b")),
+    ("Supabase secret", re.compile(r"\bsb_secret_[A-Za-z0-9_-]{16,}\b")),
+    ("Stripe live key", re.compile(r"\b(?:sk_live|rk_live)_[A-Za-z0-9]{24,}\b")),
+    ("Google API key", re.compile(r"\bAIza[0-9A-Za-z_-]{32,}\b")),
+    ("AWS access key ID", re.compile(r"\bAKIA[0-9A-Z]{16}\b")),
+    ("Private key header", re.compile(r"-----BEGIN (?:RSA |DSA |EC |OPENSSH )?PRIVATE KEY-----")),
+    ("PostgreSQL password URL", re.compile(r"postgres(?:ql)?://[^\s:/@]+:[^\s@]+@[A-Za-z0-9.-]+(?::\d+)?/", re.I)),
+]
+TEXT_SUFFIXES = {
+    ".js", ".mjs", ".ts", ".tsx", ".json", ".md", ".html", ".css",
+    ".yml", ".yaml", ".py", ".sql", ".txt", ".sh", ".toml", ".env",
+}
+checked_text_files = 0
+for rel in tracked:
+    if not rel:
+        continue
+    name = Path(rel).name
+    if name.startswith(".env") and name != ".env.example":
+        failures.append(f"Tracked environment file is forbidden: {rel}")
+        continue
+    if Path(rel).suffix.lower() not in TEXT_SUFFIXES:
+        continue
+    source = ROOT / rel
+    if not source.is_file() or source.stat().st_size > 2_000_000:
+        continue
+    contents = source.read_text(encoding="utf-8", errors="replace")
+    checked_text_files += 1
+    for label, expression in SECRET_PATTERNS:
+        if expression.search(contents):
+            failures.append(f"Potential {label} detected in {rel}; value withheld")
+            break
+for path in WORKFLOWS.glob("*.yml"):
+    contents = path.read_text(encoding="utf-8")
+    if re.search(r"(?m)^\s*permissions:\s*write-all\s*$", contents):
+        failures.append(f"{path.name}: unrestricted permissions: write-all")
+
 print(f"Security policy: {count} workflows checked, {write_workflows} manual write workflows, {len(failures)} violation(s)")
+print(f"Secret patterns checked in {checked_text_files} tracked source files without logging values")
 for failure in failures:
     print(f"SECURITY POLICY ERROR: {failure}")
 if failures:
