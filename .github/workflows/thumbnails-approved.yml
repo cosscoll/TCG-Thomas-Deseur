@@ -2,11 +2,6 @@ name: Miniatures mobiles 105 images approuvées
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/generate-approved-thumbnails.py'
-      - '.github/workflows/thumbnails-approved.yml'
 
 permissions:
   contents: write

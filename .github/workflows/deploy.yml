@@ -30,7 +30,8 @@ on:
       - "scripts/generate-approved-staging.mjs"
       - "scripts/validate-rarity-decisions.mjs"
       - "package.json"
-      - ".github/workflows/deploy.yml"
+      - ".github/workflows/**"
+      - "scripts/check_security_policies.py"
   pull_request:
     paths:
       - "index.html"
@@ -86,6 +87,8 @@ jobs:
           node scripts/validate-rarity-decisions.mjs data/raretes-validees-67.json --require-complete
           node scripts/stage-approved-edition.mjs
           node scripts/generate-approved-staging.mjs --check
+      - name: Contrôler les autorisations des workflows et la publication publique
+        run: python scripts/check_security_policies.py
       - name: Exécuter tous les tests métier Node
         run: npm test
 
