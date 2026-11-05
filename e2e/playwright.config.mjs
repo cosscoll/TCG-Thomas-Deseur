@@ -2,6 +2,8 @@ import { defineConfig, devices } from "@playwright/test";
 import { fileURLToPath } from "node:url";
 export default defineConfig({
   testDir: ".",
+  // Active portal only: historic editing/archive tests are retained for offline maintenance.
+  testMatch: ["secure-public-surface.spec.mjs"],
   fullyParallel: true,
   retries: 0,
   reporter: "line",

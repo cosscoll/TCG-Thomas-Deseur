@@ -38,6 +38,33 @@ for name in ("floot-app", "supabase", "security", "scripts", "tests", "tri-177",
     config = (ROOT / "_config.yml").read_text(encoding="utf-8")
     if not re.search(r"(?m)^\s*-\s*" + re.escape(name) + r"\s*$", config):
         failures.append(f"GitHub Pages missing exclusion for {name}")
+# Default-deny checks on every tracked file: any new asset/script that is not
+# in the static allowlist MUST be excluded from GitHub Pages before merging.
+# Unlike a fixed set of sensitive filenames, this also catches new folders.
+import subprocess
+
+public_pages = {
+    "index.html", "legal/index.html", "collection-validee/index.html",
+    "robots.txt", "sitemap.xml",
+}
+config_lines = (ROOT / "_config.yml").read_text(encoding="utf-8")
+excluded = set(re.findall(r"(?m)^  - (.+?)\s*$", config_lines))
+tracked = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).decode("utf-8").split("\0")
+public_artworks = 0
+for rel in tracked:
+    if not rel:
+        continue
+    if rel in public_pages or rel == "_config.yml":
+        continue
+    if rel.startswith("collection-validee/assets/detourees/") and rel.endswith(".webp"):
+        public_artworks += 1
+        continue
+    if any(rel == denied or rel.startswith(denied + "/") for denied in excluded):
+        continue
+    failures.append(f"UNEXCLUDED TRACKED FILE: {rel}")
+if public_artworks != 105:
+    failures.append(f"Expected exactly 105 approved WebP artworks; found {public_artworks}")
+
 print(f"Security policy: {count} workflows checked, {write_workflows} manual write workflows, {len(failures)} violation(s)")
 for failure in failures:
     print(f"SECURITY POLICY ERROR: {failure}")
