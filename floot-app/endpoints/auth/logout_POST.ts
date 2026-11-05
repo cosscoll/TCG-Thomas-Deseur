@@ -1,5 +1,6 @@
 // adapt this to your database schema
 import { db } from "../../helpers/db";
+import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
 import {
   getServerSessionOrThrow,
   clearServerSession,
@@ -8,6 +9,8 @@ import {
 import superjson from "superjson";
 
 export async function handle(request: Request) {
+  const blocked = tcgMutationGuard(request);
+  if (blocked) return blocked;
   try {
     // Get the current session
     const session = await getServerSessionOrThrow(request);
@@ -58,4 +61,3 @@ export async function handle(request: Request) {
     );
   }
 }
-

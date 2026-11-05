@@ -1,4 +1,5 @@
 import {db} from "../helpers/db";
+import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from "../helpers/getServerUserSession";
 import {NotAuthenticatedError} from "../helpers/getSetServerSession";
 import {randomInt} from "node:crypto";
@@ -11,6 +12,8 @@ import type {OutputType} from "./completion_POST.schema";
 class NotReady extends Error{}
 const headers={"Content-Type":"application/json","Cache-Control":"private, no-store"};
 export async function handle(request:Request){
+ const blocked = tcgMutationGuard(request);
+ if (blocked) return blocked;
  let userId:number;
  try{userId=(await getServerUserSession(request)).user.id;}
  catch(e){
@@ -65,4 +68,3 @@ export async function handle(request:Request){
    {status:e instanceof NotReady?409:500,headers});
  }
 }
-

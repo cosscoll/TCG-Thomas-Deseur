@@ -63,6 +63,14 @@ export interface TcgArtworkInventory {
   userId: number;
 }
 
+export interface TcgArtworkRefs {
+  artworkId: string;
+  cardId: string;
+  createdAt: Generated<Timestamp>;
+  numericReference: string;
+  private: Generated<boolean>;
+}
+
 export interface TcgCards {
   id: string;
   name: string;
@@ -89,6 +97,12 @@ export interface TcgCardsOrigin {
   reference: string;
   sourceReference: string | null;
   variants: Generated<Json>;
+}
+
+export interface TcgGiftAttemptWindows {
+  attempts: Generated<number>;
+  userId: number;
+  windowStartedAt: Generated<Timestamp>;
 }
 
 export interface TcgGiftCodes {
@@ -210,9 +224,11 @@ export interface DB {
   sessions: Sessions;
   tcgArtworkHistoryBackfilled: TcgArtworkHistoryBackfilled;
   tcgArtworkInventory: TcgArtworkInventory;
+  tcgArtworkRefs: TcgArtworkRefs;
   tcgCards: TcgCards;
   tcgCards161: TcgCards161;
   tcgCardsOrigin: TcgCardsOrigin;
+  tcgGiftAttemptWindows: TcgGiftAttemptWindows;
   tcgGiftCodes: TcgGiftCodes;
   tcgGiftPacks: TcgGiftPacks;
   tcgGiftRedemptions: TcgGiftRedemptions;
