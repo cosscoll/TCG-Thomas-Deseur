@@ -44,13 +44,13 @@ test('every approved illustration belongs to its chosen group and exists in the 
  }
  assert.equal(used.size,105);
 });
-test('the public approved gallery exposes names and variants without modifying a live inventory',()=>{
- assert.match(script,/choix-cartes-2026-10-11\.json/);
- assert.match(script,/CARD_PHOTO_PAIRS_160/);
- assert.match(script,/artSrc/);
- assert.match(script,/card\.alternatives\.length/);
- assert.doesNotMatch(script,/booster_POST|completion_POST|_api\/booster/);
+test('the public approved gallery publishes exactly 105 approved images without source-data dependencies',()=>{
  assert.match(html,/id="cards"/);
- assert.match(html,/id="filter"/);
- assert.ok(existsSync(new URL('../collection-validee/style.css',import.meta.url)));
+ assert.equal([...html.matchAll(/<article class="tile">/g)].length,105);
+ const imgs=[...html.matchAll(/src="\.\/assets\/detourees\/([^"]+\.webp)"/g)].map(m=>m[1]);
+ assert.equal(imgs.length,105);
+ assert.equal(new Set(imgs).size,105);
+ for(const file of imgs)assert.ok(existsSync(new URL('../collection-validee/assets/detourees/'+file,import.meta.url)),file+' is missing');
+ assert.doesNotMatch(html,/<script\b|_api\/|photo-origins-177|data\/choix-cartes|floot-app/);
+ assert.match(html,/67 cartes principales et 38 variantes/);
 });
