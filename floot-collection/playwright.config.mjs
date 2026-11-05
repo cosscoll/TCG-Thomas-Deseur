@@ -5,7 +5,9 @@ import { fileURLToPath } from 'node:url';
 // It never authenticates to Floot, consumes a booster or writes an inventory.
 export default defineConfig({
   testDir: fileURLToPath(new URL('../e2e/', import.meta.url)),
-  testMatch: ['binder-demo.spec.mjs', 'binder-accessibility.spec.mjs', 'collection-161.spec.mjs', 'collection-161-a11y.spec.mjs', 'tri-177.spec.mjs', 'verification-photos.spec.mjs', 'collection-validee.spec.mjs', 'beta.spec.mjs', 'audit-visuels.spec.mjs', 'planches.spec.mjs', 'avancement.spec.mjs', 'kit-visuels.spec.mjs', 'public-accessibility.spec.mjs', 'prototype-booster.spec.mjs'],
+  // CI covers the active public surface and the offline demo only.
+  // Archived pages intentionally unpublished are NOT user-facing E2E targets.
+  testMatch: ['binder-demo.spec.mjs', 'binder-accessibility.spec.mjs', 'secure-public-surface.spec.mjs'],
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
