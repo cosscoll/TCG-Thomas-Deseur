@@ -61,3 +61,10 @@ Aucun achat ni paiement n'est nécessaire. Le projet est une création indépend
 ## Sécurité — 5 novembre 2026
 
 Les protections Floot du jeu (anti-requêtes intersites, limitation des essais de codes cadeaux, HMAC des codes de récupération) ont été renforcées et publiées. Voir [les contrôles et les limites](docs/SECURITE_CORRECTIONS_2026-11-05.md). Le code de `floot-app/` est un miroir de référence, et non un backend déployé par GitHub Pages.
+
+
+## Publication minimale et accès au code (5 novembre 2026)
+
+Le site GitHub Pages n'héberge désormais que trois pages publiques (accueil, galerie et mentions légales), et les 105 WebP nécessaires au jeu. Les archives, dossiers backend, fichiers SQL, tests et notes internes sont exclus de la sortie Jekyll. Le contrôle automatique `scripts/check_published_approved.py` impose également des réponses 404 sur les chemins internes.
+
+**Attention : le dépôt GitHub lui-même est toujours public tant que sa visibilité n'a pas été changée dans les paramètres GitHub par le propriétaire.** La liste Jekyll n'empêche pas de lire le code via l'interface GitHub, les fichiers raw ou l'historique Git. Les 105 images Floot sont encore chargées depuis ce site GitHub Pages. Avant de rendre le dépôt privé, migrer les images vers un hébergement statique public indépendant, modifier les URL dans la base Floot, vérifier les 105 URLs, puis passer ce dépôt privé.

@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   browser:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Installer Playwright
-        run: npm install --no-save @playwright/test@1.56.1
+        run: npm install --no-save @playwright/test@1.56.1 @axe-core/playwright@4.10.2
       - name: Installer Chromium et ses dépendances
         run: npx playwright install --with-deps chromium
       - name: Parcours réels dans Chromium desktop et mobile

@@ -1,53 +1,149 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#110e1b">
-<title>Collection validée — TCG Deseur</title>
-<link rel="canonical" href="https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TCG Deseur — Les 105 illustrations de la collection Origine">
-<meta property="og:description" content="Explore 67 cartes principales et 38 illustrations alternatives dans le classeur Origine.">
-<meta property="og:url" content="https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/">
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Galerie officielle des 105 illustrations publiques de TCG Thomas Deseur : 67 cartes principales et 38 variantes.">
+<meta name="theme-color" content="#171321">
 <meta name="robots" content="index,follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"TCG Deseur — Collection Origine","url":"https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/","description":"Collection publique de 105 illustrations : 67 bases et 38 alternatives liées.","inLanguage":"fr"}</script>
-
-<meta name="description" content="TCG Deseur : 105 illustrations, 67 cartes de base et 38 alternatives dans un classeur unique.">
-<link rel="stylesheet" href="./style.css?v=20261016-collection105"><script type="module" src="./app.js?v=20261016-collection105"></script>
-</head><body>
-<a class="skip" href="#gallery">Aller aux cartes</a>
-<header class="site-header">
- <a class="brand" href="../" aria-label="Accueil TCG Deseur"><span class="logo">TCG</span><strong>DESEUR</strong></a>
- <nav aria-label="Navigation"><a href="../">Accueil</a><a href="https://tcg-thomas-deseur.floot.app/">Mon classeur</a><a href="../tri-177/">Atelier de tri</a><a href="../planches/">Planches imprimables</a><a href="https://tcg-thomas-deseur.floot.app/" rel="noopener noreferrer">Jouer ↗</a></nav>
-</header>
-<main>
- <section class="intro">
-  <div class="intro-copy"><span class="eyebrow">SÉLECTION OFFICIELLE · ÉDITION ORIGINE</span>
-   <h1>105 illustrations.<br><em>Une collection.</em></h1>
-   <p>Découvre <strong>67 cartes principales</strong> et leurs <strong>38 alternatives</strong>. Dans ce classeur, chaque illustration alternative occupe une place immédiatement après sa carte de base. Dans le jeu, une alternative peut être obtenue uniquement après sa carte de base.</p>
-   <p class="notice">Catalogue des 105 illustrations approuvées, harmonisées au format vertical 3:4. <strong>Le jeu TCG Deseur est désormais à jour : un booster toutes les 12 heures, jusqu’à trois en réserve.</strong> Comptes, tirages et inventaires sont gérés par Floot.</p>
-   <p class="provenance-notice">Les liens « galerie de référence » identifient la provenance documentaire des photographies utilisées pour les illustrations. Ils ne constituent pas une vérification de la vidéo ou de la scène exacte.</p>
-  </div>
-  <div class="hero-card" aria-hidden="true"><span>ÉDITION ORIGINE</span><b>105<br>VISUELS</b><small>67 BASES + 38 ALTERNATIVES</small></div>
- </section>
- <section class="metrics" aria-label="Bilan du tri">
-  <div><strong id="total">—</strong><span>illustrations dans la collection</span></div>
-  <div><strong id="variants">—</strong><span>variantes illustrées</span></div>
-  <div><strong id="excluded">—</strong><span>groupes écartés</span></div>
- </section>
- <section class="rarity-summary" aria-labelledby="rarity-title">
-  <div class="section-head"><div><span class="eyebrow">ÉDITION VALIDÉE</span><h2 id="rarity-title">Répartition des raretés</h2></div></div>
-  <div id="rarity-summary" class="rarity-counts" aria-label="Nombre de cartes par rareté connue"></div><p class="rarity-explainer">67 raretés de cartes de base · 38 alternatives associées</p>
- </section>
- <section id="gallery" class="gallery" aria-labelledby="gallery-title">
-  <div class="section-head"><div><span class="eyebrow">LE CLASSEUR</span><h2 id="gallery-title">Les cartes retenues</h2></div><p id="count" role="status" aria-live="polite">Chargement des cartes…</p></div>
-  <div class="controls"><label>Rechercher une carte<input id="search" type="search" placeholder="Nom, référence…" autocomplete="off"></label>
-   <label>Filtrer les cartes<select id="filter"><option value="all">Toutes les cartes</option><option value="variants">Avec variantes</option><option value="none">Sans variante</option><option value="multi">Plusieurs variantes</option></select></label>
-   <label>Trier les cartes<select id="sort"><option value="official">Ordre officiel</option><option value="name">Nom A → Z</option><option value="rarity">Rareté puis nom</option><option value="variants">Plus de variantes d’abord</option></select></label>
-   <label>Rareté<select id="rarity"><option value="all">Toutes les raretés</option><option value="Commune">Commune</option><option value="Rare">Rare</option><option value="Épique">Épique</option><option value="Légendaire">Légendaire</option><option value="Hors-série">Hors-série</option></select></label>
-   <label>Galerie de référence<select id="origin"><option value="all">Toutes les galeries</option><option value="images/100-1000-couches">Costumes — 100 et 1000 couches</option><option value="images/serie-100-couches">Série 100 couches</option><option value="images/personnages-thomas">Personnages Thomas</option><option value="images/Braderie-de-Lille-2026">Braderie de Lille 2026</option></select></label></div>
-  <p id="error" class="error" hidden role="alert"></p>
-  <div id="cards" class="cards"></div>
-  <p id="empty" hidden>Aucune carte ne correspond à cette recherche.</p>
- </section>
-</main>
-<footer>© 2026 Cosme Collomb · TCG Deseur · <a href="../legal/#propriete">Propriété intellectuelle</a> · <a href="../legal/#confidentialite">Confidentialité</a> · <a href="../legal/#reglement">Règlement</a>.</footer>
-</body></html>
+<title>Collection Origine — TCG Thomas Deseur</title>
+<link rel="canonical" href="https://cosscoll.github.io/TCG-Thomas-Deseur/collection-validee/">
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#14101c;color:#fff9ed}
+a{color:#f2d29b}
+header,main,footer{width:min(1180px,calc(100% - 32px));margin-inline:auto}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 0;border-bottom:1px solid #594568}
+header a{text-decoration:none;font-weight:700}
+header nav{display:flex;flex-wrap:wrap;gap:18px}
+main{padding:48px 0 64px}
+.eyebrow{color:#f2d29b;font-size:.8rem;font-weight:800;letter-spacing:.16em}
+h1{font-size:clamp(2.15rem,4.8vw,4.5rem);line-height:1.05;letter-spacing:-.055em;margin:14px 0}
+.intro{color:#c9c0d2;max-width:740px;line-height:1.7;margin-bottom:32px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:19px}
+.tile{border:1px solid #574361;border-radius:14px;overflow:hidden;background:#21182b;min-width:0}
+.tile img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:#808080}
+.body{padding:13px 13px 17px}
+.chip{display:inline-block;color:#f2d29b;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+h2{font-size:1rem;line-height:1.4;min-height:2.8em;margin:8px 0}
+.body p{font-size:.77rem;color:#bcb0c5;margin:0}
+footer{border-top:1px solid #594568;padding:25px 0 35px;color:#bcb0c5;font-size:.83rem}
+a:focus-visible{outline:3px solid #f2d29b;outline-offset:4px}
+@media(max-width:440px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.body{padding:10px}h2{font-size:.87rem}header nav{gap:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><a href="../">TCG DESEUR</a><nav aria-label="Navigation"><a href="../">Accueil</a><a href="https://tcg-thomas-deseur.floot.app/">Jouer</a><a href="../legal/#confidentialite">Confidentialité</a></nav></header>
+<main><div class="eyebrow">ÉDITION ORIGINE · GALERIE PUBLIQUE</div><h1>105 illustrations.<br>Une collection.</h1><p class="intro">67 cartes principales et 38 variantes à découvrir. Les collections personnelles, les boosters et les codes cadeaux sont gérés uniquement sur le jeu sécurisé. Ce portail ne contient aucun accès à la base de données et n'utilise aucun secret API.</p><div class="gallery" id="cards">
+<article class="tile"><img src="./assets/detourees/td-1-004.webp" width="768" height="1024" alt="Thomas d&#39;honneur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas d&#39;honneur</h2><p>COST-001 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-043.webp" width="768" height="1024" alt="Thomas d&#39;honneur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas d&#39;honneur — alternative</h2><p>COST-001 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-001.webp" width="768" height="1024" alt="Sophie Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Sophie Deseur</h2><p>COST-002 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-005.webp" width="768" height="1024" alt="Sophie Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Sophie Deseur — alternative</h2><p>COST-002 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-002.webp" width="768" height="1024" alt="Picasso Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Picasso Deseur</h2><p>COST-003 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-042.webp" width="768" height="1024" alt="Picasso Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Picasso Deseur — alternative</h2><p>COST-003 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-042.webp" width="768" height="1024" alt="Picasso Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Picasso Deseur — alternative</h2><p>COST-003 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-003.webp" width="768" height="1024" alt="Roucoul Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Roucoul Deseur</h2><p>COST-004 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-005.webp" width="768" height="1024" alt="Thomas flingueur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas flingueur</h2><p>COST-005 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-003.webp" width="768" height="1024" alt="Thomas flingueur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas flingueur — alternative</h2><p>COST-005 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-007.webp" width="768" height="1024" alt="Thomas baseball" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas baseball</h2><p>COST-006 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-011.webp" width="768" height="1024" alt="Thomas baseball — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas baseball — alternative</h2><p>COST-006 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-008.webp" width="768" height="1024" alt="Pieuvre Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Pieuvre Deseur</h2><p>COST-007 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-005.webp" width="768" height="1024" alt="Pieuvre Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Pieuvre Deseur — alternative</h2><p>COST-007 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-006.webp" width="768" height="1024" alt="Thomas Tacos" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas Tacos</h2><p>COST-008 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-023.webp" width="768" height="1024" alt="Thomas Tacos — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas Tacos — alternative</h2><p>COST-008 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-012.webp" width="768" height="1024" alt="Capitaine Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Capitaine Deseur</h2><p>COST-009 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-024.webp" width="768" height="1024" alt="Capitaine Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Capitaine Deseur — alternative</h2><p>COST-009 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-011.webp" width="768" height="1024" alt="Criminel Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Criminel Deseur</h2><p>COST-010 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-001.webp" width="768" height="1024" alt="Criminel Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Criminel Deseur — alternative</h2><p>COST-010 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-007.webp" width="768" height="1024" alt="Thomas des neiges" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas des neiges</h2><p>COST-011 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-010.webp" width="768" height="1024" alt="Flibus le pingouin alcoolique" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Flibus le pingouin alcoolique</h2><p>COST-012 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-010.webp" width="768" height="1024" alt="Flibus le pingouin alcoolique — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Flibus le pingouin alcoolique — alternative</h2><p>COST-012 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-008.webp" width="768" height="1024" alt="Glacier Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Glacier Deseur</h2><p>COST-013 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-001.webp" width="768" height="1024" alt="Poisson thomas" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Poisson thomas</h2><p>COST-014 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-014.webp" width="768" height="1024" alt="Nemo Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Nemo Deseur</h2><p>COST-015 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-033.webp" width="768" height="1024" alt="Nemo Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Nemo Deseur — alternative</h2><p>COST-015 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-031.webp" width="768" height="1024" alt="Thomas des glaces" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas des glaces</h2><p>COST-016 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-043.webp" width="768" height="1024" alt="Thomas des froids" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas des froids</h2><p>COST-017 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-020.webp" width="768" height="1024" alt="Thomas le colon" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas le colon</h2><p>COST-018 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-019.webp" width="768" height="1024" alt="Thomas des bois" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas des bois</h2><p>COST-019 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-018.webp" width="768" height="1024" alt="Écureuil Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Écureuil Deseur</h2><p>COST-020 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-021.webp" width="768" height="1024" alt="Thomas l&#39;abeille" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas l&#39;abeille</h2><p>COST-021 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-016.webp" width="768" height="1024" alt="Thomas l&#39;abeille — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas l&#39;abeille — alternative</h2><p>COST-021 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-023.webp" width="768" height="1024" alt="Thomas la proie" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas la proie</h2><p>COST-022 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-015.webp" width="768" height="1024" alt="Thomas la proie — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas la proie — alternative</h2><p>COST-022 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-022.webp" width="768" height="1024" alt="Thomas lézard" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas lézard</h2><p>COST-023 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-022.webp" width="768" height="1024" alt="Thomas lézard — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas lézard — alternative</h2><p>COST-023 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-024.webp" width="768" height="1024" alt="Adjudant chef Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Adjudant chef Deseur</h2><p>COST-024 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-037.webp" width="768" height="1024" alt="Adjudant chef Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Adjudant chef Deseur — alternative</h2><p>COST-024 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-026.webp" width="768" height="1024" alt="Thomas pied carré" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas pied carré</h2><p>COST-025 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-032.webp" width="768" height="1024" alt="Thomas pied carré — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas pied carré — alternative</h2><p>COST-025 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-028.webp" width="768" height="1024" alt="Thomas d&#39;un soir" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas d&#39;un soir</h2><p>COST-026 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-025.webp" width="768" height="1024" alt="L&#39;étalon Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>L&#39;étalon Deseur</h2><p>COST-027 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-024.webp" width="768" height="1024" alt="L&#39;étalon Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>L&#39;étalon Deseur — alternative</h2><p>COST-027 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-027.webp" width="768" height="1024" alt="Thomas la trompe" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas la trompe</h2><p>COST-028 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-035.webp" width="768" height="1024" alt="Thomas la trompe — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas la trompe — alternative</h2><p>COST-028 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-019.webp" width="768" height="1024" alt="Thomas qui griffe" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas qui griffe</h2><p>COST-029 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-040.webp" width="768" height="1024" alt="Thomas qui griffe — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas qui griffe — alternative</h2><p>COST-029 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-023.webp" width="768" height="1024" alt="Thomas doseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas doseur</h2><p>COST-030 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-039.webp" width="768" height="1024" alt="Thomas doseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas doseur — alternative</h2><p>COST-030 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-036.webp" width="768" height="1024" alt="Thomas rouleau laveur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas rouleau laveur</h2><p>COST-031 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-030.webp" width="768" height="1024" alt="Thomas rouleau laveur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas rouleau laveur — alternative</h2><p>COST-031 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-032.webp" width="768" height="1024" alt="Thomas facteur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas facteur</h2><p>COST-032 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-025.webp" width="768" height="1024" alt="Thomas facteur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas facteur — alternative</h2><p>COST-032 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-031.webp" width="768" height="1024" alt="Thomas among us" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas among us</h2><p>COST-033 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-035.webp" width="768" height="1024" alt="Thomas La Fleur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas La Fleur</h2><p>COST-034 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-044.webp" width="768" height="1024" alt="Thomas La Fleur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas La Fleur — alternative</h2><p>COST-034 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-038.webp" width="768" height="1024" alt="Thomas génie" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas génie</h2><p>COST-035 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-036.webp" width="768" height="1024" alt="Lego Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Lego Deseur</h2><p>COST-036 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-027.webp" width="768" height="1024" alt="Lego Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Lego Deseur — alternative</h2><p>COST-036 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-030.webp" width="768" height="1024" alt="Thomas brushing" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas brushing</h2><p>COST-037 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-029.webp" width="768" height="1024" alt="Thomas brushing — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas brushing — alternative</h2><p>COST-037 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-040.webp" width="768" height="1024" alt="Papy Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Papy Deseur</h2><p>COST-038 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-035.webp" width="768" height="1024" alt="Thomas hydroalcoolique" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas hydroalcoolique</h2><p>COST-039 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-009.webp" width="768" height="1024" alt="Thomas hydroalcoolique — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas hydroalcoolique — alternative</h2><p>COST-039 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-034.webp" width="768" height="1024" alt="VLC Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>VLC Deseur</h2><p>COST-040 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-041.webp" width="768" height="1024" alt="VLC Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>VLC Deseur — alternative</h2><p>COST-040 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-028.webp" width="768" height="1024" alt="Thomas squelette" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas squelette</h2><p>COST-041 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-002.webp" width="768" height="1024" alt="Barbie Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Barbie Deseur</h2><p>COST-042 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-043.webp" width="768" height="1024" alt="Barbie Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Barbie Deseur — alternative</h2><p>COST-042 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-039.webp" width="768" height="1024" alt="Thomas caméléon" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas caméléon</h2><p>COST-043 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-037.webp" width="768" height="1024" alt="Thomas perd la tête" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas perd la tête</h2><p>COST-044 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-025.webp" width="768" height="1024" alt="Thomas perd la tête — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas perd la tête — alternative</h2><p>COST-044 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-003.webp" width="768" height="1024" alt="Thomas Kinder" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas Kinder</h2><p>COST-045 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-045.webp" width="768" height="1024" alt="Thomas la pince" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas la pince</h2><p>COST-046 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-048.webp" width="768" height="1024" alt="Thomas Charmeur de serpent" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas Charmeur de serpent</h2><p>COST-047 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-3-014.webp" width="768" height="1024" alt="Thomas Charmeur de serpent — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas Charmeur de serpent — alternative</h2><p>COST-047 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-049.webp" width="768" height="1024" alt="Thomas prend son bain" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas prend son bain</h2><p>COST-049 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-045.webp" width="768" height="1024" alt="Caporal chef Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Caporal chef Deseur</h2><p>COST-050 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-051.webp" width="768" height="1024" alt="Thomas nugget" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas nugget</h2><p>COST-051 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-055.webp" width="768" height="1024" alt="Thomas chino" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas chino</h2><p>COST-052 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-052.webp" width="768" height="1024" alt="Thomas micro-onde" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas micro-onde</h2><p>COST-053 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-054.webp" width="768" height="1024" alt="Gulli-viande" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Gulli-viande</h2><p>COST-054 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-065.webp" width="768" height="1024" alt="Gulli-viande — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Gulli-viande — alternative</h2><p>COST-054 · Légendaire</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-066.webp" width="768" height="1024" alt="Thomas-terrazi" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas-terrazi</h2><p>COST-055 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-059.webp" width="768" height="1024" alt="Haricot Deseur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Haricot Deseur</h2><p>COST-056 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-058.webp" width="768" height="1024" alt="Haricot Deseur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Haricot Deseur — alternative</h2><p>COST-056 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-058.webp" width="768" height="1024" alt="Thomas x4" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas x4</h2><p>COST-057 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-057.webp" width="768" height="1024" alt="Thomas x4 — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas x4 — alternative</h2><p>COST-057 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-056.webp" width="768" height="1024" alt="Thomas-kita" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas-kita</h2><p>COST-058 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-057.webp" width="768" height="1024" alt="Thomas kiri" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas kiri</h2><p>COST-059 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-062.webp" width="768" height="1024" alt="1000 couches de Thomas" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>1000 couches de Thomas</h2><p>COST-060 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-060.webp" width="768" height="1024" alt="Thomas 3 points" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas 3 points</h2><p>COST-061 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-052.webp" width="768" height="1024" alt="Thomas 3 points — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas 3 points — alternative</h2><p>COST-061 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-063.webp" width="768" height="1024" alt="Thomas raclette" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas raclette</h2><p>COST-062 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-050.webp" width="768" height="1024" alt="Thomas raclette — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas raclette — alternative</h2><p>COST-062 · Commune</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-065.webp" width="768" height="1024" alt="Thomas ta soeur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas ta soeur</h2><p>COST-064 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-056.webp" width="768" height="1024" alt="Thomas ta soeur — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas ta soeur — alternative</h2><p>COST-064 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-066.webp" width="768" height="1024" alt="Thomas-couteur" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas-couteur</h2><p>COST-065 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-1-064.webp" width="768" height="1024" alt="Thomas-gen de police" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas-gen de police</h2><p>COST-066 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-053.webp" width="768" height="1024" alt="Thomas-gen de police — alternative" loading="lazy" decoding="async"><div class="body"><span class="chip">Variante</span><h2>Thomas-gen de police — alternative</h2><p>COST-066 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-059.webp" width="768" height="1024" alt="Thomas démission" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas démission</h2><p>COST-067 · Épique</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-2-049.webp" width="768" height="1024" alt="Thomas chic et choc" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas chic et choc</h2><p>COST-068 · Rare</p></div></article>
+<article class="tile"><img src="./assets/detourees/td-lille.webp" width="768" height="1024" alt="Thomas huîtres" loading="lazy" decoding="async"><div class="body"><span class="chip">Carte de base</span><h2>Thomas huîtres</h2><p>COST-070 · Hors-série</p></div></article>
+</div></main>
+<footer>© 2026 TCG Deseur · <a href="https://tcg-thomas-deseur.floot.app/">Ouvrir le jeu</a> · <a href="../legal/#mentions">Mentions légales</a></footer>
+</body>
+</html>
