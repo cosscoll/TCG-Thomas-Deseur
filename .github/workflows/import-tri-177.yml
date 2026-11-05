@@ -1,12 +1,8 @@
 name: Publier la galerie des 177 photos
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/import-tri-177.yml"
-      - "scripts/import-tri-177.py"
   workflow_dispatch:
+
 
 permissions:
   contents: write

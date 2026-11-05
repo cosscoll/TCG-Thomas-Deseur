@@ -2,11 +2,6 @@ name: Cartes 21 à 30 — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-third10.py'
-      - '.github/workflows/gray-background-third10.yml'
 
 permissions:
   contents: write

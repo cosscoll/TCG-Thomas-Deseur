@@ -2,11 +2,6 @@ name: Dix cartes suivantes — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-next10.py'
-      - '.github/workflows/gray-background-next10.yml'
 
 permissions:
   contents: write

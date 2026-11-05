@@ -2,11 +2,6 @@ name: Les 10 premières variantes — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-variants01.py'
-      - '.github/workflows/gray-background-variants01.yml'
 
 permissions:
   contents: write

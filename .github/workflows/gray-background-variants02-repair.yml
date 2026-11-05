@@ -2,11 +2,6 @@ name: Générer variantes 11-20 — contrôle renforcé
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-variants02.py'
-      - '.github/workflows/gray-background-variants02.yml'
 
 permissions:
   contents: write

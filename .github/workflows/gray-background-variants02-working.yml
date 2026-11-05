@@ -2,11 +2,6 @@ name: Variantes 11-20 — production vérifiée
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-variants02.py'
-      - '.github/workflows/gray-background-variants02-working.yml'
 
 permissions:
   contents: write

@@ -2,11 +2,6 @@ name: Les variantes 21 à 30 — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-variants03.py'
-      - '.github/workflows/gray-background-variants03.yml'
 
 permissions:
   contents: write

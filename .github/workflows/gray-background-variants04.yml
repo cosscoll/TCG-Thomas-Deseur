@@ -2,11 +2,6 @@ name: Les huit dernières variantes — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-variants04.py'
-      - '.github/workflows/gray-background-variants04.yml'
 
 permissions:
   contents: write
