@@ -2,11 +2,6 @@ name: Dix cartes — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-first10.py'
-      - '.github/workflows/gray-background-first10.yml'
 
 permissions:
   contents: write

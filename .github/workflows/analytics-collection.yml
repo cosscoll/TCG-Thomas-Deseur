@@ -2,12 +2,6 @@ name: Simulation collection 67 cartes
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/simuler-boosters-67.mjs'
-      - 'tests/simuler-boosters-67.test.mjs'
-      - '.github/workflows/analytics-collection.yml'
 
 permissions:
   contents: write

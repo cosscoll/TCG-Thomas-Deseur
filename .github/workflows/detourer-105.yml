@@ -1,11 +1,7 @@
 name: Detourer les 105 illustrations officielles (préproduction)
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/detourer-105.py'
-      - '.github/workflows/detourer-105.yml'
+
 permissions:
   contents: write
 concurrency:

@@ -2,12 +2,6 @@ name: Contrastes statiques accessibles
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/check-contrast-static.mjs'
-      - 'tests/contrast-static.test.mjs'
-      - '.github/workflows/contrast-check.yml'
 
 permissions:
   contents: write

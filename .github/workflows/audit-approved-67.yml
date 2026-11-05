@@ -2,12 +2,6 @@ name: Audit intégral catalogue 67/105
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/audit-edition-67.mjs'
-      - 'tests/audit-edition-67.test.mjs'
-      - '.github/workflows/audit-approved-67.yml'
 
 permissions:
   contents: write

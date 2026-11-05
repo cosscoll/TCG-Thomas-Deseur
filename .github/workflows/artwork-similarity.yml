@@ -1,11 +1,7 @@
 name: Détecter ressemblances des 105 illustrations
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/reperer-similarites-105.py'
-      - '.github/workflows/artwork-similarity.yml'
+
 permissions:
   contents: write
 concurrency:

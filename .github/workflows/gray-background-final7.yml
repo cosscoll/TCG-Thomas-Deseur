@@ -2,11 +2,6 @@ name: Les 7 dernières cartes — prolonger uniquement le fond gris
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/extend-gray-background-final7.py'
-      - '.github/workflows/gray-background-final7.yml'
 
 permissions:
   contents: write

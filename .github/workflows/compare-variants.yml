@@ -2,12 +2,6 @@ name: Comparaison scénarios variantes 67 contre 105
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/comparer-variantes-collection.mjs'
-      - 'tests/comparer-variantes-collection.test.mjs'
-      - '.github/workflows/compare-variants.yml'
 
 permissions:
   contents: write
