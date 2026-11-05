@@ -1,0 +1,27 @@
+# Limit published GitHub Pages to static, user-facing assets.
+# This is NOT an access control on the repository itself:
+# change the repository visibility to Private in GitHub Settings.
+# Jekyll 3 replaces default exclusions, so keep the platform defaults.
+exclude:
+  - .github
+  - .gitignore
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - package.json
+  - package-lock.json
+  - floot-app
+  - supabase
+  - security
+  - scripts
+  - tests
+  - e2e
+  - floot-e2e
+  - docs
+  - uploads
+  - data/migrations
