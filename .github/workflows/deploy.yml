@@ -60,7 +60,8 @@ on:
       - "scripts/generate-approved-staging.mjs"
       - "scripts/validate-rarity-decisions.mjs"
       - "package.json"
-      - ".github/workflows/deploy.yml"
+      - ".github/workflows/**"
+      - "scripts/check_security_policies.py"
   workflow_dispatch:
 
 permissions:
