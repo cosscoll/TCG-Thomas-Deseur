@@ -35,6 +35,10 @@ on:
       - "floot-app/endpoints/**"
       - "floot-app/helpers/tcgReadLimitedBody.tsx"
       - "floot-app/helpers/TcgRequestBodyError.tsx"
+      - "floot-app/helpers/tcgAuthRateLimit.tsx"
+      - "floot-app/helpers/tcgIpDigest.tsx"
+      - "security/tcg-auth-ip-rate-windows.sql"
+      - "tests/auth-ip-limiter-source.test.mjs"
       - "floot-app/helpers/tcgMutationGuard.tsx"
       - "tests/auth-security-source.test.mjs"
   pull_request:
@@ -70,6 +74,10 @@ on:
       - "floot-app/endpoints/**"
       - "floot-app/helpers/tcgReadLimitedBody.tsx"
       - "floot-app/helpers/TcgRequestBodyError.tsx"
+      - "floot-app/helpers/tcgAuthRateLimit.tsx"
+      - "floot-app/helpers/tcgIpDigest.tsx"
+      - "security/tcg-auth-ip-rate-windows.sql"
+      - "tests/auth-ip-limiter-source.test.mjs"
       - "floot-app/helpers/tcgMutationGuard.tsx"
       - "tests/auth-security-source.test.mjs"
   workflow_dispatch:
