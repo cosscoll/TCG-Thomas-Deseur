@@ -8,6 +8,10 @@ on:
         required: false
         type: boolean
         default: false
+  pull_request:
+    paths:
+      - "scripts/check_floot_guest_security.mjs"
+      - ".github/workflows/floot-public-smoke.yml"
   push:
     branches: [main]
     paths:
