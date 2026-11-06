@@ -34,6 +34,7 @@ test("rate-limit counters are atomic across serverless workers", () => {
   assert.match(code,/status:\s*429/);
   assert.match(code,/Retry-After/);
   assert.match(code,/private, no-store/);
+  assert.match(code,/superjson\.stringify/);
 });
 test("migration creates a dedicated non-personalized rate-limit table", () => {
   const sql=read("security/tcg-auth-ip-rate-windows.sql");

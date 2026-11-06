@@ -7,7 +7,6 @@ import {getServerUserSession} from '../helpers/getServerUserSession';
 import {NotAuthenticatedError} from '../helpers/getSetServerSession';
 import {normalizeGiftCode,hashGiftCode,validateGiftRewards} from '../helpers/tcgGiftCodes';
 import {tcgArtworkCatalog} from '../helpers/tcgArtworkCatalog';
-import {sql} from 'kysely';
 import superjson from 'superjson';
 import type {InputType,OutputType} from './gift_create_POST.schema';
 const headers={'Content-Type':'application/json','Cache-Control':'private,no-store'};
@@ -39,7 +38,7 @@ export async function handle(request:Request){
    new Map(references.map(ref=>[ref.numericReference,ref.artworkId])));
   const hash=hashGiftCode(code);
   await db.insertInto('tcgGiftCodes').values({codeHash:hash,label:input.label.trim(),
-   rewards:sql`${JSON.stringify(rewards)}::jsonb`,maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();
+   rewards,maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();
   return new Response(superjson.stringify({code,label:input.label.trim(),maxUses:input.maxUses,rewardCount:rewards.length} satisfies OutputType),{headers});
  }catch(error){
   if(error instanceof NotAuthenticatedError)return fail(401,'Connexion requise.');
