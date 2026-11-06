@@ -27,6 +27,7 @@ export async function handle(request: Request) {
       {
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "private, no-store",
         },
       }
     );
@@ -42,6 +43,7 @@ export async function handle(request: Request) {
           status: 401,
           headers: {
             "Content-Type": "application/json",
+          "Cache-Control": "private, no-store",
           },
         }
       );
@@ -50,12 +52,13 @@ export async function handle(request: Request) {
     return new Response(
       superjson.stringify({
         error: "Logout failed",
-        message: error instanceof Error ? error.message : "Unknown error",
+        message: "Déconnexion temporairement indisponible.",
       }),
       {
         status: 500,
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "private, no-store",
         },
       }
     );

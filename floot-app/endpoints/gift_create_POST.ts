@@ -1,3 +1,4 @@
+import {tcgReadLimitedBody,TcgRequestBodyError} from "../helpers/tcgReadLimitedBody";
 import {db} from '../helpers/db';
 import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from '../helpers/getServerUserSession';
@@ -15,7 +16,7 @@ export async function handle(request:Request){
  try{
   const {user}=await getServerUserSession(request);
   if(user.role!=='admin')return fail(403,'Accès administrateur réservé.');
-  const input=superjson.parse<InputType>(await request.text());
+  const input=superjson.parse<InputType>(await tcgReadLimitedBody(request));
   const code=normalizeGiftCode(input?.code);
   if(typeof input?.label!=='string'||input.label.trim().length<2||input.label.trim().length>100)
    return fail(400,'Nom du code invalide.');
@@ -34,10 +35,11 @@ export async function handle(request:Request){
    new Map(references.map(ref=>[ref.numericReference,ref.artworkId])));
   const hash=hashGiftCode(code);
   await db.insertInto('tcgGiftCodes').values({codeHash:hash,label:input.label.trim(),
-   rewards:sql.raw("'"+JSON.stringify(rewards).replace(/'/g,"''")+"'::jsonb"),maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();
+   rewards:sql`${JSON.stringify(rewards)}::jsonb`,maxUses:input.maxUses,expiresAt,createdBy:user.id}).execute();
   return new Response(superjson.stringify({code,label:input.label.trim(),maxUses:input.maxUses,rewardCount:rewards.length} satisfies OutputType),{headers});
  }catch(error){
   if(error instanceof NotAuthenticatedError)return fail(401,'Connexion requise.');
+  if(error instanceof TcgRequestBodyError)return fail(error.status,error.message);
   if(error instanceof Error && /Code invalide|Récompense|Quantité|Carte offerte|booster|Rareté|Sélection de cartes|Ajoute de/.test(error.message))return fail(400,error.message);
   if(error&&typeof error==='object'&&'code'in error&&error.code==='23505')return fail(409,'Ce code existe déjà.');
   console.error('Gift creation',error);return fail(500,'Impossible de créer le code pour le moment.');

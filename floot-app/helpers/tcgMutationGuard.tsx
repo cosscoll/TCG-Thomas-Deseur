@@ -19,10 +19,14 @@ export function tcgMutationGuard(request: Request): Response | null {
       return reject();
     }
   }
-  const length = Number(request.headers.get("content-length") ?? "0");
-  if (Number.isFinite(length) && length > 16384) return new Response(
-    JSON.stringify({ error: "Requête trop volumineuse." }),
-    { status: 413, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } }
-  );
+  const declared = request.headers.get("content-length");
+  if (declared !== null) {
+    const length = Number(declared);
+    if (!Number.isSafeInteger(length) || length < 0) return reject();
+    if (length > 16384) return new Response(
+      JSON.stringify({ error: "Requête trop volumineuse." }),
+      { status: 413, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } }
+    );
+  }
   return null;
 }
