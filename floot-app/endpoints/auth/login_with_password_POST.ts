@@ -1,3 +1,5 @@
+import {tcgReadLimitedBody} from "../../helpers/tcgReadLimitedBody";
+import {TcgRequestBodyError} from "../../helpers/TcgRequestBodyError";
 // adapt this to your database schema
 import { db } from "../../helpers/db";
 import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
@@ -40,7 +42,7 @@ export async function handle(request: Request) {
   const blocked = tcgMutationGuard(request);
   if (blocked) return blocked;
   try {
-    const json = superjson.parse(await request.text());
+    const json = superjson.parse(await tcgReadLimitedBody(request));
     const { email, password } = schema.parse(json);
 
     // Normalize email to lowercase for consistent handling
@@ -273,9 +275,9 @@ export async function handle(request: Request) {
     return response;
   } catch (error) {
     return new Response(
-      superjson.stringify({ message: "Connexion momentanément indisponible." }),
+      superjson.stringify({ message: error instanceof TcgRequestBodyError ? error.message : "Connexion momentanément indisponible." }),
       {
-        status: 400,
+        status: error instanceof TcgRequestBodyError ? error.status : 400,
         headers: {
           "Content-Type": "application/json",
             "Cache-Control": "private, no-store",

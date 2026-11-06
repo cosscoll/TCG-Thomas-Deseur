@@ -1,3 +1,5 @@
+import {tcgReadLimitedBody} from "../../helpers/tcgReadLimitedBody";
+import {TcgRequestBodyError} from "../../helpers/TcgRequestBodyError";
 import { db } from "../../helpers/db";
 import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
 import { sql } from "kysely";
@@ -22,7 +24,7 @@ export async function handle(request: Request) {
   const blocked = tcgMutationGuard(request);
   if (blocked) return blocked;
   try {
-    const json = superjson.parse(await request.text());
+    const json = superjson.parse(await tcgReadLimitedBody(request));
     const { email } = schema.parse(json);
     const normalizedEmail = email.toLowerCase();
     const now = new Date();
@@ -82,13 +84,13 @@ export async function handle(request: Request) {
 
     // The same answer whether or not the account exists.
     return new Response(superjson.stringify({ ok: true }), {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Cache-Control": "private, no-store" },
     });
   } catch (error: unknown) {
     console.error("Password reset request error:", error);
     return new Response(
-      superjson.stringify({ message: "Impossible d'envoyer le code pour le moment." }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
+      superjson.stringify({ message: error instanceof TcgRequestBodyError ? error.message : "Impossible d'envoyer le code pour le moment." }),
+      { status: error instanceof TcgRequestBodyError ? error.status : 400, headers: { "Content-Type": "application/json", "Cache-Control": "private, no-store" } }
     );
   }
 }

@@ -1,3 +1,5 @@
+import {tcgReadLimitedBody} from "../../helpers/tcgReadLimitedBody";
+import {TcgRequestBodyError} from "../../helpers/TcgRequestBodyError";
 import { db } from "../../helpers/db";
 import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
 import { sql } from "kysely";
@@ -15,7 +17,7 @@ function invalidCode() {
     superjson.stringify({
       message: "Le code est incorrect ou a expiré. Demande un nouveau code.",
     }),
-    { status: 400, headers: { "Content-Type": "application/json" } }
+    { status: 400, headers: { "Content-Type": "application/json", "Cache-Control": "private, no-store" } }
   );
 }
 
@@ -23,7 +25,7 @@ export async function handle(request: Request) {
   const blocked = tcgMutationGuard(request);
   if (blocked) return blocked;
   try {
-    const json = superjson.parse(await request.text());
+    const json = superjson.parse(await tcgReadLimitedBody(request));
     const { email, code, newPassword } = schema.parse(json);
     const normalizedEmail = email.toLowerCase();
     const now = new Date();
@@ -88,14 +90,14 @@ export async function handle(request: Request) {
 
     if (outcome === "invalid") return invalidCode();
     return new Response(superjson.stringify({ ok: true }), {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Cache-Control": "private, no-store" },
     });
   } catch (error: unknown) {
     console.error("Password reset error:", error);
-    const message = "Impossible de modifier le mot de passe pour le moment.";
+    const message = error instanceof TcgRequestBodyError ? error.message : "Impossible de modifier le mot de passe pour le moment.";
     return new Response(superjson.stringify({ message }), {
-      status: 400,
-      headers: { "Content-Type": "application/json" },
+      status: error instanceof TcgRequestBodyError ? error.status : 400,
+      headers: { "Content-Type": "application/json", "Cache-Control": "private, no-store" },
     });
   }
 }

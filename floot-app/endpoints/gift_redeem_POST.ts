@@ -1,3 +1,5 @@
+import {tcgReadLimitedBody} from "../helpers/tcgReadLimitedBody";
+import {TcgRequestBodyError} from "../helpers/TcgRequestBodyError";
 import {db} from '../helpers/db';
 import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from '../helpers/getServerUserSession';
@@ -30,7 +32,7 @@ export async function handle(request:Request){
     RETURNING attempts
   `.execute(db);
   if(Number(attempt.rows[0]?.attempts??99)>10)return fail(429,'Trop de tentatives. Réessaie dans 15 minutes.');
-  const parsed=superjson.parse<{code:string}>(await request.text());
+  const parsed=superjson.parse<{code:string}>(await tcgReadLimitedBody(request));
   const hash=hashGiftCode(normalizeGiftCode(parsed?.code));
   const output=await db.transaction().execute(async trx=>{
    await trx.insertInto('tcgPackStatus').values({userId,stock:1,rechargeAt:new Date(Date.now()+BOOSTER_INTERVAL_MS)})
@@ -81,6 +83,7 @@ export async function handle(request:Request){
   return new Response(superjson.stringify(output),{headers});
  }catch(error){
   if(error instanceof GiftFailure)return fail(409,error.message);
+  if(error instanceof TcgRequestBodyError)return fail(error.status,error.message);
   if(error instanceof Error&&/Code invalide|Ajoute de|Récompense|Quantité|Carte offerte|booster|Rareté/.test(error.message))return fail(400,error.message);
   if(error&&typeof error==='object'&&'code'in error&&error.code==='23505')return fail(409,'Ce code a déjà été utilisé.');
   console.error('Gift redemption',error);

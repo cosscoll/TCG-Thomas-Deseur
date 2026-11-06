@@ -1,3 +1,5 @@
+import {tcgReadLimitedBody} from "../helpers/tcgReadLimitedBody";
+import {TcgRequestBodyError} from "../helpers/TcgRequestBodyError";
 import { db } from "../helpers/db";
 import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import { getServerUserSession } from "../helpers/getServerUserSession";
@@ -14,7 +16,7 @@ export async function handle(request: Request) {
   if (blocked) return blocked;
   try {
     const { user } = await getServerUserSession(request);
-    const input = schema.parse(superjson.parse(await request.text()));
+    const input = schema.parse(superjson.parse(await tcgReadLimitedBody(request)));
     const result = await db.updateTable("users")
       .set({ displayName: input.displayName, updatedAt: new Date() })
       .where("id", "=", user.id)
@@ -23,6 +25,7 @@ export async function handle(request: Request) {
     return respond({ displayName: result.displayName } satisfies OutputType);
   } catch (error) {
     if (error instanceof NotAuthenticatedError) return respond({ error: "Connexion requise." }, 401);
+    if (error instanceof TcgRequestBodyError) return respond({ error: error.message }, error.status);
     if (error instanceof ZodError) return respond({ error: "Pseudo invalide : 3 à 24 caractères, sans caractères de contrôle." }, 400);
     console.error("Profile update error:", error);
     return respond({ error: "Impossible de modifier le pseudo pour le moment." }, 500);

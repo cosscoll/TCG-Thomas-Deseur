@@ -1,3 +1,5 @@
+import {tcgReadLimitedBody} from "../../helpers/tcgReadLimitedBody";
+import {TcgRequestBodyError} from "../../helpers/TcgRequestBodyError";
 // adapt this to the database schema and helpers if necessary
 import { db } from "../../helpers/db";
 import {tcgMutationGuard} from "../../helpers/tcgMutationGuard";
@@ -16,7 +18,7 @@ export async function handle(request: Request) {
   const blocked = tcgMutationGuard(request);
   if (blocked) return blocked;
   try {
-    const json = superjson.parse(await request.text());
+    const json = superjson.parse(await tcgReadLimitedBody(request));
     const { email, password, displayName } = schema.parse(json);
     const normalizedEmail = email.trim().toLowerCase();
 
@@ -113,9 +115,9 @@ export async function handle(request: Request) {
 
     return response;
   } catch (error: unknown) {
-    console.error("Registration error:", error);
+    if (!(error instanceof ZodError || error instanceof TcgRequestBodyError)) console.error("Registration operation failed.");
     const duplicate = typeof error === "object" && error !== null && "code" in error && error.code === "23505";
-    const errorMessage = duplicate
+    const errorMessage = error instanceof TcgRequestBodyError ? error.message : duplicate
       ? "Cette adresse e-mail est déjà utilisée."
       : error instanceof ZodError
         ? "Vérifie les informations du formulaire."
@@ -123,7 +125,7 @@ export async function handle(request: Request) {
     return new Response(
       superjson.stringify({ message: errorMessage }),
       {
-        status: duplicate ? 409 : error instanceof ZodError ? 400 : 500,
+        status: error instanceof TcgRequestBodyError ? error.status : duplicate ? 409 : error instanceof ZodError ? 400 : 500,
         headers: {
           "Content-Type": "application/json",
             "Cache-Control": "private, no-store",
