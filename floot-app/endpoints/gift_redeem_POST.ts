@@ -66,7 +66,7 @@ export async function handle(request:Request){
     if(reward.type==='packs'){
      const rules=reward.rules??{};
      await trx.insertInto('tcgGiftPacks').values({userId,kind:reward.kind,remaining:reward.quantity,
-      rules:sql`${JSON.stringify(rules)}::jsonb`}).execute();
+      rules}).execute();
      packs+=reward.quantity;
     }else{
      const art=artById.get(reward.artworkId)!;
