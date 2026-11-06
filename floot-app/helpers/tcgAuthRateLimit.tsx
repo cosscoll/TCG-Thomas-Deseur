@@ -22,7 +22,7 @@ export async function tcgAuthRateLimit(
 ): Promise<Response | null> {
   const { max, seconds } = policies[scope];
   const digest = tcgIpDigest(request, scope);
-  const result = await sql<{ attempts: number }>`
+  const result = await sql<{ attempts: number; window_started_at: Date | string }>`
     INSERT INTO tcg_auth_ip_rate_windows (scope, bucket_hash, attempts, window_started_at)
     VALUES (${scope}, ${digest}, 1, NOW())
     ON CONFLICT (scope, bucket_hash) DO UPDATE SET
@@ -32,9 +32,11 @@ export async function tcgAuthRateLimit(
       window_started_at = CASE
         WHEN tcg_auth_ip_rate_windows.window_started_at <= NOW() - (${seconds} * INTERVAL '1 second')
           THEN NOW() ELSE tcg_auth_ip_rate_windows.window_started_at END
-    RETURNING attempts
+    RETURNING attempts, window_started_at
   `.execute(db);
   if (Number(result.rows[0]?.attempts ?? max + 1) <= max) return null;
+  const windowStarted = new Date(result.rows[0]?.window_started_at ?? Date.now()).getTime();
+  const retrySeconds = Math.max(1, Math.ceil((windowStarted + seconds * 1000 - Date.now()) / 1000));
   return new Response(JSON.stringify({
     message: "Trop de demandes. Réessaie plus tard.",
   }), {
@@ -42,7 +44,7 @@ export async function tcgAuthRateLimit(
     headers: {
       "Content-Type": "application/json",
       "Cache-Control": "private, no-store",
-      "Retry-After": String(seconds),
+      "Retry-After": String(retrySeconds),
     },
   });
 }
