@@ -1,3 +1,4 @@
+import {tcgAuthRateLimit} from "../../helpers/tcgAuthRateLimit";
 import {tcgReadLimitedBody} from "../../helpers/tcgReadLimitedBody";
 import {TcgRequestBodyError} from "../../helpers/TcgRequestBodyError";
 import { db } from "../../helpers/db";
@@ -24,6 +25,8 @@ export async function handle(request: Request) {
   const blocked = tcgMutationGuard(request);
   if (blocked) return blocked;
   try {
+    const throttle = await tcgAuthRateLimit(request,"reset_request");
+    if(throttle)return throttle;
     const json = superjson.parse(await tcgReadLimitedBody(request));
     const { email } = schema.parse(json);
     const normalizedEmail = email.toLowerCase();

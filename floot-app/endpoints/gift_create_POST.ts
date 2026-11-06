@@ -1,3 +1,4 @@
+import {tcgAuthRateLimit} from "../helpers/tcgAuthRateLimit";
 import {tcgReadLimitedBody} from "../helpers/tcgReadLimitedBody";
 import {TcgRequestBodyError} from "../helpers/TcgRequestBodyError";
 import {db} from '../helpers/db';
@@ -17,6 +18,8 @@ export async function handle(request:Request){
  try{
   const {user}=await getServerUserSession(request);
   if(user.role!=='admin')return fail(403,'Accès administrateur réservé.');
+  const throttle=await tcgAuthRateLimit(request,"gift_create");
+  if(throttle)return throttle;
   const input=superjson.parse<InputType>(await tcgReadLimitedBody(request));
   const code=normalizeGiftCode(input?.code);
   if(typeof input?.label!=='string'||input.label.trim().length<2||input.label.trim().length>100)
