@@ -1,3 +1,4 @@
+import {tcgAuthRateLimit} from "../helpers/tcgAuthRateLimit";
 import {tcgReadLimitedBody} from "../helpers/tcgReadLimitedBody";
 import {TcgRequestBodyError} from "../helpers/TcgRequestBodyError";
 import {db} from '../helpers/db';
@@ -20,6 +21,8 @@ export async function handle(request:Request){
  try{userId=(await getServerUserSession(request)).user.id;}
  catch(error){if(error instanceof NotAuthenticatedError)return fail(401,'Connexion requise.');return fail(500,'Session indisponible.');}
  try{
+  const throttle=await tcgAuthRateLimit(request,"redeem");
+  if(throttle)return throttle;
   // Persistent per-account throttle: invalid guesses count even when redemption fails.
   const attempt=await sql<{attempts:number}>`
     INSERT INTO tcg_gift_attempt_windows(user_id,attempts,window_started_at)
