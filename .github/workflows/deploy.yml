@@ -32,6 +32,11 @@ on:
       - "package.json"
       - ".github/workflows/**"
       - "scripts/check_security_policies.py"
+      - "floot-app/endpoints/**"
+      - "floot-app/helpers/tcgReadLimitedBody.tsx"
+      - "floot-app/helpers/TcgRequestBodyError.tsx"
+      - "floot-app/helpers/tcgMutationGuard.tsx"
+      - "tests/auth-security-source.test.mjs"
   pull_request:
     paths:
       - "index.html"
@@ -62,6 +67,11 @@ on:
       - "package.json"
       - ".github/workflows/**"
       - "scripts/check_security_policies.py"
+      - "floot-app/endpoints/**"
+      - "floot-app/helpers/tcgReadLimitedBody.tsx"
+      - "floot-app/helpers/TcgRequestBodyError.tsx"
+      - "floot-app/helpers/tcgMutationGuard.tsx"
+      - "tests/auth-security-source.test.mjs"
   workflow_dispatch:
 
 permissions:
