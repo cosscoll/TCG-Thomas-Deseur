@@ -1,5 +1,6 @@
 import { sql } from "kysely";
 import { db } from "./db";
+import superjson from "superjson";
 import { tcgIpDigest } from "./tcgIpDigest";
 
 /**
@@ -37,7 +38,7 @@ export async function tcgAuthRateLimit(
   if (Number(result.rows[0]?.attempts ?? max + 1) <= max) return null;
   const windowStarted = new Date(result.rows[0]?.window_started_at ?? Date.now()).getTime();
   const retrySeconds = Math.max(1, Math.ceil((windowStarted + seconds * 1000 - Date.now()) / 1000));
-  return new Response(JSON.stringify({
+  return new Response(superjson.stringify({
     message: "Trop de demandes. Réessaie plus tard.",
   }), {
     status: 429,
