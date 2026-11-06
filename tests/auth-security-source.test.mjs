@@ -45,7 +45,7 @@ test("CSRF guard rejects both invalid origin and invalid Content-Length", () => 
 test("gift administration uses parameterized JSONB instead of SQL string concatenation", () => {
   const source = read(root + "gift_create_POST.ts");
   assert.doesNotMatch(source, /sql\.raw\(/);
-  assert.match(source, /rewards, maxUses/);
+  assert.match(source, /rewards,\s*maxUses/);
   assert.match(source, /user\.role\s*!==\s*'admin'/);
 });
 
@@ -64,7 +64,7 @@ test("logout never includes raw exception details and auth errors are not cachea
 test("gift JSONB persistence uses object/array params rather than pre-serialized strings", () => {
   const created=read(root+"gift_create_POST.ts");
   const redeemed=read(root+"gift_redeem_POST.ts");
-  assert.match(created,/rewards, maxUses/);
+  assert.match(created,/rewards,\s*maxUses/);
   assert.match(redeemed,/rules\}\)\.execute\(\)/);
   assert.doesNotMatch(created,/JSON\.stringify\(rewards\)/);
   assert.doesNotMatch(redeemed,/JSON\.stringify\(rules\)/);
