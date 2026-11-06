@@ -87,6 +87,11 @@ for rel in tracked:
     if not rel:
         continue
     name = Path(rel).name
+    forbidden_suffixes = (".pem",".key",".p12",".pfx",".jks",".keystore",".sqlite",".sqlite3",".db")
+    forbidden_names = {".npmrc",".pypirc","id_rsa","id_ed25519"}
+    if name.lower().endswith(forbidden_suffixes) or name in forbidden_names or rel.startswith((".aws/",".config/gcloud/")):
+        failures.append(f"Tracked sensitive binary/configuration file is forbidden: {rel}")
+        continue
     if name.startswith(".env") and name != ".env.example":
         failures.append(f"Tracked environment file is forbidden: {rel}")
         continue
