@@ -108,7 +108,10 @@ for rel in tracked:
             break
 for path in WORKFLOWS.glob("*.yml"):
     contents = path.read_text(encoding="utf-8")
-    if re.search(r"(?m)^\s*permissions:\s*write-all\s*$", contents):
+    for action in re.findall(r"(?m)^\\s*-\\s*uses:\\s*([^\\s#]+)", contents):
+        if action.startswith("actions/") and not re.fullmatch(r"actions/[a-z0-9_-]+@[a-f0-9]{40}", action):
+            failures.append(f"{path.name}: GitHub Action is not pinned to an immutable SHA: {action}")
+    if re.search(r"(?m)^\\s*permissions:\\s*write-all\\s*$", contents):
         failures.append(f"{path.name}: unrestricted permissions: write-all")
 
 print(f"Security policy: {count} workflows checked, {write_workflows} manual write workflows, {len(failures)} violation(s)")
