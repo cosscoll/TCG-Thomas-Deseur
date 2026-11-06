@@ -1,4 +1,5 @@
-import { tcgReadLimitedBody, TcgRequestBodyError } from "./tcgReadLimitedBody";
+import { tcgReadLimitedBody } from "./tcgReadLimitedBody";
+import { TcgRequestBodyError } from "./TcgRequestBodyError";
 
 describe("Limitation réelle des corps de requête", () => {
   const url = "https://tcg-thomas-deseur.floot.app/_api/auth/login_with_password";

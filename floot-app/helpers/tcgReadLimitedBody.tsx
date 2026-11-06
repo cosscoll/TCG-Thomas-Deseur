@@ -2,12 +2,7 @@
  * Read untrusted JSON without trusting Content-Length.
  * Browsers may send chunked requests with no declared size.
  */
-export class TcgRequestBodyError extends Error {
-  constructor(public readonly status: 400 | 413 | 415, message: string) {
-    super(message);
-    this.name = "TcgRequestBodyError";
-  }
-}
+import {TcgRequestBodyError} from "./TcgRequestBodyError";
 
 export async function tcgReadLimitedBody(request: Request, maxBytes = 16_384): Promise<string> {
   const contentType = request.headers.get("content-type");
