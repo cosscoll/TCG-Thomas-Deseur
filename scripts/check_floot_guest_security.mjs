@@ -20,6 +20,8 @@ const cases = [
   { method: 'POST', path: '/_api/booster' },
   { method: 'POST', path: '/_api/completion' },
   { method: 'POST', path: '/_api/profile' },
+  { method: 'POST', path: '/_api/gift_create' },
+  { method: 'POST', path: '/_api/gift_redeem' },
 ];
 const normalized = value => String(value).toLowerCase().replace(/[^a-z0-9]/g,'');
 export function findPrivateField(value, prefix='') {
@@ -77,12 +79,73 @@ for (const {method,path} of cases) {
     assert.doesNotMatch(text,/bearer\s+\S+|eyJ[A-Za-z0-9_-]{20,}/i);
     // Report non-sensitive policy metadata only.
     const cacheControl = response.headers.get('cache-control') ?? '(absent)';
-    // Both authenticated GET endpoints are private, even when the cookie is absent.
+    // Every private API denial must not be stored in a shared cache.
     // Prevent a CDN/shared proxy from caching a denial or later leaking a session.
-    if (method === 'GET') {
+    {
       assert.match(cacheControl,/\bprivate\b/i,`${path} must not be shared-cacheable`);
       assert.match(cacheControl,/\bno-store\b/i,`${path} must not be stored`);
     }
     console.log(JSON.stringify({path,status:response.status,cacheControl}));
   });
 }
+
+// These cross-site POST requests must fail before parsing bodies or changing state.
+for (const path of [
+  '/_api/auth/login_with_password',
+  '/_api/auth/register_with_password',
+  '/_api/auth/request_password_reset',
+  '/_api/auth/reset_password',
+  '/_api/auth/logout',
+  '/_api/booster',
+  '/_api/completion',
+  '/_api/gift_create',
+  '/_api/gift_redeem',
+  '/_api/profile',
+]) {
+  test('Cross-origin POST rejected (no account, no write): '+path, {timeout:22000}, async()=>{
+    const response=await fetch(new URL(path,baseURL),{method:'POST',
+      headers:{'Content-Type':'application/json','Origin':'https://untrusted-origin.invalid','Sec-Fetch-Site':'cross-site'},
+      body:'{}',cache:'no-store',redirect:'manual',signal:AbortSignal.timeout(20000)});
+    assert.equal(response.status,403,'Cross-origin mutations are not allowed');
+    assert.match(response.headers.get('content-type')??'',/application\/json/i);
+    assert.match(response.headers.get('cache-control')??'',/no-store/i);
+    const body=await response.text();
+    assert.ok(body.length<10000);
+    assert.equal(findPrivateField(JSON.parse(body)),null);
+  });
+}
+
+test('Public leaderboard leaks no private fields', {timeout:22000}, async()=>{
+  const response=await fetch(new URL('/_api/leaderboard',baseURL),{cache:'no-store',redirect:'manual',signal:AbortSignal.timeout(20000)});
+  assert.equal(response.status,200);
+  assert.match(response.headers.get('content-type')??'',/application\/json/i);
+  const body=await response.text();
+  assert.ok(body.length<1000000);
+  const result=JSON.parse(body);const payload=result.json??result;
+  assert.ok(Array.isArray(payload.players));
+  assert.ok(Number.isSafeInteger(payload.totalPlayers));
+  for(const player of payload.players){
+    assert.deepEqual(Object.keys(player).sort(),['boosters','illustrations','rank','username']);
+    assert.ok(Number.isInteger(player.rank));
+    assert.equal(typeof player.username,'string');
+  }
+  assert.doesNotMatch(body,/"email"|"password"|"passwordHash"|"token"|"sessionId"/i);
+});
+
+test('Published site sends transport and browser hardening headers', {timeout:22000}, async()=>{
+  const response=await fetch(new URL('/',baseURL),{cache:'no-store',redirect:'manual',signal:AbortSignal.timeout(20000)});
+  assert.equal(response.status,200);
+  assert.match(response.headers.get('strict-transport-security')??'',/max-age=/i);
+  assert.equal((response.headers.get('x-content-type-options')??'').toLowerCase(),'nosniff');
+  assert.match(response.headers.get('content-security-policy')??'',/default-src/i);
+});
+
+test('No raw backend files or credentials are publicly served', {timeout:22000}, async()=>{
+  const targets=['/.env','/.git/config','/floot-app/helpers/db.tsx','/supabase/VERIFIER_INSTALLATION.sql'];
+  for(const path of targets){
+    const response=await fetch(new URL(path,baseURL),{cache:'no-store',redirect:'manual',signal:AbortSignal.timeout(20000)});
+    const text=await response.text();
+    assert.doesNotMatch(text,/FLOOT_DATABASE_URL|JWT_SECRET|SERVICE_ROLE_KEY|BEGIN (?:RSA |EC )?PRIVATE KEY/i);
+    if(path==='/.env'||path.startsWith('/.git/'))assert.equal(response.status,404);
+  }
+});
