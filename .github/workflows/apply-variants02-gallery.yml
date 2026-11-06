@@ -1,11 +1,12 @@
 name: Apply alternative images batch 2
 on:
   workflow_dispatch:
-  push:
-    paths: ['scripts/apply-variants02-gallery.py', '.github/workflows/apply-variants02-gallery.yml']
+
+permissions:
+  contents: read
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - run: python scripts/apply-variants02-gallery.py
