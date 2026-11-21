@@ -9,7 +9,7 @@ export async function postBooster():Promise<OutputType>{
  try{body=superjson.parse<any>(await res.text());}
  catch{throw new Error("Réponse illisible. Vérifie ton classeur avant de réessayer.");}
  if(!res.ok)throw new Error(body?.error||"Ouverture impossible.");
- if(!body||!Array.isArray(body.drawn)||body.drawn.length!==5
+ if(!body||!Array.isArray(body.drawn)||![5,100].includes(body.drawn.length)
     ||!body.drawn.every((c:DrawnCard)=>typeof c.imagePath==="string")
     ||body.boosterUnlimited!==false
     ||!Number.isInteger(body.stock)||body.stock<0||body.stock>3
@@ -20,4 +20,4 @@ export async function postBooster():Promise<OutputType>{
  summarizeConfirmedBooster(body.drawn);
  return body as OutputType;
 }
-
+   23
