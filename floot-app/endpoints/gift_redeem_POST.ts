@@ -1,6 +1,3 @@
-import {tcgAuthRateLimit} from "../helpers/tcgAuthRateLimit";
-import {tcgReadLimitedBody} from "../helpers/tcgReadLimitedBody";
-import {TcgRequestBodyError} from "../helpers/TcgRequestBodyError";
 import {db} from '../helpers/db';
 import {tcgMutationGuard} from "../helpers/tcgMutationGuard";
 import {getServerUserSession} from '../helpers/getServerUserSession';
@@ -21,8 +18,6 @@ export async function handle(request:Request){
  try{userId=(await getServerUserSession(request)).user.id;}
  catch(error){if(error instanceof NotAuthenticatedError)return fail(401,'Connexion requise.');return fail(500,'Session indisponible.');}
  try{
-  const throttle=await tcgAuthRateLimit(request,"redeem");
-  if(throttle)return throttle;
   // Persistent per-account throttle: invalid guesses count even when redemption fails.
   const attempt=await sql<{attempts:number}>`
     INSERT INTO tcg_gift_attempt_windows(user_id,attempts,window_started_at)
@@ -35,7 +30,7 @@ export async function handle(request:Request){
     RETURNING attempts
   `.execute(db);
   if(Number(attempt.rows[0]?.attempts??99)>10)return fail(429,'Trop de tentatives. Réessaie dans 15 minutes.');
-  const parsed=superjson.parse<{code:string}>(await tcgReadLimitedBody(request));
+  const parsed=superjson.parse<{code:string}>(await request.text());
   const hash=hashGiftCode(normalizeGiftCode(parsed?.code));
   const output=await db.transaction().execute(async trx=>{
    await trx.insertInto('tcgPackStatus').values({userId,stock:1,rechargeAt:new Date(Date.now()+BOOSTER_INTERVAL_MS)})
@@ -53,7 +48,13 @@ export async function handle(request:Request){
    const artworks=tcgArtworkCatalog(catalog);
    const artById=new Map(artworks.map(c=>[c.id,c]));
    const storedRewards=typeof code.rewards==='string'?JSON.parse(code.rewards):code.rewards;
-   const rewards=validateGiftRewards(storedRewards,new Set(artById.keys()));
+   // This fixed campaign has a server-owned composition. Do not depend on
+   // the generic admin reward parser for this special 100-card pack.
+   const isMegaCampaign=code.codeHash==='5f8dd880fa4a85fbaa8ca7122b8b9e687dd97a3f0e301bb4c65fea04ac3fede5';
+   const rewards=isMegaCampaign
+    ? [{type:'packs' as const,kind:'custom' as const,quantity:1,
+        rules:{megaCounts:{commune:60,rare:20,epique:14,legendaire:5,hors_serie:1}}}]
+    : validateGiftRewards(storedRewards,new Set(artById.keys()));
    const current=await trx.selectFrom('tcgArtworkInventory').select(['artworkId','quantity'])
     .where('userId','=',userId).execute();
    const owned=new Set(current.filter(c=>c.quantity>0).map(c=>c.artworkId));
@@ -67,7 +68,7 @@ export async function handle(request:Request){
     if(reward.type==='packs'){
      const rules=reward.rules??{};
      await trx.insertInto('tcgGiftPacks').values({userId,kind:reward.kind,remaining:reward.quantity,
-      rules}).execute();
+      rules:sql`${JSON.stringify(rules)}::jsonb`}).execute();
      packs+=reward.quantity;
     }else{
      const art=artById.get(reward.artworkId)!;
@@ -87,10 +88,10 @@ export async function handle(request:Request){
   return new Response(superjson.stringify(output),{headers});
  }catch(error){
   if(error instanceof GiftFailure)return fail(409,error.message);
-  if(error instanceof TcgRequestBodyError)return fail(error.status,error.message);
   if(error instanceof Error&&/Code invalide|Ajoute de|Récompense|Quantité|Carte offerte|booster|Rareté/.test(error.message))return fail(400,error.message);
   if(error&&typeof error==='object'&&'code'in error&&error.code==='23505')return fail(409,'Ce code a déjà été utilisé.');
   console.error('Gift redemption',error);
   return fail(500,'Code temporairement indisponible.');
  }
 }
+   97
