@@ -59,7 +59,8 @@ export async function handle(request:Request){
    for(const art of permitted){
     const g=groups.get(art.card.rarity)||[];if(!art.alternative){g.push(art);groups.set(art.card.rarity,g);}
    }
-   const rules=(gift?.rules && typeof gift.rules==="object"&&!Array.isArray(gift.rules)?gift.rules:{}) as GiftRules;
+   const storedRules=typeof gift?.rules==="string"?JSON.parse(gift.rules):gift?.rules;
+   const rules=(storedRules && typeof storedRules==="object"&&!Array.isArray(storedRules)?storedRules:{}) as GiftRules;
    if(gift?.kind==="custom" && (!Array.isArray(rules.fixedArtworkIds)||rules.fixedArtworkIds.length!==5) && (!Array.isArray(rules.raritySlots)||rules.raritySlots.length!==5||rules.raritySlots.some(r=>!['commune','rare','epique','legendaire'].includes(r))))throw Error("Booster personnalisé invalide.");
    const drawn:DrawnCard[]=[];
    for(let slot=0;slot<5;slot++){
