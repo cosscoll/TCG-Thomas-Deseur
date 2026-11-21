@@ -14,8 +14,8 @@ export async function postBooster():Promise<OutputType>{
     ||body.boosterUnlimited!==false
     ||!Number.isInteger(body.stock)||body.stock<0||body.stock>3
     ||!Number.isInteger(body.giftStock)||body.giftStock<0
-    ||(body.stock<3 && (typeof body.nextAvailable!=="string"||!Number.isFinite(Date.parse(body.nextAvailable))))
-    ||(body.stock===3 && body.nextAvailable!==null))
+    ||(body.nextAvailable!==null && (typeof body.nextAvailable!=="string"||!Number.isFinite(Date.parse(body.nextAvailable))))
+    ||(body.stock<3 && body.nextAvailable===null))
    throw new Error("Résultat du booster invalide.");
  summarizeConfirmedBooster(body.drawn);
  return body as OutputType;
