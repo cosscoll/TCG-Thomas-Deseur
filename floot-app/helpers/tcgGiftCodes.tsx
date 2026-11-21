@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 export type PackKind='normal'|'special'|'custom';
-export type GiftPackRule={rarityFloor?:'commune'|'rare'|'epique'|'legendaire'|'hors_serie';fixedArtworkIds?:string[];poolArtworkIds?:string[];raritySlots?:('commune'|'rare'|'epique'|'legendaire')[]};
+export type GiftPackRule={rarityFloor?:'commune'|'rare'|'epique'|'legendaire'|'hors_serie';fixedArtworkIds?:string[];poolArtworkIds?:string[];raritySlots?:('commune'|'rare'|'epique'|'legendaire')[];megaCounts?:{commune:number;rare:number;epique:number;legendaire:number;hors_serie:number}};
 export type GiftReward={type:'packs';kind:PackKind;quantity:number;rules?:GiftPackRule}|{type:'card';artworkId:string;quantity:number};
 export function normalizeGiftCode(input:unknown):string{
  if(typeof input!=='string')throw Error('Code invalide.');
@@ -37,7 +37,12 @@ export function validateGiftRewards(input:unknown,artworkIds:ReadonlySet<string>
    rules.rarityFloor=rule.rarityFloor as GiftPackRule['rarityFloor'];
   }
   if(kind==='custom'){
-   if(Array.isArray(rule.raritySlots)){
+   if(rule.megaCounts && typeof rule.megaCounts==='object' && !Array.isArray(rule.megaCounts)){
+    const counts=rule.megaCounts as Record<string,unknown>;
+    const expected={commune:60,rare:20,epique:14,legendaire:5,hors_serie:1};
+    if(Object.keys(counts).length!==5||Object.entries(expected).some(([rarity,n])=>counts[rarity]!==n))throw Error('Composition du booster de 100 cartes invalide.');
+    rules.megaCounts=expected;
+   }else if(Array.isArray(rule.raritySlots)){
     if(rule.raritySlots.length!==5||rule.raritySlots.some((r:unknown)=>!['commune','rare','epique','legendaire'].includes(String(r))))throw Error('Composition des raretés invalide.');
     rules.raritySlots=rule.raritySlots as GiftPackRule['raritySlots'];
    }else{
