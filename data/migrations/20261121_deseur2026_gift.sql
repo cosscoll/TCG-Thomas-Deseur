@@ -1,19 +1,9 @@
 -- Apply to the live Floot PostgreSQL database before distributing DESEUR2026.
 -- Allow two redemptions of the same code by one account; the endpoint enforces the limit.
-DO $$
-DECLARE c record;
-BEGIN
- FOR c IN SELECT conname FROM pg_constraint
-  WHERE conrelid='tcg_gift_redemptions'::regclass AND contype='u'
-    AND (SELECT array_agg(att.attname ORDER BY att.attname)
-         FROM unnest(conkey) AS k(attnum)
-         JOIN pg_attribute att ON att.attrelid='tcg_gift_redemptions'::regclass AND att.attnum=k.attnum)
-      = ARRAY['code_id','user_id']::text[]
- LOOP
-  EXECUTE format('ALTER TABLE tcg_gift_redemptions DROP CONSTRAINT %I',c.conname);
- END LOOP;
-END $$;
--- A primary key covering code_id/user_id would also need a separate schema change.
+ALTER TABLE tcg_gift_redemptions ADD COLUMN IF NOT EXISTS redemption_number integer NOT NULL DEFAULT 1;
+ALTER TABLE tcg_gift_redemptions DROP CONSTRAINT IF EXISTS tcg_gift_redemptions_pkey;
+ALTER TABLE tcg_gift_redemptions ADD CONSTRAINT tcg_gift_redemptions_pkey PRIMARY KEY (code_id,user_id,redemption_number);
+-- The new composite primary key allows two distinct redemption numbers per account.
 -- Create the code using an existing administrator; never invent an admin ID.
 INSERT INTO tcg_gift_codes (code_hash,label,rewards,max_uses,expires_at,created_by)
 SELECT 'edac1b63847b7a4794f4f51187772be82a84fb3b7ddf51dedb6a7a04b551b169',
