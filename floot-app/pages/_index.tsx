@@ -237,7 +237,7 @@ export default function Home() {
                       </p>}
               {logged
                 ? <Button size="lg" disabled={!available || claim.isPending || reward.isPending} onClick={() => claim.mutate()}>
-                    {claim.isPending ? "Enregistrement des cinq cartes…" : "Ouvrir mon booster →"}
+                    {claim.isPending ? "Enregistrement des cartes…" : "Ouvrir mon booster →"}
                   </Button>
                 : <Button size="lg" asChild><Link to="/login?mode=register">Créer mon compte →</Link></Button>}
               {claim.isError && <p className={styles.error} role="alert">{claim.error.message} La disponibilité va être actualisée.</p>}
@@ -306,21 +306,21 @@ export default function Home() {
         <DialogContent className={styles.drawDialog}>
           <DialogHeader>
             <DialogTitle>{isCompletionReward?"Ton booster de collection":"Découverte de ton booster"}</DialogTitle>
-            <DialogDescription>Les cinq cartes sont enregistrées dans ton compte. Révèle-les une par une pour découvrir la surprise.</DialogDescription>
+            <DialogDescription>{drawn.length} cartes enregistrées dans ton compte. Révèle-les pour découvrir la surprise.</DialogDescription>
           </DialogHeader>
           {activeCard && <div className={styles.revealStage} aria-live="polite">
-            <span className={styles.revealCount}>CARTE {revealed} SUR 5</span>
+            <span className={styles.revealCount}>CARTE {revealed} SUR {drawn.length}</span>
             <div className={styles.revealCard} data-rarity={activeCard.rarity} key={revealed}>
               <small>{labels[activeCard.rarity]}{activeCard.alternative?" · VERSION ALTERNATIVE":""}</small>{activeCard.imagePath?<img className={styles.drawImage} src={activeCard.imagePath} alt="" />:<b aria-hidden="true">?</b>}
               <strong>{activeCard.name}</strong>
               <span>{activeCard.newCard ? "NOUVELLE CARTE" : "DOUBLON · EXEMPLAIRE " + activeCard.quantity}</span>
             </div>
-            <div className={styles.revealProgress} aria-label={revealed + " cartes révélées sur 5"}>
+            {drawn.length===5?<div className={styles.revealProgress} aria-label={revealed + " cartes révélées sur 5"}>
               {drawn.map((_, index) => <i key={index} className={index < revealed ? styles.revealedDot : ""} />)}
-            </div>
+            </div>:<p className={styles.small}>{revealed} / {drawn.length} cartes révélées</p>}
           </div>}
           {revealed < drawn.length
-            ? <Button size="lg" onClick={() => setRevealed(current => Math.min(drawn.length, current + 1))}>Révéler la carte suivante →</Button>
+            ? <><Button size="lg" onClick={() => setRevealed(current => Math.min(drawn.length, current + 1))}>Révéler la carte suivante →</Button>{drawn.length===100&&<Button variant="outline" onClick={() => setRevealed(drawn.length)}>Afficher la dernière carte →</Button>}</>
             : <div className={styles.finalActions}>
                 {canOpenAgain && !claim.isPending && !reward.isPending && <Button size="lg" disabled={claim.isPending} onClick={() => claim.mutate()}>Ouvrir un autre booster →</Button>}
                 {claim.isPending && <Button size="lg" disabled>Ouverture du prochain booster…</Button>}
@@ -333,3 +333,4 @@ export default function Home() {
     </div>
   );
 }
+  336
