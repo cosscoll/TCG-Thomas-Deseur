@@ -129,6 +129,7 @@ export interface TcgGiftPacks {
 
 export interface TcgGiftRedemptions {
   codeId: Int8;
+  redemptionNumber: Generated<number>;
   redeemedAt: Generated<Timestamp>;
   userId: number;
 }
