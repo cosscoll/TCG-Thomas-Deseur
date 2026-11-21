@@ -6,7 +6,7 @@ import {sql} from "kysely";
  * inferred by PostgreSQL (42P18). Always cast each bound id to text.
  */
 export function tcgPackHistoryJsonb(ids:readonly string[]){
- if(ids.length!==5||ids.some(id=>typeof id!=="string"||!id.trim())){
+ if(![5,100].includes(ids.length)||ids.some(id=>typeof id!=="string"||!id.trim())){
   throw Error("Historique du booster : cinq références valides requises.");
  }
  return sql<string[]>`jsonb_build_array(${sql.join(ids.map(id=>sql`${id}::text`))})`;
