@@ -80,7 +80,7 @@ export async function handle(request:Request){
      awarded.push({name:art.name,quantity:reward.quantity,imagePath:art.imagePath});
     }
    }
-   await trx.insertInto('tcgGiftRedemptions').values({codeId:code.id,userId}).execute();
+   await trx.insertInto('tcgGiftRedemptions').values({codeId:code.id,userId,redemptionNumber:uses.length+1}).execute();
    await trx.updateTable('tcgGiftCodes').set({usedCount:code.usedCount+1}).where('id','=',code.id).execute();
    return {message:'Récompense ajoutée à ton compte.',packs,cards:awarded} satisfies OutputType;
   });
