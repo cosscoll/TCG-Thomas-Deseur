@@ -44,9 +44,10 @@ export async function handle(request:Request){
    const code=await trx.selectFrom('tcgGiftCodes').selectAll().where('codeHash','=',hash).forUpdate().executeTakeFirst();
    if(!code||!code.active||code.usedCount>=code.maxUses||(code.expiresAt&&code.expiresAt.getTime()<=Date.now()))
     throw new GiftFailure('Code invalide ou expiré.');
-   const prior=await trx.selectFrom('tcgGiftRedemptions').select('codeId')
-    .where('codeId','=',code.id).where('userId','=',userId).executeTakeFirst();
-   if(prior)throw new GiftFailure('Ce code a déjà été utilisé sur ce compte.');
+   const uses=await trx.selectFrom('tcgGiftRedemptions').select('codeId')
+    .where('codeId','=',code.id).where('userId','=',userId).execute();
+   const perUserLimit=code.label==='DESEUR2026 — 2 utilisations' ? 2 : 1;
+   if(uses.length>=perUserLimit)throw new GiftFailure('Limite d’utilisation atteinte sur ce compte.');
    const catalog=await trx.selectFrom('tcgCardsOrigin')
     .select(['id','name','rarity','reference','sourceReference','imagePath','ordinal','normalBooster','variants']).execute();
    const artworks=tcgArtworkCatalog(catalog);
