@@ -10,7 +10,7 @@ import superjson from "superjson";
 import type {OutputType,DrawnCard} from "./booster_POST.schema";
 
 type Variant={id:string;imagePath:string;reference:string};
-type GiftRules={fixedArtworkIds?:string[];poolArtworkIds?:string[];rarityFloor?:string};
+type GiftRules={fixedArtworkIds?:string[];poolArtworkIds?:string[];rarityFloor?:string;raritySlots?:string[]};
 class NoPacks extends Error{}
 const headers={"Content-Type":"application/json","Cache-Control":"private, no-store"};
 const tiers=["commune","rare","epique","legendaire","hors_serie"];
@@ -62,15 +62,15 @@ export async function handle(request:Request){
     const g=groups.get(art.card.rarity)||[];if(!art.alternative){g.push(art);groups.set(art.card.rarity,g);}
    }
    const rules=(gift?.rules && typeof gift.rules==="object"&&!Array.isArray(gift.rules)?gift.rules:{}) as GiftRules;
-   if(gift?.kind==="custom" && (!Array.isArray(rules.fixedArtworkIds)||rules.fixedArtworkIds.length!==5))throw Error("Booster personnalisé invalide.");
+   if(gift?.kind==="custom" && (!Array.isArray(rules.fixedArtworkIds)||rules.fixedArtworkIds.length!==5) && (!Array.isArray(rules.raritySlots)||rules.raritySlots.length!==5||rules.raritySlots.some(r=>!['commune','rare','epique','legendaire'].includes(r))))throw Error("Booster personnalisé invalide.");
    const drawn:DrawnCard[]=[];
    for(let slot=0;slot<5;slot++){
     let item:typeof artworks[number]|undefined;
-    if(gift?.kind==="custom"){
+    if(gift?.kind==="custom" && rules.fixedArtworkIds){
      item=catalogByArt.get(rules.fixedArtworkIds![slot]);
      if(!item||item.alternative&&!basesOwned.has(item.cardId))throw Error("Une alternative requiert sa carte de base.");
     }else{
-     let outcome=tcgOriginRules.select(slot,randomInt(100));
+     let outcome=gift?.kind==="custom" && rules.raritySlots ? rules.raritySlots[slot] : tcgOriginRules.select(slot,randomInt(100));
      if(gift?.kind==="special" && slot>=3 && tiers.includes(rules.rarityFloor||"")){
       const floor=tiers.indexOf(rules.rarityFloor!);
       if(outcome==="alternative"||tiers.indexOf(outcome)<floor)outcome=rules.rarityFloor!;
