@@ -33,13 +33,11 @@ export async function handle(request:Request){
    const refreshed=rechargeBoosterStock({stock:stored.stock,rechargeAt:stored.rechargeAt},now);
    let gift: {id:string;kind:string;remaining:number;rules:unknown}|null=null;
    let after=refreshed;
-   if(refreshed.stock>0)after=consumeBoosterStock(refreshed,now);
-   else{
-    const row=await trx.selectFrom("tcgGiftPacks").select(["id","kind","remaining","rules"])
-     .where("userId","=",userId).where("remaining",">",0).orderBy("id","asc").forUpdate().executeTakeFirst();
-    if(!row)throw new NoPacks("Aucun booster en stock. Le prochain arrive dans quelques heures.");
-    gift=row;
-   }
+   const row=await trx.selectFrom("tcgGiftPacks").select(["id","kind","remaining","rules"])
+    .where("userId","=",userId).where("remaining",">",0).orderBy("id","asc").forUpdate().executeTakeFirst();
+   if(row)gift=row;
+   else if(refreshed.stock>0)after=consumeBoosterStock(refreshed,now);
+   else throw new NoPacks("Aucun booster en stock. Le prochain arrive dans quelques heures.");
    const catalog=await trx.selectFrom("tcgCardsOrigin")
     .select(["id","name","rarity","imagePath","variants","normalBooster"]).where("normalBooster","=",true).execute();
    tcgOriginRules.validate(catalog);
