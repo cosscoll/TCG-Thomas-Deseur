@@ -28,7 +28,27 @@ describe("Booster cadeau de 100 cartes",()=>{
    expect(recap.byRarity.find(r=>r.rarity==="legendaire")?.count).toBe(5);
   }finally{globalThis.fetch=previous;}
  });
+ it("accepte un booster cadeau attribué avec la réserve classique pleine (3/3)",async()=>{
+  const previous=globalThis.fetch;
+  const drawn=Object.entries(counts).flatMap(([rarity,n])=>Array.from({length:n},(_,i)=>({
+   id:rarity+"_"+i,name:rarity+" "+i,rarity,imagePath:"/test.webp",newCard:true,quantity:1
+  })));
+  try{
+   globalThis.fetch=jasmine.createSpy("fetch").and.resolveTo(new Response(superjson.stringify({
+    drawn,stock:3,giftStock:0,boosterUnlimited:false,nextAvailable:null
+   }),{status:200})) as typeof fetch;
+   const result=await postBooster();
+   expect(result.drawn).toHaveSize(100);
+   expect(result.stock).toBe(3);
+  }finally{globalThis.fetch=previous;}
+ });
+ it("refuse les réponses serveur réellement incomplètes",async()=>{
+  const previous=globalThis.fetch;
+  try{
+   globalThis.fetch=jasmine.createSpy("fetch").and.resolveTo(new Response(superjson.stringify({
+    drawn:[],stock:3,giftStock:0,boosterUnlimited:false,nextAvailable:null
+   }),{status:200})) as typeof fetch;
+   await expectAsync(postBooster()).toBeRejectedWithError(/invalide/);
+  }finally{globalThis.fetch=previous;}
+ });
 });
-
---- end of the file's lines. Below: notes from Floot, NOT part of the file — never copy them into it ---
-typecheck of earlier writes (helpers/tcgMegaBooster.spec.tsx): clean
