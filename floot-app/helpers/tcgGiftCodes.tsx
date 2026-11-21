@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 export type PackKind='normal'|'special'|'custom';
-export type GiftPackRule={rarityFloor?:'commune'|'rare'|'epique'|'legendaire'|'hors_serie';fixedArtworkIds?:string[];poolArtworkIds?:string[]};
+export type GiftPackRule={rarityFloor?:'commune'|'rare'|'epique'|'legendaire'|'hors_serie';fixedArtworkIds?:string[];poolArtworkIds?:string[];raritySlots?:('commune'|'rare'|'epique'|'legendaire')[]};
 export type GiftReward={type:'packs';kind:PackKind;quantity:number;rules?:GiftPackRule}|{type:'card';artworkId:string;quantity:number};
 export function normalizeGiftCode(input:unknown):string{
  if(typeof input!=='string')throw Error('Code invalide.');
@@ -37,10 +37,13 @@ export function validateGiftRewards(input:unknown,artworkIds:ReadonlySet<string>
    rules.rarityFloor=rule.rarityFloor as GiftPackRule['rarityFloor'];
   }
   if(kind==='custom'){
-   if(!Array.isArray(rule.fixedArtworkIds)||rule.fixedArtworkIds.length!==5||
-      rule.fixedArtworkIds.some((id:unknown)=>!resolve(id)))
-    throw Error('Un booster personnalisé doit contenir cinq illustrations officielles exactes.');
-   rules.fixedArtworkIds=rule.fixedArtworkIds.map(resolve) as string[];
+   if(Array.isArray(rule.raritySlots)){
+    if(rule.raritySlots.length!==5||rule.raritySlots.some((r:unknown)=>!['commune','rare','epique','legendaire'].includes(String(r))))throw Error('Composition des raretés invalide.');
+    rules.raritySlots=rule.raritySlots as GiftPackRule['raritySlots'];
+   }else{
+    if(!Array.isArray(rule.fixedArtworkIds)||rule.fixedArtworkIds.length!==5||rule.fixedArtworkIds.some((id:unknown)=>!resolve(id)))throw Error('Un booster personnalisé doit contenir cinq illustrations officielles exactes.');
+    rules.fixedArtworkIds=rule.fixedArtworkIds.map(resolve) as string[];
+   }
   }
   if(Array.isArray(rule.poolArtworkIds)){
    if(rule.poolArtworkIds.length<1||rule.poolArtworkIds.length>105||
